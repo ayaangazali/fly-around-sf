@@ -71,7 +71,7 @@
 .results-note[hidden] { display: none; }
 .results-actions { display: flex; gap: 8px; }
 .results-actions button { min-height: 40px; padding: 8px 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); font-weight: 650; }
-.results-actions .results-retry { background: var(--accent); border-color: transparent; color: #fff; }
+.results-actions .results-retry { background: var(--accent); border-color: transparent; color: #1d1a14; }
 .results-actions kbd { background: rgba(0, 0, 0, 0.2); }
 .results-busy .results-actions kbd { display: none; }
 

@@ -40,8 +40,8 @@
 .title-btn small { font-size: 12px; color: var(--ink-dim); }
 .title-btn:hover { background: rgba(255, 255, 255, 0.11); }
 .title-btn:active { transform: scale(0.98); }
-.title-btn.primary { background: linear-gradient(135deg, #ff6a3d, #ff8a4c); border-color: transparent; box-shadow: 0 12px 30px rgba(255, 106, 61, 0.38); }
-.title-btn.primary small { color: rgba(255, 255, 255, 0.85); }
+.title-btn.primary { background: linear-gradient(135deg, #ff6a3d, #ff8a4c); border-color: transparent; color: #1d1a14; box-shadow: 0 12px 30px rgba(255, 106, 61, 0.38); }
+.title-btn.primary small { color: rgba(29, 26, 20, 0.85); }
 .title-btn.primary:hover { background: linear-gradient(135deg, #ff7a52, #ff9a62); }
 .title-setup { display: grid; gap: 12px; text-align: left; }
 .title-setup[hidden] { display: none; }
