@@ -20,6 +20,8 @@ describe('net protocol', () => {
     expect(cleanText('  hi\u0000 there\u202e  ', 140)).toBe('hi there');
     expect(cleanText('a\nb\tc', 140)).toBe('a b c');
     expect(cleanText(7, 140)).toBe('');
+    expect(cleanText(`x${'\u0336'.repeat(19)}`, 20)).toBe('x\u0336\u0336');
+    expect(cleanText('Cafe\u0301', 20)).toBe('Caf\u00e9');
     const long = '🌁'.repeat(200);
     expect(Array.from(cleanText(long, LIMITS.chat))).toHaveLength(140);
     const m = parse({ t: 'chat', text: `<b>${'x'.repeat(500)}` });
