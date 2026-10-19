@@ -64,26 +64,37 @@ export function resample(xs: Float32Array, zs: Float32Array, step: number): Samp
   return out;
 }
 
+function grow<T extends Float32Array | Int8Array | Uint32Array>(a: T, size: number): T {
+  if (size <= a.length) return a;
+  const out = new (a.constructor as new (n: number) => T)(Math.max(size, a.length * 2));
+  out.set(a);
+  return out;
+}
+
 class Builder {
-  pos: number[] = [];
-  nrm: number[] = [];
-  road: number[] = [];
-  idx: number[] = [];
+  pos = new Float32Array(0);
+  nrm = new Int8Array(0);
+  road = new Float32Array(0);
+  idx = new Uint32Array(0);
+  verts = 0;
+  count = 0;
   sx = 0;
   sz = 0;
   n = 0;
+
+  reserve(verts: number): void {
+    const size = (this.verts + verts) * 3;
+    this.pos = grow(this.pos, size);
+    this.nrm = grow(this.nrm, size);
+    this.road = grow(this.road, size);
+    this.idx = grow(this.idx, this.count + verts * 3);
+  }
 }
 
 export function buildRoads(lines: Polyline[], height: Height, opts: RoadOptions): RoadBuild {
   const tiles = new Map<string, Builder>();
   const lamps: number[] = [];
   let meters = 0;
-  const normalAt = (x: number, z: number) => {
-    const gx = (height(x + 3, z) - height(x - 3, z)) / 6;
-    const gz = (height(x, z + 3) - height(x, z - 3)) / 6;
-    const l = Math.hypot(gx, 1, gz);
-    return [(-gx / l) * 127, (1 / l) * 127, (-gz / l) * 127];
-  };
   for (const line of lines) {
     const spec = ROAD[line.cls] ?? ROAD[Road.Residential];
     const s = resample(line.xs, line.zs, opts.step);
@@ -107,6 +118,7 @@ export function buildRoads(lines: Polyline[], height: Height, opts: RoadOptions)
       const key = `${Math.floor(mid.x / opts.tile)},${Math.floor(mid.z / opts.tile)}`;
       let b = tiles.get(key);
       if (!b) tiles.set(key, (b = new Builder()));
+      b.reserve((end - start + 1) * 2);
       let prev = -1;
       for (let i = start; i <= end; i++) {
         const p = s[i];
@@ -126,16 +138,31 @@ export function buildRoads(lines: Polyline[], height: Height, opts: RoadOptions)
         }
         const nx = -tz * w * miter;
         const nz = tx * w * miter;
-        const v = b.pos.length / 3;
+        const v = b.verts;
         for (const side of [-1, 1]) {
           const x = p.x + nx * side;
           const z = p.z + nz * side;
-          b.pos.push(x, height(x, z) + lift, z);
-          b.nrm.push(...normalAt(x, z));
-          b.road.push(p.u, side * w, line.cls);
+          const k = b.verts++ * 3;
+          const gx = (height(x + 3, z) - height(x - 3, z)) / 6;
+          const gz = (height(x, z + 3) - height(x, z - 3)) / 6;
+          const l = Math.hypot(gx, 1, gz);
+          b.pos[k] = x;
+          b.pos[k + 1] = height(x, z) + lift;
+          b.pos[k + 2] = z;
+          b.nrm[k] = (-gx / l) * 127;
+          b.nrm[k + 1] = (1 / l) * 127;
+          b.nrm[k + 2] = (-gz / l) * 127;
+          b.road[k] = p.u;
+          b.road[k + 1] = side * w;
+          b.road[k + 2] = line.cls;
         }
         if (prev >= 0 && dry[i] && dry[i - 1]) {
-          b.idx.push(prev, prev + 1, v, prev + 1, v + 1, v);
+          b.idx[b.count++] = prev;
+          b.idx[b.count++] = prev + 1;
+          b.idx[b.count++] = v;
+          b.idx[b.count++] = prev + 1;
+          b.idx[b.count++] = v + 1;
+          b.idx[b.count++] = v;
           meters += p.u - s[i - 1].u;
         }
         prev = v;
@@ -165,8 +192,8 @@ export function buildRoads(lines: Polyline[], height: Height, opts: RoadOptions)
   }
   const out: RoadTile[] = [];
   for (const [key, b] of tiles) {
-    if (!b.idx.length) continue;
-    out.push({ key, cx: b.sx / b.n, cz: b.sz / b.n, position: Float32Array.from(b.pos), normal: Int8Array.from(b.nrm), road: Float32Array.from(b.road), index: Uint32Array.from(b.idx) });
+    if (!b.count) continue;
+    out.push({ key, cx: b.sx / b.n, cz: b.sz / b.n, position: b.pos.slice(0, b.verts * 3), normal: b.nrm.slice(0, b.verts * 3), road: b.road.slice(0, b.verts * 3), index: b.idx.slice(0, b.count) });
   }
   return { tiles: out, lamps: Float32Array.from(lamps), meters };
 }
