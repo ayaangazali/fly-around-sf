@@ -1,0 +1,441 @@
+[
+  {
+    "id": "golden-gate-park",
+    "name": "Golden Gate Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76972, "lon": -122.47694, "alt": 60 },
+    "year": 1870,
+    "blurb": "Over a thousand acres of forest, meadows and museums, grown on bare sand dunes.",
+    "lore": "In the 1860s this was the Outside Lands: three miles of shifting sand dunes that experts said would never grow a tree. Engineer William Hammond Hall and later gardener John McLaren proved them wrong, planting grasses and trees to pin the sand in place. The park opened in 1870 and now covers 1,017 acres, about 20 percent bigger than New York's Central Park. It holds bison, windmills, museums, lakes and around 24 million visits a year.",
+    "facts": [
+      "Golden Gate Park covers 1,017 acres (412 ha).",
+      "It opened in 1870 on sand dunes in an area called the Outside Lands.",
+      "Engineer William Hammond Hall designed it after Olmsted's native-plant plan was rejected.",
+      "It receives an estimated 24 million visitors a year."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Gate_Park"]
+  },
+  {
+    "id": "presidio",
+    "name": "The Presidio",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79806, "lon": -122.46583, "alt": 60 },
+    "year": 1776,
+    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
+    "lore": "Spain planted a fort here on September 17, 1776, Mexico took it over, and the U.S. Army ran it until 1994. That is 219 years of soldiers on one hilltop. When the Army left, the Presidio became a national park with a twist: Congress told it to pay its own way, and it did, years ahead of schedule. The old barracks hold restaurants, offices and museums, while eucalyptus and cypress forests hide trails, art and coyotes.",
+    "facts": [
+      "The Spanish established the Presidio on September 17, 1776.",
+      "It passed to Mexico in 1820 and to the United States in 1848.",
+      "The Army transferred it to the National Park Service on October 1, 1994.",
+      "The Presidio Trust made the park financially self-sufficient in 2005, eight years early."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Presidio_of_San_Francisco", "https://www.presidio.gov/"]
+  },
+  {
+    "id": "crissy-field",
+    "name": "Crissy Field",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.80459, "lon": -122.46443, "alt": 30 },
+    "year": 1921,
+    "blurb": "A restored tidal marsh and beach that was once the Army's West Coast airfield.",
+    "lore": "Today it is kites, dogs and windsurfers with the Golden Gate Bridge as a backdrop. A century ago it was a busy Army airfield. On June 23, 1924, Lt. Russell Maughan landed here at 9:46 at night after flying from New York in a single day, the first dawn-to-dusk transcontinental flight. Later the field became a polluted dump, until a huge restoration in the 1990s brought back the tidal marsh and the shorebirds with it.",
+    "facts": [
+      "The Army airfield was completed in 1921.",
+      "Lt. Russell Maughan's 1924 dawn-to-dusk transcontinental flight ended here.",
+      "It closed as an airfield after 1974.",
+      "Its tidal marsh was restored and the Crissy Field Center opened in 2001."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Crissy_Field", "https://www.nps.gov/prsf/learn/historyculture/crissy-field-page-2.htm"]
+  },
+  {
+    "id": "lands-end",
+    "name": "Lands End",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.77972, "lon": -122.51158, "alt": 40 },
+    "blurb": "Wild cypress cliffs at the city's northwest corner, where the bay meets the Pacific.",
+    "lore": "This is where San Francisco runs out of land. The coastal trail follows the old railbed of a line that once carried day-trippers to the Cliff House, until the cliffs kept sliding out from under it. Below, the rocks are a graveyard of ships that misjudged the Golden Gate in fog, and at very low tides rusty wreckage still appears. Look up from the trail and the Golden Gate Bridge frames itself between the trees like it was planned.",
+    "facts": [
+      "Lands End is part of the Golden Gate National Recreation Area.",
+      "Its trails follow the former railbed of the Ferries and Cliff House Railway.",
+      "It overlooks the mouth of the Golden Gate.",
+      "The park sits between the Sutro District and Lincoln Park, beside Fort Miley."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Lands_End_(San_Francisco)", "https://www.nps.gov/goga/planyourvisit/landsend.htm"]
+  },
+  {
+    "id": "ocean-beach",
+    "name": "Ocean Beach",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Sunset/Parkside",
+    "at": { "lat": 37.75616, "lon": -122.51049, "alt": 30 },
+    "blurb": "Three and a half miles of foggy Pacific surf along the city's western edge.",
+    "lore": "Ocean Beach is not a beach for swimming. The currents can top five miles an hour and the cold Pacific keeps the water around 55 degrees, which is exactly why serious surfers love it. It runs three and a half miles from the Cliff House to Fort Funston, wrapped in fog much of the summer. Locals know the secret: September and October are the warm months. On clear evenings, bonfires glow in the fire rings at sunset.",
+    "facts": [
+      "Ocean Beach is 3.5 miles long.",
+      "It is part of the Golden Gate National Recreation Area.",
+      "Its strong rip currents make it dangerous for swimming.",
+      "The best beach weather usually comes in fall and early spring."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco", "https://www.nps.gov/goga/planyourvisit/oceanbeach.htm"]
+  },
+  {
+    "id": "dolores-park",
+    "name": "Dolores Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.75976, "lon": -122.42713, "alt": 30 },
+    "year": 1905,
+    "blurb": "The sunny hillside lawn where the whole city comes to picnic.",
+    "lore": "On a warm Saturday, Dolores Park is San Francisco's living room, its slope packed with picnics, dogs and a skyline view. The land was once a Jewish cemetery owned by two congregations, closed in 1894 with the graves moved to Colma. The city bought it in 1905, and a year later it sheltered more than 1,600 families made homeless by the earthquake. The sunny Mission microclimate means it is often warm here while the west side is buried in fog.",
+    "facts": [
+      "The land was a Jewish cemetery of Congregations Emanu-El and Sherith Israel until 1894.",
+      "The city purchased it in 1905.",
+      "After the 1906 earthquake it housed a refugee camp for over 1,600 families.",
+      "The J Church streetcar runs along its western edge."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Mission_Dolores_Park"]
+  },
+  {
+    "id": "blue-heron-lake",
+    "name": "Blue Heron Lake",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76899, "lon": -122.47459, "alt": 40 },
+    "blurb": "The moat around Strawberry Hill, renamed in 2024 for the herons that nest there.",
+    "lore": "For over a century this was Stow Lake, named for a park commissioner. In 2024 the city discovered he had been openly antisemitic and renamed it Blue Heron Lake, after the great blue herons that have nested on its islands since 1993. Rent a paddle boat and circle Strawberry Hill, the island in the middle, where Huntington Falls tumbles down and a red Chinese pavilion, a gift from sister city Taipei, sits by the shore.",
+    "facts": [
+      "The lake was renamed from Stow Lake to Blue Heron Lake in 2024.",
+      "It surrounds Strawberry Hill, an island in Golden Gate Park.",
+      "Great blue herons have nested at the lake since 1993.",
+      "Huntington Falls flows down Strawberry Hill."
+    ],
+    "sources": ["https://localnewsmatters.org/2024/01/22/stowing-the-past-away-sf-parks-commission-renames-stow-lake-to-banish-hateful-legacy/", "https://sfnature.org/history-of-the-stow-lake-heron-colony.html"]
+  },
+  {
+    "id": "twin-peaks",
+    "name": "Twin Peaks",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Twin Peaks",
+    "at": { "lat": 37.75241, "lon": -122.44759, "alt": 40 },
+    "blurb": "The two grassy summits in the middle of the city with the best view of all of it.",
+    "lore": "Spanish settlers gave these two summits a cheeky name, Los Pechos de la Chola, and you can work out the translation. They rise about 925 feet near the geographic center of the city, and on a clear night the view is a light show from the Bay Bridge to the Golden Gate. Only Mount Davidson, a few feet higher, beats them. The wind up here is famous too: bring a jacket, even in summer, especially in summer.",
+    "facts": [
+      "The peaks rise to about 925 feet (282 m).",
+      "They are the second and third highest natural points in San Francisco after Mount Davidson.",
+      "The north summit is Eureka Peak and the south summit is Noe Peak.",
+      "Early Spanish settlers called them Los Pechos de la Chola."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)", "https://sfrecpark.org/facilities/facility/details/Twin-Peaks-379"]
+  },
+  {
+    "id": "buena-vista-park",
+    "name": "Buena Vista Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Haight Ashbury",
+    "at": { "lat": 37.76834, "lon": -122.4411, "alt": 50 },
+    "year": 1867,
+    "blurb": "The city's oldest official park, a steep wooded hill above the Haight.",
+    "lore": "Buena Vista was set aside in 1867, making it the oldest official park in San Francisco. Climb its switchback paths through oaks and cypress to a 575-foot summit with views of both bridges. Then look down at the gutters. In the 1930s, Depression-era work crews lined the drains with broken headstones from the city's closed Victorian cemeteries. They were told to place the writing face down. Not all of them listened.",
+    "facts": [
+      "Buena Vista Park was established in 1867 as Hill Park.",
+      "It is the oldest official park in San Francisco.",
+      "The summit is 575 feet (175 m) high.",
+      "WPA crews in the 1930s built gutters from broken cemetery headstones."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Buena_Vista_Park", "https://hoodline.com/2013/10/the-secret-tombstones-of-buena-vista-park"]
+  },
+  {
+    "id": "bernal-heights-park",
+    "name": "Bernal Hill",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Bernal Heights",
+    "at": { "lat": 37.74342, "lon": -122.41351, "alt": 40 },
+    "blurb": "A bald, dog-filled hilltop with a tiny cousin of Sutro Tower on top.",
+    "lore": "Bernal Hill is what a neighborhood park looks like when the neighborhood loves dogs. Its 26 acres of open grass ring a 466-foot summit, and the loop road around the top is a parade of off-leash pups at sunset. The summit's 50-foot telecom tower has no official name, but locals call it Sutrito, little Sutro Tower. From here you can see downtown, the bay and both bridges without fighting any crowds.",
+    "facts": [
+      "The summit is 466 feet high.",
+      "Bernal Heights Park covers 26.3 acres.",
+      "A 50-foot telecom tower on top is nicknamed Sutrito.",
+      "Bernal Heights Boulevard loops around the summit."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Bernal_Heights_Summit"]
+  },
+  {
+    "id": "corona-heights",
+    "name": "Corona Heights",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.76489, "lon": -122.43937, "alt": 30 },
+    "blurb": "A rust-red rock summit above the Castro with a 360-degree panorama.",
+    "lore": "Corona Heights looks like a chunk of Mars dropped into the city. Its bare peak is Franciscan chert, red radiolarian rock made of ancient seafloor plankton skeletons, exposed after the hill was quarried for bricks. The climb is short and steep, with no handrails, and the reward is one of the best views in town, from downtown to Twin Peaks. At its base sits the Randall Museum, a free nature museum for kids.",
+    "facts": [
+      "The park covers 13.2 acres.",
+      "Its peak rises to about 520 feet (160 m).",
+      "The hill is made of Franciscan chert bedrock.",
+      "The Randall Museum is located within the park."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Corona_Heights_Park"]
+  },
+  {
+    "id": "mount-davidson",
+    "name": "Mount Davidson",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "West of Twin Peaks",
+    "at": { "lat": 37.73826, "lon": -122.4533, "alt": 40 },
+    "year": 1934,
+    "blurb": "The highest point in San Francisco, crowned by a 103-foot concrete cross in a fog forest.",
+    "lore": "Most visitors assume Twin Peaks is the top of the city. It is not. Mount Davidson, at about 928 feet, beats it by a few feet, hidden under a dripping eucalyptus fog forest. At the summit stands a 103-foot concrete cross, first lit in 1934 when President Franklin Roosevelt pressed a telegraph key in the White House. After a church-state lawsuit, the city auctioned the cross and its patch of land in 1997, and an Armenian American group has owned it since.",
+    "facts": [
+      "Mount Davidson is the highest point in San Francisco at about 928 feet.",
+      "The cross on its summit is 103 feet tall.",
+      "President Roosevelt lit the cross by telegraph on March 24, 1934.",
+      "The Council of Armenian-American Organizations of Northern California has owned the cross since 1997."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Mount_Davidson_(California)", "https://www.ktvu.com/news/mount-davidsons-easter-sunrise-service-sf"]
+  },
+  {
+    "id": "glen-canyon-park",
+    "name": "Glen Canyon Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Glen Park",
+    "at": { "lat": 37.74036, "lon": -122.44383, "alt": 40 },
+    "year": 1868,
+    "blurb": "A wild canyon with a free-flowing creek and the site of America's first dynamite factory.",
+    "lore": "Glen Canyon feels like a slice of the Sierra dropped into the city: rock outcrops, coastal scrub and Islais Creek running free at the bottom. It also has the loudest history of any park in town. In 1868 the Giant Powder Company, licensed by Alfred Nobel himself, began making dynamite here, the first in the United States. In November 1869 the works blew up, and the company moved on. Red-tailed hawks and great horned owls now nest in the quiet.",
+    "facts": [
+      "Glen Canyon Park covers about 70 acres.",
+      "Islais Creek flows freely through the canyon.",
+      "The Giant Powder Company began producing dynamite here on March 19, 1868.",
+      "The factory was destroyed by an explosion on November 26, 1869."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Glen_Canyon_Park", "https://landmarkquest.com/omeka/items/show/394"]
+  },
+  {
+    "id": "mclaren-park",
+    "name": "McLaren Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "McLaren Park",
+    "at": { "lat": 37.71755, "lon": -122.41811, "alt": 50 },
+    "blurb": "The city's big, overlooked southeastern park, home of the Jerry Garcia Amphitheater.",
+    "lore": "At 313 acres, McLaren is the fourth-largest park in the city, and plenty of San Franciscans have never set foot in it. Its ridges, groves and reservoirs roll between the Excelsior, Visitacion Valley and Portola. It is named for John McLaren, the legendary gardener of Golden Gate Park. Its outdoor amphitheater is named for Jerry Garcia, who grew up in the neighboring Excelsior, and hosts an annual Jerry Day concert.",
+    "facts": [
+      "McLaren Park covers about 313.7 acres.",
+      "It is the fourth largest park in San Francisco by area.",
+      "It is named for Golden Gate Park superintendent John McLaren.",
+      "The park's amphitheater is named for Grateful Dead guitarist Jerry Garcia."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/John_McLaren_Park", "https://sfrecpark.org/facilities/facility/details/Jerry-Garcia-Amphitheater-209"]
+  },
+  {
+    "id": "lake-merced",
+    "name": "Lake Merced",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Lakeshore",
+    "at": { "lat": 37.7197, "lon": -122.4937, "alt": 30 },
+    "blurb": "A freshwater lake in the southwest corner, ringed by golf courses and rowers.",
+    "lore": "Lake Merced is one of the rare natural lakes in San Francisco, a freshwater lagoon just inland from the Pacific. Spanish explorers named it Laguna de Merced. Today it is surrounded by three golf courses, including the TPC Harding Park, and on early mornings racing shells from high school and club rowing teams slice across the still water. A walking loop of about four and a half miles circles it.",
+    "facts": [
+      "Lake Merced is a freshwater lake on the city's West Side.",
+      "Three golf courses surround it: the Olympic Club, San Francisco Golf Club and TPC Harding Park.",
+      "The Pacific Rowing Club trains on the lake.",
+      "Its Spanish name is Laguna de Merced."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Lake_Merced"]
+  },
+  {
+    "id": "baker-beach",
+    "name": "Baker Beach",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79315, "lon": -122.48474, "alt": 30 },
+    "blurb": "A half-mile of sand with a head-on view of the Golden Gate Bridge, and the birthplace of Burning Man.",
+    "lore": "Baker Beach has the best ground-level view of the Golden Gate Bridge, framed by the Marin Headlands. It also has a strange claim to fame. On the summer solstice of 1986, Larry Harvey and Jerry James built a wooden man and burned it here with a handful of friends. The burn returned every year until park police stopped it in 1990, so it moved to Nevada's Black Rock Desert and became Burning Man. The north end is clothing-optional, so mind where you land.",
+    "facts": [
+      "Baker Beach is roughly half a mile long.",
+      "The first Burning Man effigy was burned here on the summer solstice of 1986.",
+      "The event moved to the Black Rock Desert after 1990.",
+      "The northern section is frequented by clothing-optional sunbathers."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Baker_Beach", "https://en.wikipedia.org/wiki/Burning_Man"]
+  },
+  {
+    "id": "washington-square",
+    "name": "Washington Square",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80085, "lon": -122.41012, "alt": 30 },
+    "year": 1847,
+    "blurb": "North Beach's front lawn, facing the white twin spires of Saints Peter and Paul.",
+    "lore": "Established in 1847, Washington Square is one of the city's first parks, and the heart of Italian North Beach. Early mornings bring tai chi, afternoons bring focaccia from Liguria Bakery across the street, and evenings bring the glow of Saints Peter and Paul Church's twin spires. Look for the bronze firefighters statue, paid for by Lillie Hitchcock Coit, the same patron whose bequest built Coit Tower up the hill.",
+    "facts": [
+      "Washington Square was established in 1847.",
+      "It covers 2.8 acres in North Beach.",
+      "Saints Peter and Paul Church faces the park.",
+      "Lillie Hitchcock Coit's bequest funded its volunteer firefighters memorial."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Washington_Square_(San_Francisco)", "https://en.wikipedia.org/wiki/Coit_Tower"]
+  },
+  {
+    "id": "yerba-buena-gardens",
+    "name": "Yerba Buena Gardens",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78465, "lon": -122.4024, "alt": 40 },
+    "year": 1993,
+    "blurb": "A downtown park on top of a convention center, with a waterfall memorial to Dr. King.",
+    "lore": "Yerba Buena was the name of the town before it became San Francisco in 1847, named after a fragrant mint that grew wild on the hills. These gardens borrow the name for two blocks of lawns built over the Moscone Center, so you are lounging on a convention hall's roof. The upper block holds a 50-foot waterfall memorial to Martin Luther King Jr., with his words etched in glass behind the falling water.",
+    "facts": [
+      "The first block of Yerba Buena Gardens opened on October 11, 1993.",
+      "The second block opened in 1998.",
+      "Part of the gardens sits on top of the Moscone Center.",
+      "Yerba Buena was the original name of the town that became San Francisco."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Yerba_Buena_Gardens", "https://yerbabuenagardens.com/"]
+  },
+  {
+    "id": "salesforce-park",
+    "name": "Salesforce Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78912, "lon": -122.39687, "alt": 45 },
+    "year": 2018,
+    "blurb": "A 5.4-acre garden on the roof of a bus station, 70 feet above downtown.",
+    "lore": "Four stories above the street, on top of the Salesforce Transit Center, runs a 5.4-acre park with gardens from around the world, a gondola from the sidewalk and a fountain choreographed by buses. Artist Ned Kahn's Bus Jet Fountain sits over the bus deck: sensors below feel each bus roll through and fire the water jets right above it. It is the only park in the city where traffic jams make things more fun.",
+    "facts": [
+      "Salesforce Park is a 5.4-acre rooftop park.",
+      "It sits on top of the Salesforce Transit Center, which opened in 2018.",
+      "Ned Kahn's Bus Jet Fountain is triggered by buses passing on the deck below.",
+      "A free aerial gondola carries visitors up from street level."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Salesforce_Transit_Center", "https://www.afar.com/magazine/salesforce-park-opens-in-downtown-san-francisco", "https://nedkahn.com/portfolio/bus-fountain"]
+  },
+  {
+    "id": "japanese-tea-garden",
+    "name": "Japanese Tea Garden",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.77034, "lon": -122.47005, "alt": 30 },
+    "year": 1894,
+    "blurb": "The oldest public Japanese garden in the United States, with a steep moon bridge.",
+    "lore": "Built for the 1894 Midwinter International Exposition, this is the oldest public Japanese garden in the country. Landscape designer Makoto Hagiwara shaped it and his family tended it for decades, until they were forced out in 1942 during the incarceration of Japanese Americans. Hagiwara is also one of the leading claimants to inventing the fortune cookie, served here in the early 1900s. Climb the arched drum bridge carefully: it is steeper than it looks.",
+    "facts": [
+      "The garden was built for the California Midwinter International Exposition of 1894.",
+      "It is the oldest public Japanese garden in the United States.",
+      "It covers about 3 acres in Golden Gate Park.",
+      "Makoto Hagiwara is widely credited with serving early fortune cookies here."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Japanese_Tea_Garden_(San_Francisco)", "https://www.americanheritage.com/who-invented-fortune-cookie"]
+  },
+  {
+    "id": "sunset-dunes",
+    "name": "Sunset Dunes",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Sunset/Parkside",
+    "at": { "lat": 37.74977, "lon": -122.50837, "alt": 30 },
+    "year": 2025,
+    "blurb": "A two-mile oceanfront park built on top of a former highway.",
+    "lore": "For decades the Upper Great Highway was four lanes of traffic between the Sunset and the sea. In November 2024 voters approved closing it to cars for good, and in April 2025 it reopened as Sunset Dunes: a 50-acre, two-mile park of skaters, cyclists, murals and drifting sand from Lincoln Way to Sloat. It drew 13,000 visits on opening day and stirred one of the city's loudest political fights, which is very San Francisco.",
+    "facts": [
+      "Sunset Dunes opened on April 12, 2025.",
+      "It runs about two miles from Lincoln Way to Sloat Boulevard.",
+      "Voters approved Proposition K in November 2024 to close the road to cars.",
+      "It recorded about 1.7 million visits in its first year."
+    ],
+    "sources": ["https://localnewsmatters.org/2026/04/13/sunset-dunes-marks-first-anniversary-with-1-7m-visits-as-debate-over-future-continues/", "https://www.nbcbayarea.com/news/local/san-franciscos-sunset-dunes-draws-thousands/3843908/"]
+  },
+  {
+    "id": "herons-head-park",
+    "name": "Heron's Head Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Bayview Hunters Point",
+    "at": { "lat": 37.73894, "lon": -122.3722, "alt": 30 },
+    "blurb": "A failed shipping terminal turned bird-rich wetland on the Bayview shore.",
+    "lore": "The Port of San Francisco started building a pier here for a shipping terminal that never happened. Nature filled in the gap. The abandoned fill grew a salt marsh, birders noticed its shape from above, which looks like a heron's head, and the port turned it into a 22-acre wetland park. Shorebirds by the thousand feed on the mudflats at low tide. Its EcoCenter runs on solar power and treats its own wastewater.",
+    "facts": [
+      "Heron's Head Park covers about 22 acres.",
+      "It is maintained by the Port of San Francisco.",
+      "The park is known for bird watching on its restored wetland.",
+      "It is home to the EcoCenter environmental education facility."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Heron%27s_Head_Park", "https://sfport.com/herons-head-park"]
+  },
+  {
+    "id": "candlestick-point",
+    "name": "Candlestick Point",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Bayview Hunters Point",
+    "at": { "lat": 37.71715, "lon": -122.383, "alt": 30 },
+    "year": 1977,
+    "blurb": "California's first urban state park, a windy shoreline loved by windsurfers.",
+    "lore": "This 170-acre point was landfill meant for a wartime Navy shipyard that was never built, then an informal dump. In 1977 California voted to make it a state park, the first urban recreation area in the state. The wind that made the old Candlestick Park stadium next door so famously miserable for baseball makes this shoreline a favorite for windsurfers and kiteboarders. Two fishing piers reach into the bay.",
+    "facts": [
+      "Candlestick Point State Recreation Area covers about 170 acres.",
+      "California voted in 1977 to turn the area into a state park.",
+      "It was the first urban recreation area in the California state park system.",
+      "It is popular for windsurfing thanks to strong, regular winds."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Candlestick_Point_State_Recreation_Area"]
+  },
+  {
+    "id": "aquatic-park",
+    "name": "Aquatic Park",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.807, "lon": -122.42346, "alt": 30 },
+    "blurb": "A sheltered cove where cold-water swimmers do laps in the bay all year.",
+    "lore": "Every morning, rain or fog, swimmers in nothing but caps wade into this cove's 55-degree water for laps. Many belong to two rowing and swimming clubs on its shore that date back to the 1870s. Behind the beach stands the Maritime Museum, a white Streamline Moderne bathhouse built in 1939 that looks like an ocean liner run aground. The curving Municipal Pier protects the cove and gives you a long view back at the city.",
+    "facts": [
+      "Aquatic Park is part of San Francisco Maritime National Historical Park.",
+      "Its 1939 bathhouse building now houses the Maritime Museum.",
+      "The Dolphin Club and South End Rowing Club sit on the cove.",
+      "The Aquatic Park Historic District is bounded by Van Ness Avenue, Polk Street and Hyde Street."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Maritime_National_Historical_Park", "https://www.nps.gov/safr/index.htm"]
+  },
+  {
+    "id": "mountain-lake",
+    "name": "Mountain Lake",
+    "category": "park",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.78826, "lon": -122.47083, "alt": 30 },
+    "year": 1776,
+    "blurb": "One of the city's last natural lakes, where Spanish explorers camped in 1776.",
+    "lore": "Tucked into the southern edge of the Presidio, Mountain Lake is one of San Francisco's few remaining natural lakes. Juan Bautista de Anza's expedition camped here in March 1776 while scouting the site for a fort and mission. Centuries later it was choked with pet turtles, carp and runoff from the highway nearby. A long restoration cleaned the water, and native fish and amphibians have been brought back to their old home.",
+    "facts": [
+      "Mountain Lake is one of the few natural lakes in San Francisco.",
+      "The Anza expedition camped at the lake in 1776.",
+      "It lies at the southern edge of the Presidio.",
+      "The Presidio Trust led a restoration to bring back native species."
+    ],
+    "sources": ["https://www.presidio.gov/places/mountain-lake", "https://en.wikipedia.org/wiki/Mountain_Lake_(San_Francisco)"]
+  }
+]

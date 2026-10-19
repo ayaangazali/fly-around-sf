@@ -1,0 +1,360 @@
+[
+  {
+    "id": "in-n-out-fishermans-wharf",
+    "name": "In-N-Out Burger, Fisherman's Wharf",
+    "category": "food",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80777, "lon": -122.41847, "alt": 25 },
+    "blurb": "The only In-N-Out inside city limits, home of the Flying Dutchman.",
+    "lore": "San Francisco has exactly one In-N-Out, and it sits among the chowder bowls at 333 Jefferson Street, with no drive-thru, because nobody drives to the Wharf on purpose. Locals know the real menu is the one that is not printed. Order Animal Style for grilled onions and extra spread, a 4x4 for four patties and four slices, or the Flying Dutchman: two patties, two slices of cheese, no bun at all. For a drone pilot, it is the only possible order.",
+    "facts": [
+      "It is the only In-N-Out Burger within San Francisco city limits.",
+      "The location at 333 Jefferson Street has no drive-thru.",
+      "The off-menu Flying Dutchman is two beef patties and two slices of cheese with no bun.",
+      "In-N-Out was founded in Baldwin Park, California, in 1948."
+    ],
+    "sources": ["https://locations.in-n-out.com/154", "https://www.chowhound.com/1978694/flying-dutchman-secret-menu-in-n-out-explained/", "https://en.wikipedia.org/wiki/In-N-Out_Burger"]
+  },
+  {
+    "id": "la-taqueria",
+    "name": "La Taqueria",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.75087, "lon": -122.41816, "alt": 25 },
+    "year": 1973,
+    "blurb": "The Mission taqueria whose rice-free burritos keep winning best-in-America fights.",
+    "lore": "Miguel Jara opened La Taqueria on Mission Street in 1973, and he still has opinions. The big one: no rice. Rice soaks up the juices and waters down the meat, he says, so his burritos are just meat, beans, salsa and whatever you add. Order it dorado style and they crisp the tortilla on the griddle until it shatters. FiveThirtyEight crowned it America's best burrito, and the James Beard Foundation named it an America's Classic in 2017.",
+    "facts": [
+      "Miguel Jara opened La Taqueria in 1973.",
+      "Its burritos famously contain no rice.",
+      "The James Beard Foundation named it an America's Classic in 2017.",
+      "It won FiveThirtyEight's nationwide burrito bracket."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/La_Taqueria", "https://www.jamesbeard.org/blog/2017-americas-classic-la-taqueria", "https://www.kqed.org/news/11961178/what-is-a-mission-style-burrito-maybe-a-myth"]
+  },
+  {
+    "id": "el-farolito",
+    "name": "El Farolito",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.75264, "lon": -122.41831, "alt": 25 },
+    "blurb": "The late-night super burrito at 24th and Mission, the other side of the great debate.",
+    "lore": "Ask San Franciscans to pick between La Taqueria and El Farolito and you will start an argument that outlasts the burrito. El Farolito, the little lantern, was opened at 24th and Mission in the early 1980s by Salvador Lopez, who brought the name from Mexico City. Its weapon is the super burrito, rice included, roughly the weight of a newborn, eaten under fluorescent light long after the bars close. Esquire called it the most life-changing burrito in America.",
+    "facts": [
+      "El Farolito means little lantern in Spanish.",
+      "Salvador Lopez opened the first El Farolito at 24th and Mission in the early 1980s.",
+      "Esquire called its burrito the most life-changing burrito in America in 2013.",
+      "It is famous as a late-night spot after the bars close."
+    ],
+    "sources": ["https://missionlocal.org/?p=441671", "https://en.wikipedia.org/wiki/El_Farolito"]
+  },
+  {
+    "id": "boudin-bakery",
+    "name": "Boudin Bakery",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80853, "lon": -122.41486, "alt": 25 },
+    "year": 1849,
+    "blurb": "Sourdough from a mother dough that has been alive since the Gold Rush.",
+    "lore": "In 1849 Isidore Boudin mixed French baking with a wild yeast starter picked up from Gold Rush miners, and San Francisco sourdough was born. A piece of that original mother dough goes into every batch, and it nearly died in 1906. As fire swept toward the bakery, his widow Louise Boudin scooped the starter into a bucket and carried it to safety. At the Wharf bakery you can watch bakers shape loaves into turtles, crabs and alligators.",
+    "facts": [
+      "Boudin Bakery was founded in 1849.",
+      "It calls itself the oldest continually operating business in San Francisco.",
+      "Louise Boudin saved the mother dough in a bucket during the 1906 fire.",
+      "A portion of the original mother dough is used in every batch."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Boudin_Bakery", "https://www.7x7.com/boudin-bakery-history-of-mother-dough-1786690805.html"]
+  },
+  {
+    "id": "ghirardelli-square",
+    "name": "Ghirardelli Square",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.80587, "lon": -122.42295, "alt": 30 },
+    "year": 1852,
+    "blurb": "A brick chocolate factory turned plaza, its glowing sign visible from the bay.",
+    "lore": "Domingo Ghirardelli came for the Gold Rush, failed at mining like almost everyone, and found his gold in chocolate, founding his company in 1852. In 1893 the factory moved to this brick block above Aquatic Park, and its big illuminated sign became a beacon for ships. When the company moved out, the old factory was saved and turned into shops and restaurants, one of the first adaptive reuse projects in the country. Free samples are traditionally handed out at the door.",
+    "facts": [
+      "Domingo Ghirardelli founded the company in San Francisco in 1852.",
+      "The chocolate factory moved to this waterfront block in 1893.",
+      "The factory was sold for conversion to retail space in 1962.",
+      "San Francisco declared Ghirardelli Square an official city landmark in 1965."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Ghirardelli_Square", "https://en.wikipedia.org/wiki/Ghirardelli_Chocolate_Company", "https://www.startribune.com/ghirardelli-history/114294114"]
+  },
+  {
+    "id": "tartine-bakery",
+    "name": "Tartine Bakery",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76146, "lon": -122.42395, "alt": 25 },
+    "year": 2002,
+    "blurb": "The Mission corner bakery whose morning buns and country loaves taught the world to bake.",
+    "lore": "The line outside 600 Guerrero Street forms before the doors open, and it has since 2002. Elisabeth Prueitt and Chad Robertson came from wood-fired bakeries in Marin, and Robertson's crackly, open-crumbed country loaf launched a thousand home sourdough starters through his cookbook. Locals queue for the morning bun, a croissant-dough spiral rolled in orange zest and cinnamon sugar. The country loaf comes out in the late afternoon. Plan accordingly.",
+    "facts": [
+      "Tartine opened in 2002 at 600 Guerrero Street in the Mission District.",
+      "It was founded by Elisabeth Prueitt and Chad Robertson.",
+      "It is known for its morning buns and country bread.",
+      "Tartine has grown into a chain with locations in San Francisco, Los Angeles and Seoul."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Tartine", "https://www.timeout.com/san-francisco/restaurants/tartine-bakery"]
+  },
+  {
+    "id": "swan-oyster-depot",
+    "name": "Swan Oyster Depot",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79097, "lon": -122.42092, "alt": 25 },
+    "year": 1912,
+    "blurb": "Eighteen stools, one marble counter, and oysters shucked by the same family since 1946.",
+    "lore": "There are no tables, no reservations and no hurry at Swan Oyster Depot, just 18 wooden stools along a marble counter installed when it reopened after the earthquake. Four Danish brothers ran it first, and the Sancimino family bought it in 1946, and the brothers and cousins behind the counter still trade jokes while they shuck. Order cracked Dungeness crab in season, a bowl of clam chowder and a cold beer. The wait can run two hours. People wait.",
+    "facts": [
+      "The counter has exactly 18 wooden stools.",
+      "The marble counter was installed for its post-earthquake reopening in 1912.",
+      "The Sancimino family bought the business in 1946.",
+      "It does not take reservations."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Swan_Oyster_Depot", "https://www.sfexaminer.com/culture/food-and-wine/customers-still-line-up-at-18-seat-swan-oyster-depot-in-sf/article_b7108ae8-569b-11ef-a6da-e72e55e837e2.html"]
+  },
+  {
+    "id": "hog-island-oyster-co",
+    "name": "Hog Island Oyster Co.",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79596, "lon": -122.39355, "alt": 25 },
+    "year": 2003,
+    "blurb": "Tomales Bay oysters slurped with a view of the Bay Bridge.",
+    "lore": "Three friends started farming oysters on Tomales Bay in 1983, about an hour north in Marin. Twenty years later they opened this bar in the freshly restored Ferry Building, one of its original tenants. Sit at the counter facing the water and order a dozen Sweetwaters, their signature small, sweet Pacific oyster, with a grilled cheese on the side. Watch the ferries come and go under the Bay Bridge while the shuckers work.",
+    "facts": [
+      "Hog Island Oyster Co. was founded on Tomales Bay in 1983.",
+      "Its Ferry Building oyster bar opened in 2003.",
+      "It was one of the original tenants of the renovated Ferry Building.",
+      "Founders included John Finger, Terry Sawyer and Michael Watchorn."
+    ],
+    "sources": ["https://www.ferrybuildingmarketplace.com/merchants/hog-island-oyster-company/", "https://foodgps.com/hog-island-oyster-co-san-francisco/"]
+  },
+  {
+    "id": "mitchells-ice-cream",
+    "name": "Mitchell's Ice Cream",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Noe Valley",
+    "at": { "lat": 37.74421, "lon": -122.42279, "alt": 25 },
+    "year": 1953,
+    "blurb": "A family scoop shop since 1953, beloved for ube, buko and mango.",
+    "lore": "Brothers Larry and Jack Mitchell opened this shop on San Jose Avenue on June 6, 1953, with 19 flavors. In the early 1960s a fruit broker talked them into mango, and then came ube, macapuno and buko, the purple yam and young coconut flavors that made them a legend with San Francisco's Filipino community and everyone else. They still make every batch in the basement. Grab a number, stare at the board and order the ube.",
+    "facts": [
+      "Mitchell's opened on June 6, 1953.",
+      "It was founded by brothers Larry and Jack Mitchell with 19 flavors.",
+      "Tropical flavors like mango, ube and buko began in the 1960s.",
+      "It was named a San Francisco Legacy Business in 2023."
+    ],
+    "sources": ["https://sfstandard.com/2023/09/08/san-francisco-mitchells-ice-cream-legacy-business/", "https://www.tastingtable.com/2263429/california-best-ice-cream-shop-mitchells/"]
+  },
+  {
+    "id": "bi-rite-creamery",
+    "name": "Bi-Rite Creamery",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76157, "lon": -122.42566, "alt": 25 },
+    "year": 2006,
+    "blurb": "The salted caramel line that snakes down 18th Street by Dolores Park.",
+    "lore": "Pastry chefs Kris Hoogerhyde and Anne Walker spent years baking cakes and pies for the Bi-Rite Market across the street before opening their own scoop shop in 2006. Everything is made by hand, down to the caramel. Their salted caramel became the flavor people line up around the block for, along with honey lavender and balsamic strawberry. Take your cone one block down to Dolores Park and eat it on the hill. That is the whole plan.",
+    "facts": [
+      "Bi-Rite Creamery opened in 2006 at 3692 18th Street.",
+      "It was founded by pastry chefs Kris Hoogerhyde and Anne Walker.",
+      "Its best-known flavor is salted caramel.",
+      "It sits across the street from Bi-Rite Market, near Dolores Park."
+    ],
+    "sources": ["https://ediblesanfrancisco.com/?p=3314", "https://sfist.com/2007/03/05/worth_the_wait_birite_creamery/"]
+  },
+  {
+    "id": "liguria-bakery",
+    "name": "Liguria Bakery",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.8015, "lon": -122.40928, "alt": 25 },
+    "year": 1911,
+    "blurb": "A North Beach bakery that sells only focaccia and closes when it runs out.",
+    "lore": "Liguria Bakery has made one thing for decades, and it makes it perfectly: focaccia. The Soracco family opened here on Washington Square in 1911, and they still bake it the old way and wrap it in paper. Pizza, onion, garlic, raisin, plain. The posted hours are more of a suggestion, because when the last sheet sells, the doors close. Arrive early, then eat it on the grass across the street.",
+    "facts": [
+      "Liguria Bakery was founded in 1911.",
+      "It sells only focaccia.",
+      "The Soracco family has run it since its founding.",
+      "It sits at Stockton and Filbert Streets, across from Washington Square."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Liguria_Bakery", "https://www.storiedsf.com/episodes/liguria-bakerys-mike-soracco"]
+  },
+  {
+    "id": "house-of-prime-rib",
+    "name": "House of Prime Rib",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.79339, "lon": -122.42254, "alt": 25 },
+    "year": 1949,
+    "blurb": "Prime rib carved tableside from gleaming carts since 1949.",
+    "lore": "The menu at House of Prime Rib is basically one question: how thick? Since 1949 this Van Ness Avenue institution has served prime rib and almost nothing else, wheeled to your table on gleaming carts and carved right there. First comes the salad, tossed tableside in a bowl spinning on a bed of ice. Then Yorkshire pudding, mashed potatoes and creamed spinach. Seconds are famously on offer. Wear stretchy pants.",
+    "facts": [
+      "House of Prime Rib has been at 1906 Van Ness Avenue since 1949.",
+      "Prime rib is carved tableside from rolling carts.",
+      "The salad is tossed tableside in a bowl spun over ice.",
+      "Meals come with Yorkshire pudding."
+    ],
+    "sources": ["https://www.houseofprimerib.net/", "https://preview-prod.w.sfchronicle.com/food/article/Prime-directive-House-of-Prime-Rib-5968951.php"]
+  },
+  {
+    "id": "golden-boy-pizza",
+    "name": "Golden Boy Pizza",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.79973, "lon": -122.40808, "alt": 25 },
+    "year": 1978,
+    "blurb": "Focaccia-crust squares on Green Street, famous for the clam and garlic slice.",
+    "lore": "In 1978 a 19-year-old named Peter Sodini, who grew up baking focaccia in his father's bakery, turned that dough into thick, square Sicilian-style pizza and opened a tiny counter on Green Street. The family calls the style Sanfrancilian. The legend is the clam and garlic slice, a pungent North Beach rite of passage usually eaten standing up at 1 a.m. and remembered fondly the next morning by everyone except the people you talk to.",
+    "facts": [
+      "Golden Boy opened in 1978 at 542 Green Street in North Beach.",
+      "Founder Peter Sodini was 19 when he opened it.",
+      "Its pizza uses a focaccia-style crust baked in squares.",
+      "The clam and garlic slice is its signature."
+    ],
+    "sources": ["https://www.kqed.org/arts/13959808/golden-boy-pizza-north-beach-sf-late-night", "https://richmondsunsetnews.com/2024/03/06/golden-boy-pizzas-new-location-at-old-marco-polo-taraval-site/"]
+  },
+  {
+    "id": "sweet-maple",
+    "name": "Sweet Maple",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Japantown",
+    "at": { "lat": 37.78575, "lon": -122.43505, "alt": 25 },
+    "year": 2010,
+    "blurb": "Weekend brunch lines for the glazed, peppery Millionaire's Bacon.",
+    "lore": "The brunch line outside this Sutter Street corner on weekends is for one item: Millionaire's Bacon. Owner Steven Choi, a former scientist, developed it like an experiment: thick-cut bacon glazed with brown sugar, cooked low and slow, and finished with a peppery kick until it is somewhere between candy and steak. Sweet Maple opened here in 2010 and the bacon became famous enough to get its own outpost at SFO. Order a side for the table.",
+    "facts": [
+      "Sweet Maple opened its first San Francisco location on Sutter Street in 2010.",
+      "Its signature dish is Millionaire's Bacon.",
+      "Owner Steven Choi, a former scientist, developed the recipe.",
+      "A Sweet Maple opened in SFO's Terminal 2 in 2019."
+    ],
+    "sources": ["https://www.aviationpros.com/airport-business/airport-infrastructure-operations/airport-revenue/concessionaire-retail/press-release/21083238/ssp-america-ssp-america-opens-local-brunch-favorite-sweet-maple-at-sfo", "https://californiathroughmylens.com/?p=31803"]
+  },
+  {
+    "id": "tadich-grill",
+    "name": "Tadich Grill",
+    "category": "food",
+    "rarity": "rare",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79342, "lon": -122.39947, "alt": 25 },
+    "year": 1849,
+    "blurb": "California's oldest restaurant, born as a Gold Rush coffee stand on Long Wharf.",
+    "lore": "In 1849 three Croatian immigrants pitched a tent on Long Wharf and sold coffee and grilled fish to men rushing to the gold fields. That stand became Tadich Grill, named in 1912 for owner John Tadich, and it calls itself California's oldest restaurant. It has moved eight times, but the soul has not changed: a long wooden bar, white-jacketed waiters, and seafood grilled over mesquite in the Croatian style. Order the cioppino.",
+    "facts": [
+      "Tadich Grill traces its origin to a coffee stand opened in 1849.",
+      "It took the Tadich Grill name in 1912 after owner John Tadich.",
+      "It is located at 240 California Street in the Financial District.",
+      "It grills seafood over mesquite and charcoal in the Croatian style."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Tadich_Grill", "https://www.chowhound.com/2025893/oldest-restaurant-california-tadich-grill"]
+  },
+  {
+    "id": "buena-vista-cafe",
+    "name": "The Buena Vista",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.80652, "lon": -122.42077, "alt": 25 },
+    "year": 1952,
+    "blurb": "The cable car corner bar that brought Irish coffee to America in 1952.",
+    "lore": "On the night of November 10, 1952, travel writer Stanton Delaplane challenged Buena Vista owner Jack Koeppler to recreate a drink he had tasted at Shannon Airport in Ireland. Their first tries failed: the cream kept sinking. Eventually they got it to float, and Irish coffee had arrived in America. Today bartenders line up glasses along the bar and pour them in assembly-line rows, over 2,000 on a busy day, right at the Hyde Street cable car turnaround.",
+    "facts": [
+      "The Buena Vista is credited with introducing Irish coffee to the United States in 1952.",
+      "Writer Stanton Delaplane and owner Jack Koeppler recreated the drink from Shannon Airport.",
+      "The cafe opened in 1916 as a saloon in a former boardinghouse.",
+      "Bartenders pour over 2,000 Irish coffees on a good day."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Buena_Vista_Cafe", "https://thebuenavista.com/home/irishcoffee.html", "https://www.7x7.com/drink-up-sf-history-how-irish-coffee-came-to-america-1787160730.html"]
+  },
+  {
+    "id": "caffe-trieste",
+    "name": "Caffe Trieste",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.79867, "lon": -122.4073, "alt": 25 },
+    "year": 1956,
+    "blurb": "The West Coast's first espresso house, where poets and a Godfather script brewed.",
+    "lore": "Giovanni Giotta washed windows for a few years after arriving from Italy, then in 1956 opened the first espresso coffeehouse on the West Coast at Grant and Vallejo. It became a living room for Beat poets and North Beach characters. Local lore says Francis Ford Coppola wrote much of The Godfather screenplay at a table under the mural. On some weekends the family used to sing opera to the room. The espresso is still strong enough to write a novel on.",
+    "facts": [
+      "Caffe Trieste opened in 1956.",
+      "It was the first espresso-based coffeehouse on the West Coast.",
+      "Giovanni Giotta founded it at Grant Avenue and Vallejo Street.",
+      "Francis Ford Coppola is said to have written much of The Godfather screenplay there."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Caffe_Trieste", "https://preview-prod.w.sfchronicle.com/bayarea/article/Giovanni-Gianni-Giotta-Caffe-Trieste-8108305.php"]
+  },
+  {
+    "id": "molinari-delicatessen",
+    "name": "Molinari Delicatessen",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.7985, "lon": -122.40787, "alt": 25 },
+    "year": 1896,
+    "blurb": "A North Beach deli hung with salami since 1896, where you take a number and wait happily.",
+    "lore": "P.G. Molinari came from Piedmont in 1884, learned sausage-making as a factory foreman, and in 1896 opened his own shop on Broadway. The earthquake moved him to Columbus Avenue, where the deli still hangs salami from the ceiling and stacks imported cans to the rafters. Grab a ticket, pick a sandwich off the chalkboard, and eat it in Washington Square. Joe DiMaggio loved it enough to ask in his will for Molinari to cater his wake.",
+    "facts": [
+      "Molinari Delicatessen was established in 1896.",
+      "Founder P.G. Molinari emigrated from Piedmont, Italy, in 1884.",
+      "It stands at 373 Columbus Avenue in North Beach.",
+      "Its salami is sold nationwide under the Molinari and Sons name."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Molinari%27s", "https://www.timeout.com/san-francisco/restaurants/molinari-delicatessen"]
+  },
+  {
+    "id": "swensens",
+    "name": "Swensen's Ice Cream",
+    "category": "food",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.79908, "lon": -122.41918, "alt": 25 },
+    "year": 1948,
+    "blurb": "The original 1948 parlor of a chain that spread worldwide, on the Hyde Street cable car line.",
+    "lore": "Earle Swensen learned to make ice cream in the Navy during World War II, and in 1948 opened a little shop at Union and Hyde, right on the cable car line. Its first name was See Us Freeze, and the red neon sign with that name still glows in the window. The brand later franchised across the world and is especially huge in Southeast Asia, but this corner shop is the original, still making ice cream on site the 1948 way.",
+    "facts": [
+      "Earle Swensen opened the first shop in 1948.",
+      "It sits at Union and Hyde Streets on Russian Hill.",
+      "It was first called See Us Freeze Ice Cream.",
+      "Earle kept the San Francisco store when he sold franchise rights in 1970."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Swensen%27s", "https://sfstandard.com/2023/05/31/swensons-ice-cream-san-francisco-origin-story-legacy-status/"]
+  },
+  {
+    "id": "hang-ah-tea-room",
+    "name": "Hang Ah Tea Room",
+    "category": "food",
+    "rarity": "rare",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79334, "lon": -122.40738, "alt": 25 },
+    "year": 1920,
+    "blurb": "A Chinatown alley dim sum house from 1920, among the oldest in the country.",
+    "lore": "Down a short alley called Pagoda Place, past a sign you could easily miss, Hang Ah has been serving dim sum since 1920. It claims to be the oldest continuously operating dim sum restaurant in the United States, and it was among the first to bring tray service to the city. The room is small and the menu is classic: char siu bao, shu mai, crispy potstickers. Finding it is half the fun, so this one counts as a treasure hunt.",
+    "facts": [
+      "Hang Ah Tea Room opened in 1920.",
+      "It is at 1 Pagoda Place in Chinatown.",
+      "It claims to be the oldest continuously operating dim sum restaurant in the U.S.",
+      "It is among the oldest dim sum parlors in the country along with Nom Wah in New York."
+    ],
+    "sources": ["https://blog.resy.com/2020/09/on-its-100th-anniversary-hang-ah-remains-entwined-in-the-roots-of-chinatown/", "https://www.vice.com/en/article/step-inside-96-year-old-hang-ah-tea-room-the-oldest-dim-sum-restaurant-in-america"]
+  }
+]

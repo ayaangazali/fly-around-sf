@@ -1,0 +1,5 @@
+[
+  { "id": "R-PLACES", "owner": "content-places", "text": "At least 130 place cards across landmark, park, food, wildlife, history, culture, hidden and transit, each discoverable, placed in one of the 41 DataSF neighborhoods." },
+  { "id": "R-TRIVIA", "owner": "content-places", "text": "Trivia asks a 4-option question from its card at the place; the right answer completes, a wrong answer or timeout fails and reveals the answer; at least 70 trivia activities." },
+  { "id": "R-TOUR", "owner": "content-places", "text": "Guided tours visit 4 to 6 stops in order with narration at each stop and a waypoint to the next; at least 14 tours." }
+]

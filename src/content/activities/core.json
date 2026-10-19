@@ -7,6 +7,7 @@
     "neighborhood": "Presidio",
     "at": { "lat": 37.8199, "lon": -122.4783, "alt": 80 },
     "xp": 25,
+    "card": "golden-gate-bridge",
     "params": { "radius": 300 }
   },
   {
@@ -17,6 +18,7 @@
     "neighborhood": "Marina",
     "at": { "lat": 37.8029, "lon": -122.4484 },
     "xp": 15,
+    "card": "palace-of-fine-arts",
     "params": { "radius": 90 }
   },
   {
@@ -27,6 +29,7 @@
     "neighborhood": "Telegraph Hill",
     "at": { "lat": 37.8024, "lon": -122.4058 },
     "xp": 15,
+    "card": "coit-tower",
     "params": { "radius": 80 }
   },
   {
@@ -37,6 +40,7 @@
     "neighborhood": "Financial District",
     "at": { "lat": 37.7952, "lon": -122.4028, "alt": 120 },
     "xp": 15,
+    "card": "transamerica-pyramid",
     "params": { "radius": 90 }
   },
   {
@@ -47,6 +51,7 @@
     "neighborhood": "Embarcadero",
     "at": { "lat": 37.7955, "lon": -122.3937 },
     "xp": 15,
+    "card": "ferry-building",
     "params": { "radius": 90 }
   },
   {

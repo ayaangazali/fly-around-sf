@@ -1,0 +1,505 @@
+[
+  {
+    "id": "golden-gate-bridge",
+    "name": "Golden Gate Bridge",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.81972, "lon": -122.47861, "alt": 90 },
+    "year": 1937,
+    "blurb": "The International Orange suspension bridge across the mile-wide Golden Gate strait.",
+    "lore": "Experts said it could not be built: fog, gales, riptides and a fault line next door. Chief engineer Joseph Strauss built it anyway, and it opened on May 27, 1937 as the longest and tallest suspension bridge on Earth. The color was supposed to be temporary primer. Architect Irving Morrow liked how the orange glowed against the fog and the green Marin hills, and it stuck. Fly under the deck at golden hour and you will see why.",
+    "facts": [
+      "The bridge opened to the public on May 27, 1937.",
+      "Joseph Strauss was chief engineer, with Leon Moisseiff, Irving Morrow and Charles Ellis shaping the design.",
+      "At opening it was both the longest and the tallest suspension bridge in the world.",
+      "It carries U.S. Route 101 and California State Route 1 between San Francisco and Marin County."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Gate_Bridge", "https://www.goldengate.org/bridge/history-research/bridge-construction/"]
+  },
+  {
+    "id": "bay-bridge",
+    "name": "Bay Bridge",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79755, "lon": -122.37854, "alt": 110 },
+    "year": 1936,
+    "blurb": "The double-decker workhorse that beat the Golden Gate Bridge by six months.",
+    "lore": "Everyone photographs the orange bridge, but the Bay Bridge opened first, on November 12, 1936, and carries far more people. About 260,000 vehicles a day ride its two decks, westbound on top and eastbound below. The idea is older than the bridge: around 1870 the self-proclaimed Emperor Norton issued decrees ordering one built. The western suspension spans hop from San Francisco to Yerba Buena Island, where a tunnel punches straight through the rock.",
+    "facts": [
+      "It opened on November 12, 1936, six months before the Golden Gate Bridge.",
+      "It carries about 260,000 vehicles a day on two decks.",
+      "Since 1963 the upper deck carries westbound traffic and the lower deck eastbound.",
+      "Emperor Joshua Norton famously advocated for a bay crossing decades before construction began in 1933."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge"]
+  },
+  {
+    "id": "transamerica-pyramid",
+    "name": "Transamerica Pyramid",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79517, "lon": -122.40279, "alt": 40 },
+    "year": 1972,
+    "blurb": "The 853-foot pyramid that ruled the skyline for 45 years.",
+    "lore": "Locals hated it at first. Critics called it a dunce cap, and protesters wore pointy hats to fight it. Then it became the shape everyone draws when they draw San Francisco. William Pereira's 48-story spike was the tallest building in town from 1972 until Salesforce Tower topped out in 2017. Its wings hold the elevators and stairs, so the top floors shrink to a point no office could use. Thread the spire if you dare.",
+    "facts": [
+      "The pyramid is 853 feet (260 m) tall with 48 stories.",
+      "It was the tallest building in San Francisco from 1972 until 2017.",
+      "Architects William Pereira and Harry D. Som designed it.",
+      "On completion it was the eighth-tallest building in the world."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Transamerica_Pyramid", "https://www.kqed.org/news/11934056/the-transamerica-pyramid-at-50-from-architectural-butchery-to-icon"]
+  },
+  {
+    "id": "coit-tower",
+    "name": "Coit Tower",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80238, "lon": -122.40583, "alt": 40 },
+    "year": 1933,
+    "blurb": "The fluted concrete tower on Telegraph Hill, paid for by the city's favorite firefighting fan.",
+    "lore": "Lillie Hitchcock Coit was the kind of San Franciscan who chased fire engines in a dress. As a teenager she helped a short-handed crew on Telegraph Hill and became an honorary member of Knickerbocker Engine Co. No. 5. Her will left money to beautify the city she loved, and the result is this 210-foot Art Deco column. No, it was not designed to look like a fire hose nozzle. Inside, 1934 New Deal murals show California at work.",
+    "facts": [
+      "The tower is 210 feet (64 m) tall and was built in 1932 and 1933.",
+      "It was funded by a bequest from Lillie Hitchcock Coit to beautify the city.",
+      "Architects Arthur Brown Jr. and Henry Temple Howard designed it.",
+      "Its fresco murals were painted in 1934 under the Public Works of Art Project."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Coit_Tower", "https://www.neh.gov/humanities/2013/marchapril/curio/new-deal-murals"]
+  },
+  {
+    "id": "palace-of-fine-arts",
+    "name": "Palace of Fine Arts",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.80292, "lon": -122.44839, "alt": 35 },
+    "year": 1915,
+    "blurb": "A Roman ruin built on purpose, the last survivor of the 1915 world's fair.",
+    "lore": "Architect Bernard Maybeck designed it to look like a ruin from the start, a melancholy rotunda for the 1915 Panama-Pacific International Exposition. The fair was meant to be torn down, and almost all of it was. San Franciscans refused to let this piece go. The original was plaster and wood, so it crumbled for real, and the city rebuilt it in concrete from 1964 to 1974. The lagoon reflection at dusk is pure postcard.",
+    "facts": [
+      "It was built for the 1915 Panama-Pacific International Exposition.",
+      "It is the only structure from the exposition that survives on its original site.",
+      "The open rotunda rises 162 feet (49 m).",
+      "It was completely rebuilt from 1964 to 1974."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Palace_of_Fine_Arts"]
+  },
+  {
+    "id": "ferry-building",
+    "name": "Ferry Building",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79555, "lon": -122.39347, "alt": 40 },
+    "year": 1898,
+    "blurb": "The clock tower at the foot of Market Street, the city's front door before the bridges.",
+    "lore": "Before the bridges, everyone arrived by boat, and they arrived here. The 1898 terminal, its 245-foot clock tower modeled on the Giralda bell tower in Seville, handled tens of thousands of commuters a day. Then the bridges opened and a freeway walled it off from the city. The 1989 earthquake knocked that freeway down, and the building came back to life as a food hall. Saturday's farmers market is the city's best breakfast.",
+    "facts": [
+      "The Ferry Building opened in 1898.",
+      "Its clock tower is 245 feet tall and was modeled on the Giralda tower of Seville Cathedral.",
+      "The elevated Embarcadero Freeway that blocked it was demolished after the 1989 Loma Prieta earthquake.",
+      "It reopened in 2003 as a marketplace while still serving ferries."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building", "https://www.ferrybuildingmarketplace.com/history/"]
+  },
+  {
+    "id": "salesforce-tower",
+    "name": "Salesforce Tower",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78977, "lon": -122.39693, "alt": 345 },
+    "year": 2018,
+    "blurb": "The 1,070-foot obelisk with a glowing LED crown, tallest in the city.",
+    "lore": "At 1,070 feet, Salesforce Tower ended the Transamerica Pyramid's 45-year reign and became the tallest building in San Francisco. It was the last tower Cesar Pelli saw finished in his lifetime. Look up after dark: artist Jim Campbell's 11,000 LEDs turn the top floors into a giant low-resolution video screen, showing faces and waves you can read from across the bay. Its piles reach down through landfill to bedrock.",
+    "facts": [
+      "The tower is 1,070 feet (326 m) tall with 61 stories.",
+      "It was designed by Cesar Pelli.",
+      "The crown holds a public art light sculpture of about 11,000 LEDs.",
+      "It is the second-tallest building in California after the Wilshire Grand Center."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Salesforce_Tower"]
+  },
+  {
+    "id": "sutro-tower",
+    "name": "Sutro Tower",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Twin Peaks",
+    "at": { "lat": 37.75524, "lon": -122.4529, "alt": 320 },
+    "year": 1973,
+    "blurb": "The three-legged broadcast giant that rises out of the fog like a ship's mast.",
+    "lore": "Some locals call it a monster, others a mascot, and on foggy evenings it looks like a three-masted ship sailing over Twin Peaks. Four TV stations teamed up to build it in 1973 so they could share one big antenna instead of many small ones. It stands 977 feet tall on a hill already 834 feet high, so its tip sits about 1,811 feet above the sea. Fly to the top platform and look down on the whole city.",
+    "facts": [
+      "Sutro Tower is 977 feet (297.8 m) tall.",
+      "It was completed in 1973 and was the city's tallest structure until 2018.",
+      "Its tip is about 1,811 feet (552 m) above sea level.",
+      "It is named after Mount Sutro and the Sutro family who once owned the land."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Sutro_Tower"]
+  },
+  {
+    "id": "alcatraz",
+    "name": "Alcatraz Island",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.82667, "lon": -122.42278, "alt": 60 },
+    "year": 1934,
+    "blurb": "The Rock: lighthouse, fort, federal prison and seabird colony in the middle of the bay.",
+    "lore": "Twenty-two acres of sandstone with a long resume. Alcatraz got the West Coast's first lighthouse, then a fort, then an Army prison, and in 1934 the most famous federal penitentiary in America. Cold water and fierce currents did the guards' job. The prison closed in 1963, and today the real residents are western gulls and egrets. Inmates said the cruelest part was hearing laughter from the city drifting across the water on quiet nights.",
+    "facts": [
+      "Alcatraz became a federal penitentiary in 1934.",
+      "The prison closed on March 21, 1963.",
+      "The island has the oldest operating lighthouse on the West Coast.",
+      "The island covers about 22 acres and hosts a seabird colony."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Alcatraz_Island", "https://www.nps.gov/alca/index.htm"]
+  },
+  {
+    "id": "painted-ladies",
+    "name": "Painted Ladies",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Hayes Valley",
+    "at": { "lat": 37.77636, "lon": -122.4347, "alt": 35 },
+    "blurb": "The row of colorful Victorians below Alamo Square, with downtown towering behind.",
+    "lore": "Victorian San Francisco was mostly beige. The candy colors came in the 1960s, when owners started painting their houses in three or more shades to show off every spindle and gable. A 1978 book named them Painted Ladies, and the sitcom Full House made one row famous worldwide. The best view is from the grass of Alamo Square park, once a watering hole on the trail from Mission Dolores to the Presidio. These are private homes, so admire them from the park.",
+    "facts": [
+      "The term Painted Ladies was first used for San Francisco Victorians in a 1978 book.",
+      "The multi-color paint schemes began in the 1960s.",
+      "Alamo Square park was established in 1856 by Mayor James Van Ness.",
+      "Alamo is Spanish for the cottonwood tree that once marked a watering hole here."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Painted_ladies", "https://en.wikipedia.org/wiki/Alamo_Square,_San_Francisco"]
+  },
+  {
+    "id": "lombard-street",
+    "name": "Lombard Street",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.80212, "lon": -122.41872, "alt": 30 },
+    "year": 1922,
+    "blurb": "Eight hairpin turns on one brick block of Russian Hill.",
+    "lore": "The hill was simply too steep for cars, so in 1922 the city folded one block of Lombard into eight switchbacks. It worked, and then it became a tourist magnet: up to 17,000 people a day on summer weekends wait to crawl down at five miles an hour. Fun twist: it is not even the crookedest street in town. Vermont Street on Potrero Hill has a curvier block. Lombard just has better flowers and a better view.",
+    "facts": [
+      "The famous block has eight hairpin turns.",
+      "The switchbacks were built in 1922.",
+      "It draws about two million visitors a year.",
+      "Surveyor Jasper O'Farrell named it after Lombard Street in Philadelphia."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Lombard_Street_(San_Francisco)"]
+  },
+  {
+    "id": "city-hall",
+    "name": "San Francisco City Hall",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Tenderloin",
+    "at": { "lat": 37.77929, "lon": -122.41926, "alt": 40 },
+    "year": 1915,
+    "blurb": "A Beaux-Arts palace whose dome outdoes the U.S. Capitol.",
+    "lore": "The old City Hall took decades to build and moments to destroy in 1906. Its replacement went up fast and fancy: architect Arthur Brown Jr. designed everything down to the doorknobs and the lettering on the signs. The dome tops the U.S. Capitol's by 42 feet, a fact San Franciscans mention a lot. It has hosted mayors, protests, thousands of weddings and a famous 1954 courthouse wedding: Joe DiMaggio and Marilyn Monroe.",
+    "facts": [
+      "The current City Hall opened in 1915.",
+      "Its dome is 42 feet (13 m) taller than the dome of the U.S. Capitol.",
+      "It replaced a City Hall destroyed in the 1906 earthquake.",
+      "Arthur Brown Jr. was the principal architect."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_City_Hall", "https://www.kqed.org/arts/13922524/marilyn-monroe-joe-dimaggio-san-francisco-city-hall-wedding-1954"]
+  },
+  {
+    "id": "oracle-park",
+    "name": "Oracle Park",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.77861, "lon": -122.38917, "alt": 50 },
+    "year": 2000,
+    "blurb": "The Giants' waterfront ballpark, where home runs splash into McCovey Cove.",
+    "lore": "Hit a ball over the right field wall here and it lands in the bay. That patch of water is McCovey Cove, named for slugger Willie McCovey, and on game days it fills with kayakers holding nets and hoping. The Giants moved here in 2000 after decades of freezing at windy Candlestick Park. Behind the outfield sits an 80-foot Coke bottle with slides inside and a giant four-fingered vintage glove. Arrive by ferry for full style points.",
+    "facts": [
+      "Oracle Park has been home to the San Francisco Giants since 2000.",
+      "The water beyond right field is unofficially called McCovey Cove.",
+      "It was previously named Pacific Bell Park, SBC Park and AT&T Park.",
+      "A ferry terminal sits right outside the ballpark."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Oracle_Park", "https://www.nbcbayarea.com/mlb/san-francisco-giants/coca-cola-bottle-oracle-park/3805844/"]
+  },
+  {
+    "id": "de-young-museum",
+    "name": "de Young Museum",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.7715, "lon": -122.46909, "alt": 60 },
+    "year": 2005,
+    "blurb": "A copper-skinned museum in Golden Gate Park that is slowly turning green.",
+    "lore": "When the 1989 earthquake cracked the old de Young, Swiss architects Herzog and de Meuron wrapped its replacement in perforated copper, designed to oxidize from penny-bright to the green of the park around it. It is well on its way. The twisting Hamon Tower tilts toward downtown, and its ninth-floor observation level is free, one of the best views in the park. The museum is named for newspaperman M. H. de Young.",
+    "facts": [
+      "The current building opened in 2005, designed by Herzog and de Meuron.",
+      "Its copper facade is designed to weather to green over time.",
+      "It is named for San Francisco newspaperman M. H. de Young.",
+      "It is part of the Fine Arts Museums of San Francisco with the Legion of Honor."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/De_Young_Museum", "https://www.famsf.org/visit/de-young"]
+  },
+  {
+    "id": "california-academy-of-sciences",
+    "name": "California Academy of Sciences",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.7701, "lon": -122.4664, "alt": 40 },
+    "year": 2008,
+    "blurb": "Aquarium, planetarium, rainforest and natural history museum under one living roof.",
+    "lore": "Fly over and you will think someone parked a meadow on a building. The Academy's 2.5-acre roof is planted with native wildflowers, its hills rising over the planetarium dome and the rainforest sphere below. Under it live a coral reef, a four-story rainforest and over 46 million specimens. The Academy itself dates to 1853, a learned society founded by Gold Rush naturalists. Look for the round skylights that open to cool the building.",
+    "facts": [
+      "The Academy was founded in 1853.",
+      "Its Golden Gate Park building was completely rebuilt and reopened in 2008.",
+      "Its collections hold over 46 million specimens.",
+      "The building has a living roof planted with native plants."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/California_Academy_of_Sciences", "https://www.calacademy.org/exhibits/living-roof"]
+  },
+  {
+    "id": "pier-39",
+    "name": "Pier 39",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80985, "lon": -122.41035, "alt": 30 },
+    "year": 1978,
+    "blurb": "Carousel, shops, chowder and a dock full of barking sea lions.",
+    "lore": "Pier 39 opened in 1978 as a shopping pier, with a two-story carousel near its end. It would have stayed a pleasant tourist stop if not for the sea lions, who moved onto its marina docks in 1990 and never left. Now the barking is the main attraction. There is also a store that sells only rubber ducks, which is exactly as delightful as it sounds. Bay cruises leave from the end of the pier.",
+    "facts": [
+      "Pier 39 opened in 1978.",
+      "It has a two-story carousel near the end of the pier.",
+      "California sea lions haul out on the docks of its marina.",
+      "Blue and Gold Fleet bay cruises depart from the pier."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Pier_39"]
+  },
+  {
+    "id": "fort-point",
+    "name": "Fort Point",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.81051, "lon": -122.4771, "alt": 25 },
+    "year": 1861,
+    "blurb": "A Civil War brick fort tucked under the south end of the Golden Gate Bridge.",
+    "lore": "Fort Point was finished in 1861 to guard the Golden Gate against warships that never came. When the bridge was planned, engineers wanted to tear it down, but Joseph Strauss admired the brickwork and designed a special steel arch so the roadway could leap over it. Stand inside and the bridge deck hangs right above you. Hitchcock staged Madeleine's plunge into the bay here in Vertigo, with a stunt double taking the cold swim. Surfers ride the waves just outside its walls.",
+    "facts": [
+      "The current fort was completed by the U.S. Army in 1861.",
+      "The Spanish first fortified the point in 1794 as Castillo de San Joaquin.",
+      "The Golden Gate Bridge passes directly over the fort on a special arch.",
+      "It is a National Historic Site run by the National Park Service."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site", "https://www.nps.gov/fopo/index.htm", "https://reelsf.com/reelsf/vertigo-fort-point"]
+  },
+  {
+    "id": "legion-of-honor",
+    "name": "Legion of Honor",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Lincoln Park",
+    "at": { "lat": 37.78456, "lon": -122.50096, "alt": 35 },
+    "year": 1924,
+    "blurb": "A French palace on a cliff, with Rodin's Thinker brooding in the courtyard.",
+    "lore": "Sugar heiress Alma de Bretteville Spreckels fell for the French pavilion at the 1915 world's fair and convinced her husband to build a permanent version. The result, opened in 1924, honors Californians who died in World War I and copies the Palais de la Legion d'Honneur in Paris at three-quarter scale. A cast of Rodin's The Thinker sits in the courtyard staring at the fog. The Golden Gate views from the lawn are free.",
+    "facts": [
+      "The Legion of Honor opened in 1924.",
+      "It honors Californians who died in World War I.",
+      "A cast of Rodin's The Thinker stands in its Court of Honor.",
+      "It sits in Lincoln Park and is one of the Fine Arts Museums of San Francisco."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Legion_of_Honor_(museum)", "https://www.famsf.org/visit/legion-of-honor"]
+  },
+  {
+    "id": "conservatory-of-flowers",
+    "name": "Conservatory of Flowers",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.77261, "lon": -122.46023, "alt": 30 },
+    "year": 1879,
+    "blurb": "A white wood-and-glass greenhouse, the oldest building in Golden Gate Park.",
+    "lore": "This Victorian glasshouse began as a kit bought by millionaire James Lick, who died before it was ever assembled, so it went up in the young park instead. It opened in 1879 and is now the oldest building in Golden Gate Park and the oldest public wooden conservatory in the country. It has survived fires, earthquakes and a 1995 windstorm with gusts over 100 mph that shattered much of its glass. Inside it is always tropical: giant lily pads, orchids, and the occasional corpse flower that smells exactly as advertised.",
+    "facts": [
+      "It was completed in 1879.",
+      "It is the oldest building in Golden Gate Park.",
+      "It is the oldest remaining municipal wooden conservatory in the United States.",
+      "It is listed on the National Register of Historic Places."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Conservatory_of_Flowers", "https://www.untappedcities.com/architectural-spotlight-conservatory-of-flowers/"]
+  },
+  {
+    "id": "dutch-windmill",
+    "name": "Dutch Windmill",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.77044, "lon": -122.50941, "alt": 30 },
+    "year": 1903,
+    "blurb": "A real working windmill at the ocean end of Golden Gate Park, ringed by tulips.",
+    "lore": "Golden Gate Park was built on sand dunes, and dunes do not water themselves. So in 1903 the park built a Dutch windmill to pump groundwater for irrigation, and in 1908 a second one, the Murphy Windmill, half a mile south. Electric pumps made them obsolete, and they spent decades decaying until restoration crews brought them back. Every spring the Queen Wilhelmina Tulip Garden at its base explodes in color.",
+    "facts": [
+      "The Dutch Windmill was completed in 1903.",
+      "It was built to pump water to irrigate Golden Gate Park.",
+      "The second, Murphy Windmill, was completed in 1908.",
+      "The Queen Wilhelmina Tulip Garden surrounds its base."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Gate_Park_windmills", "https://sfrecpark.org/facilities/facility/details/Dutch-Windmill-Queen-Wilhelmina-Garden-224"]
+  },
+  {
+    "id": "cliff-house",
+    "name": "Cliff House",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.77856, "lon": -122.51398, "alt": 30 },
+    "year": 1909,
+    "blurb": "A restaurant perched on the cliffs at the end of the continent since 1863.",
+    "lore": "There have been several Cliff Houses on this rock. The first opened in 1863. The most spectacular was Adolph Sutro's eight-story Victorian chateau of 1896, which survived the 1906 earthquake only to burn down in 1907. The current, plainer one went up in 1909. It looks out over Seal Rocks and the Sutro Baths ruins, and dozens of ships have wrecked on the shore below. On its terrace hides a room-sized camera obscura.",
+    "facts": [
+      "The first Cliff House opened in 1863.",
+      "Adolph Sutro's grand 1896 Cliff House burned in 1907.",
+      "The current building dates to 1909.",
+      "It is owned by the National Park Service as part of the Golden Gate National Recreation Area."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco", "https://www.nps.gov/goga/learn/historyculture/cliff-house.htm"]
+  },
+  {
+    "id": "chase-center",
+    "name": "Chase Center",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.7679, "lon": -122.38742, "alt": 40 },
+    "year": 2019,
+    "blurb": "The Warriors' bayside arena, where the Valkyries call it Ballhalla.",
+    "lore": "The Golden State Warriors were born in Philadelphia, moved to San Francisco in 1962, spent nearly 50 years across the bay in Oakland, and came back across the water in 2019 to this rounded arena in Mission Bay. It seats 18,064 for basketball. Since 2025 the WNBA's Golden State Valkyries play here too, and on their game nights fans call the building Ballhalla, after the hall where Norse Valkyries carried fallen warriors.",
+    "facts": [
+      "Chase Center opened on September 6, 2019.",
+      "It seats 18,064 for basketball.",
+      "The Warriors played in Oakland from 1971 to 2019 before moving here.",
+      "During Golden State Valkyries games it is nicknamed Ballhalla."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Chase_Center"]
+  },
+  {
+    "id": "mission-dolores",
+    "name": "Mission Dolores",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.76439, "lon": -122.42703, "alt": 30 },
+    "year": 1791,
+    "blurb": "The oldest intact building in San Francisco, an adobe chapel from 1791.",
+    "lore": "Everything in San Francisco is younger than this little white chapel. Mission San Francisco de Asis was founded in 1776, and its adobe church, with walls about four feet thick, was finished in 1791, built largely by Ohlone labor. It shrugged off the 1906 earthquake that wrecked the brick church next door, which was replaced by the ornate basilica in 1918. The garden cemetery appears in Hitchcock's Vertigo.",
+    "facts": [
+      "The mission was founded on October 9, 1776.",
+      "Its adobe chapel, completed in 1791, is the oldest intact structure in San Francisco.",
+      "The Ohlone people provided most of the labor that built the chapel.",
+      "The neighboring basilica was completed in 1918 after the 1906 earthquake."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs", "https://www.missiondolores.org/history"]
+  },
+  {
+    "id": "dragon-gate",
+    "name": "Dragon Gate",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79069, "lon": -122.40559, "alt": 25 },
+    "year": 1969,
+    "blurb": "The green-tiled gateway at Grant and Bush that opens into Chinatown.",
+    "lore": "Walk through this gate and the city changes in a single step: lanterns overhead, shops spilling onto Grant Avenue, the oldest Chinatown in North America ahead. The gate was built in 1969 in the style of a traditional pailou, a gift from the Republic of China, guarded by two stone foo dogs and topped with dragons and fish. Its inscription carries Sun Yat-sen's motto, roughly All under heaven is for the good of the people.",
+    "facts": [
+      "The gate stands at Grant Avenue and Bush Street.",
+      "It was built in 1969 as a gift from the Republic of China (Taiwan).",
+      "It is designed in the style of a traditional Chinese pailou.",
+      "It is one of the most photographed places in Chinatown."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Dragon_Gate_(San_Francisco)"]
+  },
+  {
+    "id": "grace-cathedral",
+    "name": "Grace Cathedral",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79183, "lon": -122.4135, "alt": 35 },
+    "year": 1964,
+    "blurb": "A Gothic cathedral on Nob Hill with bronze doors cast from Ghiberti's Gates of Paradise.",
+    "lore": "Grace Cathedral looks medieval but is made of reinforced concrete, poured slowly from 1927 until it was finally finished in 1964. The parish dates to the Gold Rush year of 1849 and lost its first church in 1906. Its front doors are gilded casts of Ghiberti's Gates of Paradise from Florence. There are two labyrinths, one inside and one in the plaza, and an AIDS Interfaith Chapel with an altarpiece by Keith Haring.",
+    "facts": [
+      "The parish was founded in 1849.",
+      "Construction began in 1927 and was completed in 1964.",
+      "Its main doors are casts of Ghiberti's Gates of Paradise.",
+      "It has a Keith Haring altarpiece and two labyrinths."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco", "https://gracecathedral.org/our-history/"]
+  },
+  {
+    "id": "st-marys-cathedral",
+    "name": "St. Mary's Cathedral",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Western Addition",
+    "at": { "lat": 37.78401, "lon": -122.42526, "alt": 30 },
+    "year": 1970,
+    "blurb": "The modernist cathedral locals nicknamed Our Lady of Maytag.",
+    "lore": "From above, St. Mary's looks like a giant washing machine agitator, and San Franciscans noticed immediately. The 1970 cathedral, designed by Pier Luigi Nervi and Pietro Belluschi, rises from four corners into a cross of stained glass 190 feet up, with no columns in the way. It replaced the 1891 cathedral that burned in 1962. Inside, a shimmering canopy of aluminum rods hangs above the altar like falling light.",
+    "facts": [
+      "The current cathedral was completed in 1970.",
+      "It replaced the second St. Mary's Cathedral, destroyed by fire in 1962.",
+      "Its distinctive shape earned the nickname Our Lady of Maytag.",
+      "It is the principal church of the Archdiocese of San Francisco."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Cathedral_of_Saint_Mary_of_the_Assumption_(San_Francisco)"]
+  },
+  {
+    "id": "sentinel-building",
+    "name": "Sentinel Building",
+    "category": "landmark",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79655, "lon": -122.40505, "alt": 30 },
+    "year": 1907,
+    "blurb": "The copper-green flatiron at Columbus and Kearny, home of a famous film studio.",
+    "lore": "Stand at Columbus and Kearny and line this little green flatiron up with the Transamerica Pyramid behind it: the most San Francisco photo there is. The Sentinel Building was finished in 1907, rising through the chaos after the earthquake, and its copper skin has long since gone green. Since the 1970s it has housed Francis Ford Coppola's film studio, American Zoetrope, with a cafe on the ground floor.",
+    "facts": [
+      "The Sentinel Building was completed in 1907.",
+      "It was briefly called Columbus Tower between 1958 and 1972.",
+      "Film studio American Zoetrope occupies much of the building.",
+      "It is San Francisco Designated Landmark No. 33."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Columbus_Tower_(San_Francisco)"]
+  },
+  {
+    "id": "millennium-tower",
+    "name": "Millennium Tower",
+    "category": "landmark",
+    "rarity": "rare",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79041, "lon": -122.39619, "alt": 210 },
+    "year": 2009,
+    "blurb": "The luxury tower famous for sinking and tilting into the landfill.",
+    "lore": "In 2016 residents of this 58-story glass tower learned their building was sinking and leaning, and San Francisco got a new favorite story. Its foundation rests on piles in the soft landfill rather than bedrock, and it settled well over a foot. A costly fix added new piles along two sides. Another fun detail: the top floor is numbered 60 although there are only 58, because floors 13 and 44 were skipped for superstition.",
+    "facts": [
+      "Millennium Tower opened to residents in 2009.",
+      "In 2016 residents learned the tower was sinking and tilting.",
+      "It is 645 feet (197 m) tall with 58 floors.",
+      "Floors 13 and 44 are skipped, so the top floor is labeled 60."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Millennium_Tower_(San_Francisco)", "https://www.archpaper.com/2017/07/millennium-tower-fix/"]
+  }
+]

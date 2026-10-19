@@ -1,0 +1,215 @@
+[
+  {
+    "id": "powell-market-turntable",
+    "name": "Powell and Market Turntable",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78471, "lon": -122.4077, "alt": 25 },
+    "blurb": "Where crews push cable cars around by hand on a wooden turntable.",
+    "lore": "San Francisco's cable cars only have controls at one end, so at the end of the line someone has to turn them around. At Powell and Market, that someone is the crew. The car rolls onto a round wooden platform set into the street, and the gripman and conductor lean into the car and walk it around in a slow half-circle while tourists cheer and photograph. Then they push it back into line, and the queue for the Powell lines inches forward. It is the world's last manually operated cable car system.",
+    "facts": [
+      "The Powell-Mason and Powell-Hyde lines turn around at Powell and Market.",
+      "Crews rotate the cars by hand on a wooden turntable.",
+      "San Francisco's is the world's last manually operated cable car system.",
+      "The turntable sits beside Hallidie Plaza and Powell Street station."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Powell_Street_station", "https://www.lonelyplanet.com/points-of-interest/powell-st-cable-car-turnaround/1096402", "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system"]
+  },
+  {
+    "id": "powell-hyde-line",
+    "name": "Powell-Hyde Cable Car",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.80667, "lon": -122.42056, "alt": 25 },
+    "blurb": "The cable car line with the steepest drops and the best bay views.",
+    "lore": "If you ride one cable car, ride this one. The Powell-Hyde line climbs Nob Hill, crests Russian Hill and then tips over the edge of Hyde Street, where the whole bay, Alcatraz and Angel Island appear below like a postcard falling into your lap. It passes the top of crooked Lombard Street and ends at Hyde and Beach, across from the Buena Vista. Hang off the running board, hold on tight, and listen for the bell.",
+    "facts": [
+      "The Powell-Hyde line runs from Powell and Market to Hyde and Beach.",
+      "It passes the top of Lombard Street's crooked block.",
+      "It is one of three surviving cable car lines out of 23 built between 1873 and 1890.",
+      "San Francisco's cable cars are a National Historic Landmark."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_cable_car_system", "https://www.sfmta.com/getting-around/muni/cable-cars"]
+  },
+  {
+    "id": "powell-mason-line",
+    "name": "Powell-Mason Cable Car",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80542, "lon": -122.41526, "alt": 25 },
+    "blurb": "The classic line from Union Square over Nob Hill to Bay and Taylor.",
+    "lore": "The Powell-Mason line shares its first stretch with the Powell-Hyde cars, rattling up Powell past Union Square and over the shoulder of Nob Hill, then turns down Mason Street through North Beach toward the water. It ends at Bay and Taylor, a short walk from Fisherman's Wharf and the sea lions. Along the way the car passes the Cable Car Museum, where you can watch the giant wheels pulling the very cable your car is holding.",
+    "facts": [
+      "The Powell-Mason line ends at Bay and Taylor Streets.",
+      "It begins at the Powell and Market turntable.",
+      "It shares Powell Street with the Powell-Hyde line.",
+      "It passes the Washington and Mason powerhouse that drives the cables."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_cable_car_system", "https://www.sfmta.com/getting-around/muni/cable-cars"]
+  },
+  {
+    "id": "california-street-line",
+    "name": "California Street Cable Car",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79366, "lon": -122.39648, "alt": 25 },
+    "year": 1878,
+    "blurb": "Double-ended cars climbing straight up Nob Hill since 1878.",
+    "lore": "Railroad baron Leland Stanford backed this line partly so he could ride home to his Nob Hill mansion, and it opened on April 10, 1878, carrying over 11,000 riders on day one. It runs straight up California Street from the Financial District, through Chinatown and over Nob Hill to Van Ness. Its cars are double-ended, with controls at both ends, so unlike the Powell cars they never need a turntable. Locals ride it, which tells you how to skip the tourist lines.",
+    "facts": [
+      "The California Street line opened on April 10, 1878.",
+      "Leland Stanford promoted and backed the line.",
+      "It runs between Drumm Street and Van Ness Avenue.",
+      "It uses double-ended cars that do not need turntables."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/California_Street_Cable_Railroad", "https://cablecarmuseum.org/co-california-st.html"]
+  },
+  {
+    "id": "cable-car-museum",
+    "name": "Cable Car Museum",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79467, "lon": -122.4114, "alt": 25 },
+    "year": 1887,
+    "blurb": "The working powerhouse whose giant wheels pull every cable car in the city.",
+    "lore": "This brick building is not just a museum, it is the heart of the system. Inside the 1887 Washington and Mason barn, huge winding wheels spin the steel cables that run under the streets at a steady nine and a half miles an hour. Every cable car in the city is gripping one of these cables. Stand on the balcony and watch them hum, then head downstairs to see the cables vanish into tunnels under the street. Admission is free.",
+    "facts": [
+      "The museum is in the Washington and Mason cable car barn and powerhouse.",
+      "The powerhouse was built in 1887 and rebuilt after 1906.",
+      "Its winding wheels pull the cables that power the cable car lines.",
+      "Admission is free."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Cable_Car_Museum", "https://cablecarmuseum.org/museum.html"]
+  },
+  {
+    "id": "f-market-wharves",
+    "name": "F-Line Streetcars",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80708, "lon": -122.41728, "alt": 25 },
+    "year": 1995,
+    "blurb": "Vintage streetcars from around the world rolling down Market Street and the Embarcadero.",
+    "lore": "The F line is a living museum on rails. Muni runs restored streetcars from cities around the world along Market Street and the Embarcadero, from the Castro to Fisherman's Wharf. The orange and cream cars from Milan were built in 1928 and still clang along with their original wooden interiors. It started as a summer trolley festival in 1983, proved so popular it became permanent in 1995, and reached the Wharf in 2000 once the waterfront freeway was gone.",
+    "facts": [
+      "The F line runs heritage streetcars between the Castro and Fisherman's Wharf.",
+      "It became a full-time service in 1995 and reached Fisherman's Wharf in 2000.",
+      "Its Milan Peter Witt cars were built in 1928.",
+      "The nonprofit Market Street Railway helps restore its vintage cars."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/F_Market_%26_Wharves", "https://www.sfmta.com/getting-around/muni/historic-streetcars"]
+  },
+  {
+    "id": "bay-ferries",
+    "name": "Bay Ferries",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.7947, "lon": -122.39273, "alt": 20 },
+    "year": 1970,
+    "blurb": "The commuter boats that brought ferries back to the bay after the bridges nearly killed them.",
+    "lore": "Before the bridges, the ferries were how everyone crossed the bay, and in 1921 the three biggest operators carried almost 50 million passengers. Then cars took over, and by the late 1950s the old ferries were gone. Traffic on the Golden Gate Bridge brought them back: Golden Gate Ferry launched to Sausalito on August 15, 1970, and Larkspur followed in 1976. Ride one at sunset and the skyline glows behind you while the gulls race the wake.",
+    "facts": [
+      "Golden Gate Ferry began service between Sausalito and San Francisco on August 15, 1970.",
+      "Larkspur ferry service started in December 1976.",
+      "In 1921 the three largest bay ferry operators carried almost 50 million passengers.",
+      "Golden Gate Ferry is funded largely by fares and Golden Gate Bridge tolls."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Gate_Ferry", "https://goldengate.org/golden-gate-ferry-celebrates-50-years-of-serving-the-bay-area"]
+  },
+  {
+    "id": "transbay-tube",
+    "name": "BART Transbay Tube",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79269, "lon": -122.3972, "alt": 25 },
+    "year": 1974,
+    "blurb": "A 3.6-mile rail tunnel lying on the floor of the bay.",
+    "lore": "Somewhere below the water between the Ferry Building and Oakland, trains are rushing through a tube lying on the bottom of the bay at up to 80 miles an hour. The Transbay Tube was built on land in 57 steel and concrete sections, floated out, sunk into a trench and buried in sand and gravel. It opened in 1974 and reaches 135 feet below sea level. At rush hour, over 28,000 people an hour pass through, many of them asleep.",
+    "facts": [
+      "The Transbay Tube is 3.6 miles (5.8 km) long.",
+      "It opened in 1974.",
+      "It reaches a maximum depth of 135 feet below sea level.",
+      "It was built from 57 sections sunk into a trench on the bay floor."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Transbay_Tube"]
+  },
+  {
+    "id": "twin-peaks-tunnel",
+    "name": "Twin Peaks Tunnel",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "West of Twin Peaks",
+    "at": { "lat": 37.74113, "lon": -122.46566, "alt": 25 },
+    "year": 1918,
+    "blurb": "The 1918 streetcar tunnel that unlocked the city's west side.",
+    "lore": "Before 1918 the land west of Twin Peaks was farms, sand and a long trip around the hills. Then Mayor James Rolph personally drove the first streetcar, No. 117, through the brand new Twin Peaks Tunnel on February 3, 1918. Suddenly downtown was a short ride away, and neighborhoods like West Portal, Forest Hill and St. Francis Wood boomed. At about 2.27 miles it was the longest streetcar tunnel in North America for decades. Muni Metro still rumbles through it today.",
+    "facts": [
+      "The Twin Peaks Tunnel opened on February 3, 1918.",
+      "It is about 2.27 miles (3.65 km) long.",
+      "Mayor James Rolph drove the first streetcar through it.",
+      "Its western entrance gave the West Portal neighborhood its name."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Twin_Peaks_Tunnel", "https://www.sfmta.com/blog/twin-peaks-tunnel-portal-west"]
+  },
+  {
+    "id": "chinatown-rose-pak-station",
+    "name": "Chinatown-Rose Pak Station",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79481, "lon": -122.40807, "alt": 25 },
+    "year": 2022,
+    "blurb": "The city's deepest subway dig, bringing trains under Stockton Street in 2022.",
+    "lore": "Chinatown waited decades for this. The Central Subway's Chinatown station opened on November 19, 2022, under Stockton Street, and it is deep: the platforms sit about 100 feet underground, the deepest building excavation ever dug in San Francisco. The station honors Rose Pak, a fierce Chinatown activist who fought for years to get the subway built. The T Third line now runs from here south through SoMa and Mission Bay to the Bayview.",
+    "facts": [
+      "The station opened on November 19, 2022.",
+      "It required the deepest building excavation in San Francisco.",
+      "It is named for Chinatown activist Rose Pak.",
+      "It is served by the T Third Street line."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Chinatown_station_(Muni_Metro)"]
+  },
+  {
+    "id": "caltrain-4th-and-king",
+    "name": "Caltrain at 4th and King",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.77602, "lon": -122.39364, "alt": 25 },
+    "year": 1863,
+    "blurb": "The terminal of the oldest continuously operating passenger railroad in the West.",
+    "lore": "Caltrain's roots go back to the San Francisco and San Jose Railroad, which began service in October 1863 and reached San Jose in January 1864. That makes it the oldest continuously operating passenger railroad in the West. Southern Pacific ran it for over a century. Today's terminal at 4th and King, opened in 1975, sits a block and a half from Oracle Park, so on game days it fills with orange and black. The trains went electric in 2024.",
+    "facts": [
+      "Regular service on the San Francisco and San Jose Railroad began in October 1863.",
+      "The line reached San Jose on January 16, 1864.",
+      "The 4th and King terminal opened on June 21, 1975.",
+      "The railroad was renamed Caltrain in 1980."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_station_(Caltrain)", "https://caltrain.com/news/caltrain-celebrates-160-years-rail-service-san-francisco-san-jose"]
+  },
+  {
+    "id": "pier-45-ships",
+    "name": "Pier 45 Historic Ships",
+    "category": "transit",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.81, "lon": -122.41639, "alt": 25 },
+    "year": 1944,
+    "blurb": "A WWII submarine and a D-Day Liberty ship, tied up at Fisherman's Wharf.",
+    "lore": "Two warriors share Pier 45. The submarine USS Pampanito made six war patrols in the Pacific, sank Japanese ships and in 1944 rescued 73 Allied prisoners of war adrift after their transport was torpedoed. Nearby floats the SS Jeremiah O'Brien, a Liberty ship that crossed the English Channel 11 times supporting D-Day. In 1994 an all-volunteer crew sailed her back to Normandy for the 50th anniversary. Both are museums you can climb aboard.",
+    "facts": [
+      "USS Pampanito made six war patrols in World War II.",
+      "Pampanito rescued 73 Allied POWs in September 1944.",
+      "The Jeremiah O'Brien made 11 Channel crossings supporting D-Day.",
+      "The O'Brien returned to Normandy in 1994 for the 50th anniversary."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/USS_Pampanito", "https://en.wikipedia.org/wiki/SS_Jeremiah_O%27Brien", "https://www.nps.gov/places/ss-jeremiah-o-brien.htm"]
+  }
+]

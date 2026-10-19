@@ -1,0 +1,262 @@
+[
+  {
+    "id": "sea-lions-pier-39",
+    "name": "Pier 39 Sea Lions",
+    "category": "wildlife",
+    "rarity": "common",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.8095, "lon": -122.4108, "alt": 20 },
+    "year": 1990,
+    "blurb": "The barking, belching, sunbathing colony that took over the marina docks.",
+    "lore": "In January 1990, a few months after the Loma Prieta earthquake, California sea lions started hauling themselves onto the boat docks at Pier 39. The boat owners wanted them gone. The sea lions won. The pier gave them the K-Dock, and the colony became one of the most visited wildlife sights in America. Numbers rise and fall with the herring runs, peaking at a record 1,701 animals in November 2009. They are almost all males, and they argue constantly.",
+    "facts": [
+      "Sea lions began hauling out on Pier 39's K-Dock in January 1990.",
+      "The record count was 1,701 sea lions in November 2009.",
+      "The sea lions are California sea lions.",
+      "The pier set aside its marina docks for them instead of evicting them."
+    ],
+    "sources": ["https://www.sfexaminer.com/news/sf-celebrates-26-years-of-sea-lions-making-a-splash-at-pier-39/article_79dff02a-cc7f-5c83-8a7c-5f87d0b53920.html", "https://www.baycrossings.com/celebrating-pier-39s-sea-lions/"]
+  },
+  {
+    "id": "wild-parrots",
+    "name": "Wild Parrots of Telegraph Hill",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80279, "lon": -122.4046, "alt": 25 },
+    "blurb": "A screeching green flock of cherry-headed conures that rules the hill.",
+    "lore": "Hear a racket of screeches overhead on Telegraph Hill and look up: a flock of bright green parrots with red heads, cherry-headed conures, also called red-masked parakeets. Their ancestors were wild-caught birds from South America sold in the pet trade, and some escaped or were released. They found the city's fruit trees and gardens and thrived. Musician Mark Bittner befriended the flock, and his book and the 2003 film made them famous.",
+    "facts": [
+      "Most of the flock are cherry-headed conures, also called red-masked parakeets.",
+      "They descend from escaped or released pet-trade birds.",
+      "Mark Bittner's relationship with the flock was the subject of a 2003 documentary.",
+      "The film aired on PBS's Independent Lens in 2007."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/The_Wild_Parrots_of_Telegraph_Hill", "https://www.pbs.org/independentlens/wildparrots"]
+  },
+  {
+    "id": "bison-paddock",
+    "name": "Golden Gate Park Bison",
+    "category": "wildlife",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76971, "lon": -122.49812, "alt": 25 },
+    "year": 1891,
+    "blurb": "A small herd of American bison grazing in the middle of the city since 1891.",
+    "lore": "Yes, there are bison in San Francisco. In 1891, when the species was nearly wiped out across the plains, park superintendent John McLaren brought a bull named Ben Harrison and a cow named Sarah Bernhardt to Golden Gate Park. The paddock went on to raise more than 100 calves. Today's small herd, all female, descends from newer arrivals in 2011 and 2020. Pull over on John F. Kennedy Drive near Spreckels Lake to watch them graze.",
+    "facts": [
+      "Bison arrived in Golden Gate Park in 1891.",
+      "The first bull was named Ben Harrison.",
+      "The herd was replaced with younger animals in 1984 and again in 2011.",
+      "Five new bison calves joined in 2020 for the park's 150th anniversary."
+    ],
+    "sources": ["https://www.kqed.org/news/11495697/whats-with-the-bison-in-golden-gate-park", "https://www.sfzoo.org/historic-sites-golden-gate-park-bison/"]
+  },
+  {
+    "id": "coyotes",
+    "name": "Presidio Coyotes",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79222, "lon": -122.45826, "alt": 25 },
+    "blurb": "The wild dogs that came back to the city after decades away.",
+    "lore": "For most of the 20th century there were no coyotes in San Francisco. Then, in the early 2000s, they returned, most likely crossing the Golden Gate Bridge from Marin County, and settled in the Presidio's forests. Now they live in parks across the city, from Golden Gate Park to Bernal Hill. Presidio Trust ecologists collar and track them to learn how they live alongside us. The rule is simple: never feed them, and keep dogs leashed near dens in spring.",
+    "facts": [
+      "Coyotes had been absent from San Francisco for decades before the early 2000s.",
+      "Genetic work links the first San Francisco coyotes to Marin County populations.",
+      "Presidio Trust ecologists track coyotes with radio collars.",
+      "Gray foxes disappeared from the Presidio as coyotes moved in."
+    ],
+    "sources": ["https://baynature.org/2019/04/08/caught-on-camera-the-presidios-coyotes-when-people-arent-around/", "https://baynature.org/article/gray-fox-spotted-presidio-first-time-decade/"]
+  },
+  {
+    "id": "brown-pelicans",
+    "name": "Brown Pelicans",
+    "category": "wildlife",
+    "rarity": "common",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.8093, "lon": -122.4235, "alt": 20 },
+    "year": 2009,
+    "blurb": "Prehistoric-looking divers that skim the waves in single file along the shore.",
+    "lore": "Watch the waterline and you will see them: a squadron of brown pelicans gliding inches above the swells in perfect single file, then one folds its wings and plunges headfirst into the bay. In the 1960s the pesticide DDT thinned their eggshells until they nearly vanished. After the 1972 DDT ban they made one of the great comebacks in American wildlife and left the endangered species list in 2009. Summer and fall are peak pelican season here.",
+    "facts": [
+      "Brown pelicans were removed from the federal endangered species list in 2009.",
+      "The pesticide DDT, banned in 1972, had caused their decline.",
+      "They catch fish by plunge-diving from the air.",
+      "California removed them from its state endangered list in February 2009."
+    ],
+    "sources": ["https://www.doi.gov/news/pressreleases/Brown-Pelican-Off-Endangered-Species-List", "https://en.wikipedia.org/wiki/Brown_pelican"]
+  },
+  {
+    "id": "harbor-seals",
+    "name": "Harbor Seals of Yerba Buena Island",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Treasure Island",
+    "at": { "lat": 37.8068, "lon": -122.3675, "alt": 20 },
+    "blurb": "Spotted, shy seals hauling out on the pocket beaches under the Bay Bridge.",
+    "lore": "Sea lions are loud, brown and pushy. Harbor seals are the opposite: spotted, quiet and nervous, flopping like sausages on the rocks. One of their haul-out spots in the bay is the southwest shore of Yerba Buena Island, right under the Bay Bridge, where small pocket beaches give them a place to rest at low tide. Counts swell into the hundreds in winter. If one lifts its head to look at you, you are too close. Back off and let it nap.",
+    "facts": [
+      "Harbor seals haul out on Yerba Buena Island's southwest shoreline, mainly at low tide.",
+      "State surveys counted 100 to 250 seals there in winter.",
+      "Unlike sea lions, harbor seals have no external ear flaps.",
+      "Pupping takes place at about a dozen haul-outs around the bay."
+    ],
+    "sources": ["https://filelib.wildlife.ca.gov/Public/OSPR/WebMapping/ACP/dfg_ospr_acp2/pdfs/sensitive_sites/2-351-AB.pdf", "https://en.wikipedia.org/wiki/Harbor_seal"]
+  },
+  {
+    "id": "red-tailed-hawks",
+    "name": "Red-tailed Hawks",
+    "category": "wildlife",
+    "rarity": "common",
+    "neighborhood": "Glen Park",
+    "at": { "lat": 37.7425, "lon": -122.4425, "alt": 40 },
+    "blurb": "The big rust-tailed raptors that ride the updrafts over the city's hills.",
+    "lore": "Hover anywhere near a windy hilltop and you may get company: a red-tailed hawk hanging motionless on the breeze, scanning for gophers. They are the most common hawk in North America and breed right here in Glen Canyon. Fun movie secret: that piercing raptor scream Hollywood gives to bald eagles almost always belongs to a red-tailed hawk, because real eagles sound like squeaky gulls. Fly gently. They own the airspace.",
+    "facts": [
+      "Red-tailed hawks breed in Glen Canyon Park.",
+      "They are among the most common hawks in North America.",
+      "Their scream is often dubbed over eagles in films.",
+      "Adults are named for their brick-red tail feathers."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Red-tailed_hawk", "https://en.wikipedia.org/wiki/Glen_Canyon_Park"]
+  },
+  {
+    "id": "great-blue-herons",
+    "name": "Great Blue Herons",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.77, "lon": -122.4766, "alt": 30 },
+    "year": 1993,
+    "blurb": "Tall gray herons nesting in the treetops above Blue Heron Lake.",
+    "lore": "In 1993 a naturalist spotted the first great blue herons ever recorded nesting in San Francisco, high in the trees on the islands of what was then Stow Lake. They have come back nearly every spring since, building stick nests the size of tires in the treetops, and hundreds of chicks have fledged here. The lake was even renamed after them in 2024. Each spring volunteers set up spotting scopes for Heron Watch so you can peek in without disturbing them.",
+    "facts": [
+      "The first great blue heron nest in San Francisco was recorded at the lake in 1993.",
+      "The herons nest at the tops of trees on the lake's islands.",
+      "More than 250 chicks had fledged there by 2022.",
+      "San Francisco Nature Education runs a free Heron Watch each spring."
+    ],
+    "sources": ["https://sfnature.org/history-of-the-stow-lake-heron-colony.html", "https://richmondsunsetnews.com/2022/03/29/great-blue-herons-return-to-stow-lake-for-29th-year/"]
+  },
+  {
+    "id": "raccoons",
+    "name": "Golden Gate Park Raccoons",
+    "category": "wildlife",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.771, "lon": -122.49399, "alt": 25 },
+    "blurb": "Masked night bandits with clever hands, working the park after dark.",
+    "lore": "Raccoons have adapted to cities better than almost any wild mammal, and San Francisco is no exception. After dark they patrol Golden Gate Park's lakes and lawns, washing and feeling their food with paws so sensitive they can identify objects without looking. Their black masks may help cut glare at night. They are smart enough to open latches and remember solutions for years, so the one watching you from the bushes is probably taking notes.",
+    "facts": [
+      "Raccoons are mostly nocturnal.",
+      "Their front paws are extremely sensitive to touch.",
+      "Studies show raccoons can remember solutions to tasks for at least three years.",
+      "They are common in urban areas across North America."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Raccoon"]
+  },
+  {
+    "id": "mission-blue-butterfly",
+    "name": "Mission Blue Butterfly",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Twin Peaks",
+    "at": { "lat": 37.7505, "lon": -122.448, "alt": 30 },
+    "year": 2009,
+    "blurb": "A tiny endangered blue butterfly, carried back to Twin Peaks by hand.",
+    "lore": "The Mission blue is about the size of a postage stamp and federally endangered, and it will only lay its eggs on lupine plants. When a fungus killed most of the lupine on Twin Peaks in the late 1990s, the butterflies there vanished. So the city replanted lupine and, starting in 2009, carried pregnant females over from San Bruno Mountain to restart the colony. By 2017 observers counted butterflies born on Twin Peaks itself. Look for flashes of silvery blue in spring.",
+    "facts": [
+      "The Mission blue butterfly is federally listed as endangered.",
+      "Its caterpillars depend on lupine plants.",
+      "In 2009 the first females were moved from San Bruno Mountain to Twin Peaks.",
+      "It is a subspecies of Boisduval's blue."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Mission_blue_butterfly", "https://baynature.org/biodiversity/mission-blue"]
+  },
+  {
+    "id": "snowy-plover",
+    "name": "Western Snowy Plover",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Sunset/Parkside",
+    "at": { "lat": 37.74, "lon": -122.5075, "alt": 20 },
+    "blurb": "A threatened sand-colored shorebird wintering on Ocean Beach.",
+    "lore": "They are so small and sand-colored that you can be staring at a flock and see nothing until the beach starts running. Western snowy plovers spend the winter on Ocean Beach, resting in footprints and tire ruts to hide from the wind. The species has been federally threatened since 1993, and a protection area keeps dogs on leash from July through mid-May along part of the beach. Every time a dog chases them, they burn energy they need to survive.",
+    "facts": [
+      "The western snowy plover was listed as federally threatened in 1993.",
+      "Part of Ocean Beach is managed as wintering habitat for the plover.",
+      "Dogs must be leashed in the protection area from July 1 to May 15.",
+      "The National Park Service monitors the wintering population."
+    ],
+    "sources": ["https://www.nps.gov/goga/planyourvisit/oceanbeach.htm", "https://goldengatebirdalliance.org/conservation/snowy-plovers/snowy-plovers-in-san-francisco/"]
+  },
+  {
+    "id": "bank-swallows",
+    "name": "Fort Funston Bank Swallows",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "Lakeshore",
+    "at": { "lat": 37.718, "lon": -122.5045, "alt": 30 },
+    "blurb": "Tiny swallows that dig their nests straight into the sandy sea cliffs.",
+    "lore": "The pockmarked face of Fort Funston's cliffs is not erosion, it is real estate. Each little hole is a bank swallow burrow, dug by the birds themselves into the soft sandstone. This colony is one of only two coastal bank swallow colonies left in California, alongside Ano Nuevo. From March to June they raise their chicks here, swooping out over the waves to catch insects. The species is listed as threatened in California, so admire them from the top.",
+    "facts": [
+      "Bank swallows nest in burrows they dig in the cliffs at Fort Funston.",
+      "Fort Funston and Ano Nuevo are thought to be California's only two remaining coastal colonies.",
+      "California listed the bank swallow as threatened in 1989.",
+      "They raise their young between March and June."
+    ],
+    "sources": ["https://www.nps.gov/articles/000/sfanblog_with-monitoring-and-research-biologists-work-to-help-fort-funstons-nesting-bank-swallows.htm", "https://en.wikipedia.org/wiki/Fort_Funston"]
+  },
+  {
+    "id": "harbor-porpoises",
+    "name": "Golden Gate Harbor Porpoises",
+    "category": "wildlife",
+    "rarity": "legendary",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.816, "lon": -122.4775, "alt": 20 },
+    "blurb": "Shy small porpoises back under the bridge after about 65 years away.",
+    "lore": "For most of the 20th century the bay had no porpoises at all. They had been gone since about the 1940s, pushed out by pollution, dredging and wartime defenses at the bay's mouth. Then around 2008 researchers standing on the Golden Gate Bridge began spotting them again, rolling through the tide rips below. Golden Gate Cetacean Research now photo-identifies them by scars and fin shapes and has catalogued hundreds of individuals. Watch for a quick dark back and a puff.",
+    "facts": [
+      "Harbor porpoises were functionally gone from San Francisco Bay by the early 1940s.",
+      "They returned to the central bay around 2008 after about 65 years.",
+      "Golden Gate Cetacean Research identifies individuals from the Golden Gate Bridge.",
+      "Researchers recorded more than 600 individual porpoises in the bay."
+    ],
+    "sources": ["https://www.kqed.org/news/48914/after-60-years-porpoises-return-to-san-francisco-bay", "https://nwf.org/Magazines/National-Wildlife/2014/FebMarch/Animals/Harbor-Porpoises"]
+  },
+  {
+    "id": "gray-whales",
+    "name": "Gray Whales",
+    "category": "wildlife",
+    "rarity": "legendary",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.78106, "lon": -122.51438, "alt": 40 },
+    "blurb": "Giant travelers on one of the longest migrations of any mammal, passing Lands End.",
+    "lore": "Gray whales commute between feeding grounds in the Arctic and calving lagoons in Mexico, one of the longest migrations of any mammal, and they swim right past San Francisco. In January hundreds a day pass the Bay Area heading south. Lately some have been slipping under the Golden Gate Bridge into the bay itself, with more than half a dozen spotted in a single day in spring 2025. Scan for a heart-shaped spout from the Lands End cliffs on a calm day.",
+    "facts": [
+      "Gray whales migrate between Alaska and Mexico.",
+      "Their southbound migration peaks past the Bay Area in January.",
+      "Gray whales have entered San Francisco Bay in growing numbers in recent years.",
+      "Lands End is a good shore spot for spotting their spouts."
+    ],
+    "sources": ["https://www.marinemammalcenter.org/news/experts-respond-to-a-dead-gray-whale-in-the-marin-headlands-as-sightings-of-the-species-increase-in-san-francisco", "https://en.wikipedia.org/wiki/Gray_whale"]
+  },
+  {
+    "id": "alcatraz-seabirds",
+    "name": "Alcatraz Seabird Colony",
+    "category": "wildlife",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.8275, "lon": -122.4245, "alt": 30 },
+    "blurb": "Gulls, cormorants and egrets nesting on the most famous prison island.",
+    "lore": "Before it was a prison, before it was a fort, Alcatraz was a bird island. Its Spanish name is usually traced to an old word for pelicans or strange birds. Once the prison closed and people mostly left, the birds took it back: western gulls nest everywhere, cormorants pack the cliffs, and black-crowned night herons and snowy egrets nest in the overgrown gardens. In nesting season some paths close so the chicks are not disturbed.",
+    "facts": [
+      "Alcatraz hosts a seabird colony of mostly western gulls, cormorants and egrets.",
+      "Black-crowned night herons nest on the island.",
+      "Some island areas close seasonally to protect nesting birds.",
+      "The island is managed by the National Park Service."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Alcatraz_Island", "https://www.nps.gov/alca/learn/nature/birds.htm"]
+  }
+]
