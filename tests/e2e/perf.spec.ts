@@ -34,4 +34,21 @@ test.describe('performance', () => {
     expect(content.length).toBeGreaterThan(0);
     for (const file of content) expect(timing.find((r) => r.file === file)?.start, file).toBeLessThan(city.end);
   });
+
+  test('[R-PERF-SHADERS] every shader in the loaded scene compiles before ready, so new views by day and night link no programs in flight', async ({ page }) => {
+    await page.route('**/data/transit.json', (r) => r.abort());
+    await boot(page);
+    const added = await page.evaluate(async () => {
+      const g = window.__fly.game;
+      const before = g.renderer.info.programs!.length;
+      for (const [lat, lon, yaw, alt, mode] of [[37.7985, -122.388, 2.4, 180, 'noon'], [37.799, -122.383, 1.9, 200, 'night'], [37.7694, -122.4862, 1, 60, 'night']] as const) {
+        g.save.data.settings.timeMode = mode;
+        window.__fly.teleport(g.world.point({ lat, lon, alt }), yaw);
+        window.__fly.step(0.2);
+        for (let i = 0; i < 3; i++) await new Promise((r) => requestAnimationFrame(r));
+      }
+      return g.renderer.info.programs!.length - before;
+    });
+    expect(added).toBe(0);
+  });
 });

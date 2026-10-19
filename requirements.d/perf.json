@@ -1,3 +1,4 @@
 [
-  { "id": "R-PERF-AUTO", "owner": "perf", "text": "Auto quality starts phones and tablets (coarse primary pointer) on the low tier and everything else on high." }
+  { "id": "R-PERF-AUTO", "owner": "perf", "text": "Auto quality starts phones and tablets (coarse primary pointer) on the low tier and everything else on high." },
+  { "id": "R-PERF-SHADERS", "owner": "perf", "text": "Every shader in the loaded scene compiles behind the loading screen, so flying to new views by day and night links no new programs." }
 ]

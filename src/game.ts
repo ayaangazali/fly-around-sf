@@ -208,6 +208,7 @@ export class Game {
     this.save.data.stats.sessions++;
     this.save.persist();
     await cityDone;
+    await this.renderer.compileAsync(this.scene, this.camera);
     onProgress(1, 'Ready');
     this.loaded = true;
   }
