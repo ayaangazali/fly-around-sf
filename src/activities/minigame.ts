@@ -134,7 +134,9 @@ export function formatTime(s: number): string {
 }
 
 export function clock(t: number, limit: number | undefined): string {
-  return limit ? `${formatTime(Math.max(0, limit - t))} left` : formatTime(t);
+  const s = limit ? Math.max(0, limit - t) : t;
+  const text = s < 10 ? `${s.toFixed(1)}s` : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  return limit ? `${text} left` : text;
 }
 
 export function dist3(a: Vec3, b: Vec3): number {

@@ -1,7 +1,7 @@
 import type { ActivityDef, ActivityKind, GeoPoint, SolverStep } from '../types';
 import type { Game } from '../../game';
 import type { Vec3 } from '../../player/flight';
-import { PROP_EMOJI, dist3, formatTime, isGeo, meters, prop, report, type MinigameInstance, type PropType } from '../minigame';
+import { PROP_EMOJI, clock, dist3, isGeo, meters, prop, report, type MinigameInstance, type PropType } from '../minigame';
 
 interface FollowParams {
   route: GeoPoint[];
@@ -101,10 +101,10 @@ export const kind: ActivityKind = {
       },
       progress: () => Math.min(1, Math.max(0, t - lead) / duration),
       hud: () => {
-        const head = `${PROP_EMOJI[p.vehicle]} ${p.name}`;
-        if (t <= lead) return `${head}  ·  starts in ${Math.ceil(lead - t)}`;
+        const head = PROP_EMOJI[p.vehicle];
+        if (t <= lead) return `${head} ${p.name} starts in ${Math.ceil(lead - t)}`;
         const d = dist3(game.flight.pos, center);
-        return `${head}  ${meters(d)}${away > 0 ? `  ·  too far, ${Math.ceil(grace - away)}s to catch up` : ''}  ${formatTime(Math.max(0, duration - (t - lead)))} left`;
+        return `${head} ${meters(d)}${away > 0 ? ` · too far, ${Math.ceil(grace - away)}s to catch up` : ''} · ${clock(t - lead, duration)}`;
       },
       targets: () => [center],
       elapsed: () => t,

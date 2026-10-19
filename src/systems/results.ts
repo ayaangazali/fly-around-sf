@@ -46,8 +46,9 @@ function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): vo
   const stats = el('dl', 'results-stats');
   stats.append(stat('Time', formatTime(r.time)));
   if (r.score) stats.append(stat('Score', r.score));
-  stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none yet'));
-  stats.append(stat('Top medal', MEDAL_NAMES[bestMedal(game.save, def.id)]));
+  const top = bestMedal(game.save, def.id);
+  stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none'));
+  stats.append(stat('Top medal', top ? MEDAL_NAMES[top] : 'none'));
   const notes: string[] = [];
   if (newBest) notes.push('New best time!');
   if (improved && r.medal) notes.push(`New ${MEDAL_NAMES[r.medal].toLowerCase()} medal`);

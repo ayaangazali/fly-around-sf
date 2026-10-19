@@ -106,7 +106,7 @@ export const kind: ActivityKind = {
         return 'running';
       },
       progress: () => 0,
-      hud: () => `${PROP_EMOJI[p.animal]} ${p.name}  ${meters(dist3(game.flight.pos, bird.pos))}  ${clock(t, p.timeLimit)}`,
+      hud: () => `${PROP_EMOJI[p.animal]} ${p.name} · ${meters(dist3(game.flight.pos, bird.pos))} · ${clock(t, p.timeLimit)}`,
       targets: () => [bird.pos],
       elapsed: () => t,
       props: () => props,

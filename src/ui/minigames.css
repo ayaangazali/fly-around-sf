@@ -1,6 +1,6 @@
 .photo-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 20px; display: grid; place-items: center; pointer-events: auto; transition: background 0.15s, box-shadow 0.2s; }
 .photo-btn:hover { background: var(--glass-strong); }
-.photo-btn.on { background: rgba(90, 209, 255, 0.22); border-color: rgba(90, 209, 255, 0.7); box-shadow: 0 0 24px rgba(90, 209, 255, 0.35); }
+.vf-open .photo-btn, .vf-open .hud-stats, .vf-open .hud-prompt { visibility: hidden; }
 
 .vf { position: absolute; inset: 0; pointer-events: none; display: grid; place-items: center; }
 .vf[hidden] { display: none; }
@@ -94,6 +94,6 @@
   .vf-rec { top: 12px; }
   .vf-info { top: 30px; font-size: 11px; }
   .vf-corner { width: 22px; height: 22px; }
-  .results { top: auto; bottom: max(12px, env(safe-area-inset-bottom)); left: 12px; transform: none; width: calc(100vw - 24px); grid-template-columns: 56px 1fr; gap: 12px; padding: 14px; animation: fadein 0.25s ease; }
+  .results { top: calc(max(12px, env(safe-area-inset-top)) + 54px); left: 12px; transform: none; width: calc(100vw - 24px); grid-template-columns: 56px 1fr; gap: 12px; padding: 14px; background: rgba(14, 19, 26, 0.95); animation: fadein 0.25s ease; }
   .results-medal { width: 56px; height: 56px; font-size: 26px; }
 }

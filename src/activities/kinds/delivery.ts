@@ -76,8 +76,8 @@ export const kind: ActivityKind = {
       progress: () => (carrying ? 0.5 : 0),
       hud: () => {
         const goal = carrying ? b : a;
-        const what = carrying ? `${p.item} to ${p.dropoff.name}` : `Pick up the ${p.item} at ${p.pickup.name}`;
-        return `📦 ${what}  ${meters(dist3(game.flight.pos, goal))}  ${clock(t, p.timeLimit)}${p.fragile ? '  ·  fragile' : ''}`;
+        const what = carrying ? `To ${p.dropoff.name}` : `Pick up at ${p.pickup.name}`;
+        return `📦 ${what} · ${meters(dist3(game.flight.pos, goal))} · ${clock(t, p.timeLimit)}${p.fragile && carrying ? ' · fragile' : ''}`;
       },
       targets: () => [carrying ? b : a],
       elapsed: () => t,

@@ -33,7 +33,7 @@ function setOpen(game: Game, open: boolean): void {
   if (viewfinder.open === open) return;
   viewfinder.open = open;
   ui.root.hidden = !open;
-  ui.button.classList.toggle('on', open);
+  game.ui.classList.toggle('vf-open', open);
   ui.button.setAttribute('aria-pressed', String(open));
   lastInfo = lastChecks = '';
   if (open) {
@@ -225,6 +225,9 @@ export const system: GameSystem = {
       { passive: false },
     );
     game.bus.on('panel:open', () => setOpen(game, false));
+    game.bus.on('activity:start', ({ id }) => {
+      if (game.activities.defs.get(id)?.kind === 'photo') game.toast(navigator.maxTouchPoints > 0 ? 'Tap 📷 to open the viewfinder' : 'Press P to open the viewfinder', 'info');
+    });
     game.bus.on('activity:complete', ({ id }) => {
       if (game.activities.defs.get(id)?.kind === 'photo') setTimeout(() => setOpen(game, false), 900);
     });

@@ -79,7 +79,7 @@ export const kind: ActivityKind = {
         return 'running';
       },
       progress: () => got / pts.length,
-      hud: () => `${PROP_EMOJI[p.prop]} ${p.item} ${got}/${pts.length}  ${clock(t, p.timeLimit)}`,
+      hud: () => `${PROP_EMOJI[p.prop]} ${got}/${pts.length} ${p.item} · ${clock(t, p.timeLimit)}`,
       targets: () => remaining,
       elapsed: () => t,
       props: () => props,

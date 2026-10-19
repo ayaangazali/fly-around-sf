@@ -1,19 +1,19 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { Game, GameSystem } from '../game';
-import type { ActivityDef } from '../activities/types';
+import type { ActivityDef, ActivityInstance } from '../activities/types';
 import type { Vec3 } from '../player/flight';
 import type { MinigameInstance, Prop, PropType } from '../activities/minigame';
 import { viewfinder } from '../activities/kinds/photo';
 import { buildProp, animateProp } from './models/props';
 
-export const BEACON_RANGE = 1500;
+const BEACON_RANGE = 1500;
 const CAP = 256;
 const RINGS = 96;
 const CELL = 128;
 const COLS = 8;
 
-export const KIND_COLORS: Record<string, string> = {
+const KIND_COLORS: Record<string, string> = {
   rings: '#ff7a3d',
   photo: '#5ad1ff',
   delivery: '#ffc15e',
@@ -24,7 +24,7 @@ export const KIND_COLORS: Record<string, string> = {
   hover: '#b48cff',
 };
 
-export function kindColor(kind: string): string {
+function kindColor(kind: string): string {
   if (KIND_COLORS[kind]) return KIND_COLORS[kind];
   let h = 0;
   for (const c of kind) h = (h * 31 + c.charCodeAt(0)) % 360;
@@ -225,7 +225,7 @@ const SOON = new THREE.Color('#ffe2c4');
 const LATER = new THREE.Color('#8fa3b5');
 const MOVING = new Set(['follow', 'chase']);
 
-export function beaconDefs(game: Game): { def: ActivityDef; done: boolean }[] {
+function beaconDefs(game: Game): { def: ActivityDef; done: boolean }[] {
   const p = game.flight.pos;
   const out: { def: ActivityDef; done: boolean }[] = [];
   for (const def of game.activities.list()) {
@@ -265,7 +265,7 @@ function rebuildBeacons(game: Game): void {
   }
 }
 
-function startRings(game: Game, inst: MinigameInstance | { targets?(): Vec3[] }, def: ActivityDef): void {
+function startRings(game: Game, inst: ActivityInstance, def: ActivityDef): void {
   const pts = (inst.targets?.() ?? []).map((p) => ({ ...p }));
   st.ringPts = pts;
   st.ringRadius = (def.params?.radius as number | undefined) ?? 14;

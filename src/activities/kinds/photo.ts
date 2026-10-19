@@ -144,12 +144,10 @@ export const kind: ActivityKind = {
     const subject = subjectPoint(game, p);
     let t = 0;
     let stars = 0;
-    let hint = 'Press P to frame the shot';
     const off = game.bus.on('photo', (shot) => {
       const r = evaluate(game, p, shot, true);
-      hint = r.hint;
       stars = r.stars;
-      game.bus.emit('photo:scored', { id: def.id, stars, hint });
+      game.bus.emit('photo:scored', { id: def.id, stars, hint: r.hint });
     });
     return {
       update(dt) {
@@ -167,7 +165,7 @@ export const kind: ActivityKind = {
       progress: () => stars / 3,
       hud: () => {
         const f = game.flight.pos;
-        return `📷 ${p.subject.name}  ${meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z))}  ·  ${hint}  ${clock(t, p.timeLimit)}`;
+        return `📷 ${p.subject.name} · ${meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z))} · ${clock(t, p.timeLimit)}`;
       },
       targets: () => [subject],
       elapsed: () => t,

@@ -66,7 +66,7 @@ export const kind: ActivityKind = {
         return 'running';
       },
       progress: () => held / p.hold,
-      hud: () => `🌀 ${p.spot.name}  hold ${held.toFixed(1)}/${p.hold}s  ·  ${dist3(game.flight.pos, spot).toFixed(1)} m (within ${tol})  ${clock(t, p.timeLimit)}`,
+      hud: () => `🌀 hold ${held.toFixed(1)}/${p.hold}s · ${dist3(game.flight.pos, spot).toFixed(1)} of ${tol} m · ${clock(t, p.timeLimit)}`,
       targets: () => [spot],
       elapsed: () => t,
       props: () => props,

@@ -61,7 +61,7 @@ export const kind: ActivityKind = {
         const f = game.flight;
         const h = Math.hypot(f.pos.x - pad.x, f.pos.z - pad.z);
         const fast = f.speed > max && h < 40;
-        return `🛬 ${p.pad.name}  ${meters(h)}  ·  ${f.speed.toFixed(1)} m/s${fast ? ' slow down' : ''} (max ${max})  ${clock(t, p.timeLimit)}`;
+        return `🛬 ${meters(h)} · ${f.speed.toFixed(1)} of ${max} m/s${fast ? ', slow down' : ''} · ${clock(t, p.timeLimit)}`;
       },
       targets: () => [marker],
       elapsed: () => t,

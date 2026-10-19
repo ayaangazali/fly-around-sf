@@ -328,7 +328,8 @@ describe('medals', () => {
   it('[R-MEDALS] formats times, clocks and distances for the HUD', () => {
     expect(formatTime(9.04)).toBe('9.0s');
     expect(formatTime(83.45)).toBe('1:23.5');
-    expect(clock(30, 90)).toBe('1:00.0 left');
+    expect(clock(30, 90)).toBe('1:00 left');
+    expect(clock(85.5, 90)).toBe('4.5s left');
     expect(clock(5, undefined)).toBe('5.0s');
     expect(meters(420.4)).toBe('420 m');
     expect(meters(2400)).toBe('2.4 km');
