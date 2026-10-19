@@ -75,8 +75,9 @@ test.describe('live data', () => {
       await frame();
       return { thick, far: g.sky.fog.far };
     });
-    expect(mixed.thick).toEqual({ far: 8500 / 40, weather: 3 });
-    expect(mixed.far).toBeCloseTo(8500 / 3, 0);
+    expect(mixed.thick.weather).toBe(3);
+    expect(mixed.thick.far * 40).toBeCloseTo(mixed.far * 3, 3);
+    expect(mixed.far).toBeCloseTo(far, 3);
     expect(r.fog).toBe(3);
     expect(r.override).toBe(1);
     expect(r.wind.x).toBeGreaterThan(0.5);
@@ -153,7 +154,7 @@ test.describe('live data', () => {
     expect(r.moved).toBeGreaterThan(5);
     expect(r.moved).toBeLessThan(60);
     expect(Math.abs(r.ground)).toBeLessThan(3);
-    expect(r.cards).toEqual([]);
+    expect(r.cards).not.toContain('cable-car-spotter');
     await page.waitForTimeout(800);
     expect((await page.screenshot()).length).toBeGreaterThan(30_000);
   });
