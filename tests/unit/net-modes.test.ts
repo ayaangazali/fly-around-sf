@@ -30,7 +30,7 @@ describe('multiplayer modes', () => {
   it('[R-NET-MODES] every mode has a title, icon, blurb and a sensible default length', () => {
     for (const info of Object.values(MODES)) {
       expect(info.title.length).toBeGreaterThan(3);
-      expect(info.blurb).not.toMatch(/—/);
+      expect(info.blurb).not.toMatch(/\u2014/);
       expect(info.duration).toBeGreaterThanOrEqual(60);
     }
     expect([1, 2, 3, 4, 11, 12, 13, 21, 22, 101].map(ordinal)).toEqual(['1st', '2nd', '3rd', '4th', '11th', '12th', '13th', '21st', '22nd', '101st']);
