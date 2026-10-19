@@ -112,7 +112,7 @@ export const kind: ActivityKind = {
           return 'running';
         }
         park();
-        clock -= dt;
+        if (!game.panels.openId) clock -= dt;
         if (phase === 'ask' && clock <= 0) record(-1);
         else if (phase === 'verdict' && clock <= 0) {
           if (results.length < params.rounds.length) {

@@ -169,9 +169,10 @@ class Hackers {
       for (const o of this.orbs) {
         this.root.remove(o.group);
         o.group.traverse((n) => {
-          const m = n as THREE.Mesh;
-          if (m.geometry !== this.orbGeo) m.geometry?.dispose();
-          (m.material as THREE.Material | undefined)?.dispose();
+          if (n instanceof THREE.Mesh && n.geometry !== this.orbGeo) n.geometry.dispose();
+          const m = (n as THREE.Mesh).material as THREE.SpriteMaterial | undefined;
+          if (m?.map !== this.orbGlow.map) m?.map?.dispose();
+          m?.dispose();
         });
       }
       this.orbs = inst ? inst.commits.map((c) => this.orb(c.p, c.hash)) : [];

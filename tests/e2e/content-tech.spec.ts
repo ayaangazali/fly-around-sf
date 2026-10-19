@@ -93,6 +93,24 @@ test.describe('SF tech layer', () => {
     expect(errors).toEqual([]);
   });
 
+  test('[R-TECH-PITCH] an open menu freezes the round clock and swallows number keys', async ({ page }) => {
+    await boot(page);
+    await startPitch(page, 'pitch-greylock');
+    await page.evaluate(() => window.__fly.game.panels.open('menu'));
+    const before = await page.evaluate(() => (window.__fly.game.activities.active!.inst as unknown as { timeLeft(): number }).timeLeft());
+    await page.keyboard.press('Digit1');
+    await page.evaluate(() => window.__fly.step(30));
+    const held = await page.evaluate(() => {
+      const inst = window.__fly.game.activities.active!.inst as unknown as { timeLeft(): number; chosen(): number; phase(): string };
+      return { left: inst.timeLeft(), chosen: inst.chosen(), phase: inst.phase() };
+    });
+    expect(held).toEqual({ left: before, chosen: -1, phase: 'ask' });
+    await page.evaluate(() => window.__fly.game.panels.close());
+    await page.keyboard.press('Digit1');
+    await page.evaluate(() => window.__fly.step(0.1));
+    await expect(page.locator('.pitch-option[data-option="0"]:disabled')).toHaveCount(1);
+  });
+
   test('[R-TECH-PITCH] clicking wrong answers ends in a polite pass and no completion', async ({ page }) => {
     await boot(page);
     await startPitch(page, 'pitch-a16z');
@@ -193,6 +211,22 @@ test.describe('SF tech layer', () => {
     expect(info.flies).toBeGreaterThan(200);
     expect(info.night).toBeGreaterThan(0.9);
     await page.waitForTimeout(800);
+    const shown = await page.evaluate(() => {
+      const g = window.__fly.game;
+      window.__fly.step(1 / 30);
+      const { width, height } = g.renderer.domElement;
+      const f = height / (2 * Math.tan((g.camera.fov * Math.PI) / 360));
+      return g.scene.getObjectByName('commit-towers')!.children
+        .filter((c) => c.name.startsWith('tower-label-') && c.visible)
+        .map((l) => {
+          const d = l.position.distanceTo(g.camera.position);
+          const p = l.position.clone().project(g.camera);
+          return { x: ((p.x + 1) / 2) * width, y: ((1 - p.y) / 2) * height, w: (l.scale.x * f) / d / 2, h: (l.scale.y * f) / d / 2 };
+        });
+    });
+    expect(shown.length).toBeGreaterThan(1);
+    expect(shown.length).toBeLessThan(snapshot.towers.length);
+    for (const [i, a] of shown.entries()) for (const b of shown.slice(i + 1)) expect(Math.abs(a.x - b.x) < a.w + b.w && Math.abs(a.y - b.y) < a.h + b.h).toBe(false);
     expect((await page.screenshot()).length).toBeGreaterThan(30_000);
     expect(github).toEqual([]);
     expect(errors).toEqual([]);

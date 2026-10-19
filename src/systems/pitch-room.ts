@@ -51,7 +51,7 @@ class PitchRoom {
     window.addEventListener('keydown', (e) => {
       const n = /^(?:Digit|Numpad)([1-4])$/.exec(e.code);
       const target = e.target as HTMLElement | null;
-      if (!n || !this.current || target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA') return;
+      if (!n || !this.current || this.game.panels.openId || target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA') return;
       if (this.current.answer(Number(n[1]) - 1)) e.preventDefault();
     });
   }

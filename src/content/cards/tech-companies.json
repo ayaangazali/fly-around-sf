@@ -634,7 +634,7 @@
     "at": { "lat": 37.76057, "lon": -122.38562 },
     "year": 2015,
     "blurb": "Building geostationary satellites where battleships were built.",
-    "lore": "John Gedmark and Ryan McLinko founded Astranis in October 2015 and went through Y Combinator in Winter 2016. It builds small geostationary communications satellites inside Pier 70, in the building that was once the headquarters of Union Iron Works and then Bethlehem Steel, a production line for battleships and submarines in both World Wars.",
+    "lore": "John Gedmark and Ryan McLinko founded Astranis in October 2015 and went through Y Combinator in Winter 2016. It builds small geostationary communications satellites inside a brick Pier 70 shipyard building that once belonged to Union Iron Works and later Bethlehem Steel, across 20th Street from Y Combinator. The yard built battleships and submarines in both World Wars.",
     "facts": [
       "Its first test satellite, launched in 2018, weighed under 3 kg.",
       "The Arcturus satellite tested at up to 8.5 Gbit/s, above its 7.5 Gbit/s design spec."
@@ -642,7 +642,8 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Astranis",
       "https://www.astranis.com/old/company",
-      "https://fastcompany.com/91456505/astranis-microgeo-satellites-john-gedmark"
+      "https://fastcompany.com/91456505/astranis-microgeo-satellites-john-gedmark",
+      "https://www.potreroview.net/?p=9707"
     ]
   },
   {

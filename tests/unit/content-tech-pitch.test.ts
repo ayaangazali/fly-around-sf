@@ -129,6 +129,29 @@ describe('pitch kind', () => {
     expect(inst.elapsed?.()).toBeGreaterThan(6);
   });
 
+  it('[R-TECH-PITCH] the round clock holds while a menu panel is open', () => {
+    const { game, inst } = landed();
+    const left = inst.timeLeft();
+    game.panels.openId = 'menu';
+    inst.update(PITCH.roundTime + 5);
+    expect(inst.phase()).toBe('ask');
+    expect(inst.timeLeft()).toBe(left);
+    game.panels.openId = null;
+    inst.update(PITCH.roundTime + 0.1);
+    expect(inst.results()).toEqual([false]);
+  });
+
+  it('[R-TECH-PITCH] answers cannot be guessed by length: options are similar in size and the best one is rarely the longest', () => {
+    const rounds = pitches.flatMap((d) => (d.params as unknown as PitchParams).rounds);
+    let longest = 0;
+    for (const r of rounds) {
+      const len = r.options.map((o) => o.length);
+      expect(Math.max(...len) / Math.min(...len), r.ask).toBeLessThanOrEqual(1.6);
+      if (len[r.best] === Math.max(...len)) longest++;
+    }
+    expect(longest / rounds.length).toBeLessThanOrEqual(0.4);
+  });
+
   it('[R-TECH-PITCH] the solver lands, answers every round right and wins each pitch', async () => {
     const kinds = await loadKinds();
     for (const d of pitches.slice(0, 4)) {

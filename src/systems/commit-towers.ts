@@ -56,7 +56,7 @@ export function layoutTowers(stats: TowerStat[], cards: CardDef[], toLocal: (lat
   return towers;
 }
 
-const LABEL_RANGE = 3200;
+const LABEL_RANGE = 1800;
 export const FLOAT = 28;
 
 const compact = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${(n / 1e3).toFixed(1)}k` : String(n));
@@ -74,12 +74,12 @@ function label(t: Tower): THREE.Sprite {
   ctx.fillRect(4, 30, 10, 140);
   ctx.fillStyle = '#f6f3ec';
   ctx.font = '700 58px -apple-system, "Segoe UI", Roboto, sans-serif';
-  ctx.fillText(t.name, 40, 76);
+  ctx.fillText(t.name, 40, 76, 576);
   ctx.font = '500 34px ui-monospace, Menlo, monospace';
   ctx.fillStyle = TIERS[t.tier].color;
-  ctx.fillText(`${t.commits30d.toLocaleString('en-US')} commits / ${snapshot.sinceDays} days`, 40, 128);
+  ctx.fillText(`${t.commits30d.toLocaleString('en-US')} commits / ${snapshot.sinceDays} days`, 40, 128, 576);
   ctx.fillStyle = 'rgba(246, 243, 236, 0.7)';
-  ctx.fillText(`${t.publicRepos} public repos · ${compact(t.stars)} stars`, 40, 172);
+  ctx.fillText(`${t.publicRepos} repos · ${compact(t.stars)} ★`, 40, 172, 576);
   const map = new THREE.CanvasTexture(c);
   map.colorSpace = THREE.SRGBColorSpace;
   map.anisotropy = 4;
@@ -162,6 +162,7 @@ export class CommitTowers {
   readonly mesh: THREE.InstancedMesh;
   readonly fireflies: THREE.Points;
   readonly labels: THREE.Sprite[] = [];
+  private ndc = new THREE.Vector3();
   private uniforms = { uTime: { value: 0 }, uNight: cityUniforms.uNight, uScale: { value: 400 } };
 
   constructor(private game: Game) {
@@ -222,10 +223,24 @@ export class CommitTowers {
       mat.blending = blending;
       mat.needsUpdate = true;
     }
-    for (const l of this.labels) {
-      const d = l.position.distanceTo(cam.position);
-      l.visible = d < LABEL_RANGE;
+    const { width, height } = this.game.renderer.domElement;
+    for (const l of this.labels) l.visible = false;
+    const near = this.labels
+      .map((l) => ({ l, d: l.position.distanceTo(cam.position) }))
+      .filter(({ d }) => d < LABEL_RANGE)
+      .sort((a, b) => a.d - b.d);
+    const placed: number[][] = [];
+    for (const { l, d } of near) {
       l.scale.set(120, 37.5, 1).multiplyScalar(Math.min(1.8, Math.max(0.12, d / 650)));
+      const p = this.ndc.copy(l.position).project(cam);
+      if (p.z > 1 || Math.abs(p.x) > 1.2 || Math.abs(p.y) > 1.2) continue;
+      const x = ((p.x + 1) / 2) * width;
+      const y = ((1 - p.y) / 2) * height;
+      const w = (l.scale.x * this.uniforms.uScale.value) / d / 2;
+      const h = (l.scale.y * this.uniforms.uScale.value) / d / 2;
+      if (placed.some(([px, py, pw, ph]) => Math.abs(px - x) < pw + w && Math.abs(py - y) < ph + h)) continue;
+      placed.push([x, y, w, h]);
+      l.visible = true;
     }
   }
 }
