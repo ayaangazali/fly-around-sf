@@ -1,0 +1,110 @@
+[
+  {
+    "id": "felt-a-quake",
+    "name": "Felt a Quake",
+    "category": "event",
+    "rarity": "rare",
+    "neighborhood": "Bay Area",
+    "blurb": "A real Bay Area earthquake was recorded by the USGS while you were flying.",
+    "lore": "San Francisco sits between the San Andreas Fault to the west and the Hayward Fault across the bay. Small quakes rattle the region almost every day; this card only drops when the USGS reports a new one within 100 km during your flight.",
+    "facts": [
+      "The 1989 Loma Prieta earthquake was magnitude 6.9 and struck at 5:04 pm on October 17, 1989.",
+      "The USGS estimates a 72 percent chance of at least one magnitude 6.7 or larger earthquake in the Bay Area between 2014 and 2043.",
+      "The Hayward Fault is considered the most likely source of a large Bay Area quake, with a 33 percent probability over that 30-year period."
+    ],
+    "sources": [
+      "https://pubs.usgs.gov/publication/fs20163020",
+      "https://seismo.berkeley.edu/eqInfo/1989_quake.html",
+      "https://earthquake.usgs.gov/fdsnws/event/1/"
+    ]
+  },
+  {
+    "id": "plane-spotter",
+    "name": "Plane Spotter",
+    "category": "transit",
+    "rarity": "rare",
+    "neighborhood": "SFO and OAK airspace",
+    "at": {
+      "lat": 37.6188,
+      "lon": -122.3754
+    },
+    "year": 1927,
+    "blurb": "You had a close call with an airliner over the bay.",
+    "lore": "More than 95 percent of the time SFO runs its West Plan: planes land on runways 28L and 28R and generally take off from 1L and 1R, so departures climb out over the bay toward the city. Oakland's long runway 30 points toward San Francisco too.",
+    "facts": [
+      "SFO began as Mills Field: a 5,770-foot dirt runway was dedicated there on May 7, 1927.",
+      "Under SFO's West Plan, used more than 95 percent of the time, planes land on 28L and 28R and generally take off from 1L and 1R.",
+      "SFO runways 28L and 28R point 298 degrees true and use a 3 degree glide path.",
+      "Oakland's runway 12/30 is 10,520 feet long, the longest at OAK."
+    ],
+    "sources": [
+      "https://sfomuseum.org/node/24701",
+      "https://sforoundtable.org/wp-content/uploads/2024/02/20240202-Brief-Introduction-to-RT-projects-and-some-existing-flight-procedures-ver1.pdf",
+      "https://www.airnav.com/airport/KSFO",
+      "https://www.airnav.com/airport/KOAK"
+    ]
+  },
+  {
+    "id": "cable-car-spotter",
+    "name": "Cable Car Spotter",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Nob Hill",
+    "year": 1873,
+    "blurb": "You flew right up to a running cable car.",
+    "lore": "The cars have no motors. A grip under the floor clamps onto a steel cable that runs under the street, pulled by the winding machinery in the Washington-Mason powerhouse, which is also the Cable Car Museum.",
+    "facts": [
+      "Andrew Smith Hallidie tested the first cable car at 4 a.m. on August 2, 1873, on Clay Street.",
+      "Three lines run today: Powell-Hyde, Powell-Mason and California Street.",
+      "The California Street cars are larger than the Powell cars and painted maroon."
+    ],
+    "sources": [
+      "https://www.sfmta.com/getting-around/muni/cable-cars/cable-car-history",
+      "http://www.cablecarmuseum.org/"
+    ]
+  },
+  {
+    "id": "ferry-spotter",
+    "name": "Ferry Spotter",
+    "category": "transit",
+    "rarity": "common",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79476,
+      "lon": -122.3922
+    },
+    "year": 1898,
+    "blurb": "You flew alongside a ferry crossing the bay.",
+    "lore": "Ferries to Sausalito, Larkspur, Tiburon, Oakland, Alameda, Vallejo and Richmond still run from the Ferry Building, a reminder that before the bridges the bay was crossed by boat.",
+    "facts": [
+      "The Ferry Building opened on July 13, 1898.",
+      "Its steel frame came through both the 1906 and 1989 earthquakes with little damage.",
+      "Golden Gate Ferry and San Francisco Bay Ferry both publish their timetables as open GTFS data."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building",
+      "https://mobilitydatabase.org/feeds/gtfs/mdb-67",
+      "https://mobilitydatabase.org/feeds/gtfs/mdb-3143"
+    ]
+  },
+  {
+    "id": "karl-the-fog",
+    "name": "Karl the Fog",
+    "category": "event",
+    "rarity": "rare",
+    "neighborhood": "Everywhere",
+    "blurb": "You flew through real San Francisco fog, driven by the live weather.",
+    "lore": "San Franciscans call the summer fog Karl. It forms when moist ocean air crosses cold water that has welled up from the deep along the coast, then pours through the Golden Gate, the only full break in the Coast Range.",
+    "facts": [
+      "Summer winds push surface water offshore and draw colder water up from below, and air crossing that cold water condenses into fog.",
+      "Upwelled water can run 10 to 15 degrees colder than the sun-warmed surface.",
+      "The Golden Gate is the only complete break in the Coast Range around the bay.",
+      "The name took off with the anonymous @KarlTheFog social media account, which appeared in August 2010 and borrowed the name from the 2003 film Big Fish."
+    ],
+    "sources": [
+      "https://earthobservatory.nasa.gov/images/79119",
+      "https://baynature.org/article/cutting-through-the-fog/",
+      "https://kqed.org/news/11682057/how-the-bay-areas-fog-came-to-be-named-karl"
+    ]
+  }
+]

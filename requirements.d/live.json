@@ -1,0 +1,8 @@
+[
+  { "id": "R-LIVE-CACHE", "owner": "live", "text": "Live feeds cache in localStorage with a TTL, rate-limit network attempts, back off after failures and survive broken storage." },
+  { "id": "R-LIVE-QUAKE", "owner": "live", "text": "USGS Bay Area quakes within 100 km parse; a new quake during a session shakes the camera, toasts and grants the rare card once." },
+  { "id": "R-LIVE-PLANES", "owner": "live", "text": "OpenSky traffic parses; when blocked, simulated SFO and OAK arrivals and departures fly the real runways and 3 degree glide paths, with nav lights and close-call warnings." },
+  { "id": "R-LIVE-TRANSIT", "owner": "live", "text": "Baked GTFS shapes animate cable cars, the F-line, Muni buses and ferries on their real timetables synced to SF time." },
+  { "id": "R-LIVE-TIDES", "owner": "live", "text": "NOAA tide predictions parse; the offline harmonic model matches NOAA highs and lows within 5 cm and 10 minutes." },
+  { "id": "R-LIVE-PANEL", "owner": "live", "text": "The Live SF panel shows every feed's status, the weather, the latest quake, nearby planes, the next cable car and the tides." }
+]
