@@ -366,15 +366,15 @@
     "neighborhood": "Outer Richmond",
     "at": { "lat": 37.77856, "lon": -122.51398, "alt": 30 },
     "year": 1909,
-    "blurb": "A restaurant perched on the cliffs at the end of the continent since 1863.",
-    "lore": "There have been several Cliff Houses on this rock. The first opened in 1863. The most spectacular was Adolph Sutro's eight-story Victorian chateau of 1896, which survived the 1906 earthquake only to burn down in 1907. The current, plainer one went up in 1909. It looks out over Seal Rocks and the Sutro Baths ruins, and dozens of ships have wrecked on the shore below. On its terrace hides a room-sized camera obscura.",
+    "blurb": "A restaurant on the cliffs at the end of the continent from 1863 until it closed in 2020.",
+    "lore": "There have been several Cliff Houses on this rock. The first opened in 1863. The most spectacular was Adolph Sutro's eight-story Victorian chateau of 1896, which survived the 1906 earthquake only to burn down in 1907. The current, plainer one went up in 1909. It looks out over Seal Rocks and the Sutro Baths ruins, and dozens of ships have wrecked on the shore below. On its terrace hides a room-sized camera obscura. The restaurant closed at the end of 2020, and the National Park Service has picked a new operator to reopen it.",
     "facts": [
       "The first Cliff House opened in 1863.",
       "Adolph Sutro's grand 1896 Cliff House burned in 1907.",
       "The current building dates to 1909.",
       "It is owned by the National Park Service as part of the Golden Gate National Recreation Area."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco", "https://www.nps.gov/goga/learn/historyculture/cliff-house.htm"]
+    "sources": ["https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco", "https://www.nps.gov/goga/learn/historyculture/cliff-house.htm", "https://sfstandard.com/2025/09/20/future-cliff-house-precipice/"]
   },
   {
     "id": "chase-center",
