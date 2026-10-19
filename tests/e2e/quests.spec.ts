@@ -192,6 +192,23 @@ test.describe('quests', () => {
     await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('Daily Decree #1');
   });
 
+  test('[R-SCAVENGER] every hunt note floats in open air, never inside a landmark', async ({ page }) => {
+    await boot(page);
+    const buried = await page.evaluate(() => {
+      const g = window.__fly.game;
+      return window.__fly
+        .activities()
+        .filter((a) => a.kind === 'scavenger')
+        .flatMap((a) => {
+          const def = g.activities.defs.get(a.id)!;
+          const notes = (def.params as { tokens: { name?: string }[] }).tokens;
+          const points = g.activities.kindOf(def).solve(def, g).flatMap((s) => ('teleport' in s ? [s.teleport] : []));
+          return points.flatMap((q, i) => (g.world.collide({ ...q }, 0.05) ? [`${a.id}: ${notes[i].name ?? i}`] : []));
+        });
+    });
+    expect(buried).toEqual([]);
+  });
+
   test('[R-SCAVENGER] a hunt pulses warmer as you close in and shows the note only up close', async ({ page }) => {
     await boot(page);
     const r = await page.evaluate(() => {
