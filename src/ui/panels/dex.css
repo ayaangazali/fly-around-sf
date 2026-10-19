@@ -1,4 +1,4 @@
-.sheet[data-panel="dex"] { width: min(1040px, calc(100vw - 24px)); }
+@media (min-width: 641px) { .sheet[data-panel="dex"] { width: min(1040px, calc(100vw - 24px)); } }
 .dex-head { display: grid; grid-template-columns: auto 1fr minmax(180px, 260px); gap: 14px; align-items: center; margin-bottom: 12px; }
 .dex-ring { --p: 0; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--accent) calc(var(--p) * 1%), rgba(255, 255, 255, 0.1) 0); position: relative; }
 .dex-ring::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: #121921; }

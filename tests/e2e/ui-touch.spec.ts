@@ -89,6 +89,7 @@ test.describe('touch controls @touch', () => {
       const sheet = (await page.locator('.sheet').boundingBox())!;
       expect(sheet.x).toBeGreaterThanOrEqual(0);
       expect(sheet.x + sheet.width).toBeLessThanOrEqual(page.viewportSize()!.width + 1);
+      if (page.viewportSize()!.width <= 640) expect(sheet.width, id).toBeCloseTo(page.viewportSize()!.width, 0);
       await expect(page.locator('.touch-ui')).toBeHidden();
     }
   });
