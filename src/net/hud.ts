@@ -19,6 +19,7 @@ export class NetHud {
   private count: HTMLElement;
   private cache = new Map<HTMLElement, string>();
   touchTalk = false;
+  private coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
 
   constructor(
     private game: Game,
@@ -64,7 +65,7 @@ export class NetHud {
     const stack = el('div', 'net-stack');
     stack.append(row, this.banner, this.card);
     this.root.append(stack, this.count, this.feed, this.form);
-    game.ui.append(this.root);
+    game.ui.insertBefore(this.root, game.panels.bar);
 
     this.input.addEventListener('input', () => (this.counter.textContent = `${[...this.input.value].length}/${LIMITS.chat}`));
     this.input.addEventListener('keydown', (e) => {
@@ -151,7 +152,7 @@ export class NetHud {
     this.voice.hidden = !v.on;
     if (v.on) {
       this.voice.classList.toggle('live', v.transmitting);
-      this.set(this.voice, v.mode === 'open' ? (v.transmitting ? '🎙 Open mic' : '🎙 Mic paused') : v.transmitting ? '🎙 Talking' : '🎙 Hold T to talk');
+      this.set(this.voice, v.mode === 'open' ? '🎙 Open mic' : v.transmitting ? '🎙 Talking' : this.coarse ? '🎙 Hold to talk' : '🎙 Hold T to talk');
     }
 
     const m = net.match;

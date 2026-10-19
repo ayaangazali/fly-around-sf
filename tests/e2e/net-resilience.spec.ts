@@ -83,7 +83,8 @@ test.describe('touch @touch', () => {
     await expect.poll(() => page.evaluate(() => window.__fly.game.net.voice.on)).toBe(true);
     const fit = await page.evaluate(() => {
       const sheet = document.querySelector('.sheet-body') as HTMLElement;
-      const small = [...document.querySelectorAll<HTMLElement>('.friends button')].filter((b) => b.offsetParent && b.getBoundingClientRect().height < 40).map((b) => b.textContent);
+      const coarse = matchMedia('(pointer: coarse)').matches;
+      const small = [...document.querySelectorAll<HTMLElement>('.friends button')].filter((b) => coarse && b.offsetParent && Math.min(b.getBoundingClientRect().height, b.getBoundingClientRect().width) < 40).map((b) => b.textContent || b.getAttribute('aria-label'));
       return { page: document.documentElement.scrollWidth - window.innerWidth, sheet: sheet.scrollWidth - sheet.clientWidth, small };
     });
     expect(fit.page).toBeLessThanOrEqual(0);
@@ -92,7 +93,7 @@ test.describe('touch @touch', () => {
     await page.evaluate(() => window.__fly.game.panels.close());
     await page.evaluate(() => window.__fly.step(0.05));
     const talk = page.locator('.net-voice');
-    await expect(talk).toHaveText('🎙 Hold T to talk');
+    await expect(talk).toHaveText(/^🎙 Hold (T )?to talk$/);
     const box = await talk.boundingBox();
     expect(box!.height).toBeGreaterThanOrEqual(40);
     await talk.dispatchEvent('pointerdown');

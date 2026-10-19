@@ -222,18 +222,21 @@ export class NetView {
       const m = Math.max(Math.abs(x), Math.abs(y)) || 1;
       px = ((x / m + 1) / 2) * w;
       py = ((1 - y / m) / 2) * h;
-      px = Math.min(w - EDGE, Math.max(EDGE, px));
-      py = Math.min(h - EDGE, Math.max(EDGE + 40, py));
+      const hw = node.offsetWidth / 2 + EDGE;
+      px = Math.min(w - hw, Math.max(hw, px));
+      py = Math.min(h - EDGE, Math.max(node.offsetHeight + EDGE + 48, py));
+      node.style.setProperty('--dir', `${Math.atan2(-y, x).toFixed(3)}rad`);
     }
     node.classList.toggle('edge', off);
-    node.style.transform = `translate(${px.toFixed(1)}px, ${py.toFixed(1)}px) translate(-50%, -100%)`;
+    node.style.transform = `translate(${px.toFixed(1)}px, ${py.toFixed(1)}px) translate(-50%, ${off ? '-50%' : 'calc(-100% - 12px)'})`;
     node.style.setProperty('--fade', String(Math.max(0.35, 1 - Math.max(0, d - 800) / 2200)));
     const meta = node.lastElementChild as HTMLElement;
     if (meta.textContent !== label) meta.textContent = label;
   }
 
   private project(): void {
-    if (!this.remotes.size && !this.pings.size) return;
+    this.layer.hidden = !!this.game.panels.openId;
+    if (this.layer.hidden || (!this.remotes.size && !this.pings.size)) return;
     const me = this.game.flight.pos;
     const m = this.net.match;
     const imperial = this.game.save.data.settings.units === 'imperial';
@@ -249,12 +252,12 @@ export class NetView {
       const role = m && m.phase !== 'done' && m.role === id ? (m.spec.mode === 'tag' ? 'IT · ' : m.spec.mode === 'hide' ? 'SEEKER · ' : m.spec.mode === 'formation' ? 'LEADER · ' : '') : '';
       r.tag.classList.toggle('talking', p.mic === 2);
       r.tag.classList.toggle('muted', p.muted);
-      this.place(r.tag, p.pos, 4.2, `${role}${fmt(dist, imperial)}${p.mic === 2 ? ' · talking' : ''}`, true);
+      this.place(r.tag, p.pos, 1.6, `${role}${fmt(dist, imperial)}${p.mic === 2 ? ' · talking' : ''}`, true);
     }
     for (const [id, v] of this.pings) {
       const mark = this.net.pings.get(id);
       if (!mark) continue;
-      this.place(v.label, mark.p, 14, fmt(Math.hypot(mark.p.x - me.x, mark.p.y - me.y, mark.p.z - me.z), imperial), true);
+      this.place(v.label, mark.p, 10, fmt(Math.hypot(mark.p.x - me.x, mark.p.y - me.y, mark.p.z - me.z), imperial), true);
     }
   }
 }

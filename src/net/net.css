@@ -1,4 +1,5 @@
 .net-tags { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.net-tags[hidden] { display: none; }
 .net-tag, .net-ping { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 6px; padding: 4px 10px 4px 6px; border-radius: 99px; background: var(--glass-strong); border: 1px solid var(--line); font-size: 13px; white-space: nowrap; opacity: var(--fade, 1); will-change: transform; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
 .net-tag::after, .net-ping::after { content: ''; position: absolute; left: 50%; bottom: -5px; width: 8px; height: 8px; background: var(--glass-strong); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: translateX(-50%) rotate(45deg); }
 .net-tag[hidden], .net-ping[hidden] { display: none; }
@@ -6,8 +7,8 @@
 .net-tag small, .net-ping small { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); }
 .net-tag.talking { border-color: var(--good); box-shadow: 0 0 0 2px rgba(125, 224, 166, 0.35), 0 0 22px rgba(125, 224, 166, 0.35); }
 .net-tag.muted b::after { content: ' 🔇'; font-size: 11px; }
-.net-tag.edge, .net-ping.edge { transform-origin: center; padding: 3px 8px 3px 5px; font-size: 12px; opacity: 0.85; }
-.net-tag.edge::after, .net-ping.edge::after { display: none; }
+.net-tag.edge, .net-ping.edge { padding: 3px 8px 3px 5px; font-size: 12px; opacity: 0.9; }
+.net-tag.edge::after, .net-ping.edge::after { content: '➜'; position: static; width: auto; height: auto; background: none; border: 0; color: var(--accent-2); font-size: 12px; line-height: 1; transform: rotate(var(--dir, 0rad)); }
 .net-ping { border-color: rgba(255, 193, 94, 0.55); }
 .net-ping b::before { content: '📍 '; }
 .net-tag-dot { display: inline-block; flex: none; width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35); }

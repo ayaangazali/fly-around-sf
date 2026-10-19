@@ -152,7 +152,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
   const peers = el('ul', 'fr-peers');
   online.append(codeBig, actions, link, status, peers);
   const metas = new Map<string, HTMLElement>();
-  let lastKey = '';
+  let lastKey: string | null = null;
   body.append(offline, online);
 
   const draw = () => {
