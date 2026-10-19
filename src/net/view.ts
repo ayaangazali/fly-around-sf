@@ -36,6 +36,7 @@ export class NetView {
   private v = new THREE.Vector3();
   private beamGeo = new THREE.CylinderGeometry(0.9, 0.9, 420, 10, 1, true);
   private ringGeo = new THREE.RingGeometry(5, 7.5, 40);
+  private raceGeo = new THREE.TorusGeometry(12, 0.7, 10, 48);
 
   constructor(
     private game: Game,
@@ -69,9 +70,7 @@ export class NetView {
       visible.add(p.id);
       let r = this.remotes.get(p.id);
       if (r && r.color !== p.color) {
-        this.group.remove(r.model.root);
-        r.tag.remove();
-        this.remotes.delete(p.id);
+        this.drop(p.id, r);
         r = undefined;
       }
       if (!r) r = this.add(p);
@@ -82,10 +81,7 @@ export class NetView {
       r.name.textContent = p.name;
     }
     for (const [id, r] of this.remotes) {
-      if (visible.has(id)) continue;
-      this.group.remove(r.model.root);
-      r.tag.remove();
-      this.remotes.delete(id);
+      if (!visible.has(id)) this.drop(id, r);
     }
     this.syncPings();
     this.syncRace();
@@ -106,6 +102,17 @@ export class NetView {
     const r = { model, color: p.color, tag, name, meta };
     this.remotes.set(p.id, r);
     return r;
+  }
+
+  private drop(id: string, r: Remote): void {
+    this.group.remove(r.model.root);
+    r.model.root.traverse((o) => {
+      if (!(o as THREE.Mesh).isMesh) return;
+      (o as THREE.Mesh).geometry.dispose();
+      ((o as THREE.Mesh).material as THREE.Material).dispose();
+    });
+    r.tag.remove();
+    this.remotes.delete(id);
   }
 
   private syncPings(): void {
@@ -172,7 +179,7 @@ export class NetView {
     this.rings = targets.map((p, i) => {
       const next = targets[i + 1] ?? p;
       const mat = new THREE.MeshBasicMaterial({ color: i === 0 ? '#ff6a3d' : '#ffc15e', transparent: true, opacity: i === 0 ? 0.95 : 0.4, fog: false });
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(12, 0.7, 10, 48), mat);
+      const ring = new THREE.Mesh(this.raceGeo, mat);
       ring.position.set(p.x, p.y, p.z);
       if (next !== p) ring.lookAt(next.x, next.y, next.z);
       else ring.rotation.y = Math.atan2(p.x - this.game.flight.pos.x, p.z - this.game.flight.pos.z);

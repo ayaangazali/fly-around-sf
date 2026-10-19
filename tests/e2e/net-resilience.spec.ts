@@ -107,3 +107,44 @@ test.describe('touch @touch', () => {
     expect(overflow).toBeLessThanOrEqual(0);
   });
 });
+
+test('[R-NET-SAFE] peers that recolor or leave free their drone models on the GPU', async ({ page }) => {
+  await boot(page, 'net=local&room=LEAKS');
+  const geometries = await page.evaluate(async () => {
+    const fly = window.__fly;
+    const g = fly.game;
+    const ch = new BroadcastChannel('fly-around-sf:room-LEAKS');
+    const send = (from: string, d: unknown) => ch.postMessage(JSON.stringify({ k: 'msg', from, d }));
+    const settle = async () => {
+      await new Promise((r) => setTimeout(r, 100));
+      fly.step(0.2);
+      for (let i = 0; i < 2; i++) await new Promise((r) => requestAnimationFrame(r));
+    };
+    fly.teleport({ ...g.flight.pos }, 0);
+    await settle();
+    const count = () => g.renderer.info.memory.geometries;
+    const before = count();
+    const p = g.flight.pos;
+    const ids = ['a', 'b', 'c'];
+    for (const id of ids) ch.postMessage(JSON.stringify({ k: 'hello', from: id }));
+    await settle();
+    for (const [i, id] of ids.entries()) {
+      send(id, { t: 'hi', name: id, color: '#ff0000' });
+      send(id, { t: 'st', p: [p.x + (i - 1) * 4, p.y + 1, p.z - 20], v: [0, 0, 0], y: 0, m: 0 });
+    }
+    await settle();
+    const joined = count();
+    for (const color of ['#00ff00', '#0000ff', '#ffff00']) {
+      send('a', { t: 'hi', name: 'a', color });
+      await settle();
+    }
+    const recolored = count();
+    for (const id of ids) ch.postMessage(JSON.stringify({ k: 'bye', from: id }));
+    await settle();
+    ch.close();
+    return { before, joined, recolored, after: count() };
+  });
+  expect(geometries.joined).toBeGreaterThan(geometries.before);
+  expect(geometries.recolored).toBe(geometries.joined);
+  expect(geometries.after).toBe(geometries.before);
+});
