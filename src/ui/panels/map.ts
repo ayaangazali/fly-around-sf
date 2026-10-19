@@ -3,7 +3,7 @@ import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { ActivityDef } from '../../activities/types';
 import { drawMap, baseMap } from '../map-base';
-import { clampView, formatDistance, headingDeg, panBy, toScreen, toWorld, zoomAt, type MapView } from '../map-view';
+import { clampView, formatDistance, MAX_SCALE, headingDeg, panBy, toScreen, toWorld, zoomAt, type MapView } from '../map-view';
 import { kindColor, mappable } from '../map-style';
 import { setWaypoint } from '../waypoint';
 import { setSetting, settingsOf } from '../settings-model';
@@ -92,6 +92,8 @@ export const panel: Panel = {
     let view: MapView = { cx: saved?.cx ?? p.x, cz: saved?.cz ?? p.z, scale: saved?.scale ?? 0.3, w: 1, h: 1 };
     let frame = 0;
     const markers = new Map<string, HTMLButtonElement>();
+    const spots = defs.map((d) => game.activities.position(d));
+    const fan = new Map(defs.map((d, i) => [d.id, spots.slice(0, i).filter((q) => Math.hypot(q.x - spots[i].x, q.z - spots[i].z) < 30 / MAX_SCALE).length]));
     for (const d of defs) {
       const kind = game.activities.kindOf(d);
       const b = el('button', 'map-marker');
@@ -125,7 +127,9 @@ export const panel: Panel = {
         const s = toScreen(view, q.x, q.z);
         const show = !hiddenKinds.has(d.kind) && (showDone || !game.save.isDone(d.id)) && s.sx > -20 && s.sy > -20 && s.sx < view.w + 20 && s.sy < view.h + 20;
         b.hidden = !show;
-        if (show) b.style.translate = `${s.sx.toFixed(1)}px ${s.sy.toFixed(1)}px`;
+        const n = fan.get(d.id)!;
+        const a = (n * Math.PI) / 3;
+        if (show) b.style.translate = `${(s.sx + (n && 30 * Math.cos(a))).toFixed(1)}px ${(s.sy + (n && 30 * Math.sin(a))).toFixed(1)}px`;
       }
       me.style.transform = `${pos(game.flight.pos.x, game.flight.pos.z)} rotate(${headingDeg(game.flight.yaw)}deg)`;
       wpPin.hidden = !game.waypoint;

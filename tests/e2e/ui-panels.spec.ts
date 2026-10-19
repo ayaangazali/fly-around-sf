@@ -20,7 +20,7 @@ test.describe('menus', () => {
       await expect(sheet).toBeVisible();
       await expect(sheet.locator('.sheet-body')).not.toBeEmpty();
       await expect(page.locator('.sheet-head h2')).toHaveAttribute('id', 'sheet-title');
-      expect(await serious(page, '.sheet'), id).toEqual([]);
+      expect.soft(await serious(page, '.sheet'), `axe on the ${id} panel`).toEqual([]);
       await page.keyboard.press('Escape');
       await expect(page.locator('.sheet')).toBeHidden();
       await expect(button).toBeFocused();
@@ -74,12 +74,14 @@ test.describe('menus', () => {
     await page.evaluate(() => window.__fly.game.panels.open('journal'));
     const all = await page.locator('.journal-item').count();
     expect(all).toBeGreaterThan(0);
-    const first = await page.locator('.journal-item strong').first().textContent();
+    const far = page.locator('.journal-item').filter({ has: page.locator('.journal-meta', { hasText: / km/ }) }).first();
+    const id = await far.getAttribute('data-activity');
+    const title = await far.locator('strong').textContent();
     await page.locator('.journal-filter').fill('zzzz-nothing');
     await expect(page.locator('.journal-item')).toHaveCount(0);
-    await page.locator('.journal-filter').fill(first!.slice(0, 6));
+    await page.locator('.journal-filter').fill(title!.slice(0, 6));
     await expect(page.locator('.journal-item').first()).toBeVisible();
-    await page.locator('.journal-go').first().click();
+    await page.locator(`.journal-item[data-activity="${id}"] .journal-go`).click();
     await expect(page.locator('.sheet')).toBeHidden();
     expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBeTruthy();
   });
