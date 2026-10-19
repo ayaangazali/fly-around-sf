@@ -162,6 +162,7 @@ test.describe('live data', () => {
   test('[R-LIVE-PANEL] the Live SF panel opens from the menubar and points the pilot at a cable car', async ({ page }) => {
     await offline(page);
     const errors = await boot(page, 'live&spawn=37.8005,-122.4185,3.14');
+    await expect.poll(() => page.evaluate(liveState).then((s) => s.transit), { timeout: 30_000 }).toBe('schedule');
     await page.evaluate(() => window.__fly.step(0.2));
     await page.locator('.menubar-btn[data-panel="live"]').click();
     const sheet = page.locator('.sheet[data-panel="live"]');
