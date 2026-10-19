@@ -1,4 +1,4 @@
-.loading.title { display: block; overflow: hidden; background: linear-gradient(180deg, #0b1626 0%, #1d2c48 34%, #6b4a5c 58%, #e9875a 76%, #ffc78a 88%); }
+.loading.title { display: block; overflow-x: hidden; overflow-y: auto; background: linear-gradient(180deg, #0b1626 0%, #1d2c48 34%, #6b4a5c 58%, #e9875a 76%, #ffc78a 88%); }
 .title-sky { position: absolute; inset: 0; pointer-events: none; }
 .title-sun { position: absolute; left: 62%; bottom: 30%; width: 220px; height: 220px; margin-left: -110px; border-radius: 50%; background: radial-gradient(circle, #fff3d6 0%, #ffd08a 35%, rgba(255, 160, 90, 0.4) 60%, transparent 72%); animation: sun-breathe 9s ease-in-out infinite; }
 @keyframes sun-breathe { 50% { transform: scale(1.06); opacity: 0.9; } }
@@ -52,3 +52,13 @@
 .title-install { justify-self: center; min-height: 40px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line); background: transparent; font-size: 13px; }
 .title-credit { position: absolute; left: 0; right: 0; bottom: max(10px, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: 11px; color: rgba(246, 243, 236, 0.5); z-index: 1; }
 @media (max-height: 640px) { .title-card { margin-top: 12px; padding: 18px; } .title-tag { margin-bottom: 12px; } }
+@media (max-height: 500px) {
+  .title-card { width: min(680px, calc(100vw - 32px)); margin-top: max(10px, env(safe-area-inset-top)); margin-bottom: 10px; padding: 14px 20px; }
+  .title-card h1 { font-size: 34px; margin-bottom: 4px; }
+  .title-tag { margin-bottom: 10px; font-size: 13px; }
+  .title-setup:not([hidden]) { grid-template-columns: 1fr 1.3fr; align-items: start; }
+  .title-menu { gap: 10px; }
+  .title-btn { padding: 10px 16px; }
+  .title-credit { display: none; }
+  .title-drone { z-index: 0; top: 40%; }
+}

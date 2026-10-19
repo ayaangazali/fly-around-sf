@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fakeGame } from './helpers';
-import { breakdowns, formatDuration, pilotLevel } from '../../src/ui/stats-model';
+import { achievementIcon, breakdowns, formatDuration, pilotLevel } from '../../src/ui/stats-model';
 import type { ActivityKind } from '../../src/activities/types';
 
 const k = (kind: string, passive = false): ActivityKind => ({ kind, label: kind.toUpperCase(), icon: '*', passive, validate: () => [], start: () => ({ update: () => 'running', progress: () => 0, hud: () => '' }), solve: () => [] });
@@ -44,5 +44,17 @@ describe('pilot log', () => {
       ['discover', 'DISCOVER', 1, 1],
       ['rings', 'RINGS', 1, 2],
     ]);
+  });
+});
+
+describe('achievement icons', () => {
+  it('[R-ACHIEVEMENTS] icons follow the kind for completion goals and the metric otherwise', () => {
+    const g = fakeGame();
+    g.activities.register([k('rings')], []);
+    const def = (params: Record<string, unknown>) => ({ id: 'achievement-x', kind: 'achievement', title: 't', blurb: 'b', neighborhood: 'n', at: { lat: 37.77, lon: -122.42 }, params });
+    expect(achievementIcon(def({ metric: 'completed', gte: 1, kind: 'rings' }), g)).toBe('*');
+    expect(achievementIcon(def({ metric: 'completed', gte: 1, kind: 'not-installed' }), g)).toBe('✅');
+    expect(achievementIcon(def({ metric: 'night', gte: 1 }), g)).toBe('🌙');
+    expect(achievementIcon(def({ metric: 'mystery', gte: 1 }), g)).toBe('🏆');
   });
 });

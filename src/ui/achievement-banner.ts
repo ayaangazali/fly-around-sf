@@ -1,5 +1,6 @@
 import type { Game } from '../game';
 import { el } from './panel-host';
+import { achievementIcon } from './stats-model';
 
 export function installAchievementBanner(game: Game): void {
   const host = el('div', 'ach-host');
@@ -11,7 +12,7 @@ export function installAchievementBanner(game: Game): void {
     game.hud.muted.add(`${game.activities.kindOf(def).icon} ${def.title}`);
     const b = el('div', 'ach');
     b.dataset.activity = id;
-    const medal = el('div', 'ach-medal', '🏆');
+    const medal = el('div', 'ach-medal', achievementIcon(def, game));
     medal.setAttribute('aria-hidden', 'true');
     const text = el('div', 'ach-text');
     text.append(el('small', '', 'Achievement unlocked'), el('strong', '', def.title), el('span', '', def.blurb));

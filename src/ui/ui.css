@@ -202,6 +202,7 @@ canvas#view { transition: filter 0.25s ease; }
 .hud > * { transition: opacity 0.2s ease; }
 .panel-open .hud > :not(.toasts):not(.ach-host), .revealing .hud > :not(.ach-host) { opacity: 0; pointer-events: none; }
 .revealing canvas#view { filter: brightness(0.6) saturate(0.9); }
+.revealing .touch-ui { opacity: 0; visibility: hidden; }
 
 @media (max-width: 640px) {
   .touch .hud-stats { top: calc(var(--top) + 100px); flex-direction: row; gap: 4px; }
@@ -216,3 +217,25 @@ canvas#view { transition: filter 0.25s ease; }
 @keyframes onboard-pop-phone { from { opacity: 0; transform: translateY(10px) scale(0.97); } }
 .sheet-body:focus-visible { outline-offset: -2px; }
 @media (max-width: 640px) { .menubar-btn { width: 42px; height: 42px; } }
+
+@media (max-height: 500px) {
+  .sheet { max-height: calc(100vh - 16px); max-height: calc(100dvh - 16px); }
+  .sheet[data-panel="map"] { height: calc(100dvh - 16px); }
+  .sheet-head { padding: 10px 14px 8px 18px; }
+  .sheet-body { padding: 12px 18px 16px; }
+  .reveal-stage { width: min(240px, 56vw, 36vh); }
+  .reveal { gap: 10px; }
+  .touch .hud-compass { left: max(12px, env(safe-area-inset-left)); transform: none; width: min(300px, 34vw); }
+  .touch .hud-stats { top: calc(var(--top) + 44px); }
+  .touch .minimap { top: calc(var(--top) + 100px); width: 96px; height: 96px; }
+  .touch .onboard { top: calc(var(--top) + 52px); }
+  .touch .ach-host { top: calc(var(--top) + 44px); bottom: auto; }
+  .touch .ach:not(:last-child) { display: none; }
+  .touch .ach { width: min(320px, 40vw); }
+  .reveal .tcard-info b { font-size: 12px; }
+  .touch .toasts { top: calc(var(--top) + 8px); }
+  .touch .touch-buttons { bottom: calc(var(--bottom) + 8px); right: calc(max(20px, env(safe-area-inset-right)) + 150px); }
+  .touch .hud-prompt { bottom: calc(var(--bottom) + 70px); }
+}
+.hud-battery { flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 8px 12px; }
+.hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }

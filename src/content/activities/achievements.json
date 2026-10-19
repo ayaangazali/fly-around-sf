@@ -996,5 +996,425 @@
       "gte": 1,
       "panel": "dex"
     }
+  },
+  {
+    "id": "achievement-ring-master",
+    "kind": "achievement",
+    "title": "Ring Master",
+    "blurb": "Finish 25 ring runs.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 60,
+    "params": {
+      "metric": "completed",
+      "gte": 25,
+      "kind": "rings"
+    }
+  },
+  {
+    "id": "achievement-pathfinder",
+    "kind": "achievement",
+    "title": "Pathfinder",
+    "blurb": "Make 100 discoveries.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 120,
+    "params": {
+      "metric": "completed",
+      "gte": 100,
+      "kind": "discover"
+    }
+  },
+  {
+    "id": "achievement-photojournalist",
+    "kind": "achievement",
+    "title": "Photojournalist",
+    "blurb": "Complete 20 photo challenges.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 60,
+    "params": {
+      "metric": "completed",
+      "gte": 20,
+      "kind": "photo"
+    }
+  },
+  {
+    "id": "achievement-express-courier",
+    "kind": "achievement",
+    "title": "Express Courier",
+    "blurb": "Complete 15 deliveries.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 50,
+    "params": {
+      "metric": "completed",
+      "gte": 15,
+      "kind": "delivery"
+    }
+  },
+  {
+    "id": "achievement-trivia-buff",
+    "kind": "achievement",
+    "title": "Trivia Buff",
+    "blurb": "Win 10 trivia challenges.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "completed",
+      "gte": 10,
+      "kind": "trivia"
+    }
+  },
+  {
+    "id": "achievement-know-it-all",
+    "kind": "achievement",
+    "title": "Know-It-All",
+    "blurb": "Win 50 trivia challenges.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 100,
+    "params": {
+      "metric": "completed",
+      "gte": 50,
+      "kind": "trivia"
+    }
+  },
+  {
+    "id": "achievement-tour-guide",
+    "kind": "achievement",
+    "title": "Tour Guide",
+    "blurb": "Finish 5 guided tours.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "tour"
+    }
+  },
+  {
+    "id": "achievement-hackathon-regular",
+    "kind": "achievement",
+    "title": "Hackathon Regular",
+    "blurb": "Ship at 5 hackathons.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "hack"
+    }
+  },
+  {
+    "id": "achievement-term-sheet",
+    "kind": "achievement",
+    "title": "Term Sheet",
+    "blurb": "Close 5 pitch meetings.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "pitch"
+    }
+  },
+  {
+    "id": "achievement-straphanger",
+    "kind": "achievement",
+    "title": "Straphanger",
+    "blurb": "Complete 5 ride-alongs with the city's transit.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "ride-along"
+    }
+  },
+  {
+    "id": "achievement-bird-chaser",
+    "kind": "achievement",
+    "title": "Bird Chaser",
+    "blurb": "Win 5 chases.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "chase"
+    }
+  },
+  {
+    "id": "achievement-magpie",
+    "kind": "achievement",
+    "title": "Magpie",
+    "blurb": "Finish 5 collect runs.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "collect"
+    }
+  },
+  {
+    "id": "achievement-shadow",
+    "kind": "achievement",
+    "title": "Shadow",
+    "blurb": "Complete 5 follow missions.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "follow"
+    }
+  },
+  {
+    "id": "achievement-steady-hands",
+    "kind": "achievement",
+    "title": "Steady Hands",
+    "blurb": "Hold steady through 5 hover challenges.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "hover"
+    }
+  },
+  {
+    "id": "achievement-soft-touch",
+    "kind": "achievement",
+    "title": "Soft Touch",
+    "blurb": "Nail 5 precision landings.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 35,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "landing"
+    }
+  },
+  {
+    "id": "achievement-riddle-me-this",
+    "kind": "achievement",
+    "title": "Riddle Me This",
+    "blurb": "Solve 10 Imperial Riddles.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 50,
+    "params": {
+      "metric": "completed",
+      "gte": 10,
+      "kind": "riddle"
+    }
+  },
+  {
+    "id": "achievement-treasure-hunter",
+    "kind": "achievement",
+    "title": "Treasure Hunter",
+    "blurb": "Finish 5 scavenger hunts.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "scavenger"
+    }
+  },
+  {
+    "id": "achievement-plot-thickens",
+    "kind": "achievement",
+    "title": "The Plot Thickens",
+    "blurb": "Finish 3 story chapters.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "completed",
+      "gte": 3,
+      "kind": "quest"
+    }
+  },
+  {
+    "id": "achievement-read-the-manual",
+    "kind": "achievement",
+    "title": "Read the Manual",
+    "blurb": "Open the controls guide.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 5,
+    "params": {
+      "metric": "panel",
+      "gte": 1,
+      "panel": "help"
+    }
+  },
+  {
+    "id": "achievement-mission-planner",
+    "kind": "achievement",
+    "title": "Mission Planner",
+    "blurb": "Open your journal of things to do.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 5,
+    "params": {
+      "metric": "panel",
+      "gte": 1,
+      "panel": "journal"
+    }
   }
 ]

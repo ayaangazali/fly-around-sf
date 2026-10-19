@@ -1,6 +1,6 @@
 import type { Game } from '../game';
 import { el } from './panel-host';
-import { baseMap, type BaseMap } from './map-base';
+import { prepareBaseMap, type BaseMap } from './map-base';
 import { headingDeg } from './map-view';
 import { settingsOf } from './settings-model';
 import { guideTarget } from './waypoint';
@@ -35,7 +35,7 @@ export function installMinimap(game: Game): { update(): void } {
       if (!base) {
         if (!pending) {
           pending = true;
-          setTimeout(() => (base = baseMap(game)), 800);
+          prepareBaseMap(game, (m) => (base = m));
         }
         return;
       }

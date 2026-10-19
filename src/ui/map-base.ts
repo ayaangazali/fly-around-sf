@@ -23,10 +23,18 @@ const LAND_HI = [96, 104, 80];
 const WATER_SHALLOW = [34, 84, 116];
 const WATER_DEEP = [12, 36, 62];
 
-let cache: BaseMap | null = null;
+interface Build {
+  map: BaseMap;
+  ctx: CanvasRenderingContext2D;
+  view: MapView;
+  next: number;
+}
 
-export function baseMap(game: Game): BaseMap {
-  if (cache) return cache;
+let build: Build | null = null;
+const CHUNK = 4000;
+
+function begin(game: Game): Build {
+  if (build) return build;
   const t = game.world.terrain;
   const up = 2;
   const extent = { minX: t.minX, minZ: t.minZ, maxX: t.minX + (t.w - 1) * t.cell, maxZ: t.minZ + (t.h - 1) * t.cell };
@@ -51,7 +59,7 @@ export function baseMap(game: Game): BaseMap {
         const nx = (e(i - 1, j) - e(i + 1, j)) / (2 * t.cell);
         const nz = (e(i, j - 1) - e(i, j + 1)) / (2 * t.cell);
         const len = Math.hypot(nx * 3, 1, nz * 3);
-        const lit = Math.max(0, ((nx * 3) * lx + ly + (nz * 3) * lz) / len / Math.hypot(lx, ly, lz));
+        const lit = Math.max(0, (nx * 3 * lx + ly + nz * 3 * lz) / len / Math.hypot(lx, ly, lz));
         const k = Math.min(1, y / 250);
         const light = 0.62 + lit * 0.55;
         rgb = LAND_LO.map((c, n) => (c + (LAND_HI[n] - c) * k) * light);
@@ -71,30 +79,51 @@ export function baseMap(game: Game): BaseMap {
   ctx.drawImage(shade, 0, 0, canvas.width, canvas.height);
   const mpp = t.cell / up;
   const view: MapView = { cx: extent.minX + (canvas.width / 2) * mpp, cz: extent.minZ + (canvas.height / 2) * mpp, scale: 1 / mpp, w: canvas.width, h: canvas.height };
-  drawBuildings(ctx, game.world.city, view, null);
-  cache = { canvas, extent, mpp };
-  return cache;
+  return (build = { map: { canvas, extent, mpp }, ctx, view, next: 0 });
 }
 
-export function drawBuildings(ctx: CanvasRenderingContext2D, city: CityData, v: MapView, only: Iterable<number> | null): void {
-  const paths = BUCKETS.map(() => new Path2D());
-  const each = (b: number) => {
-    if (city.hidden[b]) return;
-    const h = city.height[b];
-    const path = paths[BUCKETS.findIndex(([max]) => h < max)];
-    const s = city.start[b];
-    for (let k = 0; k < city.len[b]; k++) {
-      const { sx, sy } = toScreen(v, city.xs[s + k], city.zs[s + k]);
-      if (k === 0) path.moveTo(sx, sy);
-      else path.lineTo(sx, sy);
-    }
-    path.closePath();
+function advance(game: Game, b: Build, deadline: number): boolean {
+  const city = game.world.city;
+  while (b.next < city.count) {
+    const end = Math.min(city.count, b.next + CHUNK);
+    drawBuildings(b.ctx, city, b.view, Array.from({ length: end - b.next }, (_, i) => b.next + i));
+    b.next = end;
+    if (performance.now() > deadline) return b.next >= city.count;
+  }
+  return true;
+}
+
+export function baseMap(game: Game): BaseMap {
+  const b = begin(game);
+  advance(game, b, Infinity);
+  return b.map;
+}
+
+export function prepareBaseMap(game: Game, onReady: (map: BaseMap) => void): void {
+  const tick = () => {
+    const b = begin(game);
+    if (advance(game, b, performance.now() + 8)) onReady(b.map);
+    else setTimeout(tick, 16);
   };
-  if (only) for (const b of only) each(b);
-  else for (let b = 0; b < city.count; b++) each(b);
-  BUCKETS.forEach(([, color], i) => {
-    ctx.fillStyle = color;
-    ctx.fill(paths[i]);
+  setTimeout(tick, 16);
+}
+
+export function drawBuildings(ctx: CanvasRenderingContext2D, city: CityData, v: MapView, ids: Iterable<number>): void {
+  const groups: number[][] = BUCKETS.map(() => []);
+  for (const b of ids) if (!city.hidden[b]) groups[BUCKETS.findIndex(([max]) => city.height[b] < max)].push(b);
+  groups.forEach((list, i) => {
+    ctx.fillStyle = BUCKETS[i][1];
+    ctx.beginPath();
+    for (const b of list) {
+      const s = city.start[b];
+      for (let k = 0; k < city.len[b]; k++) {
+        const { sx, sy } = toScreen(v, city.xs[s + k], city.zs[s + k]);
+        if (k === 0) ctx.moveTo(sx, sy);
+        else ctx.lineTo(sx, sy);
+      }
+      ctx.closePath();
+    }
+    ctx.fill();
   });
 }
 
@@ -104,7 +133,8 @@ export function drawMap(ctx: CanvasRenderingContext2D, game: Game, v: MapView): 
   ctx.fillStyle = `rgb(${WATER_DEEP.join(',')})`;
   ctx.fillRect(0, 0, v.w, v.h);
   const tl = toScreen(v, extent.minX, extent.minZ);
-  ctx.imageSmoothingEnabled = v.scale * mpp < 1.5;
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
   ctx.drawImage(canvas, tl.sx, tl.sy, canvas.width * mpp * v.scale, canvas.height * mpp * v.scale);
   if (v.scale * mpp > 1.6) {
     const r = Math.hypot(v.w, v.h) / 2 / v.scale;

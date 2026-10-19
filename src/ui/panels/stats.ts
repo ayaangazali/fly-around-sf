@@ -1,7 +1,7 @@
 import './stats.css';
 import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
-import { breakdowns, formatDuration, pilotLevel, type Breakdown } from '../stats-model';
+import { achievementIcon, breakdowns, formatDuration, pilotLevel, type Breakdown } from '../stats-model';
 import { achievementProgress } from '../../activities/kinds/achievement';
 import { formatDistance } from '../map-view';
 import { settingsOf } from '../settings-model';
@@ -94,7 +94,7 @@ export const panel: Panel = {
       fill.style.width = `${p * 100}%`;
       meter.append(fill);
       meter.setAttribute('aria-hidden', 'true');
-      li.append(el('span', 'ach-icon', got ? '🏆' : '🔒'), el('strong', '', d.title), el('p', '', d.blurb), meter, el('small', '', got ? `Unlocked ${new Date(save.completed[d.id]).toLocaleDateString()}` : `${Math.floor(p * 100)}%`));
+      li.append(el('span', 'ach-icon', achievementIcon(d, game)), el('strong', '', d.title), el('p', '', d.blurb), meter, el('small', '', got ? `Unlocked ${new Date(save.completed[d.id]).toLocaleDateString()}` : `${Math.floor(p * 100)}%`));
       grid.append(li);
     }
     ach.append(grid);

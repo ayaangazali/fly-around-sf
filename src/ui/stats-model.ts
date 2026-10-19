@@ -1,4 +1,5 @@
 import type { Game } from '../game';
+import type { ActivityDef } from '../activities/types';
 
 export interface Breakdown {
   key: string;
@@ -40,4 +41,29 @@ export function breakdowns(game: Game): { byHood: Breakdown[]; byKind: Breakdown
   }
   const sort = (a: Breakdown, b: Breakdown) => b.done / b.total - a.done / a.total || b.total - a.total || a.label.localeCompare(b.label);
   return { byHood: [...hoods.values()].sort(sort), byKind: [...kinds.values()].sort(sort) };
+}
+
+const METRIC_ICON: Record<string, string> = {
+  distance: '📏',
+  flightTime: '⏱️',
+  crashes: '💥',
+  sessions: '📅',
+  xp: '⭐',
+  cards: '🃏',
+  completed: '✅',
+  neighborhoods: '🏘️',
+  bests: '🥇',
+  altitude: '🏔️',
+  speed: '⚡',
+  skim: '🌊',
+  splash: '💦',
+  night: '🌙',
+  golden: '🌅',
+  drain: '🔋',
+  panel: '🧭',
+};
+
+export function achievementIcon(def: ActivityDef, game: Game): string {
+  const p = def.params as { metric?: string; kind?: string } | undefined;
+  return (p?.kind && game.activities.kinds.get(p.kind)?.icon) || METRIC_ICON[p?.metric ?? ''] || '🏆';
 }
