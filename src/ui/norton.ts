@@ -42,11 +42,11 @@ export function nortonSvg(): string {
 <path d="M45 34 L75 34 L75.6 40.5 L44.4 40.5 Z" fill="#7d1d25"/>
 <circle cx="70.5" cy="31" r="5.4" fill="url(#${id}g)" stroke="#8a5b0e" stroke-width="0.6"/>
 <circle cx="70.5" cy="31" r="2.6" fill="#7d1d25"/>
-<path d="M70 27 C72 17 81 8 95 4" stroke="#2c5f45" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-<g stroke="#3f8d5f" stroke-width="0.9" opacity="0.9"><path d="M75 17 l-4 -3 M78 13 l-3 -4 M82 10 l-2 -4 M86 8 l-1 -4 M77 15 l4 1 M81 11 l4 0 M85 9 l4 -1"/></g>
-<ellipse cx="96" cy="5" rx="7" ry="5.2" fill="#2f9a74" transform="rotate(-22 96 5)"/>
-<ellipse cx="96" cy="5" rx="3.6" ry="2.8" fill="#1f4fa3" transform="rotate(-22 96 5)"/>
-<circle cx="96" cy="5" r="1.4" fill="#f0c341"/>
+<path d="M70 27 C70.5 20 75.5 15 82 12.5" stroke="#2c5f45" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<g stroke="#3f8d5f" stroke-width="0.9" opacity="0.9"><path d="M72 22 l-4 -1.5 M74 18.5 l-3.5 -2.5 M77 15.8 l-2.5 -3.5 M73 20.5 l4 0.5 M75.8 17 l4 -0.5 M78.8 14.6 l3.5 -1.5"/></g>
+<ellipse cx="85" cy="12" rx="6.2" ry="4.6" fill="#2f9a74" transform="rotate(-28 85 12)"/>
+<ellipse cx="85" cy="12" rx="3.2" ry="2.4" fill="#1f4fa3" transform="rotate(-28 85 12)"/>
+<circle cx="85" cy="12" r="1.3" fill="#f0c341"/>
 </g>
 <circle cx="60" cy="60" r="58.5" fill="none" stroke="#f0c341" stroke-opacity="0.55" stroke-width="3"/>
 </svg>`;
