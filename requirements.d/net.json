@@ -1,0 +1,5 @@
+[
+  { "id": "R-NET-SAFE", "owner": "net", "text": "Peer messages are shape-checked, size-capped, clamped and rate limited; blocked players are ignored; peer text is never parsed as HTML." },
+  { "id": "R-NET-OFFLINE", "owner": "net", "text": "When matchmaking relays are unreachable the game says so clearly and single player keeps working." },
+  { "id": "R-NET-TOUCH", "owner": "net", "text": "The friends panel and multiplayer HUD fit tablets and phones without overflow, with a hold-to-talk button for touch." }
+]

@@ -100,6 +100,15 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.
 
+### Multiplayer (`game.net`)
+
+- `?net=local` swaps the Nostr P2P transport for a BroadcastChannel one, so two tabs of one browser share a room (tests use it).
+- `game.net.room`, `.status`, `.visiblePeers()` (`{ id, name, color, pos, yaw, mic }`), `.chat`, `.pings`, `.match`.
+- A started match is only an invite for everyone but the host: `match.playing` stays false (no teleport, no activity stop, no panel close) until the player calls `game.net.joinMatch()`. `leaveMatch()` drops out.
+- To ping from anywhere (the map, a panel): `game.bus.emit('net:ping-request', { x, z })`. Everyone in the room sees it.
+- Events: `net:status`, `net:join`, `net:leave`, `net:chat`, `net:ping`, `net:match` (see `src/net/session.ts`).
+- Save flags written by party modes: `flags.mpPlayed`, `flags.mpWins`.
+
 ### Adding events
 
 Extend the event map with declaration merging in your own file, never by editing `bus.ts`:
