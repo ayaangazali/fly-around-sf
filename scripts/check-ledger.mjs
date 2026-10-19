@@ -37,7 +37,7 @@ function addPlaywright(file) {
 }
 
 addVitest('reports/vitest.json');
-addPlaywright('reports/playwright.json');
+for (const f of existsSync('reports') ? readdirSync('reports').filter((n) => /^playwright.*\.json$/.test(n)) : []) addPlaywright(`reports/${f}`);
 
 const rows = req.requirements.map((r) => {
   const tagged = results.filter((t) => t.title.includes(`[${r.id}]`));

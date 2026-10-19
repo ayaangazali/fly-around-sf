@@ -74,6 +74,7 @@ interface ActivityKind {
 - Visible text never uses em dashes.
 - Real company names, never their logos. Every fact on a card has a source URL in the card's `sources`.
 - No real private residences, no real private people. Archetype NPCs only.
+  - Exception: the Painted Ladies appear only as the public streetscape seen from Alamo Square. No house numbers, owners or interiors.
 - Every external feed (weather, transit, planes, quakes) must work offline with a fallback; tests block the network.
 - No new runtime dependency without a reason that a few lines of code cannot cover.
 

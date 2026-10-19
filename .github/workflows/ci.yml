@@ -16,9 +16,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - run: pnpm build
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: report-unit
+          path: reports
+          if-no-files-found: ignore
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: dist
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: lite-1, shard: 1/6, radius: '3000' }
+          - { name: lite-2, shard: 2/6, radius: '3000' }
+          - { name: lite-3, shard: 3/6, radius: '3000' }
+          - { name: lite-4, shard: 4/6, radius: '3000' }
+          - { name: lite-5, shard: 5/6, radius: '3000' }
+          - { name: lite-6, shard: 6/6, radius: '3000' }
+          - { name: full-city, shard: 1/1, radius: '', files: 'tests/e2e/boot.spec.ts tests/e2e/activities.spec.ts --project=desktop' }
+    env:
+      E2E_CITY_RADIUS: ${{ matrix.radius }}
+      E2E_JSON: reports/playwright-${{ matrix.name }}.json
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -28,32 +67,35 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm typecheck
-      - run: pnpm test:coverage
       - run: pnpm build
-      - run: pnpm e2e
-      - name: Requirement ledger
-        if: always()
-        run: |
-          pnpm ledger | tee -a "$GITHUB_STEP_SUMMARY" || exit_code=$?
-          cat reports/ledger.md >> "$GITHUB_STEP_SUMMARY"
-          exit ${exit_code:-0}
+      - run: pnpm exec playwright test ${{ matrix.files }} --shard=${{ matrix.shard }}
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: reports
+          name: report-${{ matrix.name }}
           path: |
             reports
-            playwright-report
             test-results
           if-no-files-found: ignore
-      - uses: actions/upload-pages-artifact@v5
-        if: github.ref == 'refs/heads/main'
+
+  ledger:
+    needs: [unit, e2e]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
-          path: dist
+          pattern: report-*
+          merge-multiple: true
+      - name: Requirement ledger
+        run: |
+          node scripts/check-ledger.mjs | tee -a "$GITHUB_STEP_SUMMARY" || exit_code=$?
+          cat reports/ledger.md >> "$GITHUB_STEP_SUMMARY"
+          exit ${exit_code:-0}
 
   deploy:
-    needs: test
+    needs: [unit, e2e, ledger]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
