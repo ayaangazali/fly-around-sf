@@ -242,6 +242,7 @@ canvas#view { transition: filter 0.25s ease; }
   .reveal-stage { width: min(240px, 56vw, 36vh); }
   .reveal { gap: 10px; }
   .touch .hud-compass { top: var(--top); left: max(12px, env(safe-area-inset-left)); transform: none; width: min(300px, 34vw); }
+  .touch .menubar { max-width: calc(100vw - min(300px, 34vw) - max(12px, env(safe-area-inset-left)) - max(12px, env(safe-area-inset-right)) - 12px); }
   .touch .hud-stats { top: calc(var(--top) + 44px); }
   .touch .minimap { top: calc(var(--top) + 100px); width: 96px; height: 96px; }
   .touch .onboard { top: calc(var(--top) + 52px); }

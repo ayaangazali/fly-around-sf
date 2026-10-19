@@ -1,4 +1,4 @@
-.photo-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 20px; display: grid; place-items: center; pointer-events: auto; transition: background 0.15s, box-shadow 0.2s; }
+.photo-btn { position: absolute; right: max(12px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 20px; display: grid; place-items: center; pointer-events: auto; transition: background 0.15s, box-shadow 0.2s; }
 .photo-btn:hover { background: var(--glass-strong); }
 .vf-open .photo-btn, .vf-open .hud-stats, .vf-open .hud-prompt { visibility: hidden; }
 

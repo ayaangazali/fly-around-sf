@@ -67,7 +67,7 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
 .toast { animation-name: fadein; }
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 
-.menubar { position: absolute; top: max(12px, env(safe-area-inset-top)); right: 12px; display: flex; gap: 6px; flex-wrap: wrap; justify-content: end; max-width: 50vw; }
+.menubar { position: absolute; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); display: flex; gap: 6px; flex-wrap: wrap; justify-content: end; max-width: 50vw; }
 .menubar-btn { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 18px; display: grid; place-items: center; transition: transform 0.15s, background 0.15s; }
 .menubar-btn:hover { transform: translateY(-1px); background: var(--glass-strong); }
 
@@ -103,6 +103,7 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
   .menubar { max-width: 60vw; }
   .menubar-btn { width: 38px; height: 38px; }
   .sheet { top: auto; bottom: 0; left: 0; right: 0; transform: none; width: 100%; max-height: 88vh; border-radius: 22px 22px 0 0; animation: none; }
+  .sheet-body { padding-bottom: max(22px, env(safe-area-inset-bottom)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
