@@ -56,6 +56,11 @@ export class ActivityRunner {
     if (!def || this.locked(def)) return false;
     const kind = this.kindOf(def);
     if (kind.passive) return false;
+    const why = kind.blocked?.(def, this.game);
+    if (why) {
+      this.game.bus.emit('toast', { text: why, kind: 'warn' });
+      return false;
+    }
     this.stop();
     this.active = { def, inst: kind.start(def, this.game), t: 0 };
     this.game.bus.emit('activity:start', { id });

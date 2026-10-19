@@ -10,7 +10,9 @@ export interface TriviaParams {
 }
 
 const DEFAULT_LIMIT = 30;
+export const RETRY_AFTER = 60;
 
+const retryAt = new Map<string, number>();
 let current: { pick(option: string): void } | null = null;
 
 export const kind: ActivityKind = {
@@ -30,6 +32,10 @@ export const kind: ActivityKind = {
     if (p?.timeLimit !== undefined && !(p.timeLimit >= 5)) errors.push('params.timeLimit must be >= 5');
     return errors;
   },
+  blocked(def, game) {
+    const wait = (retryAt.get(def.id) ?? 0) - game.simTime;
+    return wait > 0 ? `${def.title}: try again in ${Math.ceil(wait)}s` : null;
+  },
   start(def, game) {
     const p = def.params as unknown as TriviaParams;
     const limit = p.timeLimit ?? DEFAULT_LIMIT;
@@ -39,6 +45,7 @@ export const kind: ActivityKind = {
     const pick = (i: number) => {
       if (chosen !== null) return;
       chosen = i;
+      if (i !== p.answer) retryAt.set(def.id, game.simTime + RETRY_AFTER);
       view?.reveal(i, p.answer);
     };
     const view = showTrivia(game, def, p, limit, pick);

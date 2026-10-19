@@ -22,7 +22,7 @@ async function press(page: Page, key: string): Promise<void> {
   await page.evaluate(() => window.__fly.step(0.1));
 }
 
-test('[R-PLACES] [R-TRIVIA] [R-TOUR] every place discovery, trivia and tour is completed by the solver', async ({ page }) => {
+test('[R-PLACES] [R-TRIVIA] [R-GUIDED-TOUR] every place discovery, trivia and tour is completed by the solver', async ({ page }) => {
   test.setTimeout(600_000);
   const errors = await boot(page);
   const result = await page.evaluate(async () => {
@@ -43,7 +43,7 @@ test('[R-PLACES] [R-TRIVIA] [R-TOUR] every place discovery, trivia and tour is c
   expect(errors).toEqual([]);
 });
 
-test('[R-TRIVIA] pressing F opens the question; a wrong click fails and reveals the answer, a right key press wins', async ({ page }) => {
+test('[R-TRIVIA] pressing F opens the question; typing elsewhere is ignored, a wrong click fails, reveals the answer and locks a retry for a minute, then a right key press wins', async ({ page }) => {
   const errors = await boot(page);
   const id = 'trivia-golden-gate-bridge';
   await goTo(page, id);
@@ -56,15 +56,34 @@ test('[R-TRIVIA] pressing F opens the question; a wrong click fails and reveals 
   await page.evaluate(() => window.__fly.step(3));
   await shot(page, test.info().outputPath('trivia-question.png'));
 
+  await page.evaluate(() => {
+    const box = document.createElement('input');
+    box.id = 'typing-probe';
+    document.body.append(box);
+    box.focus();
+  });
+  await page.keyboard.press('Digit1');
+  await page.keyboard.press('Digit2');
+  await page.evaluate(() => {
+    document.getElementById('typing-probe')!.remove();
+    window.__fly.step(0.1);
+  });
+  await expect(card).not.toHaveClass(/answered/);
+
   await card.locator('.trivia-opt:not([data-option="0"])').first().click();
   await page.evaluate(() => window.__fly.step(0.1));
   await expect(card).toHaveClass(/wrong/);
-  await expect(card.locator('.trivia-result strong')).toHaveText('Not quite. It was 1937.');
+  await expect(card.locator('.trivia-result strong')).toHaveText('Not quite. Answer: 1937');
   await expect(card.locator('.trivia-opt.is-answer')).toContainText('1937');
   await expect(card.locator('.trivia-opt.is-chosen')).toHaveCount(1);
   expect(await page.evaluate((id) => [window.__fly.state().active, window.__fly.game.save.isDone(id)], id)).toEqual([null, false]);
   await shot(page, test.info().outputPath('trivia-wrong.png'));
 
+  await press(page, 'KeyF');
+  expect(await page.evaluate(() => window.__fly.state().active)).toBeNull();
+  await expect(page.locator('.toasts')).toContainText(/Golden Gate Bridge Trivia: try again in \d+s/);
+  await expect(page.locator('.trivia:not(.answered)')).toHaveCount(0);
+  await page.evaluate(() => window.__fly.step(61));
   await press(page, 'KeyF');
   const fresh = page.locator('.trivia:not(.answered)');
   await expect(fresh).toBeVisible();
@@ -77,7 +96,7 @@ test('[R-TRIVIA] pressing F opens the question; a wrong click fails and reveals 
   expect(errors).toEqual([]);
 });
 
-test('[R-TOUR] a tour narrates each stop in order and points the waypoint at the next', async ({ page }) => {
+test('[R-GUIDED-TOUR] a tour narrates each stop in order and points the waypoint at the next', async ({ page }) => {
   const errors = await boot(page);
   const id = 'tour-golden-gate-shoreline';
   await goTo(page, id);
@@ -112,7 +131,7 @@ test('[R-TOUR] a tour narrates each stop in order and points the waypoint at the
   expect(errors).toEqual([]);
 });
 
-test('[R-TRIVIA] [R-TOUR] @touch tapping the prompt and an answer works and the overlays fit the screen', async ({ page }) => {
+test('[R-TRIVIA] [R-GUIDED-TOUR] @touch tapping the prompt and an answer works and the overlays fit the screen', async ({ page }) => {
   test.skip(!test.info().project.use.hasTouch, 'needs a touch screen');
   const errors = await boot(page);
   await goTo(page, 'trivia-boudin-bakery');

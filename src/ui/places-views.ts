@@ -3,6 +3,7 @@ import type { ActivityDef } from '../activities/types';
 import type { TriviaParams } from '../activities/kinds/trivia';
 import type { TourStop } from '../activities/kinds/tour';
 import { el } from './panel-host';
+import { isTyping } from '../core/input';
 import './places.css';
 
 export interface TriviaView {
@@ -64,7 +65,7 @@ export function showTrivia(game: Game, def: ActivityDef, p: TriviaParams, limit:
   root.append(timer, kicker, title, q, grid, hint, result);
   const onKey = (e: KeyboardEvent) => {
     const m = /^(?:Digit|Numpad)([1-4])$/.exec(e.code);
-    if (!m || game.panels.openId) return;
+    if (!m || game.panels.openId || isTyping(e.target)) return;
     e.preventDefault();
     onPick(order[Number(m[1]) - 1]);
   };
@@ -86,9 +87,9 @@ export function showTrivia(game: Game, def: ActivityDef, p: TriviaParams, limit:
         b.classList.toggle('is-answer', i === answer);
         b.classList.toggle('is-chosen', i === chosen);
       });
-      const head = won ? 'Correct!' : `${chosen < 0 ? "Time's up." : 'Not quite.'} It was ${p.options[answer]}.`;
+      const head = won ? 'Correct!' : `${chosen < 0 ? "Time's up." : 'Not quite.'} Answer: ${p.options[answer]}`;
       result.replaceChildren(el('strong', undefined, head), el('p', undefined, p.explain));
-      if (!won) result.append(el('small', undefined, 'Press F or tap the prompt to try again.'));
+      if (!won) result.append(el('small', undefined, 'Fly on and come back in a minute for another try.'));
       hint.remove();
     },
     close(won) {

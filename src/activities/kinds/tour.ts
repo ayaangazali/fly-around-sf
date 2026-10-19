@@ -14,6 +14,8 @@ export interface TourParams {
 }
 
 const ALT = 45;
+const LOST_AFTER = 45;
+const WARN_AFTER = 30;
 
 export const kind: ActivityKind = {
   kind: 'tour',
@@ -39,6 +41,8 @@ export const kind: ActivityKind = {
     const view = showTour(game, def, p.stops);
     let next = 0;
     let t = 0;
+    let best = Infinity;
+    let stall = 0;
     const guide = () => {
       const s = p.stops[next];
       game.waypoint = s ? { ...pts[next], label: s.name } : null;
@@ -49,15 +53,26 @@ export const kind: ActivityKind = {
         t += dt;
         const pos = game.flight.pos;
         const target = pts[next];
-        if (Math.hypot(pos.x - target.x, pos.z - target.z) <= radius && Math.abs(pos.y - target.y) < 90) {
+        const d = Math.hypot(pos.x - target.x, pos.z - target.z);
+        if (d <= radius && Math.abs(pos.y - target.y) < 90) {
           view?.arrive(next);
           next++;
           guide();
-        }
+          best = Infinity;
+          stall = 0;
+        } else if (d < best - 5) {
+          best = d;
+          stall = 0;
+        } else if ((stall += dt) >= LOST_AFTER) return 'failed';
         return next >= pts.length ? 'done' : 'running';
       },
       progress: () => next / pts.length,
-      hud: () => (next < pts.length ? `${def.title}  ${next}/${pts.length}  next: ${p.stops[next].name}` : def.title),
+      hud: () => {
+        if (next >= pts.length) return def.title;
+        const name = p.stops[next].name;
+        if (stall >= WARN_AFTER) return `${def.title}  head for ${name} or the tour ends in ${Math.ceil(LOST_AFTER - stall)}s`;
+        return `${def.title}  ${next}/${pts.length}  next: ${name}`;
+      },
       targets: () => pts.slice(next),
       elapsed: () => t,
       dispose() {

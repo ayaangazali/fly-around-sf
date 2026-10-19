@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { kind as trivia } from '../../src/activities/kinds/trivia';
+import { kind as trivia, RETRY_AFTER } from '../../src/activities/kinds/trivia';
 import { kind as tour } from '../../src/activities/kinds/tour';
 import type { ActivityDef } from '../../src/activities/types';
 import { fakeGame } from './helpers';
@@ -94,6 +94,39 @@ describe('trivia kind', () => {
     expect(inst.update(0.1)).toBe('failed');
   });
 
+  it('[R-TRIVIA] a wrong answer blocks a retry for a minute of game time, with a toast saying how long', () => {
+    const game = fakeGame();
+    game.simTime = 100;
+    const toasts: string[] = [];
+    game.bus.on('toast', ({ text }) => toasts.push(text));
+    const def = { ...quiz, id: 'trivia-cooldown' };
+    game.activities.register([trivia], [def]);
+    expect(game.activities.start(def.id)).toBe(true);
+    const [step] = trivia.solve({ ...def, params: { ...def.params, answer: 1 } }, game);
+    if ('call' in step) step.call(game);
+    game.activities.update(1 / 30);
+    expect(game.activities.active).toBeNull();
+    game.simTime = 100 + RETRY_AFTER - 12.5;
+    expect(game.activities.start(def.id)).toBe(false);
+    expect(toasts.at(-1)).toBe('Test Trivia: try again in 13s');
+    expect(trivia.blocked?.(quiz, game)).toBeNull();
+    game.simTime = 100 + RETRY_AFTER;
+    expect(game.activities.start(def.id)).toBe(true);
+    for (const s of trivia.solve(def, game)) {
+      if ('call' in s) s.call(game);
+      game.activities.update(1 / 30);
+    }
+    expect(game.save.isDone(def.id)).toBe(true);
+  });
+
+  it('[R-TRIVIA] a right answer never blocks a replay', () => {
+    const game = fakeGame();
+    game.simTime = 5;
+    const def = { ...quiz, id: 'trivia-replay' };
+    run(def, trivia.solve(def, game), game).inst.dispose?.();
+    expect(trivia.blocked?.(def, game)).toBeNull();
+  });
+
   it('[R-TRIVIA] reports full progress after a correct answer', () => {
     const game = fakeGame();
     const { inst, status } = run(quiz, trivia.solve(quiz, game), game);
@@ -103,7 +136,7 @@ describe('trivia kind', () => {
 });
 
 describe('tour kind', () => {
-  it('[R-TOUR] validates 4 to 6 named stops in San Francisco with narration and a sane radius', () => {
+  it('[R-GUIDED-TOUR] validates 4 to 6 named stops in San Francisco with narration and a sane radius', () => {
     expect(tour.validate(walk)).toEqual([]);
     const bad = (params: Record<string, unknown>) => tour.validate({ ...walk, params: { ...walk.params, ...params } });
     expect(bad({ stops: stops.slice(0, 3) })).toEqual(['params.stops needs 4 to 6 stops']);
@@ -116,7 +149,7 @@ describe('tour kind', () => {
     expect(bad({ radius: 5 })).toEqual(['params.radius must be 15..200']);
   });
 
-  it('[R-TOUR] stops must be visited in order and the waypoint leads to the next one', () => {
+  it('[R-GUIDED-TOUR] stops must be visited in order and the waypoint leads to the next one', () => {
     const game = fakeGame();
     const inst = tour.start(walk, game);
     expect(game.waypoint?.label).toBe('Stop One');
@@ -137,7 +170,7 @@ describe('tour kind', () => {
     expect(game.waypoint).toBeNull();
   });
 
-  it('[R-TOUR] the solver completes the tour, clears the waypoint and records a time', () => {
+  it('[R-GUIDED-TOUR] the solver completes the tour, clears the waypoint and records a time', () => {
     const game = fakeGame();
     game.activities.register([tour], [walk]);
     game.flight.pos = { ...game.activities.position(walk) };
@@ -151,7 +184,44 @@ describe('tour kind', () => {
     expect(game.waypoint).toBeNull();
   });
 
-  it('[R-TOUR] leaves a waypoint the player set elsewhere alone', () => {
+  it('[R-GUIDED-TOUR] wandering off fails the tour after 45 s without getting closer, warning from 30 s, and any progress resets the clock', () => {
+    const game = fakeGame();
+    const inst = tour.start(walk, game);
+    const pts = tour.solve(walk, game).filter((s) => 'teleport' in s).map((s) => ('teleport' in s ? s.teleport : null)!);
+    const at = (d: number) => (game.flight.pos = { x: pts[0].x + d, y: pts[0].y, z: pts[0].z });
+    at(3000);
+    expect(inst.update(0.1)).toBe('running');
+    at(2000);
+    for (let i = 0; i < 29; i++) expect(inst.update(1)).toBe('running');
+    expect(inst.hud()).toBe('Test Tour  0/4  next: Stop One');
+    at(1998);
+    expect(inst.update(1)).toBe('running');
+    at(1990);
+    expect(inst.update(1)).toBe('running');
+    for (let i = 0; i < 30; i++) expect(inst.update(1)).toBe('running');
+    expect(inst.hud()).toBe('Test Tour  head for Stop One or the tour ends in 15s');
+    at(5000);
+    for (let i = 0; i < 14; i++) expect(inst.update(1)).toBe('running');
+    expect(inst.update(1)).toBe('failed');
+    inst.dispose?.();
+    expect(game.waypoint).toBeNull();
+  });
+
+  it('[R-GUIDED-TOUR] reaching a stop resets the clock, so lingering to listen is allowed', () => {
+    const game = fakeGame();
+    game.activities.register([tour], [walk]);
+    game.flight.pos = { ...game.activities.position(walk) };
+    expect(game.activities.start(walk.id)).toBe(true);
+    const pts = tour.solve(walk, game).filter((s) => 'teleport' in s).map((s) => ('teleport' in s ? s.teleport : null)!);
+    game.flight.pos = { ...pts[0] };
+    for (let i = 0; i < 40; i++) game.activities.update(1);
+    expect(game.activities.active?.def.id).toBe(walk.id);
+    for (let i = 0; i < 10; i++) game.activities.update(1);
+    expect(game.activities.active).toBeNull();
+    expect(game.save.isDone(walk.id)).toBe(false);
+  });
+
+  it('[R-GUIDED-TOUR] leaves a waypoint the player set elsewhere alone', () => {
     const game = fakeGame();
     const inst = tour.start(walk, game);
     for (const s of tour.solve(walk, game)) if ('teleport' in s) {

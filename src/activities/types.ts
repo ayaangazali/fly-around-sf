@@ -46,6 +46,7 @@ export interface ActivityKind {
   icon: string;
   passive?: boolean;
   validate(def: ActivityDef): string[];
+  blocked?(def: ActivityDef, game: Game): string | null;
   start(def: ActivityDef, game: Game): ActivityInstance;
   solve(def: ActivityDef, game: Game): SolverStep[];
 }
