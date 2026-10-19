@@ -106,14 +106,14 @@ void main() {
   vec4 p = projectionMatrix * viewMatrix * vec4(cameraPosition + d * 1000.0, 1.0);
   gl_Position = p.xyww;
   float flux = pow(10.0, -0.4 * (aStar.z - 1.0));
-  gl_PointSize = clamp(1.4 + 2.2 * sqrt(flux), 1.4, 5.0) * uPx;
+  gl_PointSize = clamp(2.2 + 3.0 * sqrt(flux), 2.2, 7.0) * uPx;
   float bv = clamp(aStar.w, -0.3, 1.8);
   vColor = bv < 0.4 ? mix(vec3(0.7, 0.8, 1.0), vec3(1.0), (bv + 0.3) / 0.7) : mix(vec3(1.0), vec3(1.0, 0.72, 0.45), (bv - 0.4) / 1.4);
   float cloud = 0.0;
   if (d.y > 0.0) cloud = smoothstep(1.0 - uCover, 1.0 - uCover + 0.32, fbm(d.xz / (d.y + 0.12) * 1.6 + vec2(uTime * 0.0035, uTime * 0.0012)));
   float twinkle = 0.8 + 0.2 * sin(uTime * (2.0 + fract(aStar.x * 91.0) * 3.0) + aStar.y * 50.0);
   float ext = smoothstep(0.0, 0.25, d.y);
-  vAlpha = smoothstep(0.35, 0.95, uNight) * min(1.0, 0.25 + flux) * ext * (1.0 - cloud) * twinkle * exp(-karlDepth(cameraPosition, cameraPosition + d * 3000.0));
+  vAlpha = smoothstep(0.35, 0.95, uNight) * min(1.0, 0.4 + flux) * ext * (1.0 - cloud) * twinkle * exp(-karlDepth(cameraPosition, cameraPosition + d * 3000.0));
 }`;
 
 const STAR_FRAG = /* glsl */ `
@@ -280,7 +280,7 @@ export class SkySystem {
     (mm.uSunLocal.value as THREE.Vector3).set(this.sunDir.dot(r), this.sunDir.dot(up), -this.sunDir.dot(this.moonDir));
     mm.uIllum.value = this.moonIllumination;
     this.moon.visible = mp.altitude > -0.03;
-    this.stars.material.uniforms.uLst.value = siderealTime(date, ORIGIN.lon);
+    this.stars.material.uniforms.uLst.value = siderealTime(date, ORIGIN.lon) % (2 * Math.PI);
 
     this.fog.color.copy(this.colors.horizon);
     this.fog.near = 900 / this.fogDensity;

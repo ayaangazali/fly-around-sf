@@ -122,7 +122,7 @@ export function patchGround(mat: THREE.MeshLambertMaterial, tex: THREE.Texture, 
       .replace(
         '#include <emissivemap_fragment>',
         `#include <emissivemap_fragment>
-        totalEmissiveRadiance += uNight * land * (1.0 - max(cov.r, cov.g)) * (1.0 - cov.a) * vec3(0.05, 0.035, 0.02);`,
+        totalEmissiveRadiance += uNight * land * (1.0 - max(cov.r, cov.g)) * (1.0 - cov.a) * vec3(0.025, 0.018, 0.01);`,
       );
   };
   mat.needsUpdate = true;
