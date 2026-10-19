@@ -79,7 +79,7 @@
     "id": "palace-of-fine-arts",
     "name": "Palace of Fine Arts",
     "category": "landmark",
-    "art": "dome",
+    "art": "rotunda",
     "rarity": "common",
     "neighborhood": "Marina",
     "at": { "lat": 37.80292, "lon": -122.44839, "alt": 35 },
