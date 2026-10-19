@@ -55,6 +55,24 @@ test.describe('title screen', () => {
     await onStep(page, 'forward');
   });
 
+  test('[R-HOLD] nothing happens behind the title: the HUD is out of reach and the first card waits for Start', async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+    await page.goto('./?cityRadius=1500&quality=low');
+    await expect(page.locator('.title-menu')).toBeVisible({ timeout: 180_000 });
+    await page.waitForTimeout(1500);
+    expect(await page.evaluate(() => JSON.parse(localStorage.getItem('fly-around-sf:save') ?? '{}').cards)).toEqual([]);
+    await expect(page.locator('.reveal')).toHaveCount(0);
+    for (let i = 0; i < 8; i++) {
+      await page.keyboard.press('Tab');
+      expect(await page.evaluate(() => !!document.activeElement?.closest('#ui'))).toBe(false);
+    }
+    await page.locator('.title-btn[data-action="start"]').focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.reveal')).toBeVisible();
+    await expect(page.locator('.toast', { hasText: 'to chat' })).toHaveCount(0);
+  });
+
   test('[R-TITLE] a share link with a room offers Join friends first', async ({ page }) => {
     await boot(page, 'title&room=FOGCITY');
     const join = page.locator('.title-btn[data-action="join"]');

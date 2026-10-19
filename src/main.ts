@@ -14,9 +14,11 @@ const opts = parseOptions(location.search, import.meta.env.BASE_URL);
 savedQuality(opts, location.search, new SaveStore().data.settings.quality);
 const canvas = document.getElementById('view') as HTMLCanvasElement;
 const ui = document.getElementById('ui') as HTMLElement;
+ui.inert = true;
 const title = mountTitle(document.getElementById('loading') as HTMLElement, opts.room);
 
 const game = new Game(canvas, ui, opts);
+game.autoSim = false;
 const api = opts.test ? installTestApi(game, errors) : null;
 
 game
@@ -26,7 +28,10 @@ game
     installUi(game);
     if (import.meta.env.PROD && !opts.test) registerServiceWorker(import.meta.env.BASE_URL);
     if (api) api.ready = true;
-    if (api && !new URLSearchParams(location.search).has('title')) return title.remove();
+    if (api && !new URLSearchParams(location.search).has('title')) {
+      ui.inert = false;
+      return title.remove();
+    }
     title.ready(game, () => beginFlight(game));
   })
   .catch((e: unknown) => {
