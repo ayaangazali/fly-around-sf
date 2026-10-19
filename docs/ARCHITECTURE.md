@@ -93,6 +93,7 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 - `game.timeScale`, `game.clockOffset`: time-of-day controls.
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.
+- `dex:show` event (`{ id }`, declared in `src/ui/panels/ask.ts`): emitted right after something opens the `dex` panel to point at one card. The Dex should scroll to and highlight it.
 
 ### Adding events
 
