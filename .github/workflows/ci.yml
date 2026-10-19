@@ -73,9 +73,13 @@ jobs:
         if: always()
         with:
           name: e2e-report-${{ matrix.name }}
-          path: |
-            reports
-            test-results
+          path: reports
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: e2e-traces-${{ matrix.name }}
+          path: test-results
           if-no-files-found: ignore
 
   ledger:
@@ -91,6 +95,7 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           pattern: e2e-report-*
+          path: reports
           merge-multiple: true
       - name: Requirement ledger
         shell: bash
