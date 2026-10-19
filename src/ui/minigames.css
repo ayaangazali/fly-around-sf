@@ -92,7 +92,7 @@
 
 @media (max-width: 640px) {
   .vf-checks { left: 0; right: 0; top: calc(100% + 12px); min-width: 0; }
-  .vf-rec, .vf-info { left: 36px; }
+  .vf-rec, .vf-info { left: 46px; }
   .vf-rec { top: 12px; }
   .vf-info { top: 30px; font-size: 11px; }
   .vf-corner { width: 22px; height: 22px; }
