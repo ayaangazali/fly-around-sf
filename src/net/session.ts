@@ -6,6 +6,7 @@ import { openTransport, randomId, type Transport, type TransportKind } from './t
 import { Voice, type VoiceResult } from './voice';
 import { Match, MODES, type MatchEnv } from './modes';
 import { DeviceSync } from './sync';
+import { randomPilotName } from '../ui/settings-model';
 
 export type NetStatus = 'off' | 'connecting' | 'online' | 'unreachable';
 
@@ -56,7 +57,6 @@ export const SEND_HZ = 12;
 export const PING_SECONDS = 10;
 export const UNREACHABLE_MS = 9000;
 const CHAT_KEEP = 60;
-const NAMES = ['Gull', 'Fog', 'Cable', 'Mission', 'Sutro', 'Bay', 'Muni', 'Twin', 'Presidio', 'Crissy'];
 
 export class Net {
   room: string | null = null;
@@ -86,7 +86,7 @@ export class Net {
     this.sync = new DeviceSync(game, kind);
     const s = game.save.data.settings;
     if (typeof s.playerName !== 'string' || !cleanText(s.playerName, LIMITS.name)) {
-      s.playerName = `${NAMES[Math.floor(Math.random() * NAMES.length)]}-${1000 + Math.floor(Math.random() * 9000)}`;
+      s.playerName = randomPilotName();
       game.save.persist();
     }
     game.save.onChange(() => {
