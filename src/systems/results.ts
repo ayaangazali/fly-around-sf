@@ -1,0 +1,117 @@
+import type { Game, GameSystem } from '../game';
+import type { ActivityDef } from '../activities/types';
+import { el } from '../ui/panel-host';
+import { MEDAL_NAMES, bestMedal, formatTime, isMedals, medalFor, saveMedal, type MinigameResult } from '../activities/minigame';
+import '../ui/minigames.css';
+
+let card: HTMLElement;
+let shownAt: { x: number; z: number } | null = null;
+let current: ActivityDef | null = null;
+let pending: MinigameResult | null = null;
+let prevBest: number | undefined;
+
+function hide(): void {
+  card.hidden = true;
+  shownAt = null;
+  current = null;
+}
+
+function retry(game: Game): void {
+  const def = current;
+  if (!def) return;
+  hide();
+  game.teleport(game.activities.position(def));
+  if (game.activities.start(def.id)) game.toast(`${def.title}: go!`);
+}
+
+function stat(label: string, value: string): HTMLElement {
+  const d = el('div');
+  d.append(el('dt', '', label), el('dd', '', value));
+  return d;
+}
+
+function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): void {
+  const kind = game.activities.kindOf(def);
+  const best = game.save.data.best[def.id];
+  const improved = won && saveMedal(game.save, def.id, r.medal);
+  const newBest = won && prevBest !== undefined && best !== undefined && best < prevBest;
+  const medals = def.params?.medals;
+  card.className = `results ${won ? `results-win medal-${r.medal}` : 'results-fail'}`;
+  const badge = el('div', 'results-medal', won ? (r.medal ? '★' : '✓') : '✕');
+  badge.setAttribute('aria-hidden', 'true');
+  const body = el('div', 'results-body');
+  const head = el('p', 'results-kind', `${kind.icon} ${kind.label} · ${def.neighborhood}`);
+  const title = el('h3', '', def.title);
+  const verdict = el('p', 'results-verdict', won ? (r.medal ? `${MEDAL_NAMES[r.medal]} medal` : 'Complete') : r.fail ?? 'Try again');
+  const stats = el('dl', 'results-stats');
+  stats.append(stat('Time', formatTime(r.time)));
+  if (r.score) stats.append(stat('Score', r.score));
+  stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none yet'));
+  stats.append(stat('Top medal', MEDAL_NAMES[bestMedal(game.save, def.id)]));
+  const notes: string[] = [];
+  if (newBest) notes.push('New best time!');
+  if (improved && r.medal) notes.push(`New ${MEDAL_NAMES[r.medal].toLowerCase()} medal`);
+  if (isMedals(medals) && r.medal < 3) notes.push(`Gold under ${formatTime(medals[0])} · Silver ${formatTime(medals[1])} · Bronze ${formatTime(medals[2])}`);
+  const note = el('p', 'results-note', notes.join('  ·  '));
+  note.hidden = !notes.length;
+  const actions = el('div', 'results-actions');
+  const again = el('button', 'results-retry');
+  again.append(el('kbd', '', 'F'), ` ${won ? 'Fly it again' : 'Retry'}`);
+  again.addEventListener('click', () => retry(game));
+  const close = el('button', 'results-close', 'Close');
+  close.addEventListener('click', hide);
+  actions.append(again, close);
+  body.append(head, title, verdict, stats, note, actions);
+  card.replaceChildren(badge, body);
+  card.hidden = false;
+  current = def;
+  shownAt = { x: game.flight.pos.x, z: game.flight.pos.z };
+}
+
+export const system: GameSystem = {
+  id: 'results',
+  order: 45,
+  init(game) {
+    card = el('section', 'results');
+    card.setAttribute('role', 'status');
+    card.setAttribute('aria-live', 'polite');
+    card.hidden = true;
+    game.ui.append(card);
+    game.bus.on('activity:start', ({ id }) => {
+      hide();
+      pending = null;
+      prevBest = game.save.data.best[id];
+    });
+    game.bus.on('minigame:result', (r) => void (pending = r));
+    game.bus.on('activity:complete', ({ id, time }) => {
+      const def = game.activities.defs.get(id);
+      if (!def || game.activities.kindOf(def).passive) return;
+      const r = pending?.id === id ? pending : { id, time: time ?? 0, medal: medalFor(def.params?.medals, time ?? 0) };
+      pending = null;
+      show(game, def, r, true);
+    });
+    game.bus.on('activity:fail', ({ id }) => {
+      const def = game.activities.defs.get(id);
+      if (!def) return;
+      const r = pending?.id === id ? pending : { id, time: 0, medal: 0, fail: 'Out of time' };
+      pending = null;
+      show(game, def, r, false);
+    });
+    game.bus.on('interact', () => {
+      if (!card.hidden && !game.activities.active) retry(game);
+    });
+    window.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.code === 'Escape' && !card.hidden && !game.panels.openId) {
+          e.stopPropagation();
+          hide();
+        }
+      },
+      true,
+    );
+  },
+  update(_dt, game) {
+    if (shownAt && Math.hypot(game.flight.pos.x - shownAt.x, game.flight.pos.z - shownAt.z) > 400) hide();
+  },
+};

@@ -1,0 +1,884 @@
+[
+  {
+    "id": "delivery-la-taqueria-burrito",
+    "kind": "delivery",
+    "title": "Burrito Run",
+    "blurb": "A foil-wrapped burrito from La Taqueria, still hot, to a picnic blanket in Dolores Park.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.750874,
+      "lon": -122.418158,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.750874,
+        "lon": -122.418158,
+        "name": "La Taqueria"
+      },
+      "dropoff": {
+        "lat": 37.75972,
+        "lon": -122.427132,
+        "name": "Dolores Park"
+      },
+      "item": "burrito",
+      "prop": "parcel",
+      "medals": [
+        37,
+        51,
+        74
+      ],
+      "timeLimit": 110
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/La_Taqueria",
+      "https://www.openstreetmap.org/way/23871270",
+      "https://www.openstreetmap.org/node/3202476750"
+    ]
+  },
+  {
+    "id": "delivery-el-farolito-late-night",
+    "kind": "delivery",
+    "title": "Late Night Farolito",
+    "blurb": "El Farolito to the top of Bernal Hill before the burrito cools.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.752643,
+      "lon": -122.418312,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.752643,
+        "lon": -122.418312,
+        "name": "El Farolito"
+      },
+      "dropoff": {
+        "lat": 37.74344,
+        "lon": -122.413471,
+        "name": "Bernal Heights summit"
+      },
+      "item": "burrito",
+      "prop": "parcel",
+      "medals": [
+        34,
+        48,
+        70
+      ],
+      "timeLimit": 105
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16752188",
+      "https://www.openstreetmap.org/node/1974596596"
+    ]
+  },
+  {
+    "id": "delivery-tartine-morning-bun",
+    "kind": "delivery",
+    "title": "Morning Bun Express",
+    "blurb": "A bag of morning buns from Tartine to the drum circle at Hippie Hill.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.761455,
+      "lon": -122.423945,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.761455,
+        "lon": -122.423945,
+        "name": "Tartine Bakery"
+      },
+      "dropoff": {
+        "lat": 37.769802,
+        "lon": -122.457896,
+        "name": "Hippie Hill"
+      },
+      "item": "morning buns",
+      "prop": "parcel",
+      "medals": [
+        85,
+        115,
+        166
+      ],
+      "timeLimit": 234
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tartine_Bakery",
+      "https://www.openstreetmap.org/way/272711313",
+      "https://www.openstreetmap.org/node/2247590960"
+    ]
+  },
+  {
+    "id": "delivery-boudin-sourdough",
+    "kind": "delivery",
+    "title": "Sourdough Shuttle",
+    "blurb": "Boudin has baked sourdough in the city since 1849. Fly a loaf to the Great Meadow at Fort Mason.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.808522,
+      "lon": -122.414897,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.808522,
+        "lon": -122.414897,
+        "name": "Boudin Bakery"
+      },
+      "dropoff": {
+        "lat": 37.804941,
+        "lon": -122.430097,
+        "name": "Great Meadow"
+      },
+      "item": "sourdough loaf",
+      "prop": "sourdough",
+      "medals": [
+        40,
+        56,
+        81
+      ],
+      "timeLimit": 119
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Boudin_Bakery",
+      "https://www.openstreetmap.org/way/417405358",
+      "https://www.openstreetmap.org/way/37312428"
+    ]
+  },
+  {
+    "id": "delivery-ghirardelli-to-coit",
+    "kind": "delivery",
+    "title": "Chocolate to Coit",
+    "blurb": "Chocolate from Ghirardelli, a San Francisco chocolatier since 1852, to the steps of Coit Tower.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.805871,
+      "lon": -122.422949,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.805871,
+        "lon": -122.422949,
+        "name": "Ghirardelli Square"
+      },
+      "dropoff": {
+        "lat": 37.802379,
+        "lon": -122.405834,
+        "name": "Coit Tower"
+      },
+      "item": "chocolate bars",
+      "prop": "parcel",
+      "medals": [
+        46,
+        63,
+        91
+      ],
+      "timeLimit": 133
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ghirardelli_Chocolate_Company",
+      "https://www.openstreetmap.org/way/28824850",
+      "https://www.openstreetmap.org/way/27104863"
+    ]
+  },
+  {
+    "id": "delivery-philz-to-precita",
+    "kind": "delivery",
+    "title": "Philz Pour-Over",
+    "blurb": "A hot pour-over from Philz Coffee on 24th Street to Precita Park. Do not crash: it spills.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.751141,
+      "lon": -122.438379,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.751141,
+        "lon": -122.438379,
+        "name": "Philz Coffee"
+      },
+      "dropoff": {
+        "lat": 37.747093,
+        "lon": -122.41209,
+        "name": "Precita Park"
+      },
+      "item": "pour-over coffee",
+      "prop": "coffee",
+      "fragile": true,
+      "medals": [
+        66,
+        90,
+        130
+      ],
+      "timeLimit": 186
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philz_Coffee",
+      "https://www.openstreetmap.org/way/23908184",
+      "https://www.openstreetmap.org/node/360450263"
+    ]
+  },
+  {
+    "id": "delivery-blue-bottle-to-salesforce-park",
+    "kind": "delivery",
+    "title": "Ferry Plaza Latte",
+    "blurb": "A latte from the Ferry Building to the rooftop park over the Transit Center. Fragile.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.796003,
+      "lon": -122.393844,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.796003,
+        "lon": -122.393844,
+        "name": "Blue Bottle at the Ferry Building"
+      },
+      "dropoff": {
+        "lat": 37.789119,
+        "lon": -122.396863,
+        "name": "Salesforce Park"
+      },
+      "item": "latte",
+      "prop": "coffee",
+      "fragile": true,
+      "medals": [
+        26,
+        36,
+        53
+      ],
+      "timeLimit": 82
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Blue_Bottle_Coffee",
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/542375290",
+      "https://www.openstreetmap.org/way/1189071437",
+      "https://www.openstreetmap.org/way/1189071411"
+    ]
+  },
+  {
+    "id": "delivery-fortune-cookie-factory",
+    "kind": "delivery",
+    "title": "Fresh Fortunes",
+    "blurb": "Still-warm fortune cookies from the factory in Ross Alley to Washington Square.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.795699,
+      "lon": -122.407349,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.795699,
+        "lon": -122.407349,
+        "name": "Golden Gate Fortune Cookie Factory"
+      },
+      "dropoff": {
+        "lat": 37.800865,
+        "lon": -122.410101,
+        "name": "Washington Square"
+      },
+      "item": "fortune cookies",
+      "prop": "fortune-cookie",
+      "medals": [
+        21,
+        30,
+        44
+      ],
+      "timeLimit": 69
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/18583270",
+      "https://www.openstreetmap.org/node/1308317902"
+    ]
+  },
+  {
+    "id": "delivery-swan-oysters",
+    "kind": "delivery",
+    "title": "Oysters on Ice",
+    "blurb": "A tray from Swan Oyster Depot, whose 18 stools date to 1912, to Alta Plaza Park. Do not crash.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.790969,
+      "lon": -122.420918,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.790969,
+        "lon": -122.420918,
+        "name": "Swan Oyster Depot"
+      },
+      "dropoff": {
+        "lat": 37.791181,
+        "lon": -122.437674,
+        "name": "Alta Plaza Park"
+      },
+      "item": "oysters",
+      "prop": "parcel",
+      "fragile": true,
+      "medals": [
+        42,
+        59,
+        85
+      ],
+      "timeLimit": 125
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Swan_Oyster_Depot",
+      "https://www.openstreetmap.org/way/16751737",
+      "https://www.openstreetmap.org/node/825967002"
+    ]
+  },
+  {
+    "id": "delivery-bi-rite-before-it-melts",
+    "kind": "delivery",
+    "title": "Before It Melts",
+    "blurb": "Two scoops from Bi-Rite Creamery up to Corona Heights. You have very little time.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76157,
+      "lon": -122.425662,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.76157,
+        "lon": -122.425662,
+        "name": "Bi-Rite Creamery"
+      },
+      "dropoff": {
+        "lat": 37.764776,
+        "lon": -122.439343,
+        "name": "Corona Heights Park"
+      },
+      "item": "ice cream",
+      "prop": "parcel",
+      "fragile": true,
+      "medals": [
+        39,
+        55,
+        79
+      ],
+      "timeLimit": 97
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/225182880",
+      "https://www.openstreetmap.org/node/540456131"
+    ]
+  },
+  {
+    "id": "delivery-tonys-pizza",
+    "kind": "delivery",
+    "title": "Pizza to the Cove",
+    "blurb": "A pie from Tony’s Pizza Napoletana to the swimmers at Aquatic Park.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.800333,
+      "lon": -122.409051,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.800333,
+        "lon": -122.409051,
+        "name": "Tony’s Pizza Napoletana"
+      },
+      "dropoff": {
+        "lat": 37.807005,
+        "lon": -122.422314,
+        "name": "Aquatic Park"
+      },
+      "item": "pizza",
+      "prop": "parcel",
+      "medals": [
+        40,
+        56,
+        81
+      ],
+      "timeLimit": 119
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/32839638",
+      "https://www.openstreetmap.org/node/3702219083"
+    ]
+  },
+  {
+    "id": "delivery-zuni-to-city-hall",
+    "kind": "delivery",
+    "title": "Lunch for City Hall",
+    "blurb": "Lunch from Zuni Café on Market to Civic Center Plaza.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.773564,
+      "lon": -122.421646,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.773564,
+        "lon": -122.421646,
+        "name": "Zuni Café"
+      },
+      "dropoff": {
+        "lat": 37.779247,
+        "lon": -122.41757,
+        "name": "Civic Center Plaza"
+      },
+      "item": "lunch order",
+      "prop": "parcel",
+      "medals": [
+        23,
+        33,
+        49
+      ],
+      "timeLimit": 76
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zuni_Caf%C3%A9",
+      "https://www.openstreetmap.org/way/284764947",
+      "https://www.openstreetmap.org/way/256730304"
+    ]
+  },
+  {
+    "id": "delivery-mitchells-ice-cream",
+    "kind": "delivery",
+    "title": "Mitchell’s Scoop",
+    "blurb": "Ice cream from Mitchell’s to Holly Park on the hill above.",
+    "neighborhood": "Bernal Heights",
+    "at": {
+      "lat": 37.74421,
+      "lon": -122.422792,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.74421,
+        "lon": -122.422792,
+        "name": "Mitchell’s Ice Cream"
+      },
+      "dropoff": {
+        "lat": 37.737217,
+        "lon": -122.419947,
+        "name": "Holly Park"
+      },
+      "item": "ice cream",
+      "prop": "parcel",
+      "fragile": true,
+      "medals": [
+        27,
+        38,
+        55
+      ],
+      "timeLimit": 84
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16752409",
+      "https://www.openstreetmap.org/node/974348031"
+    ]
+  },
+  {
+    "id": "delivery-prime-rib-to-lafayette",
+    "kind": "delivery",
+    "title": "Prime Delivery",
+    "blurb": "A takeout order from House of Prime Rib on Van Ness to Lafayette Park.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.793391,
+      "lon": -122.422544,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.793391,
+        "lon": -122.422544,
+        "name": "House of Prime Rib"
+      },
+      "dropoff": {
+        "lat": 37.791455,
+        "lon": -122.427861,
+        "name": "Lafayette Park"
+      },
+      "item": "takeout bag",
+      "prop": "parcel",
+      "medals": [
+        19,
+        28,
+        41
+      ],
+      "timeLimit": 65
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16751838",
+      "https://www.openstreetmap.org/way/257802450"
+    ]
+  },
+  {
+    "id": "delivery-hog-island-to-rincon",
+    "kind": "delivery",
+    "title": "Oysters to the Bow",
+    "blurb": "Oysters from Hog Island at the Ferry Building to Cupid’s Span in Rincon Park.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79593,
+      "lon": -122.393527,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.79593,
+        "lon": -122.393527,
+        "name": "Hog Island Oyster Co."
+      },
+      "dropoff": {
+        "lat": 37.791195,
+        "lon": -122.389541,
+        "name": "Rincon Park"
+      },
+      "item": "oysters",
+      "prop": "parcel",
+      "fragile": true,
+      "medals": [
+        21,
+        31,
+        45
+      ],
+      "timeLimit": 71
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/32862802",
+      "https://www.openstreetmap.org/way/1189071437",
+      "https://www.openstreetmap.org/way/1189071411"
+    ]
+  },
+  {
+    "id": "delivery-arizmendi-pizza",
+    "kind": "delivery",
+    "title": "Arizmendi Slice",
+    "blurb": "The daily pizza from the Arizmendi cooperative up to the top of Grandview Park.",
+    "neighborhood": "Inner Sunset",
+    "at": {
+      "lat": 37.763405,
+      "lon": -122.466421,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.763405,
+        "lon": -122.466421,
+        "name": "Arizmendi Bakery"
+      },
+      "dropoff": {
+        "lat": 37.754966,
+        "lon": -122.47237,
+        "name": "Grandview Park"
+      },
+      "item": "pizza",
+      "prop": "parcel",
+      "medals": [
+        33,
+        47,
+        68
+      ],
+      "timeLimit": 102
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/1117035593",
+      "https://www.openstreetmap.org/node/2392303258"
+    ]
+  },
+  {
+    "id": "delivery-bobs-donuts",
+    "kind": "delivery",
+    "title": "Donuts to the Overlook",
+    "blurb": "A box from Bob’s Donuts on Polk Street to the Ina Coolbrith Park overlook.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.792749,
+      "lon": -122.420981,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.792749,
+        "lon": -122.420981,
+        "name": "Bob’s Donuts"
+      },
+      "dropoff": {
+        "lat": 37.798225,
+        "lon": -122.413389,
+        "name": "Ina Coolbrith Park"
+      },
+      "item": "donuts",
+      "prop": "parcel",
+      "medals": [
+        28,
+        40,
+        58
+      ],
+      "timeLimit": 88
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/114151121",
+      "https://www.openstreetmap.org/node/13551029435"
+    ]
+  },
+  {
+    "id": "delivery-molinari-sandwich",
+    "kind": "delivery",
+    "title": "Molinari Sandwich",
+    "blurb": "A sandwich from Molinari Delicatessen to the fountains at Levi’s Plaza.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.798497,
+      "lon": -122.407871,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.798497,
+        "lon": -122.407871,
+        "name": "Molinari Delicatessen"
+      },
+      "dropoff": {
+        "lat": 37.80284,
+        "lon": -122.401505,
+        "name": "Levi’s Plaza"
+      },
+      "item": "sandwich",
+      "prop": "parcel",
+      "medals": [
+        24,
+        35,
+        51
+      ],
+      "timeLimit": 79
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/331389010",
+      "https://www.openstreetmap.org/way/25751184",
+      "https://www.openstreetmap.org/node/1274891526"
+    ]
+  },
+  {
+    "id": "delivery-burma-superstar",
+    "kind": "delivery",
+    "title": "Tea Leaf Salad",
+    "blurb": "Tea leaf salad from Burma Superstar on Clement to Mountain Lake Park.",
+    "neighborhood": "Inner Richmond",
+    "at": {
+      "lat": 37.782913,
+      "lon": -122.462565,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.782913,
+        "lon": -122.462565,
+        "name": "Burma Superstar"
+      },
+      "dropoff": {
+        "lat": 37.787244,
+        "lon": -122.469352,
+        "name": "Mountain Lake Park"
+      },
+      "item": "tea leaf salad",
+      "prop": "parcel",
+      "medals": [
+        25,
+        35,
+        51
+      ],
+      "timeLimit": 79
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/401354283",
+      "https://www.openstreetmap.org/node/1769223515"
+    ]
+  },
+  {
+    "id": "delivery-dandelion-to-alamo",
+    "kind": "delivery",
+    "title": "Cocoa to Alamo",
+    "blurb": "Hot chocolate from Dandelion on Valencia to the top of Alamo Square.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.761039,
+      "lon": -122.421698,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.761039,
+        "lon": -122.421698,
+        "name": "Dandelion Chocolate"
+      },
+      "dropoff": {
+        "lat": 37.77636,
+        "lon": -122.4347,
+        "name": "Alamo Square"
+      },
+      "item": "hot chocolate",
+      "prop": "coffee",
+      "fragile": true,
+      "medals": [
+        58,
+        79,
+        114
+      ],
+      "timeLimit": 164
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/745183964",
+      "https://www.openstreetmap.org/node/9403944439"
+    ]
+  },
+  {
+    "id": "delivery-java-beach-to-windmill",
+    "kind": "delivery",
+    "title": "Coffee for the Windmill",
+    "blurb": "A coffee from Java Beach near the end of the N line to the Dutch Windmill.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.760449,
+      "lon": -122.508978,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "delivery",
+      "food"
+    ],
+    "params": {
+      "pickup": {
+        "lat": 37.760449,
+        "lon": -122.508978,
+        "name": "Java Beach Cafe"
+      },
+      "dropoff": {
+        "lat": 37.770434,
+        "lon": -122.509406,
+        "name": "Dutch Windmill"
+      },
+      "item": "coffee",
+      "prop": "coffee",
+      "fragile": true,
+      "medals": [
+        33,
+        46,
+        67
+      ],
+      "timeLimit": 100
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/287921407",
+      "https://www.openstreetmap.org/node/960932055"
+    ]
+  }
+]

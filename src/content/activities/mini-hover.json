@@ -1,0 +1,286 @@
+[
+  {
+    "id": "hover-coit-tower-crown",
+    "kind": "hover",
+    "title": "Coit Crown Hold",
+    "blurb": "Hold steady just above the crown of Coit Tower while the bay wind gusts.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.801298,
+      "lon": -122.405834,
+      "alt": 30
+    },
+    "xp": 35,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.802379,
+        "lon": -122.405834,
+        "alt": 10,
+        "name": "Coit Tower crown"
+      },
+      "hold": 10,
+      "gust": 5,
+      "medals": [
+        16,
+        22,
+        32
+      ],
+      "timeLimit": 60
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/28824850"
+    ]
+  },
+  {
+    "id": "hover-twin-peaks-summit",
+    "kind": "hover",
+    "title": "Summit Gusts",
+    "blurb": "Hold position over the summit while the wind howls across the peaks.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.751334,
+      "lon": -122.447587,
+      "alt": 30
+    },
+    "xp": 40,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.752415,
+        "lon": -122.447587,
+        "alt": 15,
+        "name": "Twin Peaks summit"
+      },
+      "hold": 12,
+      "gust": 7,
+      "medals": [
+        18,
+        24,
+        34
+      ],
+      "timeLimit": 62
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/11778655699"
+    ]
+  },
+  {
+    "id": "hover-golden-gate-midspan",
+    "kind": "hover",
+    "title": "Midspan Hold",
+    "blurb": "Hover beside the middle of the span with fog wind howling through the strait.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.818819,
+      "lon": -122.477732,
+      "alt": 60
+    },
+    "xp": 50,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.8199,
+        "lon": -122.477732,
+        "alt": 70,
+        "name": "Golden Gate midspan"
+      },
+      "hold": 12,
+      "gust": 8,
+      "medals": [
+        18,
+        24,
+        34
+      ],
+      "timeLimit": 62
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+    ]
+  },
+  {
+    "id": "hover-sutro-tower-tips",
+    "kind": "hover",
+    "title": "Sutro Tips",
+    "blurb": "Hold position beside the tips of Sutro Tower, 298 m up.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.754161,
+      "lon": -122.452268,
+      "alt": 250
+    },
+    "xp": 50,
+    "tags": [
+      "hover"
+    ],
+    "requires": [
+      "hover-twin-peaks-summit"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.755242,
+        "lon": -122.452268,
+        "alt": 290,
+        "name": "beside Sutro Tower"
+      },
+      "hold": 10,
+      "gust": 7,
+      "medals": [
+        16,
+        22,
+        32
+      ],
+      "timeLimit": 60
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sutro_Tower"
+    ]
+  },
+  {
+    "id": "hover-alcatraz-lighthouse",
+    "kind": "hover",
+    "title": "Lighthouse Hold",
+    "blurb": "Station-keep over the Alcatraz lighthouse.",
+    "neighborhood": "Alcatraz",
+    "at": {
+      "lat": 37.825174,
+      "lon": -122.422295,
+      "alt": 30
+    },
+    "xp": 35,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.826255,
+        "lon": -122.422295,
+        "alt": 15,
+        "name": "Alcatraz lighthouse"
+      },
+      "hold": 10,
+      "gust": 6,
+      "medals": [
+        16,
+        22,
+        32
+      ],
+      "timeLimit": 60
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/99202294"
+    ]
+  },
+  {
+    "id": "hover-ocean-beach-westerlies",
+    "kind": "hover",
+    "title": "Westerlies",
+    "blurb": "The afternoon wind off the Pacific is relentless. Hold the line over the surf.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.758919,
+      "lon": -122.511,
+      "alt": 30
+    },
+    "xp": 45,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.76,
+        "lon": -122.511,
+        "alt": 12,
+        "name": "Ocean Beach surf line"
+      },
+      "hold": 15,
+      "gust": 9,
+      "medals": [
+        21,
+        27,
+        37
+      ],
+      "timeLimit": 65
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco"
+    ]
+  },
+  {
+    "id": "hover-transamerica-spire",
+    "kind": "hover",
+    "title": "Spire Hold",
+    "blurb": "Balance over the tip of the Transamerica spire.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.794107,
+      "lon": -122.40279,
+      "alt": 30
+    },
+    "xp": 45,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.795188,
+        "lon": -122.40279,
+        "alt": 10,
+        "name": "Transamerica spire"
+      },
+      "hold": 10,
+      "tolerance": 3.5,
+      "gust": 6,
+      "medals": [
+        16,
+        22,
+        32
+      ],
+      "timeLimit": 60
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/24222973"
+    ]
+  },
+  {
+    "id": "hover-bernal-summit",
+    "kind": "hover",
+    "title": "Bernal Summit Hold",
+    "blurb": "Hover over the summit of Bernal Hill as the wind swings around.",
+    "neighborhood": "Bernal Heights",
+    "at": {
+      "lat": 37.742359,
+      "lon": -122.413471,
+      "alt": 30
+    },
+    "xp": 35,
+    "tags": [
+      "hover"
+    ],
+    "params": {
+      "spot": {
+        "lat": 37.74344,
+        "lon": -122.413471,
+        "alt": 12,
+        "name": "Bernal Heights summit"
+      },
+      "hold": 10,
+      "gust": 5,
+      "medals": [
+        16,
+        22,
+        32
+      ],
+      "timeLimit": 60
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16752188"
+    ]
+  }
+]

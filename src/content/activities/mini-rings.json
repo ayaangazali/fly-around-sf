@@ -1,0 +1,2285 @@
+[
+  {
+    "id": "rings-under-the-golden-gate",
+    "kind": "rings",
+    "title": "Under the Golden Gate",
+    "blurb": "Skim Crissy Field, then thread beneath the bridge deck, 67 m above the water, and out toward the Pacific.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.805137,
+      "lon": -122.462062,
+      "alt": 20
+    },
+    "xp": 60,
+    "tags": [
+      "course",
+      "water",
+      "bridge"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.805677,
+          "lon": -122.467743,
+          "alt": 20
+        },
+        {
+          "lat": 37.8085,
+          "lon": -122.468,
+          "alt": 22
+        },
+        {
+          "lat": 37.8122,
+          "lon": -122.4735,
+          "alt": 26
+        },
+        {
+          "lat": 37.8172,
+          "lon": -122.4752,
+          "alt": 30
+        },
+        {
+          "lat": 37.8199,
+          "lon": -122.4783,
+          "alt": 32
+        },
+        {
+          "lat": 37.8212,
+          "lon": -122.4842,
+          "alt": 30
+        },
+        {
+          "lat": 37.8165,
+          "lon": -122.4905,
+          "alt": 40
+        }
+      ],
+      "medals": [
+        114,
+        152,
+        222
+      ],
+      "timeLimit": 348
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+    ]
+  },
+  {
+    "id": "rings-lombard-slalom",
+    "kind": "rings",
+    "title": "Lombard Slalom",
+    "blurb": "Eight hairpin turns in one brick block. Carve every switchback, then dive down to Columbus.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.801995,
+      "lon": -122.420312,
+      "alt": 15
+    },
+    "xp": 55,
+    "tags": [
+      "course",
+      "street",
+      "tight"
+    ],
+    "params": {
+      "radius": 8,
+      "rings": [
+        {
+          "lat": 37.801998,
+          "lon": -122.419532,
+          "alt": 9
+        },
+        {
+          "lat": 37.802095,
+          "lon": -122.419383,
+          "alt": 21
+        },
+        {
+          "lat": 37.801997,
+          "lon": -122.419191,
+          "alt": 17
+        },
+        {
+          "lat": 37.802136,
+          "lon": -122.419056,
+          "alt": 17
+        },
+        {
+          "lat": 37.802039,
+          "lon": -122.418863,
+          "alt": 13
+        },
+        {
+          "lat": 37.802178,
+          "lon": -122.418727,
+          "alt": 17
+        },
+        {
+          "lat": 37.802081,
+          "lon": -122.418534,
+          "alt": 17
+        },
+        {
+          "lat": 37.80222,
+          "lon": -122.418399,
+          "alt": 9
+        },
+        {
+          "lat": 37.802122,
+          "lon": -122.418207,
+          "alt": 17
+        },
+        {
+          "lat": 37.802213,
+          "lon": -122.418092,
+          "alt": 9
+        },
+        {
+          "lat": 37.802225,
+          "lon": -122.417869,
+          "alt": 14
+        },
+        {
+          "lat": 37.802411,
+          "lon": -122.416411,
+          "alt": 14
+        },
+        {
+          "lat": 37.802596,
+          "lon": -122.414952,
+          "alt": 14
+        },
+        {
+          "lat": 37.802779,
+          "lon": -122.413493,
+          "alt": 14
+        },
+        {
+          "lat": 37.802845,
+          "lon": -122.412968,
+          "alt": 14
+        }
+      ],
+      "medals": [
+        25,
+        35,
+        54
+      ],
+      "timeLimit": 96
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lombard_Street_(San_Francisco)"
+    ]
+  },
+  {
+    "id": "rings-fidi-canyon-run",
+    "kind": "rings",
+    "title": "FiDi Canyon Run",
+    "blurb": "Race down California Street between the towers, above the oldest cable car line still running.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79245,
+      "lon": -122.4062,
+      "alt": 35
+    },
+    "xp": 50,
+    "tags": [
+      "course",
+      "downtown",
+      "street"
+    ],
+    "params": {
+      "radius": 12,
+      "rings": [
+        {
+          "lat": 37.792638,
+          "lon": -122.404563,
+          "alt": 34
+        },
+        {
+          "lat": 37.792806,
+          "lon": -122.403216,
+          "alt": 34
+        },
+        {
+          "lat": 37.792977,
+          "lon": -122.40187,
+          "alt": 34
+        },
+        {
+          "lat": 37.793147,
+          "lon": -122.400523,
+          "alt": 34
+        },
+        {
+          "lat": 37.793317,
+          "lon": -122.399176,
+          "alt": 34
+        },
+        {
+          "lat": 37.793487,
+          "lon": -122.39783,
+          "alt": 34
+        },
+        {
+          "lat": 37.793663,
+          "lon": -122.396484,
+          "alt": 34
+        }
+      ],
+      "medals": [
+        30,
+        41,
+        62
+      ],
+      "timeLimit": 108
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/California_Street_Cable_Railroad"
+    ]
+  },
+  {
+    "id": "rings-bay-bridge-cable-weave",
+    "kind": "rings",
+    "title": "Bay Bridge Cable Weave",
+    "blurb": "Weave under the western span of the Bay Bridge, crossing beneath the deck between every pair of towers.",
+    "neighborhood": "Rincon Hill",
+    "at": {
+      "lat": 37.791916,
+      "lon": -122.388177,
+      "alt": 25
+    },
+    "xp": 60,
+    "tags": [
+      "course",
+      "water",
+      "bridge"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.790485,
+          "lon": -122.385802,
+          "alt": 28
+        },
+        {
+          "lat": 37.793755,
+          "lon": -122.38515,
+          "alt": 28
+        },
+        {
+          "lat": 37.795045,
+          "lon": -122.38177,
+          "alt": 28
+        },
+        {
+          "lat": 37.798315,
+          "lon": -122.381118,
+          "alt": 28
+        },
+        {
+          "lat": 37.799605,
+          "lon": -122.377738,
+          "alt": 28
+        },
+        {
+          "lat": 37.802875,
+          "lon": -122.377086,
+          "alt": 28
+        },
+        {
+          "lat": 37.804165,
+          "lon": -122.373706,
+          "alt": 28
+        }
+      ],
+      "medals": [
+        73,
+        99,
+        145
+      ],
+      "timeLimit": 233
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge"
+    ]
+  },
+  {
+    "id": "rings-twin-peaks-descent",
+    "kind": "rings",
+    "title": "Twin Peaks Descent",
+    "blurb": "Drop off the 280 m summit and follow Upper Market down to the Castro and Church Street.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.752775,
+      "lon": -122.447587,
+      "alt": 30
+    },
+    "xp": 50,
+    "tags": [
+      "course",
+      "hills"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.753496,
+          "lon": -122.446223,
+          "alt": 35
+        },
+        {
+          "lat": 37.7578,
+          "lon": -122.4428,
+          "alt": 40
+        },
+        {
+          "lat": 37.761134,
+          "lon": -122.439986,
+          "alt": 30
+        },
+        {
+          "lat": 37.762657,
+          "lon": -122.435144,
+          "alt": 28
+        },
+        {
+          "lat": 37.765263,
+          "lon": -122.431675,
+          "alt": 26
+        },
+        {
+          "lat": 37.767622,
+          "lon": -122.42893,
+          "alt": 26
+        },
+        {
+          "lat": 37.771288,
+          "lon": -122.424287,
+          "alt": 28
+        }
+      ],
+      "medals": [
+        92,
+        123,
+        180
+      ],
+      "timeLimit": 285
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)",
+      "https://www.openstreetmap.org/node/11778655699"
+    ]
+  },
+  {
+    "id": "rings-mission-rooftops",
+    "kind": "rings",
+    "title": "Mission Rooftops",
+    "blurb": "Hop the rooftops from Mission Dolores to 24th Street, past murals, taquerias and corner stores.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.764353,
+      "lon": -122.426271,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "rooftops"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.764443,
+          "lon": -122.425589,
+          "alt": 26
+        },
+        {
+          "lat": 37.764999,
+          "lon": -122.421914,
+          "alt": 24
+        },
+        {
+          "lat": 37.761402,
+          "lon": -122.421567,
+          "alt": 24
+        },
+        {
+          "lat": 37.758696,
+          "lon": -122.41908,
+          "alt": 24
+        },
+        {
+          "lat": 37.755291,
+          "lon": -122.418754,
+          "alt": 24
+        },
+        {
+          "lat": 37.75219,
+          "lon": -122.418458,
+          "alt": 24
+        }
+      ],
+      "medals": [
+        60,
+        81,
+        119
+      ],
+      "timeLimit": 194
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mission_District,_San_Francisco",
+      "https://www.openstreetmap.org/node/1974596596",
+      "https://www.openstreetmap.org/node/9403944439"
+    ]
+  },
+  {
+    "id": "rings-embarcadero-piers",
+    "kind": "rings",
+    "title": "Embarcadero Piers",
+    "blurb": "Sprint the waterfront from Pier 39 to the Ferry Building and on to the ballpark.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.808088,
+      "lon": -122.41077,
+      "alt": 22
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "waterfront"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.807105,
+          "lon": -122.406508,
+          "alt": 22
+        },
+        {
+          "lat": 37.804723,
+          "lon": -122.40259,
+          "alt": 22
+        },
+        {
+          "lat": 37.801227,
+          "lon": -122.399262,
+          "alt": 22
+        },
+        {
+          "lat": 37.798399,
+          "lon": -122.396786,
+          "alt": 22
+        },
+        {
+          "lat": 37.795447,
+          "lon": -122.394092,
+          "alt": 24
+        },
+        {
+          "lat": 37.790533,
+          "lon": -122.389458,
+          "alt": 22
+        },
+        {
+          "lat": 37.785507,
+          "lon": -122.388138,
+          "alt": 22
+        },
+        {
+          "lat": 37.781769,
+          "lon": -122.388132,
+          "alt": 22
+        }
+      ],
+      "medals": [
+        115,
+        153,
+        223
+      ],
+      "timeLimit": 350
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Embarcadero_(San_Francisco)",
+      "https://www.openstreetmap.org/way/558731934"
+    ]
+  },
+  {
+    "id": "rings-alcatraz-loop",
+    "kind": "rings",
+    "title": "Alcatraz Loop",
+    "blurb": "Leave Pier 33 and circle the island that held Al Capone, keeping low over the cold water.",
+    "neighborhood": "Alcatraz",
+    "at": {
+      "lat": 37.808982,
+      "lon": -122.404588,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "course",
+      "water"
+    ],
+    "params": {
+      "radius": 18,
+      "rings": [
+        {
+          "lat": 37.822827,
+          "lon": -122.424547,
+          "alt": 30
+        },
+        {
+          "lat": 37.824649,
+          "lon": -122.427286,
+          "alt": 30
+        },
+        {
+          "lat": 37.827441,
+          "lon": -122.427907,
+          "alt": 30
+        },
+        {
+          "lat": 37.829896,
+          "lon": -122.426119,
+          "alt": 30
+        },
+        {
+          "lat": 37.830865,
+          "lon": -122.422759,
+          "alt": 30
+        },
+        {
+          "lat": 37.829896,
+          "lon": -122.419399,
+          "alt": 30
+        },
+        {
+          "lat": 37.827441,
+          "lon": -122.417611,
+          "alt": 30
+        },
+        {
+          "lat": 37.824649,
+          "lon": -122.418232,
+          "alt": 30
+        },
+        {
+          "lat": 37.822827,
+          "lon": -122.420971,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        147,
+        195,
+        284
+      ],
+      "timeLimit": 441
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alcatraz_Island"
+    ]
+  },
+  {
+    "id": "rings-ocean-beach-run",
+    "kind": "rings",
+    "title": "Ocean Beach Run",
+    "blurb": "Race the surf line south from Sutro Baths while the westerlies push you inland.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.7765,
+      "lon": -122.5125,
+      "alt": 18
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "beach"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.773595,
+          "lon": -122.512452,
+          "alt": 14
+        },
+        {
+          "lat": 37.768358,
+          "lon": -122.511799,
+          "alt": 14
+        },
+        {
+          "lat": 37.76348,
+          "lon": -122.511018,
+          "alt": 14
+        },
+        {
+          "lat": 37.758528,
+          "lon": -122.5104,
+          "alt": 14
+        },
+        {
+          "lat": 37.75358,
+          "lon": -122.509792,
+          "alt": 14
+        },
+        {
+          "lat": 37.748634,
+          "lon": -122.509146,
+          "alt": 14
+        },
+        {
+          "lat": 37.743692,
+          "lon": -122.508484,
+          "alt": 14
+        }
+      ],
+      "medals": [
+        112,
+        149,
+        217
+      ],
+      "timeLimit": 341
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco"
+    ]
+  },
+  {
+    "id": "rings-golden-gate-park-glide",
+    "kind": "rings",
+    "title": "Golden Gate Park Glide",
+    "blurb": "Glide the length of the park: Conservatory, museums, Stow Lake, Spreckels Lake and the Dutch Windmill.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.772607,
+      "lon": -122.458523,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "course",
+      "park"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.773148,
+          "lon": -122.460228,
+          "alt": 28
+        },
+        {
+          "lat": 37.770147,
+          "lon": -122.468637,
+          "alt": 30
+        },
+        {
+          "lat": 37.76899,
+          "lon": -122.47115,
+          "alt": 30
+        },
+        {
+          "lat": 37.76899,
+          "lon": -122.476491,
+          "alt": 30
+        },
+        {
+          "lat": 37.771001,
+          "lon": -122.49411,
+          "alt": 25
+        },
+        {
+          "lat": 37.770975,
+          "lon": -122.507361,
+          "alt": 25
+        }
+      ],
+      "medals": [
+        135,
+        179,
+        261
+      ],
+      "timeLimit": 407
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Park",
+      "https://www.openstreetmap.org/way/16750564"
+    ]
+  },
+  {
+    "id": "rings-sutro-tower-spiral",
+    "kind": "rings",
+    "title": "Sutro Tower Spiral",
+    "blurb": "Corkscrew up around the 298 m antenna tower until you are level with its tips.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.7529,
+      "lon": -122.453063,
+      "alt": 30
+    },
+    "xp": 70,
+    "tags": [
+      "course",
+      "climb"
+    ],
+    "requires": [
+      "rings-twin-peaks-descent"
+    ],
+    "params": {
+      "radius": 18,
+      "rings": [
+        {
+          "lat": 37.753891,
+          "lon": -122.453063,
+          "alt": 40
+        },
+        {
+          "lat": 37.754518,
+          "lon": -122.454502,
+          "alt": 69
+        },
+        {
+          "lat": 37.755817,
+          "lon": -122.454605,
+          "alt": 98
+        },
+        {
+          "lat": 37.756583,
+          "lon": -122.453277,
+          "alt": 127
+        },
+        {
+          "lat": 37.756103,
+          "lon": -122.45175,
+          "alt": 156
+        },
+        {
+          "lat": 37.754824,
+          "lon": -122.451442,
+          "alt": 184
+        },
+        {
+          "lat": 37.753933,
+          "lon": -122.452639,
+          "alt": 213
+        },
+        {
+          "lat": 37.754257,
+          "lon": -122.45423,
+          "alt": 242
+        },
+        {
+          "lat": 37.755495,
+          "lon": -122.454737,
+          "alt": 271
+        },
+        {
+          "lat": 37.756498,
+          "lon": -122.45369,
+          "alt": 300
+        }
+      ],
+      "medals": [
+        47,
+        64,
+        95
+      ],
+      "timeLimit": 158
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sutro_Tower"
+    ]
+  },
+  {
+    "id": "rings-coit-tower-climb",
+    "kind": "rings",
+    "title": "Coit Tower Climb",
+    "blurb": "Spiral up around the 64 m fluted tower on Telegraph Hill and finish above its crown.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.800577,
+      "lon": -122.405834,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "course",
+      "climb"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.801523,
+          "lon": -122.405834,
+          "alt": 15
+        },
+        {
+          "lat": 37.802115,
+          "lon": -122.406861,
+          "alt": 24
+        },
+        {
+          "lat": 37.803071,
+          "lon": -122.406469,
+          "alt": 33
+        },
+        {
+          "lat": 37.803071,
+          "lon": -122.405199,
+          "alt": 43
+        },
+        {
+          "lat": 37.802115,
+          "lon": -122.404807,
+          "alt": 52
+        },
+        {
+          "lat": 37.801523,
+          "lon": -122.405834,
+          "alt": 61
+        },
+        {
+          "lat": 37.802115,
+          "lon": -122.406861,
+          "alt": 70
+        },
+        {
+          "lat": 37.802379,
+          "lon": -122.405834,
+          "alt": 20
+        }
+      ],
+      "medals": [
+        30,
+        42,
+        63
+      ],
+      "timeLimit": 110
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Coit_Tower",
+      "https://www.openstreetmap.org/way/28824850"
+    ]
+  },
+  {
+    "id": "rings-pyramid-spiral",
+    "kind": "rings",
+    "title": "Pyramid Spiral",
+    "blurb": "Circle the 260 m Transamerica Pyramid from street level to the tip of its spire.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.793386,
+      "lon": -122.40279,
+      "alt": 65
+    },
+    "xp": 65,
+    "tags": [
+      "course",
+      "downtown",
+      "climb"
+    ],
+    "requires": [
+      "rings-fidi-canyon-run"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.794172,
+          "lon": -122.403256,
+          "alt": 108
+        },
+        {
+          "lat": 37.795,
+          "lon": -122.404133,
+          "alt": 86
+        },
+        {
+          "lat": 37.796016,
+          "lon": -122.403667,
+          "alt": 113
+        },
+        {
+          "lat": 37.796204,
+          "lon": -122.402324,
+          "alt": 139
+        },
+        {
+          "lat": 37.795376,
+          "lon": -122.401447,
+          "alt": 165
+        },
+        {
+          "lat": 37.79436,
+          "lon": -122.401913,
+          "alt": 191
+        },
+        {
+          "lat": 37.794172,
+          "lon": -122.403256,
+          "alt": 218
+        },
+        {
+          "lat": 37.795,
+          "lon": -122.404133,
+          "alt": 244
+        },
+        {
+          "lat": 37.796016,
+          "lon": -122.403667,
+          "alt": 270
+        }
+      ],
+      "medals": [
+        36,
+        50,
+        75
+      ],
+      "timeLimit": 128
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Transamerica_Pyramid"
+    ]
+  },
+  {
+    "id": "rings-salesforce-sprint",
+    "kind": "rings",
+    "title": "Salesforce Sprint",
+    "blurb": "Skim the rooftop park over the Transit Center, then climb the 326 m Salesforce Tower.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.788038,
+      "lon": -122.399136,
+      "alt": 30
+    },
+    "xp": 65,
+    "tags": [
+      "course",
+      "downtown",
+      "climb"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.789119,
+          "lon": -122.398681,
+          "alt": 35
+        },
+        {
+          "lat": 37.789299,
+          "lon": -122.396863,
+          "alt": 35
+        },
+        {
+          "lat": 37.789479,
+          "lon": -122.395045,
+          "alt": 35
+        },
+        {
+          "lat": 37.789188,
+          "lon": -122.395653,
+          "alt": 80
+        },
+        {
+          "lat": 37.788603,
+          "lon": -122.396932,
+          "alt": 130
+        },
+        {
+          "lat": 37.789188,
+          "lon": -122.398211,
+          "alt": 180
+        },
+        {
+          "lat": 37.79036,
+          "lon": -122.398211,
+          "alt": 230
+        },
+        {
+          "lat": 37.790945,
+          "lon": -122.396932,
+          "alt": 280
+        },
+        {
+          "lat": 37.79036,
+          "lon": -122.395653,
+          "alt": 330
+        }
+      ],
+      "medals": [
+        44,
+        60,
+        89
+      ],
+      "timeLimit": 149
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Salesforce_Tower",
+      "https://en.wikipedia.org/wiki/Salesforce_Transit_Center",
+      "https://www.openstreetmap.org/way/431972186",
+      "https://www.openstreetmap.org/way/542375290"
+    ]
+  },
+  {
+    "id": "rings-market-street-mile",
+    "kind": "rings",
+    "title": "Market Street Mile",
+    "blurb": "The city spine: from the Ferry Building clock to Civic Center, straight down Market.",
+    "neighborhood": "Market Street",
+    "at": {
+      "lat": 37.795008,
+      "lon": -122.394839,
+      "alt": 25
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "street",
+      "downtown"
+    ],
+    "params": {
+      "radius": 13,
+      "rings": [
+        {
+          "lat": 37.794245,
+          "lon": -122.395134,
+          "alt": 24
+        },
+        {
+          "lat": 37.79284,
+          "lon": -122.396897,
+          "alt": 24
+        },
+        {
+          "lat": 37.791441,
+          "lon": -122.398668,
+          "alt": 24
+        },
+        {
+          "lat": 37.790042,
+          "lon": -122.400439,
+          "alt": 24
+        },
+        {
+          "lat": 37.788644,
+          "lon": -122.402211,
+          "alt": 24
+        },
+        {
+          "lat": 37.787244,
+          "lon": -122.403981,
+          "alt": 24
+        },
+        {
+          "lat": 37.785845,
+          "lon": -122.405752,
+          "alt": 24
+        },
+        {
+          "lat": 37.784446,
+          "lon": -122.407523,
+          "alt": 24
+        },
+        {
+          "lat": 37.783048,
+          "lon": -122.409295,
+          "alt": 24
+        },
+        {
+          "lat": 37.781627,
+          "lon": -122.411009,
+          "alt": 24
+        },
+        {
+          "lat": 37.780224,
+          "lon": -122.412774,
+          "alt": 24
+        },
+        {
+          "lat": 37.778821,
+          "lon": -122.414539,
+          "alt": 24
+        },
+        {
+          "lat": 37.778049,
+          "lon": -122.415527,
+          "alt": 24
+        }
+      ],
+      "medals": [
+        81,
+        109,
+        160
+      ],
+      "timeLimit": 255
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Market_Street_(San_Francisco)",
+      "https://www.openstreetmap.org/node/5318218140"
+    ]
+  },
+  {
+    "id": "rings-civic-center-loop",
+    "kind": "rings",
+    "title": "Civic Center Loop",
+    "blurb": "Lap City Hall, whose dome is taller than the US Capitol, then pop over the lantern.",
+    "neighborhood": "Civic Center",
+    "at": {
+      "lat": 37.779247,
+      "lon": -122.416206,
+      "alt": 20
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "civic"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.779293,
+          "lon": -122.417555,
+          "alt": 25
+        },
+        {
+          "lat": 37.778236,
+          "lon": -122.418197,
+          "alt": 31
+        },
+        {
+          "lat": 37.777976,
+          "lon": -122.419639,
+          "alt": 37
+        },
+        {
+          "lat": 37.778707,
+          "lon": -122.420796,
+          "alt": 43
+        },
+        {
+          "lat": 37.779879,
+          "lon": -122.420796,
+          "alt": 48
+        },
+        {
+          "lat": 37.78061,
+          "lon": -122.419639,
+          "alt": 54
+        },
+        {
+          "lat": 37.78035,
+          "lon": -122.418197,
+          "alt": 60
+        },
+        {
+          "lat": 37.779293,
+          "lon": -122.41926,
+          "alt": 110
+        }
+      ],
+      "medals": [
+        36,
+        49,
+        74
+      ],
+      "timeLimit": 126
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_City_Hall",
+      "https://www.openstreetmap.org/relation/7261820",
+      "https://www.openstreetmap.org/way/284764947",
+      "https://www.openstreetmap.org/way/24446086"
+    ]
+  },
+  {
+    "id": "rings-dolores-park-dip",
+    "kind": "rings",
+    "title": "Dolores Park Dip",
+    "blurb": "Dive down the sunny lawns of Dolores Park with the downtown skyline in front of you.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.758098,
+      "lon": -122.428041,
+      "alt": 30
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "park"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.758639,
+          "lon": -122.427814,
+          "alt": 25
+        },
+        {
+          "lat": 37.75936,
+          "lon": -122.426791,
+          "alt": 18
+        },
+        {
+          "lat": 37.76017,
+          "lon": -122.427587,
+          "alt": 16
+        },
+        {
+          "lat": 37.760891,
+          "lon": -122.426677,
+          "alt": 18
+        },
+        {
+          "lat": 37.764173,
+          "lon": -122.425135,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        28,
+        39,
+        59
+      ],
+      "timeLimit": 104
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mission_Dolores_Park",
+      "https://www.openstreetmap.org/way/23871270"
+    ]
+  },
+  {
+    "id": "rings-haight-street-hop",
+    "kind": "rings",
+    "title": "Haight Street Hop",
+    "blurb": "Cruise Haight Street from Masonic to Stanyan and drop into the park at Hippie Hill.",
+    "neighborhood": "Haight-Ashbury",
+    "at": {
+      "lat": 37.7702,
+      "lon": -122.444,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "street"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.770219,
+          "lon": -122.445349,
+          "alt": 20
+        },
+        {
+          "lat": 37.770019,
+          "lon": -122.44692,
+          "alt": 20
+        },
+        {
+          "lat": 37.769818,
+          "lon": -122.44849,
+          "alt": 24
+        },
+        {
+          "lat": 37.769616,
+          "lon": -122.450061,
+          "alt": 24
+        },
+        {
+          "lat": 37.769417,
+          "lon": -122.451632,
+          "alt": 24
+        },
+        {
+          "lat": 37.769225,
+          "lon": -122.453148,
+          "alt": 20
+        },
+        {
+          "lat": 37.769802,
+          "lon": -122.457896,
+          "alt": 22
+        }
+      ],
+      "medals": [
+        40,
+        56,
+        83
+      ],
+      "timeLimit": 140
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Haight-Ashbury",
+      "https://en.wikipedia.org/wiki/Hippie_Hill",
+      "https://www.openstreetmap.org/way/272711313"
+    ]
+  },
+  {
+    "id": "rings-castro-rainbow",
+    "kind": "rings",
+    "title": "Castro Rainbow",
+    "blurb": "From the rainbow flag at Harvey Milk Plaza, down Castro and over 18th Street to Dolores Park.",
+    "neighborhood": "Castro",
+    "at": {
+      "lat": 37.762615,
+      "lon": -122.435374,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "street"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.762185,
+          "lon": -122.43515,
+          "alt": 18
+        },
+        {
+          "lat": 37.761198,
+          "lon": -122.435046,
+          "alt": 18
+        },
+        {
+          "lat": 37.76021,
+          "lon": -122.434948,
+          "alt": 22
+        },
+        {
+          "lat": 37.759222,
+          "lon": -122.434842,
+          "alt": 22
+        },
+        {
+          "lat": 37.76108,
+          "lon": -122.432008,
+          "alt": 24
+        },
+        {
+          "lat": 37.761246,
+          "lon": -122.429004,
+          "alt": 24
+        },
+        {
+          "lat": 37.75972,
+          "lon": -122.428041,
+          "alt": 24
+        }
+      ],
+      "medals": [
+        38,
+        53,
+        79
+      ],
+      "timeLimit": 134
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Harvey_Milk_Plaza",
+      "https://en.wikipedia.org/wiki/Castro_District,_San_Francisco"
+    ]
+  },
+  {
+    "id": "rings-chinatown-lanterns",
+    "kind": "rings",
+    "title": "Chinatown Lanterns",
+    "blurb": "Slip through the Dragon Gate and fly the length of Grant Avenue, one of the oldest streets in Chinatown.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.790047,
+      "lon": -122.405596,
+      "alt": 40
+    },
+    "xp": 55,
+    "tags": [
+      "course",
+      "street",
+      "tight"
+    ],
+    "params": {
+      "radius": 8,
+      "rings": [
+        {
+          "lat": 37.790688,
+          "lon": -122.405594,
+          "alt": 33
+        },
+        {
+          "lat": 37.791622,
+          "lon": -122.405783,
+          "alt": 21
+        },
+        {
+          "lat": 37.792556,
+          "lon": -122.405973,
+          "alt": 25
+        },
+        {
+          "lat": 37.79349,
+          "lon": -122.406161,
+          "alt": 21
+        },
+        {
+          "lat": 37.794424,
+          "lon": -122.406349,
+          "alt": 25
+        },
+        {
+          "lat": 37.795358,
+          "lon": -122.406537,
+          "alt": 25
+        },
+        {
+          "lat": 37.796292,
+          "lon": -122.406725,
+          "alt": 25
+        },
+        {
+          "lat": 37.797226,
+          "lon": -122.406913,
+          "alt": 21
+        }
+      ],
+      "medals": [
+        28,
+        39,
+        59
+      ],
+      "timeLimit": 104
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Grant_Avenue",
+      "https://www.openstreetmap.org/way/32858754"
+    ]
+  },
+  {
+    "id": "rings-north-beach-loop",
+    "kind": "rings",
+    "title": "North Beach Loop",
+    "blurb": "Washington Square, the twin spires of Saints Peter and Paul, and the City Lights corner on Columbus.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.799964,
+      "lon": -122.410101,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.800865,
+          "lon": -122.410783,
+          "alt": 22
+        },
+        {
+          "lat": 37.802258,
+          "lon": -122.410229,
+          "alt": 30
+        },
+        {
+          "lat": 37.799287,
+          "lon": -122.408739,
+          "alt": 22
+        },
+        {
+          "lat": 37.797543,
+          "lon": -122.406271,
+          "alt": 22
+        },
+        {
+          "lat": 37.797922,
+          "lon": -122.406162,
+          "alt": 24
+        },
+        {
+          "lat": 37.796203,
+          "lon": -122.404271,
+          "alt": 24
+        }
+      ],
+      "medals": [
+        40,
+        55,
+        82
+      ],
+      "timeLimit": 138
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/North_Beach,_San_Francisco",
+      "https://www.openstreetmap.org/way/32858754"
+    ]
+  },
+  {
+    "id": "rings-pacific-heights-parks",
+    "kind": "rings",
+    "title": "Pacific Heights Parks",
+    "blurb": "Link Lafayette Park and Alta Plaza across the ridge, then dive down the Lyon Street Steps.",
+    "neighborhood": "Pacific Heights",
+    "at": {
+      "lat": 37.790374,
+      "lon": -122.427861,
+      "alt": 30
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "hills"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.791455,
+          "lon": -122.427861,
+          "alt": 25
+        },
+        {
+          "lat": 37.791815,
+          "lon": -122.432406,
+          "alt": 35
+        },
+        {
+          "lat": 37.791181,
+          "lon": -122.437674,
+          "alt": 25
+        },
+        {
+          "lat": 37.791722,
+          "lon": -122.443356,
+          "alt": 35
+        },
+        {
+          "lat": 37.792841,
+          "lon": -122.446487,
+          "alt": 25
+        }
+      ],
+      "medals": [
+        57,
+        77,
+        114
+      ],
+      "timeLimit": 186
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pacific_Heights,_San_Francisco",
+      "https://www.openstreetmap.org/way/16751838",
+      "https://www.openstreetmap.org/way/16751737",
+      "https://www.openstreetmap.org/node/7221410485"
+    ]
+  },
+  {
+    "id": "rings-palace-lagoon-loop",
+    "kind": "rings",
+    "title": "Palace Lagoon Loop",
+    "blurb": "Circle the rotunda built for the 1915 Panama-Pacific Exposition and skim its lagoon.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.804721,
+      "lon": -122.446698,
+      "alt": 20
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "park"
+    ],
+    "params": {
+      "radius": 13,
+      "rings": [
+        {
+          "lat": 37.803816,
+          "lon": -122.44775,
+          "alt": 18
+        },
+        {
+          "lat": 37.803187,
+          "lon": -122.447141,
+          "alt": 18
+        },
+        {
+          "lat": 37.802401,
+          "lon": -122.447271,
+          "alt": 18
+        },
+        {
+          "lat": 37.801918,
+          "lon": -122.448065,
+          "alt": 34
+        },
+        {
+          "lat": 37.802022,
+          "lon": -122.449056,
+          "alt": 26
+        },
+        {
+          "lat": 37.802651,
+          "lon": -122.449665,
+          "alt": 18
+        },
+        {
+          "lat": 37.803437,
+          "lon": -122.449535,
+          "alt": 18
+        },
+        {
+          "lat": 37.80392,
+          "lon": -122.448741,
+          "alt": 18
+        }
+      ],
+      "medals": [
+        26,
+        37,
+        56
+      ],
+      "timeLimit": 99
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Palace_of_Fine_Arts"
+    ]
+  },
+  {
+    "id": "rings-presidio-ridge",
+    "kind": "rings",
+    "title": "Presidio Ridge",
+    "blurb": "From the Main Post parade ground up over the ridge to Inspiration Point and Mountain Lake.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.802876,
+      "lon": -122.456831,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "park"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.801975,
+          "lon": -122.458195,
+          "alt": 25
+        },
+        {
+          "lat": 37.798822,
+          "lon": -122.456831,
+          "alt": 30
+        },
+        {
+          "lat": 37.791955,
+          "lon": -122.458534,
+          "alt": 30
+        },
+        {
+          "lat": 37.789252,
+          "lon": -122.461943,
+          "alt": 30
+        },
+        {
+          "lat": 37.788232,
+          "lon": -122.471137,
+          "alt": 22
+        }
+      ],
+      "medals": [
+        79,
+        106,
+        156
+      ],
+      "timeLimit": 249
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Presidio_of_San_Francisco",
+      "https://www.openstreetmap.org/way/30198536",
+      "https://www.openstreetmap.org/way/16650677"
+    ]
+  },
+  {
+    "id": "rings-lands-end-cliffs",
+    "kind": "rings",
+    "title": "Lands End Cliffs",
+    "blurb": "Follow the cliffs from the ruins of Sutro Baths past Mile Rock to the Legion of Honor.",
+    "neighborhood": "Lands End",
+    "at": {
+      "lat": 37.77976,
+      "lon": -122.510695,
+      "alt": 30
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "coast"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.780252,
+          "lon": -122.514307,
+          "alt": 25
+        },
+        {
+          "lat": 37.782955,
+          "lon": -122.512261,
+          "alt": 30
+        },
+        {
+          "lat": 37.788,
+          "lon": -122.505,
+          "alt": 30
+        },
+        {
+          "lat": 37.7885,
+          "lon": -122.498,
+          "alt": 30
+        },
+        {
+          "lat": 37.785277,
+          "lon": -122.500962,
+          "alt": 35
+        }
+      ],
+      "medals": [
+        81,
+        108,
+        159
+      ],
+      "timeLimit": 254
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lands_End_(San_Francisco)",
+      "https://en.wikipedia.org/wiki/Sutro_Baths"
+    ]
+  },
+  {
+    "id": "rings-bernal-heights-loop",
+    "kind": "rings",
+    "title": "Bernal Heights Loop",
+    "blurb": "Ring the bald summit of Bernal Hill and its 360° view of the city.",
+    "neighborhood": "Bernal Heights",
+    "at": {
+      "lat": 37.747093,
+      "lon": -122.41209,
+      "alt": 30
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "hills"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.745963,
+          "lon": -122.413471,
+          "alt": 30
+        },
+        {
+          "lat": 37.745224,
+          "lon": -122.411221,
+          "alt": 30
+        },
+        {
+          "lat": 37.74344,
+          "lon": -122.410289,
+          "alt": 30
+        },
+        {
+          "lat": 37.741656,
+          "lon": -122.411221,
+          "alt": 30
+        },
+        {
+          "lat": 37.740917,
+          "lon": -122.413471,
+          "alt": 30
+        },
+        {
+          "lat": 37.741656,
+          "lon": -122.415721,
+          "alt": 30
+        },
+        {
+          "lat": 37.74344,
+          "lon": -122.416653,
+          "alt": 30
+        },
+        {
+          "lat": 37.745224,
+          "lon": -122.415721,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        54,
+        73,
+        108
+      ],
+      "timeLimit": 177
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bernal_Heights,_San_Francisco",
+      "https://www.openstreetmap.org/way/23908184"
+    ]
+  },
+  {
+    "id": "rings-dogpatch-docks",
+    "kind": "rings",
+    "title": "Dogpatch Docks",
+    "blurb": "Shipyard cranes, Crane Cove Park and the arena on the Mission Bay waterfront.",
+    "neighborhood": "Dogpatch",
+    "at": {
+      "lat": 37.761454,
+      "lon": -122.382618,
+      "alt": 25
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "waterfront"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.761454,
+          "lon": -122.384095,
+          "alt": 25
+        },
+        {
+          "lat": 37.762911,
+          "lon": -122.38643,
+          "alt": 25
+        },
+        {
+          "lat": 37.766155,
+          "lon": -122.38643,
+          "alt": 25
+        },
+        {
+          "lat": 37.7679,
+          "lon": -122.385377,
+          "alt": 40
+        },
+        {
+          "lat": 37.770152,
+          "lon": -122.386058,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        40,
+        55,
+        82
+      ],
+      "timeLimit": 138
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dogpatch,_San_Francisco"
+    ]
+  },
+  {
+    "id": "rings-mccovey-cove-arc",
+    "kind": "rings",
+    "title": "McCovey Cove Arc",
+    "blurb": "Arc around the ballpark and splash down over the cove where kayakers wait for home runs.",
+    "neighborhood": "South Beach",
+    "at": {
+      "lat": 37.780858,
+      "lon": -122.387199,
+      "alt": 25
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "waterfront"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.779957,
+          "lon": -122.386972,
+          "alt": 25
+        },
+        {
+          "lat": 37.778164,
+          "lon": -122.388018,
+          "alt": 18
+        },
+        {
+          "lat": 37.777082,
+          "lon": -122.389155,
+          "alt": 18
+        },
+        {
+          "lat": 37.776804,
+          "lon": -122.39004,
+          "alt": 30
+        },
+        {
+          "lat": 37.778156,
+          "lon": -122.392427,
+          "alt": 35
+        }
+      ],
+      "medals": [
+        28,
+        40,
+        60
+      ],
+      "timeLimit": 105
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/McCovey_Cove",
+      "https://en.wikipedia.org/wiki/Oracle_Park"
+    ]
+  },
+  {
+    "id": "rings-treasure-island-sprint",
+    "kind": "rings",
+    "title": "Treasure Island Sprint",
+    "blurb": "Lap the island built for the 1939 Golden Gate International Exposition, then sweep past Yerba Buena Island.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.819301,
+      "lon": -122.370411,
+      "alt": 25
+    },
+    "xp": 45,
+    "tags": [
+      "course",
+      "water"
+    ],
+    "params": {
+      "radius": 18,
+      "rings": [
+        {
+          "lat": 37.81795,
+          "lon": -122.370411,
+          "alt": 25
+        },
+        {
+          "lat": 37.820155,
+          "lon": -122.376186,
+          "alt": 25
+        },
+        {
+          "lat": 37.825109,
+          "lon": -122.377612,
+          "alt": 25
+        },
+        {
+          "lat": 37.829082,
+          "lon": -122.373616,
+          "alt": 25
+        },
+        {
+          "lat": 37.829082,
+          "lon": -122.367206,
+          "alt": 25
+        },
+        {
+          "lat": 37.825109,
+          "lon": -122.36321,
+          "alt": 25
+        },
+        {
+          "lat": 37.820155,
+          "lon": -122.364636,
+          "alt": 25
+        },
+        {
+          "lat": 37.811195,
+          "lon": -122.37277,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        144,
+        191,
+        279
+      ],
+      "timeLimit": 434
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Treasure_Island,_San_Francisco"
+    ]
+  },
+  {
+    "id": "rings-aquatic-park-arc",
+    "kind": "rings",
+    "title": "Aquatic Park Arc",
+    "blurb": "From Fort Mason along the curved Municipal Pier, past the historic ships at Hyde Street Pier.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.806281,
+      "lon": -122.426715,
+      "alt": 20
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "waterfront"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.807362,
+          "lon": -122.425011,
+          "alt": 18
+        },
+        {
+          "lat": 37.81038,
+          "lon": -122.426665,
+          "alt": 16
+        },
+        {
+          "lat": 37.808086,
+          "lon": -122.422314,
+          "alt": 16
+        },
+        {
+          "lat": 37.809544,
+          "lon": -122.422852,
+          "alt": 18
+        },
+        {
+          "lat": 37.806412,
+          "lon": -122.422949,
+          "alt": 30
+        }
+      ],
+      "medals": [
+        49,
+        67,
+        99
+      ],
+      "timeLimit": 164
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aquatic_Park_Historic_District"
+    ]
+  },
+  {
+    "id": "rings-japantown-pagoda",
+    "kind": "rings",
+    "title": "Japantown Pagoda",
+    "blurb": "Circle the five-tier Peace Pagoda, then swing past the saddle roof of St. Mary’s Cathedral.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.783722,
+      "lon": -122.429855,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "tight"
+    ],
+    "params": {
+      "radius": 10,
+      "rings": [
+        {
+          "lat": 37.784578,
+          "lon": -122.429855,
+          "alt": 20
+        },
+        {
+          "lat": 37.784825,
+          "lon": -122.430396,
+          "alt": 24
+        },
+        {
+          "lat": 37.785321,
+          "lon": -122.430396,
+          "alt": 28
+        },
+        {
+          "lat": 37.785568,
+          "lon": -122.429855,
+          "alt": 32
+        },
+        {
+          "lat": 37.785321,
+          "lon": -122.429314,
+          "alt": 36
+        },
+        {
+          "lat": 37.784825,
+          "lon": -122.429314,
+          "alt": 40
+        },
+        {
+          "lat": 37.784024,
+          "lon": -122.426702,
+          "alt": 60
+        }
+      ],
+      "medals": [
+        22,
+        32,
+        49
+      ],
+      "timeLimit": 89
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Japantown,_San_Francisco",
+      "https://en.wikipedia.org/wiki/Cathedral_of_Saint_Mary_of_the_Assumption_(San_Francisco)",
+      "https://www.openstreetmap.org/way/1458363734"
+    ]
+  },
+  {
+    "id": "rings-lake-merced-loop",
+    "kind": "rings",
+    "title": "Lake Merced Loop",
+    "blurb": "A fast lap of the freshwater lake in the southwest corner of the city.",
+    "neighborhood": "Lake Merced",
+    "at": {
+      "lat": 37.727538,
+      "lon": -122.492087,
+      "alt": 20
+    },
+    "xp": 35,
+    "tags": [
+      "course",
+      "water"
+    ],
+    "params": {
+      "radius": 16,
+      "rings": [
+        {
+          "lat": 37.727538,
+          "lon": -122.492996,
+          "alt": 18
+        },
+        {
+          "lat": 37.725106,
+          "lon": -122.494113,
+          "alt": 18
+        },
+        {
+          "lat": 37.723812,
+          "lon": -122.49694,
+          "alt": 18
+        },
+        {
+          "lat": 37.724261,
+          "lon": -122.500155,
+          "alt": 18
+        },
+        {
+          "lat": 37.726244,
+          "lon": -122.502254,
+          "alt": 18
+        },
+        {
+          "lat": 37.728832,
+          "lon": -122.502254,
+          "alt": 18
+        },
+        {
+          "lat": 37.730815,
+          "lon": -122.500155,
+          "alt": 18
+        },
+        {
+          "lat": 37.731264,
+          "lon": -122.49694,
+          "alt": 22
+        },
+        {
+          "lat": 37.72997,
+          "lon": -122.494113,
+          "alt": 18
+        }
+      ],
+      "medals": [
+        74,
+        100,
+        146
+      ],
+      "timeLimit": 234
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lake_Merced"
+    ]
+  },
+  {
+    "id": "rings-fort-point-skim",
+    "kind": "rings",
+    "title": "Fort Point Skim",
+    "blurb": "Low and fast past the brick fort tucked under the southern end of the Golden Gate Bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.805317,
+      "lon": -122.476834,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "course",
+      "water"
+    ],
+    "requires": [
+      "rings-under-the-golden-gate"
+    ],
+    "params": {
+      "radius": 14,
+      "rings": [
+        {
+          "lat": 37.808103,
+          "lon": -122.470432,
+          "alt": 12
+        },
+        {
+          "lat": 37.809544,
+          "lon": -122.472023,
+          "alt": 14
+        },
+        {
+          "lat": 37.809904,
+          "lon": -122.473842,
+          "alt": 16
+        },
+        {
+          "lat": 37.808823,
+          "lon": -122.47566,
+          "alt": 18
+        }
+      ],
+      "medals": [
+        40,
+        55,
+        82
+      ],
+      "timeLimit": 138
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site"
+    ]
+  }
+]

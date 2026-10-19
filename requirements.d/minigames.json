@@ -1,0 +1,8 @@
+[
+  { "id": "R-MARKERS", "owner": "minigames", "text": "Nearby startable activities show glowing beacons, and the active activity's targets get 3D rings or markers plus a guide arrow." },
+  { "id": "R-RESULTS", "owner": "minigames", "text": "Finishing or failing a minigame shows a results card with time, medal and best, and Retry restarts it." },
+  { "id": "R-MEDALS", "owner": "minigames", "text": "Every timed minigame has ordered gold, silver and bronze thresholds inside its time limit, and the best medal is kept." },
+  { "id": "R-ALBUM", "owner": "minigames", "text": "The photo album keeps at most 30 compact JPEG photos that survive a reload." },
+  { "id": "R-FLYABLE", "owner": "minigames", "text": "No ring, landing pad, pickup, drop-off, collectible or hover spot sits inside a building; boats stay on water." },
+  { "id": "R-MINI-CONTENT", "owner": "minigames", "text": "At least 30 ring courses, 25 photo challenges, 20 deliveries, 15 landings, 15 collects, 10 follows, 10 chases and 8 hovers, each with sources." }
+]

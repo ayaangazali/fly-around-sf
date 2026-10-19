@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "photo-golden-gate-from-crissy",
+    "kind": "photo",
+    "title": "Golden Gate from Crissy Field",
+    "blurb": "The classic: the whole span from low over Crissy Field. Bonus star for golden hour.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.805317,
+      "lon": -122.470016,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.8199,
+        "lon": -122.4783,
+        "alt": 110,
+        "name": "Golden Gate Bridge"
+      },
+      "timeLimit": 240,
+      "distance": [
+        900,
+        2200
+      ],
+      "time": "golden",
+      "bearing": 120,
+      "center": 9,
+      "clear": 400,
+      "altitude": [
+        10,
+        80
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+    ]
+  },
+  {
+    "id": "photo-golden-gate-from-above",
+    "kind": "photo",
+    "title": "The Bridge from Above",
+    "blurb": "Climb high over the strait and frame the deck from far above the towers, which stand 227 m over the water.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.809544,
+      "lon": -122.471114,
+      "alt": 40
+    },
+    "xp": 40,
+    "tags": [
+      "photo"
+    ],
+    "requires": [
+      "photo-golden-gate-from-crissy"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.8199,
+        "lon": -122.4783,
+        "alt": 67,
+        "name": "Golden Gate Bridge deck"
+      },
+      "timeLimit": 240,
+      "distance": [
+        300,
+        800
+      ],
+      "center": 7,
+      "bearing": 90,
+      "clear": 120,
+      "altitude": [
+        260,
+        420
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+    ]
+  },
+  {
+    "id": "photo-coit-tower-from-the-bay",
+    "kind": "photo",
+    "title": "Coit Tower from the Bay",
+    "blurb": "Frame Coit Tower from over the water, the way the ferries see it.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.809252,
+      "lon": -122.404588,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.802379,
+        "lon": -122.405834,
+        "alt": 32,
+        "name": "Coit Tower"
+      },
+      "timeLimit": 240,
+      "distance": [
+        450,
+        1000
+      ],
+      "altitude": [
+        20,
+        140
+      ],
+      "bearing": 30,
+      "clear": 60
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Coit_Tower",
+      "https://www.openstreetmap.org/way/28824850"
+    ]
+  },
+  {
+    "id": "photo-pyramid-at-night",
+    "kind": "photo",
+    "title": "Pyramid at Night",
+    "blurb": "Shoot the Transamerica Pyramid after dark against the lights of the Financial District.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.792936,
+      "lon": -122.404495,
+      "alt": 60
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.795188,
+        "lon": -122.40279,
+        "alt": 140,
+        "name": "Transamerica Pyramid"
+      },
+      "timeLimit": 240,
+      "distance": [
+        250,
+        700
+      ],
+      "time": "night",
+      "clear": 80,
+      "altitude": [
+        65,
+        225
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Transamerica_Pyramid",
+      "https://www.openstreetmap.org/way/24222973"
+    ]
+  },
+  {
+    "id": "photo-ferry-building-clock",
+    "kind": "photo",
+    "title": "Ferry Building Clock",
+    "blurb": "The 75 m clock tower from out on the water, framed tight and level.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.795549,
+      "lon": -122.390634,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.795549,
+        "lon": -122.393475,
+        "alt": 50,
+        "name": "Ferry Building clock tower"
+      },
+      "timeLimit": 240,
+      "distance": [
+        150,
+        380
+      ],
+      "altitude": [
+        12,
+        70
+      ],
+      "center": 6,
+      "bearing": 80,
+      "clear": 40
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building",
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/1189071437",
+      "https://www.openstreetmap.org/way/1189071411"
+    ]
+  },
+  {
+    "id": "photo-sutro-tower-above-the-fog",
+    "kind": "photo",
+    "title": "Sutro Tower Above the Fog",
+    "blurb": "Rise to eye level with the antenna tower that pokes through the summer fog.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.752415,
+      "lon": -122.445314,
+      "alt": 40
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.755242,
+        "lon": -122.453063,
+        "alt": 200,
+        "name": "Sutro Tower"
+      },
+      "timeLimit": 240,
+      "distance": [
+        450,
+        1200
+      ],
+      "time": "day",
+      "clear": 80,
+      "altitude": [
+        406,
+        576
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sutro_Tower",
+      "https://www.openstreetmap.org/relation/3829019"
+    ]
+  },
+  {
+    "id": "photo-palace-rotunda-reflection",
+    "kind": "photo",
+    "title": "Palace Rotunda Reflection",
+    "blurb": "Low across the lagoon so the rotunda sits above its reflection.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80427,
+      "lon": -122.445903,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.802919,
+        "lon": -122.448403,
+        "alt": 20,
+        "name": "Palace of Fine Arts rotunda"
+      },
+      "timeLimit": 240,
+      "distance": [
+        110,
+        300
+      ],
+      "center": 7,
+      "bearing": 60,
+      "clear": 50,
+      "altitude": [
+        7,
+        33
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Palace_of_Fine_Arts",
+      "https://www.openstreetmap.org/way/288371295"
+    ]
+  },
+  {
+    "id": "photo-city-hall-dome",
+    "kind": "photo",
+    "title": "City Hall Dome",
+    "blurb": "Level with the gilded dome over Civic Center Plaza.",
+    "neighborhood": "Civic Center",
+    "at": {
+      "lat": 37.779247,
+      "lon": -122.415865,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.779293,
+        "lon": -122.41926,
+        "alt": 70,
+        "name": "City Hall dome"
+      },
+      "timeLimit": 240,
+      "distance": [
+        160,
+        420
+      ],
+      "center": 6,
+      "bearing": 90,
+      "clear": 60,
+      "altitude": [
+        68,
+        128
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_City_Hall",
+      "https://www.openstreetmap.org/relation/7261820",
+      "https://www.openstreetmap.org/way/24446086"
+    ]
+  },
+  {
+    "id": "photo-salesforce-crown-at-night",
+    "kind": "photo",
+    "title": "Salesforce Crown at Night",
+    "blurb": "The light installation in the crown of the tallest tower in the city, after dark.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.787317,
+      "lon": -122.399704,
+      "alt": 60
+    },
+    "xp": 40,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.789774,
+        "lon": -122.396932,
+        "alt": 300,
+        "name": "Salesforce Tower crown"
+      },
+      "timeLimit": 240,
+      "distance": [
+        300,
+        900
+      ],
+      "time": "night",
+      "clear": 80,
+      "altitude": [
+        186,
+        386
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Salesforce_Tower",
+      "https://www.openstreetmap.org/way/431972186"
+    ]
+  },
+  {
+    "id": "photo-alcatraz-lighthouse",
+    "kind": "photo",
+    "title": "Alcatraz Lighthouse",
+    "blurb": "The first lighthouse on the West Coast, framed from over the water.",
+    "neighborhood": "Alcatraz",
+    "at": {
+      "lat": 37.809703,
+      "lon": -122.404588,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.826255,
+        "lon": -122.422295,
+        "alt": 20,
+        "name": "Alcatraz lighthouse"
+      },
+      "timeLimit": 240,
+      "distance": [
+        250,
+        700
+      ],
+      "altitude": [
+        20,
+        130
+      ],
+      "clear": 60,
+      "bearing": 160
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alcatraz_Island_Lighthouse",
+      "https://www.openstreetmap.org/way/99202294"
+    ]
+  },
+  {
+    "id": "photo-bay-bridge-golden-hour",
+    "kind": "photo",
+    "title": "Bay Bridge at Golden Hour",
+    "blurb": "The western span with low sun on its cables.",
+    "neighborhood": "Rincon Hill",
+    "at": {
+      "lat": 37.791195,
+      "lon": -122.387268,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.7963,
+        "lon": -122.38178,
+        "alt": 100,
+        "name": "Bay Bridge western span"
+      },
+      "timeLimit": 240,
+      "distance": [
+        600,
+        1600
+      ],
+      "altitude": [
+        15,
+        160
+      ],
+      "time": "golden",
+      "clear": 200,
+      "bearing": 200
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge"
+    ]
+  },
+  {
+    "id": "photo-lombard-top-down",
+    "kind": "photo",
+    "title": "Lombard from Above",
+    "blurb": "Hover straight over the crooked block and shoot the hairpins top down.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.801995,
+      "lon": -122.420994,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.8021,
+        "lon": -122.4189,
+        "alt": 0,
+        "name": "Lombard crooked block"
+      },
+      "timeLimit": 240,
+      "distance": [
+        90,
+        220
+      ],
+      "center": 6,
+      "clear": 15,
+      "altitude": [
+        152,
+        282
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lombard_Street_(San_Francisco)"
+    ]
+  },
+  {
+    "id": "photo-fort-point-under-the-arch",
+    "kind": "photo",
+    "title": "Fort Point Under the Arch",
+    "blurb": "The brick fort that mounted its first cannon in 1861, tucked under the steel arch of the bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.808463,
+      "lon": -122.469978,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.808463,
+        "lon": -122.473387,
+        "alt": 12,
+        "name": "Fort Point"
+      },
+      "timeLimit": 240,
+      "distance": [
+        120,
+        350
+      ],
+      "altitude": [
+        10,
+        70
+      ],
+      "clear": 40,
+      "bearing": 60
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site",
+      "https://www.openstreetmap.org/relation/21597568"
+    ]
+  },
+  {
+    "id": "photo-ballpark-from-the-cove",
+    "kind": "photo",
+    "title": "Ballpark from the Cove",
+    "blurb": "The brick ballpark from out over McCovey Cove.",
+    "neighborhood": "South Beach",
+    "at": {
+      "lat": 37.777623,
+      "lon": -122.3862,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.778606,
+        "lon": -122.389472,
+        "alt": 20,
+        "name": "Oracle Park"
+      },
+      "timeLimit": 240,
+      "distance": [
+        180,
+        480
+      ],
+      "altitude": [
+        10,
+        70
+      ],
+      "clear": 100,
+      "bearing": 120
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Oracle_Park",
+      "https://www.openstreetmap.org/relation/7325085"
+    ]
+  },
+  {
+    "id": "photo-de-young-tower",
+    "kind": "photo",
+    "title": "De Young Tower",
+    "blurb": "The twisting copper tower of the de Young rising out of the park.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.771498,
+      "lon": -122.466251,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.771498,
+        "lon": -122.469092,
+        "alt": 30,
+        "name": "de Young Hamon Tower"
+      },
+      "timeLimit": 240,
+      "distance": [
+        150,
+        420
+      ],
+      "clear": 70,
+      "altitude": [
+        98,
+        163
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/De_Young_Museum",
+      "https://www.openstreetmap.org/relation/1652482"
+    ]
+  },
+  {
+    "id": "photo-conservatory-of-flowers",
+    "kind": "photo",
+    "title": "Conservatory of Flowers",
+    "blurb": "The white Victorian glasshouse, the oldest building in the park.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.772607,
+      "lon": -122.457955,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.772607,
+        "lon": -122.460228,
+        "alt": 10,
+        "name": "Conservatory of Flowers"
+      },
+      "timeLimit": 240,
+      "distance": [
+        100,
+        300
+      ],
+      "center": 7,
+      "clear": 40,
+      "altitude": [
+        90,
+        135
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Conservatory_of_Flowers",
+      "https://www.openstreetmap.org/way/30675038"
+    ]
+  },
+  {
+    "id": "photo-dutch-windmill",
+    "kind": "photo",
+    "title": "Dutch Windmill",
+    "blurb": "The windmill that once pumped water for the park, with Ocean Beach behind it.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.770434,
+      "lon": -122.507133,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.770434,
+        "lon": -122.509406,
+        "alt": 15,
+        "name": "Dutch Windmill"
+      },
+      "timeLimit": 240,
+      "distance": [
+        80,
+        260
+      ],
+      "clear": 25,
+      "altitude": [
+        17,
+        54
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dutch_Windmill_(Golden_Gate_Park)",
+      "https://www.openstreetmap.org/way/287921407"
+    ]
+  },
+  {
+    "id": "photo-sutro-baths-sunset",
+    "kind": "photo",
+    "title": "Sutro Baths Sunset",
+    "blurb": "The ruins of the great bathhouse with the sun setting over the Pacific.",
+    "neighborhood": "Lands End",
+    "at": {
+      "lat": 37.77931,
+      "lon": -122.509899,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.780252,
+        "lon": -122.513625,
+        "alt": 0,
+        "name": "Sutro Baths ruins"
+      },
+      "timeLimit": 240,
+      "distance": [
+        120,
+        360
+      ],
+      "time": "golden",
+      "clear": 20,
+      "bearing": 0,
+      "altitude": [
+        25,
+        95
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sutro_Baths",
+      "https://www.openstreetmap.org/way/32776564"
+    ]
+  },
+  {
+    "id": "photo-legion-of-honor",
+    "kind": "photo",
+    "title": "Legion of Honor",
+    "blurb": "The museum courtyard and its columns, high on the headland.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.786358,
+      "lon": -122.500962,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.784556,
+        "lon": -122.500962,
+        "alt": 10,
+        "name": "Legion of Honor"
+      },
+      "timeLimit": 240,
+      "distance": [
+        150,
+        420
+      ],
+      "clear": 50,
+      "altitude": [
+        135,
+        195
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/California_Palace_of_the_Legion_of_Honor",
+      "https://www.openstreetmap.org/relation/21115818"
+    ]
+  },
+  {
+    "id": "photo-saints-peter-and-paul",
+    "kind": "photo",
+    "title": "Saints Peter and Paul",
+    "blurb": "The twin white spires over Washington Square.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.799514,
+      "lon": -122.410101,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.801627,
+        "lon": -122.410229,
+        "alt": 40,
+        "name": "Saints Peter and Paul Church"
+      },
+      "timeLimit": 240,
+      "distance": [
+        120,
+        320
+      ],
+      "center": 7,
+      "clear": 40,
+      "altitude": [
+        39,
+        104
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Saints_Peter_and_Paul_Church,_San_Francisco",
+      "https://www.openstreetmap.org/way/29902626"
+    ]
+  },
+  {
+    "id": "photo-grace-cathedral",
+    "kind": "photo",
+    "title": "Grace Cathedral",
+    "blurb": "The Gothic cathedral crowning Nob Hill.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.790019,
+      "lon": -122.413497,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.791821,
+        "lon": -122.413497,
+        "alt": 30,
+        "name": "Grace Cathedral"
+      },
+      "timeLimit": 240,
+      "distance": [
+        120,
+        320
+      ],
+      "clear": 50,
+      "altitude": [
+        122,
+        192
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco",
+      "https://www.openstreetmap.org/way/32946942"
+    ]
+  },
+  {
+    "id": "photo-mission-dolores",
+    "kind": "photo",
+    "title": "Mission Dolores",
+    "blurb": "The oldest intact building in the city, next to its basilica.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.764353,
+      "lon": -122.424908,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.764353,
+        "lon": -122.426953,
+        "alt": 12,
+        "name": "Mission Dolores"
+      },
+      "timeLimit": 240,
+      "distance": [
+        80,
+        260
+      ],
+      "clear": 30,
+      "altitude": [
+        37,
+        85
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs",
+      "https://www.openstreetmap.org/way/256442760"
+    ]
+  },
+  {
+    "id": "photo-skyline-from-twin-peaks",
+    "kind": "photo",
+    "title": "Skyline from Twin Peaks",
+    "blurb": "The whole downtown skyline from the summit after dark.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.752956,
+      "lon": -122.447587,
+      "alt": 30
+    },
+    "xp": 40,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.7905,
+        "lon": -122.3985,
+        "alt": 150,
+        "name": "Downtown skyline"
+      },
+      "timeLimit": 240,
+      "distance": [
+        4200,
+        5600
+      ],
+      "altitude": [
+        270,
+        380
+      ],
+      "time": "night",
+      "center": 10,
+      "clear": 300
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)"
+    ]
+  },
+  {
+    "id": "photo-st-marys-cathedral",
+    "kind": "photo",
+    "title": "St. Mary’s Cathedral",
+    "blurb": "The hyperbolic paraboloid roof that locals compare to a washing machine agitator.",
+    "neighborhood": "Western Addition",
+    "at": {
+      "lat": 37.784024,
+      "lon": -122.422838,
+      "alt": 40
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.784024,
+        "lon": -122.425338,
+        "alt": 45,
+        "name": "St. Mary’s Cathedral"
+      },
+      "timeLimit": 240,
+      "distance": [
+        150,
+        400
+      ],
+      "clear": 60,
+      "altitude": [
+        99,
+        169
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cathedral_of_Saint_Mary_of_the_Assumption_(San_Francisco)",
+      "https://www.openstreetmap.org/relation/7814696"
+    ]
+  },
+  {
+    "id": "photo-pier-39-sea-lions",
+    "kind": "photo",
+    "title": "Pier 39 Sea Lions",
+    "blurb": "The California sea lions hauled out on the floating docks at Pier 39, shot from just above the water.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.80971,
+      "lon": -122.410088,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.809169,
+        "lon": -122.411338,
+        "alt": 1,
+        "name": "K-Dock sea lions"
+      },
+      "timeLimit": 240,
+      "distance": [
+        50,
+        180
+      ],
+      "center": 8,
+      "clear": 10,
+      "altitude": [
+        8,
+        45
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pier_39"
+    ]
+  },
+  {
+    "id": "photo-ghirardelli-sign-at-night",
+    "kind": "photo",
+    "title": "Ghirardelli Sign at Night",
+    "blurb": "The glowing letters over Ghirardelli Square, after dark.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.807673,
+      "lon": -122.422949,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.805871,
+        "lon": -122.422949,
+        "alt": 25,
+        "name": "Ghirardelli sign"
+      },
+      "timeLimit": 240,
+      "distance": [
+        100,
+        320
+      ],
+      "time": "night",
+      "clear": 40,
+      "bearing": 0,
+      "altitude": [
+        33,
+        88
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ghirardelli_Square",
+      "https://www.openstreetmap.org/way/27104863"
+    ]
+  },
+  {
+    "id": "photo-hyde-street-pier-ships",
+    "kind": "photo",
+    "title": "Hyde Street Pier Ships",
+    "blurb": "The historic fleet at Hyde Street Pier, led by the 1886 square-rigger Balclutha.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.809544,
+      "lon": -122.41967,
+      "alt": 15
+    },
+    "xp": 30,
+    "tags": [
+      "photo"
+    ],
+    "params": {
+      "subject": {
+        "lat": 37.809544,
+        "lon": -122.421943,
+        "alt": 15,
+        "name": "Hyde Street Pier ships"
+      },
+      "timeLimit": 240,
+      "distance": [
+        80,
+        260
+      ],
+      "clear": 30,
+      "altitude": [
+        8,
+        50
+      ]
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Balclutha_(1886)",
+      "https://en.wikipedia.org/wiki/San_Francisco_Maritime_National_Historical_Park",
+      "https://www.openstreetmap.org/way/25319880"
+    ]
+  }
+]
