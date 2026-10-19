@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { Game, GameSystem } from '../game';
 import type { ActivityDef } from '../activities/types';
 import type { Vec3 } from '../player/flight';
@@ -48,7 +49,7 @@ void main() {
   vEdge = abs(dot(n, normalize(-mv.xyz)));
   vH = position.y;
   vColor = aColor;
-  vAlpha = aData.z * (0.78 + 0.22 * sin(uTime * 2.2 + aData.w));
+  vAlpha = aData.z * (0.78 + 0.22 * sin(uTime * 2.2 + aData.w)) * smoothstep(25.0, 90.0, length(base.xz));
   gl_Position = projectionMatrix * mv;
 }`;
 
@@ -73,7 +74,7 @@ varying float vAlpha;
 void main() {
   vec4 mv = modelViewMatrix * vec4(aOffset, 1.0);
   float d = max(1.0, -mv.z);
-  float s = clamp(d * 0.045, 3.5, 70.0) * aData.y * (1.0 + 0.05 * sin(uTime * 3.0 + aData.w));
+  float s = clamp(d * 0.085, 6.0, 150.0) * aData.y * (1.0 + 0.05 * sin(uTime * 3.0 + aData.w));
   mv.xy += position.xy * s;
   vec2 cell = vec2(mod(aData.x, uCols), floor(aData.x / uCols));
   vUv = vec2(cell.x + uv.x, uCols - 1.0 - cell.y + uv.y) / uCols;
@@ -165,13 +166,13 @@ function atlas(kinds: string[], icons: Record<string, string>): THREE.CanvasText
     ctx.fillRect(cx - CELL / 2, cy - CELL / 2, CELL, CELL);
     ctx.globalAlpha = 1;
     ctx.beginPath();
-    ctx.arc(cx, cy, CELL * 0.3, 0, Math.PI * 2);
+    ctx.arc(cx, cy, CELL * 0.34, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(14, 19, 26, 0.88)';
     ctx.fill();
     ctx.lineWidth = 5;
     ctx.strokeStyle = color;
     ctx.stroke();
-    ctx.font = `${CELL * 0.3}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+    ctx.font = `${CELL * 0.36}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#fff';
@@ -183,19 +184,10 @@ function atlas(kinds: string[], icons: Record<string, string>): THREE.CanvasText
 }
 
 function arrowGeometry(): THREE.BufferGeometry {
-  const s = new THREE.Shape();
-  s.moveTo(0, 1.4);
-  s.lineTo(0.95, -0.2);
-  s.lineTo(0.42, -0.2);
-  s.lineTo(0.42, -1.1);
-  s.lineTo(-0.42, -1.1);
-  s.lineTo(-0.42, -0.2);
-  s.lineTo(-0.95, -0.2);
-  s.closePath();
-  const g = new THREE.ExtrudeGeometry(s, { depth: 0.22, bevelEnabled: true, bevelSize: 0.06, bevelThickness: 0.06, bevelSegments: 2 });
-  g.center();
-  g.rotateX(-Math.PI / 2);
-  g.rotateY(Math.PI);
+  const head = new THREE.ConeGeometry(0.62, 1.3, 20).translate(0, 0.65, 0);
+  const shaft = new THREE.CylinderGeometry(0.2, 0.2, 1.3, 14).translate(0, -0.65, 0);
+  const g = mergeGeometries([head, shaft]);
+  g.rotateX(Math.PI / 2);
   return g;
 }
 
@@ -262,7 +254,7 @@ function rebuildBeacons(game: Game): void {
       const base = game.world.groundAt(q.x, q.z);
       const color = kindColor(def.kind);
       const phase = (q.x * 0.013 + q.z * 0.007) % 6.28;
-      push(beams, q.x, base, q.z, color, q.y - base + (done ? 40 : 110), done ? 1.2 : 2.2, done ? 0.18 : 0.55, phase);
+      push(beams, q.x, base, q.z, color, q.y - base + (done ? 40 : 140), done ? 1.2 : 2.4, done ? 0.25 : 0.95, phase);
       push(icons, q.x, q.y + 5, q.z, color, cells.get(def.kind) ?? 0, done ? 0.6 : 1, done ? 0.5 : 1, phase);
     }
   }
@@ -342,17 +334,17 @@ function placeProps(props: readonly Prop[]): void {
 
 function guide(game: Game, target: Vec3 | null): void {
   const { arrow } = st;
-  const f = game.flight.pos;
+  const f = game.flight;
   if (!target || viewfinder.open) {
     arrow.visible = false;
     return;
   }
-  const d = Math.hypot(target.x - f.x, target.y - f.y, target.z - f.z);
-  arrow.visible = d > 30;
+  const d = Math.hypot(target.x - f.pos.x, target.y - f.pos.y, target.z - f.pos.z);
+  arrow.visible = d > 25;
   if (!arrow.visible) return;
-  arrow.position.set(f.x, f.y + 3.2, f.z);
+  arrow.position.set(f.pos.x - Math.sin(f.yaw) * 5, f.pos.y + 2.4, f.pos.z - Math.cos(f.yaw) * 5);
   arrow.lookAt(target.x, target.y, target.z);
-  arrow.material.opacity = Math.min(0.95, (d - 30) / 60);
+  arrow.material.opacity = Math.min(0.9, (d - 25) / 50);
 }
 
 export const system: GameSystem = {
@@ -387,11 +379,15 @@ export const system: GameSystem = {
     );
     portal.visible = false;
     const diamond = new THREE.Mesh(new THREE.OctahedronGeometry(2.2), new THREE.MeshBasicMaterial({ color: '#ffffff', toneMapped: false, transparent: true, opacity: 0.92 }));
-    diamond.scale.set(1, 1.5, 1);
     diamond.visible = false;
-    const arrow = new THREE.Mesh(arrowGeometry(), new THREE.MeshBasicMaterial({ color: '#ff8a3d', toneMapped: false, transparent: true, opacity: 0.9, depthTest: false }));
+    const arrow = new THREE.Mesh(arrowGeometry(), new THREE.MeshBasicMaterial({ color: '#ffb25e', toneMapped: false, transparent: true, opacity: 0.9 }));
     arrow.renderOrder = 10;
     arrow.visible = false;
+    beams.mesh.name = 'beacon-beams';
+    icons2.mesh.name = 'beacon-icons';
+    rings.name = 'ring-targets';
+    diamond.name = 'target-marker';
+    arrow.name = 'guide-arrow';
     root.add(beams.mesh, icons2.mesh, rings, portal, diamond, arrow);
     game.scene.add(root);
     const cells = new Map(names.map((n, i) => [n, i]));
@@ -438,7 +434,9 @@ export const system: GameSystem = {
     } else if (st.rings.count) layoutRings(0);
     st.diamond.visible = !!t0 && a?.def.kind !== 'rings';
     if (t0 && st.diamond.visible) {
-      st.diamond.position.set(t0.x, t0.y + (MOVING.has(a?.def.kind ?? '') ? 7 : 4) + Math.sin(st.time * 2.4) * 0.6, t0.z);
+      const moving = MOVING.has(a?.def.kind ?? '');
+      st.diamond.position.set(t0.x, t0.y + (moving ? 5 : 4) + Math.sin(st.time * 2.4) * 0.6, t0.z);
+      st.diamond.scale.set(moving ? 0.5 : 1, moving ? 0.75 : 1.5, moving ? 0.5 : 1);
       st.diamond.rotation.y = st.time * 1.6;
     }
     const w = game.waypoint;

@@ -6,8 +6,8 @@ import { addPhoto, ALBUM_MAX } from '../ui/panels/album';
 import '../ui/minigames.css';
 
 const RAD = Math.PI / 180;
-const THUMB_W = 240;
-const THUMB_H = 160;
+const THUMB_W = 330;
+const THUMB_H = 220;
 
 let ui: {
   root: HTMLElement;
@@ -60,6 +60,8 @@ function aim(game: Game): void {
 
 function thumbnail(game: Game): string {
   aim(game);
+  const markers = game.scene.getObjectByName('markers');
+  if (markers) markers.visible = false;
   game.renderer.render(game.scene, game.camera);
   const src = game.renderer.domElement;
   const w = Math.min(src.width, src.height * PHOTO.aspect);
@@ -68,7 +70,8 @@ function thumbnail(game: Game): string {
   c.width = THUMB_W;
   c.height = THUMB_H;
   c.getContext('2d')?.drawImage(src, (src.width - w) / 2, (src.height - h) / 2, w, h, 0, 0, THUMB_W, THUMB_H);
-  return c.toDataURL('image/jpeg', 0.72);
+  if (markers) markers.visible = true;
+  return c.toDataURL('image/jpeg', 0.7);
 }
 
 function placeName(game: Game): string {
@@ -179,7 +182,8 @@ function build(game: Game): void {
       game.panels.open('album');
     }),
   );
-  root.append(frame, el('div', 'vf-rec', 'VIEWFINDER'), info, checks, feedback, bar);
+  frame.append(el('div', 'vf-rec', 'VIEWFINDER'), info, checks);
+  root.append(frame, feedback, bar);
   const button = el('button', 'photo-btn', '📷');
   button.setAttribute('aria-label', 'Camera (P)');
   button.setAttribute('aria-pressed', 'false');

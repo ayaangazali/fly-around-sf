@@ -83,6 +83,7 @@ export const system: GameSystem = {
       prevBest = game.save.data.best[id];
     });
     game.bus.on('minigame:result', (r) => void (pending = r));
+    game.bus.on('panel:open', hide);
     game.bus.on('activity:complete', ({ id, time }) => {
       const def = game.activities.defs.get(id);
       if (!def || game.activities.kindOf(def).passive) return;
@@ -98,7 +99,7 @@ export const system: GameSystem = {
       show(game, def, r, false);
     });
     game.bus.on('interact', () => {
-      if (!card.hidden && !game.activities.active) retry(game);
+      if (!card.hidden && !game.activities.active && !game.activities.nearby) retry(game);
     });
     window.addEventListener(
       'keydown',
@@ -112,6 +113,8 @@ export const system: GameSystem = {
     );
   },
   update(_dt, game) {
-    if (shownAt && Math.hypot(game.flight.pos.x - shownAt.x, game.flight.pos.z - shownAt.z) > 400) hide();
+    if (!shownAt) return;
+    if (Math.hypot(game.flight.pos.x - shownAt.x, game.flight.pos.z - shownAt.z) > 400) hide();
+    else card.classList.toggle('results-busy', !!game.activities.nearby);
   },
 };
