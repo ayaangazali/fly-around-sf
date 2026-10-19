@@ -38,8 +38,8 @@
     "blurb": "The double-decker workhorse that beat the Golden Gate Bridge by six months.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.79755,
-      "lon": -122.37854,
+      "lat": 37.797324,
+      "lon": -122.378464,
       "alt": 110
     },
     "xp": 20,
@@ -135,7 +135,7 @@
     "neighborhood": "Marina",
     "at": {
       "lat": 37.80292,
-      "lon": -122.44839,
+      "lon": -122.448095,
       "alt": 35
     },
     "xp": 20,
@@ -166,8 +166,8 @@
     "blurb": "The clock tower at the foot of Market Street, the city's front door before the bridges.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.79555,
-      "lon": -122.39347,
+      "lat": 37.795489,
+      "lon": -122.393185,
       "alt": 40
     },
     "xp": 20,
@@ -262,8 +262,8 @@
     "blurb": "The Rock: lighthouse, fort, federal prison and seabird colony in the middle of the bay.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.82667,
-      "lon": -122.42278,
+      "lat": 37.826444,
+      "lon": -122.422856,
       "alt": 60
     },
     "xp": 20,
@@ -326,8 +326,8 @@
     "blurb": "A Beaux-Arts palace whose dome outdoes the U.S. Capitol.",
     "neighborhood": "Tenderloin",
     "at": {
-      "lat": 37.77929,
-      "lon": -122.41926,
+      "lat": 37.779229,
+      "lon": -122.418975,
       "alt": 40
     },
     "xp": 20,
@@ -518,8 +518,8 @@
     "blurb": "A white wood-and-glass greenhouse, the oldest building in Golden Gate Park.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.77261,
-      "lon": -122.46023,
+      "lat": 37.772549,
+      "lon": -122.459945,
       "alt": 30
     },
     "xp": 20,
@@ -583,7 +583,7 @@
     "neighborhood": "Outer Richmond",
     "at": {
       "lat": 37.77856,
-      "lon": -122.51398,
+      "lon": -122.513685,
       "alt": 30
     },
     "xp": 20,
@@ -614,8 +614,8 @@
     "blurb": "The oldest intact building in San Francisco, an adobe chapel from 1791.",
     "neighborhood": "Castro/Upper Market",
     "at": {
-      "lat": 37.76439,
-      "lon": -122.42703,
+      "lat": 37.764187,
+      "lon": -122.427178,
       "alt": 30
     },
     "xp": 20,
@@ -646,8 +646,8 @@
     "blurb": "The green-tiled gateway at Grant and Bush that opens into Chinatown.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.79069,
-      "lon": -122.40559,
+      "lat": 37.790629,
+      "lon": -122.405305,
       "alt": 25
     },
     "xp": 20,
@@ -870,7 +870,7 @@
     "blurb": "The sunny hillside lawn where the whole city comes to picnic.",
     "neighborhood": "Castro/Upper Market",
     "at": {
-      "lat": 37.75976,
+      "lat": 37.759994,
       "lon": -122.42713,
       "alt": 30
     },
@@ -934,8 +934,8 @@
     "blurb": "The two grassy summits in the middle of the city with the best view of all of it.",
     "neighborhood": "Twin Peaks",
     "at": {
-      "lat": 37.75241,
-      "lon": -122.44759,
+      "lat": 37.752349,
+      "lon": -122.447305,
       "alt": 40
     },
     "xp": 20,
@@ -1094,8 +1094,8 @@
     "blurb": "A 5.4-acre garden on the roof of a bus station, 70 feet above downtown.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.78912,
-      "lon": -122.39687,
+      "lat": 37.789059,
+      "lon": -122.396585,
       "alt": 45
     },
     "xp": 20,
@@ -1126,8 +1126,8 @@
     "blurb": "The oldest public Japanese garden in the United States, with a steep moon bridge.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.77034,
-      "lon": -122.47005,
+      "lat": 37.770506,
+      "lon": -122.469841,
       "alt": 30
     },
     "xp": 20,
@@ -1222,8 +1222,8 @@
     "blurb": "The Mission taqueria whose rice-free burritos keep winning best-in-America fights.",
     "neighborhood": "Mission",
     "at": {
-      "lat": 37.75087,
-      "lon": -122.41816,
+      "lat": 37.750644,
+      "lon": -122.418236,
       "alt": 25
     },
     "xp": 20,
@@ -1254,8 +1254,8 @@
     "blurb": "Sourdough from a mother dough that has been alive since the Gold Rush.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.80853,
-      "lon": -122.41486,
+      "lat": 37.808591,
+      "lon": -122.414575,
       "alt": 25
     },
     "xp": 20,
@@ -1286,8 +1286,8 @@
     "blurb": "A brick chocolate factory turned plaza, its glowing sign visible from the bay.",
     "neighborhood": "Russian Hill",
     "at": {
-      "lat": 37.80587,
-      "lon": -122.42295,
+      "lat": 37.805704,
+      "lon": -122.423159,
       "alt": 30
     },
     "xp": 20,
@@ -1318,8 +1318,8 @@
     "blurb": "Eighteen stools, one marble counter, and oysters shucked by the same family since 1946.",
     "neighborhood": "Nob Hill",
     "at": {
-      "lat": 37.79097,
-      "lon": -122.42092,
+      "lat": 37.791087,
+      "lon": -122.421176,
       "alt": 25
     },
     "xp": 20,
@@ -1351,7 +1351,7 @@
     "neighborhood": "Noe Valley",
     "at": {
       "lat": 37.74421,
-      "lon": -122.42279,
+      "lon": -122.422495,
       "alt": 25
     },
     "xp": 20,
@@ -1383,7 +1383,7 @@
     "neighborhood": "Mission",
     "at": {
       "lat": 37.76157,
-      "lon": -122.42566,
+      "lon": -122.425365,
       "alt": 25
     },
     "xp": 20,
@@ -1446,8 +1446,8 @@
     "blurb": "Prime rib carved tableside from gleaming carts since 1949.",
     "neighborhood": "Russian Hill",
     "at": {
-      "lat": 37.79339,
-      "lon": -122.42254,
+      "lat": 37.793329,
+      "lon": -122.422255,
       "alt": 25
     },
     "xp": 20,
@@ -1606,8 +1606,8 @@
     "blurb": "The West Coast's first espresso house, where poets and a Godfather script brewed.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.79867,
-      "lon": -122.4073,
+      "lat": 37.798504,
+      "lon": -122.407509,
       "alt": 25
     },
     "xp": 20,
@@ -1638,8 +1638,8 @@
     "blurb": "The original 1948 parlor of a chain that spread worldwide, on the Hyde Street cable car line.",
     "neighborhood": "Russian Hill",
     "at": {
-      "lat": 37.79908,
-      "lon": -122.41918,
+      "lat": 37.798854,
+      "lon": -122.419104,
       "alt": 25
     },
     "xp": 20,
@@ -1990,8 +1990,8 @@
     "blurb": "A cast-iron fountain on Market Street where 1906 survivors found each other.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.78794,
-      "lon": -122.4033,
+      "lat": 37.787774,
+      "lon": -122.403509,
       "alt": 25
     },
     "xp": 20,
@@ -2246,8 +2246,8 @@
     "blurb": "The little hydrant that saved the Mission in 1906, repainted gold every April 18.",
     "neighborhood": "Castro/Upper Market",
     "at": {
-      "lat": 37.75809,
-      "lon": -122.42807,
+      "lat": 37.758029,
+      "lon": -122.428355,
       "alt": 20
     },
     "xp": 20,
@@ -2279,7 +2279,7 @@
     "neighborhood": "Chinatown",
     "at": {
       "lat": 37.79483,
-      "lon": -122.40537,
+      "lon": -122.405075,
       "alt": 25
     },
     "xp": 20,
@@ -2886,8 +2886,8 @@
     "blurb": "A tiny alley factory where fortune cookies are still folded by hand.",
     "neighborhood": "Chinatown",
     "at": {
-      "lat": 37.7957,
-      "lon": -122.40735,
+      "lat": 37.795866,
+      "lon": -122.407559,
       "alt": 20
     },
     "xp": 20,
@@ -3014,8 +3014,8 @@
     "blurb": "Where crews push cable cars around by hand on a wooden turntable.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.78471,
-      "lon": -122.4077,
+      "lat": 37.784913,
+      "lon": -122.407552,
       "alt": 25
     },
     "xp": 20,
@@ -3046,8 +3046,8 @@
     "blurb": "Double-ended cars climbing straight up Nob Hill since 1878.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.79366,
-      "lon": -122.39648,
+      "lat": 37.793599,
+      "lon": -122.396765,
       "alt": 25
     },
     "xp": 20,
@@ -3111,7 +3111,7 @@
     "neighborhood": "Financial District/South Beach",
     "at": {
       "lat": 37.79269,
-      "lon": -122.3972,
+      "lon": -122.396905,
       "alt": 25
     },
     "xp": 20,

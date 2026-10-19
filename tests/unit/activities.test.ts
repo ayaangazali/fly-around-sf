@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BOUNDS } from '../../src/core/geo';
+import { BOUNDS, toLocal } from '../../src/core/geo';
 import { fakeGame, loadDefs, loadKinds } from './helpers';
 import type { ActivityDef } from '../../src/activities/types';
 
@@ -37,6 +37,13 @@ describe('activity content', async () => {
       state.set(d.id, 2);
     };
     for (const d of defs) visit(d, []);
+  });
+
+  it('[R-START-SPOTS] every startable activity has a start beacon of its own, so F reaches the one the player flies to', () => {
+    const passive = new Set(kinds.filter((k) => k.passive).map((k) => k.kind));
+    const at = defs.filter((d) => !passive.has(d.kind)).map((d) => ({ id: d.id, ...toLocal(d.at.lat, d.at.lon) }));
+    const stacked = at.flatMap((a, i) => at.slice(i + 1).filter((b) => Math.hypot(a.x - b.x, a.z - b.z) < 20).map((b) => `${a.id} and ${b.id}`));
+    expect(stacked).toEqual([]);
   });
 
   it('[R-KINDS] every kind validates bad params and has a label and icon', () => {

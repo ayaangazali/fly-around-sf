@@ -61,8 +61,8 @@
     "blurb": "Chocolate, Irish coffee, antique arcades, warships and sea lions.",
     "neighborhood": "Russian Hill",
     "at": {
-      "lat": 37.80587,
-      "lon": -122.42295,
+      "lat": 37.805704,
+      "lon": -122.422741,
       "alt": 45
     },
     "xp": 60,
@@ -73,8 +73,8 @@
       "stops": [
         {
           "name": "Ghirardelli Square",
-          "lat": 37.80587,
-          "lon": -122.42295,
+          "lat": 37.805704,
+          "lon": -122.422741,
           "alt": 45,
           "line": "A Gold Rush chocolatier's brick factory, saved and turned into one of America's first adaptive reuse projects."
         },
@@ -123,8 +123,8 @@
     "blurb": "Focaccia, espresso, Beat poetry and a tower on the hill.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.80085,
-      "lon": -122.41012,
+      "lat": 37.800733,
+      "lon": -122.410376,
       "alt": 45
     },
     "xp": 60,
@@ -135,8 +135,8 @@
       "stops": [
         {
           "name": "Washington Square",
-          "lat": 37.80085,
-          "lon": -122.41012,
+          "lat": 37.800733,
+          "lon": -122.410376,
           "alt": 45,
           "line": "North Beach's front lawn since 1847. Tai chi at dawn, focaccia at noon, church bells at dusk."
         },
@@ -481,8 +481,8 @@
     "blurb": "The oldest building in town, painted alleys and ice cream on the hill.",
     "neighborhood": "Castro/Upper Market",
     "at": {
-      "lat": 37.76439,
-      "lon": -122.42703,
+      "lat": 37.764507,
+      "lon": -122.427286,
       "alt": 45
     },
     "xp": 60,
@@ -493,8 +493,8 @@
       "stops": [
         {
           "name": "Mission Dolores",
-          "lat": 37.76439,
-          "lon": -122.42703,
+          "lat": 37.764507,
+          "lon": -122.427286,
           "alt": 45,
           "line": "Everything in San Francisco is younger than this adobe chapel from 1791."
         },
@@ -543,8 +543,8 @@
     "blurb": "Two legends, one alley of murals and a scoop to settle your stomach.",
     "neighborhood": "Mission",
     "at": {
-      "lat": 37.75264,
-      "lon": -122.41831,
+      "lat": 37.752437,
+      "lon": -122.418162,
       "alt": 45
     },
     "xp": 60,
@@ -555,8 +555,8 @@
       "stops": [
         {
           "name": "El Farolito",
-          "lat": 37.75264,
-          "lon": -122.41831,
+          "lat": 37.752437,
+          "lon": -122.418162,
           "alt": 45,
           "line": "Contender one: the super burrito, rice included, eaten long after the bars close."
         },
@@ -701,8 +701,8 @@
     "blurb": "Follow the cable cars from the turntable to the bay.",
     "neighborhood": "Financial District/South Beach",
     "at": {
-      "lat": 37.78471,
-      "lon": -122.4077,
+      "lat": 37.784649,
+      "lon": -122.407415,
       "alt": 45
     },
     "xp": 60,
@@ -713,8 +713,8 @@
       "stops": [
         {
           "name": "Powell and Market Turntable",
-          "lat": 37.78471,
-          "lon": -122.4077,
+          "lat": 37.784649,
+          "lon": -122.407415,
           "alt": 45,
           "line": "Watch the crew push a cable car around by hand. It is the last system of its kind on Earth."
         },
