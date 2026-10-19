@@ -21,6 +21,10 @@ URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=
 - `public/data/terrain.bin`: 16 m heightmap with bathymetry from AWS terrain tiles (z13). Water is `y < 0`. Built by `scripts/build-terrain.mjs`.
 - Local coordinates: meters, `x` east, `z` south (north is `-z`), `y` up. `src/core/geo.ts` converts.
 - City meshes are built in a worker (`src/world/city-worker.ts`) in 500 m chunks; the shader adds windows and lights them at night.
+- Environment data, built by `scripts/build-env.mjs` (`pnpm data:env`): `streets.bin` (DataSF street centerlines with class), `green.bin` (RPD parks plus OpenStreetMap wood, scrub, sand and lakes), `trees.bin` (DataSF street tree inventory, species mapped to shape and tint by `treeKind`/`treeTint` in `src/world/env-data.ts`), `stars.bin` (Yale Bright Star Catalog). OSM data is ODbL: keep the credit line `src/systems/env.ts` adds to the loading screen.
+- `src/systems/env.ts` drapes roads on the rendered terrain, plants instanced trees, swaps in the water shader, drives `settings.timeMode` and culls by quality tier. Read it at runtime as `game.systems.find((s) => s.id === 'env').env` (`stats()`, `visibility()`).
+- Environment performance (`R-ENV-PERF`): `node scripts/gpu-probe.mjs <preview url>` renders nine reference views per tier back to back on the real GPU at 1280x800, device pixel ratio 2, and prints draw calls, triangles and saturated frame time with and without Karl the Fog. On an Apple M4 (2026-10-19, full city) the worst views were low 223 calls, 2.37M triangles, 2.7 ms; medium 468, 5.23M, 5.6 ms; high 565, 8.47M, 10.1 ms; Karl added at most 3.1 ms. The e2e budgets are 1.25x those counts (low 280 / 3.0M, medium 590 / 6.6M, high 710 / 10.6M): at linear cost the high tier's worst frame stays near 12.6 ms, inside the 16.7 ms of 60 fps on that GPU, and the low tier keeps about 5x headroom for slower tablet GPUs, which have not been measured. Raise a budget only with a new probe run.
+- `src/world/sky.ts` owns the sky palette, stars, moon and fog. `game.sky.karl` is the current Karl the Fog state; `karlDensity(x, y, z, game.sky.karl)` in `src/world/karl.ts` tells gameplay whether a point is inside the fog. `game.sky.cloudCover` (0..1) is settable by live weather.
 - Known data gap: heights are from 2010, so towers built later (Salesforce Tower, 181 Fremont, Park Tower...) are missing or wrong. `R-SKYLINE` tracks the fix.
 - `world.groundAt` does not see hand-built landmarks: their raw footprints are hidden, so it returns street level under Salesforce Tower or Coit Tower. Every `src/world/landmarks/<slug>.ts` exports `TOP`, the height in meters above the ground at its `source` that clears the whole model. Put an activity point at a landmark with `alt` above `TOP`, or beside the model. Skyline towers carry their own `top` in `TOWERS` (`skyline-modern.ts`).
 
@@ -91,7 +95,7 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 - `game.waypoint` (`{x,y,z,label} | null`): the HUD guides the player to it. Any panel can set it ("Go there").
 - `game.env.wind` (`{x,z}`, m/s): live weather writes it, flight reads it.
 - `game.sky.fogDensity` (1 = normal, 3 = thick Karl): live weather writes it.
-- `game.timeScale`, `game.clockOffset`: time-of-day controls.
+- `game.timeScale`, `game.clockOffset`: time-of-day controls for the shared clock, `game.clock()`. `game.date()` is what the sky shows: the shared clock, unless `settings.timeMode` is not `'real'`, in which case the env system holds it at that mode's sun angle on the shared clock's day through `game.timePin` (env-owned, never write it). The player's timeMode wins over `clockOffset` and `timeScale`; it never changes them.
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.
 

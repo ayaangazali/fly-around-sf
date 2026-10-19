@@ -1,0 +1,10 @@
+[
+  { "id": "R-ENV-STREETS", "owner": "world-env", "text": "All DataSF street centerlines are baked into streets.bin and drawn as road ribbons draped on the rendered terrain, wider for Market St, boulevards and freeways, with street lights along them at night." },
+  { "id": "R-ENV-GREEN", "owner": "world-env", "text": "Parks, forests, scrub, beaches and lakes tint the ground, and real DataSF street trees (the Dolores and Embarcadero palms included) and park forests are planted as instanced low-poly trees with distance culling and a far LOD." },
+  { "id": "R-ENV-WATER", "owner": "world-env", "text": "Water is an animated shader with waves, depth-tinted shallows and shore foam from the bathymetry, sky reflection with fresnel, sun or moon glint and city light reflections at night." },
+  { "id": "R-ENV-SKY", "owner": "world-env", "text": "The sky dome, clouds and fog share one palette so distant fogged terrain and sea meet the sky without a visible seam at every time of day; real stars and a moon whose position and phase match the ephemeris appear at night." },
+  { "id": "R-ENV-FOG", "owner": "world-env", "text": "Karl the Fog rolls in from Ocean Beach and through the Golden Gate in the evening; game.sky.fogDensity (1 normal, 3 thick) thickens it and cuts visibility." },
+  { "id": "R-ENV-TIME", "owner": "world-env", "text": "settings.timeMode (real, golden, noon, night) drives the sky clock to the matching sun angle." },
+  { "id": "R-ENV-CITY", "owner": "world-env", "text": "The city shader fades windows with distance, varies floor heights per building, adds a storefront band and rooftop detail, and lights windows at night with per-building variation." },
+  { "id": "R-ENV-PERF", "owner": "world-env", "text": "Quality tiers change tree density, shadow size and draw distance, and each tier stays under its draw call and triangle budget (1.25x the worst of nine reference views measured on real hardware with scripts/gpu-probe.mjs, derivation in docs/ARCHITECTURE.md) in noon, golden, night and thick Karl views." }
+]

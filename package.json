@@ -15,6 +15,7 @@
     "ledger": "node scripts/check-ledger.mjs",
     "data:city": "node scripts/build-city.mjs",
     "data:terrain": "node scripts/build-terrain.mjs",
+    "data:env": "node scripts/build-env.mjs",
     "ci": "npm run typecheck && npm run test:coverage && npm run build && npm run e2e && npm run ledger"
   },
   "dependencies": {

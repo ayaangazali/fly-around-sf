@@ -21,6 +21,7 @@ export interface ChunkGeometry {
   cz: number;
   position: Float32Array;
   color: Uint8Array;
+  info: Uint16Array;
   index: Uint16Array | Uint32Array;
   buildings: number;
 }
@@ -46,6 +47,11 @@ export function buildingColor(b: number, height: number): [number, number, numbe
   return pal[hash(b) % pal.length] as [number, number, number];
 }
 
+export function buildingInfo(b: number, height: number, ground: number): number {
+  const cls = height < 12 ? 0 : height < 35 ? 1 : height < 90 ? 2 : 3;
+  return Math.min(1023, Math.max(0, Math.round(ground * 2))) | (cls << 10) | ((hash(b * 31 + 7) & 15) << 12);
+}
+
 export function chunkKey(x: number, z: number): string {
   return `${Math.floor(x / CHUNK)},${Math.floor(z / CHUNK)}`;
 }
@@ -69,6 +75,7 @@ export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeo
   for (const b of list) verts += d.len[b] * 2;
   const position = new Float32Array(verts * 3);
   const color = new Uint8Array(verts * 3);
+  const info = new Uint16Array(verts);
   const index: number[] = [];
   let v = 0;
   let sx = 0;
@@ -79,6 +86,7 @@ export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeo
     const base = d.ground[b] - SKIRT;
     const top = d.ground[b] + d.height[b];
     const [r, g, bl] = buildingColor(b, d.height[b]);
+    info.fill(buildingInfo(b, d.height[b], d.ground[b]), v, v + n * 2);
     const contour: Vector2[] = [];
     for (let k = 0; k < n; k++) {
       const x = d.xs[s + k];
@@ -108,5 +116,5 @@ export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeo
     sz += d.cz[b];
     v += n * 2;
   }
-  return { key, cx: sx / list.length, cz: sz / list.length, position, color, index: v < 65536 ? Uint16Array.from(index) : Uint32Array.from(index), buildings: list.length };
+  return { key, cx: sx / list.length, cz: sz / list.length, position, color, info, index: v < 65536 ? Uint16Array.from(index) : Uint32Array.from(index), buildings: list.length };
 }
