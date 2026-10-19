@@ -374,7 +374,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await expect(a.locator('.fr-peer')).toHaveCount(1);
   });
 
-  test('[R-NET-SYNC] a blocked player disappears and their messages are ignored', async () => {
+  test('[R-NET-SAFE] a blocked player disappears and their messages are ignored', async () => {
     const bId = await selfId(b);
     await a.evaluate(() => window.__fly.game.panels.open('friends'));
     await a.locator(`.fr-peer[data-peer="${bId}"] [data-action="block"]`).click();
