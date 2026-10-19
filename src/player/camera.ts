@@ -8,6 +8,7 @@ export class ChaseCamera {
   distance = 15;
   height = 5;
   orbitYaw = 0;
+  shake = 0;
   private pos = new THREE.Vector3();
   private look = new THREE.Vector3();
   private init = false;
@@ -49,6 +50,10 @@ export class ChaseCamera {
     }
     this.camera.position.copy(this.pos);
     this.camera.lookAt(this.look);
+    if (this.shake > 0.01) {
+      if (!reducedMotion) this.camera.position.add(new THREE.Vector3(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).multiplyScalar(this.shake));
+      this.shake *= Math.exp(-dt * 1.2);
+    }
     const fov = (this.mode === 'fpv' ? 78 : 60) + (reducedMotion ? 0 : Math.min(14, s.speed * 0.22));
     if (Math.abs(this.camera.fov - fov) > 0.05) {
       this.camera.fov += (fov - this.camera.fov) * Math.min(1, dt * 4);

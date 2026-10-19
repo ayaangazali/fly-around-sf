@@ -13,7 +13,7 @@ pnpm ledger              # requirement ledger from the two test reports
 node scripts/shots.mjs <dir>   # screenshots of 4 viewpoints (needs `pnpm preview` running)
 ```
 
-URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
+URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?opensky=https://proxy` (fetch live planes through a CORS proxy for `opensky-network.org`; OpenSky only allows its own origin, so without it planes are simulated and nothing is requested), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
 
 ## World
 
@@ -27,6 +27,10 @@ URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=
 - `src/world/sky.ts` owns the sky palette, stars, moon and fog. `game.sky.karl` is the current Karl the Fog state; `karlDensity(x, y, z, game.sky.karl)` in `src/world/karl.ts` tells gameplay whether a point is inside the fog. `game.sky.cloudCover` (0..1) is settable by live weather.
 - Known data gap: heights are from 2010, so towers built later (Salesforce Tower, 181 Fremont, Park Tower...) are missing or wrong. `R-SKYLINE` tracks the fix.
 - `world.groundAt` does not see hand-built landmarks: their raw footprints are hidden, so it returns street level under Salesforce Tower or Coit Tower. Every `src/world/landmarks/<slug>.ts` exports `TOP`, the height in meters above the ground at its `source` that clears the whole model. Put an activity point at a landmark with `alt` above `TOP`, or beside the model. Skyline towers carry their own `top` in `TOWERS` (`skyline-modern.ts`).
+
+## Live data
+
+`src/live/` holds the feeds (Open-Meteo weather, USGS quakes, OpenSky planes, NOAA tides) and `public/data/transit.json`, baked from SFMTA, Golden Gate Ferry and SF Bay Ferry GTFS by `node scripts/build-transit.mjs`. Every feed is cached in localStorage with a TTL and falls back to a model offline (climate weather, simulated SFO/OAK traffic, NOAA harmonic tides). The Live SF panel shows each feed's status. Events: `live:status`, `live:quake`, `live:close-call`.
 
 ## Extension points (add files, never edit a shared list)
 
@@ -95,7 +99,8 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 
 - `game.waypoint` (`{x,y,z,label} | null`): the HUD guides the player to it. Any panel can set it ("Go there").
 - `game.env.wind` (`{x,z}`, m/s): live weather writes it, flight reads it.
-- `game.sky.fogDensity` (1 = normal, 3 = thick Karl): live weather writes it.
+- `game.sky.weatherFog` (1 = normal, 3 = thick Karl): only live weather writes it, every frame.
+- `game.sky.fogDensity` (default 1): an override for game modes (hide and seek). Save it before writing and restore it after; live weather never touches it. The sky draws `max(fogDensity, weatherFog)` and Karl rolls in with that same value, so neither writer clobbers the other.
 - `game.timeScale`, `game.clockOffset`: time-of-day controls for the shared clock, `game.clock()`. `game.date()` is what the sky shows: the shared clock, unless `settings.timeMode` is not `'real'`, in which case the env system holds it at that mode's sun angle on the shared clock's day through `game.timePin` (env-owned, never write it). The player's timeMode wins over `clockOffset` and `timeScale`; it never changes them.
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.

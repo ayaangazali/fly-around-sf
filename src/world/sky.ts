@@ -184,6 +184,7 @@ export class SkySystem {
   moonDir = new THREE.Vector3();
   moonIllumination = 0;
   fogDensity = 1;
+  weatherFog = 1;
   cloudCover = 0.38;
   viewFar = 9000;
   karl: KarlState;
@@ -282,12 +283,13 @@ export class SkySystem {
     this.stars.material.uniforms.uLst.value = siderealTime(date, ORIGIN.lon) % (2 * Math.PI);
 
     this.fog.color.copy(this.colors.horizon).convertSRGBToLinear();
-    this.fog.near = 900 / this.fogDensity;
-    this.fog.far = (this.viewFar * 0.92) / this.fogDensity;
+    const fog = Math.max(this.fogDensity, this.weatherFog);
+    this.fog.near = 900 / fog;
+    this.fog.far = (this.viewFar * 0.92) / fog;
     envUniforms.envSun.set([this.sunDir.x, this.sunDir.y, this.sunDir.z, 0]);
     const g = this.colors.glow;
     envUniforms.envFogGlow.set([g.r * 0.55, g.g * 0.55, g.b * 0.55, 3]);
-    this.karl = karlState(date, this.fogDensity, ORIGIN.lon);
+    this.karl = karlState(date, fog, ORIGIN.lon);
     applyKarl(this.karl, this.colors.karl);
 
     const moonUp = this.night > 0.5 && mp.altitude > 0;
