@@ -54,10 +54,10 @@
     "params": {
       "question": "The Bay Bridge opened how long before the Golden Gate Bridge?",
       "options": [
-        "Two years after it",
+        "Two years after the Golden Gate",
         "About six months before",
-        "The same week",
-        "Ten years before"
+        "The very same week in 1937",
+        "A full ten years before"
       ],
       "answer": 1,
       "explain": "The Bay Bridge opened on November 12, 1936, six months ahead of the Golden Gate."
@@ -150,10 +150,10 @@
     "params": {
       "question": "The Palace of Fine Arts was built for which event?",
       "options": [
-        "The 1915 Panama-Pacific International Exposition",
-        "The 1894 Midwinter Fair",
+        "The 1915 Panama-Pacific Exposition",
+        "The 1894 California Midwinter Fair",
         "The 1939 Golden Gate International Exposition",
-        "The 1906 earthquake relief"
+        "The 1906 earthquake relief effort"
       ],
       "answer": 0,
       "explain": "It is the only structure from the 1915 exposition still on its original site."
@@ -184,7 +184,7 @@
       "options": [
         "Venice",
         "Seville",
-        "London",
+        "Barcelona",
         "Lisbon"
       ],
       "answer": 1,
@@ -248,7 +248,7 @@
       "options": [
         "Two",
         "Four",
-        "Six",
+        "Seven",
         "Three"
       ],
       "answer": 3,
@@ -407,9 +407,9 @@
       "question": "The de Young's facade is designed to change color over time. Why?",
       "options": [
         "Its copper skin oxidizes toward green",
-        "It is painted a new color each year",
-        "Its glass tints in the sun",
-        "Moss grows on its stone"
+        "It is repainted every single year",
+        "Its glass tints darker in the sun",
+        "Moss is grown on its stone walls"
       ],
       "answer": 0,
       "explain": "Herzog and de Meuron wrapped it in perforated copper that weathers to match the park."
@@ -438,10 +438,10 @@
     "params": {
       "question": "What covers the roof of the California Academy of Sciences?",
       "options": [
-        "Solar glass only",
+        "Solar glass panels and nothing else",
         "A living garden of native plants",
-        "An aquarium",
-        "A parking deck"
+        "A shallow reflecting pool of seawater",
+        "A rooftop parking deck"
       ],
       "answer": 1,
       "explain": "Its 2.5-acre living roof is planted with native wildflowers."
@@ -470,10 +470,10 @@
     "params": {
       "question": "How did the Golden Gate Bridge avoid demolishing Fort Point?",
       "options": [
-        "The fort was moved inland",
-        "The bridge was built in Marin instead",
-        "A special steel arch carries the roadway over it",
-        "The fort was rebuilt after"
+        "The fort was moved 300 feet inland",
+        "The south tower was shifted into Marin",
+        "A steel arch carries the bridge over it",
+        "It was torn down and rebuilt after"
       ],
       "answer": 2,
       "explain": "Engineers designed an arch so the bridge leaps over the 1861 fort."
@@ -566,10 +566,10 @@
     "params": {
       "question": "Why did Golden Gate Park build the Dutch Windmill in 1903?",
       "options": [
-        "To grind flour for bakeries",
+        "To grind flour for city bakeries",
         "To pump water for irrigation",
-        "To generate electricity",
-        "As a Dutch embassy gift"
+        "To generate electricity for the park",
+        "As a gift from the Dutch government"
       ],
       "answer": 1,
       "explain": "The park was built on dunes, and the windmill pumped groundwater to water it."
@@ -630,7 +630,7 @@
     "params": {
       "question": "Mission Dolores' adobe chapel holds what title?",
       "options": [
-        "Tallest church in the city",
+        "Tallest church in San Francisco",
         "Newest cathedral in California",
         "First stone building in the West",
         "Oldest intact building in San Francisco"
@@ -663,7 +663,7 @@
       "question": "Who gave the Dragon Gate to San Francisco?",
       "options": [
         "The Republic of China (Taiwan)",
-        "The city of Beijing",
+        "The People's Republic of China (Beijing)",
         "The city of Hong Kong",
         "The Chinese Six Companies"
       ],
@@ -854,10 +854,10 @@
     "params": {
       "question": "What was Crissy Field before it became a park?",
       "options": [
-        "A golf course",
+        "A municipal golf course",
         "A rail yard",
         "An Army airfield",
-        "A shipyard"
+        "A naval shipyard"
       ],
       "answer": 2,
       "explain": "It was the Army's West Coast airfield, and the first dawn-to-dusk transcontinental flight landed there in 1924."
@@ -886,9 +886,9 @@
     "params": {
       "question": "What was the land under Dolores Park before it became a park?",
       "options": [
-        "A racetrack",
+        "A horse racetrack",
         "A dairy farm",
-        "A quarry",
+        "A brickyard and quarry",
         "A Jewish cemetery"
       ],
       "answer": 3,
@@ -982,8 +982,8 @@
     "params": {
       "question": "What did Depression-era crews use to build gutters in Buena Vista Park?",
       "options": [
-        "Cable car rails",
-        "Ship ballast",
+        "Old cable car rails",
+        "Ballast stones from ships",
         "Broken headstones",
         "Ferry timbers"
       ],
@@ -1014,9 +1014,9 @@
     "params": {
       "question": "What stands on top of Mount Davidson?",
       "options": [
-        "A lighthouse",
-        "A water tower",
-        "A radio mast",
+        "A stone lighthouse",
+        "A 200-foot steel fire lookout tower",
+        "A 500-foot radio mast",
         "A 103-foot concrete cross"
       ],
       "answer": 3,
@@ -1110,10 +1110,10 @@
     "params": {
       "question": "What makes Salesforce Park's fountain jets fire?",
       "options": [
-        "The tides",
-        "A timer",
+        "The tides in the bay",
+        "A timer set to BART's schedule",
         "Buses passing on the deck below",
-        "Visitors clapping"
+        "Visitors clapping their hands"
       ],
       "answer": 2,
       "explain": "Ned Kahn's Bus Jet Fountain responds to buses rolling underneath."
@@ -1142,10 +1142,10 @@
     "params": {
       "question": "The Japanese Tea Garden was built for which event?",
       "options": [
-        "The 1915 world's fair",
-        "The 1939 world's fair",
-        "The Olympics",
-        "The 1894 Midwinter International Exposition"
+        "The 1915 Panama-Pacific world's fair",
+        "The 1939 Golden Gate world's fair",
+        "The 1932 Olympic Games",
+        "The 1894 Midwinter Fair"
       ],
       "answer": 3,
       "explain": "It is the oldest public Japanese garden in the United States."
@@ -1206,9 +1206,9 @@
     "params": {
       "question": "What is In-N-Out's off-menu Flying Dutchman?",
       "options": [
-        "A burger with fried fish",
+        "A double burger with a fried fish fillet on top",
         "Two patties and two slices of cheese, no bun",
-        "A milkshake float",
+        "A vanilla shake with a root beer float on top",
         "Fries with chili"
       ],
       "answer": 1,
@@ -1270,8 +1270,8 @@
     "params": {
       "question": "How did Boudin's mother dough survive the 1906 fire?",
       "options": [
-        "It was frozen",
-        "It was shipped to Oakland",
+        "It was packed in ice and sent to Sacramento",
+        "Bakers shipped it across the bay to Oakland",
         "It was baked into bread",
         "Louise Boudin carried it out in a bucket"
       ],
@@ -1399,7 +1399,7 @@
       "question": "What is Bi-Rite Creamery's best-known flavor?",
       "options": [
         "Rocky road",
-        "Mint chip",
+        "Mint chocolate chip",
         "Vanilla",
         "Salted caramel"
       ],
@@ -1462,9 +1462,9 @@
     "params": {
       "question": "How is the prime rib served at House of Prime Rib?",
       "options": [
-        "As a sandwich",
+        "Sliced cold on a French roll",
         "Carved tableside from rolling carts",
-        "Grilled on skewers",
+        "Grilled on skewers over a flame",
         "Served cold"
       ],
       "answer": 1,
@@ -1526,8 +1526,8 @@
     "params": {
       "question": "What dish draws the brunch lines at Sweet Maple?",
       "options": [
-        "Pancake towers",
-        "Crab benedict",
+        "Ten-stack pancake towers",
+        "Dungeness crab benedict",
         "Avocado toast",
         "Millionaire's Bacon"
       ],
@@ -1559,9 +1559,9 @@
       "question": "What was Tadich Grill when it began in 1849?",
       "options": [
         "A coffee stand on Long Wharf",
-        "A hotel kitchen",
+        "A Barbary Coast hotel kitchen",
         "A ferry snack bar",
-        "A miners' saloon"
+        "A miners' saloon on Portsmouth Square"
       ],
       "answer": 0,
       "explain": "Three Croatian immigrants sold coffee and grilled fish from a tent."
@@ -1590,10 +1590,10 @@
     "params": {
       "question": "What drink did the Buena Vista introduce to the U.S. in 1952?",
       "options": [
-        "The Martini",
+        "The dry martini",
         "Irish coffee",
         "The Mai Tai",
-        "Espresso"
+        "The espresso shot"
       ],
       "answer": 1,
       "explain": "A travel writer and the owner recreated a drink from Shannon Airport."
@@ -1623,7 +1623,7 @@
       "question": "Caffe Trieste was the first of what on the West Coast?",
       "options": [
         "Bagel shop",
-        "Bookstore cafe",
+        "Bookstore with a cafe inside",
         "Espresso coffeehouse",
         "Tea room"
       ],
@@ -1720,7 +1720,7 @@
       "options": [
         "African grey parrots",
         "Cherry-headed conures",
-        "Scarlet macaws",
+        "Yellow-naped Amazon parrots",
         "Cockatoos"
       ],
       "answer": 1,
@@ -1846,10 +1846,10 @@
     "params": {
       "question": "Where do harbor seals haul out under the Bay Bridge?",
       "options": [
-        "Alcatraz",
+        "Alcatraz Island",
         "Yerba Buena Island",
         "Pier 39",
-        "Angel Island"
+        "Angel Island State Park"
       ],
       "answer": 1,
       "explain": "Pocket beaches on Yerba Buena Island's southwest shore give them a resting spot."
@@ -1943,9 +1943,9 @@
       "question": "Where do Fort Funston's bank swallows nest?",
       "options": [
         "In burrows they dig in the sandy cliffs",
-        "In cypress trees",
+        "In the cypress trees on the bluff",
         "Under the parking lot",
-        "In old bunkers"
+        "Inside old gun battery bunkers"
       ],
       "answer": 0,
       "explain": "Each hole in the cliff face is a swallow burrow."
@@ -2009,7 +2009,7 @@
         "A cable car race",
         "A fireworks show",
         "A remembrance of the 1906 earthquake",
-        "The opera season opens"
+        "The opera opens its season"
       ],
       "answer": 2,
       "explain": "The city gathers at the moment the 1906 earthquake struck."
@@ -2038,9 +2038,9 @@
     "params": {
       "question": "What was found in the buried ship Niantic's hold?",
       "options": [
-        "Gold bars",
+        "Crates of gold bars",
         "Cannons",
-        "Mail sacks",
+        "Sacks of old mail",
         "Bottles of champagne"
       ],
       "answer": 3,
@@ -2073,7 +2073,7 @@
         "Emperor of the United States",
         "King of California",
         "Mayor for Life",
-        "Duke of the Bay"
+        "Grand Duke of the Bay"
       ],
       "answer": 0,
       "explain": "San Francisco played along and honored his printed money."
@@ -2137,7 +2137,7 @@
         "A dollar",
         "Free",
         "Five cents",
-        "A quarter"
+        "Twenty-five cents"
       ],
       "answer": 2,
       "explain": "Regular service started on September 1, 1873, at five cents."
@@ -2166,9 +2166,9 @@
     "params": {
       "question": "Treasure Island was built for what?",
       "options": [
-        "A naval base",
-        "An airport",
-        "A prison",
+        "A Navy submarine base",
+        "A cargo container port",
+        "A state prison",
         "A world's fair"
       ],
       "answer": 3,
@@ -2199,9 +2199,9 @@
       "question": "What did the group that occupied Alcatraz in 1969 call itself?",
       "options": [
         "Indians of All Tribes",
-        "The Rock Council",
+        "The Alcatraz Rock Council",
         "Bay Nations",
-        "The Red Shore"
+        "The American Indian Movement"
       ],
       "answer": 0,
       "explain": "They held the island for 19 months."
@@ -2296,7 +2296,7 @@
       "options": [
         "The first cable car ran",
         "Gold was discovered",
-        "The city was renamed",
+        "The city was renamed San Francisco",
         "The American flag was raised"
       ],
       "answer": 3,
@@ -2358,10 +2358,10 @@
     "params": {
       "question": "What were the homes of Carville-by-the-Sea made from?",
       "options": [
-        "Shipwrecks",
+        "Timbers from wrecked ships",
         "Retired streetcars and cable cars",
         "Tents",
-        "World's fair pavilions"
+        "Old world's fair pavilions"
       ],
       "answer": 1,
       "explain": "In 1895 old horsecars sold for $20, or $10 without seats."
@@ -2391,9 +2391,9 @@
       "question": "What did the 1934 longshoremen's strike win?",
       "options": [
         "A new bridge",
-        "Free ferries",
+        "Free ferry rides for dock workers",
         "Unionization of all West Coast ports",
-        "An eight-day week"
+        "A city pension for longshoremen"
       ],
       "answer": 2,
       "explain": "Bloody Thursday led to a general strike, and the longshoremen won."
@@ -2552,7 +2552,7 @@
       "options": [
         "NATO",
         "The World Bank",
-        "The Red Cross",
+        "The International Red Cross",
         "The United Nations"
       ],
       "answer": 3,
@@ -2775,7 +2775,7 @@
       "question": "Who put the original troll on the Bay Bridge?",
       "options": [
         "Tourists",
-        "Caltrans engineers in 1936",
+        "State bridge engineers when it opened in 1936",
         "Ironworkers after the 1989 earthquake",
         "Emperor Norton"
       ],
@@ -2806,8 +2806,8 @@
     "params": {
       "question": "What does the Doggie Diner head depict?",
       "options": [
-        "A bulldog",
-        "A poodle",
+        "A bulldog in a bow tie",
+        "A poodle in a sailor's cap",
         "A cable car",
         "A dachshund in a chef's hat"
       ],
@@ -2902,7 +2902,7 @@
     "params": {
       "question": "How are cookies folded at the Golden Gate Fortune Cookie Factory?",
       "options": [
-        "By robot",
+        "By a robot arm",
         "Not at all",
         "By hand, while still warm",
         "With a press"
@@ -2966,10 +2966,10 @@
     "params": {
       "question": "How does the Camera Obscura show the ocean?",
       "options": [
-        "A lens and mirror project a live image onto a dish",
-        "Security cameras",
-        "A periscope",
-        "Painted murals"
+        "A lens and mirror project it onto a dish",
+        "Rooftop security cameras feed a wall of screens",
+        "A periscope pokes out of the roof",
+        "A ring of windows faces the Pacific"
       ],
       "answer": 0,
       "explain": "It has projected the live coast onto a white bowl since 1946."
@@ -2998,10 +2998,10 @@
     "params": {
       "question": "The USS San Francisco Memorial is built from what?",
       "options": [
-        "A ship's anchor",
+        "Steel hull plates from a sister ship",
         "The cruiser's shell-torn bridge wings",
-        "A submarine hull",
-        "Melted cannons"
+        "A retired submarine conning tower",
+        "Cannons melted down after the battle"
       ],
       "answer": 1,
       "explain": "The bridge wings were cut away after the Naval Battle of Guadalcanal."
@@ -3030,7 +3030,7 @@
     "params": {
       "question": "How are cable cars turned around at Powell and Market?",
       "options": [
-        "A crane lifts them",
+        "A crane lifts and spins them",
         "They drive in a loop",
         "The crew pushes them on a turntable",
         "They run backward"
@@ -3094,9 +3094,9 @@
     "params": {
       "question": "What does the Cable Car Museum's powerhouse do?",
       "options": [
-        "Pulls the cables that move the cable cars",
+        "Pulls the cables that move the cars",
         "Builds new cable cars",
-        "Charges electric buses",
+        "Charges electric trolley buses",
         "Pumps water for fire hydrants"
       ],
       "answer": 0,
@@ -3127,7 +3127,7 @@
       "question": "How deep does the BART Transbay Tube go?",
       "options": [
         "35 feet",
-        "135 feet below sea level",
+        "135 feet",
         "500 feet",
         "1,000 feet"
       ],
@@ -3161,7 +3161,7 @@
         "Andrew Hallidie",
         "John McLaren",
         "Mayor James Rolph",
-        "Emperor Norton"
+        "Governor Hiram Johnson"
       ],
       "answer": 2,
       "explain": "The tunnel opened the west side to new neighborhoods."
@@ -3190,7 +3190,7 @@
     "params": {
       "question": "Which two historic vessels are at Pier 45?",
       "options": [
-        "A ferry and a tugboat",
+        "A Gold Rush ferry and a tugboat",
         "Two clipper ships",
         "A battleship and a yacht",
         "A WWII submarine and a Liberty ship"

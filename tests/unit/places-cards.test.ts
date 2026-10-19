@@ -124,7 +124,17 @@ describe('place cards', () => {
     for (const n of counts) expect(n).toBeGreaterThan(trivia.length / 8);
   });
 
-  it('[R-TOUR] at least 14 tours, each starting at its first stop', () => {
+  it('[R-TRIVIA] option length does not give the answer away', () => {
+    const trivia = placeDefs.filter((d) => d.kind === 'trivia');
+    const longest = trivia.filter((t) => {
+      const { options, answer } = t.params as { options: string[]; answer: number };
+      return options.every((o, i) => i === answer || o.length < options[answer].length);
+    });
+    expect(longest.length / trivia.length).toBeLessThanOrEqual(0.35);
+    expect(longest.length / trivia.length).toBeGreaterThanOrEqual(0.1);
+  });
+
+  it('[R-GUIDED-TOUR] at least 14 tours, each starting at its first stop', () => {
     const tours = placeDefs.filter((d) => d.kind === 'tour');
     expect(tours.length).toBeGreaterThanOrEqual(14);
     expect(new Set(tours.map((t) => t.neighborhood)).size).toBeGreaterThanOrEqual(10);
