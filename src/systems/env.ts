@@ -229,8 +229,7 @@ class Env {
   frame(): void {
     const g = this.game;
     const sky = g.sky;
-    const now = g.date();
-    this.time.value = (now.getTime() / 1000) % 3600;
+    this.time.value = g.simTime % 3600;
     this.nightRef.value = sky.night;
     this.water.uNight.value = sky.night;
     const glint = this.water.uGlintDir.value;

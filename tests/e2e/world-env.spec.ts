@@ -144,6 +144,7 @@ test.describe('world environment', () => {
       return (w.material as import('three').Material).onBeforeCompile.toString();
     });
     expect(shader).toContain('uDepth');
+    await page.evaluate(() => window.__fly.game.drone.root.traverse((o) => o.layers.disableAll()));
     await look(page, { lat: 37.8105, lon: -122.425, yaw: 0, alt: 60, mode: 'noon' });
     const a = await pixels(page);
     expect(stats(a, 0.55, 1).blue).toBeGreaterThan(0.5);
