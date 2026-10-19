@@ -4,7 +4,7 @@ import type { Marker, MarkerStyle, QuestInstance } from '../activities/quest-com
 import { chapters, type QuestParams } from '../activities/kinds/quest';
 import { QuestDialogue, QuestTracker } from '../ui/quest-dialogue';
 
-export const QUEST_KINDS = new Set(['quest', 'riddle', 'scavenger', 'daily']);
+const QUEST_KINDS = new Set(['quest', 'riddle', 'scavenger', 'daily']);
 
 function haloTexture(): THREE.Texture {
   const c = document.createElement('canvas');
@@ -53,8 +53,8 @@ class MarkerLayer {
     const o = new THREE.Group();
     if (style === 'beacon') {
       const pillar = new THREE.Mesh(
-        new THREE.CylinderGeometry(3.5, 3.5, 360, 20, 1, true).translate(0, 180, 0),
-        new THREE.MeshBasicMaterial({ color: '#ffc15e', alphaMap: this.fade, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false }),
+        new THREE.CylinderGeometry(2.2, 2.2, 360, 20, 1, true).translate(0, 180, 0),
+        new THREE.MeshBasicMaterial({ color: '#d9771f', alphaMap: this.fade, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false }),
       );
       const ring = new THREE.Mesh(new THREE.RingGeometry(9, 11, 48).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#ffd98a', transparent: true, opacity: 0.8, depthWrite: false, side: THREE.DoubleSide, fog: false }));
       ring.name = 'ring';
@@ -107,19 +107,14 @@ export function nextChapterWaypoint(game: Game, id: string): void {
   game.toast(`Next: Chapter ${n}, ${next.title}. Waypoint set.`, 'info');
 }
 
-let dialogue: QuestDialogue | null = null;
 let tracker: QuestTracker | null = null;
 let layer: MarkerLayer | null = null;
-
-export function questUi(): { dialogue: QuestDialogue | null; tracker: QuestTracker | null } {
-  return { dialogue, tracker };
-}
 
 export const system: GameSystem = {
   id: 'quests',
   order: 40,
   init(game) {
-    dialogue = new QuestDialogue(game);
+    new QuestDialogue(game);
     tracker = new QuestTracker(game);
     layer = new MarkerLayer();
     game.scene.add(layer.group);

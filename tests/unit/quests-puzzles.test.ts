@@ -4,7 +4,7 @@ import { toLocal } from '../../src/core/geo';
 import type { ActivityDef } from '../../src/activities/types';
 import type { Game } from '../../src/game';
 import type { QuestInstance } from '../../src/activities/quest-common';
-import { kind as riddle, riddleTarget, type RiddleSpec } from '../../src/activities/kinds/riddle';
+import { kind as riddle, reveal, riddleTarget, type RiddleSpec } from '../../src/activities/kinds/riddle';
 import { kind as daily, MIN_POOL, dayIndex, decreeNumber, pickIndex, recordDaily, sfDate, shareLine, shiftDate, square, today, type DailyParams } from '../../src/activities/kinds/daily';
 import { heatOf, kind as scavenger, tokenPoints } from '../../src/activities/kinds/scavenger';
 
@@ -77,7 +77,8 @@ describe('imperial riddles', () => {
     expect(inst.update(0.1)).toBe('done');
     expect(inst.update(0.1)).toBe('done');
     expect(inst.progress()).toBe(1);
-    expect(said.at(-1)).toContain(spec.fact);
+    expect(said.at(-1)).toBe(`The Ferry Building! ${spec.fact}`);
+    expect(reveal({ ...spec, fact: 'The Ferry Building opened in 1898.' })).toBe('Yes! The Ferry Building opened in 1898.');
     expect(inst.elapsed?.()).toBeCloseTo(120.1);
   });
 

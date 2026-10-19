@@ -33,6 +33,11 @@ export function riddleErrors(r: Partial<RiddleSpec> | undefined, label = 'params
   ];
 }
 
+export function reveal(r: RiddleSpec): string {
+  const name = r.answer.replace(/^The /, '');
+  return r.fact.includes(name) ? `Yes! ${r.fact}` : `${r.answer}! ${r.fact}`;
+}
+
 export function riddleTarget(r: RiddleSpec, game: Game) {
   return game.world.point(r.target, 20);
 }
@@ -62,7 +67,7 @@ export function runRiddle(def: ActivityDef, game: Game, r: RiddleSpec, run: Ridd
       if (reached(pos, target, radius, 250)) {
         solved = true;
         const share = run.onSolved?.(t, hints);
-        game.bus.emit('quest:say', { id: def.id, lines: [{ who: NORTON, text: `${r.answer}! ${r.fact}`, share }] });
+        game.bus.emit('quest:say', { id: def.id, lines: [{ who: NORTON, text: reveal(r), share }] });
         return 'done';
       }
       return t > run.timeLimit ? 'failed' : 'running';

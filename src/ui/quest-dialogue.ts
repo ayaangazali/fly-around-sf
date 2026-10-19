@@ -69,6 +69,8 @@ export class QuestDialogue {
     game.ui.append(this.root);
     game.bus.on('quest:say', ({ lines }) => this.push(lines));
     game.bus.on('interact', () => this.advance());
+    game.bus.on('panel:open', () => this.root.classList.add('paused'));
+    game.bus.on('panel:close', () => this.root.classList.remove('paused'));
   }
 
   get visible(): boolean {
@@ -138,7 +140,7 @@ export class QuestDialogue {
     this.last = performance.now();
     this.paint();
     const frame = (now: number) => {
-      this.tick(Math.min(0.1, (now - this.last) / 1000));
+      this.tick(Math.min(0.5, (now - this.last) / 1000));
       this.last = now;
       if (this.line) this.raf = requestAnimationFrame(frame);
     };
@@ -147,7 +149,7 @@ export class QuestDialogue {
 
   private tick(dt: number): void {
     const l = this.line;
-    if (!l) return;
+    if (!l || this.root.classList.contains('paused')) return;
     if (this.shown < l.text.length) {
       this.shown = Math.min(l.text.length, this.shown + CHARS_PER_SECOND * dt);
       this.paint();
