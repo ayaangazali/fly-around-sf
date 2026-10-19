@@ -80,6 +80,8 @@ export class PanelHost {
     x.addEventListener('click', () => this.close());
     head.append(h, x);
     const body = el('div', 'sheet-body');
+    body.tabIndex = 0;
+    body.setAttribute('aria-labelledby', 'sheet-title');
     this.sheet.replaceChildren(head, body);
     this.cleanup = p.render(body, this.game);
     this.game.input.held.clear();

@@ -15,7 +15,7 @@ let pendingCard: string | null = null;
 let activeCategory = 'all';
 
 export function allCards(): CardDef[] {
-  return (cards ??= loadCards());
+  return (cards ??= [...new Map(loadCards().map((c) => [c.id, c])).values()]);
 }
 
 export function openCard(game: Game, id: string): void {

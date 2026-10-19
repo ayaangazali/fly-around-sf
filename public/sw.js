@@ -38,12 +38,12 @@ self.addEventListener('fetch', (e) => {
           caches.open(VERSION).then((c) => c.put('./', copy));
           return res;
         })
-        .catch(() => caches.match('./', { ignoreSearch: true })),
+        .catch(() => caches.match('./', { ignoreSearch: true, ignoreVary: true })),
     );
     return;
   }
   e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then(
+    caches.match(req, { ignoreSearch: true, ignoreVary: true }).then(
       (hit) =>
         hit ||
         fetch(req).then((res) => {

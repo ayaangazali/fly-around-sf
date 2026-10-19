@@ -214,3 +214,5 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .ach { width: 100%; }
 }
 @keyframes onboard-pop-phone { from { opacity: 0; transform: translateY(10px) scale(0.97); } }
+.sheet-body:focus-visible { outline-offset: -2px; }
+@media (max-width: 640px) { .menubar-btn { width: 42px; height: 42px; } }
