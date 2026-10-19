@@ -221,6 +221,7 @@ describe('water', () => {
       uZenith: { value: new THREE.Color() },
       uGlintDir: { value: new THREE.Vector3(0, 1, 0) },
       uGlint: { value: new THREE.Color() },
+      uGlow: { value: new THREE.Color() },
       uDetail: { value: 1 },
     };
     const s = compile(createWaterMaterial(u, waterTexture(t), t), 'lambert');

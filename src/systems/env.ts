@@ -108,6 +108,7 @@ class Env {
       uZenith: { value: game.sky.colors.zenith },
       uGlintDir: { value: new THREE.Vector3(0, 1, 0) },
       uGlint: { value: new THREE.Color() },
+      uGlow: { value: game.sky.colors.glow },
       uDetail: { value: this.tier.waterDetail },
     };
   }
@@ -250,21 +251,27 @@ class Env {
       glint.copy(sky.moonDir);
       this.water.uGlint.value.setRGB(0.3, 0.33, 0.4).multiplyScalar(sky.moonIllumination * (sky.moonDir.y > 0 ? 1 : 0));
     }
-    const cam = g.camera.position;
     const lu = this.lamps.material.uniforms;
     lu.uPx.value = g.renderer.getPixelRatio();
     lu.uScale.value = g.renderer.domElement.height / (2 * Math.tan((g.camera.fov * Math.PI) / 360));
     lu.uFogNear.value = sky.fog.near;
     lu.uFogFar.value = sky.fog.far;
     this.lamps.visible = sky.night > 0.05;
-    const far = Math.min(this.tier.roadDist, sky.fog.far + 1000);
+    this.cull();
+  }
+
+  cull(): void {
+    const p = this.game.flight.pos;
+    const sky = this.game.sky;
+    const fogFar = (sky.viewFar * 0.92) / sky.fogDensity;
+    const far = Math.min(this.tier.roadDist, fogFar + 1000);
     for (const m of this.roads) {
       const s = m.geometry.boundingSphere!;
-      m.visible = s.center.distanceTo(cam) - s.radius < far;
+      m.visible = Math.hypot(s.center.x - p.x, s.center.z - p.z) - s.radius < far;
     }
-    const tf = Math.min(this.tier.treeDist, sky.fog.far);
+    const tf = Math.min(this.tier.treeDist, fogFar);
     for (const t of this.trees) {
-      const d = Math.hypot(t.cx - cam.x, t.cz - cam.z);
+      const d = Math.hypot(t.cx - p.x, t.cz - p.z);
       const on = d < tf + TREE_TILE * 0.71;
       for (const m of t.meshes) m.visible = on;
       if (on) setTreeLod(t, d > this.tier.treeLod + TREE_TILE * 0.71);
@@ -302,5 +309,6 @@ export const system: GameSystem & { env: Env | null } = {
   },
   update() {
     system.env?.applyTime();
+    system.env?.cull();
   },
 };

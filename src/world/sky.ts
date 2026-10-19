@@ -12,8 +12,8 @@ const PALETTE: Key[] = [
   [-16, '#05080f', '#161c29', '#000000', '#22262f', '#565967'],
   [-9, '#0b1428', '#24304a', '#1a0e18', '#2a2d3d', '#3a4052'],
   [-4, '#1d2c50', '#55597a', '#6a3436', '#5d5a72', '#626576'],
-  [0, '#3b5785', '#c78c78', '#ff6a2c', '#f0a080', '#c9a6a0'],
-  [4, '#4d72a7', '#e8b896', '#ff8f40', '#ffd0a6', '#e6d3c8'],
+  [0, '#3b5785', '#c78c78', '#ff6a2c', '#f0a080', '#c4aca8'],
+  [4, '#4d72a7', '#e8b896', '#ff8f40', '#ffd0a6', '#ddd6d2'],
   [10, '#5788c0', '#d8dedb', '#ffb870', '#fff1e0', '#edf0f0'],
   [25, '#4d87c8', '#cddfeb', '#000000', '#ffffff', '#f2f4f5'],
   [90, '#3c79c2', '#c3d9ea', '#000000', '#ffffff', '#f4f6f7'],
@@ -69,10 +69,10 @@ void main() {
   vec2 sh = normalize(uSunDir.xz + 1e-4);
   float sunward = max(dot(normalize(d.xz + 1e-4), sh), 0.0);
   float low = 1.0 - smoothstep(0.0, 0.45, up);
-  col += uGlow * pow(sunward, 3.0) * low * 0.9;
+  col += uGlow * pow(sunward, 4.0) * low * 0.5;
   float cs = max(dot(d, uSunDir), 0.0);
   float vis = smoothstep(-0.06, 0.02, uSunDir.y);
-  col += uSunCol * (pow(cs, 900.0) * 6.0 + pow(cs, 90.0) * 0.35 + pow(cs, 8.0) * 0.08) * vis;
+  col += uSunCol * (smoothstep(0.99991, 0.99996, cs) * 3.0 + pow(cs, 3000.0) * 0.45 + pow(cs, 160.0) * 0.16) * vis + uGlow * pow(cs, 10.0) * 0.18 * vis;
   if (d.y > 0.0) {
     vec2 cp = d.xz / (d.y + 0.12) * 1.6 + vec2(uTime * 0.0035, uTime * 0.0012);
     float f = fbm(cp);

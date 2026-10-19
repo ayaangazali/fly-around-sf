@@ -8,6 +8,7 @@ export interface WaterUniforms {
   uZenith: { value: THREE.Color };
   uGlintDir: { value: THREE.Vector3 };
   uGlint: { value: THREE.Color };
+  uGlow: { value: THREE.Color };
   uDetail: { value: number };
 }
 
@@ -88,7 +89,7 @@ export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: T
         `#include <common>
         varying vec3 vWater;
         uniform float uTime, uNight, uDetail;
-        uniform vec3 uHorizon, uZenith, uGlintDir, uGlint;
+        uniform vec3 uHorizon, uZenith, uGlintDir, uGlint, uGlow;
         uniform sampler2D uDepth;
         uniform vec4 uBox;
         ${WATER_GLSL}`,
@@ -116,6 +117,7 @@ export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: T
         vec3 wR = reflect(-wV, wN);
         float fres = 0.02 + 0.98 * pow(1.0 - max(dot(wN, wV), 0.0), 5.0);
         vec3 skyR = mix(uHorizon, uZenith, smoothstep(0.0, 0.5, wR.y));
+        skyR += uGlow * pow(max(dot(normalize(wR.xz + 1e-4), normalize(uGlintDir.xz + 1e-4)), 0.0), 4.0) * (1.0 - smoothstep(0.0, 0.4, wR.y)) * 0.5;
         gl_FragColor.rgb = mix(gl_FragColor.rgb, skyR, clamp(fres * 0.9, 0.0, 0.85));
         float gl = max(dot(wR, uGlintDir), 0.0);
         gl_FragColor.rgb += uGlint * (pow(gl, 600.0) * 4.0 + pow(gl, 60.0) * 0.25) * step(0.0, uGlintDir.y);
