@@ -52,7 +52,7 @@ describe('device sync', () => {
   });
 
   it('[R-SYNC-DEVICES] an incoming save keeps only real content and sane numbers', () => {
-    const known = { activities: new Set(['a', 'b', 'c']), cards: new Set(['x']) };
+    const known = { activities: new Map([['a', 'rings'], ['b', 'rings'], ['c', 'rings']]), cards: new Set(['x']) };
     const raw = {
       ...emptySave(),
       completed: { a: 100, b: -5, c: 'soon', ghost: 7 },
@@ -72,6 +72,33 @@ describe('device sync', () => {
       flags: { mpPlayed: 4 },
       stats: { distance: 0, flightTime: 1e9, crashes: 0, sessions: 3 },
     });
+  });
+
+  it('[R-SYNC-DEVICES] medals, points bests and the daily streak move too, merged by best and by latest day', () => {
+    const known = { activities: new Map([['a', 'rings'], ['p', 'photo'], ['f', 'follow']]), cards: new Set<string>() };
+    const raw = save({
+      flags: {
+        'medal:a': 3,
+        'medal:ghost': 3,
+        'medal:p': 7,
+        'points:p': 2,
+        'points:f': 80,
+        'points:a': 500,
+        'daily:2026-10-18': 'share line',
+        'daily:2026-10-19': 'x'.repeat(301),
+        'daily:soon': 'x',
+        'daily:last': '2026-10-18',
+        'daily:streak': 4,
+        'daily:count': 6,
+        'quest:a': 2,
+      },
+    });
+    const clean = cleanSave(raw, known);
+    const moved = { 'medal:a': 3, 'points:p': 2, 'points:f': 80, 'daily:2026-10-18': 'share line', 'daily:last': '2026-10-18', 'daily:streak': 4, 'daily:count': 6 };
+    expect(clean.flags).toEqual(moved);
+    const local = save({ flags: { 'medal:a': 1, 'points:f': 90, 'daily:last': '2026-10-10', 'daily:streak': 9, 'daily:count': 2, mpWins: 1 } });
+    expect(mergeSaves(local, clean).save.flags).toEqual({ ...moved, 'points:f': 90, mpWins: 1 });
+    expect(mergeSaves(clean, local).save.flags).toMatchObject({ 'daily:last': '2026-10-18', 'daily:streak': 4, 'medal:a': 3 });
   });
 
   it('[R-SYNC-DEVICES] a code moves progress from one device to another, which merges it', async () => {
