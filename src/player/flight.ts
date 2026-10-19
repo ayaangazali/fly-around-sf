@@ -48,6 +48,7 @@ export const FLIGHT = {
   waterLevel: 0,
   crashSpeed: 14,
   lowBatterySpeed: 0.55,
+  recharge: 1 / 20,
 };
 
 export function createFlight(x: number, y: number, z: number, yaw = 0): FlightState {
@@ -130,6 +131,7 @@ export function stepFlight(s: FlightState, input: FlightInput, dt: number, env: 
   s.pitch += (clamp(-localFwd / FLIGHT.boost, -1, 1) * 0.45 - s.pitch) * Math.min(1, dt * 6);
   s.roll += (clamp(-localRight / FLIGHT.cruise, -1, 1) * 0.5 - s.roll) * Math.min(1, dt * 6);
   const drain = env.batteryDrain ?? 1 / 1800;
-  s.battery = clamp(s.battery - drain * dt * (input.boost ? 2.5 : mag > 0 ? 1 : 0.3), 0, 1);
+  const landed = mag === 0 && (s.pos.y <= floor + 0.3 || env.collide({ ...s.pos, y: s.pos.y - 0.3 }, FLIGHT.radius));
+  s.battery = clamp(landed ? s.battery + FLIGHT.recharge * dt : s.battery - drain * dt * (input.boost ? 2.5 : mag > 0 ? 1 : 0.3), 0, 1);
   return { impact: impact >= FLIGHT.crashSpeed ? impact : 0, splashed, grounded };
 }

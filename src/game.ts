@@ -250,10 +250,12 @@ export class Game {
   step(dt: number): void {
     if (!this.loaded) return;
     this.simTime += dt;
+    const charge = this.flight.battery;
     this.handleActions();
     const input = this.panels.openId ? { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false } : this.input.flight();
     const res = stepFlight(this.flight, input, dt, this.env);
     this.throttle = Math.abs(input.forward) + Math.abs(input.lift) + Math.abs(input.strafe);
+    if (charge > 0.2 && this.flight.battery <= 0.2) this.toast('Battery low. Land anywhere and hold still to recharge', 'warn');
     const st = this.save.data.stats;
     st.flightTime += dt;
     st.distance += Math.hypot(this.flight.vel.x, this.flight.vel.z) * dt;
