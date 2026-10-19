@@ -28,8 +28,22 @@ function cached<M extends THREE.Material>(key: string, make: () => M): M {
   return m;
 }
 
+const painted = new WeakMap<THREE.Material, THREE.MeshLambertMaterial>();
+
 export function paint(color: string, flat = false, double = false): THREE.MeshLambertMaterial {
-  return cached(`paint:${color}:${flat}:${double}`, () => new THREE.MeshLambertMaterial({ color, flatShading: flat, side: double ? THREE.DoubleSide : THREE.FrontSide }));
+  return cached(`paint:${color}:${flat}:${double}`, () => {
+    const side = double ? THREE.DoubleSide : THREE.FrontSide;
+    const m = new THREE.MeshLambertMaterial({ color, flatShading: flat, side });
+    painted.set(m, cached(`paint-vertex:${flat}:${double}`, () => new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: flat, side })));
+    return m;
+  });
+}
+
+function tint(geo: THREE.BufferGeometry, c: THREE.Color): void {
+  const n = geo.getAttribute('position').count;
+  const col = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) col.set([c.r, c.g, c.b], i * 3);
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
 }
 
 export function glass(color: string, shininess = 80): THREE.MeshPhongMaterial {
@@ -170,6 +184,11 @@ export class Site {
     this.q.setFromEuler(this.e);
     this.m.compose(new THREE.Vector3(x, y, z), this.q, new THREE.Vector3(sx, sy, sz));
     geo.applyMatrix4(this.m);
+    const baked = painted.get(mat);
+    if (baked) {
+      tint(geo, (mat as THREE.MeshLambertMaterial).color);
+      mat = baked;
+    }
     let list = this.parts.get(mat);
     if (!list) this.parts.set(mat, (list = []));
     list.push(geo);
@@ -208,11 +227,7 @@ export class Site {
 
   windows(color: string, g: THREE.BufferGeometry, x = 0, y = 0, z = 0, ry = 0): this {
     const geo = g.index ? g.toNonIndexed() : g;
-    const c = new THREE.Color(color);
-    const n = geo.getAttribute('position').count;
-    const col = new Float32Array(n * 3);
-    for (let i = 0; i < n; i++) col.set([c.r, c.g, c.b], i * 3);
-    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    tint(geo, new THREE.Color(color));
     return this.add(this.game.cityRenderer.material, geo, x, y, z, ry);
   }
 

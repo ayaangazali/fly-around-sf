@@ -23,7 +23,6 @@ function points(pos: number[], color: string, size: number): THREE.Points {
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   const p = new THREE.Points(g, new THREE.PointsMaterial({ color, size, sizeAttenuation: false, fog: false, depthWrite: false, transparent: true }));
-  p.frustumCulled = false;
   return p;
 }
 
