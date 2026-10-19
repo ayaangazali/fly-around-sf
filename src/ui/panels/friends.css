@@ -22,7 +22,7 @@
 .fr-btn { min-height: 40px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); font-weight: 650; font-size: 14px; white-space: nowrap; transition: background 0.15s, transform 0.15s, opacity 0.15s; }
 .fr-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); }
 .fr-btn:active:not(:disabled) { transform: scale(0.97); }
-.fr-btn.primary { background: var(--accent); border-color: transparent; color: #fff; box-shadow: 0 8px 22px rgba(255, 106, 61, 0.28); }
+.fr-btn.primary { background: var(--accent); border-color: transparent; color: #1d1a14; box-shadow: 0 8px 22px rgba(255, 106, 61, 0.28); }
 .fr-btn.primary:hover:not(:disabled) { background: #ff7d55; }
 .fr-btn.ghost { background: transparent; }
 .fr-btn.small { padding: 0 12px; font-size: 13px; }

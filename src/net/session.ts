@@ -76,6 +76,7 @@ export class Net {
   private lastHi = '';
   private listeners = new Set<() => void>();
   private streams = new Map<string, MediaStream>();
+  private notice = '';
 
   constructor(
     readonly game: Game,
@@ -160,7 +161,7 @@ export class Net {
     } catch {
       this.room = null;
       this.setStatus('unreachable');
-      this.game.toast('Multiplayer could not start. Single player keeps working.', 'warn');
+      this.notice = 'Multiplayer could not start. Single player keeps working.';
       return false;
     }
     this.sayHi();
@@ -469,6 +470,8 @@ export class Net {
   }
 
   update(dt: number, listener?: { pos: Vec3; forward: Vec3; up: Vec3 }): void {
+    if (this.notice) this.game.toast(this.notice, 'warn');
+    this.notice = '';
     const now = performance.now();
     for (const p of this.peers.values()) {
       if (!p.sample) continue;
