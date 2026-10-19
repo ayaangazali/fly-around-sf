@@ -150,7 +150,7 @@ describe('pitch kind', () => {
     for (const d of pitches) {
       expect(d.requires?.length, d.id).toBe(1);
       expect(ids.has(d.requires![0]), d.id).toBe(true);
-      expect(JSON.stringify(d)).not.toMatch(/[–—]/);
+      expect(JSON.stringify(d)).not.toMatch(/[\u2013\u2014]/);
     }
   });
 

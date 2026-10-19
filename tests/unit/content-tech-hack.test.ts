@@ -88,7 +88,7 @@ describe('hack kind', () => {
     expect(new Set(venues).size).toBe(hacks.length);
     for (const d of hacks) {
       expect((d as ActivityDef & { sources: string[] }).sources.every((s) => s.startsWith('https://')), d.id).toBe(true);
-      expect(JSON.stringify(d)).not.toMatch(/[–—]/);
+      expect(JSON.stringify(d)).not.toMatch(/[\u2013\u2014]/);
     }
   });
 

@@ -27,7 +27,7 @@ describe('tech cards', () => {
       expect(c.sources.length, c.id).toBeGreaterThan(0);
       for (const s of c.sources) expect(() => new URL(s), s).not.toThrow();
       expect(c.sources.every((s) => s.startsWith('https://')), c.id).toBe(true);
-      expect(JSON.stringify(c), c.id).not.toMatch(/[–—]/);
+      expect(JSON.stringify(c), c.id).not.toMatch(/[\u2013\u2014]/);
     }
     expect(techCards.filter((c) => c.rarity === 'legendary').length).toBeGreaterThanOrEqual(8);
   });
