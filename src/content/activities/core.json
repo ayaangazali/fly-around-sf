@@ -1,0 +1,71 @@
+[
+  {
+    "id": "discover-golden-gate-bridge",
+    "kind": "discover",
+    "title": "Golden Gate Bridge",
+    "blurb": "Fly out to the International Orange towers.",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.8199, "lon": -122.4783, "alt": 80 },
+    "xp": 25,
+    "params": { "radius": 300 }
+  },
+  {
+    "id": "discover-palace-of-fine-arts",
+    "kind": "discover",
+    "title": "Palace of Fine Arts",
+    "blurb": "Find the rotunda by the lagoon.",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.8029, "lon": -122.4484 },
+    "xp": 15,
+    "params": { "radius": 90 }
+  },
+  {
+    "id": "discover-coit-tower",
+    "kind": "discover",
+    "title": "Coit Tower",
+    "blurb": "The fluted tower on top of Telegraph Hill.",
+    "neighborhood": "Telegraph Hill",
+    "at": { "lat": 37.8024, "lon": -122.4058 },
+    "xp": 15,
+    "params": { "radius": 80 }
+  },
+  {
+    "id": "discover-transamerica-pyramid",
+    "kind": "discover",
+    "title": "Transamerica Pyramid",
+    "blurb": "The spire that defines the skyline.",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.7952, "lon": -122.4028, "alt": 120 },
+    "xp": 15,
+    "params": { "radius": 90 }
+  },
+  {
+    "id": "discover-ferry-building",
+    "kind": "discover",
+    "title": "Ferry Building",
+    "blurb": "The clock tower at the foot of Market Street.",
+    "neighborhood": "Embarcadero",
+    "at": { "lat": 37.7955, "lon": -122.3937 },
+    "xp": 15,
+    "params": { "radius": 90 }
+  },
+  {
+    "id": "rings-marina-warmup",
+    "kind": "rings",
+    "title": "Marina Warmup",
+    "blurb": "Five easy rings from Fort Mason to Crissy Field.",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.8062, "lon": -122.4335, "alt": 20 },
+    "xp": 30,
+    "params": {
+      "radius": 16,
+      "rings": [
+        { "lat": 37.8060, "lon": -122.4380, "alt": 20 },
+        { "lat": 37.8065, "lon": -122.4450, "alt": 22 },
+        { "lat": 37.8052, "lon": -122.4530, "alt": 18 },
+        { "lat": 37.8045, "lon": -122.4620, "alt": 22 },
+        { "lat": 37.8070, "lon": -122.4700, "alt": 26 }
+      ]
+    }
+  }
+]

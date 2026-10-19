@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#0e141b" />
+    <meta name="description" content="Fly a tiny drone around a 3D San Francisco built from all 172,000 real buildings. Collect landmarks, solve clues, race friends." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <title>Fly Around SF</title>
+  </head>
+  <body>
+    <canvas id="view" aria-label="3D view of San Francisco"></canvas>
+    <div id="ui"></div>
+    <div class="loading" id="loading">
+      <div class="loading-card">
+        <h1>Fly Around <em>SF</em></h1>
+        <p>All 172,000 buildings of San Francisco. One tiny drone.</p>
+        <div class="loading-bar"><i id="loading-bar"></i></div>
+        <div class="loading-label" id="loading-label">Starting up</div>
+        <button class="fly-btn" id="fly-btn" hidden>Fly</button>
+        <div class="loading-error" id="loading-error"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
