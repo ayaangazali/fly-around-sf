@@ -46,7 +46,7 @@ export class Input {
 
   constructor(target: Pick<Window, 'addEventListener'> = window) {
     target.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (isTyping(e.target)) return;
+      if (isTyping(e.target) || forPage(e)) return;
       if (!this.held.has(e.code)) {
         const action = KEYMAP[e.code];
         if (action) this.pressed.add(action);
@@ -109,6 +109,12 @@ export class Input {
 
 function clampSum(...v: number[]): number {
   return Math.max(-1, Math.min(1, v.reduce((a, b) => a + b, 0)));
+}
+
+function forPage(e: KeyboardEvent): boolean {
+  const el = e.target as Element;
+  if (e.code === 'Enter') return !!el.matches?.('button, a[href], select, [role]');
+  return (e.code === 'Space' || e.code.startsWith('Arrow')) && !!el.closest?.('[aria-modal="true"]');
 }
 
 export function isTyping(t: EventTarget | null): boolean {
