@@ -22,6 +22,7 @@ URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=
 - Local coordinates: meters, `x` east, `z` south (north is `-z`), `y` up. `src/core/geo.ts` converts.
 - City meshes are built in a worker (`src/world/city-worker.ts`) in 500 m chunks; the shader adds windows and lights them at night.
 - Known data gap: heights are from 2010, so towers built later (Salesforce Tower, 181 Fremont, Park Tower...) are missing or wrong. `R-SKYLINE` tracks the fix.
+- `world.groundAt` does not see hand-built landmarks: their raw footprints are hidden, so it returns street level under Salesforce Tower or Coit Tower. Every `src/world/landmarks/<slug>.ts` exports `TOP`, the height in meters above the ground at its `source` that clears the whole model. Put an activity point at a landmark with `alt` above `TOP`, or beside the model. Skyline towers carry their own `top` in `TOWERS` (`skyline-modern.ts`).
 
 ## Extension points (add files, never edit a shared list)
 

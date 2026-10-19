@@ -1,0 +1,4 @@
+[
+  { "id": "R-LANDMARK-NIGHT", "owner": "world", "text": "Landmarks light up at night: floodlit towers, blinking aviation beacons, the Bay Lights and the Salesforce Tower crown." },
+  { "id": "R-LANDMARK-CLOCK", "owner": "world", "text": "The Ferry Building clock faces show the current Pacific time." }
+]
