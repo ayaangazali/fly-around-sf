@@ -243,6 +243,7 @@ export class SkySystem {
       c.far = 2400;
       this.sun.shadow.bias = -0.0004;
       this.sun.shadow.normalBias = 0.6;
+      this.sun.shadow.radius = 2.5;
     }
   }
 
