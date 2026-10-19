@@ -5,7 +5,7 @@ export interface TransportHandlers {
   join(peer: string): void;
   leave(peer: string): void;
   stream?(stream: MediaStream, peer: string): void;
-  error?(reason: string): void;
+  error?(peer: string): void;
 }
 
 export interface Transport {

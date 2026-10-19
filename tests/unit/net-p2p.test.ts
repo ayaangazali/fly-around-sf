@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import type { Transport, TransportHandlers } from '../../src/net/transport';
-import { Net, UNREACHABLE_MS } from '../../src/net/session';
+import { JOIN_GRACE_MS, Net, UNREACHABLE_MS } from '../../src/net/session';
 import { Voice } from '../../src/net/voice';
 import { FakeCtx, netGame } from './net-helpers';
 
@@ -64,8 +64,12 @@ describe('net session over the P2P transport', () => {
     vi.advanceTimersByTime(1100);
     expect(net.status).toBe('online');
     expect(statuses).toEqual(['connecting', 'unreachable', 'online']);
-    fake.h?.error?.('ICE failed');
-    expect(game.toasts.at(-1)).toContain('could not connect directly');
+    for (const id of ['p9', 'p9', 'p8']) fake.h?.error?.(id);
+    fake.h?.join('p8');
+    vi.advanceTimersByTime(JOIN_GRACE_MS - 1);
+    expect(game.toasts).toEqual([]);
+    vi.advanceTimersByTime(1);
+    expect(game.toasts).toEqual(['A friend could not connect directly. Their network may block peer to peer.']);
     net.leave();
     expect(net.status).toBe('off');
   });

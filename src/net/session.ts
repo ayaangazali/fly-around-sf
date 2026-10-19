@@ -56,6 +56,7 @@ declare module '../core/bus' {
 export const SEND_HZ = 12;
 export const PING_SECONDS = 10;
 export const UNREACHABLE_MS = 9000;
+export const JOIN_GRACE_MS = 30_000;
 const CHAT_KEEP = 60;
 
 export class Net {
@@ -65,6 +66,7 @@ export class Net {
   match: Match | null = null;
   readonly peers = new Map<string, RemotePeer>();
   private past = new Map<string, RemotePeer>();
+  private warned = new Set<string>();
   readonly chat: ChatLine[] = [];
   readonly pings = new Map<string, PingMark>();
   readonly voice: Voice;
@@ -152,7 +154,13 @@ export class Net {
           this.streams.set(id, stream);
           if (!this.peers.get(id)?.blocked) this.voice.attach(id, stream);
         },
-        error: () => this.game.toast('A friend could not connect directly. Their network may block peer to peer.', 'warn'),
+        error: (peer) => {
+          if (this.warned.has(peer)) return;
+          this.warned.add(peer);
+          setTimeout(() => {
+            if (this.room === code && !this.peers.has(peer)) this.game.toast('A friend could not connect directly. Their network may block peer to peer.', 'warn');
+          }, JOIN_GRACE_MS);
+        },
       });
       if (this.room !== code) {
         t.leave();
