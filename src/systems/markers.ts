@@ -8,6 +8,7 @@ import { viewfinder } from '../activities/kinds/photo';
 import { buildProp, animateProp } from './models/props';
 
 const BEACON_RANGE = 1500;
+const ICON_RANGE = 500;
 const CAP = 256;
 const RINGS = 96;
 const CELL = 128;
@@ -74,11 +75,11 @@ varying float vAlpha;
 void main() {
   vec4 mv = modelViewMatrix * vec4(aOffset, 1.0);
   float d = max(1.0, -mv.z);
-  float s = clamp(d * 0.085, 6.0, 150.0) * aData.y * (1.0 + 0.05 * sin(uTime * 3.0 + aData.w));
+  float s = min(d * 0.085, 150.0) * aData.y * (1.0 + 0.05 * sin(uTime * 3.0 + aData.w));
   mv.xy += position.xy * s;
   vec2 cell = vec2(mod(aData.x, uCols), floor(aData.x / uCols));
   vUv = vec2(cell.x + uv.x, uCols - 1.0 - cell.y + uv.y) / uCols;
-  vAlpha = aData.z;
+  vAlpha = aData.z * smoothstep(25.0, 60.0, d);
   gl_Position = projectionMatrix * mv;
 }`;
 
@@ -225,16 +226,17 @@ const SOON = new THREE.Color('#ffe2c4');
 const LATER = new THREE.Color('#8fa3b5');
 const MOVING = new Set(['follow', 'chase']);
 
-function beaconDefs(game: Game): { def: ActivityDef; done: boolean }[] {
+function beaconDefs(game: Game): { def: ActivityDef; done: boolean; d: number }[] {
   const p = game.flight.pos;
-  const out: { def: ActivityDef; done: boolean }[] = [];
+  const out: { def: ActivityDef; done: boolean; d: number }[] = [];
   for (const def of game.activities.list()) {
     const kind = game.activities.kinds.get(def.kind);
     if (!kind || kind.passive || game.activities.locked(def)) continue;
     const done = game.save.isDone(def.id);
     if (def.hidden && !done) continue;
     const q = game.activities.position(def);
-    if (Math.hypot(q.x - p.x, q.z - p.z) <= BEACON_RANGE) out.push({ def, done });
+    const d = Math.hypot(q.x - p.x, q.z - p.z);
+    if (d <= BEACON_RANGE) out.push({ def, done, d });
   }
   return out;
 }
@@ -249,13 +251,14 @@ function rebuildBeacons(game: Game): void {
     push(beams, t.x, Math.min(base, t.y - 2), t.z, kindColor(a.def.kind), Math.max(0, t.y - base) + 160, 2.6, 0.75, 0);
   }
   if (!a) {
-    for (const { def, done } of beaconDefs(game)) {
+    for (const { def, done, d } of beaconDefs(game)) {
       const q = game.activities.position(def);
       const base = game.world.groundAt(q.x, q.z);
       const color = kindColor(def.kind);
       const phase = (q.x * 0.013 + q.z * 0.007) % 6.28;
       push(beams, q.x, base, q.z, color, q.y - base + (done ? 40 : 140), done ? 1.2 : 2.4, done ? 0.25 : 0.95, phase);
-      push(icons, q.x, q.y + 5, q.z, color, cells.get(def.kind) ?? 0, done ? 0.6 : 1, done ? 0.5 : 1, phase);
+      const fade = Math.min(1, (ICON_RANGE - d) / 200);
+      if (fade > 0) push(icons, q.x, q.y + 5, q.z, color, cells.get(def.kind) ?? 0, done ? 0.6 : 1, (done ? 0.5 : 1) * fade, phase);
     }
   }
   const w = game.waypoint;
