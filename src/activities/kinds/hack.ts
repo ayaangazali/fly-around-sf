@@ -1,6 +1,7 @@
 import type { ActivityDef, ActivityInstance, ActivityKind } from '../types';
 import type { Vec3 } from '../../player/flight';
 import type { Game } from '../../game';
+import { lift } from '../minigame';
 
 declare module '../../core/bus' {
   interface GameEvents {
@@ -50,9 +51,9 @@ export function placeCommits(def: ActivityDef, game: Game): Commit[] {
     const r = spread * (0.4 + 0.6 * rand());
     const x = c.x + Math.cos(a) * r;
     const z = c.z + Math.sin(a) * r;
-    const y = game.world.groundAt(x, z) + HACK.minLift + rand() * (HACK.maxLift - HACK.minLift);
+    const alt = HACK.minLift + rand() * (HACK.maxLift - HACK.minLift);
     const hash = Math.floor(rand() * 0xfffffff).toString(16).padStart(7, '0');
-    return { p: { x, y, z }, hash, taken: false };
+    return { p: lift(game, x, game.world.groundAt(x, z) + alt, z, alt), hash, taken: false };
   });
 }
 

@@ -40,7 +40,7 @@ export function fakeGame(ground = 0): Game {
     bus: new Bus(),
     save: new SaveStore(memoryStorage()),
     flight: createFlight(0, 50, 0),
-    world: { toLocal, groundAt: () => ground, surfaceAt: () => ground, heightAt: () => ground, point, isWater: () => false },
+    world: { toLocal, groundAt: () => ground, surfaceAt: () => ground, heightAt: () => ground, point, isWater: () => false, collide: () => false },
     input: { press() {}, consume: () => false },
     panels: { openId: null },
     date: () => new Date('2026-10-19T19:30:00Z'),
