@@ -260,6 +260,21 @@ test.describe('minigames', () => {
     expect(await page.evaluate(() => window.__fly.state().panel)).toBeNull();
   });
 
+  test('[R-PHOTO] a gamepad opens the viewfinder and tilts it with the right stick', async ({ page }) => {
+    await boot(page);
+    const info = await page.evaluate(() => {
+      const pad = { connected: true, axes: [0, 0, 0, 0], buttons: [0, 1, 2].map((i) => ({ pressed: i === 2, value: i === 2 ? 1 : 0 })) };
+      Object.defineProperty(navigator, 'getGamepads', { value: () => [pad], configurable: true });
+      window.__fly.step(0.1);
+      pad.buttons[2] = { pressed: false, value: 0 };
+      pad.axes[3] = -1;
+      window.__fly.step(0.5);
+      return document.querySelector('.vf-info')!.textContent;
+    });
+    await expect(page.locator('.vf')).toBeVisible();
+    expect(info).toContain('TILT 16°');
+  });
+
   test('[R-ALBUM] photos survive a reload and can be deleted', async ({ page }) => {
     await boot(page);
     await page.evaluate(() => {

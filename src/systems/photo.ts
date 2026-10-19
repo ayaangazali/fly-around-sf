@@ -240,7 +240,9 @@ export const system: GameSystem = {
     if (feedbackTimer > 0 && (feedbackTimer -= dt) <= 0) ui.feedback.hidden = true;
     if (!viewfinder.open) return;
     const held = game.input.held;
-    const dir = (held.has('KeyZ') ? 1 : 0) - (held.has('KeyX') ? 1 : 0);
+    const pad = Array.from(navigator.getGamepads?.() ?? []).find((g) => g?.connected);
+    const stick = -(pad?.axes[3] ?? 0);
+    const dir = (held.has('KeyZ') ? 1 : 0) - (held.has('KeyX') ? 1 : 0) + (Math.abs(stick) > 0.15 ? stick : 0);
     if (dir) viewfinder.tilt = Math.max(PHOTO.tiltMin, Math.min(PHOTO.tiltMax, viewfinder.tilt + dir * 0.8 * dt));
     refresh(game, dt);
   },
