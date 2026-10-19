@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { Cover, Road, TreeKind, parseGreen, parseStars, parseStreets, parseTrees } from '../../src/world/env-data';
+import { Cover, Road, Tint, TreeKind, parseGreen, parseStars, parseStreets, parseTrees, treeHeight, treeKind, treeTint } from '../../src/world/env-data';
 import { Landcover } from '../../src/world/landcover';
 import { EXTENT, toLocal } from '../../src/core/geo';
 import { ROOT } from './helpers';
@@ -53,7 +53,7 @@ describe('baked environment data', () => {
     expect((counts.get(Cover.Grass) ?? 0) * 64).toBeGreaterThan(8e6);
   });
 
-  it('[R-ENV-GREEN] trees.bin holds the real street trees, Dolores palms and Embarcadero palms', () => {
+  it('[R-ENV-GREEN] trees.bin holds the real street trees with the Dolores and Embarcadero palms from the inventory', () => {
     const t = parseTrees(bin('trees.bin'));
     expect(t.count).toBeGreaterThan(130000);
     const box = (a: [number, number], b: [number, number]) => {
@@ -64,11 +64,28 @@ describe('baked environment data', () => {
       return n;
     };
     expect(box([37.769, -122.4272], [37.748, -122.4232])).toBeGreaterThan(80);
-    expect(box([37.8085, -122.416], [37.7952, -122.392])).toBeGreaterThan(200);
+    expect(box([37.8085, -122.416], [37.7952, -122.392])).toBeGreaterThan(100);
+    expect(box([37.7952, -122.395], [37.78, -122.386])).toBeGreaterThan(80);
     for (let i = 0; i < t.count; i += 97) {
       expect(t.height[i]).toBeGreaterThan(2);
       expect(t.height[i]).toBeLessThan(32);
     }
+  });
+
+  it('[R-ENV-GREEN] species names map to the right tree shape, tint and height', () => {
+    expect(treeKind('Acer palmatum :: Japanese Maple')).toBe(TreeKind.Broadleaf);
+    expect(treeKind("Acer palmatum 'Bloodgood' :: Bloodgood Japanese Maple")).toBe(TreeKind.Broadleaf);
+    expect(treeTint('Acer palmatum :: Japanese Maple')).toBe(Tint.FallRed);
+    for (const s of ['Phoenix canariensis :: Canary Island Date Palm', 'Palm (unknown Genus) :: Palm Spp', 'Dypsis cabadae :: Cabada palm', 'Cordyline australis :: Dracena Palm']) expect(treeKind(s)).toBe(TreeKind.Palm);
+    expect(treeKind('Eucalyptus globulus :: Blue Gum')).toBe(TreeKind.Eucalyptus);
+    expect(treeKind('Cupressus macrocarpa :: Monterey Cypress')).toBe(TreeKind.Conifer);
+    expect(treeTint('Prunus serrulata :: Ornamental Cherry')).toBe(Tint.Cherry);
+    expect(treeTint('Platanus x hispanica :: Sycamore: London Plane')).toBe(Tint.FallYellow);
+    expect(treeTint('Tristaniopsis laurina :: Swamp Myrtle')).toBe(Tint.Dark);
+    expect(treeHeight(TreeKind.Palm, 200)).toBe(18);
+    expect(treeHeight(TreeKind.Broadleaf, NaN)).toBeCloseTo(3.5 + 8 * 0.38);
+    expect(treeHeight(TreeKind.Eucalyptus, 10)).toBe(13);
+    expect(treeHeight(TreeKind.Conifer, 10)).toBe(10);
   });
 
   it('[R-ENV-SKY] stars.bin is the bright star catalog with Sirius brightest', () => {

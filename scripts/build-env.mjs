@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { toLocal, EXTENT } from '../src/core/geo.ts';
+import { TreeKind, treeHeight, treeKind, treeTint } from '../src/world/env-data.ts';
 
 const CACHE = new URL('../.cache/', import.meta.url);
 const DATA = new URL('../public/data/', import.meta.url);
@@ -14,7 +15,6 @@ const SOURCES = {
   trees: 'https://data.sf.gov/d/tkzw-k3nq',
   landcover: 'https://www.openstreetmap.org/copyright',
   stars: 'https://cdsarc.cds.unistra.fr/viz-bin/cat/V/50',
-  embarcaderoPalms: 'https://www.cbsnews.com/sanfrancisco/news/diseased-palm-trees-along-san-franciscos-embarcadero-to-undergo-costly-removal-replacement/',
 };
 
 async function cached(name, load) {
@@ -147,7 +147,7 @@ async function buildStreets() {
       head = fwd ? o.a : o.b;
     }
     const q = quantize(simplify(pts, 0.5));
-    if (q.length >= 2) lines.push({ cls: s.cls, name: s.name, q, pts });
+    if (q.length >= 2) lines.push({ cls: s.cls, q, pts });
   }
   const ints = [];
   for (const l of lines) {
@@ -162,7 +162,6 @@ async function buildStreets() {
   const bytes = await writeInts('streets.bin', 'SFS1', lines.length, ints);
   const km = lines.reduce((s, l) => s + l.pts.slice(1).reduce((d, p, i) => d + Math.hypot(p[0] - l.pts[i][0], p[1] - l.pts[i][1]), 0), 0) / 1000;
   console.log(`streets: ${segs.length} segments -> ${lines.length} polylines, ${km.toFixed(0)} km, ${bytes} bytes`);
-  return lines;
 }
 
 const GRASS = 1;
@@ -291,67 +290,7 @@ function pointInRing([x, z], ring) {
   return c;
 }
 
-const TREE = { broadleaf: 0, conifer: 1, eucalyptus: 2, palm: 3 };
-const TINT = { green: 0, dark: 1, purple: 2, cherry: 3, gray: 4, fallRed: 5, fallYellow: 6, jacaranda: 7, redBloom: 8 };
-
-function treeKind(species) {
-  const s = species.toLowerCase();
-  if (/palm|phoenix|washingtonia|syagrus|trachycarpus|archontophoenix|brahea|butia|chamaerops|cordyline|dracaena|livistona/.test(s)) return TREE.palm;
-  if (/eucalyptus|corymbia/.test(s)) return TREE.eucalyptus;
-  if (/cupressus|pinus|juniper|sequoia|cedrus|araucaria|podocarpus|afrocarpus|cryptomeria|thuja|chamaecyparis|abies|picea|taxus|cypress|pine/.test(s)) return TREE.conifer;
-  return TREE.broadleaf;
-}
-
-function treeTint(species) {
-  const s = species.toLowerCase();
-  if (/prunus cerasifera|purple|copper beech/.test(s)) return TINT.purple;
-  if (/prunus serrulata|kwanzan|flowering cherry|ornamental cherry|malus|crabapple/.test(s)) return TINT.cherry;
-  if (/jacaranda/.test(s)) return TINT.jacaranda;
-  if (/metrosideros|callistemon|corymbia ficifolia|erythrina|bottlebrush/.test(s)) return TINT.redBloom;
-  if (/liquidambar|pistacia|acer |pyrus calleryana|crataegus|nyssa|quercus rubra|lagerstroemia/.test(s)) return TINT.fallRed;
-  if (/ginkgo|platanus|ulmus|betula|fraxinus|tilia|gleditsia|zelkova|celtis|populus|robinia/.test(s)) return TINT.fallYellow;
-  if (/olea|eucalyptus|acacia|melaleuca|leptospermum|olive|agonis|maytenus/.test(s)) return TINT.gray;
-  if (/magnolia|ficus|pittosporum|laurus|lophostemon|tristaniopsis|myoporum|schinus|quercus agrifolia|arbutus/.test(s)) return TINT.dark;
-  return TINT.green;
-}
-
-function treeHeight(kind, dbhInches) {
-  const d = Number.isFinite(dbhInches) && dbhInches > 0 ? Math.min(60, dbhInches) : 8;
-  if (kind === TREE.palm) return Math.min(18, 5 + d * 0.45);
-  if (kind === TREE.eucalyptus) return Math.min(30, 7 + d * 0.6);
-  if (kind === TREE.conifer) return Math.min(24, 5 + d * 0.5);
-  return Math.min(16, 3.5 + d * 0.38);
-}
-
-function embarcaderoPalms(lines) {
-  const parts = lines.filter((l) => l.name === 'THE EMBARCADERO' && l.cls === 7);
-  const market = toLocal(37.7955, -122.3937);
-  const north = parts.flatMap((l) => l.pts).filter(([x, z]) => z < market.z + 40);
-  if (!north.length) return [];
-  north.sort((a, b) => a[0] - b[0]);
-  const path = [north[0]];
-  const rest = north.slice(1);
-  while (rest.length) {
-    const last = path.at(-1);
-    let best = 0;
-    for (let i = 1; i < rest.length; i++) if (Math.hypot(rest[i][0] - last[0], rest[i][1] - last[1]) < Math.hypot(rest[best][0] - last[0], rest[best][1] - last[1])) best = i;
-    path.push(rest.splice(best, 1)[0]);
-  }
-  const lens = [0];
-  for (let i = 1; i < path.length; i++) lens.push(lens[i - 1] + Math.hypot(path[i][0] - path[i - 1][0], path[i][1] - path[i - 1][1]));
-  const total = lens.at(-1);
-  const out = [];
-  for (let k = 0; k < 222; k++) {
-    const d = ((k + 0.5) / 222) * total;
-    let i = 1;
-    while (i < lens.length - 1 && lens[i] < d) i++;
-    const t = (d - lens[i - 1]) / (lens[i] - lens[i - 1] || 1);
-    out.push([path[i - 1][0] + (path[i][0] - path[i - 1][0]) * t, path[i - 1][1] + (path[i][1] - path[i - 1][1]) * t]);
-  }
-  return out;
-}
-
-async function buildTrees(lines) {
+async function buildTrees() {
   const rows = await socrata('tkzw-k3nq', { $select: 'species,latitude,longitude,mapdbh', $where: 'latitude IS NOT NULL' }, 'trees');
   const trees = [];
   for (const r of rows) {
@@ -362,8 +301,6 @@ async function buildTrees(lines) {
     const kind = treeKind(sp);
     trees.push({ p, kind, h: treeHeight(kind, Number(r.mapdbh)), tint: treeTint(sp) });
   }
-  const palms = embarcaderoPalms(lines);
-  for (const p of palms) trees.push({ p, kind: TREE.palm, h: 13, tint: TINT.green });
   trees.sort((a, b) => a.p[0] - b.p[0]);
   const n = trees.length;
   const buf = new ArrayBuffer(8 + n * 7 + ((8 + n * 4) % 2));
@@ -379,8 +316,8 @@ async function buildTrees(lines) {
     meta[2 * n + i] = t.tint;
   });
   await writeFile(new URL('trees.bin', DATA), new Uint8Array(buf));
-  const kinds = Object.keys(TREE).map((k) => `${k}=${trees.filter((t) => t.kind === TREE[k]).length}`).join(' ');
-  console.log(`trees: ${rows.length} rows -> ${n} trees (${kinds}), embarcadero palms=${palms.length}, ${buf.byteLength} bytes`);
+  const kinds = Object.entries(TreeKind).map(([k, v]) => `${k}=${trees.filter((t) => t.kind === v).length}`).join(' ');
+  console.log(`trees: ${rows.length} rows -> ${n} trees (${kinds}), ${buf.byteLength} bytes`);
 }
 
 async function buildStars() {
@@ -403,8 +340,8 @@ async function buildStars() {
 }
 
 await mkdir(CACHE, { recursive: true });
-const lines = await buildStreets();
+await buildStreets();
 await buildGreen();
-await buildTrees(lines);
+await buildTrees();
 await buildStars();
 for (const [k, v] of Object.entries(SOURCES)) console.log(`source ${k}: ${v}`);
