@@ -69,7 +69,7 @@ export const landmark: Landmark = {
     for (const side of [-1, 1]) {
       const outer = widthAt(wingBase) / 2 + 1.2;
       const inner = widthAt(FACTS.topFloor + 8) / 2 - 1;
-      const w = 12;
+      const w = 9;
       const wing = loft([
         { y: wingBase, ring: [[side * inner, w / 2], [side * outer, w / 2], [side * outer, -w / 2], [side * inner, -w / 2]] },
         { y: FACTS.topFloor + 8, ring: [[side * inner, w / 2], [side * outer, w / 2], [side * outer, -w / 2], [side * inner, -w / 2]] },

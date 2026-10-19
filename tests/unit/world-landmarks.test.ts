@@ -137,10 +137,37 @@ describe('hand-built landmarks', () => {
     expect(game.world.collide({ x: tower.x, y: 260, z: tower.z }, 1.2)).toBe(false);
   });
 
-  it('[R-LANDMARKS] Ferry Building clock hands follow Pacific time', () => {
+  it('[R-LANDMARK-CLOCK] Ferry Building clock hands follow Pacific time', () => {
     const noonish = clockAngles(new Date('2026-10-19T19:30:00Z'));
     expect(noonish.minute).toBeCloseTo(Math.PI, 5);
     expect(noonish.hour).toBeCloseTo(((12 % 12) + 0.5) / 12 * Math.PI * 2, 5);
+    const winter = clockAngles(new Date('2026-01-15T01:15:00Z'));
+    expect(winter.hour).toBeCloseTo((5.25 / 12) * Math.PI * 2, 5);
+    expect(winter.minute).toBeCloseTo(Math.PI / 2, 5);
+  });
+
+  it('[R-LANDMARK-NIGHT] night materials are driven by the shared night factor and beacons blink', () => {
+    const game = landmarkGame();
+    for (const e of entries) e.landmark.build(game);
+    const kinds = new Set<string>();
+    game.world.root.traverse((o) => {
+      if (!(o instanceof THREE.Mesh)) return;
+      const m = o.material as THREE.Material;
+      const key = m.customProgramCacheKey();
+      if (/^(glow|beacon|sparkle|crown)/.test(key)) kinds.add(key.split(':')[0]);
+      if (m.userData.animated) expect(o.onBeforeRender, o.name).not.toBe(THREE.Object3D.prototype.onBeforeRender);
+    });
+    expect([...kinds].sort()).toEqual(['beacon', 'crown', 'glow', 'sparkle']);
+    const shader = { uniforms: {} as Record<string, unknown>, vertexShader: '#include <common>\n#include <project_vertex>', fragmentShader: '#include <common>\n#include <emissivemap_fragment>' };
+    const sample = new Map<string, THREE.Material>();
+    game.world.root.traverse((o) => {
+      if (o instanceof THREE.Mesh) sample.set((o.material as THREE.Material).customProgramCacheKey().split(':')[0], o.material as THREE.Material);
+    });
+    const beaconMat = sample.get('beacon')!;
+    beaconMat.onBeforeCompile(shader as never, undefined as never);
+    expect(shader.uniforms.uNight).toBeDefined();
+    expect(shader.fragmentShader).toContain('totalEmissiveRadiance *= uNight');
+    expect(shader.fragmentShader).toContain('uTime');
   });
 });
 

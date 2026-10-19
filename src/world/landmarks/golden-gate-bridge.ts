@@ -57,11 +57,11 @@ export const landmark: Landmark = {
   id: 'golden-gate-bridge',
   build(game: Game) {
     const site = new Site(game, 'golden-gate-bridge', source, yawBetween(SOUTH_TOWER, NORTH_TOWER), 0);
-    const orange = glow('#4a1608', '#c0362c', 0.6);
-    const steel = paint('#a8301f');
+    const orange = glow('#b4441f', '#cf4a2c', 0.5);
+    const steel = paint('#b23d24');
     const concrete = paint('#a7a39a', true);
     const asphalt = paint('#3d3f44');
-    const lamp = glow('#ffb35c', '#6b5a40', 1.4);
+    const lamp = glow('#ffb35c', '#6b5a40', 2);
     const red = beacon('#ff2a1a', 1.6);
 
     const zs = site.at(SOUTH_TOWER.lat, SOUTH_TOWER.lon).z;
@@ -142,7 +142,7 @@ export const landmark: Landmark = {
       if (i % 7 === 0) {
         for (const side of [-1, 1]) {
           const x = side * (CABLE_X - 1.4);
-          site.box(paint('#8a8c90'), 0.25, 7, 0.25, x, yz, z).box(lamp, 0.7, 0.35, 0.7, x - side * 0.4, yz + 7, z);
+          site.box(paint('#8a8c90'), 0.25, 7, 0.25, x, yz, z).box(lamp, 1, 0.5, 1, x - side * 0.4, yz + 7, z);
         }
       }
     }

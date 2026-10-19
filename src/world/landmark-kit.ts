@@ -36,8 +36,9 @@ export function glass(color: string, shininess = 80): THREE.MeshPhongMaterial {
   return cached(`glass:${color}:${shininess}`, () => new THREE.MeshPhongMaterial({ color, specular: '#9fb3c8', shininess, flatShading: true }));
 }
 
-function withNight(m: THREE.MeshLambertMaterial, extra = ''): THREE.MeshLambertMaterial {
+function withNight(m: THREE.MeshLambertMaterial, key: string, extra = ''): THREE.MeshLambertMaterial {
   m.userData.animated = extra !== '';
+  m.customProgramCacheKey = () => key;
   m.onBeforeCompile = (s) => {
     s.uniforms.uNight = cityUniforms.uNight;
     s.uniforms.uTime = landmarkUniforms.uTime;
@@ -52,13 +53,14 @@ function withNight(m: THREE.MeshLambertMaterial, extra = ''): THREE.MeshLambertM
 }
 
 export function glow(color: string, base = '#3a3a3a', intensity = 1): THREE.MeshLambertMaterial {
-  return cached(`glow:${color}:${base}:${intensity}`, () => withNight(new THREE.MeshLambertMaterial({ color: base, emissive: color, emissiveIntensity: intensity })));
+  return cached(`glow:${color}:${base}:${intensity}`, () => withNight(new THREE.MeshLambertMaterial({ color: base, emissive: color, emissiveIntensity: intensity }), 'glow'));
 }
 
 export function beacon(color = '#ff2a1a', period = 1.5): THREE.MeshLambertMaterial {
   return cached(`beacon:${color}:${period}`, () =>
     withNight(
       new THREE.MeshLambertMaterial({ color: '#5a1410', emissive: color, emissiveIntensity: 2 }),
+      `beacon:${period}`,
       `\n  totalEmissiveRadiance *= step(0.55, fract(uTime / ${period.toFixed(2)} + vLmPos.x * 0.0007));`,
     ),
   );
@@ -68,6 +70,7 @@ export function sparkle(color = '#ffffff'): THREE.MeshLambertMaterial {
   return cached(`sparkle:${color}`, () =>
     withNight(
       new THREE.MeshLambertMaterial({ color: '#7d7f84', emissive: color, emissiveIntensity: 3 }),
+      'sparkle',
       `\n  float sweep = 0.5 + 0.5 * sin(vLmPos.x * 0.021 - vLmPos.z * 0.017 + uTime * 1.3);
   float rain = fract(vLmPos.y * 0.035 + uTime * 0.6 + sin(floor(vLmPos.x * 0.07)) * 9.0);
   totalEmissiveRadiance *= 0.3 + 0.7 * pow(sweep, 2.0) * smoothstep(0.1, 1.0, rain);`,
@@ -78,7 +81,8 @@ export function sparkle(color = '#ffffff'): THREE.MeshLambertMaterial {
 export function crown(): THREE.MeshLambertMaterial {
   return cached('crown', () =>
     withNight(
-      new THREE.MeshLambertMaterial({ color: '#c9ced3', emissive: '#ffffff', emissiveIntensity: 1.1 }),
+      new THREE.MeshLambertMaterial({ color: '#c9ced3', emissive: '#ffffff', emissiveIntensity: 0.9 }),
+      'crown',
       `\n  float wave = 0.5 + 0.5 * sin(vLmPos.y * 0.35 - uTime * 0.8 + sin(vLmPos.x * 0.15 + uTime * 0.3) * 2.0);
   totalEmissiveRadiance *= mix(vec3(0.55, 0.62, 0.8), vec3(1.0, 0.92, 0.8), wave) * (0.35 + 0.65 * wave);`,
     ),
