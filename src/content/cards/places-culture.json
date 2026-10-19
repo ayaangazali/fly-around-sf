@@ -1,0 +1,217 @@
+[
+  {
+    "id": "castro-theatre",
+    "name": "Castro Theatre",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.762, "lon": -122.43475, "alt": 25 },
+    "year": 1922,
+    "blurb": "A 1922 movie palace with a glowing neon marquee at the heart of the Castro.",
+    "lore": "Timothy Pflueger, the architect behind many of California's grand theaters, designed this Spanish Baroque movie palace in 1922, and the famous neon CASTRO sign arrived in 1937. Inside, a ceiling built to look like a giant tent arches over 1,400 seats. For generations it has been the soul of the Castro, hosting film festivals, sing-alongs and premieres, often with an organist playing the crowd in before the lights go down.",
+    "facts": [
+      "The Castro Theatre was built in 1922.",
+      "It was designed by Timothy L. Pflueger.",
+      "Its landmark marquee was added in 1937.",
+      "It seats about 1,400 for concerts."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Castro_Theatre"]
+  },
+  {
+    "id": "fillmore-auditorium",
+    "name": "The Fillmore",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Western Addition",
+    "at": { "lat": 37.78408, "lon": -122.43317, "alt": 25 },
+    "year": 1912,
+    "blurb": "The ballroom where Bill Graham launched the psychedelic rock era, and still hands out apples.",
+    "lore": "Built in 1912 as a dance hall, the Fillmore became the nerve center of the 1960s San Francisco sound when promoter Bill Graham started booking it in December 1965: Jefferson Airplane, the Grateful Dead, Janis Joplin, Jimi Hendrix. Two traditions survive. At the top of the stairs sits a barrel of free apples, which Graham never explained. And after many shows, staff hand out free posters made just for that night. Collectors frame them.",
+    "facts": [
+      "The building was built in 1912 as the Majestic Hall.",
+      "It became the Fillmore Auditorium in 1954.",
+      "Bill Graham began promoting shows there in December 1965.",
+      "Concertgoers are offered free apples, a tradition Graham started."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/The_Fillmore", "https://www.kqed.org/news/11731290/how-bill-grahams-nazi-escape-might-explain-his-fillmore-apples"]
+  },
+  {
+    "id": "womens-building",
+    "name": "MaestraPeace Mural",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76142, "lon": -122.42261, "alt": 25 },
+    "year": 1994,
+    "blurb": "A building wrapped in a vast mural of women from across history and the world.",
+    "lore": "Seven women muralists spent 18 months covering the Women's Building on 18th Street in one of the most spectacular murals in the city. MaestraPeace, finished in 1994, wraps two facades with goddesses, healers, activists and scientists from cultures around the world, in colors so bright they glow on a gray day. Stand across 18th Street to take it all in. The building inside is a women-led community center for the whole neighborhood.",
+    "facts": [
+      "The MaestraPeace mural was completed in 1994.",
+      "It was painted by seven women muralists, including Juana Alicia and Edythe Boone.",
+      "The project took 18 months of work with dozens of volunteers.",
+      "It celebrates women activists, scientists, artists and deities from around the world."
+    ],
+    "sources": ["https://www.womensbuilding.org/who-we-are/our-history", "https://abc7news.com/maestrapeace-mural-the-womens-building-muralists/3334310/"]
+  },
+  {
+    "id": "peace-pagoda",
+    "name": "Peace Pagoda",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Japantown",
+    "at": { "lat": 37.78507, "lon": -122.42986, "alt": 40 },
+    "year": 1968,
+    "blurb": "A five-tiered concrete pagoda, a gift of friendship from Osaka.",
+    "lore": "San Francisco's Japantown is one of only three remaining Japantowns in the United States, and this pagoda is its centerpiece. Osaka, the city's sister city, presented it in 1968, the same day the Japan Center opened. Architect Yoshiro Taniguchi designed the 100-foot, five-tiered concrete tower, drawing on the ancient pagodas of Nara. Every April the Cherry Blossom Festival parade fills the Peace Plaza around it with taiko drums.",
+    "facts": [
+      "The Peace Pagoda was dedicated on March 28, 1968.",
+      "It was a gift from San Francisco's sister city Osaka.",
+      "It is a 100-foot-tall, five-tiered concrete structure.",
+      "Yoshiro Taniguchi designed it."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Peace_Pagoda", "https://sanfranciscoparksalliance.org/explore-parks/japantown-peace-plaza"]
+  },
+  {
+    "id": "war-memorial-opera-house",
+    "name": "War Memorial Opera House",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Hayes Valley",
+    "at": { "lat": 37.77862, "lon": -122.42093, "alt": 35 },
+    "year": 1932,
+    "blurb": "The opera house where the United Nations held its founding conference.",
+    "lore": "The San Francisco Opera has sung here since opening night in 1932, but this hall also helped shape the modern world. In spring 1945, delegates from 50 nations gathered here for the conference that created the United Nations. Six years later, in 1951, the Treaty of San Francisco ending the war with Japan was signed on its stage. Arthur Brown Jr., who also designed City Hall across the street, gave it its grand Beaux-Arts face.",
+    "facts": [
+      "It has been home to the San Francisco Opera since 1932.",
+      "It hosted the 1945 conference that founded the United Nations.",
+      "The Treaty of San Francisco was signed here in September 1951.",
+      "It sits across Van Ness Avenue from City Hall."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/War_Memorial_Opera_House"]
+  },
+  {
+    "id": "stern-grove",
+    "name": "Stern Grove",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Sunset/Parkside",
+    "at": { "lat": 37.73583, "lon": -122.47949, "alt": 30 },
+    "year": 1938,
+    "blurb": "A eucalyptus-ringed natural amphitheater hosting free summer concerts since 1938.",
+    "lore": "Tucked into a deep green ravine in the Parkside, Stern Grove feels like a secret forest stage. Rosalie Stern bought the land for the city in memory of her husband Sigmund, and since 1938 the Stern Grove Festival has filled its sloping lawns every summer with free concerts, from symphony and opera to jazz, rock and hip-hop. Bring a blanket, a picnic and layers. The fog likes to come to the show too.",
+    "facts": [
+      "Stern Grove covers about 33 acres.",
+      "The Stern Grove Festival has been held every year since 1938.",
+      "The festival's concerts are free.",
+      "It is run by the San Francisco Recreation and Parks Department."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Sigmund_Stern_Recreation_Grove", "https://www.sterngrove.org/about/"]
+  },
+  {
+    "id": "waverly-place",
+    "name": "Waverly Place and Tin How Temple",
+    "category": "culture",
+    "rarity": "rare",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79464, "lon": -122.40693, "alt": 25 },
+    "blurb": "A Chinatown lane of painted balconies hiding one of the oldest Chinese temples in America.",
+    "lore": "Look up on Waverly Place: red and green balconies, lanterns and gilded railings belong to family associations and temples on the upper floors. At number 125, up three flights of stairs, is Tin How Temple, devoted to the sea goddess Mazu and said to date to the 1850s. The 1906 fire destroyed the building, but the goddess's image and the temple bell survived. Chinese residents long called this lane Tin How Temple Street. Climb quietly, and leave the incense smoke undisturbed.",
+    "facts": [
+      "Tin How Temple is at 125 Waverly Place.",
+      "It is purportedly one of the oldest Chinese temples in the United States, founded around 1852.",
+      "The temple's goddess image and bell survived the 1906 fire.",
+      "In Chinese, Waverly Place is known as Tin How Temple Street."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Tin_How_Temple", "https://www.timeout.com/san-francisco/things-to-do/tin-how-temple"]
+  },
+  {
+    "id": "sfmoma",
+    "name": "SFMOMA",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78572, "lon": -122.40105, "alt": 45 },
+    "year": 1935,
+    "blurb": "A rippling white modern art museum, the first on the West Coast devoted to 20th-century art.",
+    "lore": "Founded in 1935, SFMOMA was the first museum on the West Coast devoted to 20th-century art. In 1995 it moved into Mario Botta's striped brick building with its cylindrical skylight. Then in 2016 architects Snohetta added a white wall rippling up behind it like the fog rolling over the hills, more than doubling the galleries. The collection holds over 33,000 works, and the ground-floor galleries are free to wander.",
+    "facts": [
+      "SFMOMA was founded in 1935.",
+      "It was the first West Coast museum devoted solely to 20th-century art.",
+      "It reopened in 2016 after a major expansion by Snohetta.",
+      "Its collection includes over 33,000 works."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Museum_of_Modern_Art"]
+  },
+  {
+    "id": "exploratorium",
+    "name": "Exploratorium",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.8009, "lon": -122.39853, "alt": 30 },
+    "year": 1969,
+    "blurb": "The hands-on science museum on Pier 15 that invented Pi Day.",
+    "lore": "Physicist Frank Oppenheimer opened the Exploratorium in 1969 with a radical idea: let people touch everything. Its over 1,000 exhibits turn fog, light, sound and your own senses into experiments. Staff physicist Larry Shaw founded Pi Day here in 1988, celebrated every March 14. The museum moved from the Palace of Fine Arts to Piers 15 and 17 in 2013. Try the Tactile Dome, a pitch-black maze you crawl through by touch alone.",
+    "facts": [
+      "Frank Oppenheimer founded the Exploratorium in 1969.",
+      "It began in the Palace of Fine Arts.",
+      "It founded Pi Day in 1988.",
+      "It moved to Piers 15 and 17 on the waterfront in 2013."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Exploratorium", "https://www.exploratorium.edu/visit/west-gallery/tactile-dome"]
+  },
+  {
+    "id": "beach-chalet",
+    "name": "Beach Chalet",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76947, "lon": -122.51022, "alt": 25 },
+    "year": 1925,
+    "blurb": "A seaside chalet whose ground floor is wrapped in 1930s murals of San Francisco life.",
+    "lore": "At the ocean end of Golden Gate Park stands a Spanish Colonial chalet designed by Willis Polk. Walk inside the ground floor and you step into the 1930s: artist Lucien Labaudt painted every wall with frescoes of everyday San Francisco, from fishermen at the wharf to picnickers in the park, many of them portraits of real people of the time, as a New Deal art project. Upstairs, a brewery restaurant looks straight out over Ocean Beach.",
+    "facts": [
+      "The Beach Chalet is at the western end of Golden Gate Park.",
+      "It was designed by architect Willis Polk.",
+      "Its ground floor holds New Deal era frescoes by Lucien Labaudt.",
+      "It is listed on the National Register of Historic Places."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Beach_Chalet"]
+  },
+  {
+    "id": "spreckels-temple-of-music",
+    "name": "Spreckels Temple of Music",
+    "category": "culture",
+    "rarity": "common",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76988, "lon": -122.46857, "alt": 30 },
+    "year": 1900,
+    "blurb": "The grand stone bandshell of the Music Concourse, still hosting free Sunday concerts.",
+    "lore": "Sugar magnate Claus Spreckels paid for this sandstone bandshell, dedicated on September 9, 1900, as a gift for California's 50th birthday. It anchors the Music Concourse between the de Young and the Academy of Sciences, where rows of pollarded trees stand like soldiers. The 1906 earthquake damaged it and so did the 1989 one, and both times it was restored. The Golden Gate Park Band still plays free Sunday concerts here, as it has for over a century.",
+    "facts": [
+      "It was dedicated on September 9, 1900.",
+      "Claus Spreckels paid most of its cost.",
+      "It celebrated California's 50th anniversary of statehood.",
+      "The Golden Gate Park Band plays free Sunday concerts there."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Spreckels_Temple_of_Music", "https://noehill.com/sf/landmarks/poi_spreckels_temple_of_music.asp"]
+  },
+  {
+    "id": "hardly-strictly-bluegrass",
+    "name": "Hardly Strictly Bluegrass",
+    "category": "culture",
+    "rarity": "rare",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76913, "lon": -122.48569, "alt": 30 },
+    "year": 2001,
+    "blurb": "A free music festival in Hellman Hollow, gifted to the city by a banjo-loving banker.",
+    "lore": "Warren Hellman was a billionaire investment banker who loved playing the banjo. In 2001 he paid for a free bluegrass festival in Golden Gate Park and 13,000 people showed up. Within a few years it had grown far beyond bluegrass, so he renamed it Hardly Strictly Bluegrass. It is still free every October, drawing hundreds of thousands. Days before he died in 2011, the meadow where it happens was renamed Hellman Hollow in his honor.",
+    "facts": [
+      "The festival began in 2001 as Strictly Bluegrass.",
+      "It was founded and funded by Warren Hellman.",
+      "The festival is free to attend.",
+      "Its meadow was renamed Hellman Hollow in December 2011."
+    ],
+    "sources": ["https://abc7news.com/archive/8471903", "https://news.pollstar.com/2011/12/19/hardly-strictly-bluegrass-founder-hellman-dies/"]
+  }
+]

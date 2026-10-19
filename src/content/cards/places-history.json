@@ -1,0 +1,359 @@
+[
+  {
+    "id": "lottas-fountain",
+    "name": "Lotta's Fountain",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.78794, "lon": -122.4033, "alt": 25 },
+    "year": 1875,
+    "blurb": "A cast-iron fountain on Market Street where 1906 survivors found each other.",
+    "lore": "Lotta Crabtree started out as a child performer dancing for Gold Rush miners and became one of the richest entertainers in America. In 1875 she gave this ornate cast-iron fountain to the city. After the 1906 earthquake it became the meeting point where survivors posted notes and searched for family. On Christmas Eve 1910, opera star Luisa Tetrazzini sang here for a crowd estimated at 250,000. Every April 18 at 5:12 a.m. the city gathers here again to remember.",
+    "facts": [
+      "Actress Lotta Crabtree gave the fountain to the city in 1875.",
+      "It was a meeting point for survivors after the 1906 earthquake.",
+      "Luisa Tetrazzini sang here on Christmas Eve 1910 to an estimated 250,000 people.",
+      "A remembrance ceremony is held here every April 18 at 5:12 a.m."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Lotta%27s_Fountain", "https://sfstandard.com/2023/05/18/san-franciscos-favorite-monument-was-a-gift-from-a-vaudeville-dancer/"]
+  },
+  {
+    "id": "niantic",
+    "name": "The Buried Ship Niantic",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79486, "lon": -122.40152, "alt": 25 },
+    "year": 1849,
+    "blurb": "A Gold Rush ship that became a hotel, then vanished under downtown.",
+    "lore": "The Financial District is built on top of ships. In 1849 crews abandoned their vessels for the gold fields, and the whaler Niantic was dragged ashore at the foot of Clay Street and turned into a storeship and hotel. Fire burned it to the waterline in 1851, and the city simply filled in the cove on top of it. Workers digging foundations at Clay and Sansome have found it again and again, including in 1978, with bottles of champagne still in the hold.",
+    "facts": [
+      "The Niantic arrived in San Francisco in 1849 and was hauled ashore at the foot of Clay Street.",
+      "It served as a storeship and hotel before burning in the fire of May 1851.",
+      "Its remains were buried by landfill that extended the shoreline toward today's Embarcadero.",
+      "Construction at Clay and Sansome uncovered the wreck again in 1978."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Niantic_(whaling_vessel)", "https://www.nps.gov/safr/learn/historyculture/buried-ships-of-san-francisco.htm"]
+  },
+  {
+    "id": "emperor-norton",
+    "name": "Emperor Norton",
+    "category": "history",
+    "rarity": "legendary",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79285, "lon": -122.40573, "alt": 25 },
+    "year": 1859,
+    "blurb": "The bankrupt businessman who declared himself Emperor of the United States, and was humored.",
+    "lore": "In 1859 Joshua Norton, a businessman ruined by a bad bet on rice, mailed a proclamation to the newspapers naming himself Emperor of these United States. San Francisco decided to play along. He wore a blue military coat, inspected sidewalks, ate free in restaurants and paid with his own printed notes. He ordered a bridge built from Oakland to San Francisco long before anyone did. When he collapsed and died in front of Old St. Mary's in 1880, thousands lined the streets for his funeral.",
+    "facts": [
+      "Joshua Norton declared himself Emperor of the United States in 1859.",
+      "He also took the title Protector of Mexico in 1866.",
+      "He proposed a bridge across the bay that opened in 1936 as the Bay Bridge.",
+      "Currency issued in his name was honored in establishments he frequented."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Emperor_Norton", "https://www.kqed.org/news/11652705/americas-emperor-san-franciscos-treasure-who-wa", "https://bigthink.com/the-present/norton-emperor-of-united-states/"]
+  },
+  {
+    "id": "summer-of-love",
+    "name": "Summer of Love",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Haight Ashbury",
+    "at": { "lat": 37.77001, "lon": -122.44695, "alt": 25 },
+    "year": 1967,
+    "blurb": "The 1967 summer when up to 100,000 young people poured into Haight-Ashbury.",
+    "lore": "In 1967 the corner of Haight and Ashbury became the center of the counterculture universe. As many as 100,000 young people converged on the neighborhood and Golden Gate Park next door, with flowers, music, free food and big ideas about war, money and how to live. Bands like the Grateful Dead and Jefferson Airplane played free shows in the park. By October the locals held a mock funeral called the Death of Hippie. The street clock at the corner, legend says, is stuck at 4:20.",
+    "facts": [
+      "The Summer of Love took place in San Francisco in 1967.",
+      "As many as 100,000 people converged on Haight-Ashbury and Golden Gate Park.",
+      "PBS called it the largest migration of young people in American history.",
+      "Many participants opposed the Vietnam War and rejected consumerist values."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Summer_of_Love"]
+  },
+  {
+    "id": "barbary-coast",
+    "name": "The Barbary Coast",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.7971, "lon": -122.40534, "alt": 25 },
+    "blurb": "The wildest red-light district in the West, centered on Pacific Street.",
+    "lore": "For about 60 years, three blocks of Pacific Street were the most notorious entertainment district in America: dance halls, concert saloons, gambling dens, crimps who shanghaied drunk sailors onto ships, and later jazz clubs that helped spread dances like the Turkey Trot nationwide. The Gold Rush built it and reformers finally shut it down in the 1910s. Today it is quiet Jackson Square, with brick survivors that hint at the noise.",
+    "facts": [
+      "The Barbary Coast was centered on Pacific Street, now Pacific Avenue.",
+      "Its core ran between Montgomery and Stockton Streets.",
+      "It was born during the California Gold Rush.",
+      "Its dance halls and jazz clubs influenced American popular culture."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Barbary_Coast,_San_Francisco"]
+  },
+  {
+    "id": "clay-street-hill-railroad",
+    "name": "First Cable Car",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79323, "lon": -122.41449, "alt": 25 },
+    "year": 1873,
+    "blurb": "Where Andrew Hallidie's first cable car rolled down Clay Street in 1873.",
+    "lore": "Legend says Andrew Hallidie watched a team of horses slip on a wet hill and get dragged down with their streetcar, and decided there had to be a better way. His family made wire rope for Gold Rush mines. In the predawn darkness of August 2, 1873, his first cable car started down Clay Street from here at Jones, gripping an endless cable running under the street. Paying service began a month later at five cents a ride. Cities worldwide copied it.",
+    "facts": [
+      "The first test run took place before dawn on August 2, 1873.",
+      "Regular passenger service began on September 1, 1873.",
+      "The line ran on Clay Street between Kearny and Jones.",
+      "The original fare was five cents."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Clay_Street_Hill_Railroad", "https://www.sfmta.com/blog/150-years-ago-today-cable-car-born"]
+  },
+  {
+    "id": "golden-gate-international-exposition",
+    "name": "1939 World's Fair",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Treasure Island",
+    "at": { "lat": 37.8242, "lon": -122.371, "alt": 30 },
+    "year": 1939,
+    "blurb": "The Golden Gate International Exposition, built on a brand new island in the bay.",
+    "lore": "To celebrate two new bridges, San Francisco did something wild: it built an island. Treasure Island was piled up from bay mud and rock in 1936 and 1937, next to natural Yerba Buena Island, and in 1939 it opened as the Golden Gate International Exposition, a world's fair of towers, light shows and Pacific art. Seventeen million visitors came. The plan was to turn it into an airport after the fair, but the Navy took the island for World War II instead.",
+    "facts": [
+      "The exposition ran in 1939 and again in 1940 on Treasure Island.",
+      "It drew about 17 million visitors.",
+      "It celebrated the new Bay Bridge and Golden Gate Bridge.",
+      "Treasure Island was built in 1936 and 1937 specifically for the fair."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Gate_International_Exposition", "https://en.wikipedia.org/wiki/Treasure_Island,_San_Francisco"]
+  },
+  {
+    "id": "alcatraz-occupation",
+    "name": "Occupation of Alcatraz",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.8262, "lon": -122.4216, "alt": 25 },
+    "year": 1969,
+    "blurb": "Nineteen months when Indians of All Tribes held the island.",
+    "lore": "On November 20, 1969, 89 American Indians and supporters landed on the closed prison island and claimed it under an 1868 treaty they read as returning surplus federal land to Native people. Calling themselves Indians of All Tribes, led by Richard Oakes, LaNada Means and others, they held Alcatraz for 19 months until federal agents removed the last occupiers in June 1971. Their painted words still greet ferries at the dock: Indians Welcome.",
+    "facts": [
+      "The occupation lasted from November 20, 1969 to June 11, 1971.",
+      "It began with 89 American Indians and supporters.",
+      "The group called itself Indians of All Tribes.",
+      "It influenced the end of federal Indian Termination policies."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Occupation_of_Alcatraz", "https://www.nps.gov/alca/learn/historyculture/we-hold-the-rock.htm"]
+  },
+  {
+    "id": "city-lights",
+    "name": "City Lights and the Beats",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79763, "lon": -122.40658, "alt": 25 },
+    "year": 1953,
+    "blurb": "The bookstore that published Howl and went to court for it.",
+    "lore": "Poet Lawrence Ferlinghetti co-founded City Lights in 1953 as the country's first all-paperback bookstore. In 1956 he published Allen Ginsberg's Howl, and police arrested him for selling obscene material. He won the trial in 1957, a landmark free speech victory, and the Beat Generation had its headquarters. The alley next door is now Jack Kerouac Alley. Upstairs, the poetry room still has a chair for anyone who wants to sit and read.",
+    "facts": [
+      "City Lights was founded in 1953 by Lawrence Ferlinghetti and Peter D. Martin.",
+      "It published Allen Ginsberg's Howl and Other Poems in 1956.",
+      "Ferlinghetti was tried for obscenity for publishing Howl.",
+      "It was made an official historic landmark in 2001."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/City_Lights_Bookstore", "https://citylights.com/history/"]
+  },
+  {
+    "id": "harvey-milk",
+    "name": "Harvey Milk and the Castro",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.76228, "lon": -122.43569, "alt": 25 },
+    "year": 1977,
+    "blurb": "The camera shop owner who became California's first openly gay elected official.",
+    "lore": "Harvey Milk opened Castro Camera on Castro Street in the early 1970s, and the shop became his campaign office, community hall and soapbox. After several tries he won a seat on the Board of Supervisors in 1977, one of the first openly gay elected officials in the country. He served less than a year before he and Mayor George Moscone were assassinated in November 1978. The plaza above Castro station carries his name, and the rainbow flag flies above it.",
+    "facts": [
+      "Harvey Milk ran Castro Camera at 575 Castro Street.",
+      "He was elected to the San Francisco Board of Supervisors in 1977.",
+      "He and Mayor George Moscone were killed by Dan White in November 1978.",
+      "Harvey Milk Plaza is at Market, Castro and 17th Streets."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Harvey_Milk_Plaza", "https://en.wikipedia.org/wiki/Castro_Camera"]
+  },
+  {
+    "id": "golden-fire-hydrant",
+    "name": "The Golden Fire Hydrant",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.75809, "lon": -122.42807, "alt": 20 },
+    "year": 1906,
+    "blurb": "The little hydrant that saved the Mission in 1906, repainted gold every April 18.",
+    "lore": "After the 1906 earthquake broke the city's water mains, fire raged for three days. As the flames marched toward the Mission, firefighters found one hydrant at 20th and Church still running. They held the line here and saved the neighborhood. San Francisco has never forgotten. The Little Giant is repainted gold every April 18 at dawn, after the ceremony at Lotta's Fountain, by firefighters, history buffs and anyone who wants a turn with the spray can.",
+    "facts": [
+      "It stands at 20th and Church Streets at the corner of Dolores Park.",
+      "It was one of the few working hydrants after the 1906 earthquake.",
+      "It is nicknamed the Little Giant.",
+      "It is repainted gold every year on April 18."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Fire_Hydrant", "https://sfstandard.com/2023/04/14/sf-to-remember-the-lone-fire-hydrant-that-kept-working-after-the-great-quake-of-1906/"]
+  },
+  {
+    "id": "portsmouth-square",
+    "name": "Portsmouth Square",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79483, "lon": -122.40537, "alt": 25 },
+    "year": 1846,
+    "blurb": "The original town plaza where the American flag went up in 1846.",
+    "lore": "Before San Francisco was San Francisco, this square was the plaza of the little Mexican town of Yerba Buena, right at the edge of the water. On July 9, 1846, Captain John Montgomery of the USS Portsmouth raised the American flag here, and the plaza took his ship's name. The first public school in California opened on its corner in 1847. Today it is Chinatown's living room, full of elders playing cards and chess under the trees.",
+    "facts": [
+      "Captain John B. Montgomery raised the American flag here on July 9, 1846.",
+      "It is named after the USS Portsmouth.",
+      "It is the first park in San Francisco.",
+      "The first public school building in the city was erected on the plaza in 1847."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Portsmouth_Square", "https://noehill.com/SF/LANDMARKS/cal0119.asp"]
+  },
+  {
+    "id": "old-mint",
+    "name": "The Old Mint",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Hayes Valley",
+    "at": { "lat": 37.77013, "lon": -122.4274, "alt": 25 },
+    "year": 1874,
+    "blurb": "The Granite Lady that survived 1906 while guarding a third of the nation's gold.",
+    "lore": "When the 1906 fire swept toward this building, its vaults held about a third of the gold reserves of the United States. Superintendent Frank Leach and his crew stayed inside, pumping water from a well in the courtyard and fighting the flames room by room. The building survived and became the only bank in town, with relief money flowing through it. Fun fact: the Granite Lady is mostly sandstone above a granite base.",
+    "facts": [
+      "The building opened as a branch of the U.S. Mint in 1874.",
+      "It served as the San Francisco Mint until 1937.",
+      "It survived the 1906 earthquake and fire.",
+      "Its vaults held about a third of U.S. gold reserves at the time of the fire."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Old_San_Francisco_Mint", "https://www.smithsonianmag.com/history/grace-under-fire-114073500/"]
+  },
+  {
+    "id": "embarcadero-freeway",
+    "name": "The Freeway That Fell",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.7949, "lon": -122.39465, "alt": 25 },
+    "year": 1989,
+    "blurb": "The double-decker freeway the 1989 earthquake doomed, and the waterfront it gave back.",
+    "lore": "For three decades a concrete double-decker freeway ran along the Embarcadero, walling the city off from its own waterfront and the Ferry Building. Then, on October 17, 1989, the Loma Prieta earthquake hit during a World Series game and damaged it badly. Instead of fixing it, the city tore it down in 1991. What replaced it is today's palm-lined boulevard, the F-line streetcars and a waterfront you can actually walk to.",
+    "facts": [
+      "The elevated Embarcadero Freeway was demolished after the 1989 Loma Prieta earthquake.",
+      "It was part of State Route 480.",
+      "The entire route was removed in 1991.",
+      "The Loma Prieta earthquake struck on October 17, 1989."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/California_State_Route_480", "https://en.wikipedia.org/wiki/1989_Loma_Prieta_earthquake"]
+  },
+  {
+    "id": "fillmore-jazz",
+    "name": "Harlem of the West",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Japantown",
+    "at": { "lat": 37.78516, "lon": -122.4331, "alt": 25 },
+    "blurb": "The Fillmore's jazz era, when Coltrane jammed at Bop City until dawn.",
+    "lore": "In the 1940s and 1950s, Fillmore Street held about two dozen clubs packed into a few blocks, the biggest jazz scene on the West Coast. Billie Holiday, Charlie Parker and John Coltrane played here, and after-hours sessions at Bop City on Post Street ran until sunrise. Redevelopment in the 1960s bulldozed much of the neighborhood and scattered its Black community. The music is remembered today in the Fillmore Jazz Festival and the Jazz Heritage Center.",
+    "facts": [
+      "The Fillmore had the largest jazz scene on the West Coast until its decline.",
+      "Bop City, on Post Street, hosted after-hours jam sessions.",
+      "Redevelopment in the 1960s demolished much of the neighborhood.",
+      "The district was spared by the 1906 earthquake and fires."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Fillmore_District,_San_Francisco", "https://jerryjazzmusician.com/harlem-of-the-west-the-san-francisco-fillmore-jazz-era-author-elizabeth-pepin"]
+  },
+  {
+    "id": "carville",
+    "name": "Carville-by-the-Sea",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Sunset/Parkside",
+    "at": { "lat": 37.75665, "lon": -122.50676, "alt": 25 },
+    "year": 1895,
+    "blurb": "A beach town built from retired streetcars and cable cars.",
+    "lore": "In 1895 the Market Street Railway advertised its retired horsecars for $20 each, or $10 without seats. Bohemians, artists, cyclists and families bought them, dragged them out to the empty dunes near the ocean and turned them into cottages, clubhouses and cafes. Carville grew into a colony of dozens of streetcar homes. After 1906 it filled in with ordinary houses, though at least one Outer Sunset home still hides two old cable cars inside its walls.",
+    "facts": [
+      "Carville stood near 47th Avenue and Lawton Street in the Outer Sunset.",
+      "In 1895 retired horsecars were sold for $20, or $10 without seats.",
+      "Residents reused horsecars and later cable cars as homes and clubhouses.",
+      "After 1906 the area was renamed Oceanside."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Carville,_San_Francisco", "https://www.sanfranciscostory.com/carville-by-the-sea-in-10-slides"]
+  },
+  {
+    "id": "waterfront-strike",
+    "name": "Bloody Thursday",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Financial District/South Beach",
+    "at": { "lat": 37.79325, "lon": -122.39321, "alt": 25 },
+    "year": 1934,
+    "blurb": "The 1934 waterfront clash that led to a citywide general strike.",
+    "lore": "In 1934 longshoremen up and down the West Coast walked off the job, demanding a union hiring hall instead of the brutal morning shape-up. On July 5, Bloody Thursday, police fired on strikers near this corner and killed Howard Sperry and Nick Bordoise. Their funeral march down Market Street silently drew tens of thousands, and soon all of San Francisco went on general strike. The longshoremen won, and every West Coast port unionized. A plaque marks the spot.",
+    "facts": [
+      "The West Coast waterfront strike began on May 9, 1934, and lasted 83 days.",
+      "Two strikers were killed on Bloody Thursday, July 5, 1934, at Steuart and Mission Streets.",
+      "The killings led to a four-day San Francisco general strike.",
+      "The strike resulted in the unionization of all West Coast ports."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/1934_West_Coast_waterfront_strike", "https://noehill.com/SF/LANDMARKS/poi_bloody_thursday.asp"]
+  },
+  {
+    "id": "fort-mason",
+    "name": "Fort Mason",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.80633, "lon": -122.429, "alt": 30 },
+    "year": 1941,
+    "blurb": "The WWII port that shipped more than 1.6 million soldiers into the Pacific.",
+    "lore": "Those long pier sheds on the Marina waterfront look sleepy now, full of theaters, galleries and food trucks. During World War II they were the gateway to the Pacific. Fort Mason headquartered the San Francisco Port of Embarkation, which sent over 1.6 million soldiers and 23 million tons of cargo to the war, about two-thirds of all troops shipped to the Pacific. Today the Fort Mason Center hosts festivals, and the old officers' quarters overlook the bay.",
+    "facts": [
+      "Fort Mason was the headquarters of the San Francisco Port of Embarkation.",
+      "Over 1.6 million personnel passed through the port in World War II.",
+      "That was about two-thirds of all troops sent into the Pacific.",
+      "It originated as a coastal defense site during the Civil War."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Fort_Mason", "https://home.nps.gov/goga/learn/historyculture/port-of-embarkation.htm"]
+  },
+  {
+    "id": "sutro-baths",
+    "name": "Sutro Baths",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.78014, "lon": -122.5138, "alt": 25 },
+    "year": 1896,
+    "blurb": "Ruins of a glass palace of seawater pools that once held thousands of swimmers.",
+    "lore": "Imagine a glass-roofed palace holding seven swimming pools, six of them filled with seawater by the tides, with slides, trapezes and seats for thousands of spectators. Millionaire Adolph Sutro opened it in 1896 at the edge of the Pacific. It was magnificent and nearly impossible to maintain. After years of decline it burned in 1966, leaving the ghostly concrete foundations you can walk through today, with waves crashing just beyond.",
+    "facts": [
+      "Adolph Sutro built the baths, which opened in 1896.",
+      "It was a privately owned public saltwater swimming complex.",
+      "The building burned down to its concrete foundation in June 1966.",
+      "The ruins are part of the Golden Gate National Recreation Area."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Sutro_Baths", "https://www.nps.gov/goga/learn/historyculture/sutro-baths.htm"]
+  },
+  {
+    "id": "jackson-square",
+    "name": "Jackson Square",
+    "category": "history",
+    "rarity": "common",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79687, "lon": -122.40303, "alt": 25 },
+    "blurb": "Brick buildings from the Gold Rush that survived the 1906 fire.",
+    "lore": "Most of downtown burned in 1906, but this pocket of brick and iron Gold Rush buildings came through, partly because it sat near the water and fire crews pumped bay water onto it. These streets were once the edge of the Barbary Coast, lined with saloons and warehouses. Walk Jackson Street and Hotaling Place, where a whiskey warehouse famously survived while churches burned, inspiring a cheeky rhyme about which buildings God chose to save.",
+    "facts": [
+      "The Jackson Square Historic District dates to the 1849 Gold Rush.",
+      "It was added to the National Register of Historic Places in 1971.",
+      "Its buildings are mostly in classical revival and Italianate styles.",
+      "Its period of significance spans 1850 to 1924."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Jackson_Square,_San_Francisco"]
+  }
+]

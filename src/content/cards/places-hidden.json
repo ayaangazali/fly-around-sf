@@ -1,0 +1,355 @@
+[
+  {
+    "id": "wave-organ",
+    "name": "Wave Organ",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.80849, "lon": -122.44021, "alt": 20 },
+    "year": 1986,
+    "blurb": "A jetty of pipes that the bay itself plays, built from old cemetery stone.",
+    "lore": "At the very tip of the Marina's jetty, past the yacht club, sits an instrument played by the tides. Artist Peter Richards and stonemason George Gonzales built the Wave Organ for the Exploratorium in 1986: 25 pipes of PVC and concrete reaching down into the bay, gurgling, sloshing and humming as waves push air through them. The terraces are built from carved granite and marble salvaged from a demolished Gold Rush cemetery. Visit at high tide.",
+    "facts": [
+      "The Wave Organ was completed in May 1986.",
+      "Peter Richards designed it with stonemason George Gonzales for the Exploratorium.",
+      "It has 25 organ pipes of PVC and concrete.",
+      "Its stone came from the demolished Laurel Hill Cemetery."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Wave_Organ", "https://sfstandard.com/2022/05/01/playing-with-the-tides-how-san-franciscos-iconic-wave-organ-sings/", "https://atlasobscura.com/places/wave-organ"]
+  },
+  {
+    "id": "seward-street-slides",
+    "name": "Seward Street Slides",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Twin Peaks",
+    "at": { "lat": 37.75778, "lon": -122.43991, "alt": 20 },
+    "blurb": "Two steep concrete slides hidden in a tiny park in the hills above the Castro.",
+    "lore": "Tucked into a pocket park on a quiet hill above the Castro are two long, steep concrete slides, and they are not just for kids. Their design is credited to a 14-year-old neighborhood kid, and grown adults line up on weekends with flattened cardboard boxes to ride them, because concrete plus jeans equals no speed at all. Cardboard often waits at the bottom. The rules are posted and the hours are limited, so respect the neighbors and slide by daylight.",
+    "facts": [
+      "The slides are in Seward Mini Park in the Corona Heights area.",
+      "Their design is credited to a 14-year-old local.",
+      "Riders use cardboard to slide down the concrete.",
+      "The park has posted daytime hours."
+    ],
+    "sources": ["https://api.theoutbound.com/san-francisco/chillin/take-a-ride-on-the-secret-slides", "https://sfrecpark.org/facilities/facility/details/Seward-Mini-Park-343"]
+  },
+  {
+    "id": "16th-avenue-tiled-steps",
+    "name": "16th Avenue Tiled Steps",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Inner Sunset",
+    "at": { "lat": 37.75626, "lon": -122.47317, "alt": 20 },
+    "year": 2005,
+    "blurb": "163 steps covered in a sea-to-sky mosaic made by hundreds of neighbors.",
+    "lore": "Climb from the sea floor to the stars. That is the design of these 163 steps in Golden Gate Heights, where artists Aileen Barr and Colette Crutcher led over 300 neighbors in setting more than 2,000 handmade tiles and tens of thousands of glass fragments into the risers. Fish swim at the bottom, birds and leaves fill the middle, stars glow at the top. A neighbor inspired by the tiled stairways of Rio de Janeiro's Santa Teresa neighborhood proposed it. Keep climbing to Grandview Park for a huge view.",
+    "facts": [
+      "The 163 steps were tiled in 2005.",
+      "Artists Aileen Barr and Colette Crutcher designed the mosaic.",
+      "Over 300 community members helped make it.",
+      "The steps lead up to Grandview Park."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/16th_Avenue_Tiled_Steps", "https://www.colettecrutcher.com/16th-ave"]
+  },
+  {
+    "id": "hidden-garden-steps",
+    "name": "Hidden Garden Steps",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Inner Sunset",
+    "at": { "lat": 37.75961, "lon": -122.47357, "alt": 20 },
+    "year": 2013,
+    "blurb": "The tiled steps' younger sibling, with a giant salamander climbing the stairs.",
+    "lore": "Two blocks north of the famous tiled steps is their sequel, and many locals like it better. The Hidden Garden Steps climb 148 stairs on 16th Avenue between Kirkham and Lawton, covered in a mosaic garden by the same artists, Aileen Barr and Colette Crutcher. Flowers, butterflies, mushrooms and a long salamander snaking up more than two dozen steps were finished in December 2013 after years of neighbors raising money. Fewer tourists, same magic.",
+    "facts": [
+      "The Hidden Garden Steps have 148 steps.",
+      "The mosaic was completed in December 2013.",
+      "Aileen Barr and Colette Crutcher designed it.",
+      "A salamander design stretches across more than two dozen steps."
+    ],
+    "sources": ["https://synapse.ucsf.edu/articles/2014/03/06/hidden-garden-steps-mural-completed", "https://inspiredimperfection.com/?p=10013"]
+  },
+  {
+    "id": "filbert-steps",
+    "name": "Filbert Steps",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80193, "lon": -122.40503, "alt": 20 },
+    "blurb": "A wooden stairway down Telegraph Hill through a secret garden.",
+    "lore": "Telegraph Hill is too steep for a street on its east side, so Filbert Street turns into stairs. Halfway down you enter a jungle. In 1949 a woman named Grace Marchant moved here at age 63, found a slope full of trash, and spent the next 33 years turning it into a garden of roses, banana plants and ferns. Neighbors still tend it. Look for Napier Lane, said to be the last wooden-plank street in the city, and listen for the wild parrots.",
+    "facts": [
+      "The Filbert Steps descend the east side of Telegraph Hill.",
+      "Grace Marchant began turning the dump-covered slope into a garden in 1949.",
+      "She tended the garden until her death in 1982.",
+      "Napier Lane, off the steps, is a wooden boardwalk lane."
+    ],
+    "sources": ["https://tpl.org/our-work/grace-marchant-garden", "https://www.kqed.org/news/11907457"]
+  },
+  {
+    "id": "lyon-street-steps",
+    "name": "Lyon Street Steps",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79284, "lon": -122.44649, "alt": 20 },
+    "blurb": "Nearly 300 garden-lined steps with a view straight down to the Palace of Fine Arts.",
+    "lore": "This is San Francisco's outdoor StairMaster. The Lyon Street Steps drop from Broadway to Green Street along the edge of the Presidio, nearly 300 steps depending on who is counting, past manicured hedges and a heart-shaped flower bed. Joggers run them up and down in a grim, sweaty loop. Everyone else stops at the top, where the dome of the Palace of Fine Arts sits perfectly framed against the bay, with Alcatraz and Angel Island behind.",
+    "facts": [
+      "The steps run between Broadway and Green Street.",
+      "Counts range from about 240 to over 300 steps depending on what is counted.",
+      "They connect Cow Hollow and Pacific Heights with the Presidio's Broadway Gate.",
+      "The top offers views of the Palace of Fine Arts, Alcatraz and Angel Island."
+    ],
+    "sources": ["https://www.nps.gov/places/000/lyon-street-steps.htm", "https://photographyontherun.com/wp/san-francisco-sights-trail-run/"]
+  },
+  {
+    "id": "lands-end-labyrinth",
+    "name": "Lands End Labyrinth",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Lincoln Park",
+    "at": { "lat": 37.78774, "lon": -122.50566, "alt": 25 },
+    "year": 2004,
+    "blurb": "A stone labyrinth on a cliff above Mile Rock Beach, facing the Golden Gate.",
+    "lore": "On windswept Lands End Point above Mile Rock Beach, someone laid out a labyrinth of fist-sized stones facing the Golden Gate Bridge. That someone was local artist Eduardo Aguilera, who built it on the spring equinox of 2004. Vandals have scattered it more than once, tossing stones into the sea, and each time artists and volunteers rebuilt it. Walking its path slowly to the center, with foghorns sounding below, is one of the city's quietest experiences.",
+    "facts": [
+      "Artist Eduardo Aguilera created the labyrinth in 2004.",
+      "It sits on a point above Mile Rock Beach at Lands End.",
+      "It has been destroyed by vandals and rebuilt several times.",
+      "In 2015 it was rebuilt with the help of about 50 volunteers."
+    ],
+    "sources": ["https://richmondsfblog.com/2015/09/15/dozens-help-rebuild-lands-end-labyrinth/", "https://www.7x7.com/help-rebuild-the-iconic-lands-end-labyrinth-1787226160.html"]
+  },
+  {
+    "id": "fort-funston-hang-gliders",
+    "name": "Fort Funston Hang Gliders",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Lakeshore",
+    "at": { "lat": 37.715, "lon": -122.50194, "alt": 40 },
+    "blurb": "Pilots soaring on the sea breeze over 200-foot sand cliffs.",
+    "lore": "When the steady afternoon wind hits Fort Funston's 200-foot sandstone cliffs, it bends upward, and hang gliders ride that wall of air for hours without an engine. This former Army post and Nike missile site has been one of America's classic coastal soaring spots since the early 1970s, when park rangers asked pilots what they needed and opened a gate for them. A wooden deck near the parking lot lets you watch them launch. You are a drone. Fly politely.",
+    "facts": [
+      "Fort Funston's bluffs rise about 200 feet above Ocean Beach.",
+      "Hang gliding there dates to the early 1970s when the National Park Service took over.",
+      "The site was a Nike missile launch site during the Cold War.",
+      "A wooden viewing platform overlooks the launch area."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Fort_Funston", "https://www.thetrailmaster.com/hike/fort-funston", "https://www.greenbelt.org/blog/urban-outings-fort-funston-2/"]
+  },
+  {
+    "id": "bay-bridge-troll",
+    "name": "Bay Bridge Troll",
+    "category": "hidden",
+    "rarity": "legendary",
+    "neighborhood": "Treasure Island",
+    "at": { "lat": 37.81461, "lon": -122.36014, "alt": 60 },
+    "year": 1989,
+    "blurb": "A secret steel troll welded to the bridge by ironworkers for luck.",
+    "lore": "After the 1989 earthquake dropped a section of the Bay Bridge, ironworkers repairing it welded a small steel troll to the span, made by blacksmith Bill Roan. In folklore, trolls guard bridges, and this one became the crew's good-luck charm, hidden where only workers could see it. When the old eastern span came down in 2013, the original troll went to Oakland, and a new troll quietly moved onto the new span, where sharp eyes on the bike path can spot it.",
+    "facts": [
+      "The original troll was installed after the 1989 Loma Prieta earthquake.",
+      "Blacksmith and artist Bill Roan created it.",
+      "It was removed from the old eastern span on August 30, 2013.",
+      "A new troll now sits on the new eastern span, visible from the pedestrian path."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Bay_Bridge_Troll", "https://abc7news.com/archive/9225455/", "https://www.sfexaminer.com/news/the-city/bay-bridge-troll-legend-grows-decades-after-installation/article_838abebf-0c9a-408d-8bfb-f48d982a7612.html"]
+  },
+  {
+    "id": "doggie-diner-head",
+    "name": "Doggie Diner Head",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Lakeshore",
+    "at": { "lat": 37.73546, "lon": -122.50297, "alt": 20 },
+    "year": 1966,
+    "blurb": "A giant grinning fiberglass dachshund in a chef's hat, now an official city landmark.",
+    "lore": "Doggie Diner was a local hot dog chain from 1948 to 1986, and its mascot was a seven-foot fiberglass dachshund head wearing a chef's hat and a bow tie. When the last diner closed, San Franciscans could not let the head go. The city bought and restored it, and in the 2000s it was moved to the median on Sloat Boulevard near Ocean Beach and declared an official landmark. Windstorms have knocked it down more than once, and it keeps getting rescued.",
+    "facts": [
+      "Doggie Diner operated in San Francisco and Oakland from 1948 to 1986.",
+      "The fiberglass dachshund head was designed in 1966.",
+      "It is San Francisco Landmark No. 254.",
+      "It stands on the median of Sloat Boulevard near 45th Avenue."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Doggie_Diner", "https://www.hmdb.org/m.asp?m=81940", "https://sfpublicworks.org/node/34596"]
+  },
+  {
+    "id": "musee-mecanique",
+    "name": "Musee Mecanique",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80925, "lon": -122.41579, "alt": 20 },
+    "blurb": "A free hall of antique coin-operated machines, ruled by the cackling Laffing Sal.",
+    "lore": "Push through the doors at Pier 45 and you enter a century of coin-operated wonders: fortune tellers, hand-cranked peep shows, player pianos and arm-wrestling machines. It is one of the largest private collections of mechanical arcade games in the world, and admission is free. You just bring quarters. Presiding over it all is Laffing Sal, a giant cackling figure rescued from the old Playland-at-the-Beach amusement park. Her laugh will follow you home.",
+    "facts": [
+      "The Musee Mecanique holds over 300 mechanical machines.",
+      "It moved from below the Cliff House to Pier 45 in 2002.",
+      "Laffing Sal came from Playland-at-the-Beach, which closed in 1972.",
+      "The collection was built by the Zelinsky family."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Mus%C3%A9e_M%C3%A9canique", "https://sf.gazetteer.co/why-is-this-woman-laffing"]
+  },
+  {
+    "id": "balmy-alley",
+    "name": "Balmy Alley",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.75182, "lon": -122.41241, "alt": 20 },
+    "year": 1972,
+    "blurb": "A one-block Mission alley where every fence and garage door is a mural.",
+    "lore": "Balmy Alley is one block long and almost every surface is painted. The first murals went up in 1972, and in the 1970s the women's collective Mujeres Muralistas helped shape the style. In 1984 a project called PLACA filled the alley with murals celebrating Central American cultures and protesting U.S. intervention in the region's wars. New murals still appear, now often about rents and displacement. Walk it slowly: it is a history book with garage doors for pages.",
+    "facts": [
+      "The earliest murals in Balmy Alley date to 1972.",
+      "Most fences and garage doors on the alley have been painted with murals since 1973.",
+      "The PLACA project in the mid-1980s added about two dozen murals about Central America.",
+      "It is in the Calle 24 Latino Cultural District."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Balmy_Alley", "https://www.sfmoma.org/publication/mission-murals/contents/"]
+  },
+  {
+    "id": "clarion-alley",
+    "name": "Clarion Alley",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76299, "lon": -122.42066, "alt": 20 },
+    "year": 1992,
+    "blurb": "A constantly changing outdoor gallery of political street art in the Mission.",
+    "lore": "In 1992, six Mission artists and residents looked at this narrow alley between Mission and Valencia and saw an outdoor gallery. The Clarion Alley Mural Project has since produced over 700 murals here, painted over and replaced again and again, so the alley never looks the same twice. Its rule is no single theme: anyone from first-timers to masters, and the art is loud, political and funny. Come back in a year and it will be a different street.",
+    "facts": [
+      "The Clarion Alley Mural Project was founded in 1992.",
+      "It has produced over 700 murals.",
+      "The alley runs between Mission and Valencia Streets and 17th and 18th Streets.",
+      "Six Mission District residents founded the project."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Clarion_Alley_Mural_Project", "https://clarionalleymuralproject.org/about/"]
+  },
+  {
+    "id": "golden-gate-fortune-cookie-factory",
+    "name": "Golden Gate Fortune Cookie Factory",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.7957, "lon": -122.40735, "alt": 20 },
+    "year": 1962,
+    "blurb": "A tiny alley factory where fortune cookies are still folded by hand.",
+    "lore": "Down narrow Ross Alley in Chinatown, a warm vanilla smell leads you to a room barely wider than a hallway. Since 1962 workers here have folded fortune cookies by hand, pulling warm discs off small rotating griddles and bending them over a metal rod before they harden. The fortune cookie itself is a San Francisco invention, evolved from a Japanese cracker in the early 1900s. For a little extra, they will tuck your own message inside.",
+    "facts": [
+      "The factory at 56 Ross Alley opened in 1962.",
+      "Workers fold the cookies by hand while they are warm.",
+      "It makes up to 10,000 fortune cookies a day.",
+      "Modern fortune cookies were invented in San Francisco in the early 1900s."
+    ],
+    "sources": ["https://www.atlasobscura.com/articles/a-day-in-the-life-of-a-fortune-cookie-maker-at-the-golden-gate-fortune-cookie-factory", "https://www.goldengatefortunecookies.com/history"]
+  },
+  {
+    "id": "vulcan-stairs",
+    "name": "Vulcan Stairway",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Castro/Upper Market",
+    "at": { "lat": 37.76348, "lon": -122.44115, "alt": 20 },
+    "blurb": "A leafy stairway lane with front gardens and no cars at all.",
+    "lore": "Vulcan is a street with no road. It is a concrete stairway climbing between Levant and Ord Streets, and the houses along it have front doors that open onto steps and gardens instead of curbs. Neighbors have planted it so densely with ferns, succulents and flowers that it feels like a hidden village path. City photographs show it finished by 1925. Its neighbor, the shorter Saturn Street Steps, is nearby, because this hill went with planetary names.",
+    "facts": [
+      "The Vulcan Stairway links Levant and Ord Streets.",
+      "A city photograph shows the completed stairway in October 1925.",
+      "It is lined with gardens tended by neighbors.",
+      "The nearby Saturn Street Steps connect Saturn and Ord Streets."
+    ],
+    "sources": ["https://test.opensfhistory.org/photo/wnp36.03288", "https://www.sftravel.com/article/many-hidden-historic-and-beautiful-staircases-san-francisco"]
+  },
+  {
+    "id": "sutro-heights",
+    "name": "Sutro Heights",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.77746, "lon": -122.51141, "alt": 30 },
+    "year": 1885,
+    "blurb": "The ruined clifftop garden of a millionaire mayor, with a parapet over the Pacific.",
+    "lore": "Adolph Sutro made a fortune draining Nevada silver mines, then built himself a garden kingdom on this bluff in the 1880s: flower beds, a conservatory and more than 200 statues of gods and lions, made of plaster that had to be repainted every year. He let the public in. After he died, his daughter kept it open, and the family gave it to the city in 1920. The mansion is gone, but climb the old parapet and the whole Pacific opens up below you.",
+    "facts": [
+      "Adolph Sutro bought the land in 1881 and opened the grounds to the public in 1885.",
+      "Sutro served as the 24th mayor of San Francisco.",
+      "Over 200 plaster statues were cast in Belgium for the gardens.",
+      "The family gave the estate to San Francisco in 1920."
+    ],
+    "sources": ["https://home.nps.gov/goga/learn/historyculture/vestiges-sutro-heights.htm", "https://tclf.org/landscapes/sutro-heights-park"]
+  },
+  {
+    "id": "macondray-lane",
+    "name": "Macondray Lane",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Russian Hill",
+    "at": { "lat": 37.79921, "lon": -122.41518, "alt": 20 },
+    "blurb": "A wooded pedestrian lane on Russian Hill that inspired Barbary Lane in Tales of the City.",
+    "lore": "Macondray Lane is two blocks of cobbles, wooden stairs and greenery on Russian Hill with no cars, only footsteps. Writer Armistead Maupin used it as the model for Barbary Lane, home of Mrs. Madrigal and her tenants in his Tales of the City novels, which made it a pilgrimage site. The rickety wooden steps at the Taylor Street end drop through ferns, and the views open north to Alcatraz. Walk it at dusk when the lamps come on.",
+    "facts": [
+      "Macondray Lane runs two blocks between Leavenworth and Taylor Streets.",
+      "It was listed on the National Register of Historic Places in 1988.",
+      "Armistead Maupin confirmed it inspired Barbary Lane in Tales of the City.",
+      "Wooden steps descend from the lane to Taylor Street."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Macondray_Lane"]
+  },
+  {
+    "id": "camera-obscura",
+    "name": "Camera Obscura",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.77826, "lon": -122.51423, "alt": 20 },
+    "year": 1946,
+    "blurb": "A room-sized camera behind the Cliff House that projects the live ocean onto a dish.",
+    "lore": "Behind the Cliff House stands a little building shaped like an old-fashioned camera, and inside it the oldest trick in optics. A rotating mirror and lens on the roof project a live, slowly circling image of the coast onto a white bowl in a dark room: waves breaking on Seal Rocks, birds landing, people walking the beach, all in silent motion. It has run here since 1946, and in 2001 it was added to the National Register of Historic Places.",
+    "facts": [
+      "The Camera Obscura was installed in 1946.",
+      "It was added to the National Register of Historic Places in 2001.",
+      "A rotating lens and mirror project a 360-degree view onto a parabolic dish.",
+      "Its exterior was remodeled to look like a giant camera in 1957."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Camera_Obscura_(San_Francisco)", "https://7x7.com/secret-san-francisco-the-camera-obscura-1781772572.html"]
+  },
+  {
+    "id": "goldsworthy-wood-line",
+    "name": "Wood Line",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79403, "lon": -122.44943, "alt": 25 },
+    "year": 2011,
+    "blurb": "Andy Goldsworthy's serpent of eucalyptus logs snaking through the Presidio forest.",
+    "lore": "Walk into the eucalyptus grove beside Lovers' Lane, the Presidio's oldest footpath, and the ground starts to move. British land artist Andy Goldsworthy laid eucalyptus trunks end to end in a sinuous line that slithers about 1,200 feet through the trees. It is one of four Goldsworthy works in the Presidio, alongside the soaring Spire, a clay-covered Tree Fall in the old Powder Magazine and an Earth Wall in the Officers' Club. Kids treat it as a balance beam.",
+    "facts": [
+      "Wood Line was installed in 2011.",
+      "It is made of eucalyptus branches laid in a winding line about 1,200 feet long.",
+      "It sits beside Lovers' Lane, the Presidio's oldest footpath.",
+      "It is one of four Andy Goldsworthy works in the Presidio."
+    ],
+    "sources": ["https://www.presidio.gov/blog/presidios-greatest-lists-four-breathtaking-art-installations-in-the-presidio", "https://www.atlasobscura.com/places/wood-line"]
+  },
+  {
+    "id": "uss-san-francisco-memorial",
+    "name": "USS San Francisco Memorial",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Outer Richmond",
+    "at": { "lat": 37.7828, "lon": -122.51153, "alt": 25 },
+    "year": 1942,
+    "blurb": "The shell-torn steel bridge of a WWII cruiser, set on a cliff facing Guadalcanal.",
+    "lore": "On a quiet bluff at Lands End stand two jagged pieces of steel riddled with holes. They are the actual bridge wings of the cruiser USS San Francisco, cut away after the Naval Battle of Guadalcanal in November 1942, when the ship took dozens of direct hits at point-blank range and kept fighting. The memorial is oriented toward Guadalcanal. Count the shell holes and remember the crew who did not come home.",
+    "facts": [
+      "The memorial uses the bridge wings of the cruiser USS San Francisco.",
+      "The ship was damaged in the Naval Battle of Guadalcanal in November 1942.",
+      "The ship took 45 direct hits in the battle.",
+      "The memorial is oriented toward Guadalcanal."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/USS_San_Francisco_Memorial", "https://www.history.navy.mil/browse-by-topic/ships/modern-ships/san-francisco.html"]
+  }
+]

@@ -107,7 +107,7 @@ function clampSum(...v: number[]): number {
   return Math.max(-1, Math.min(1, v.reduce((a, b) => a + b, 0)));
 }
 
-function isTyping(t: EventTarget | null): boolean {
+export function isTyping(t: EventTarget | null): boolean {
   const el = t as HTMLElement | null;
   return !!el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
 }

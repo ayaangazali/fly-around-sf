@@ -1,0 +1,3202 @@
+[
+  {
+    "id": "trivia-golden-gate-bridge",
+    "kind": "trivia",
+    "title": "Golden Gate Bridge Trivia",
+    "blurb": "The International Orange suspension bridge across the mile-wide Golden Gate strait.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.81972,
+      "lon": -122.47861,
+      "alt": 90
+    },
+    "xp": 20,
+    "card": "golden-gate-bridge",
+    "requires": [
+      "discover-golden-gate-bridge"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "When did the Golden Gate Bridge open to the public?",
+      "options": [
+        "1937",
+        "1929",
+        "1945",
+        "1951"
+      ],
+      "answer": 0,
+      "explain": "It opened on May 27, 1937, as the longest and tallest suspension bridge in the world."
+    }
+  },
+  {
+    "id": "trivia-bay-bridge",
+    "kind": "trivia",
+    "title": "Bay Bridge Trivia",
+    "blurb": "The double-decker workhorse that beat the Golden Gate Bridge by six months.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79755,
+      "lon": -122.37854,
+      "alt": 110
+    },
+    "xp": 20,
+    "card": "bay-bridge",
+    "requires": [
+      "discover-bay-bridge"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "The Bay Bridge opened how long before the Golden Gate Bridge?",
+      "options": [
+        "Two years after the Golden Gate",
+        "About six months before",
+        "The very same week in 1937",
+        "A full ten years before"
+      ],
+      "answer": 1,
+      "explain": "The Bay Bridge opened on November 12, 1936, six months ahead of the Golden Gate."
+    }
+  },
+  {
+    "id": "trivia-transamerica-pyramid",
+    "kind": "trivia",
+    "title": "Transamerica Pyramid Trivia",
+    "blurb": "The 853-foot pyramid that ruled the skyline for 45 years.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79517,
+      "lon": -122.40279,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "transamerica-pyramid",
+    "requires": [
+      "discover-transamerica-pyramid"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "How tall is the Transamerica Pyramid?",
+      "options": [
+        "612 feet",
+        "1,070 feet",
+        "853 feet",
+        "977 feet"
+      ],
+      "answer": 2,
+      "explain": "It rises 853 feet and was the city's tallest building from 1972 until 2017."
+    }
+  },
+  {
+    "id": "trivia-coit-tower",
+    "kind": "trivia",
+    "title": "Coit Tower Trivia",
+    "blurb": "The fluted concrete tower on Telegraph Hill, paid for by the city's favorite firefighting fan.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80238,
+      "lon": -122.40583,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "coit-tower",
+    "requires": [
+      "discover-coit-tower"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Whose bequest paid for Coit Tower?",
+      "options": [
+        "A gold miner named Coit",
+        "The fire department",
+        "A railroad baron",
+        "Lillie Hitchcock Coit"
+      ],
+      "answer": 3,
+      "explain": "Lillie Hitchcock Coit left money to beautify the city she loved, and the tower was the result."
+    }
+  },
+  {
+    "id": "trivia-palace-of-fine-arts",
+    "kind": "trivia",
+    "title": "Palace of Fine Arts Trivia",
+    "blurb": "A Roman ruin built on purpose, the last survivor of the 1915 world's fair.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80292,
+      "lon": -122.44839,
+      "alt": 35
+    },
+    "xp": 20,
+    "card": "palace-of-fine-arts",
+    "requires": [
+      "discover-palace-of-fine-arts"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "The Palace of Fine Arts was built for which event?",
+      "options": [
+        "The 1915 Panama-Pacific Exposition",
+        "The 1894 California Midwinter Fair",
+        "The 1939 Golden Gate International Exposition",
+        "The 1906 earthquake relief effort"
+      ],
+      "answer": 0,
+      "explain": "It is the only structure from the 1915 exposition still on its original site."
+    }
+  },
+  {
+    "id": "trivia-ferry-building",
+    "kind": "trivia",
+    "title": "Ferry Building Trivia",
+    "blurb": "The clock tower at the foot of Market Street, the city's front door before the bridges.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79555,
+      "lon": -122.39347,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "ferry-building",
+    "requires": [
+      "discover-ferry-building"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "The Ferry Building's clock tower was modeled on a tower in which city?",
+      "options": [
+        "Venice",
+        "Seville",
+        "Barcelona",
+        "Lisbon"
+      ],
+      "answer": 1,
+      "explain": "Its 245-foot tower echoes the Giralda bell tower of Seville Cathedral."
+    }
+  },
+  {
+    "id": "trivia-salesforce-tower",
+    "kind": "trivia",
+    "title": "Salesforce Tower Trivia",
+    "blurb": "The 1,070-foot obelisk with a glowing LED crown, tallest in the city.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78977,
+      "lon": -122.39693,
+      "alt": 345
+    },
+    "xp": 20,
+    "card": "salesforce-tower",
+    "requires": [
+      "discover-salesforce-tower"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "About how many LEDs light up the crown of Salesforce Tower?",
+      "options": [
+        "1,100",
+        "110,000",
+        "11,000",
+        "500"
+      ],
+      "answer": 2,
+      "explain": "Artist Jim Campbell's work uses about 11,000 LEDs to show low-resolution video."
+    }
+  },
+  {
+    "id": "trivia-sutro-tower",
+    "kind": "trivia",
+    "title": "Sutro Tower Trivia",
+    "blurb": "The three-legged broadcast giant that rises out of the fog like a ship's mast.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75524,
+      "lon": -122.4529,
+      "alt": 320
+    },
+    "xp": 20,
+    "card": "sutro-tower",
+    "requires": [
+      "discover-sutro-tower"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "How many legs does Sutro Tower stand on?",
+      "options": [
+        "Two",
+        "Four",
+        "Seven",
+        "Three"
+      ],
+      "answer": 3,
+      "explain": "The 977-foot lattice tower stands on three legs, which is why it looks like a ship's mast in the fog."
+    }
+  },
+  {
+    "id": "trivia-alcatraz",
+    "kind": "trivia",
+    "title": "Alcatraz Island Trivia",
+    "blurb": "The Rock: lighthouse, fort, federal prison and seabird colony in the middle of the bay.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.82667,
+      "lon": -122.42278,
+      "alt": 60
+    },
+    "xp": 20,
+    "card": "alcatraz",
+    "requires": [
+      "discover-alcatraz"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "In what year did the federal penitentiary on Alcatraz close?",
+      "options": [
+        "1963",
+        "1946",
+        "1972",
+        "1955"
+      ],
+      "answer": 0,
+      "explain": "The prison closed on March 21, 1963, after 29 years as a federal penitentiary."
+    }
+  },
+  {
+    "id": "trivia-lombard-street",
+    "kind": "trivia",
+    "title": "Lombard Street Trivia",
+    "blurb": "Eight hairpin turns on one brick block of Russian Hill.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80212,
+      "lon": -122.41872,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "lombard-street",
+    "requires": [
+      "discover-lombard-street"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "How many hairpin turns are on Lombard Street's famous block?",
+      "options": [
+        "Five",
+        "Eight",
+        "Twelve",
+        "Ten"
+      ],
+      "answer": 1,
+      "explain": "The 1922 design folded the steep block into eight switchbacks."
+    }
+  },
+  {
+    "id": "trivia-city-hall",
+    "kind": "trivia",
+    "title": "San Francisco City Hall Trivia",
+    "blurb": "A Beaux-Arts palace whose dome outdoes the U.S. Capitol.",
+    "neighborhood": "Tenderloin",
+    "at": {
+      "lat": 37.77929,
+      "lon": -122.41926,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "city-hall",
+    "requires": [
+      "discover-city-hall"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "City Hall's dome is taller than the U.S. Capitol's by how much?",
+      "options": [
+        "2 feet",
+        "Exactly the same height",
+        "42 feet",
+        "100 feet"
+      ],
+      "answer": 2,
+      "explain": "Architect Arthur Brown Jr.'s dome tops the Capitol's by 42 feet."
+    }
+  },
+  {
+    "id": "trivia-oracle-park",
+    "kind": "trivia",
+    "title": "Oracle Park Trivia",
+    "blurb": "The Giants' waterfront ballpark, where home runs splash into McCovey Cove.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77861,
+      "lon": -122.38917,
+      "alt": 50
+    },
+    "xp": 20,
+    "card": "oracle-park",
+    "requires": [
+      "discover-oracle-park"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "What is the water beyond Oracle Park's right field wall called?",
+      "options": [
+        "Mays Bay",
+        "Splash Lagoon",
+        "Giants Harbor",
+        "McCovey Cove"
+      ],
+      "answer": 3,
+      "explain": "It is named for slugger Willie McCovey, and kayakers wait there for home run balls."
+    }
+  },
+  {
+    "id": "trivia-de-young-museum",
+    "kind": "trivia",
+    "title": "de Young Museum Trivia",
+    "blurb": "A copper-skinned museum in Golden Gate Park that is slowly turning green.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.7715,
+      "lon": -122.46909,
+      "alt": 60
+    },
+    "xp": 20,
+    "card": "de-young-museum",
+    "requires": [
+      "discover-de-young-museum"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "The de Young's facade is designed to change color over time. Why?",
+      "options": [
+        "Its copper skin oxidizes toward green",
+        "It is repainted every single year",
+        "Its glass tints darker in the sun",
+        "Moss is grown on its stone walls"
+      ],
+      "answer": 0,
+      "explain": "Herzog and de Meuron wrapped it in perforated copper that weathers to match the park."
+    }
+  },
+  {
+    "id": "trivia-california-academy-of-sciences",
+    "kind": "trivia",
+    "title": "California Academy of Sciences Trivia",
+    "blurb": "Aquarium, planetarium, rainforest and natural history museum under one living roof.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.7701,
+      "lon": -122.4664,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "california-academy-of-sciences",
+    "requires": [
+      "discover-california-academy-of-sciences"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "What covers the roof of the California Academy of Sciences?",
+      "options": [
+        "Solar glass panels and nothing else",
+        "A living garden of native plants",
+        "A shallow reflecting pool of seawater",
+        "A rooftop parking deck"
+      ],
+      "answer": 1,
+      "explain": "Its 2.5-acre living roof is planted with native wildflowers."
+    }
+  },
+  {
+    "id": "trivia-fort-point",
+    "kind": "trivia",
+    "title": "Fort Point Trivia",
+    "blurb": "A Civil War brick fort tucked under the south end of the Golden Gate Bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.81051,
+      "lon": -122.4771,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "fort-point",
+    "requires": [
+      "discover-fort-point"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "How did the Golden Gate Bridge avoid demolishing Fort Point?",
+      "options": [
+        "The fort was moved 300 feet inland",
+        "The south tower was shifted into Marin",
+        "A steel arch carries the bridge over it",
+        "It was torn down and rebuilt after"
+      ],
+      "answer": 2,
+      "explain": "Engineers designed an arch so the bridge leaps over the 1861 fort."
+    }
+  },
+  {
+    "id": "trivia-legion-of-honor",
+    "kind": "trivia",
+    "title": "Legion of Honor Trivia",
+    "blurb": "A French palace on a cliff, with Rodin's Thinker brooding in the courtyard.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.78456,
+      "lon": -122.50096,
+      "alt": 35
+    },
+    "xp": 20,
+    "card": "legion-of-honor",
+    "requires": [
+      "discover-legion-of-honor"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Which famous sculpture sits in the Legion of Honor's courtyard?",
+      "options": [
+        "Michelangelo's David",
+        "The Little Mermaid",
+        "Venus de Milo",
+        "Rodin's The Thinker"
+      ],
+      "answer": 3,
+      "explain": "A cast of Rodin's The Thinker broods in the Court of Honor."
+    }
+  },
+  {
+    "id": "trivia-conservatory-of-flowers",
+    "kind": "trivia",
+    "title": "Conservatory of Flowers Trivia",
+    "blurb": "A white wood-and-glass greenhouse, the oldest building in Golden Gate Park.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77261,
+      "lon": -122.46023,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "conservatory-of-flowers",
+    "requires": [
+      "discover-conservatory-of-flowers"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "What record does the Conservatory of Flowers hold in Golden Gate Park?",
+      "options": [
+        "It is the oldest building in the park",
+        "It is the tallest building in the park",
+        "It is the newest museum",
+        "It has the biggest lake"
+      ],
+      "answer": 0,
+      "explain": "Completed in 1879, it is the oldest building in Golden Gate Park."
+    }
+  },
+  {
+    "id": "trivia-dutch-windmill",
+    "kind": "trivia",
+    "title": "Dutch Windmill Trivia",
+    "blurb": "A real working windmill at the ocean end of Golden Gate Park, ringed by tulips.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77044,
+      "lon": -122.50941,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "dutch-windmill",
+    "requires": [
+      "discover-dutch-windmill"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Why did Golden Gate Park build the Dutch Windmill in 1903?",
+      "options": [
+        "To grind flour for city bakeries",
+        "To pump water for irrigation",
+        "To generate electricity for the park",
+        "As a gift from the Dutch government"
+      ],
+      "answer": 1,
+      "explain": "The park was built on dunes, and the windmill pumped groundwater to water it."
+    }
+  },
+  {
+    "id": "trivia-cliff-house",
+    "kind": "trivia",
+    "title": "Cliff House Trivia",
+    "blurb": "A restaurant perched on the cliffs at the end of the continent since 1863.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77856,
+      "lon": -122.51398,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "cliff-house",
+    "requires": [
+      "discover-cliff-house"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "What happened to Adolph Sutro's grand 1896 Cliff House?",
+      "options": [
+        "It slid into the sea",
+        "It was moved to Golden Gate Park",
+        "It burned down in 1907",
+        "It became a hotel"
+      ],
+      "answer": 2,
+      "explain": "It survived the 1906 earthquake only to burn the next year."
+    }
+  },
+  {
+    "id": "trivia-mission-dolores",
+    "kind": "trivia",
+    "title": "Mission Dolores Trivia",
+    "blurb": "The oldest intact building in San Francisco, an adobe chapel from 1791.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76439,
+      "lon": -122.42703,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "mission-dolores",
+    "requires": [
+      "discover-mission-dolores"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Mission Dolores' adobe chapel holds what title?",
+      "options": [
+        "Tallest church in San Francisco",
+        "Newest cathedral in California",
+        "First stone building in the West",
+        "Oldest intact building in San Francisco"
+      ],
+      "answer": 3,
+      "explain": "Completed in 1791, it is the oldest intact structure in the city."
+    }
+  },
+  {
+    "id": "trivia-dragon-gate",
+    "kind": "trivia",
+    "title": "Dragon Gate Trivia",
+    "blurb": "The green-tiled gateway at Grant and Bush that opens into Chinatown.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79069,
+      "lon": -122.40559,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "dragon-gate",
+    "requires": [
+      "discover-dragon-gate"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Who gave the Dragon Gate to San Francisco?",
+      "options": [
+        "The Republic of China (Taiwan)",
+        "The People's Republic of China (Beijing)",
+        "The city of Hong Kong",
+        "The Chinese Six Companies"
+      ],
+      "answer": 0,
+      "explain": "It was built in 1969 as a gift from the Republic of China."
+    }
+  },
+  {
+    "id": "trivia-st-marys-cathedral",
+    "kind": "trivia",
+    "title": "St. Mary's Cathedral Trivia",
+    "blurb": "The modernist cathedral locals nicknamed Our Lady of Maytag.",
+    "neighborhood": "Western Addition",
+    "at": {
+      "lat": 37.78401,
+      "lon": -122.42526,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "st-marys-cathedral",
+    "requires": [
+      "discover-st-marys-cathedral"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "What nickname did locals give St. Mary's Cathedral?",
+      "options": [
+        "The Concrete Tulip",
+        "Our Lady of Maytag",
+        "The Big Fan",
+        "The Paper Hat"
+      ],
+      "answer": 1,
+      "explain": "Its shape looks like a washing machine agitator from above."
+    }
+  },
+  {
+    "id": "trivia-sentinel-building",
+    "kind": "trivia",
+    "title": "Sentinel Building Trivia",
+    "blurb": "The copper-green flatiron at Columbus and Kearny, home of a famous film studio.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79655,
+      "lon": -122.40505,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "sentinel-building",
+    "requires": [
+      "discover-sentinel-building"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Which film studio occupies the green Sentinel Building?",
+      "options": [
+        "Pixar",
+        "Lucasfilm",
+        "American Zoetrope",
+        "Industrial Light and Magic"
+      ],
+      "answer": 2,
+      "explain": "Francis Ford Coppola's American Zoetrope is based there."
+    }
+  },
+  {
+    "id": "trivia-millennium-tower",
+    "kind": "trivia",
+    "title": "Millennium Tower Trivia",
+    "blurb": "The luxury tower famous for sinking and tilting into the landfill.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79041,
+      "lon": -122.39619,
+      "alt": 210
+    },
+    "xp": 20,
+    "card": "millennium-tower",
+    "requires": [
+      "discover-millennium-tower"
+    ],
+    "tags": [
+      "trivia",
+      "landmark"
+    ],
+    "params": {
+      "question": "Why is Millennium Tower famous?",
+      "options": [
+        "It is the tallest tower",
+        "It has a rooftop zoo",
+        "It was moved one block",
+        "It sank and tilted"
+      ],
+      "answer": 3,
+      "explain": "In 2016 residents learned the tower was sinking and leaning."
+    }
+  },
+  {
+    "id": "trivia-golden-gate-park",
+    "kind": "trivia",
+    "title": "Golden Gate Park Trivia",
+    "blurb": "Over a thousand acres of forest, meadows and museums, grown on bare sand dunes.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76972,
+      "lon": -122.47694,
+      "alt": 60
+    },
+    "xp": 20,
+    "card": "golden-gate-park",
+    "requires": [
+      "discover-golden-gate-park"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "How big is Golden Gate Park?",
+      "options": [
+        "About 1,017 acres",
+        "About 300 acres",
+        "About 5,000 acres",
+        "About 100 acres"
+      ],
+      "answer": 0,
+      "explain": "Its 1,017 acres make it about 20 percent bigger than New York's Central Park."
+    }
+  },
+  {
+    "id": "trivia-presidio",
+    "kind": "trivia",
+    "title": "The Presidio Trivia",
+    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79806,
+      "lon": -122.46583,
+      "alt": 60
+    },
+    "xp": 20,
+    "card": "presidio",
+    "requires": [
+      "discover-presidio"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "How long was the Presidio a military post?",
+      "options": [
+        "50 years",
+        "219 years",
+        "100 years",
+        "12 years"
+      ],
+      "answer": 1,
+      "explain": "Founded in 1776, it was transferred to the National Park Service in 1994."
+    }
+  },
+  {
+    "id": "trivia-crissy-field",
+    "kind": "trivia",
+    "title": "Crissy Field Trivia",
+    "blurb": "A restored tidal marsh and beach that was once the Army's West Coast airfield.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.80459,
+      "lon": -122.46443,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "crissy-field",
+    "requires": [
+      "discover-crissy-field"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What was Crissy Field before it became a park?",
+      "options": [
+        "A municipal golf course",
+        "A rail yard",
+        "An Army airfield",
+        "A naval shipyard"
+      ],
+      "answer": 2,
+      "explain": "It was the Army's West Coast airfield, and the first dawn-to-dusk transcontinental flight landed there in 1924."
+    }
+  },
+  {
+    "id": "trivia-dolores-park",
+    "kind": "trivia",
+    "title": "Dolores Park Trivia",
+    "blurb": "The sunny hillside lawn where the whole city comes to picnic.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.75976,
+      "lon": -122.42713,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "dolores-park",
+    "requires": [
+      "discover-dolores-park"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What was the land under Dolores Park before it became a park?",
+      "options": [
+        "A horse racetrack",
+        "A dairy farm",
+        "A brickyard and quarry",
+        "A Jewish cemetery"
+      ],
+      "answer": 3,
+      "explain": "Two congregations used it as a cemetery until 1894, and the city bought it in 1905."
+    }
+  },
+  {
+    "id": "trivia-blue-heron-lake",
+    "kind": "trivia",
+    "title": "Blue Heron Lake Trivia",
+    "blurb": "The moat around Strawberry Hill, renamed in 2024 for the herons that nest there.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76899,
+      "lon": -122.47459,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "blue-heron-lake",
+    "requires": [
+      "discover-blue-heron-lake"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "Blue Heron Lake was renamed in 2024. What was its old name?",
+      "options": [
+        "Stow Lake",
+        "Spreckels Lake",
+        "Lloyd Lake",
+        "Elk Glen Lake"
+      ],
+      "answer": 0,
+      "explain": "The city renamed it after the herons that nest on its islands."
+    }
+  },
+  {
+    "id": "trivia-twin-peaks",
+    "kind": "trivia",
+    "title": "Twin Peaks Trivia",
+    "blurb": "The two grassy summits in the middle of the city with the best view of all of it.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75241,
+      "lon": -122.44759,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "twin-peaks",
+    "requires": [
+      "discover-twin-peaks"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "Which hill is taller than Twin Peaks?",
+      "options": [
+        "Telegraph Hill",
+        "Mount Davidson",
+        "Nob Hill",
+        "Bernal Hill"
+      ],
+      "answer": 1,
+      "explain": "Mount Davidson, at about 928 feet, is a few feet higher."
+    }
+  },
+  {
+    "id": "trivia-buena-vista-park",
+    "kind": "trivia",
+    "title": "Buena Vista Park Trivia",
+    "blurb": "The city's oldest official park, a steep wooded hill above the Haight.",
+    "neighborhood": "Haight Ashbury",
+    "at": {
+      "lat": 37.76834,
+      "lon": -122.4411,
+      "alt": 50
+    },
+    "xp": 20,
+    "card": "buena-vista-park",
+    "requires": [
+      "discover-buena-vista-park"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What did Depression-era crews use to build gutters in Buena Vista Park?",
+      "options": [
+        "Old cable car rails",
+        "Ballast stones from ships",
+        "Broken headstones",
+        "Ferry timbers"
+      ],
+      "answer": 2,
+      "explain": "WPA workers used broken headstones from the city's closed cemeteries."
+    }
+  },
+  {
+    "id": "trivia-mount-davidson",
+    "kind": "trivia",
+    "title": "Mount Davidson Trivia",
+    "blurb": "The highest point in San Francisco, crowned by a 103-foot concrete cross in a fog forest.",
+    "neighborhood": "West of Twin Peaks",
+    "at": {
+      "lat": 37.73826,
+      "lon": -122.4533,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "mount-davidson",
+    "requires": [
+      "discover-mount-davidson"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What stands on top of Mount Davidson?",
+      "options": [
+        "A stone lighthouse",
+        "A 200-foot steel fire lookout tower",
+        "A 500-foot radio mast",
+        "A 103-foot concrete cross"
+      ],
+      "answer": 3,
+      "explain": "President Roosevelt lit the cross by telegraph in 1934."
+    }
+  },
+  {
+    "id": "trivia-glen-canyon-park",
+    "kind": "trivia",
+    "title": "Glen Canyon Park Trivia",
+    "blurb": "A wild canyon with a free-flowing creek and the site of America's first dynamite factory.",
+    "neighborhood": "Glen Park",
+    "at": {
+      "lat": 37.74036,
+      "lon": -122.44383,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "glen-canyon-park",
+    "requires": [
+      "discover-glen-canyon-park"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What was made in Glen Canyon in 1868?",
+      "options": [
+        "Dynamite",
+        "Chocolate",
+        "Cable car rope",
+        "Bricks for City Hall"
+      ],
+      "answer": 0,
+      "explain": "The Giant Powder Company, licensed by Alfred Nobel, made the first dynamite in the U.S. here."
+    }
+  },
+  {
+    "id": "trivia-baker-beach",
+    "kind": "trivia",
+    "title": "Baker Beach Trivia",
+    "blurb": "A half-mile of sand with a head-on view of the Golden Gate Bridge, and the birthplace of Burning Man.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79315,
+      "lon": -122.48474,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "baker-beach",
+    "requires": [
+      "discover-baker-beach"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "Which famous festival started with a burn on Baker Beach in 1986?",
+      "options": [
+        "Outside Lands",
+        "Burning Man",
+        "Bay to Breakers",
+        "Coachella"
+      ],
+      "answer": 1,
+      "explain": "Larry Harvey and Jerry James burned a wooden man there on the summer solstice."
+    }
+  },
+  {
+    "id": "trivia-salesforce-park",
+    "kind": "trivia",
+    "title": "Salesforce Park Trivia",
+    "blurb": "A 5.4-acre garden on the roof of a bus station, 70 feet above downtown.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78912,
+      "lon": -122.39687,
+      "alt": 45
+    },
+    "xp": 20,
+    "card": "salesforce-park",
+    "requires": [
+      "discover-salesforce-park"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What makes Salesforce Park's fountain jets fire?",
+      "options": [
+        "The tides in the bay",
+        "A timer set to BART's schedule",
+        "Buses passing on the deck below",
+        "Visitors clapping their hands"
+      ],
+      "answer": 2,
+      "explain": "Ned Kahn's Bus Jet Fountain responds to buses rolling underneath."
+    }
+  },
+  {
+    "id": "trivia-japanese-tea-garden",
+    "kind": "trivia",
+    "title": "Japanese Tea Garden Trivia",
+    "blurb": "The oldest public Japanese garden in the United States, with a steep moon bridge.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77034,
+      "lon": -122.47005,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "japanese-tea-garden",
+    "requires": [
+      "discover-japanese-tea-garden"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "The Japanese Tea Garden was built for which event?",
+      "options": [
+        "The 1915 Panama-Pacific world's fair",
+        "The 1939 Golden Gate world's fair",
+        "The 1932 Olympic Games",
+        "The 1894 Midwinter Fair"
+      ],
+      "answer": 3,
+      "explain": "It is the oldest public Japanese garden in the United States."
+    }
+  },
+  {
+    "id": "trivia-sunset-dunes",
+    "kind": "trivia",
+    "title": "Sunset Dunes Trivia",
+    "blurb": "A two-mile oceanfront park built on top of a former highway.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.74977,
+      "lon": -122.50837,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "sunset-dunes",
+    "requires": [
+      "discover-sunset-dunes"
+    ],
+    "tags": [
+      "trivia",
+      "park"
+    ],
+    "params": {
+      "question": "What was Sunset Dunes before it became a park in 2025?",
+      "options": [
+        "A four-lane highway",
+        "A golf course",
+        "A rail line",
+        "A parking lot"
+      ],
+      "answer": 0,
+      "explain": "Voters closed the Upper Great Highway to cars, and it reopened as a two-mile park."
+    }
+  },
+  {
+    "id": "trivia-in-n-out-fishermans-wharf",
+    "kind": "trivia",
+    "title": "In-N-Out Burger, Fisherman's Wharf Trivia",
+    "blurb": "The only In-N-Out inside city limits, home of the Flying Dutchman.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80777,
+      "lon": -122.41847,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "in-n-out-fishermans-wharf",
+    "requires": [
+      "discover-in-n-out-fishermans-wharf"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What is In-N-Out's off-menu Flying Dutchman?",
+      "options": [
+        "A double burger with a fried fish fillet on top",
+        "Two patties and two slices of cheese, no bun",
+        "A vanilla shake with a root beer float on top",
+        "Fries with chili"
+      ],
+      "answer": 1,
+      "explain": "No bun at all, just two patties and two slices of cheese."
+    }
+  },
+  {
+    "id": "trivia-la-taqueria",
+    "kind": "trivia",
+    "title": "La Taqueria Trivia",
+    "blurb": "The Mission taqueria whose rice-free burritos keep winning best-in-America fights.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75087,
+      "lon": -122.41816,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "la-taqueria",
+    "requires": [
+      "discover-la-taqueria"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What does La Taqueria famously leave out of its burritos?",
+      "options": [
+        "Beans",
+        "Salsa",
+        "Rice",
+        "Meat"
+      ],
+      "answer": 2,
+      "explain": "Owner Miguel Jara says rice soaks up the juices and dilutes the meat."
+    }
+  },
+  {
+    "id": "trivia-boudin-bakery",
+    "kind": "trivia",
+    "title": "Boudin Bakery Trivia",
+    "blurb": "Sourdough from a mother dough that has been alive since the Gold Rush.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80853,
+      "lon": -122.41486,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "boudin-bakery",
+    "requires": [
+      "discover-boudin-bakery"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "How did Boudin's mother dough survive the 1906 fire?",
+      "options": [
+        "It was packed in ice and sent to Sacramento",
+        "Bakers shipped it across the bay to Oakland",
+        "It was baked into bread",
+        "Louise Boudin carried it out in a bucket"
+      ],
+      "answer": 3,
+      "explain": "Isidore Boudin's widow saved the 1849 starter as fire approached."
+    }
+  },
+  {
+    "id": "trivia-ghirardelli-square",
+    "kind": "trivia",
+    "title": "Ghirardelli Square Trivia",
+    "blurb": "A brick chocolate factory turned plaza, its glowing sign visible from the bay.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80587,
+      "lon": -122.42295,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "ghirardelli-square",
+    "requires": [
+      "discover-ghirardelli-square"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "When did Domingo Ghirardelli found his chocolate company?",
+      "options": [
+        "1852",
+        "1906",
+        "1933",
+        "1801"
+      ],
+      "answer": 0,
+      "explain": "He came for the Gold Rush and found success in chocolate instead."
+    }
+  },
+  {
+    "id": "trivia-swan-oyster-depot",
+    "kind": "trivia",
+    "title": "Swan Oyster Depot Trivia",
+    "blurb": "Eighteen stools, one marble counter, and oysters shucked by the same family since 1946.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79097,
+      "lon": -122.42092,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "swan-oyster-depot",
+    "requires": [
+      "discover-swan-oyster-depot"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "How many stools are at Swan Oyster Depot's counter?",
+      "options": [
+        "8",
+        "18",
+        "40",
+        "100"
+      ],
+      "answer": 1,
+      "explain": "Eighteen wooden stools along a marble counter, and no reservations."
+    }
+  },
+  {
+    "id": "trivia-mitchells-ice-cream",
+    "kind": "trivia",
+    "title": "Mitchell's Ice Cream Trivia",
+    "blurb": "A family scoop shop since 1953, beloved for ube, buko and mango.",
+    "neighborhood": "Noe Valley",
+    "at": {
+      "lat": 37.74421,
+      "lon": -122.42279,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "mitchells-ice-cream",
+    "requires": [
+      "discover-mitchells-ice-cream"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "Which purple flavor helped make Mitchell's famous?",
+      "options": [
+        "Grape",
+        "Blackberry",
+        "Ube",
+        "Lavender"
+      ],
+      "answer": 2,
+      "explain": "Ube, a Filipino purple yam, joined mango and buko in its tropical lineup."
+    }
+  },
+  {
+    "id": "trivia-bi-rite-creamery",
+    "kind": "trivia",
+    "title": "Bi-Rite Creamery Trivia",
+    "blurb": "The salted caramel line that snakes down 18th Street by Dolores Park.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76157,
+      "lon": -122.42566,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "bi-rite-creamery",
+    "requires": [
+      "discover-bi-rite-creamery"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What is Bi-Rite Creamery's best-known flavor?",
+      "options": [
+        "Rocky road",
+        "Mint chocolate chip",
+        "Vanilla",
+        "Salted caramel"
+      ],
+      "answer": 3,
+      "explain": "People line up around the block for the salted caramel."
+    }
+  },
+  {
+    "id": "trivia-liguria-bakery",
+    "kind": "trivia",
+    "title": "Liguria Bakery Trivia",
+    "blurb": "A North Beach bakery that sells only focaccia and closes when it runs out.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8015,
+      "lon": -122.40928,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "liguria-bakery",
+    "requires": [
+      "discover-liguria-bakery"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What is the only thing Liguria Bakery sells?",
+      "options": [
+        "Focaccia",
+        "Cannoli",
+        "Sourdough",
+        "Biscotti"
+      ],
+      "answer": 0,
+      "explain": "The family has baked only focaccia, and closes when it sells out."
+    }
+  },
+  {
+    "id": "trivia-house-of-prime-rib",
+    "kind": "trivia",
+    "title": "House of Prime Rib Trivia",
+    "blurb": "Prime rib carved tableside from gleaming carts since 1949.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79339,
+      "lon": -122.42254,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "house-of-prime-rib",
+    "requires": [
+      "discover-house-of-prime-rib"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "How is the prime rib served at House of Prime Rib?",
+      "options": [
+        "Sliced cold on a French roll",
+        "Carved tableside from rolling carts",
+        "Grilled on skewers over a flame",
+        "Served cold"
+      ],
+      "answer": 1,
+      "explain": "Silver carts roll to your table and the meat is carved in front of you."
+    }
+  },
+  {
+    "id": "trivia-golden-boy-pizza",
+    "kind": "trivia",
+    "title": "Golden Boy Pizza Trivia",
+    "blurb": "Focaccia-crust squares on Green Street, famous for the clam and garlic slice.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.79973,
+      "lon": -122.40808,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "golden-boy-pizza",
+    "requires": [
+      "discover-golden-boy-pizza"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What is Golden Boy Pizza's signature slice?",
+      "options": [
+        "Pineapple and ham",
+        "Plain cheese",
+        "Clam and garlic",
+        "Pesto chicken"
+      ],
+      "answer": 2,
+      "explain": "The pungent clam and garlic square is a North Beach rite of passage."
+    }
+  },
+  {
+    "id": "trivia-sweet-maple",
+    "kind": "trivia",
+    "title": "Sweet Maple Trivia",
+    "blurb": "Weekend brunch lines for the glazed, peppery Millionaire's Bacon.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.78575,
+      "lon": -122.43505,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "sweet-maple",
+    "requires": [
+      "discover-sweet-maple"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What dish draws the brunch lines at Sweet Maple?",
+      "options": [
+        "Ten-stack pancake towers",
+        "Dungeness crab benedict",
+        "Avocado toast",
+        "Millionaire's Bacon"
+      ],
+      "answer": 3,
+      "explain": "Thick, brown-sugar-glazed bacon developed by a former scientist."
+    }
+  },
+  {
+    "id": "trivia-tadich-grill",
+    "kind": "trivia",
+    "title": "Tadich Grill Trivia",
+    "blurb": "California's oldest restaurant, born as a Gold Rush coffee stand on Long Wharf.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79342,
+      "lon": -122.39947,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "tadich-grill",
+    "requires": [
+      "discover-tadich-grill"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What was Tadich Grill when it began in 1849?",
+      "options": [
+        "A coffee stand on Long Wharf",
+        "A Barbary Coast hotel kitchen",
+        "A ferry snack bar",
+        "A miners' saloon on Portsmouth Square"
+      ],
+      "answer": 0,
+      "explain": "Three Croatian immigrants sold coffee and grilled fish from a tent."
+    }
+  },
+  {
+    "id": "trivia-buena-vista-cafe",
+    "kind": "trivia",
+    "title": "The Buena Vista Trivia",
+    "blurb": "The cable car corner bar that brought Irish coffee to America in 1952.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80652,
+      "lon": -122.42077,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "buena-vista-cafe",
+    "requires": [
+      "discover-buena-vista-cafe"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What drink did the Buena Vista introduce to the U.S. in 1952?",
+      "options": [
+        "The dry martini",
+        "Irish coffee",
+        "The Mai Tai",
+        "The espresso shot"
+      ],
+      "answer": 1,
+      "explain": "A travel writer and the owner recreated a drink from Shannon Airport."
+    }
+  },
+  {
+    "id": "trivia-caffe-trieste",
+    "kind": "trivia",
+    "title": "Caffe Trieste Trivia",
+    "blurb": "The West Coast's first espresso house, where poets and a Godfather script brewed.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.79867,
+      "lon": -122.4073,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "caffe-trieste",
+    "requires": [
+      "discover-caffe-trieste"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "Caffe Trieste was the first of what on the West Coast?",
+      "options": [
+        "Bagel shop",
+        "Bookstore with a cafe inside",
+        "Espresso coffeehouse",
+        "Tea room"
+      ],
+      "answer": 2,
+      "explain": "Giovanni Giotta opened it in North Beach in 1956."
+    }
+  },
+  {
+    "id": "trivia-swensens",
+    "kind": "trivia",
+    "title": "Swensen's Ice Cream Trivia",
+    "blurb": "The original 1948 parlor of a chain that spread worldwide, on the Hyde Street cable car line.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79908,
+      "lon": -122.41918,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "swensens",
+    "requires": [
+      "discover-swensens"
+    ],
+    "tags": [
+      "trivia",
+      "food"
+    ],
+    "params": {
+      "question": "What was Swensen's original name in 1948?",
+      "options": [
+        "Frozen Gold",
+        "Nob Hill Creamery",
+        "Cable Car Cones",
+        "See Us Freeze"
+      ],
+      "answer": 3,
+      "explain": "The red See Us Freeze neon sign still glows in the window."
+    }
+  },
+  {
+    "id": "trivia-sea-lions-pier-39",
+    "kind": "trivia",
+    "title": "Pier 39 Sea Lions Trivia",
+    "blurb": "The barking, belching, sunbathing colony that took over the marina docks.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8095,
+      "lon": -122.4108,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "sea-lions-pier-39",
+    "requires": [
+      "discover-sea-lions-pier-39"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "When did sea lions start taking over Pier 39's docks?",
+      "options": [
+        "1990",
+        "1978",
+        "2009",
+        "1965"
+      ],
+      "answer": 0,
+      "explain": "They arrived a few months after the 1989 earthquake and never left."
+    }
+  },
+  {
+    "id": "trivia-wild-parrots",
+    "kind": "trivia",
+    "title": "Wild Parrots of Telegraph Hill Trivia",
+    "blurb": "A screeching green flock of cherry-headed conures that rules the hill.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80279,
+      "lon": -122.4046,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "wild-parrots",
+    "requires": [
+      "discover-wild-parrots"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "What kind of birds are the wild parrots of Telegraph Hill?",
+      "options": [
+        "African grey parrots",
+        "Cherry-headed conures",
+        "Yellow-naped Amazon parrots",
+        "Cockatoos"
+      ],
+      "answer": 1,
+      "explain": "Also called red-masked parakeets, they descend from escaped pet-trade birds."
+    }
+  },
+  {
+    "id": "trivia-bison-paddock",
+    "kind": "trivia",
+    "title": "Golden Gate Park Bison Trivia",
+    "blurb": "A small herd of American bison grazing in the middle of the city since 1891.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76971,
+      "lon": -122.49812,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "bison-paddock",
+    "requires": [
+      "discover-bison-paddock"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "When did bison first arrive in Golden Gate Park?",
+      "options": [
+        "1950",
+        "1906",
+        "1891",
+        "1970"
+      ],
+      "answer": 2,
+      "explain": "Superintendent John McLaren brought them when bison were nearly extinct."
+    }
+  },
+  {
+    "id": "trivia-coyotes",
+    "kind": "trivia",
+    "title": "Presidio Coyotes Trivia",
+    "blurb": "The wild dogs that came back to the city after decades away.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79222,
+      "lon": -122.45826,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "coyotes",
+    "requires": [
+      "discover-coyotes"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "How did coyotes most likely return to San Francisco?",
+      "options": [
+        "Released by a zoo",
+        "By ferry",
+        "Through the Twin Peaks Tunnel",
+        "Crossing from Marin County"
+      ],
+      "answer": 3,
+      "explain": "Genetic work links the first city coyotes to Marin populations."
+    }
+  },
+  {
+    "id": "trivia-brown-pelicans",
+    "kind": "trivia",
+    "title": "Brown Pelicans Trivia",
+    "blurb": "Prehistoric-looking divers that skim the waves in single file along the shore.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.8093,
+      "lon": -122.4235,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "brown-pelicans",
+    "requires": [
+      "discover-brown-pelicans"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "What chemical nearly wiped out brown pelicans?",
+      "options": [
+        "DDT",
+        "Lead",
+        "Chlorine",
+        "Mercury"
+      ],
+      "answer": 0,
+      "explain": "DDT thinned their eggshells. After its 1972 ban they recovered."
+    }
+  },
+  {
+    "id": "trivia-harbor-seals",
+    "kind": "trivia",
+    "title": "Harbor Seals of Yerba Buena Island Trivia",
+    "blurb": "Spotted, shy seals hauling out on the pocket beaches under the Bay Bridge.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.8068,
+      "lon": -122.3675,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "harbor-seals",
+    "requires": [
+      "discover-harbor-seals"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "Where do harbor seals haul out under the Bay Bridge?",
+      "options": [
+        "Alcatraz Island",
+        "Yerba Buena Island",
+        "Pier 39",
+        "Angel Island State Park"
+      ],
+      "answer": 1,
+      "explain": "Pocket beaches on Yerba Buena Island's southwest shore give them a resting spot."
+    }
+  },
+  {
+    "id": "trivia-great-blue-herons",
+    "kind": "trivia",
+    "title": "Great Blue Herons Trivia",
+    "blurb": "Tall gray herons nesting in the treetops above Blue Heron Lake.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77,
+      "lon": -122.4766,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "great-blue-herons",
+    "requires": [
+      "discover-great-blue-herons"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "When were great blue herons first recorded nesting in San Francisco?",
+      "options": [
+        "1906",
+        "1950",
+        "1993",
+        "2015"
+      ],
+      "answer": 2,
+      "explain": "A naturalist found the first nest at the lake in 1993."
+    }
+  },
+  {
+    "id": "trivia-mission-blue-butterfly",
+    "kind": "trivia",
+    "title": "Mission Blue Butterfly Trivia",
+    "blurb": "A tiny endangered blue butterfly, carried back to Twin Peaks by hand.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.7505,
+      "lon": -122.448,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "mission-blue-butterfly",
+    "requires": [
+      "discover-mission-blue-butterfly"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "What plant does the Mission blue butterfly need to lay its eggs?",
+      "options": [
+        "Poppy",
+        "Milkweed",
+        "Clover",
+        "Lupine"
+      ],
+      "answer": 3,
+      "explain": "When fungus killed Twin Peaks' lupine, the butterflies vanished until it was replanted."
+    }
+  },
+  {
+    "id": "trivia-bank-swallows",
+    "kind": "trivia",
+    "title": "Fort Funston Bank Swallows Trivia",
+    "blurb": "Tiny swallows that dig their nests straight into the sandy sea cliffs.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.718,
+      "lon": -122.5045,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "bank-swallows",
+    "requires": [
+      "discover-bank-swallows"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "Where do Fort Funston's bank swallows nest?",
+      "options": [
+        "In burrows they dig in the sandy cliffs",
+        "In the cypress trees on the bluff",
+        "Under the parking lot",
+        "Inside old gun battery bunkers"
+      ],
+      "answer": 0,
+      "explain": "Each hole in the cliff face is a swallow burrow."
+    }
+  },
+  {
+    "id": "trivia-harbor-porpoises",
+    "kind": "trivia",
+    "title": "Golden Gate Harbor Porpoises Trivia",
+    "blurb": "Shy small porpoises back under the bridge after about 65 years away.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.816,
+      "lon": -122.4775,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "harbor-porpoises",
+    "requires": [
+      "discover-harbor-porpoises"
+    ],
+    "tags": [
+      "trivia",
+      "wildlife"
+    ],
+    "params": {
+      "question": "About how long were harbor porpoises absent from the bay?",
+      "options": [
+        "5 years",
+        "About 65 years",
+        "200 years",
+        "They never left"
+      ],
+      "answer": 1,
+      "explain": "They vanished by the early 1940s and returned around 2008."
+    }
+  },
+  {
+    "id": "trivia-lottas-fountain",
+    "kind": "trivia",
+    "title": "Lotta's Fountain Trivia",
+    "blurb": "A cast-iron fountain on Market Street where 1906 survivors found each other.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78794,
+      "lon": -122.4033,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "lottas-fountain",
+    "requires": [
+      "discover-lottas-fountain"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What happens at Lotta's Fountain every April 18 at 5:12 a.m.?",
+      "options": [
+        "A cable car race",
+        "A fireworks show",
+        "A remembrance of the 1906 earthquake",
+        "The opera opens its season"
+      ],
+      "answer": 2,
+      "explain": "The city gathers at the moment the 1906 earthquake struck."
+    }
+  },
+  {
+    "id": "trivia-niantic",
+    "kind": "trivia",
+    "title": "The Buried Ship Niantic Trivia",
+    "blurb": "A Gold Rush ship that became a hotel, then vanished under downtown.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79486,
+      "lon": -122.40152,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "niantic",
+    "requires": [
+      "discover-niantic"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What was found in the buried ship Niantic's hold?",
+      "options": [
+        "Crates of gold bars",
+        "Cannons",
+        "Sacks of old mail",
+        "Bottles of champagne"
+      ],
+      "answer": 3,
+      "explain": "Diggers at Clay and Sansome have found it again and again, champagne and all."
+    }
+  },
+  {
+    "id": "trivia-emperor-norton",
+    "kind": "trivia",
+    "title": "Emperor Norton Trivia",
+    "blurb": "The bankrupt businessman who declared himself Emperor of the United States, and was humored.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79285,
+      "lon": -122.40573,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "emperor-norton",
+    "requires": [
+      "discover-emperor-norton"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What title did Joshua Norton give himself in 1859?",
+      "options": [
+        "Emperor of the United States",
+        "King of California",
+        "Mayor for Life",
+        "Grand Duke of the Bay"
+      ],
+      "answer": 0,
+      "explain": "San Francisco played along and honored his printed money."
+    }
+  },
+  {
+    "id": "trivia-summer-of-love",
+    "kind": "trivia",
+    "title": "Summer of Love Trivia",
+    "blurb": "The 1967 summer when up to 100,000 young people poured into Haight-Ashbury.",
+    "neighborhood": "Haight Ashbury",
+    "at": {
+      "lat": 37.77001,
+      "lon": -122.44695,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "summer-of-love",
+    "requires": [
+      "discover-summer-of-love"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "In what year was the Summer of Love?",
+      "options": [
+        "1959",
+        "1967",
+        "1977",
+        "1972"
+      ],
+      "answer": 1,
+      "explain": "As many as 100,000 young people converged on Haight-Ashbury."
+    }
+  },
+  {
+    "id": "trivia-clay-street-hill-railroad",
+    "kind": "trivia",
+    "title": "First Cable Car Trivia",
+    "blurb": "Where Andrew Hallidie's first cable car rolled down Clay Street in 1873.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79323,
+      "lon": -122.41449,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "clay-street-hill-railroad",
+    "requires": [
+      "discover-clay-street-hill-railroad"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What did the first cable car ride cost when service began in 1873?",
+      "options": [
+        "A dollar",
+        "Free",
+        "Five cents",
+        "Twenty-five cents"
+      ],
+      "answer": 2,
+      "explain": "Regular service started on September 1, 1873, at five cents."
+    }
+  },
+  {
+    "id": "trivia-golden-gate-international-exposition",
+    "kind": "trivia",
+    "title": "1939 World's Fair Trivia",
+    "blurb": "The Golden Gate International Exposition, built on a brand new island in the bay.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.8242,
+      "lon": -122.371,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "golden-gate-international-exposition",
+    "requires": [
+      "discover-golden-gate-international-exposition"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "Treasure Island was built for what?",
+      "options": [
+        "A Navy submarine base",
+        "A cargo container port",
+        "A state prison",
+        "A world's fair"
+      ],
+      "answer": 3,
+      "explain": "It hosted the 1939 Golden Gate International Exposition."
+    }
+  },
+  {
+    "id": "trivia-alcatraz-occupation",
+    "kind": "trivia",
+    "title": "Occupation of Alcatraz Trivia",
+    "blurb": "Nineteen months when Indians of All Tribes held the island.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8262,
+      "lon": -122.4216,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "alcatraz-occupation",
+    "requires": [
+      "discover-alcatraz-occupation"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What did the group that occupied Alcatraz in 1969 call itself?",
+      "options": [
+        "Indians of All Tribes",
+        "The Alcatraz Rock Council",
+        "Bay Nations",
+        "The American Indian Movement"
+      ],
+      "answer": 0,
+      "explain": "They held the island for 19 months."
+    }
+  },
+  {
+    "id": "trivia-city-lights",
+    "kind": "trivia",
+    "title": "City Lights and the Beats Trivia",
+    "blurb": "The bookstore that published Howl and went to court for it.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79763,
+      "lon": -122.40658,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "city-lights",
+    "requires": [
+      "discover-city-lights"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "Which poem did City Lights publish that led to an obscenity trial?",
+      "options": [
+        "On the Road",
+        "Howl",
+        "The Raven",
+        "Leaves of Grass"
+      ],
+      "answer": 1,
+      "explain": "Ferlinghetti published Allen Ginsberg's Howl in 1956 and won the case."
+    }
+  },
+  {
+    "id": "trivia-golden-fire-hydrant",
+    "kind": "trivia",
+    "title": "The Golden Fire Hydrant Trivia",
+    "blurb": "The little hydrant that saved the Mission in 1906, repainted gold every April 18.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.75809,
+      "lon": -122.42807,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "golden-fire-hydrant",
+    "requires": [
+      "discover-golden-fire-hydrant"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What is done to the Golden Fire Hydrant every April 18?",
+      "options": [
+        "It is moved",
+        "It is replaced",
+        "It is repainted gold",
+        "It is opened to spray water"
+      ],
+      "answer": 2,
+      "explain": "It honors the hydrant that saved the Mission in 1906."
+    }
+  },
+  {
+    "id": "trivia-portsmouth-square",
+    "kind": "trivia",
+    "title": "Portsmouth Square Trivia",
+    "blurb": "The original town plaza where the American flag went up in 1846.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79483,
+      "lon": -122.40537,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "portsmouth-square",
+    "requires": [
+      "discover-portsmouth-square"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What happened in Portsmouth Square on July 9, 1846?",
+      "options": [
+        "The first cable car ran",
+        "Gold was discovered",
+        "The city was renamed San Francisco",
+        "The American flag was raised"
+      ],
+      "answer": 3,
+      "explain": "Captain John Montgomery of the USS Portsmouth raised the flag."
+    }
+  },
+  {
+    "id": "trivia-old-mint",
+    "kind": "trivia",
+    "title": "The Old Mint Trivia",
+    "blurb": "The Granite Lady that survived 1906 while guarding a third of the nation's gold.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77013,
+      "lon": -122.4274,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "old-mint",
+    "requires": [
+      "discover-old-mint"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "About how much of the U.S. gold reserves were in the Old Mint during the 1906 fire?",
+      "options": [
+        "A third",
+        "All of it",
+        "One percent",
+        "Half"
+      ],
+      "answer": 0,
+      "explain": "Superintendent Frank Leach and his crew saved the building and its vaults."
+    }
+  },
+  {
+    "id": "trivia-carville",
+    "kind": "trivia",
+    "title": "Carville-by-the-Sea Trivia",
+    "blurb": "A beach town built from retired streetcars and cable cars.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.75665,
+      "lon": -122.50676,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "carville",
+    "requires": [
+      "discover-carville"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What were the homes of Carville-by-the-Sea made from?",
+      "options": [
+        "Timbers from wrecked ships",
+        "Retired streetcars and cable cars",
+        "Tents",
+        "Old world's fair pavilions"
+      ],
+      "answer": 1,
+      "explain": "In 1895 old horsecars sold for $20, or $10 without seats."
+    }
+  },
+  {
+    "id": "trivia-waterfront-strike",
+    "kind": "trivia",
+    "title": "Bloody Thursday Trivia",
+    "blurb": "The 1934 waterfront clash that led to a citywide general strike.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79325,
+      "lon": -122.39321,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "waterfront-strike",
+    "requires": [
+      "discover-waterfront-strike"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What did the 1934 longshoremen's strike win?",
+      "options": [
+        "A new bridge",
+        "Free ferry rides for dock workers",
+        "Unionization of all West Coast ports",
+        "A city pension for longshoremen"
+      ],
+      "answer": 2,
+      "explain": "Bloody Thursday led to a general strike, and the longshoremen won."
+    }
+  },
+  {
+    "id": "trivia-sutro-baths",
+    "kind": "trivia",
+    "title": "Sutro Baths Trivia",
+    "blurb": "Ruins of a glass palace of seawater pools that once held thousands of swimmers.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.78014,
+      "lon": -122.5138,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "sutro-baths",
+    "requires": [
+      "discover-sutro-baths"
+    ],
+    "tags": [
+      "trivia",
+      "history"
+    ],
+    "params": {
+      "question": "What happened to the Sutro Baths in 1966?",
+      "options": [
+        "They became a museum",
+        "They were moved",
+        "They reopened as a hotel",
+        "They burned down"
+      ],
+      "answer": 3,
+      "explain": "Only the concrete foundations remain at the edge of the Pacific."
+    }
+  },
+  {
+    "id": "trivia-castro-theatre",
+    "kind": "trivia",
+    "title": "Castro Theatre Trivia",
+    "blurb": "A 1922 movie palace with a glowing neon marquee at the heart of the Castro.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.762,
+      "lon": -122.43475,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "castro-theatre",
+    "requires": [
+      "discover-castro-theatre"
+    ],
+    "tags": [
+      "trivia",
+      "culture"
+    ],
+    "params": {
+      "question": "When was the Castro Theatre built?",
+      "options": [
+        "1922",
+        "1960",
+        "1899",
+        "1985"
+      ],
+      "answer": 0,
+      "explain": "Timothy Pflueger designed the movie palace, and its neon marquee came in 1937."
+    }
+  },
+  {
+    "id": "trivia-fillmore-auditorium",
+    "kind": "trivia",
+    "title": "The Fillmore Trivia",
+    "blurb": "The ballroom where Bill Graham launched the psychedelic rock era, and still hands out apples.",
+    "neighborhood": "Western Addition",
+    "at": {
+      "lat": 37.78408,
+      "lon": -122.43317,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "fillmore-auditorium",
+    "requires": [
+      "discover-fillmore-auditorium"
+    ],
+    "tags": [
+      "trivia",
+      "culture"
+    ],
+    "params": {
+      "question": "What free snack waits for concertgoers at the Fillmore?",
+      "options": [
+        "Pretzels",
+        "Apples",
+        "Fortune cookies",
+        "Popcorn"
+      ],
+      "answer": 1,
+      "explain": "Bill Graham started the apple barrel tradition and never explained it."
+    }
+  },
+  {
+    "id": "trivia-peace-pagoda",
+    "kind": "trivia",
+    "title": "Peace Pagoda Trivia",
+    "blurb": "A five-tiered concrete pagoda, a gift of friendship from Osaka.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.78507,
+      "lon": -122.42986,
+      "alt": 40
+    },
+    "xp": 20,
+    "card": "peace-pagoda",
+    "requires": [
+      "discover-peace-pagoda"
+    ],
+    "tags": [
+      "trivia",
+      "culture"
+    ],
+    "params": {
+      "question": "Which sister city gave San Francisco the Peace Pagoda?",
+      "options": [
+        "Tokyo",
+        "Kyoto",
+        "Osaka",
+        "Nagoya"
+      ],
+      "answer": 2,
+      "explain": "Osaka presented the five-tiered pagoda in 1968."
+    }
+  },
+  {
+    "id": "trivia-war-memorial-opera-house",
+    "kind": "trivia",
+    "title": "War Memorial Opera House Trivia",
+    "blurb": "The opera house where the United Nations held its founding conference.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77862,
+      "lon": -122.42093,
+      "alt": 35
+    },
+    "xp": 20,
+    "card": "war-memorial-opera-house",
+    "requires": [
+      "discover-war-memorial-opera-house"
+    ],
+    "tags": [
+      "trivia",
+      "culture"
+    ],
+    "params": {
+      "question": "What international organization was founded at a 1945 conference in the opera house?",
+      "options": [
+        "NATO",
+        "The World Bank",
+        "The International Red Cross",
+        "The United Nations"
+      ],
+      "answer": 3,
+      "explain": "Delegates from 50 nations met here in spring 1945."
+    }
+  },
+  {
+    "id": "trivia-exploratorium",
+    "kind": "trivia",
+    "title": "Exploratorium Trivia",
+    "blurb": "The hands-on science museum on Pier 15 that invented Pi Day.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.8009,
+      "lon": -122.39853,
+      "alt": 30
+    },
+    "xp": 20,
+    "card": "exploratorium",
+    "requires": [
+      "discover-exploratorium"
+    ],
+    "tags": [
+      "trivia",
+      "culture"
+    ],
+    "params": {
+      "question": "Which annual celebration did the Exploratorium start in 1988?",
+      "options": [
+        "Pi Day",
+        "Earth Day",
+        "Star Wars Day",
+        "Talk Like a Pirate Day"
+      ],
+      "answer": 0,
+      "explain": "Pi Day is celebrated every March 14."
+    }
+  },
+  {
+    "id": "trivia-wave-organ",
+    "kind": "trivia",
+    "title": "Wave Organ Trivia",
+    "blurb": "A jetty of pipes that the bay itself plays, built from old cemetery stone.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80849,
+      "lon": -122.44021,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "wave-organ",
+    "requires": [
+      "discover-wave-organ"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "What plays the Wave Organ?",
+      "options": [
+        "The wind",
+        "Waves in the bay",
+        "Passing ships",
+        "A hidden keyboard"
+      ],
+      "answer": 1,
+      "explain": "Waves push air through 25 pipes. Visit at high tide."
+    }
+  },
+  {
+    "id": "trivia-seward-street-slides",
+    "kind": "trivia",
+    "title": "Seward Street Slides Trivia",
+    "blurb": "Two steep concrete slides hidden in a tiny park in the hills above the Castro.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75778,
+      "lon": -122.43991,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "seward-street-slides",
+    "requires": [
+      "discover-seward-street-slides"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "What do riders use to go fast on the Seward Street Slides?",
+      "options": [
+        "Skateboards",
+        "Plastic sleds",
+        "Cardboard",
+        "Wax paper only"
+      ],
+      "answer": 2,
+      "explain": "Concrete plus jeans equals no speed, so cardboard is the move."
+    }
+  },
+  {
+    "id": "trivia-16th-avenue-tiled-steps",
+    "kind": "trivia",
+    "title": "16th Avenue Tiled Steps Trivia",
+    "blurb": "163 steps covered in a sea-to-sky mosaic made by hundreds of neighbors.",
+    "neighborhood": "Inner Sunset",
+    "at": {
+      "lat": 37.75626,
+      "lon": -122.47317,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "16th-avenue-tiled-steps",
+    "requires": [
+      "discover-16th-avenue-tiled-steps"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "How many steps are on the 16th Avenue Tiled Steps?",
+      "options": [
+        "48",
+        "500",
+        "1,000",
+        "163"
+      ],
+      "answer": 3,
+      "explain": "More than 300 neighbors helped tile the 163 risers."
+    }
+  },
+  {
+    "id": "trivia-filbert-steps",
+    "kind": "trivia",
+    "title": "Filbert Steps Trivia",
+    "blurb": "A wooden stairway down Telegraph Hill through a secret garden.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80193,
+      "lon": -122.40503,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "filbert-steps",
+    "requires": [
+      "discover-filbert-steps"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "Who turned the trash-covered slope by the Filbert Steps into a garden?",
+      "options": [
+        "Grace Marchant",
+        "Lillie Coit",
+        "John McLaren",
+        "Alma Spreckels"
+      ],
+      "answer": 0,
+      "explain": "She started in 1949 at age 63 and tended it for 33 years."
+    }
+  },
+  {
+    "id": "trivia-lands-end-labyrinth",
+    "kind": "trivia",
+    "title": "Lands End Labyrinth Trivia",
+    "blurb": "A stone labyrinth on a cliff above Mile Rock Beach, facing the Golden Gate.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.78774,
+      "lon": -122.50566,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "lands-end-labyrinth",
+    "requires": [
+      "discover-lands-end-labyrinth"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "Who built the Lands End Labyrinth in 2004?",
+      "options": [
+        "The Park Service",
+        "Eduardo Aguilera",
+        "Andy Goldsworthy",
+        "The Exploratorium"
+      ],
+      "answer": 1,
+      "explain": "Vandals have scattered it several times, and volunteers keep rebuilding it."
+    }
+  },
+  {
+    "id": "trivia-bay-bridge-troll",
+    "kind": "trivia",
+    "title": "Bay Bridge Troll Trivia",
+    "blurb": "A secret steel troll welded to the bridge by ironworkers for luck.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.81461,
+      "lon": -122.36014,
+      "alt": 60
+    },
+    "xp": 20,
+    "card": "bay-bridge-troll",
+    "requires": [
+      "discover-bay-bridge-troll"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "Who put the original troll on the Bay Bridge?",
+      "options": [
+        "Tourists",
+        "State bridge engineers when it opened in 1936",
+        "Ironworkers after the 1989 earthquake",
+        "Emperor Norton"
+      ],
+      "answer": 2,
+      "explain": "Blacksmith Bill Roan made it, and ironworkers welded it on as a good luck charm."
+    }
+  },
+  {
+    "id": "trivia-doggie-diner-head",
+    "kind": "trivia",
+    "title": "Doggie Diner Head Trivia",
+    "blurb": "A giant grinning fiberglass dachshund in a chef's hat, now an official city landmark.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.73546,
+      "lon": -122.50297,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "doggie-diner-head",
+    "requires": [
+      "discover-doggie-diner-head"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "What does the Doggie Diner head depict?",
+      "options": [
+        "A bulldog in a bow tie",
+        "A poodle in a sailor's cap",
+        "A cable car",
+        "A dachshund in a chef's hat"
+      ],
+      "answer": 3,
+      "explain": "The seven-foot fiberglass dachshund is now San Francisco Landmark No. 254."
+    }
+  },
+  {
+    "id": "trivia-musee-mecanique",
+    "kind": "trivia",
+    "title": "Musee Mecanique Trivia",
+    "blurb": "A free hall of antique coin-operated machines, ruled by the cackling Laffing Sal.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80925,
+      "lon": -122.41579,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "musee-mecanique",
+    "requires": [
+      "discover-musee-mecanique"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "Who presides over the Musee Mecanique?",
+      "options": [
+        "Laffing Sal",
+        "Mr. Peanut",
+        "Captain Cable",
+        "The Fog Queen"
+      ],
+      "answer": 0,
+      "explain": "The cackling figure came from Playland-at-the-Beach."
+    }
+  },
+  {
+    "id": "trivia-clarion-alley",
+    "kind": "trivia",
+    "title": "Clarion Alley Trivia",
+    "blurb": "A constantly changing outdoor gallery of political street art in the Mission.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76299,
+      "lon": -122.42066,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "clarion-alley",
+    "requires": [
+      "discover-clarion-alley"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "About how many murals has the Clarion Alley Mural Project produced?",
+      "options": [
+        "12",
+        "Over 700",
+        "50",
+        "Exactly 100"
+      ],
+      "answer": 1,
+      "explain": "Murals are painted over and replaced constantly, so the alley keeps changing."
+    }
+  },
+  {
+    "id": "trivia-golden-gate-fortune-cookie-factory",
+    "kind": "trivia",
+    "title": "Golden Gate Fortune Cookie Factory Trivia",
+    "blurb": "A tiny alley factory where fortune cookies are still folded by hand.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.7957,
+      "lon": -122.40735,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "golden-gate-fortune-cookie-factory",
+    "requires": [
+      "discover-golden-gate-fortune-cookie-factory"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "How are cookies folded at the Golden Gate Fortune Cookie Factory?",
+      "options": [
+        "By a robot arm",
+        "Not at all",
+        "By hand, while still warm",
+        "With a press"
+      ],
+      "answer": 2,
+      "explain": "Workers bend warm discs over a metal rod before they harden."
+    }
+  },
+  {
+    "id": "trivia-macondray-lane",
+    "kind": "trivia",
+    "title": "Macondray Lane Trivia",
+    "blurb": "A wooded pedestrian lane on Russian Hill that inspired Barbary Lane in Tales of the City.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79921,
+      "lon": -122.41518,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "macondray-lane",
+    "requires": [
+      "discover-macondray-lane"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "Macondray Lane inspired which fictional street?",
+      "options": [
+        "Sesame Street",
+        "Elm Street",
+        "Diagon Alley",
+        "Barbary Lane"
+      ],
+      "answer": 3,
+      "explain": "Armistead Maupin used it in his Tales of the City novels."
+    }
+  },
+  {
+    "id": "trivia-camera-obscura",
+    "kind": "trivia",
+    "title": "Camera Obscura Trivia",
+    "blurb": "A room-sized camera behind the Cliff House that projects the live ocean onto a dish.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77826,
+      "lon": -122.51423,
+      "alt": 20
+    },
+    "xp": 20,
+    "card": "camera-obscura",
+    "requires": [
+      "discover-camera-obscura"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "How does the Camera Obscura show the ocean?",
+      "options": [
+        "A lens and mirror project it onto a dish",
+        "Rooftop security cameras feed a wall of screens",
+        "A periscope pokes out of the roof",
+        "A ring of windows faces the Pacific"
+      ],
+      "answer": 0,
+      "explain": "It has projected the live coast onto a white bowl since 1946."
+    }
+  },
+  {
+    "id": "trivia-uss-san-francisco-memorial",
+    "kind": "trivia",
+    "title": "USS San Francisco Memorial Trivia",
+    "blurb": "The shell-torn steel bridge of a WWII cruiser, set on a cliff facing Guadalcanal.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.7828,
+      "lon": -122.51153,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "uss-san-francisco-memorial",
+    "requires": [
+      "discover-uss-san-francisco-memorial"
+    ],
+    "tags": [
+      "trivia",
+      "hidden"
+    ],
+    "params": {
+      "question": "The USS San Francisco Memorial is built from what?",
+      "options": [
+        "Steel hull plates from a sister ship",
+        "The cruiser's shell-torn bridge wings",
+        "A retired submarine conning tower",
+        "Cannons melted down after the battle"
+      ],
+      "answer": 1,
+      "explain": "The bridge wings were cut away after the Naval Battle of Guadalcanal."
+    }
+  },
+  {
+    "id": "trivia-powell-market-turntable",
+    "kind": "trivia",
+    "title": "Powell and Market Turntable Trivia",
+    "blurb": "Where crews push cable cars around by hand on a wooden turntable.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78471,
+      "lon": -122.4077,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "powell-market-turntable",
+    "requires": [
+      "discover-powell-market-turntable"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "How are cable cars turned around at Powell and Market?",
+      "options": [
+        "A crane lifts and spins them",
+        "They drive in a loop",
+        "The crew pushes them on a turntable",
+        "They run backward"
+      ],
+      "answer": 2,
+      "explain": "It is the world's last manually operated cable car system."
+    }
+  },
+  {
+    "id": "trivia-california-street-line",
+    "kind": "trivia",
+    "title": "California Street Cable Car Trivia",
+    "blurb": "Double-ended cars climbing straight up Nob Hill since 1878.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79366,
+      "lon": -122.39648,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "california-street-line",
+    "requires": [
+      "discover-california-street-line"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "Why don't California Street cable cars need a turntable?",
+      "options": [
+        "They only go downhill",
+        "They are towed",
+        "They never stop",
+        "They are double-ended"
+      ],
+      "answer": 3,
+      "explain": "Controls at both ends let them reverse direction."
+    }
+  },
+  {
+    "id": "trivia-cable-car-museum",
+    "kind": "trivia",
+    "title": "Cable Car Museum Trivia",
+    "blurb": "The working powerhouse whose giant wheels pull every cable car in the city.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79467,
+      "lon": -122.4114,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "cable-car-museum",
+    "requires": [
+      "discover-cable-car-museum"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "What does the Cable Car Museum's powerhouse do?",
+      "options": [
+        "Pulls the cables that move the cars",
+        "Builds new cable cars",
+        "Charges electric trolley buses",
+        "Pumps water for fire hydrants"
+      ],
+      "answer": 0,
+      "explain": "Huge winding wheels spin the cables under the streets."
+    }
+  },
+  {
+    "id": "trivia-transbay-tube",
+    "kind": "trivia",
+    "title": "BART Transbay Tube Trivia",
+    "blurb": "A 3.6-mile rail tunnel lying on the floor of the bay.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79269,
+      "lon": -122.3972,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "transbay-tube",
+    "requires": [
+      "discover-transbay-tube"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "How deep does the BART Transbay Tube go?",
+      "options": [
+        "35 feet",
+        "135 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "answer": 1,
+      "explain": "Its 57 sections lie in a trench on the bay floor."
+    }
+  },
+  {
+    "id": "trivia-twin-peaks-tunnel",
+    "kind": "trivia",
+    "title": "Twin Peaks Tunnel Trivia",
+    "blurb": "The 1918 streetcar tunnel that unlocked the city's west side.",
+    "neighborhood": "West of Twin Peaks",
+    "at": {
+      "lat": 37.74113,
+      "lon": -122.46566,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "twin-peaks-tunnel",
+    "requires": [
+      "discover-twin-peaks-tunnel"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "Who drove the first streetcar through the Twin Peaks Tunnel in 1918?",
+      "options": [
+        "Andrew Hallidie",
+        "John McLaren",
+        "Mayor James Rolph",
+        "Governor Hiram Johnson"
+      ],
+      "answer": 2,
+      "explain": "The tunnel opened the west side to new neighborhoods."
+    }
+  },
+  {
+    "id": "trivia-pier-45-ships",
+    "kind": "trivia",
+    "title": "Pier 45 Historic Ships Trivia",
+    "blurb": "A WWII submarine and a D-Day Liberty ship, tied up at Fisherman's Wharf.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.81,
+      "lon": -122.41639,
+      "alt": 25
+    },
+    "xp": 20,
+    "card": "pier-45-ships",
+    "requires": [
+      "discover-pier-45-ships"
+    ],
+    "tags": [
+      "trivia",
+      "transit"
+    ],
+    "params": {
+      "question": "Which two historic vessels are at Pier 45?",
+      "options": [
+        "A Gold Rush ferry and a tugboat",
+        "Two clipper ships",
+        "A battleship and a yacht",
+        "A WWII submarine and a Liberty ship"
+      ],
+      "answer": 3,
+      "explain": "USS Pampanito and SS Jeremiah O'Brien are both museums."
+    }
+  }
+]

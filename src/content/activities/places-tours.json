@@ -1,0 +1,1109 @@
+[
+  {
+    "id": "tour-golden-gate-shoreline",
+    "kind": "tour",
+    "title": "Golden Gate Shoreline",
+    "blurb": "Fly the Marina waterfront from a Roman ruin to the foot of the bridge.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80292,
+      "lon": -122.44839,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Palace of Fine Arts",
+          "lat": 37.80292,
+          "lon": -122.44839,
+          "alt": 45,
+          "line": "Welcome to a ruin built on purpose. Maybeck designed this rotunda in 1915 to feel ancient from day one."
+        },
+        {
+          "name": "Wave Organ",
+          "lat": 37.80849,
+          "lon": -122.44021,
+          "alt": 45,
+          "line": "Listen. At the tip of this jetty the bay itself plays 25 pipes, gurgling louder at high tide."
+        },
+        {
+          "name": "Crissy Field",
+          "lat": 37.80459,
+          "lon": -122.46443,
+          "alt": 45,
+          "line": "This marsh was an Army airfield. In 1924 a pilot landed here after crossing the country in a single day."
+        },
+        {
+          "name": "Fort Point",
+          "lat": 37.81051,
+          "lon": -122.4771,
+          "alt": 45,
+          "line": "A Civil War fort that never fired at an enemy. The bridge engineers built an arch just to save it."
+        },
+        {
+          "name": "Golden Gate Bridge",
+          "lat": 37.81972,
+          "lon": -122.47861,
+          "alt": 90,
+          "line": "International Orange was meant to be primer. Climb above the deck and look back at the whole city."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-fishermans-wharf",
+    "kind": "tour",
+    "title": "Fisherman's Wharf Waterfront",
+    "blurb": "Chocolate, Irish coffee, antique arcades, warships and sea lions.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80587,
+      "lon": -122.42295,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Ghirardelli Square",
+          "lat": 37.80587,
+          "lon": -122.42295,
+          "alt": 45,
+          "line": "A Gold Rush chocolatier's brick factory, saved and turned into one of America's first adaptive reuse projects."
+        },
+        {
+          "name": "The Buena Vista",
+          "lat": 37.80652,
+          "lon": -122.42077,
+          "alt": 45,
+          "line": "Irish coffee landed in America at this corner bar in 1952. They still pour them in long rows."
+        },
+        {
+          "name": "Musee Mecanique",
+          "lat": 37.80925,
+          "lon": -122.41579,
+          "alt": 45,
+          "line": "Bring quarters. Laffing Sal has been cackling at visitors since the days of Playland-at-the-Beach."
+        },
+        {
+          "name": "Pier 45 Historic Ships",
+          "lat": 37.81,
+          "lon": -122.41639,
+          "alt": 45,
+          "line": "A submarine that rescued 73 prisoners of war and a Liberty ship that sailed back to Normandy in 1994."
+        },
+        {
+          "name": "Boudin Bakery",
+          "lat": 37.80853,
+          "lon": -122.41486,
+          "alt": 45,
+          "line": "The mother dough here dates to 1849, and Louise Boudin carried it out of the fire in a bucket in 1906."
+        },
+        {
+          "name": "Pier 39 Sea Lions",
+          "lat": 37.8095,
+          "lon": -122.4108,
+          "alt": 45,
+          "line": "Hear that? The sea lions moved onto these docks in 1990, and the boat owners lost the argument."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-north-beach",
+    "kind": "tour",
+    "title": "North Beach and Telegraph Hill",
+    "blurb": "Focaccia, espresso, Beat poetry and a tower on the hill.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80085,
+      "lon": -122.41012,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Washington Square",
+          "lat": 37.80085,
+          "lon": -122.41012,
+          "alt": 45,
+          "line": "North Beach's front lawn since 1847. Tai chi at dawn, focaccia at noon, church bells at dusk."
+        },
+        {
+          "name": "Liguria Bakery",
+          "lat": 37.8015,
+          "lon": -122.40928,
+          "alt": 45,
+          "line": "One product, done perfectly since 1911. When the focaccia sells out, the doors close."
+        },
+        {
+          "name": "Caffe Trieste",
+          "lat": 37.79867,
+          "lon": -122.4073,
+          "alt": 45,
+          "line": "The first espresso house on the West Coast. Legend says The Godfather was written at a table inside."
+        },
+        {
+          "name": "City Lights and the Beats",
+          "lat": 37.79763,
+          "lon": -122.40658,
+          "alt": 45,
+          "line": "This bookstore published Howl in 1956 and beat an obscenity charge. The Beats had a headquarters."
+        },
+        {
+          "name": "Coit Tower",
+          "lat": 37.80238,
+          "lon": -122.40583,
+          "alt": 45,
+          "line": "Lillie Coit chased fire engines and left money to beautify the city. Her tower crowns Telegraph Hill."
+        },
+        {
+          "name": "Filbert Steps",
+          "lat": 37.80193,
+          "lon": -122.40503,
+          "alt": 45,
+          "line": "Drop down the wooden stairs through Grace Marchant's garden. Listen for the wild parrots."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-chinatown",
+    "kind": "tour",
+    "title": "Chinatown Alleys",
+    "blurb": "Through the Dragon Gate to temples, plazas and fortune cookies.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79069,
+      "lon": -122.40559,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Dragon Gate",
+          "lat": 37.79069,
+          "lon": -122.40559,
+          "alt": 45,
+          "line": "Step through the gate and you enter the oldest Chinatown in North America."
+        },
+        {
+          "name": "Emperor Norton",
+          "lat": 37.79285,
+          "lon": -122.40573,
+          "alt": 45,
+          "line": "Emperor Norton, self-crowned ruler of the United States, collapsed near Old St. Mary's here in 1880."
+        },
+        {
+          "name": "Portsmouth Square",
+          "lat": 37.79483,
+          "lon": -122.40537,
+          "alt": 45,
+          "line": "The original town plaza of Yerba Buena, where the American flag went up in 1846."
+        },
+        {
+          "name": "Waverly Place and Tin How Temple",
+          "lat": 37.79464,
+          "lon": -122.40693,
+          "alt": 45,
+          "line": "Look up at the painted balconies. Tin How Temple waits three flights above the street."
+        },
+        {
+          "name": "Golden Gate Fortune Cookie Factory",
+          "lat": 37.7957,
+          "lon": -122.40735,
+          "alt": 45,
+          "line": "Follow the vanilla smell down Ross Alley. Every cookie here is folded by hand."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-gold-rush-waterfront",
+    "kind": "tour",
+    "title": "Gold Rush Waterfront",
+    "blurb": "The Financial District was once the bay. Fly the old shoreline.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79555,
+      "lon": -122.39347,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Ferry Building",
+          "lat": 37.79555,
+          "lon": -122.39347,
+          "alt": 45,
+          "line": "Before the bridges, everyone arrived right here by boat. The clock tower was the city's front door."
+        },
+        {
+          "name": "Bloody Thursday",
+          "lat": 37.79325,
+          "lon": -122.39321,
+          "alt": 45,
+          "line": "On Bloody Thursday in 1934, two strikers were killed at this corner. The whole city walked out."
+        },
+        {
+          "name": "Tadich Grill",
+          "lat": 37.79342,
+          "lon": -122.39947,
+          "alt": 45,
+          "line": "A coffee stand in 1849, California's oldest restaurant today. The fish still hits a mesquite grill."
+        },
+        {
+          "name": "The Buried Ship Niantic",
+          "lat": 37.79486,
+          "lon": -122.40152,
+          "alt": 45,
+          "line": "You are flying over a buried ship. The Niantic was a hotel until fire took it and landfill swallowed it."
+        },
+        {
+          "name": "Jackson Square",
+          "lat": 37.79687,
+          "lon": -122.40303,
+          "alt": 45,
+          "line": "Brick survivors of 1906. A whiskey warehouse here famously made it while churches burned."
+        },
+        {
+          "name": "Transamerica Pyramid",
+          "lat": 37.79517,
+          "lon": -122.40279,
+          "alt": 45,
+          "line": "Protesters wore dunce caps to fight this tower. Now it is the shape everyone draws for San Francisco."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-lands-end",
+    "kind": "tour",
+    "title": "Lands End Wilds",
+    "blurb": "Ruins, shipwrecks and cliffs at the edge of the continent.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77746,
+      "lon": -122.51141,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Sutro Heights",
+          "lat": 37.77746,
+          "lon": -122.51141,
+          "alt": 45,
+          "line": "Adolph Sutro's garden of 200 plaster statues once covered this bluff. The view is still his."
+        },
+        {
+          "name": "Cliff House",
+          "lat": 37.77856,
+          "lon": -122.51398,
+          "alt": 45,
+          "line": "There have been several Cliff Houses on this rock. Sutro's grand chateau burned here in 1907."
+        },
+        {
+          "name": "Sutro Baths",
+          "lat": 37.78014,
+          "lon": -122.5138,
+          "alt": 45,
+          "line": "Seven pools under a glass roof once stood here. Now waves wash through the foundations."
+        },
+        {
+          "name": "USS San Francisco Memorial",
+          "lat": 37.7828,
+          "lon": -122.51153,
+          "alt": 45,
+          "line": "Real steel from a cruiser's bridge, torn by shells at Guadalcanal, aimed back at the battle site."
+        },
+        {
+          "name": "Lands End Labyrinth",
+          "lat": 37.78774,
+          "lon": -122.50566,
+          "alt": 45,
+          "line": "A stone labyrinth above the surf. Walk it slowly while the foghorns sound."
+        },
+        {
+          "name": "Legion of Honor",
+          "lat": 37.78456,
+          "lon": -122.50096,
+          "alt": 45,
+          "line": "A French palace on a cliff, with Rodin's Thinker brooding in the courtyard."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-golden-gate-park-east",
+    "kind": "tour",
+    "title": "Golden Gate Park: Museum Row",
+    "blurb": "Glasshouses, bandshells, museums and a heron lake.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77261,
+      "lon": -122.46023,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Conservatory of Flowers",
+          "lat": 37.77261,
+          "lon": -122.46023,
+          "alt": 45,
+          "line": "The oldest building in the park, a Victorian glasshouse that has survived fire, quakes and wind."
+        },
+        {
+          "name": "Spreckels Temple of Music",
+          "lat": 37.76988,
+          "lon": -122.46857,
+          "alt": 45,
+          "line": "A sugar fortune built this bandshell in 1900. The park band still plays free Sundays."
+        },
+        {
+          "name": "de Young Museum",
+          "lat": 37.7715,
+          "lon": -122.46909,
+          "alt": 60,
+          "line": "Copper skin, slowly turning green. Its twisting tower gives a free view over the park."
+        },
+        {
+          "name": "California Academy of Sciences",
+          "lat": 37.7701,
+          "lon": -122.4664,
+          "alt": 45,
+          "line": "A rainforest, an aquarium and a planetarium, all under a roof that is a meadow."
+        },
+        {
+          "name": "Japanese Tea Garden",
+          "lat": 37.77034,
+          "lon": -122.47005,
+          "alt": 45,
+          "line": "The oldest public Japanese garden in America. Mind the steep drum bridge."
+        },
+        {
+          "name": "Blue Heron Lake",
+          "lat": 37.76899,
+          "lon": -122.47459,
+          "alt": 45,
+          "line": "Herons have nested on these islands since 1993. The lake took their name in 2024."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-golden-gate-park-west",
+    "kind": "tour",
+    "title": "Golden Gate Park: To the Ocean",
+    "blurb": "Bluegrass meadows, bison and windmills on the way to the Pacific.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76913,
+      "lon": -122.48569,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Hardly Strictly Bluegrass",
+          "lat": 37.76913,
+          "lon": -122.48569,
+          "alt": 45,
+          "line": "A banjo-loving banker gave the city a free festival here. The meadow now carries his name."
+        },
+        {
+          "name": "Golden Gate Park Bison",
+          "lat": 37.76971,
+          "lon": -122.49812,
+          "alt": 45,
+          "line": "Yes, bison. They have grazed in this park since 1891."
+        },
+        {
+          "name": "Dutch Windmill",
+          "lat": 37.77044,
+          "lon": -122.50941,
+          "alt": 45,
+          "line": "The park was sand, so in 1903 this windmill pumped water to keep it alive."
+        },
+        {
+          "name": "Beach Chalet",
+          "lat": 37.76947,
+          "lon": -122.51022,
+          "alt": 45,
+          "line": "Step inside for 1930s murals of everyday San Francisco life painted on every wall."
+        },
+        {
+          "name": "Ocean Beach",
+          "lat": 37.75616,
+          "lon": -122.51049,
+          "alt": 45,
+          "line": "The continent ends here. Do not swim, but do watch the surfers."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-mission-murals",
+    "kind": "tour",
+    "title": "Mission Murals and Sweets",
+    "blurb": "The oldest building in town, painted alleys and ice cream on the hill.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76439,
+      "lon": -122.42703,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Mission Dolores",
+          "lat": 37.76439,
+          "lon": -122.42703,
+          "alt": 45,
+          "line": "Everything in San Francisco is younger than this adobe chapel from 1791."
+        },
+        {
+          "name": "Clarion Alley",
+          "lat": 37.76299,
+          "lon": -122.42066,
+          "alt": 45,
+          "line": "An outdoor gallery that repaints itself. Over 700 murals have come and gone here."
+        },
+        {
+          "name": "MaestraPeace Mural",
+          "lat": 37.76142,
+          "lon": -122.42261,
+          "alt": 45,
+          "line": "Seven muralists covered this building in women from across history. Stand back to see it all."
+        },
+        {
+          "name": "Bi-Rite Creamery",
+          "lat": 37.76157,
+          "lon": -122.42566,
+          "alt": 45,
+          "line": "Salted caramel, hand-made. The line is part of the experience."
+        },
+        {
+          "name": "Dolores Park",
+          "lat": 37.75976,
+          "lon": -122.42713,
+          "alt": 45,
+          "line": "The city's living room on a sunny day, once a cemetery and a refugee camp."
+        },
+        {
+          "name": "The Golden Fire Hydrant",
+          "lat": 37.75809,
+          "lon": -122.42807,
+          "alt": 45,
+          "line": "This little hydrant saved the Mission in 1906. Every April 18 it gets a fresh coat of gold."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-burrito-trail",
+    "kind": "tour",
+    "title": "The Great Burrito Debate",
+    "blurb": "Two legends, one alley of murals and a scoop to settle your stomach.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75264,
+      "lon": -122.41831,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "El Farolito",
+          "lat": 37.75264,
+          "lon": -122.41831,
+          "alt": 45,
+          "line": "Contender one: the super burrito, rice included, eaten long after the bars close."
+        },
+        {
+          "name": "La Taqueria",
+          "lat": 37.75087,
+          "lon": -122.41816,
+          "alt": 45,
+          "line": "Contender two: no rice, crispy dorado style, crowned best in America. Pick a side."
+        },
+        {
+          "name": "Balmy Alley",
+          "lat": 37.75182,
+          "lon": -122.41241,
+          "alt": 45,
+          "line": "Walk it off in Balmy Alley, where every garage door has been a mural since the 1970s."
+        },
+        {
+          "name": "Mitchell's Ice Cream",
+          "lat": 37.74421,
+          "lon": -122.42279,
+          "alt": 45,
+          "line": "Finish with ube or buko at a family scoop shop serving since 1953."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-castro-haight",
+    "kind": "tour",
+    "title": "Castro to the Haight",
+    "blurb": "From Harvey Milk's plaza over the hills to the Summer of Love.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76228,
+      "lon": -122.43569,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Harvey Milk and the Castro",
+          "lat": 37.76228,
+          "lon": -122.43569,
+          "alt": 45,
+          "line": "Harvey Milk ran his campaigns from a camera shop up the street. The rainbow flag flies above his plaza."
+        },
+        {
+          "name": "Castro Theatre",
+          "lat": 37.762,
+          "lon": -122.43475,
+          "alt": 45,
+          "line": "A 1922 movie palace with a ceiling built like a tent and a neon sign you can see from blocks away."
+        },
+        {
+          "name": "Vulcan Stairway",
+          "lat": 37.76348,
+          "lon": -122.44115,
+          "alt": 45,
+          "line": "A street with no road, just garden steps and front doors. The hill picked planet names."
+        },
+        {
+          "name": "Corona Heights",
+          "lat": 37.76489,
+          "lon": -122.43937,
+          "alt": 45,
+          "line": "Red chert made of ancient plankton skeletons, and one of the best views in town."
+        },
+        {
+          "name": "Buena Vista Park",
+          "lat": 37.76834,
+          "lon": -122.4411,
+          "alt": 50,
+          "line": "The city's oldest park. Check the gutters for old headstones."
+        },
+        {
+          "name": "Summer of Love",
+          "lat": 37.77001,
+          "lon": -122.44695,
+          "alt": 45,
+          "line": "Haight and Ashbury, 1967: as many as 100,000 young people arrived with flowers and big ideas."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-summits",
+    "kind": "tour",
+    "title": "The Summit Circuit",
+    "blurb": "Climb the city's highest points, from Twin Peaks to the cross on Mount Davidson.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75241,
+      "lon": -122.44759,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Twin Peaks",
+          "lat": 37.75241,
+          "lon": -122.44759,
+          "alt": 45,
+          "line": "Two summits near the center of the city. Spanish settlers gave them a cheeky name."
+        },
+        {
+          "name": "Sutro Tower",
+          "lat": 37.75524,
+          "lon": -122.4529,
+          "alt": 320,
+          "line": "977 feet of steel on three legs. On foggy nights it sails above the clouds."
+        },
+        {
+          "name": "Mount Davidson",
+          "lat": 37.73826,
+          "lon": -122.4533,
+          "alt": 45,
+          "line": "The real top of San Francisco, about 928 feet, hidden in a fog forest under a cross."
+        },
+        {
+          "name": "Glen Canyon Park",
+          "lat": 37.74036,
+          "lon": -122.44383,
+          "alt": 45,
+          "line": "Drop into a wild canyon where America's first dynamite factory blew itself up in 1869."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-cable-car-ride",
+    "kind": "tour",
+    "title": "Ride the Cable",
+    "blurb": "Follow the cable cars from the turntable to the bay.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78471,
+      "lon": -122.4077,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Powell and Market Turntable",
+          "lat": 37.78471,
+          "lon": -122.4077,
+          "alt": 45,
+          "line": "Watch the crew push a cable car around by hand. It is the last system of its kind on Earth."
+        },
+        {
+          "name": "Cable Car Museum",
+          "lat": 37.79467,
+          "lon": -122.4114,
+          "alt": 45,
+          "line": "The heart of the system. Giant wheels here pull every cable under the streets."
+        },
+        {
+          "name": "First Cable Car",
+          "lat": 37.79323,
+          "lon": -122.41449,
+          "alt": 45,
+          "line": "On August 2, 1873, the world's first successful cable car started down this hill."
+        },
+        {
+          "name": "Lombard Street",
+          "lat": 37.80212,
+          "lon": -122.41872,
+          "alt": 45,
+          "line": "The Powell-Hyde car passes the top of these eight famous switchbacks."
+        },
+        {
+          "name": "Powell-Hyde Cable Car",
+          "lat": 37.80667,
+          "lon": -122.42056,
+          "alt": 45,
+          "line": "End of the line at Hyde and Beach, with the bay spread out below."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-soma-skyline",
+    "kind": "tour",
+    "title": "SoMa Skyline",
+    "blurb": "Rooftop gardens, sinking towers and modern art in the new downtown.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78912,
+      "lon": -122.39687,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Salesforce Park",
+          "lat": 37.78912,
+          "lon": -122.39687,
+          "alt": 45,
+          "line": "A park on the roof of a bus station, with a fountain choreographed by buses."
+        },
+        {
+          "name": "Salesforce Tower",
+          "lat": 37.78977,
+          "lon": -122.39693,
+          "alt": 345,
+          "line": "The tallest building in the city. After dark its crown turns into a giant screen."
+        },
+        {
+          "name": "Millennium Tower",
+          "lat": 37.79041,
+          "lon": -122.39619,
+          "alt": 210,
+          "line": "The famous leaning tower of San Francisco, sinking into the landfill since 2009."
+        },
+        {
+          "name": "Yerba Buena Gardens",
+          "lat": 37.78465,
+          "lon": -122.4024,
+          "alt": 45,
+          "line": "A lawn on top of a convention center, with a waterfall memorial to Dr. King."
+        },
+        {
+          "name": "SFMOMA",
+          "lat": 37.78572,
+          "lon": -122.40105,
+          "alt": 45,
+          "line": "The first West Coast museum for modern art, with a wall that ripples like fog."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-fillmore-civic",
+    "kind": "tour",
+    "title": "Civic Center to the Fillmore",
+    "blurb": "Domes, opera, Victorians and the Harlem of the West.",
+    "neighborhood": "Tenderloin",
+    "at": {
+      "lat": 37.77929,
+      "lon": -122.41926,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "San Francisco City Hall",
+          "lat": 37.77929,
+          "lon": -122.41926,
+          "alt": 45,
+          "line": "Its dome beats the U.S. Capitol by 42 feet. Joe DiMaggio and Marilyn Monroe married inside."
+        },
+        {
+          "name": "War Memorial Opera House",
+          "lat": 37.77862,
+          "lon": -122.42093,
+          "alt": 45,
+          "line": "The United Nations was founded at a conference in this opera house in 1945."
+        },
+        {
+          "name": "Painted Ladies",
+          "lat": 37.77636,
+          "lon": -122.4347,
+          "alt": 45,
+          "line": "Candy-colored Victorians with downtown behind them. Admire from the park."
+        },
+        {
+          "name": "Harlem of the West",
+          "lat": 37.78516,
+          "lon": -122.4331,
+          "alt": 45,
+          "line": "In the 1950s Coltrane jammed until dawn at Bop City on these blocks."
+        },
+        {
+          "name": "The Fillmore",
+          "lat": 37.78408,
+          "lon": -122.43317,
+          "alt": 45,
+          "line": "Bill Graham launched the psychedelic rock era here. Grab an apple on the way in."
+        },
+        {
+          "name": "Peace Pagoda",
+          "lat": 37.78507,
+          "lon": -122.42986,
+          "alt": 45,
+          "line": "A gift from Osaka in 1968, centerpiece of one of America's last three Japantowns."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-ballparks-and-bay",
+    "kind": "tour",
+    "title": "Ballparks and the Bay",
+    "blurb": "From the Bay Bridge to the stadiums of Mission Bay.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79755,
+      "lon": -122.37854,
+      "alt": 110
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Bay Bridge",
+          "lat": 37.79755,
+          "lon": -122.37854,
+          "alt": 110,
+          "line": "The Bay Bridge beat the Golden Gate by six months and carries far more traffic."
+        },
+        {
+          "name": "Oracle Park",
+          "lat": 37.77861,
+          "lon": -122.38917,
+          "alt": 50,
+          "line": "Home runs here land in the bay. Watch for kayaks in McCovey Cove."
+        },
+        {
+          "name": "Caltrain at 4th and King",
+          "lat": 37.77602,
+          "lon": -122.39364,
+          "alt": 45,
+          "line": "The terminal of the oldest continuously operating passenger railroad in the West."
+        },
+        {
+          "name": "Chase Center",
+          "lat": 37.7679,
+          "lon": -122.38742,
+          "alt": 45,
+          "line": "The Warriors came home across the bay in 2019. On Valkyries nights it is Ballhalla."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-sunset-secrets",
+    "kind": "tour",
+    "title": "Sunset Secrets",
+    "blurb": "Mosaic stairways, a highway turned park and a town of streetcars.",
+    "neighborhood": "Inner Sunset",
+    "at": {
+      "lat": 37.75961,
+      "lon": -122.47357,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Hidden Garden Steps",
+          "lat": 37.75961,
+          "lon": -122.47357,
+          "alt": 45,
+          "line": "A mosaic garden climbing 148 steps, with a salamander snaking up the middle."
+        },
+        {
+          "name": "16th Avenue Tiled Steps",
+          "lat": 37.75626,
+          "lon": -122.47317,
+          "alt": 45,
+          "line": "163 steps from the sea floor to the stars, tiled by more than 300 neighbors."
+        },
+        {
+          "name": "Carville-by-the-Sea",
+          "lat": 37.75665,
+          "lon": -122.50676,
+          "alt": 45,
+          "line": "In 1895 retired streetcars became cottages out here in the dunes. This was Carville."
+        },
+        {
+          "name": "Sunset Dunes",
+          "lat": 37.74977,
+          "lon": -122.50837,
+          "alt": 45,
+          "line": "A four-lane highway until 2025. Now it belongs to skaters, kids and drifting sand."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-southwest-cliffs",
+    "kind": "tour",
+    "title": "Southwest Cliffs",
+    "blurb": "A lake, a giant dachshund and the city's soaring hang gliders.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.7197,
+      "lon": -122.4937,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Lake Merced",
+          "lat": 37.7197,
+          "lon": -122.4937,
+          "alt": 45,
+          "line": "One of the city's few natural lakes, where rowers glide across still water at dawn."
+        },
+        {
+          "name": "Doggie Diner Head",
+          "lat": 37.73546,
+          "lon": -122.50297,
+          "alt": 45,
+          "line": "A seven-foot fiberglass dachshund in a chef's hat, now an official city landmark."
+        },
+        {
+          "name": "Fort Funston Bank Swallows",
+          "lat": 37.718,
+          "lon": -122.5045,
+          "alt": 45,
+          "line": "Every hole in these cliffs is a swallow's burrow. One of California's last coastal colonies."
+        },
+        {
+          "name": "Fort Funston Hang Gliders",
+          "lat": 37.715,
+          "lon": -122.50194,
+          "alt": 45,
+          "line": "The sea breeze bends up these 200-foot cliffs, and hang gliders ride it for hours."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-bayview-shore",
+    "kind": "tour",
+    "title": "Southeast Shore",
+    "blurb": "Wetlands, windsurfers and the city's overlooked big park.",
+    "neighborhood": "Bayview Hunters Point",
+    "at": {
+      "lat": 37.73894,
+      "lon": -122.3722,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Heron's Head Park",
+          "lat": 37.73894,
+          "lon": -122.3722,
+          "alt": 45,
+          "line": "A failed shipping terminal that nature turned into a wetland full of shorebirds."
+        },
+        {
+          "name": "Candlestick Point",
+          "lat": 37.71715,
+          "lon": -122.383,
+          "alt": 45,
+          "line": "California's first urban state park, where the famous wind now belongs to windsurfers."
+        },
+        {
+          "name": "McLaren Park",
+          "lat": 37.71755,
+          "lon": -122.41811,
+          "alt": 50,
+          "line": "The city's fourth-largest park, with an amphitheater named for Jerry Garcia."
+        },
+        {
+          "name": "Mitchell's Ice Cream",
+          "lat": 37.74421,
+          "lon": -122.42279,
+          "alt": 45,
+          "line": "Reward yourself with a scoop of mango at a family shop serving since 1953."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tour-russian-hill",
+    "kind": "tour",
+    "title": "Russian Hill Hideaways",
+    "blurb": "Ice cream, a storybook lane and the crookedest block.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79908,
+      "lon": -122.41918,
+      "alt": 45
+    },
+    "xp": 60,
+    "tags": [
+      "tour"
+    ],
+    "params": {
+      "stops": [
+        {
+          "name": "Swensen's Ice Cream",
+          "lat": 37.79908,
+          "lon": -122.41918,
+          "alt": 45,
+          "line": "The original 1948 parlor of a chain that went worldwide. The See Us Freeze sign still glows."
+        },
+        {
+          "name": "Macondray Lane",
+          "lat": 37.79921,
+          "lon": -122.41518,
+          "alt": 45,
+          "line": "The real-life Barbary Lane from Tales of the City, all ferns and wooden steps."
+        },
+        {
+          "name": "Lombard Street",
+          "lat": 37.80212,
+          "lon": -122.41872,
+          "alt": 45,
+          "line": "Eight switchbacks on one block. Fly the curves without touching a single hedge."
+        },
+        {
+          "name": "House of Prime Rib",
+          "lat": 37.79339,
+          "lon": -122.42254,
+          "alt": 45,
+          "line": "Since 1949, prime rib carved tableside from gleaming carts. Seconds are on offer."
+        }
+      ]
+    }
+  }
+]

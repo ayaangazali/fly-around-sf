@@ -47,6 +47,7 @@ Everything below is discovered with `import.meta.glob`. Parallel teams add new f
 interface ActivityKind {
   kind: string; label: string; icon: string; passive?: boolean;
   validate(def): string[];               // content errors, empty when valid
+  blocked?(def, game): string | null;    // optional: why it cannot start right now (shown as a toast)
   start(def, game): ActivityInstance;    // update(dt) -> 'running' | 'done' | 'failed'
   solve(def, game): SolverStep[];        // a script the test bot replays to WIN this activity
 }

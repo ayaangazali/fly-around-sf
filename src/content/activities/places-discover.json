@@ -1,0 +1,3109 @@
+[
+  {
+    "id": "discover-castro-theatre",
+    "kind": "discover",
+    "title": "Castro Theatre",
+    "blurb": "A 1922 movie palace with a glowing neon marquee at the heart of the Castro.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.762,
+      "lon": -122.43475,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "castro-theatre",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-fillmore-auditorium",
+    "kind": "discover",
+    "title": "The Fillmore",
+    "blurb": "The ballroom where Bill Graham launched the psychedelic rock era, and still hands out apples.",
+    "neighborhood": "Western Addition",
+    "at": {
+      "lat": 37.78408,
+      "lon": -122.43317,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "fillmore-auditorium",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-womens-building",
+    "kind": "discover",
+    "title": "MaestraPeace Mural",
+    "blurb": "A building wrapped in a vast mural of women from across history and the world.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76142,
+      "lon": -122.42261,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "womens-building",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-peace-pagoda",
+    "kind": "discover",
+    "title": "Peace Pagoda",
+    "blurb": "A five-tiered concrete pagoda, a gift of friendship from Osaka.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.78507,
+      "lon": -122.42986,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "peace-pagoda",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-war-memorial-opera-house",
+    "kind": "discover",
+    "title": "War Memorial Opera House",
+    "blurb": "The opera house where the United Nations held its founding conference.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77862,
+      "lon": -122.42093,
+      "alt": 35
+    },
+    "xp": 15,
+    "card": "war-memorial-opera-house",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-stern-grove",
+    "kind": "discover",
+    "title": "Stern Grove",
+    "blurb": "A eucalyptus-ringed natural amphitheater hosting free summer concerts since 1938.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.73583,
+      "lon": -122.47949,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "stern-grove",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-waverly-place",
+    "kind": "discover",
+    "title": "Waverly Place and Tin How Temple",
+    "blurb": "A Chinatown lane of painted balconies hiding one of the oldest Chinese temples in America.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79464,
+      "lon": -122.40693,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "waverly-place",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-sfmoma",
+    "kind": "discover",
+    "title": "SFMOMA",
+    "blurb": "A rippling white modern art museum, the first on the West Coast devoted to 20th-century art.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78572,
+      "lon": -122.40105,
+      "alt": 45
+    },
+    "xp": 15,
+    "card": "sfmoma",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-exploratorium",
+    "kind": "discover",
+    "title": "Exploratorium",
+    "blurb": "The hands-on science museum on Pier 15 that invented Pi Day.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.8009,
+      "lon": -122.39853,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "exploratorium",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-beach-chalet",
+    "kind": "discover",
+    "title": "Beach Chalet",
+    "blurb": "A seaside chalet whose ground floor is wrapped in 1930s murals of San Francisco life.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76947,
+      "lon": -122.51022,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "beach-chalet",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-spreckels-temple-of-music",
+    "kind": "discover",
+    "title": "Spreckels Temple of Music",
+    "blurb": "The grand stone bandshell of the Music Concourse, still hosting free Sunday concerts.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76988,
+      "lon": -122.46857,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "spreckels-temple-of-music",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-hardly-strictly-bluegrass",
+    "kind": "discover",
+    "title": "Hardly Strictly Bluegrass",
+    "blurb": "A free music festival in Hellman Hollow, gifted to the city by a banjo-loving banker.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76913,
+      "lon": -122.48569,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "hardly-strictly-bluegrass",
+    "tags": [
+      "discover",
+      "culture"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-in-n-out-fishermans-wharf",
+    "kind": "discover",
+    "title": "In-N-Out Burger, Fisherman's Wharf",
+    "blurb": "The only In-N-Out inside city limits, home of the Flying Dutchman.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80777,
+      "lon": -122.41847,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "in-n-out-fishermans-wharf",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-la-taqueria",
+    "kind": "discover",
+    "title": "La Taqueria",
+    "blurb": "The Mission taqueria whose rice-free burritos keep winning best-in-America fights.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75087,
+      "lon": -122.41816,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "la-taqueria",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-el-farolito",
+    "kind": "discover",
+    "title": "El Farolito",
+    "blurb": "The late-night super burrito at 24th and Mission, the other side of the great debate.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75264,
+      "lon": -122.41831,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "el-farolito",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-boudin-bakery",
+    "kind": "discover",
+    "title": "Boudin Bakery",
+    "blurb": "Sourdough from a mother dough that has been alive since the Gold Rush.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80853,
+      "lon": -122.41486,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "boudin-bakery",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-ghirardelli-square",
+    "kind": "discover",
+    "title": "Ghirardelli Square",
+    "blurb": "A brick chocolate factory turned plaza, its glowing sign visible from the bay.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80587,
+      "lon": -122.42295,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "ghirardelli-square",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-tartine-bakery",
+    "kind": "discover",
+    "title": "Tartine Bakery",
+    "blurb": "The Mission corner bakery whose morning buns and country loaves taught the world to bake.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76146,
+      "lon": -122.42395,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "tartine-bakery",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-swan-oyster-depot",
+    "kind": "discover",
+    "title": "Swan Oyster Depot",
+    "blurb": "Eighteen stools, one marble counter, and oysters shucked by the same family since 1946.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79097,
+      "lon": -122.42092,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "swan-oyster-depot",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-hog-island-oyster-co",
+    "kind": "discover",
+    "title": "Hog Island Oyster Co.",
+    "blurb": "Tomales Bay oysters slurped with a view of the Bay Bridge.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79596,
+      "lon": -122.39355,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "hog-island-oyster-co",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-mitchells-ice-cream",
+    "kind": "discover",
+    "title": "Mitchell's Ice Cream",
+    "blurb": "A family scoop shop since 1953, beloved for ube, buko and mango.",
+    "neighborhood": "Noe Valley",
+    "at": {
+      "lat": 37.74421,
+      "lon": -122.42279,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "mitchells-ice-cream",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-bi-rite-creamery",
+    "kind": "discover",
+    "title": "Bi-Rite Creamery",
+    "blurb": "The salted caramel line that snakes down 18th Street by Dolores Park.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76157,
+      "lon": -122.42566,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "bi-rite-creamery",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-liguria-bakery",
+    "kind": "discover",
+    "title": "Liguria Bakery",
+    "blurb": "A North Beach bakery that sells only focaccia and closes when it runs out.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8015,
+      "lon": -122.40928,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "liguria-bakery",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-house-of-prime-rib",
+    "kind": "discover",
+    "title": "House of Prime Rib",
+    "blurb": "Prime rib carved tableside from gleaming carts since 1949.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79339,
+      "lon": -122.42254,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "house-of-prime-rib",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-golden-boy-pizza",
+    "kind": "discover",
+    "title": "Golden Boy Pizza",
+    "blurb": "Focaccia-crust squares on Green Street, famous for the clam and garlic slice.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.79973,
+      "lon": -122.40808,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "golden-boy-pizza",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-sweet-maple",
+    "kind": "discover",
+    "title": "Sweet Maple",
+    "blurb": "Weekend brunch lines for the glazed, peppery Millionaire's Bacon.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.78575,
+      "lon": -122.43505,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "sweet-maple",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-tadich-grill",
+    "kind": "discover",
+    "title": "Tadich Grill",
+    "blurb": "California's oldest restaurant, born as a Gold Rush coffee stand on Long Wharf.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79342,
+      "lon": -122.39947,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "tadich-grill",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-buena-vista-cafe",
+    "kind": "discover",
+    "title": "The Buena Vista",
+    "blurb": "The cable car corner bar that brought Irish coffee to America in 1952.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80652,
+      "lon": -122.42077,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "buena-vista-cafe",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-caffe-trieste",
+    "kind": "discover",
+    "title": "Caffe Trieste",
+    "blurb": "The West Coast's first espresso house, where poets and a Godfather script brewed.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.79867,
+      "lon": -122.4073,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "caffe-trieste",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-molinari-delicatessen",
+    "kind": "discover",
+    "title": "Molinari Delicatessen",
+    "blurb": "A North Beach deli hung with salami since 1896, where you take a number and wait happily.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.7985,
+      "lon": -122.40787,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "molinari-delicatessen",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-swensens",
+    "kind": "discover",
+    "title": "Swensen's Ice Cream",
+    "blurb": "The original 1948 parlor of a chain that spread worldwide, on the Hyde Street cable car line.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79908,
+      "lon": -122.41918,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "swensens",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-hang-ah-tea-room",
+    "kind": "discover",
+    "title": "Hang Ah Tea Room",
+    "blurb": "A Chinatown alley dim sum house from 1920, among the oldest in the country.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79334,
+      "lon": -122.40738,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "hang-ah-tea-room",
+    "tags": [
+      "discover",
+      "food"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-wave-organ",
+    "kind": "discover",
+    "title": "Wave Organ",
+    "blurb": "A jetty of pipes that the bay itself plays, built from old cemetery stone.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80849,
+      "lon": -122.44021,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "wave-organ",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-seward-street-slides",
+    "kind": "discover",
+    "title": "Seward Street Slides",
+    "blurb": "Two steep concrete slides hidden in a tiny park in the hills above the Castro.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75778,
+      "lon": -122.43991,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "seward-street-slides",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-16th-avenue-tiled-steps",
+    "kind": "discover",
+    "title": "16th Avenue Tiled Steps",
+    "blurb": "163 steps covered in a sea-to-sky mosaic made by hundreds of neighbors.",
+    "neighborhood": "Inner Sunset",
+    "at": {
+      "lat": 37.75626,
+      "lon": -122.47317,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "16th-avenue-tiled-steps",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-hidden-garden-steps",
+    "kind": "discover",
+    "title": "Hidden Garden Steps",
+    "blurb": "The tiled steps' younger sibling, with a giant salamander climbing the stairs.",
+    "neighborhood": "Inner Sunset",
+    "at": {
+      "lat": 37.75961,
+      "lon": -122.47357,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "hidden-garden-steps",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-filbert-steps",
+    "kind": "discover",
+    "title": "Filbert Steps",
+    "blurb": "A wooden stairway down Telegraph Hill through a secret garden.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80193,
+      "lon": -122.40503,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "filbert-steps",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-lyon-street-steps",
+    "kind": "discover",
+    "title": "Lyon Street Steps",
+    "blurb": "Nearly 300 garden-lined steps with a view straight down to the Palace of Fine Arts.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79284,
+      "lon": -122.44649,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "lyon-street-steps",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-lands-end-labyrinth",
+    "kind": "discover",
+    "title": "Lands End Labyrinth",
+    "blurb": "A stone labyrinth on a cliff above Mile Rock Beach, facing the Golden Gate.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.78774,
+      "lon": -122.50566,
+      "alt": 25
+    },
+    "xp": 30,
+    "card": "lands-end-labyrinth",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-fort-funston-hang-gliders",
+    "kind": "discover",
+    "title": "Fort Funston Hang Gliders",
+    "blurb": "Pilots soaring on the sea breeze over 200-foot sand cliffs.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.715,
+      "lon": -122.50194,
+      "alt": 40
+    },
+    "xp": 30,
+    "card": "fort-funston-hang-gliders",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 120
+    }
+  },
+  {
+    "id": "discover-bay-bridge-troll",
+    "kind": "discover",
+    "title": "Bay Bridge Troll",
+    "blurb": "A secret steel troll welded to the bridge by ironworkers for luck.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.81461,
+      "lon": -122.36014,
+      "alt": 60
+    },
+    "xp": 45,
+    "card": "bay-bridge-troll",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-doggie-diner-head",
+    "kind": "discover",
+    "title": "Doggie Diner Head",
+    "blurb": "A giant grinning fiberglass dachshund in a chef's hat, now an official city landmark.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.73546,
+      "lon": -122.50297,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "doggie-diner-head",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-musee-mecanique",
+    "kind": "discover",
+    "title": "Musee Mecanique",
+    "blurb": "A free hall of antique coin-operated machines, ruled by the cackling Laffing Sal.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80925,
+      "lon": -122.41579,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "musee-mecanique",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-balmy-alley",
+    "kind": "discover",
+    "title": "Balmy Alley",
+    "blurb": "A one-block Mission alley where every fence and garage door is a mural.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75182,
+      "lon": -122.41241,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "balmy-alley",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-clarion-alley",
+    "kind": "discover",
+    "title": "Clarion Alley",
+    "blurb": "A constantly changing outdoor gallery of political street art in the Mission.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76299,
+      "lon": -122.42066,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "clarion-alley",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-golden-gate-fortune-cookie-factory",
+    "kind": "discover",
+    "title": "Golden Gate Fortune Cookie Factory",
+    "blurb": "A tiny alley factory where fortune cookies are still folded by hand.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.7957,
+      "lon": -122.40735,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "golden-gate-fortune-cookie-factory",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-vulcan-stairs",
+    "kind": "discover",
+    "title": "Vulcan Stairway",
+    "blurb": "A leafy stairway lane with front gardens and no cars at all.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76348,
+      "lon": -122.44115,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "vulcan-stairs",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-sutro-heights",
+    "kind": "discover",
+    "title": "Sutro Heights",
+    "blurb": "The ruined clifftop garden of a millionaire mayor, with a parapet over the Pacific.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77746,
+      "lon": -122.51141,
+      "alt": 30
+    },
+    "xp": 30,
+    "card": "sutro-heights",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-macondray-lane",
+    "kind": "discover",
+    "title": "Macondray Lane",
+    "blurb": "A wooded pedestrian lane on Russian Hill that inspired Barbary Lane in Tales of the City.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.79921,
+      "lon": -122.41518,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "macondray-lane",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-camera-obscura",
+    "kind": "discover",
+    "title": "Camera Obscura",
+    "blurb": "A room-sized camera behind the Cliff House that projects the live ocean onto a dish.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77826,
+      "lon": -122.51423,
+      "alt": 20
+    },
+    "xp": 30,
+    "card": "camera-obscura",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-goldsworthy-wood-line",
+    "kind": "discover",
+    "title": "Wood Line",
+    "blurb": "Andy Goldsworthy's serpent of eucalyptus logs snaking through the Presidio forest.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79403,
+      "lon": -122.44943,
+      "alt": 25
+    },
+    "xp": 30,
+    "card": "goldsworthy-wood-line",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-uss-san-francisco-memorial",
+    "kind": "discover",
+    "title": "USS San Francisco Memorial",
+    "blurb": "The shell-torn steel bridge of a WWII cruiser, set on a cliff facing Guadalcanal.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.7828,
+      "lon": -122.51153,
+      "alt": 25
+    },
+    "xp": 30,
+    "card": "uss-san-francisco-memorial",
+    "hidden": true,
+    "tags": [
+      "discover",
+      "hidden"
+    ],
+    "params": {
+      "radius": 40
+    }
+  },
+  {
+    "id": "discover-lottas-fountain",
+    "kind": "discover",
+    "title": "Lotta's Fountain",
+    "blurb": "A cast-iron fountain on Market Street where 1906 survivors found each other.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78794,
+      "lon": -122.4033,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "lottas-fountain",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-niantic",
+    "kind": "discover",
+    "title": "The Buried Ship Niantic",
+    "blurb": "A Gold Rush ship that became a hotel, then vanished under downtown.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79486,
+      "lon": -122.40152,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "niantic",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-emperor-norton",
+    "kind": "discover",
+    "title": "Emperor Norton",
+    "blurb": "The bankrupt businessman who declared himself Emperor of the United States, and was humored.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79285,
+      "lon": -122.40573,
+      "alt": 25
+    },
+    "xp": 40,
+    "card": "emperor-norton",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-summer-of-love",
+    "kind": "discover",
+    "title": "Summer of Love",
+    "blurb": "The 1967 summer when up to 100,000 young people poured into Haight-Ashbury.",
+    "neighborhood": "Haight Ashbury",
+    "at": {
+      "lat": 37.77001,
+      "lon": -122.44695,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "summer-of-love",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-barbary-coast",
+    "kind": "discover",
+    "title": "The Barbary Coast",
+    "blurb": "The wildest red-light district in the West, centered on Pacific Street.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.7971,
+      "lon": -122.40534,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "barbary-coast",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-clay-street-hill-railroad",
+    "kind": "discover",
+    "title": "First Cable Car",
+    "blurb": "Where Andrew Hallidie's first cable car rolled down Clay Street in 1873.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79323,
+      "lon": -122.41449,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "clay-street-hill-railroad",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-golden-gate-international-exposition",
+    "kind": "discover",
+    "title": "1939 World's Fair",
+    "blurb": "The Golden Gate International Exposition, built on a brand new island in the bay.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.8242,
+      "lon": -122.371,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "golden-gate-international-exposition",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 260
+    }
+  },
+  {
+    "id": "discover-alcatraz-occupation",
+    "kind": "discover",
+    "title": "Occupation of Alcatraz",
+    "blurb": "Nineteen months when Indians of All Tribes held the island.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8262,
+      "lon": -122.4216,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "alcatraz-occupation",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 80
+    }
+  },
+  {
+    "id": "discover-city-lights",
+    "kind": "discover",
+    "title": "City Lights and the Beats",
+    "blurb": "The bookstore that published Howl and went to court for it.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79763,
+      "lon": -122.40658,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "city-lights",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-harvey-milk",
+    "kind": "discover",
+    "title": "Harvey Milk and the Castro",
+    "blurb": "The camera shop owner who became California's first openly gay elected official.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76228,
+      "lon": -122.43569,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "harvey-milk",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-golden-fire-hydrant",
+    "kind": "discover",
+    "title": "The Golden Fire Hydrant",
+    "blurb": "The little hydrant that saved the Mission in 1906, repainted gold every April 18.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.75809,
+      "lon": -122.42807,
+      "alt": 20
+    },
+    "xp": 25,
+    "card": "golden-fire-hydrant",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-portsmouth-square",
+    "kind": "discover",
+    "title": "Portsmouth Square",
+    "blurb": "The original town plaza where the American flag went up in 1846.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79483,
+      "lon": -122.40537,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "portsmouth-square",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-old-mint",
+    "kind": "discover",
+    "title": "The Old Mint",
+    "blurb": "The Granite Lady that survived 1906 while guarding a third of the nation's gold.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77013,
+      "lon": -122.4274,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "old-mint",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-embarcadero-freeway",
+    "kind": "discover",
+    "title": "The Freeway That Fell",
+    "blurb": "The double-decker freeway the 1989 earthquake doomed, and the waterfront it gave back.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.7949,
+      "lon": -122.39465,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "embarcadero-freeway",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-fillmore-jazz",
+    "kind": "discover",
+    "title": "Harlem of the West",
+    "blurb": "The Fillmore's jazz era, when Coltrane jammed at Bop City until dawn.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.78516,
+      "lon": -122.4331,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "fillmore-jazz",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-carville",
+    "kind": "discover",
+    "title": "Carville-by-the-Sea",
+    "blurb": "A beach town built from retired streetcars and cable cars.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.75665,
+      "lon": -122.50676,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "carville",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-waterfront-strike",
+    "kind": "discover",
+    "title": "Bloody Thursday",
+    "blurb": "The 1934 waterfront clash that led to a citywide general strike.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79325,
+      "lon": -122.39321,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "waterfront-strike",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-fort-mason",
+    "kind": "discover",
+    "title": "Fort Mason",
+    "blurb": "The WWII port that shipped more than 1.6 million soldiers into the Pacific.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80633,
+      "lon": -122.429,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "fort-mason",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 140
+    }
+  },
+  {
+    "id": "discover-sutro-baths",
+    "kind": "discover",
+    "title": "Sutro Baths",
+    "blurb": "Ruins of a glass palace of seawater pools that once held thousands of swimmers.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.78014,
+      "lon": -122.5138,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "sutro-baths",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-jackson-square",
+    "kind": "discover",
+    "title": "Jackson Square",
+    "blurb": "Brick buildings from the Gold Rush that survived the 1906 fire.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79687,
+      "lon": -122.40303,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "jackson-square",
+    "tags": [
+      "discover",
+      "history"
+    ],
+    "params": {
+      "radius": 50
+    }
+  },
+  {
+    "id": "discover-bay-bridge",
+    "kind": "discover",
+    "title": "Bay Bridge",
+    "blurb": "The double-decker workhorse that beat the Golden Gate Bridge by six months.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79755,
+      "lon": -122.37854,
+      "alt": 110
+    },
+    "xp": 15,
+    "card": "bay-bridge",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 300
+    }
+  },
+  {
+    "id": "discover-salesforce-tower",
+    "kind": "discover",
+    "title": "Salesforce Tower",
+    "blurb": "The 1,070-foot obelisk with a glowing LED crown, tallest in the city.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78977,
+      "lon": -122.39693,
+      "alt": 345
+    },
+    "xp": 15,
+    "card": "salesforce-tower",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 80
+    }
+  },
+  {
+    "id": "discover-sutro-tower",
+    "kind": "discover",
+    "title": "Sutro Tower",
+    "blurb": "The three-legged broadcast giant that rises out of the fog like a ship's mast.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75524,
+      "lon": -122.4529,
+      "alt": 320
+    },
+    "xp": 15,
+    "card": "sutro-tower",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-alcatraz",
+    "kind": "discover",
+    "title": "Alcatraz Island",
+    "blurb": "The Rock: lighthouse, fort, federal prison and seabird colony in the middle of the bay.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.82667,
+      "lon": -122.42278,
+      "alt": 60
+    },
+    "xp": 15,
+    "card": "alcatraz",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-painted-ladies",
+    "kind": "discover",
+    "title": "Painted Ladies",
+    "blurb": "The row of colorful Victorians below Alamo Square, with downtown towering behind.",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77636,
+      "lon": -122.4347,
+      "alt": 35
+    },
+    "xp": 15,
+    "card": "painted-ladies",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-lombard-street",
+    "kind": "discover",
+    "title": "Lombard Street",
+    "blurb": "Eight hairpin turns on one brick block of Russian Hill.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80212,
+      "lon": -122.41872,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "lombard-street",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-city-hall",
+    "kind": "discover",
+    "title": "San Francisco City Hall",
+    "blurb": "A Beaux-Arts palace whose dome outdoes the U.S. Capitol.",
+    "neighborhood": "Tenderloin",
+    "at": {
+      "lat": 37.77929,
+      "lon": -122.41926,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "city-hall",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-oracle-park",
+    "kind": "discover",
+    "title": "Oracle Park",
+    "blurb": "The Giants' waterfront ballpark, where home runs splash into McCovey Cove.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77861,
+      "lon": -122.38917,
+      "alt": 50
+    },
+    "xp": 15,
+    "card": "oracle-park",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 140
+    }
+  },
+  {
+    "id": "discover-de-young-museum",
+    "kind": "discover",
+    "title": "de Young Museum",
+    "blurb": "A copper-skinned museum in Golden Gate Park that is slowly turning green.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.7715,
+      "lon": -122.46909,
+      "alt": 60
+    },
+    "xp": 15,
+    "card": "de-young-museum",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-california-academy-of-sciences",
+    "kind": "discover",
+    "title": "California Academy of Sciences",
+    "blurb": "Aquarium, planetarium, rainforest and natural history museum under one living roof.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.7701,
+      "lon": -122.4664,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "california-academy-of-sciences",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-pier-39",
+    "kind": "discover",
+    "title": "Pier 39",
+    "blurb": "Carousel, shops, chowder and a dock full of barking sea lions.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80985,
+      "lon": -122.41035,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "pier-39",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 120
+    }
+  },
+  {
+    "id": "discover-fort-point",
+    "kind": "discover",
+    "title": "Fort Point",
+    "blurb": "A Civil War brick fort tucked under the south end of the Golden Gate Bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.81051,
+      "lon": -122.4771,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "fort-point",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-legion-of-honor",
+    "kind": "discover",
+    "title": "Legion of Honor",
+    "blurb": "A French palace on a cliff, with Rodin's Thinker brooding in the courtyard.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.78456,
+      "lon": -122.50096,
+      "alt": 35
+    },
+    "xp": 15,
+    "card": "legion-of-honor",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-conservatory-of-flowers",
+    "kind": "discover",
+    "title": "Conservatory of Flowers",
+    "blurb": "A white wood-and-glass greenhouse, the oldest building in Golden Gate Park.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77261,
+      "lon": -122.46023,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "conservatory-of-flowers",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-dutch-windmill",
+    "kind": "discover",
+    "title": "Dutch Windmill",
+    "blurb": "A real working windmill at the ocean end of Golden Gate Park, ringed by tulips.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77044,
+      "lon": -122.50941,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "dutch-windmill",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-cliff-house",
+    "kind": "discover",
+    "title": "Cliff House",
+    "blurb": "A restaurant perched on the cliffs at the end of the continent since 1863.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77856,
+      "lon": -122.51398,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "cliff-house",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-chase-center",
+    "kind": "discover",
+    "title": "Chase Center",
+    "blurb": "The Warriors' bayside arena, where the Valkyries call it Ballhalla.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.7679,
+      "lon": -122.38742,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "chase-center",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 120
+    }
+  },
+  {
+    "id": "discover-mission-dolores",
+    "kind": "discover",
+    "title": "Mission Dolores",
+    "blurb": "The oldest intact building in San Francisco, an adobe chapel from 1791.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76439,
+      "lon": -122.42703,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "mission-dolores",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-dragon-gate",
+    "kind": "discover",
+    "title": "Dragon Gate",
+    "blurb": "The green-tiled gateway at Grant and Bush that opens into Chinatown.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79069,
+      "lon": -122.40559,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "dragon-gate",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-grace-cathedral",
+    "kind": "discover",
+    "title": "Grace Cathedral",
+    "blurb": "A Gothic cathedral on Nob Hill with bronze doors cast from Ghiberti's Gates of Paradise.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79183,
+      "lon": -122.4135,
+      "alt": 35
+    },
+    "xp": 15,
+    "card": "grace-cathedral",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-st-marys-cathedral",
+    "kind": "discover",
+    "title": "St. Mary's Cathedral",
+    "blurb": "The modernist cathedral locals nicknamed Our Lady of Maytag.",
+    "neighborhood": "Western Addition",
+    "at": {
+      "lat": 37.78401,
+      "lon": -122.42526,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "st-marys-cathedral",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-sentinel-building",
+    "kind": "discover",
+    "title": "Sentinel Building",
+    "blurb": "The copper-green flatiron at Columbus and Kearny, home of a famous film studio.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79655,
+      "lon": -122.40505,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "sentinel-building",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-millennium-tower",
+    "kind": "discover",
+    "title": "Millennium Tower",
+    "blurb": "The luxury tower famous for sinking and tilting into the landfill.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79041,
+      "lon": -122.39619,
+      "alt": 210
+    },
+    "xp": 25,
+    "card": "millennium-tower",
+    "tags": [
+      "discover",
+      "landmark"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-golden-gate-park",
+    "kind": "discover",
+    "title": "Golden Gate Park",
+    "blurb": "Over a thousand acres of forest, meadows and museums, grown on bare sand dunes.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76972,
+      "lon": -122.47694,
+      "alt": 60
+    },
+    "xp": 15,
+    "card": "golden-gate-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 400
+    }
+  },
+  {
+    "id": "discover-presidio",
+    "kind": "discover",
+    "title": "The Presidio",
+    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79806,
+      "lon": -122.46583,
+      "alt": 60
+    },
+    "xp": 15,
+    "card": "presidio",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 400
+    }
+  },
+  {
+    "id": "discover-crissy-field",
+    "kind": "discover",
+    "title": "Crissy Field",
+    "blurb": "A restored tidal marsh and beach that was once the Army's West Coast airfield.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.80459,
+      "lon": -122.46443,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "crissy-field",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-lands-end",
+    "kind": "discover",
+    "title": "Lands End",
+    "blurb": "Wild cypress cliffs at the city's northwest corner, where the bay meets the Pacific.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.77972,
+      "lon": -122.51158,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "lands-end",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-ocean-beach",
+    "kind": "discover",
+    "title": "Ocean Beach",
+    "blurb": "Three and a half miles of foggy Pacific surf along the city's western edge.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.75616,
+      "lon": -122.51049,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "ocean-beach",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 280
+    }
+  },
+  {
+    "id": "discover-dolores-park",
+    "kind": "discover",
+    "title": "Dolores Park",
+    "blurb": "The sunny hillside lawn where the whole city comes to picnic.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.75976,
+      "lon": -122.42713,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "dolores-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-blue-heron-lake",
+    "kind": "discover",
+    "title": "Blue Heron Lake",
+    "blurb": "The moat around Strawberry Hill, renamed in 2024 for the herons that nest there.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76899,
+      "lon": -122.47459,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "blue-heron-lake",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-twin-peaks",
+    "kind": "discover",
+    "title": "Twin Peaks",
+    "blurb": "The two grassy summits in the middle of the city with the best view of all of it.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75241,
+      "lon": -122.44759,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "twin-peaks",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 140
+    }
+  },
+  {
+    "id": "discover-buena-vista-park",
+    "kind": "discover",
+    "title": "Buena Vista Park",
+    "blurb": "The city's oldest official park, a steep wooded hill above the Haight.",
+    "neighborhood": "Haight Ashbury",
+    "at": {
+      "lat": 37.76834,
+      "lon": -122.4411,
+      "alt": 50
+    },
+    "xp": 15,
+    "card": "buena-vista-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-bernal-heights-park",
+    "kind": "discover",
+    "title": "Bernal Hill",
+    "blurb": "A bald, dog-filled hilltop with a tiny cousin of Sutro Tower on top.",
+    "neighborhood": "Bernal Heights",
+    "at": {
+      "lat": 37.74342,
+      "lon": -122.41351,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "bernal-heights-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-corona-heights",
+    "kind": "discover",
+    "title": "Corona Heights",
+    "blurb": "A rust-red rock summit above the Castro with a 360-degree panorama.",
+    "neighborhood": "Castro/Upper Market",
+    "at": {
+      "lat": 37.76489,
+      "lon": -122.43937,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "corona-heights",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-mount-davidson",
+    "kind": "discover",
+    "title": "Mount Davidson",
+    "blurb": "The highest point in San Francisco, crowned by a 103-foot concrete cross in a fog forest.",
+    "neighborhood": "West of Twin Peaks",
+    "at": {
+      "lat": 37.73826,
+      "lon": -122.4533,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "mount-davidson",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-glen-canyon-park",
+    "kind": "discover",
+    "title": "Glen Canyon Park",
+    "blurb": "A wild canyon with a free-flowing creek and the site of America's first dynamite factory.",
+    "neighborhood": "Glen Park",
+    "at": {
+      "lat": 37.74036,
+      "lon": -122.44383,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "glen-canyon-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-mclaren-park",
+    "kind": "discover",
+    "title": "McLaren Park",
+    "blurb": "The city's big, overlooked southeastern park, home of the Jerry Garcia Amphitheater.",
+    "neighborhood": "McLaren Park",
+    "at": {
+      "lat": 37.71755,
+      "lon": -122.41811,
+      "alt": 50
+    },
+    "xp": 15,
+    "card": "mclaren-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 300
+    }
+  },
+  {
+    "id": "discover-lake-merced",
+    "kind": "discover",
+    "title": "Lake Merced",
+    "blurb": "A freshwater lake in the southwest corner, ringed by golf courses and rowers.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.7197,
+      "lon": -122.4937,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "lake-merced",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 320
+    }
+  },
+  {
+    "id": "discover-baker-beach",
+    "kind": "discover",
+    "title": "Baker Beach",
+    "blurb": "A half-mile of sand with a head-on view of the Golden Gate Bridge, and the birthplace of Burning Man.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79315,
+      "lon": -122.48474,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "baker-beach",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-washington-square",
+    "kind": "discover",
+    "title": "Washington Square",
+    "blurb": "North Beach's front lawn, facing the white twin spires of Saints Peter and Paul.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80085,
+      "lon": -122.41012,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "washington-square",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-yerba-buena-gardens",
+    "kind": "discover",
+    "title": "Yerba Buena Gardens",
+    "blurb": "A downtown park on top of a convention center, with a waterfall memorial to Dr. King.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78465,
+      "lon": -122.4024,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "yerba-buena-gardens",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-salesforce-park",
+    "kind": "discover",
+    "title": "Salesforce Park",
+    "blurb": "A 5.4-acre garden on the roof of a bus station, 70 feet above downtown.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78912,
+      "lon": -122.39687,
+      "alt": 45
+    },
+    "xp": 15,
+    "card": "salesforce-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-japanese-tea-garden",
+    "kind": "discover",
+    "title": "Japanese Tea Garden",
+    "blurb": "The oldest public Japanese garden in the United States, with a steep moon bridge.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77034,
+      "lon": -122.47005,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "japanese-tea-garden",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-sunset-dunes",
+    "kind": "discover",
+    "title": "Sunset Dunes",
+    "blurb": "A two-mile oceanfront park built on top of a former highway.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.74977,
+      "lon": -122.50837,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "sunset-dunes",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-herons-head-park",
+    "kind": "discover",
+    "title": "Heron's Head Park",
+    "blurb": "A failed shipping terminal turned bird-rich wetland on the Bayview shore.",
+    "neighborhood": "Bayview Hunters Point",
+    "at": {
+      "lat": 37.73894,
+      "lon": -122.3722,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "herons-head-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-candlestick-point",
+    "kind": "discover",
+    "title": "Candlestick Point",
+    "blurb": "California's first urban state park, a windy shoreline loved by windsurfers.",
+    "neighborhood": "Bayview Hunters Point",
+    "at": {
+      "lat": 37.71715,
+      "lon": -122.383,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "candlestick-point",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-aquatic-park",
+    "kind": "discover",
+    "title": "Aquatic Park",
+    "blurb": "A sheltered cove where cold-water swimmers do laps in the bay all year.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.807,
+      "lon": -122.42346,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "aquatic-park",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-mountain-lake",
+    "kind": "discover",
+    "title": "Mountain Lake",
+    "blurb": "One of the city's last natural lakes, where Spanish explorers camped in 1776.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.78826,
+      "lon": -122.47083,
+      "alt": 30
+    },
+    "xp": 15,
+    "card": "mountain-lake",
+    "tags": [
+      "discover",
+      "park"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-powell-market-turntable",
+    "kind": "discover",
+    "title": "Powell and Market Turntable",
+    "blurb": "Where crews push cable cars around by hand on a wooden turntable.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78471,
+      "lon": -122.4077,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "powell-market-turntable",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-powell-hyde-line",
+    "kind": "discover",
+    "title": "Powell-Hyde Cable Car",
+    "blurb": "The cable car line with the steepest drops and the best bay views.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80667,
+      "lon": -122.42056,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "powell-hyde-line",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-powell-mason-line",
+    "kind": "discover",
+    "title": "Powell-Mason Cable Car",
+    "blurb": "The classic line from Union Square over Nob Hill to Bay and Taylor.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80542,
+      "lon": -122.41526,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "powell-mason-line",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-california-street-line",
+    "kind": "discover",
+    "title": "California Street Cable Car",
+    "blurb": "Double-ended cars climbing straight up Nob Hill since 1878.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79366,
+      "lon": -122.39648,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "california-street-line",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-cable-car-museum",
+    "kind": "discover",
+    "title": "Cable Car Museum",
+    "blurb": "The working powerhouse whose giant wheels pull every cable car in the city.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79467,
+      "lon": -122.4114,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "cable-car-museum",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-f-market-wharves",
+    "kind": "discover",
+    "title": "F-Line Streetcars",
+    "blurb": "Vintage streetcars from around the world rolling down Market Street and the Embarcadero.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80708,
+      "lon": -122.41728,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "f-market-wharves",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-bay-ferries",
+    "kind": "discover",
+    "title": "Bay Ferries",
+    "blurb": "The commuter boats that brought ferries back to the bay after the bridges nearly killed them.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.7947,
+      "lon": -122.39273,
+      "alt": 20
+    },
+    "xp": 15,
+    "card": "bay-ferries",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-transbay-tube",
+    "kind": "discover",
+    "title": "BART Transbay Tube",
+    "blurb": "A 3.6-mile rail tunnel lying on the floor of the bay.",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79269,
+      "lon": -122.3972,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "transbay-tube",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-twin-peaks-tunnel",
+    "kind": "discover",
+    "title": "Twin Peaks Tunnel",
+    "blurb": "The 1918 streetcar tunnel that unlocked the city's west side.",
+    "neighborhood": "West of Twin Peaks",
+    "at": {
+      "lat": 37.74113,
+      "lon": -122.46566,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "twin-peaks-tunnel",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-chinatown-rose-pak-station",
+    "kind": "discover",
+    "title": "Chinatown-Rose Pak Station",
+    "blurb": "The city's deepest subway dig, bringing trains under Stockton Street in 2022.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79481,
+      "lon": -122.40807,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "chinatown-rose-pak-station",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-caltrain-4th-and-king",
+    "kind": "discover",
+    "title": "Caltrain at 4th and King",
+    "blurb": "The terminal of the oldest continuously operating passenger railroad in the West.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77602,
+      "lon": -122.39364,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "caltrain-4th-and-king",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-pier-45-ships",
+    "kind": "discover",
+    "title": "Pier 45 Historic Ships",
+    "blurb": "A WWII submarine and a D-Day Liberty ship, tied up at Fisherman's Wharf.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.81,
+      "lon": -122.41639,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "pier-45-ships",
+    "tags": [
+      "discover",
+      "transit"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-sea-lions-pier-39",
+    "kind": "discover",
+    "title": "Pier 39 Sea Lions",
+    "blurb": "The barking, belching, sunbathing colony that took over the marina docks.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8095,
+      "lon": -122.4108,
+      "alt": 20
+    },
+    "xp": 15,
+    "card": "sea-lions-pier-39",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-wild-parrots",
+    "kind": "discover",
+    "title": "Wild Parrots of Telegraph Hill",
+    "blurb": "A screeching green flock of cherry-headed conures that rules the hill.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80279,
+      "lon": -122.4046,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "wild-parrots",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-bison-paddock",
+    "kind": "discover",
+    "title": "Golden Gate Park Bison",
+    "blurb": "A small herd of American bison grazing in the middle of the city since 1891.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76971,
+      "lon": -122.49812,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "bison-paddock",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-coyotes",
+    "kind": "discover",
+    "title": "Presidio Coyotes",
+    "blurb": "The wild dogs that came back to the city after decades away.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79222,
+      "lon": -122.45826,
+      "alt": 25
+    },
+    "xp": 25,
+    "card": "coyotes",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-brown-pelicans",
+    "kind": "discover",
+    "title": "Brown Pelicans",
+    "blurb": "Prehistoric-looking divers that skim the waves in single file along the shore.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.8093,
+      "lon": -122.4235,
+      "alt": 20
+    },
+    "xp": 15,
+    "card": "brown-pelicans",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-harbor-seals",
+    "kind": "discover",
+    "title": "Harbor Seals of Yerba Buena Island",
+    "blurb": "Spotted, shy seals hauling out on the pocket beaches under the Bay Bridge.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.8068,
+      "lon": -122.3675,
+      "alt": 20
+    },
+    "xp": 25,
+    "card": "harbor-seals",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-red-tailed-hawks",
+    "kind": "discover",
+    "title": "Red-tailed Hawks",
+    "blurb": "The big rust-tailed raptors that ride the updrafts over the city's hills.",
+    "neighborhood": "Glen Park",
+    "at": {
+      "lat": 37.7425,
+      "lon": -122.4425,
+      "alt": 40
+    },
+    "xp": 15,
+    "card": "red-tailed-hawks",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-great-blue-herons",
+    "kind": "discover",
+    "title": "Great Blue Herons",
+    "blurb": "Tall gray herons nesting in the treetops above Blue Heron Lake.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77,
+      "lon": -122.4766,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "great-blue-herons",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-raccoons",
+    "kind": "discover",
+    "title": "Golden Gate Park Raccoons",
+    "blurb": "Masked night bandits with clever hands, working the park after dark.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.771,
+      "lon": -122.49399,
+      "alt": 25
+    },
+    "xp": 15,
+    "card": "raccoons",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-mission-blue-butterfly",
+    "kind": "discover",
+    "title": "Mission Blue Butterfly",
+    "blurb": "A tiny endangered blue butterfly, carried back to Twin Peaks by hand.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.7505,
+      "lon": -122.448,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "mission-blue-butterfly",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 60
+    }
+  },
+  {
+    "id": "discover-snowy-plover",
+    "kind": "discover",
+    "title": "Western Snowy Plover",
+    "blurb": "A threatened sand-colored shorebird wintering on Ocean Beach.",
+    "neighborhood": "Sunset/Parkside",
+    "at": {
+      "lat": 37.74,
+      "lon": -122.5075,
+      "alt": 20
+    },
+    "xp": 25,
+    "card": "snowy-plover",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 150
+    }
+  },
+  {
+    "id": "discover-bank-swallows",
+    "kind": "discover",
+    "title": "Fort Funston Bank Swallows",
+    "blurb": "Tiny swallows that dig their nests straight into the sandy sea cliffs.",
+    "neighborhood": "Lakeshore",
+    "at": {
+      "lat": 37.718,
+      "lon": -122.5045,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "bank-swallows",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 90
+    }
+  },
+  {
+    "id": "discover-harbor-porpoises",
+    "kind": "discover",
+    "title": "Golden Gate Harbor Porpoises",
+    "blurb": "Shy small porpoises back under the bridge after about 65 years away.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.816,
+      "lon": -122.4775,
+      "alt": 20
+    },
+    "xp": 40,
+    "card": "harbor-porpoises",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 160
+    }
+  },
+  {
+    "id": "discover-gray-whales",
+    "kind": "discover",
+    "title": "Gray Whales",
+    "blurb": "Giant travelers on one of the longest migrations of any mammal, passing Lands End.",
+    "neighborhood": "Outer Richmond",
+    "at": {
+      "lat": 37.78106,
+      "lon": -122.51438,
+      "alt": 40
+    },
+    "xp": 40,
+    "card": "gray-whales",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 220
+    }
+  },
+  {
+    "id": "discover-alcatraz-seabirds",
+    "kind": "discover",
+    "title": "Alcatraz Seabird Colony",
+    "blurb": "Gulls, cormorants and egrets nesting on the most famous prison island.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.8275,
+      "lon": -122.4245,
+      "alt": 30
+    },
+    "xp": 25,
+    "card": "alcatraz-seabirds",
+    "tags": [
+      "discover",
+      "wildlife"
+    ],
+    "params": {
+      "radius": 120
+    }
+  }
+]
