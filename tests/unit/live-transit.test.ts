@@ -152,6 +152,16 @@ describe('live transit', () => {
     expect(game.save.data.cards).toContain('cable-car-spotter');
   });
 
+  it('[R-LIVE-PANEL] at the California and Drumm terminal the next cable car heads away from you', () => {
+    const game = liveGame('2026-10-19T19:30:00Z');
+    const drumm = toLocal(37.7955, -122.3937);
+    game.flight.pos = { x: drumm.x, y: 30, z: drumm.z };
+    const next = nextCableCar(data.routes, game)!;
+    expect(next.stop).toMatch(/Drumm/);
+    expect(next.text).toMatch(/^California toward .+ (in \d+ min|arriving now)$/);
+    expect(next.text).not.toMatch(/toward .*Drumm/);
+  });
+
   it('[R-LIVE-FALLBACK] a missing transit file reports fallback instead of crashing', async () => {
     vi.stubGlobal('fetch', vi.fn(() => respond(null, false)));
     const game = liveGame('2026-10-19T19:30:00Z');

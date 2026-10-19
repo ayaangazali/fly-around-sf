@@ -93,10 +93,12 @@ export function nextCableCar(routes: Route[], game: Game): { text: string; stop:
   let best: { secs: number; route: Route; to: string } | null = null;
   for (const r of cable) {
     r.shapes.forEach((sh, si) => {
+      const end = sh.stops.at(-1);
+      if (!end || Math.hypot(end.x - near.stop.x, end.z - near.stop.z) <= 60) return;
       for (const st of sh.stops) {
-        if (st.at > sh.length - 30 || Math.hypot(st.x - near.stop.x, st.z - near.stop.z) > 60) continue;
+        if (Math.hypot(st.x - near.stop.x, st.z - near.stop.z) > 60) continue;
         const secs = nextPass(r, si, st.at, t);
-        if (secs !== null && (!best || secs < best.secs)) best = { secs, route: r, to: sh.stops[sh.stops.length - 1]?.name ?? '' };
+        if (secs !== null && (!best || secs < best.secs)) best = { secs, route: r, to: end.name };
       }
     });
   }
