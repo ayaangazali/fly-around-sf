@@ -65,8 +65,11 @@ describe('net session over the P2P transport', () => {
     expect(await net.join('QXRK8')).toBe(false);
     expect(net.room).toBeNull();
     expect(net.status).toBe('unreachable');
-    expect(game.toasts.at(-1)).toBe('Multiplayer could not start. Single player keeps working.');
+    expect(game.toasts).toEqual([]);
     net.update(1 / 60, listener);
+    expect(game.toasts).toEqual(['Multiplayer could not start. Single player keeps working.']);
+    net.update(1 / 60, listener);
+    expect(game.toasts).toHaveLength(1);
   });
 
   it('[R-VOICE] audio that arrives before the hello survives, blocking cuts it and unblocking restores it', async () => {
