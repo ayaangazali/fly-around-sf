@@ -69,7 +69,7 @@ async function compare(page: Page, v: View): Promise<{ diff: number; lit: number
     }
     return { diff: changed / (w * h), lit: brighter / (w * h) };
   }, v);
-  return { ...stats, shot: await page.locator('canvas').screenshot() };
+  return { ...stats, shot: await page.locator('canvas#view').screenshot() };
 }
 
 async function freezeCamera(page: Page): Promise<void> {

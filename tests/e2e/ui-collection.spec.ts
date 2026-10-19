@@ -56,8 +56,11 @@ test.describe('collection, achievements and HUD effects', () => {
     await boot(page);
     const count = await page.evaluate(() => window.__fly.activities().filter((a) => a.kind === 'achievement').length);
     expect(count).toBeGreaterThanOrEqual(30);
-    await page.evaluate(() => {
+    const before = await page.evaluate(() => {
       window.__fly.step(0.1);
+      return Object.keys(window.__fly.game.save.data.completed).filter((id) => id.startsWith('achievement-')).length;
+    });
+    await page.evaluate(() => {
       window.__fly.game.panels.open('map');
       window.__fly.game.panels.close();
       window.__fly.step(0.1);
@@ -68,7 +71,7 @@ test.describe('collection, achievements and HUD effects', () => {
     await expect(page.locator('.toast', { hasText: 'Cartographer' })).toHaveCount(0);
     await page.evaluate(() => window.__fly.game.panels.open('stats'));
     await expect(page.locator('.ach-card.got[data-activity="achievement-cartographer"]')).toBeVisible();
-    await expect(page.locator('.stat-tile[data-stat="achievements"] b')).toHaveText(`1/${count}`);
+    await expect(page.locator('.stat-tile[data-stat="achievements"] b')).toHaveText(`${before + 1}/${count}`);
     await page.evaluate(() => {
       window.__fly.game.panels.close();
       window.__fly.game.panels.open('map');
