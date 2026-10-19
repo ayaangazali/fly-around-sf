@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ALCATRAZ_HORN, GGB_MIDSPAN, GGB_SOUTH_TOWER, blastsBetween, crossedHour, graceHour, graceRings, hourLabel, sfClock, westminsterHour } from '../../src/audio/schedule';
+import { ALCATRAZ_HORN, GGB_MIDSPAN, GGB_SOUTH_TOWER, blastsBetween, crossedHour, graceHour, graceRings, hourLabel, sfClock } from '../../src/audio/schedule';
 
 const at = (iso: string) => Date.parse(iso);
 
@@ -19,19 +19,6 @@ describe('audio schedules', () => {
     expect(crossedHour(at('2026-10-19T19:00:00.5Z'), at('2026-10-19T19:00:01Z'))).toBeNull();
     expect(crossedHour(at('2026-10-19T18:30:00Z'), at('2026-10-19T19:30:00Z'))).toBeNull();
     expect(crossedHour(at('2026-10-19T19:00:01Z'), at('2026-10-19T18:59:59Z'))).toBeNull();
-  });
-
-  it('[R-AUDIO-BELLS] Ferry Building plays the Westminster hour quarters then strikes the hour on E', () => {
-    const three = westminsterHour(15);
-    const quarters = three.slice(0, 16).map((s) => s.midi);
-    expect(quarters).toEqual([64, 68, 66, 59, 64, 66, 68, 64, 68, 64, 66, 59, 59, 66, 68, 64]);
-    const strikes = three.slice(16);
-    expect(strikes).toHaveLength(3);
-    expect(strikes.every((s) => s.midi === 52)).toBe(true);
-    expect(westminsterHour(0).length).toBe(16 + 12);
-    expect(westminsterHour(12).length).toBe(16 + 12);
-    const times = three.map((s) => s.t);
-    expect([...times].sort((a, b) => a - b)).toEqual(times);
   });
 
   it('[R-AUDIO-BELLS] Grace Cathedral rings Grace Chimes and the bourdon from 9 AM to 6 PM only', () => {

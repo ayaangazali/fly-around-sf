@@ -26,9 +26,15 @@ export interface PlacedSpot extends SoundSpot {
 
 export const PLACED: PlacedSpot[] = SPOTS.map((s) => ({ ...s, local: (s.lines ?? [[s.at as [number, number]]]).map((l) => l.map(([lat, lon]) => toLocal(lat, lon))) }));
 
-export function spotStatus(spot: SoundSpot, c: Conditions, distance: number, playing: boolean): string {
+export function spotPoint(spot: PlacedSpot, at: Vec3, groundAt: (x: number, z: number) => number): Vec3 & { d: number } {
+  const p = closestOnLines(spot.local, at.x, at.z);
+  const y = Math.max(0, groundAt(p.x, p.z)) + spot.alt;
+  return { x: p.x, y, z: p.z, d: Math.hypot(p.d, at.y - y) };
+}
+
+export function spotStatus(spot: SoundSpot, c: Conditions, distance: number, playing: boolean, off = ''): string {
+  if (off && audible(spot.when, c) && distance < spot.radius) return `In earshot, ${off}`;
   const next = (c.hour + 1) % 24;
-  if (spot.id === 'ferry-building-clock') return c.night >= 0.5 ? 'Chimes on the hour in daylight' : `Next chime ${hourLabel(next)}${playing ? ', in earshot' : ''}`;
   if (spot.id === 'grace-cathedral-bells') return `Next ring ${graceRings(next) ? hourLabel(next) : '9 AM'}${playing ? ', in earshot' : ''}`;
   if (playing) return 'Playing now';
   if (!audible(spot.when, c)) return { fog: 'Waiting for thick fog', day: 'Sunrise to sunset', awake: 'Quiet from 11 PM to 7 AM', always: '', clock: '' }[spot.when];
@@ -54,7 +60,6 @@ interface Live {
 export class Ambience {
   readonly live = new Map<string, Live>();
   private dying: Live[] = [];
-  distances = new Map<string, number>();
 
   constructor(
     private kit: Kit,
@@ -71,19 +76,16 @@ export class Ambience {
   update(listener: Vec3, c: Conditions, groundAt: (x: number, z: number) => number): void {
     const now = this.kit.ctx.currentTime;
     for (const spot of PLACED) {
-      const p = closestOnLines(spot.local, listener.x, listener.z);
-      const y = Math.max(0, groundAt(p.x, p.z)) + spot.alt;
-      const d = Math.hypot(p.d, listener.y - y);
-      this.distances.set(spot.id, d);
+      const p = spotPoint(spot, listener, groundAt);
       let l = this.live.get(spot.id);
-      const on = audible(spot.when, c) && gate(d, spot.radius, !!l);
+      const on = audible(spot.when, c) && gate(p.d, spot.radius, !!l);
       if (!on) {
         if (l) this.close(l, now);
         continue;
       }
       l ??= this.open(spot, now);
-      setPosition(l.panner, p.x, y, p.z);
-      l.gain.gain.setTargetAtTime(edgeFade(d, spot.radius) * spot.gain, now, 0.4);
+      setPosition(l.panner, p.x, p.y, p.z);
+      l.gain.gain.setTargetAtTime(edgeFade(p.d, spot.radius) * spot.gain, now, 0.4);
       this.tick(l, now);
     }
     this.dying = this.dying.filter((l) => {
@@ -112,7 +114,7 @@ export class Ambience {
     panner.rolloffFactor = 1;
     const gain = kit.gain();
     gain.connect(panner).connect(this.out);
-    const l: Live = { spot, gain, panner, next: now + Math.random() * 2, queue: [], bed: [], stops: [], nodes: 2, until: 0 };
+    const l: Live = { spot, gain, panner, next: now + Math.random() * 0.4, queue: [], bed: [], stops: [], nodes: 2, until: 0 };
     const loop = (brown: boolean, type: BiquadFilterType, freq: number, q: number, level: number) => {
       const src = kit.noiseSource(brown, true);
       const g = kit.gain(level);

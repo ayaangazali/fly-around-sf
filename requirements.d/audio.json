@@ -1,7 +1,7 @@
 [
   { "id": "R-AUDIO-DRONE", "owner": "audio", "text": "Drone motor pitch and brightness follow speed and load, boost adds a whine, wind rises with speed, and the ambience bed shifts from city hum to open wind with altitude." },
   { "id": "R-AUDIO-PLACES", "owner": "audio", "text": "Positional ambience sits at verified real places, plays only in range and under its real conditions (fog, daylight, service hours), and costs zero nodes when far away." },
-  { "id": "R-AUDIO-BELLS", "owner": "audio", "text": "The Ferry Building strikes the real SF hour with the Westminster Quarters, Grace Cathedral rings Grace Chimes 9 AM to 6 PM with the angelus at noon and 6 PM, and foghorns follow their Coast Guard patterns." },
+  { "id": "R-AUDIO-BELLS", "owner": "audio", "text": "Grace Cathedral rings Grace Chimes and strikes the real SF hour from 9 AM to 6 PM with the angelus at noon and 6 PM, and foghorns follow their Coast Guard patterns." },
   { "id": "R-AUDIO-MUSIC", "owner": "audio", "text": "Generative lo-fi is deterministic per seed, follows day and night moods, lifts during activities and ducks under rewards." },
   { "id": "R-AUDIO-SFX", "owner": "audio", "text": "Rings, discoveries, cards, completions, failures, crashes, splashes, menus, photos and toasts each play their own sound." },
   { "id": "R-AUDIO-CPU", "owner": "audio", "text": "Audio stays light: a bounded node graph, bounded live voices, nothing for far sound spots, and a suspended context while muted or hidden." },

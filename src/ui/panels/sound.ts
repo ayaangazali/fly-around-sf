@@ -2,7 +2,7 @@ import '../../audio/audio.css';
 import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import { system } from '../../systems/audio';
-import { PLACED, spotStatus } from '../../audio/ambience';
+import { PLACED, spotPoint, spotStatus } from '../../audio/ambience';
 import { closestOnLines, readMix } from '../../audio/mix';
 import { MOODS } from '../../audio/music';
 
@@ -117,12 +117,12 @@ export const panel: Panel = {
       mute.textContent = muted ? '🔇  Unmute' : '🔊  Mute';
       mute.setAttribute('aria-pressed', String(muted));
       const c = audio?.conditions() ?? { fog: game.sky?.fogDensity ?? 1, night: game.sky?.night ?? 0, hour: 12 };
-      const p = game.flight.pos;
+      const off = muted ? 'sound is off' : running ? '' : 'click to start sound';
+      const groundAt = (x: number, z: number) => game.world.groundAt(x, z);
       for (const spot of PLACED) {
-        const inRange = !!audio?.ambience?.live.has(spot.id);
-        const playing = inRange && running && !muted;
+        const playing = !off && !!audio?.ambience?.live.has(spot.id);
         const chip = chips.get(spot.id) as HTMLElement;
-        chip.textContent = inRange && muted ? 'In earshot, sound is off' : spotStatus(spot, c, closestOnLines(spot.local, p.x, p.z).d, playing);
+        chip.textContent = spotStatus(spot, c, spotPoint(spot, game.flight.pos, groundAt).d, playing, off);
         chip.classList.toggle('live', playing);
       }
     };

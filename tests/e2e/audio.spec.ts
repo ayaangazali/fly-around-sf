@@ -185,7 +185,7 @@ test.describe('audio', () => {
     expect(await page.evaluate(() => window.__audio().ambience!.nodes)).toBe(0);
   });
 
-  test('[R-AUDIO-BELLS] the Ferry Building and Grace Cathedral ring the real noon hour', async ({ page }) => {
+  test('[R-AUDIO-BELLS] Grace Cathedral rings the real noon hour with the angelus, and only by day', async ({ page }) => {
     await start(page);
     await gesture(page);
     await flyTo(page, 37.7937, -122.4035, 80);
@@ -197,28 +197,26 @@ test.describe('audio', () => {
       }, iso);
     await at('2026-10-19T18:59:58Z');
     const live = await page.evaluate(() => [...window.__audio().ambience!.live.keys()]);
-    expect(live).toEqual(expect.arrayContaining(['ferry-building-clock', 'grace-cathedral-bells']));
-    expect(await page.evaluate(() => window.__audio().counts['ferry-chime'] ?? 0)).toBe(0);
+    expect(live).toContain('grace-cathedral-bells');
+    expect(await page.evaluate(() => window.__audio().counts['grace-angelus'] ?? 0)).toBe(0);
     await page.evaluate(() => window.__fly.step(3));
     const after = await page.evaluate(() => {
       const a = window.__audio();
-      return { ferry: a.counts['ferry-chime'], grace: a.counts['grace-angelus'], queue: a.ambience!.live.get('ferry-building-clock')!.queue.length };
+      return { grace: a.counts['grace-angelus'], queue: a.ambience!.live.get('grace-cathedral-bells')!.queue.length };
     });
-    expect(after.ferry).toBe(1);
     expect(after.grace).toBe(1);
     expect(after.queue).toBeGreaterThan(10);
 
     await at('2026-10-19T21:59:58Z');
     await page.evaluate(() => window.__fly.step(3));
     expect(await page.evaluate(() => window.__audio().counts['grace-hour'])).toBe(1);
-    expect(await page.evaluate(() => window.__audio().counts['ferry-chime'])).toBe(2);
 
     await at('2026-10-20T03:59:58Z');
     await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
     await page.evaluate(() => window.__fly.step(3));
     const night = await page.evaluate(() => window.__audio().counts);
-    expect(night['ferry-chime']).toBe(2);
     expect(night['grace-hour']).toBe(1);
+    expect(night['grace-angelus']).toBe(1);
   });
 
   test('[R-AUDIO-MUSIC] lo-fi plays, lifts during an activity, ducks under a card and turns to night', async ({ page }) => {
@@ -327,7 +325,7 @@ test.describe('audio', () => {
     await start(page);
     await page.locator('.menubar-btn[data-panel="sound"]').click();
     await expect(page.locator('.sheet[data-panel="sound"]')).toBeVisible();
-    await expect(page.locator('.snd-spot')).toHaveCount(10);
+    await expect(page.locator('.snd-spot')).toHaveCount(9);
     await expect(page.locator('.snd-slider input')).toHaveCount(4);
     await page.locator('input[data-key="volMusic"]').fill('25');
     expect(await page.evaluate(() => window.__fly.game.save.data.settings.volMusic)).toBe(0.25);
@@ -339,8 +337,13 @@ test.describe('audio', () => {
     await page.locator('.snd-mute').click();
     await expect(page.locator('.snd-mute')).toHaveAttribute('aria-pressed', 'true');
     expect(await page.evaluate(() => window.__fly.game.save.data.settings.muted)).toBe(true);
+    await flyTo(page, 37.810636, -122.41158, 20);
+    const pier = page.locator('.snd-spot[data-spot="pier-39-sea-lions"] .snd-chip');
+    await expect(pier).toHaveText('In earshot, sound is off');
     await page.locator('.snd-mute').click();
     await expect(page.locator('.snd-mute')).toHaveAttribute('aria-pressed', 'false');
+    await page.evaluate(() => window.__fly.step(0.5));
+    await expect(pier).toHaveText('Playing now');
 
     await page.locator('.snd-spot[data-spot="pier-39-sea-lions"] .snd-go').click();
     await expect(page.locator('.sheet')).toBeHidden();

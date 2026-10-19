@@ -4,7 +4,7 @@ import { SaveStore } from '../../src/core/save';
 import { Ambience, PLACED, audible, spotStatus, type Conditions } from '../../src/audio/ambience';
 import { AudioEngine } from '../../src/audio/engine';
 import { SPOTS } from '../../src/audio/spots';
-import { westminsterHour } from '../../src/audio/schedule';
+import { graceHour } from '../../src/audio/schedule';
 import type { Kit } from '../../src/audio/synth';
 import { fakeCtx, fakeKit, type FakeNode } from './audio-fake';
 import { memoryStorage } from './helpers';
@@ -32,7 +32,7 @@ function setup() {
 describe('sound spots', () => {
   it('[R-AUDIO-PLACES] every spot is a real place inside San Francisco with sources and clean text', () => {
     expect(new Set(SPOTS.map((s) => s.id)).size).toBe(SPOTS.length);
-    expect(SPOTS.length).toBeGreaterThanOrEqual(10);
+    expect(SPOTS.length).toBeGreaterThanOrEqual(9);
     for (const s of SPOTS) {
       const pts = s.lines ? s.lines.flat() : [s.at!];
       expect(pts.length).toBeGreaterThan(0);
@@ -77,8 +77,10 @@ describe('sound spots', () => {
     expect(spotStatus(spot('pier-39-sea-lions'), DAY, 1234, false)).toBe('Fly closer, 1.2 km away');
     expect(spotStatus(spot('pier-39-sea-lions'), DAY, 320.4, false)).toBe('Fly closer, 320 m away');
     expect(spotStatus(spot('pier-39-sea-lions'), DAY, 20, true)).toBe('Playing now');
-    expect(spotStatus(spot('ferry-building-clock'), { ...DAY, hour: 15 }, 900, true)).toBe('Next chime 4 PM, in earshot');
-    expect(spotStatus(spot('ferry-building-clock'), { ...DAY, night: 1 }, 900, false)).toBe('Chimes on the hour in daylight');
+    expect(spotStatus(spot('waterfront-gulls'), DAY, 101, false, 'sound is off')).toBe('In earshot, sound is off');
+    expect(spotStatus(spot('waterfront-gulls'), DAY, 101, false, 'click to start sound')).toBe('In earshot, click to start sound');
+    expect(spotStatus(spot('waterfront-gulls'), DAY, 5000, false, 'sound is off')).toBe('Fly closer, 5.0 km away');
+    expect(spotStatus(spot('ggb-south-horn'), DAY, 10, false, 'sound is off')).toBe('Waiting for thick fog');
     expect(spotStatus(spot('grace-cathedral-bells'), { ...DAY, hour: 20 }, 900, false)).toBe('Next ring 9 AM');
     expect(spotStatus(spot('grace-cathedral-bells'), { ...DAY, hour: 11 }, 900, true)).toBe('Next ring 12 PM, in earshot');
   });
@@ -138,16 +140,16 @@ describe('sound spots', () => {
 
   it('[R-AUDIO-BELLS] chimes queue only when the tower is in earshot', () => {
     const { amb, ctx, run } = setup();
-    expect(amb.ring('ferry-building-clock', westminsterHour(12))).toBe(false);
-    run(above('ferry-building-clock'), DAY, 0.4);
-    expect(amb.ring('ferry-building-clock', westminsterHour(12))).toBe(true);
-    const queued = amb.live.get('ferry-building-clock')!.queue.length;
-    expect(queued).toBe(28);
+    const noon = graceHour(12);
+    expect(amb.ring('grace-cathedral-bells', noon)).toBe(false);
+    run(above('grace-cathedral-bells'), DAY, 0.4);
+    expect(amb.ring('grace-cathedral-bells', noon)).toBe(true);
+    expect(amb.live.get('grace-cathedral-bells')!.queue.length).toBe(noon.length);
     const bells = () => ctx.nodes.filter((n) => n.kind === 'Oscillator').length;
     const start = bells();
-    run(above('ferry-building-clock'), DAY, 60);
-    expect(amb.live.get('ferry-building-clock')!.queue.length).toBe(0);
-    expect(bells() - start).toBeGreaterThanOrEqual(28 * 6);
+    run(above('grace-cathedral-bells'), DAY, noon[noon.length - 1].t + 1);
+    expect(amb.live.get('grace-cathedral-bells')!.queue.length).toBe(0);
+    expect(bells() - start).toBeGreaterThanOrEqual(noon.length * 6);
   });
 });
 

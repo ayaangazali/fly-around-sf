@@ -4,7 +4,7 @@ import { Ambience, type Conditions } from './ambience';
 import { AudioEngine, type Graph } from './engine';
 import { altitudeMix, droneSound, readMix } from './mix';
 import { MOODS, MusicPlayer, type MoodId } from './music';
-import { crossedHour, graceHour, sfClock, westminsterHour } from './schedule';
+import { crossedHour, graceHour, sfClock } from './schedule';
 import { bell, burst, cableBell, tone, type Kit } from './synth';
 
 export type SfxName =
@@ -154,7 +154,6 @@ export class GameAudio {
     }
     if (crossed !== null && this.ambience) {
       const hour = sfClock(new Date(crossed)).hour;
-      if (night < 0.5 && this.ambience.ring('ferry-building-clock', westminsterHour(hour))) this.count('ferry-chime');
       const grace = graceHour(hour);
       if (grace.length && this.ambience.ring('grace-cathedral-bells', grace)) this.count(grace.length > 30 ? 'grace-angelus' : 'grace-hour');
     }

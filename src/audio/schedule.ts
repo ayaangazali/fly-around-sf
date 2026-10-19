@@ -30,17 +30,6 @@ export interface Strike {
   decay: number;
 }
 
-const G4s = 68;
-const F4s = 66;
-const E4 = 64;
-const B3 = 59;
-const WESTMINSTER_HOUR = [
-  [E4, G4s, F4s, B3],
-  [E4, F4s, G4s, E4],
-  [G4s, E4, F4s, B3],
-  [B3, F4s, G4s, E4],
-];
-
 function tune(phrases: number[][], beat: number, rest: number, vel: number, decay: number): { strikes: Strike[]; end: number } {
   const strikes: Strike[] = [];
   let t = 0;
@@ -51,15 +40,9 @@ function tune(phrases: number[][], beat: number, rest: number, vel: number, deca
   return { strikes, end: t };
 }
 
-export function westminsterHour(hour: number): Strike[] {
-  const { strikes, end } = tune(WESTMINSTER_HOUR, 0.75, 1.5, 0.8, 3.5);
-  const count = hour % 12 || 12;
-  for (let i = 0; i < count; i++) strikes.push({ t: end + 1.5 + i * 2.5, midi: 52, vel: 1, decay: 6 });
-  return strikes;
-}
-
 const C4 = 60;
 const D4 = 62;
+const E4 = 64;
 const G3 = 55;
 const GRACE_CHIMES = [
   [C4, D4, E4, C4],
