@@ -553,7 +553,7 @@
     "title": "5:12 AM",
     "blurb": "April 18, 1906. Frisco wants the city to forget the morning it fell and the years it spent rising. We will not.",
     "neighborhood": "Market Street",
-    "at": { "lat": 37.78794, "lon": -122.4033, "alt": 25 },
+    "at": { "lat": 37.78802, "lon": -122.4032, "alt": 25 },
     "xp": 170,
     "card": "quest-1906-earthquake",
     "requires": ["quest-pulling-cable"],

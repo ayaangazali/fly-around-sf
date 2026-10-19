@@ -6,7 +6,7 @@
     "blurb": "Six notes scattered from the Beat cafes of North Beach to the top of Coit Tower.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.79867,
+      "lat": 37.7988,
       "lon": -122.4073,
       "alt": 25
     },
@@ -195,7 +195,7 @@
     "blurb": "Six notes around the museums and gardens of eastern Golden Gate Park.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.77261,
+      "lat": 37.77246,
       "lon": -122.46023,
       "alt": 25
     },
