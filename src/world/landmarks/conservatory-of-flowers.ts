@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/30675038',
 };
 
+export const TOP = 20;
+
 export const FACTS = {
   built: 1878,
   length: 75,

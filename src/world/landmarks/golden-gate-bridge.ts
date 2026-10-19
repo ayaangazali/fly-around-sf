@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/1330586852',
 };
 
+export const TOP = 229;
+
 export const FACTS = {
   towerHeight: 227,
   clearance: 67,
@@ -23,8 +25,8 @@ export const FACTS = {
   ],
 };
 
-const SOUTH_TOWER = { lat: 37.814009, lon: -122.477901 };
-const NORTH_TOWER = { lat: 37.825498, lon: -122.479243 };
+export const SOUTH_TOWER = { lat: 37.814009, lon: -122.477901 };
+export const NORTH_TOWER = { lat: 37.825498, lon: -122.479243 };
 const PYLON_S1 = { lat: 37.810956, lon: -122.47752 };
 const PYLON_S2 = { lat: 37.80994, lon: -122.4774 };
 const ANCHOR_S = { lat: 37.8096, lon: -122.477426 };

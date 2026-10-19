@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/relation/7261820',
 };
 
+export const TOP = 94;
+
 export const FACTS = {
   domeHeight: 93.7,
   completed: 1916,

@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/287921407',
 };
 
+export const TOP = 36;
+
 export const FACTS = {
   height: 22.9,
   sailSpan: 31.1,

@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://en.wikipedia.org/wiki/Painted_ladies',
 };
 
+export const TOP = 16;
+
 export const FACTS = {
   houses: 7,
   built: '1892 to 1896',

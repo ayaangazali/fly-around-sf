@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/node/599157316',
 };
 
+export const TOP = 5;
+
 export const FACTS = {
   summit: 281.9,
   sources: ['https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)', 'https://www.openstreetmap.org/way/101523335', 'https://www.openstreetmap.org/way/101522936'],

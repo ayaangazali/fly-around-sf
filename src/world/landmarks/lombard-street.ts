@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/402111597',
 };
 
+export const TOP = 19;
+
 export const FACTS = {
   turns: 8,
   grade: 27,

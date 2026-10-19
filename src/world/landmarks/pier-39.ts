@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/node/1417635914',
 };
 
+export const TOP = 2;
+
 export const FACTS = {
   arrived: 1989,
   floats: 43,

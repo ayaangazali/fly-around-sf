@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { BOUNDS, toLocal } from '../../src/core/geo';
 import { CityData } from '../../src/world/city-data';
 import { Terrain } from '../../src/world/terrain';
@@ -8,11 +10,16 @@ import { createCityMaterial } from '../../src/world/city';
 import { Site, catenary, inside, loft, roundedRect, yawBetween, type LandmarkSource, type Pt } from '../../src/world/landmark-kit';
 import { TOWERS, HEIGHT_FIXES } from '../../src/world/landmarks/skyline-modern';
 import { clockAngles } from '../../src/world/landmarks/ferry-building';
+import * as goldenGate from '../../src/world/landmarks/golden-gate-bridge';
+import * as bayBridge from '../../src/world/landmarks/bay-bridge';
+import * as salesforce from '../../src/world/landmarks/salesforce-tower';
 import type { Game } from '../../src/game';
+import { ROOT } from './helpers';
 
 interface LandmarkModule {
   landmark: Landmark;
   source: LandmarkSource;
+  TOP?: number;
   FACTS?: { sources: string[] };
 }
 
@@ -59,6 +66,27 @@ function landmarkGame(buildings: { h: number; ring: [number, number][] }[] = [],
   return { world, cityRenderer: { material: createCityMaterial() }, date: () => new Date('2026-10-19T19:30:00Z') } as unknown as Game;
 }
 
+function solidCentroid(game: Game, at: { x: number; z: number }, y: number, radius: number): { n: number; off: number } {
+  let n = 0;
+  let sx = 0;
+  let sz = 0;
+  for (let dx = -radius; dx <= radius; dx += 1) {
+    for (let dz = -radius; dz <= radius; dz += 1) {
+      if (dx * dx + dz * dz > radius * radius || !game.world.collide({ x: at.x + dx, y, z: at.z + dz }, 0.1)) continue;
+      n++;
+      sx += dx;
+      sz += dz;
+    }
+  }
+  return { n, off: n ? Math.hypot(sx / n, sz / n) : Infinity };
+}
+
+const geoDistance = (a: { lat: number; lon: number }, b: { lat: number; lon: number }) => {
+  const p = toLocal(a.lat, a.lon);
+  const q = toLocal(b.lat, b.lon);
+  return Math.hypot(p.x - q.x, p.z - q.z);
+};
+
 function vertexCount(o: THREE.Object3D): number {
   let n = 0;
   o.traverse((c) => {
@@ -92,7 +120,7 @@ describe('hand-built landmarks', () => {
   });
 
   for (const e of entries) {
-    it(`[R-LANDMARKS] ${e.file} builds geometry, sits within 40 m of its source and collides`, () => {
+    it(`[R-LANDMARKS] ${e.file} builds geometry with its solid mass or centre within 40 m of its sourced coordinate`, () => {
       const game = landmarkGame();
       const before = game.world.colliders.length;
       e.landmark.build(game);
@@ -101,20 +129,58 @@ describe('hand-built landmarks', () => {
       expect(vertexCount(group!), e.file).toBeGreaterThan(100);
       expect(game.world.colliders.length, e.file).toBeGreaterThan(before);
       const at = toLocal(e.source.lat, e.source.lon);
-      expect(Math.hypot(group!.position.x - at.x, group!.position.z - at.z), e.file).toBeLessThanOrEqual(40);
       const box = new THREE.Box3().setFromObject(group!);
-      const c = box.getCenter(new THREE.Vector3());
       let hit = false;
-      for (let i = 0; i < 400 && !hit; i++) {
-        const t = (i * 0.618034) % 1;
-        const u = (i * 0.754877) % 1;
-        const v = (i * 0.569840) % 1;
-        const p = { x: box.min.x + (box.max.x - box.min.x) * t, y: box.min.y + (box.max.y - box.min.y) * u, z: box.min.z + (box.max.z - box.min.z) * v };
-        hit = game.world.collide(p, 1.2);
+      for (let i = 0; i < 4000 && !hit; i++) {
+        const a = i * 2.399963;
+        const d = 40 * Math.sqrt((i * 0.618034) % 1);
+        const y = box.min.y + (box.max.y - box.min.y) * ((i * 0.754877) % 1);
+        hit = game.world.collide({ x: at.x + Math.cos(a) * d, y, z: at.z + Math.sin(a) * d }, 1.2);
       }
-      expect(hit, `${e.file} has a reachable solid near ${c.x.toFixed(0)},${c.z.toFixed(0)}`).toBe(true);
+      const centre = box.getCenter(new THREE.Vector3());
+      const centred = Math.hypot(centre.x - at.x, centre.z - at.z) <= 40;
+      expect(hit || centred, `${e.file} has neither solid nor its geometric centre within 40 m of ${e.source.lat},${e.source.lon}`).toBe(true);
     });
   }
+
+  it('[R-LANDMARKS] bridge towers and Salesforce Tower stand on their sourced coordinates', () => {
+    const game = landmarkGame();
+    for (const m of [goldenGate, bayBridge, salesforce]) m.landmark.build(game);
+    const standsOn = (p: { lat: number; lon: number }, y: number, radius: number, tolerance: number) => {
+      const c = solidCentroid(game, toLocal(p.lat, p.lon), y, radius);
+      expect(c.n, `${p.lat},${p.lon}`).toBeGreaterThan(20);
+      expect(c.off, `${p.lat},${p.lon}`).toBeLessThanOrEqual(tolerance);
+    };
+    standsOn(goldenGate.SOUTH_TOWER, 150, 40, 15);
+    standsOn(goldenGate.NORTH_TOWER, 150, 40, 15);
+    expect(Math.abs(geoDistance(goldenGate.SOUTH_TOWER, goldenGate.NORTH_TOWER) - goldenGate.FACTS.mainSpan)).toBeLessThan(15);
+    for (const w of [bayBridge.W2, bayBridge.W3, bayBridge.W5, bayBridge.W6]) standsOn(w, 120, 30, 10);
+    expect(Math.abs(geoDistance(bayBridge.W2, bayBridge.W3) - bayBridge.FACTS.mainSpan)).toBeLessThan(15);
+    expect(Math.abs(geoDistance(bayBridge.W5, bayBridge.W6) - bayBridge.FACTS.mainSpan)).toBeLessThan(15);
+    standsOn(bayBridge.SAS_TOWER, 100, 25, 5);
+    standsOn(salesforce.source, 150, 45, 10);
+  });
+
+  it('[R-LANDMARKS] TOP clears every hero model in the real city so markers can sit above it', () => {
+    const terrain = Terrain.parse(readFileSync(join(ROOT, 'public/data/terrain.bin')).buffer.slice(0) as ArrayBuffer);
+    const buf = readFileSync(join(ROOT, 'public/data/city.bin'));
+    const city = new CityData(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer, (x, z) => terrain.heightAt(x, z));
+    const world = new World(terrain, city);
+    const game = { world, cityRenderer: { material: createCityMaterial() }, date: () => new Date() } as unknown as Game;
+    city.applyExclusions(entries.flatMap((e) => e.landmark.exclusions ?? []));
+    for (const e of entries) e.landmark.build(game);
+    for (const e of entries.filter((x) => x.file !== 'skyline-modern')) {
+      expect(e.TOP, e.file).toBeGreaterThan(0);
+      const at = toLocal(e.source.lat, e.source.lon);
+      let top = -Infinity;
+      for (const c of world.root.children) if (c.name.startsWith(`landmark:${e.landmark.id}`)) top = Math.max(top, new THREE.Box3().setFromObject(c).max.y);
+      const above = top - world.surfaceAt(at.x, at.z);
+      expect(e.TOP!, e.file).toBeGreaterThanOrEqual(above);
+      expect(e.TOP!, e.file).toBeLessThan(above + 2);
+      const marker = world.point({ lat: e.source.lat, lon: e.source.lon, alt: e.TOP! + 2 });
+      expect(world.collide(marker, 1.2), e.file).toBe(false);
+    }
+  });
 
   it('[R-LANDMARKS] exclusions hide the raw footprints under hero models', () => {
     const withExclusions = entries.filter((e) => e.landmark.exclusions?.length);
@@ -188,6 +254,29 @@ describe('modern skyline', () => {
       expect(Math.abs(area) / 2, t.name).toBeGreaterThan(300);
     }
     expect(TOWERS.find((t) => t.name === '181 Fremont')!.top).toBeGreaterThanOrEqual(240);
+  });
+
+  it('[R-SKYLINE] every tower footprint and collider is centred on its sourced coordinate', () => {
+    const game = landmarkGame();
+    entries.find((e) => e.file === 'skyline-modern')!.landmark.build(game);
+    for (const t of TOWERS) {
+      let a = 0;
+      let cx = 0;
+      let cz = 0;
+      let reach = 0;
+      t.ring.forEach(([x0, z0], i) => {
+        const [x1, z1] = t.ring[(i + 1) % t.ring.length];
+        const c = x0 * z1 - x1 * z0;
+        a += c;
+        cx += (x0 + x1) * c;
+        cz += (z0 + z1) * c;
+        reach = Math.max(reach, Math.hypot(x0, z0));
+      });
+      expect(Math.hypot(cx / (3 * a), cz / (3 * a)), t.name).toBeLessThan(20);
+      const c = solidCentroid(game, toLocal(t.lat, t.lon), t.roof / 2, Math.ceil(reach) + 2);
+      expect(c.n, t.name).toBeGreaterThan(100);
+      expect(c.off, t.name).toBeLessThan(20);
+    }
   });
 
   it('[R-SKYLINE] Salesforce Tower collides up to 320 m and 181 Fremont above 240 m', () => {

@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/288371295',
 };
 
+export const TOP = 52;
+
 export const FACTS = {
   rotundaHeight: 50,
   colonnadeHeight: 20,

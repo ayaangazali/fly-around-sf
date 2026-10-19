@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/542375290',
 };
 
+export const TOP = 34;
+
 export const FACTS = {
   parkHeight: 21.3,
   parkAcres: 5.4,

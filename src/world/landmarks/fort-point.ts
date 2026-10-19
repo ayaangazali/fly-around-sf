@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/relation/5504536',
 };
 
+export const TOP = 24;
+
 export const FACTS = {
   built: 1861,
   tiers: 3,

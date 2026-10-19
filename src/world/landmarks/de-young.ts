@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/relation/1652482',
 };
 
+export const TOP = 44;
+
 export const FACTS = {
   towerHeight: 43.9,
   opened: 2005,

@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://en.wikipedia.org/wiki/Alcatraz_Island',
 };
 
+export const TOP = 27;
+
 export const FACTS = {
   nrhpAcres: 47,
   lighthouse: 25.6,

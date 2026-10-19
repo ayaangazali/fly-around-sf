@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://en.wikipedia.org/wiki/Sutro_Tower',
 };
 
+export const TOP = 299;
+
 export const FACTS = {
   height: 297.8,
   baseElevation: 254.2,

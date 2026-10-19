@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/432712477',
 };
 
+export const TOP = 160;
+
 export const FACTS = {
   towerHeight: 160,
   clearance: 67,
@@ -26,12 +28,12 @@ export const FACTS = {
   ],
 };
 
-const W2 = { lat: 37.790764, lon: -122.385856 };
-const W3 = { lat: 37.7956, lon: -122.380677 };
-const W5 = { lat: 37.8008, lon: -122.375112 };
-const W6 = { lat: 37.805635, lon: -122.369929 };
+export const W2 = { lat: 37.790764, lon: -122.385856 };
+export const W3 = { lat: 37.7956, lon: -122.380677 };
+export const W5 = { lat: 37.8008, lon: -122.375112 };
+export const W6 = { lat: 37.805635, lon: -122.369929 };
 const PORTAL_WEST = { lat: 37.808983, lon: -122.366323 };
-const SAS_TOWER = { lat: 37.815265, lon: -122.358479 };
+export const SAS_TOWER = { lat: 37.815265, lon: -122.358479 };
 const SAS_WEST = { lat: 37.814408, lon: -122.36041 };
 const SAS_EAST = { lat: 37.817675, lon: -122.354682 };
 const RINCON = { lat: 37.78635, lon: -122.39135 };

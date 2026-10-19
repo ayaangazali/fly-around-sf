@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/32776564',
 };
 
+export const TOP = 27;
+
 export const FACTS = {
   bathsOpened: 1896,
   bathsBurned: 1966,

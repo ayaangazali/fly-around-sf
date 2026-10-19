@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/28695389',
 };
 
+export const TOP = 25;
+
 export const FACTS = {
   roofAcres: 2.5,
   roofPlants: 1700000,

@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/24222973',
 };
 
+export const TOP = 260;
+
 export const FACTS = {
   height: 260,
   topFloor: 212,

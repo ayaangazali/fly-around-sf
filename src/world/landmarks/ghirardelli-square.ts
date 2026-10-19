@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/939539840',
 };
 
+export const TOP = 24;
+
 export const FACTS = {
   signLength: 46,
   letters: 'GHIRARDELLI',

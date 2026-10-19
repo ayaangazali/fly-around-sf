@@ -10,6 +10,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/relation/7325085',
 };
 
+export const TOP = 53;
+
 export const FACTS = {
   opened: 2000,
   bottle: 24.4,
