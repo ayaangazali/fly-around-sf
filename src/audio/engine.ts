@@ -83,9 +83,9 @@ export class AudioEngine {
     for (const name of Object.keys(levels) as BusName[]) g.buses[name].gain.setTargetAtTime(levels[name], now, 0.06);
     const sleep = levels.master === 0 || this.hidden;
     if (!sleep && g.ctx.state !== 'running') void g.ctx.resume().catch(() => undefined);
-    else if (sleep && g.ctx.state === 'running')
+    else if (sleep)
       setTimeout(() => {
-        if ((this.muted || this.hidden) && g.ctx.state === 'running') void g.ctx.suspend().catch(() => undefined);
+        if (this.muted || this.hidden) void g.ctx.suspend().catch(() => undefined);
       }, 400);
   }
 
