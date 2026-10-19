@@ -56,8 +56,9 @@ export class Hud {
     const t = el('div', `toast toast-${kind}`, text);
     this.toasts.append(t);
     while (this.toasts.children.length > 4) this.toasts.firstElementChild?.remove();
-    setTimeout(() => t.classList.add('out'), 2600);
-    setTimeout(() => t.remove(), 3200);
+    const life = kind === 'warn' ? 6000 : 2600;
+    setTimeout(() => t.classList.add('out'), life);
+    setTimeout(() => t.remove(), life + 600);
   }
 
   update(): void {

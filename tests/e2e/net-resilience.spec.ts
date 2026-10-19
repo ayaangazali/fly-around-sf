@@ -40,8 +40,9 @@ test('[R-NET-OFFLINE] if the multiplayer code cannot load, the game says so and 
       return page.evaluate(() => window.__fly.game.net.status);
     })
     .toBe('unreachable');
-  await expect(page.locator('.toast', { hasText: 'Multiplayer could not start' })).toBeVisible();
   expect(await page.evaluate(() => window.__fly.game.net.room)).toBeNull();
+  await page.evaluate(() => window.__fly.game.panels.open('friends'));
+  await expect(page.locator('.fr-offline .fr-error', { hasText: 'Multiplayer could not start. Single player keeps working.' })).toBeVisible();
   await page.evaluate(() => window.__fly.step(1));
   expect(await page.evaluate(() => window.__fly.errors)).toEqual([]);
 });
