@@ -85,7 +85,7 @@ export const CITY_FRAGMENT: [string, string][] = [
       vec3 avgC = mix(warm, cool, cls * 0.12 + 0.12) * 0.24 * step(0.15, fract(s * 2.9));
       vec3 e = mix(pat * lit * wc, avgWin * litFrac * avgC, wfade) * wall;
       e += glassB * vec3(1.0, 0.8, 0.55) * 0.9 + sign * mix(vec3(1.0, 0.45, 0.3), vec3(0.4, 0.8, 1.0), step(0.5, fract(s * 13.1))) * 0.6;
-      totalEmissiveRadiance += e * uNight * 0.95;
+      totalEmissiveRadiance += e * uNight * 0.75;
     }`,
   ],
 ];

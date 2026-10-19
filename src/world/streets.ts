@@ -237,7 +237,7 @@ export function createRoadMaterial(night: { value: number }): THREE.MeshLambertM
             float dv = vRoad.y - side * h;
             pool += exp(-(du * du + dv * dv) / 70.0);
           }
-          totalEmissiveRadiance += uNight * (0.035 + 0.5 * min(pool, 1.2)) * vec3(1.0, 0.72, 0.42) * diffuseColor.rgb * 1.6;
+          totalEmissiveRadiance += uNight * (0.035 + 0.5 * min(pool, 1.2)) * vec3(1.0, 0.72, 0.42) * diffuseColor.rgb * 1.15;
         }`,
       );
   };
