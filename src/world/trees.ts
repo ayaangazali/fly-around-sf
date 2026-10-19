@@ -84,30 +84,30 @@ export function treeColor(tint: number, s: number, seed: number, out: THREE.Colo
   return out.setRGB(c[0] * v, c[1] * v, c[2] * v, THREE.SRGBColorSpace);
 }
 
-function paint(g: THREE.BufferGeometry, rgb: [number, number, number]): THREE.BufferGeometry {
+function paint(g: THREE.BufferGeometry, rgb: [number, number, number], leaf: number): THREE.BufferGeometry {
   const geo = g.index ? g.toNonIndexed() : g;
   geo.deleteAttribute('uv');
   const n = geo.getAttribute('position').count;
   const col = new Float32Array(n * 3);
   for (let i = 0; i < n; i++) col.set(rgb, i * 3);
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  geo.setAttribute('aLeaf', new THREE.BufferAttribute(new Float32Array(n).fill(leaf), 1));
   return geo;
 }
 
 const TRUNK: [number, number, number] = [0.42, 0.34, 0.27];
-const LEAF: [number, number, number] = [1, 1, 1];
 
 function blob(r: number, sy: number, y: number, x = 0, z = 0, detail = 0): THREE.BufferGeometry {
   const g = new THREE.IcosahedronGeometry(r, detail);
   g.scale(1, sy, 1);
   g.translate(x, y, z);
-  return paint(g, LEAF);
+  return paint(g, [1, 1, 1], 1);
 }
 
 function trunk(r0: number, r1: number, h: number, seg = 5, rgb = TRUNK): THREE.BufferGeometry {
   const g = new THREE.CylinderGeometry(r1, r0, h, seg, 1, true);
   g.translate(0, h / 2, 0);
-  return paint(g, rgb);
+  return paint(g, rgb, 0);
 }
 
 function palmFronds(n: number, y: number): THREE.BufferGeometry {
@@ -138,14 +138,14 @@ function palmFronds(n: number, y: number): THREE.BufferGeometry {
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   g.computeVertexNormals();
-  return paint(g, LEAF);
+  return paint(g, [1, 1, 1], 1);
 }
 
 function octa(r: number, sy: number, y: number): THREE.BufferGeometry {
   const g = new THREE.OctahedronGeometry(r, 0);
   g.scale(1, sy, 1);
   g.translate(0, y, 0);
-  return paint(g, LEAF);
+  return paint(g, [1, 1, 1], 1);
 }
 
 export function treeGeometries(far = false): THREE.BufferGeometry[] {
@@ -195,7 +195,10 @@ export function createTreeMaterial(time: { value: number }): THREE.MeshLambertMa
   const mat = new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true });
   mat.onBeforeCompile = (shader) => {
     shader.uniforms.uTime = time;
-    shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nuniform float uTime;').replace(
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', '#include <common>\nuniform float uTime;\nattribute float aLeaf;')
+      .replace('#include <color_vertex>', '#include <color_vertex>\n#ifdef USE_INSTANCING_COLOR\nvColor.rgb = mix(color, vColor.rgb, aLeaf);\n#endif')
+      .replace(
       '#include <begin_vertex>',
       `#include <begin_vertex>
       #ifdef USE_INSTANCING

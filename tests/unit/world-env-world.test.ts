@@ -170,6 +170,16 @@ describe('trees', () => {
       const tris = near[k].getAttribute('position').count / 3;
       expect(tris).toBeLessThanOrEqual(90);
       expect(far[k].getAttribute('position').count / 3).toBeLessThan(tris / 2);
+      for (const g of [near[k], far[k]]) {
+        const leaf = g.getAttribute('aLeaf');
+        const col = g.getAttribute('color');
+        const seen = new Set<number>();
+        for (let i = 0; i < leaf.count; i++) {
+          seen.add(leaf.getX(i));
+          expect(col.getX(i) + col.getY(i) + col.getZ(i) === 3).toBe(leaf.getX(i) === 1);
+        }
+        expect([...seen].sort()).toEqual([0, 1]);
+      }
     }
     const plants = [
       { x: 10, z: 10, kind: TreeKind.Broadleaf, h: 8, tint: 0, seed: 0.2 },
