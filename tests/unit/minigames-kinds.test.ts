@@ -141,13 +141,13 @@ describe('delivery', () => {
   });
 
   it('[R-MINIGAMES] a crash ruins a fragile item only after pickup', () => {
-    const def = { ...deliveryDef, id: 'delivery-fragile', params: { ...deliveryDef.params, fragile: true } };
+    const def: ActivityDef = { ...deliveryDef, id: 'delivery-fragile', params: { ...deliveryDef.params, fragile: true } };
     const { g, results, fails } = setup(delivery, def);
     g.activities.start(def.id);
     g.bus.emit('player:crash', { speed: 20 });
     g.activities.update(DT);
     expect(fails).toEqual([]);
-    g.flight.pos = { ...g.world.point(def.params.pickup as { lat: number; lon: number }, 10) };
+    g.flight.pos = { ...g.world.point(def.params!.pickup as { lat: number; lon: number }, 10) };
     g.activities.update(DT);
     expect(g.activities.active?.inst.hud()).toContain('fragile');
     g.bus.emit('player:crash', { speed: 20 });
