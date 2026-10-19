@@ -99,35 +99,52 @@ export function baseMap(game: Game): BaseMap {
   return b.map;
 }
 
-export function prepareBaseMap(game: Game, onReady: (map: BaseMap) => void): void {
-  const tick = () => {
-    const b = begin(game);
-    if (advance(game, b, performance.now() + 8)) onReady(b.map);
-    else setTimeout(tick, 16);
-  };
-  setTimeout(tick, 16);
+let ready: Promise<BaseMap> | null = null;
+
+export function prepareBaseMap(game: Game): Promise<BaseMap> {
+  return (ready ??= new Promise((resolve) => {
+    const tick = () => {
+      const b = begin(game);
+      if (advance(game, b, performance.now() + 8)) resolve(b.map);
+      else setTimeout(tick, 16);
+    };
+    setTimeout(tick, 16);
+  }));
 }
 
-export function drawBuildings(ctx: CanvasRenderingContext2D, city: CityData, v: MapView, ids: Iterable<number>): void {
+function drawBuildings(ctx: CanvasRenderingContext2D, city: CityData, v: MapView, ids: Iterable<number>): void {
   const groups: number[][] = BUCKETS.map(() => []);
   for (const b of ids) if (!city.hidden[b]) groups[BUCKETS.findIndex(([max]) => city.height[b] < max)].push(b);
+  const k = v.scale;
+  const ox = v.w / 2 - v.cx * k;
+  const oy = v.h / 2 - v.cz * k;
   groups.forEach((list, i) => {
     ctx.fillStyle = BUCKETS[i][1];
     ctx.beginPath();
     for (const b of list) {
       const s = city.start[b];
-      for (let k = 0; k < city.len[b]; k++) {
-        const { sx, sy } = toScreen(v, city.xs[s + k], city.zs[s + k]);
-        if (k === 0) ctx.moveTo(sx, sy);
-        else ctx.lineTo(sx, sy);
-      }
+      ctx.moveTo(city.xs[s] * k + ox, city.zs[s] * k + oy);
+      for (let n = 1; n < city.len[b]; n++) ctx.lineTo(city.xs[s + n] * k + ox, city.zs[s + n] * k + oy);
       ctx.closePath();
     }
     ctx.fill();
   });
 }
 
-export function drawMap(ctx: CanvasRenderingContext2D, game: Game, v: MapView): void {
+const TILE = 256;
+const tiles = new Map<string, HTMLCanvasElement>();
+
+function renderTile(city: CityData, scale: number, i: number, j: number): HTMLCanvasElement {
+  const size = TILE / scale;
+  const c = document.createElement('canvas');
+  c.width = c.height = TILE;
+  const cx = (i + 0.5) * size;
+  const cz = (j + 0.5) * size;
+  drawBuildings(c.getContext('2d') as CanvasRenderingContext2D, city, { cx, cz, scale, w: TILE, h: TILE }, city.near(cx, cz, size / 2));
+  return c;
+}
+
+export function drawMap(ctx: CanvasRenderingContext2D, game: Game, v: MapView, dpr: number): boolean {
   const base = baseMap(game);
   const { extent, mpp, canvas } = base;
   ctx.fillStyle = `rgb(${WATER_DEEP.join(',')})`;
@@ -136,8 +153,37 @@ export function drawMap(ctx: CanvasRenderingContext2D, game: Game, v: MapView): 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
   ctx.drawImage(canvas, tl.sx, tl.sy, canvas.width * mpp * v.scale, canvas.height * mpp * v.scale);
-  if (v.scale * mpp > 1.6) {
-    const r = Math.hypot(v.w, v.h) / 2 / v.scale;
-    drawBuildings(ctx, game.world.city, v, game.world.city.near(v.cx, v.cz, r));
+  if (v.scale * mpp <= 1.6) return true;
+  const level = Math.round(Math.log2(v.scale * dpr));
+  const scale = 2 ** level;
+  const size = TILE / scale;
+  const px = size * v.scale;
+  const left = v.cx - v.w / 2 / v.scale;
+  const top = v.cz - v.h / 2 / v.scale;
+  const i0 = Math.floor(left / size);
+  const j0 = Math.floor(top / size);
+  const i1 = Math.floor((left + v.w / v.scale) / size);
+  const j1 = Math.floor((top + v.h / v.scale) / size);
+  const deadline = performance.now() + 12;
+  let complete = true;
+  for (let j = j0; j <= j1; j++) {
+    for (let i = i0; i <= i1; i++) {
+      const key = `${level}:${i}:${j}`;
+      let t = tiles.get(key);
+      if (t) tiles.delete(key);
+      else if (performance.now() < deadline) t = renderTile(game.world.city, scale, i, j);
+      if (!t) {
+        complete = false;
+        continue;
+      }
+      tiles.set(key, t);
+      ctx.drawImage(t, (i * size - v.cx) * v.scale + v.w / 2, (j * size - v.cz) * v.scale + v.h / 2, px, px);
+    }
   }
+  const keep = Math.max(64, 2 * (i1 - i0 + 1) * (j1 - j0 + 1));
+  for (const key of tiles.keys()) {
+    if (tiles.size <= keep) break;
+    tiles.delete(key);
+  }
+  return complete;
 }

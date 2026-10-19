@@ -114,7 +114,7 @@ export const panel: Panel = {
     const draw = () => {
       frame = 0;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      drawMap(ctx, game, view);
+      if (!drawMap(ctx, game, view, dpr)) redraw();
       const pos = (x: number, z: number) => {
         const s = toScreen(view, x, z);
         return `translate(${s.sx.toFixed(1)}px, ${s.sy.toFixed(1)}px)`;
@@ -125,7 +125,7 @@ export const panel: Panel = {
         const s = toScreen(view, q.x, q.z);
         const show = !hiddenKinds.has(d.kind) && (showDone || !game.save.isDone(d.id)) && s.sx > -20 && s.sy > -20 && s.sx < view.w + 20 && s.sy < view.h + 20;
         b.hidden = !show;
-        if (show) b.style.transform = `translate(${s.sx.toFixed(1)}px, ${s.sy.toFixed(1)}px)`;
+        if (show) b.style.translate = `${s.sx.toFixed(1)}px ${s.sy.toFixed(1)}px`;
       }
       me.style.transform = `${pos(game.flight.pos.x, game.flight.pos.z)} rotate(${headingDeg(game.flight.yaw)}deg)`;
       wpPin.hidden = !game.waypoint;
@@ -263,8 +263,10 @@ export const panel: Panel = {
     const fit = () => {
       const w = wrap.clientWidth || 600;
       const h = wrap.clientHeight || 400;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
+      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+      }
       update(clampView({ ...view, w, h }, base.extent));
     };
     const ro = new ResizeObserver(fit);

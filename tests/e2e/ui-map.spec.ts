@@ -11,14 +11,15 @@ test.describe('map and waypoints', () => {
     const ids = await page.locator('.map-marker').evaluateAll((n) => n.map((b) => (b as HTMLElement).dataset.activity!).sort());
     expect(ids).toEqual(expected);
     await expect(page.locator('.map-me')).toBeVisible();
-    const painted = await page.evaluate(() => {
-      const c = document.querySelector('.map-canvas') as HTMLCanvasElement;
-      const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
-      const colors = new Set<number>();
-      for (let i = 0; i < d.length; i += 4 * 97) colors.add((d[i] >> 4) * 256 + (d[i + 1] >> 4) * 16 + (d[i + 2] >> 4));
-      return colors.size;
-    });
-    expect(painted).toBeGreaterThan(12);
+    const painted = () =>
+      page.evaluate(() => {
+        const c = document.querySelector('.map-canvas') as HTMLCanvasElement;
+        const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
+        const colors = new Set<number>();
+        for (let i = 0; i < d.length; i += 4 * 97) colors.add((d[i] >> 4) * 256 + (d[i + 1] >> 4) * 16 + (d[i + 2] >> 4));
+        return colors.size;
+      });
+    await expect.poll(painted).toBeGreaterThan(12);
 
     const scale = page.locator('.map-scale');
     const before = await scale.textContent();
@@ -88,6 +89,76 @@ test.describe('map and waypoints', () => {
     await expect(page.locator('.toast', { hasText: `Arrived: ${label}` })).toBeVisible();
     expect(await page.evaluate(() => window.__fly.game.waypoint)).toBeNull();
     await expect(wp.locator('.wp-label')).toBeHidden();
+  });
+
+  test('[R-MAP] a marker sitting under the map tools can still be tapped @touch', async ({ page }) => {
+    await boot(page);
+    const id = await page.evaluate(() => {
+      const g = window.__fly.game;
+      const d = (a: { id: string }) => {
+        const q = g.activities.position(g.activities.defs.get(a.id)!);
+        return Math.hypot(q.x - g.flight.pos.x, q.z - g.flight.pos.z);
+      };
+      return window.__fly.activities().filter((a) => a.kind !== 'achievement' && !a.hidden).sort((a, b) => d(a) - d(b))[0].id;
+    });
+    await page.evaluate(() => window.__fly.game.panels.open('map'));
+    const wrap = (await page.locator('.map-wrap').boundingBox())!;
+    const center = page.getByRole('button', { name: 'Center on my drone' });
+    const tool = (await center.boundingBox())!;
+    for (let i = 0; i < 6; i++) await page.getByRole('button', { name: 'Zoom in' }).click();
+    await expect(page.locator('.map-scale')).toHaveText(/^(10|20) m$/);
+    const scale = 3;
+    await page.evaluate(
+      ({ id, dx, dz }) => {
+        const g = window.__fly.game;
+        const q = g.activities.position(g.activities.defs.get(id)!);
+        window.__fly.teleport({ x: q.x - dx, y: g.flight.pos.y, z: q.z - dz });
+      },
+      { id, dx: (tool.x + tool.width / 2 - wrap.x - wrap.width / 2) / scale, dz: (tool.y + tool.height / 2 - wrap.y - wrap.height / 2) / scale },
+    );
+    await center.click();
+    const marker = page.locator(`.map-marker[data-activity="${id}"]`);
+    await expect
+      .poll(async () => {
+        const m = await marker.boundingBox();
+        return m ? Math.hypot(m.x + m.width / 2 - tool.x - tool.width / 2, m.y + m.height / 2 - tool.y - tool.height / 2) : Infinity;
+      })
+      .toBeLessThan(tool.width / 2);
+    await marker.click();
+    await expect(page.locator('.map-card')).toHaveAttribute('data-activity', id);
+  });
+
+  test('[R-MAP] panning a zoomed-in map only blits cached tiles', async ({ page }) => {
+    await page.addInitScript(() => {
+      const raf = window.requestAnimationFrame.bind(window);
+      const w = window as unknown as { cost: number[] };
+      w.cost = [];
+      window.requestAnimationFrame = (f) =>
+        raf((t) => {
+          const a = performance.now();
+          f(t);
+          w.cost.push(performance.now() - a);
+        });
+    });
+    await boot(page);
+    const cost = await page.evaluate(async () => {
+      const w = window as unknown as { cost: number[] };
+      const frame = () => new Promise((r) => requestAnimationFrame(r));
+      window.__fly.game.panels.open('map');
+      for (let i = 0; i < 90; i++) await frame();
+      const wrap = document.querySelector('.map-wrap') as HTMLElement;
+      const per: number[] = [];
+      for (const key of ['-', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowDown', 'ArrowDown', 'ArrowDown', '+', '+', 'ArrowUp', 'ArrowUp', 'ArrowUp']) {
+        wrap.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+        w.cost = [];
+        await frame();
+        await frame();
+        per.push(Math.max(...w.cost));
+      }
+      return per.sort((a, b) => a - b);
+    });
+    expect(cost[Math.floor(cost.length / 2)]).toBeLessThan(20);
+    expect(cost[cost.length - 1]).toBeLessThan(200);
   });
 
   test('[R-MAP] the minimap opens the map and can be switched off', async ({ page }) => {

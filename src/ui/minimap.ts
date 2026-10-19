@@ -35,7 +35,7 @@ export function installMinimap(game: Game): { update(): void } {
       if (!base) {
         if (!pending) {
           pending = true;
-          prepareBaseMap(game, (m) => (base = m));
+          void prepareBaseMap(game).then((m) => (base = m));
         }
         return;
       }
