@@ -178,9 +178,21 @@ test.describe('Ask the City', () => {
     await page.waitForTimeout(300);
     await openAsk(page);
     await page.locator('[data-ask="look"]').click();
+    const closest = await page.evaluate((cards) => {
+      const g = window.__fly.game;
+      const places = g.activities.list().filter((d) => !d.hidden && g.activities.kinds.get(d.kind)?.passive);
+      const all = [...cards.map((c) => ({ name: c.name, at: c.at })), ...places.map((d) => ({ name: d.title, at: d.at }))];
+      const me = g.flight.pos;
+      const d = (a: { lat: number; lon: number }) => {
+        const p = g.world.toLocal(a.lat, a.lon);
+        return Math.hypot(p.x - me.x, p.z - me.z);
+      };
+      const best = all.filter((e) => e.at).sort((a, b) => d(a.at!) - d(b.at!))[0];
+      return { name: best.name, km: (d(best.at!) / 1000).toFixed(1) };
+    }, FIXTURE_CARDS);
     const lead = page.locator('.ask-x').first().locator('.ask-lead');
     await expect(lead).toContainText('Nothing I know is straight ahead. The closest is');
-    await expect(lead).toContainText('Golden Gate Bridge, 7.6 km to your right.');
+    await expect(lead).toContainText(`${closest.name}, ${closest.km} km behind you.`);
   });
 
   test('[R-AI-ASK] Open in Dex opens the collection on that card', async ({ page }) => {

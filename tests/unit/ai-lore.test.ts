@@ -6,6 +6,7 @@ import { FIXTURE_CARDS } from './ai-fixtures';
 import { loadDefs } from './helpers';
 
 const entries = entriesFrom(FIXTURE_CARDS, []);
+const city = entriesFrom(FIXTURE_CARDS, loadDefs().filter((d) => d.kind === 'discover'));
 const at = (lat: number, lon: number) => toLocal(lat, lon);
 const yawToward = (from: { x: number; z: number }, to: { x: number; z: number }) => Math.atan2(-(to.x - from.x), -(to.z - from.z));
 
@@ -61,6 +62,7 @@ describe('Ask the City offline answers', () => {
     expect(a.quote).toMatch(/Nothing in the archive/);
     expect(a.related[0].id).toBe('golden-gate-bridge');
     expect(answerOffline('best ramen recipe', entries).related).toEqual([]);
+    expect(answerOffline('best ramen recipe', city).entry).toBeNull();
     const empty = answerOffline('Golden Gate Bridge', []);
     expect(empty.entry).toBeNull();
     expect(empty.quote).toMatch(/No cards or places/);
@@ -106,6 +108,7 @@ describe('Ask the City offline answers', () => {
     expect(s.dist).toBeGreaterThan(900);
     const ttp = at(37.7952, -122.4028);
     expect(whatIsThat(entries, { ...from, yaw: yawToward(from, ttp) })!.entry.id).toBe('transamerica-pyramid');
+    expect(whatIsThat(city, { ...from, yaw: yawToward(from, coit) })!.entry.id).toBe('coit-tower');
   });
 
   it('[R-AI-WHAT] with nothing ahead it reports the closest place and which side it is on', () => {
@@ -125,6 +128,8 @@ describe('Ask the City offline answers', () => {
   it('[R-AI-WHAT] typed "what is that" questions defer to the camera unless they name a place', () => {
     for (const q of ['what is that over there', "What's this?", 'whats that', 'What am I looking at?']) expect(pointsAhead(q, entries), q).toBe(true);
     for (const q of ['what is that tower on Telegraph Hill', 'What is Coit Tower?', 'tell me about that', 'how tall is this']) expect(pointsAhead(q, entries), q).toBe(false);
+    expect(pointsAhead('what is that over there', city)).toBe(true);
+    expect(pointsAhead('what is that tower on Telegraph Hill', city)).toBe(false);
   });
 
   it('[R-AI-ASK] formats distances in metric and imperial', () => {

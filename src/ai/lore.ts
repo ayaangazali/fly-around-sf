@@ -95,11 +95,15 @@ export function search(question: string, entries: LoreEntry[], pos: { x: number;
   const out: Match[] = [];
   for (const d of docs) {
     let score = 0;
+    let matched = 0;
     for (const t of q) {
       const idf = Math.log(1 + docs.length / (df.get(t) ?? docs.length));
       const hits = d.body.filter((b) => b === t).length;
-      score += idf * ((d.name.has(t) ? 4 : 0) + (d.meta.has(t) ? 1.5 : 0) + (hits ? 1 + 0.25 * Math.min(hits - 1, 3) : 0));
+      const w = (d.name.has(t) ? 4 : 0) + (d.meta.has(t) ? 1.5 : 0) + (hits ? 1 + 0.25 * Math.min(hits - 1, 3) : 0);
+      if (w) matched++;
+      score += idf * w;
     }
+    if (2 * matched <= q.length && !q.some((t) => d.name.has(t))) score = 0;
     const name = tokens(d.e.name).join(' ');
     if (name && flat.includes(` ${name} `)) score += 6;
     const dist = distance(d.e, pos);
@@ -171,7 +175,8 @@ export function answerOffline(question: string, entries: LoreEntry[], pos: { x: 
 const POINTING = /^(what(['’]?s| is) (that|this)|what am i looking at)\b/i;
 
 export function pointsAhead(question: string, entries: LoreEntry[]): boolean {
-  return POINTING.test(question.trim()) && (search(question, entries)[0]?.score ?? 0) < MIN_SCORE;
+  const q = new Set(tokens(question));
+  return POINTING.test(question.trim()) && !entries.some((e) => tokens(`${e.name} ${e.neighborhood}`).some((t) => q.has(t)));
 }
 
 export function nearest(entries: LoreEntry[], pos: { x: number; z: number } | null, n: number): LoreEntry[] {
@@ -213,7 +218,7 @@ export function whatIsThat(entries: LoreEntry[], pose: Pose): Sighting | null {
     const s: Sighting = { entry, dist, ahead: false, side };
     if (!closest || dist < closest.dist) closest = s;
     if ((angle <= CONE || dist < 60) && dist <= RANGE) {
-      const score = Math.max(dist, 40) * (1 + 3 * (angle / CONE) ** 2);
+      const score = (Math.max(dist, 40) * (1 + 3 * (angle / CONE) ** 2)) / (entry.category === 'landmark' ? 3 : 1);
       if (score < bestScore) [best, bestScore] = [{ ...s, ahead: true }, score];
     }
   }
