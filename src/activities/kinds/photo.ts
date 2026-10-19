@@ -168,8 +168,8 @@ export const kind: ActivityKind = {
       progress: () => best / 3,
       hud: () => {
         const f = game.flight.pos;
-        const kept = best ? ` · best ${stars()}` : '';
-        return `📷 ${p.subject.name} · ${meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z))}${kept} · ${clock(t, p.timeLimit)}`;
+        const status = best ? stars() : meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z));
+        return `📷 ${p.subject.name} · ${status} · ${clock(t, p.timeLimit)}`;
       },
       targets: () => [subject],
       elapsed: () => t,

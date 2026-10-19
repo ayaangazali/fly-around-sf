@@ -435,7 +435,7 @@ describe('photo challenge', () => {
     expect(scored).toEqual([{ id: def.id, stars: 2, best: 2, hint: expect.any(String) }, { id: def.id, stars: 0, best: 2, hint: expect.any(String) }]);
     for (let i = 0; i < 30; i++) g.activities.update(DT);
     expect(g.activities.active?.def.id).toBe(def.id);
-    expect(g.activities.active?.inst.hud()).toContain('best ★★☆');
+    expect(g.activities.active?.inst.hud()).toContain('★★☆');
     g.interact();
     g.activities.update(DT);
     expect(g.save.isDone(def.id)).toBe(true);

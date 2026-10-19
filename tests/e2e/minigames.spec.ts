@@ -50,9 +50,7 @@ test.describe('minigames', () => {
       expect(won.medal, kind).toBeGreaterThan(0);
       await expect(page.locator('.results.results-win'), kind).toBeVisible();
       await expect(page.locator('.results h3'), kind).not.toBeEmpty();
-      const best = kind === 'photo' ? 'Best shot★' : kind === 'follow' ? 'Best formation' : 'Best';
-      await expect(page.locator('.results-stats'), kind).toContainText(best);
-      if (kind === 'follow') await expect(page.locator('.results-stats'), kind).toContainText('%');
+      await expect(page.locator('.results-stats'), kind).toContainText(kind === 'photo' ? /Best★/ : kind === 'follow' ? /Best\d+%/ : /Best\d/);
       const lost = await page.evaluate((aid) => {
         const f = window.__fly;
         const g = f.game;

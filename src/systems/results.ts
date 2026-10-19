@@ -10,9 +10,9 @@ let current: ActivityDef | null = null;
 let pending: MinigameResult | null = null;
 let prevBest: number | undefined;
 
-const SCORED: Record<string, { label: string; gold: string; text: (v: number) => string }> = {
-  photo: { label: 'Best shot', gold: 'Gold needs a three star shot', text: (v) => `${'★'.repeat(v)}${'☆'.repeat(3 - v)}` },
-  follow: { label: 'Best formation', gold: 'Gold needs 75% in close formation', text: (v) => `${v}%` },
+const SCORED: Record<string, { improved: string; gold: string; text: (v: number) => string }> = {
+  photo: { improved: 'New best shot!', gold: 'Gold needs a three star shot', text: (v) => `${'★'.repeat(v)}${'☆'.repeat(3 - v)}` },
+  follow: { improved: 'New best formation!', gold: 'Gold needs 75% in close formation', text: (v) => `${v}%` },
 };
 
 function hide(): void {
@@ -57,12 +57,12 @@ function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): vo
   stats.append(stat('Time', formatTime(r.time)));
   const top = bestMedal(game.save, def.id);
   const points = bestOf(game.save, pointsKey);
-  if (scored) stats.append(stat(scored.label, points ? scored.text(points) : 'none'));
+  if (scored) stats.append(stat('Best', points ? scored.text(points) : 'none'));
   else stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none'));
   stats.append(stat('Top medal', top ? MEDAL_NAMES[top] : 'none'));
   const notes: string[] = [];
   if (newBest) notes.push('New best time!');
-  if (newPoints && scored) notes.push(`New ${scored.label.toLowerCase()}!`);
+  if (newPoints && scored) notes.push(scored.improved);
   if (improved && r.medal) notes.push(`New ${MEDAL_NAMES[r.medal].toLowerCase()} medal`);
   if (scored && won && r.medal < 3) notes.push(scored.gold);
   if (isMedals(medals) && r.medal < 3) notes.push(`Gold under ${formatTime(medals[0])} · Silver ${formatTime(medals[1])} · Bronze ${formatTime(medals[2])}`);
