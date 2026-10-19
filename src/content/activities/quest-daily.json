@@ -1,0 +1,1170 @@
+[
+  {
+    "id": "daily-clue",
+    "kind": "daily",
+    "title": "The Daily Decree",
+    "neighborhood": "Union Square",
+    "blurb": "One location riddle a day, the same for everyone, new at midnight San Francisco time. Solve it and share your result.",
+    "at": {
+      "lat": 37.78793,
+      "lon": -122.40752,
+      "alt": 30
+    },
+    "xp": 60,
+    "card": "quest-norton-scrip",
+    "tags": [
+      "daily",
+      "riddle",
+      "share"
+    ],
+    "params": {
+      "pool": [
+        {
+          "riddle": "Locals call me Big Pointy. I was the tallest building in the city from 1972 until 2017, and I stand on the old shoreline of Yerba Buena Cove.",
+          "hints": [
+            "The Financial District, on Montgomery Street.",
+            "The Transamerica Pyramid."
+          ],
+          "answer": "The Transamerica Pyramid",
+          "target": {
+            "lat": 37.79519,
+            "lon": -122.40279
+          },
+          "radius": 120,
+          "fact": "A grove of redwoods transplanted from the Santa Cruz Mountains grows in Redwood Park at its base.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Transamerica_Pyramid"
+          ]
+        },
+        {
+          "riddle": "I was built in 1933 with a socialite's bequest and painted inside by more than twenty muralists, on the hill that once signaled the ships.",
+          "hints": [
+            "On top of Telegraph Hill.",
+            "Coit Tower."
+          ],
+          "answer": "Coit Tower",
+          "target": {
+            "lat": 37.80238,
+            "lon": -122.40583
+          },
+          "radius": 100,
+          "fact": "Coit Tower is 210 feet of unpainted reinforced concrete, designed by Arthur Brown Jr. and Henry Temple Howard.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Coit_Tower"
+          ]
+        },
+        {
+          "riddle": "I was designed in 1915 to look like a Roman ruin, and I was so loved that they rebuilt me rather than let me become one.",
+          "hints": [
+            "The Marina, beside a lagoon.",
+            "The Palace of Fine Arts."
+          ],
+          "answer": "The Palace of Fine Arts",
+          "target": {
+            "lat": 37.80292,
+            "lon": -122.4484
+          },
+          "radius": 120,
+          "fact": "It is the only structure from the 1915 Panama-Pacific Exposition still on its original site. Its rotunda is 162 feet high.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Palace_of_Fine_Arts"
+          ]
+        },
+        {
+          "riddle": "My clock tower rises 245 feet at the foot of Market Street, and each of my four clock faces is 22 feet across. Boats still dock behind me.",
+          "hints": [
+            "The Embarcadero, at the foot of Market Street.",
+            "The Ferry Building."
+          ],
+          "answer": "The Ferry Building",
+          "target": {
+            "lat": 37.7955,
+            "lon": -122.3937
+          },
+          "radius": 120,
+          "fact": "Designed by A. Page Brown and completed in 1898, it came through both the 1906 and 1989 earthquakes with little damage.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building"
+          ]
+        },
+        {
+          "riddle": "My color was chosen to stand out in the fog. The Navy wanted me striped black and yellow. Fly to the middle of my main span.",
+          "hints": [
+            "The strait between San Francisco and Marin.",
+            "The Golden Gate Bridge."
+          ],
+          "answer": "The Golden Gate Bridge",
+          "target": {
+            "lat": 37.81972,
+            "lon": -122.47861
+          },
+          "radius": 300,
+          "fact": "Opened May 27, 1937, its main span is 4,200 feet and its towers rise 746 feet above the water.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+          ]
+        },
+        {
+          "riddle": "Lighthouse, fortress, federal prison, and for 19 months a homeland reclaimed. Nearly 1.4 million people visit me each year.",
+          "hints": [
+            "An island in the bay, north of Fisherman's Wharf.",
+            "Alcatraz Island."
+          ],
+          "answer": "Alcatraz Island",
+          "target": {
+            "lat": 37.82672,
+            "lon": -122.42276
+          },
+          "radius": 260,
+          "fact": "The first lighthouse on the US West Coast was lit here in 1854; today's tower replaced it in 1909. The penitentiary closed on March 21, 1963.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Alcatraz_Island",
+            "https://en.wikipedia.org/wiki/Alcatraz_Island_Light"
+          ]
+        },
+        {
+          "riddle": "We are a pair, about 925 feet tall near the center of the city, and still we are only the second and third highest. Fly to us.",
+          "hints": [
+            "Near the geographic center of San Francisco.",
+            "Twin Peaks."
+          ],
+          "answer": "Twin Peaks",
+          "target": {
+            "lat": 37.7516,
+            "lon": -122.4477
+          },
+          "radius": 260,
+          "fact": "Only Mount Davidson, at 928 feet, rises higher than Twin Peaks inside the city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "A white palace of glass and wood, finished in 1879, the oldest building in the city's biggest park.",
+          "hints": [
+            "The eastern end of Golden Gate Park.",
+            "The Conservatory of Flowers."
+          ],
+          "answer": "The Conservatory of Flowers",
+          "target": {
+            "lat": 37.77261,
+            "lon": -122.46023
+          },
+          "radius": 100,
+          "fact": "It is the oldest remaining municipal wooden conservatory in the United States.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Conservatory_of_Flowers"
+          ]
+        },
+        {
+          "riddle": "A fine arts museum named for an early newspaperman, on the Music Concourse in the park. Almost a million visitors came through my doors in 2023.",
+          "hints": [
+            "The Music Concourse in Golden Gate Park.",
+            "The de Young Museum."
+          ],
+          "answer": "The de Young Museum",
+          "target": {
+            "lat": 37.7715,
+            "lon": -122.46909
+          },
+          "radius": 110,
+          "fact": "The de Young had 999,645 visitors in 2023 and shares its management with the Legion of Honor.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/De_Young_Museum"
+          ]
+        },
+        {
+          "riddle": "My dome is 42 feet taller than the one in Washington. I reopened in 1915 after my predecessor fell in 1906.",
+          "hints": [
+            "The Civic Center.",
+            "San Francisco City Hall."
+          ],
+          "answer": "San Francisco City Hall",
+          "target": {
+            "lat": 37.77929,
+            "lon": -122.41926
+          },
+          "radius": 120,
+          "fact": "Architect Arthur Brown Jr. cared about every detail of City Hall, down to the doorknobs and the typeface.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_City_Hall"
+          ]
+        },
+        {
+          "riddle": "My adobe chapel was finished in 1791. I am the oldest intact building in the city.",
+          "hints": [
+            "The Mission District, at 16th and Dolores streets.",
+            "Mission Dolores."
+          ],
+          "answer": "Mission Dolores",
+          "target": {
+            "lat": 37.76435,
+            "lon": -122.42695
+          },
+          "radius": 100,
+          "fact": "The mission was founded in 1776, and Ohlone people provided most of the labor that built its chapel.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs"
+          ]
+        },
+        {
+          "riddle": "Brick and granite beneath an arch of steel, guarding the narrowest part of the Golden Gate since before the Civil War.",
+          "hints": [
+            "Directly under the south end of the Golden Gate Bridge.",
+            "Fort Point."
+          ],
+          "answer": "Fort Point",
+          "target": {
+            "lat": 37.81056,
+            "lon": -122.47722
+          },
+          "radius": 120,
+          "fact": "Builders blasted a 90-foot cliff down to 15 feet above the water so cannonballs could skip into enemy ships.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site"
+          ]
+        },
+        {
+          "riddle": "In 1896 I was the largest indoor swimming establishment in the world. Since 1966 I am concrete ruins that the ocean fills for free.",
+          "hints": [
+            "Lands End, just north of the Cliff House.",
+            "The Sutro Baths."
+          ],
+          "answer": "The Sutro Baths",
+          "target": {
+            "lat": 37.78025,
+            "lon": -122.51363
+          },
+          "radius": 120,
+          "fact": "The Sutro Baths opened on March 14, 1896, and burned to the foundations in June 1966.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Sutro_Baths"
+          ]
+        },
+        {
+          "riddle": "Shops, a two-story carousel and a colony of sea lions who moved in uninvited in 1989.",
+          "hints": [
+            "Fisherman's Wharf.",
+            "Pier 39."
+          ],
+          "answer": "Pier 39",
+          "target": {
+            "lat": 37.80881,
+            "lon": -122.41009
+          },
+          "radius": 120,
+          "fact": "California sea lions first hauled out on Pier 39 in September 1989, a few weeks before the Loma Prieta earthquake.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Pier_39"
+          ]
+        },
+        {
+          "riddle": "More than 300 mechanical arcade machines, one of the largest privately owned collections in the world. Bring coins.",
+          "hints": [
+            "Fisherman's Wharf, at Pier 45.",
+            "The Musee Mecanique."
+          ],
+          "answer": "The Musee Mecanique",
+          "target": {
+            "lat": 37.80925,
+            "lon": -122.41579
+          },
+          "radius": 90,
+          "fact": "Its founder, Ed Zelinsky, began collecting at age 11.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Mus%C3%A9e_M%C3%A9canique"
+          ]
+        },
+        {
+          "riddle": "Once a woolen mill and a chocolate company, now a square of shops at the foot of Russian Hill.",
+          "hints": [
+            "Beside Aquatic Park.",
+            "Ghirardelli Square."
+          ],
+          "answer": "Ghirardelli Square",
+          "target": {
+            "lat": 37.80587,
+            "lon": -122.42295
+          },
+          "radius": 100,
+          "fact": "Part of the square is listed on the National Register of Historic Places as Pioneer Woolen Mills and D. Ghirardelli Company.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Ghirardelli_Square"
+          ]
+        },
+        {
+          "riddle": "A free museum inside a working powerhouse. Look down and you can watch the wheels that pull the cables under the streets.",
+          "hints": [
+            "Nob Hill, at Washington and Mason.",
+            "The Cable Car Museum."
+          ],
+          "answer": "The Cable Car Museum",
+          "target": {
+            "lat": 37.79476,
+            "lon": -122.41185
+          },
+          "radius": 90,
+          "fact": "Grip car No. 8 from the 1873 Clay Street Hill Railroad is preserved here.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_Cable_Car_Museum",
+            "https://en.wikipedia.org/wiki/Clay_Street_Hill_Railroad"
+          ]
+        },
+        {
+          "riddle": "Copies of Florence's Gates of Paradise, two labyrinths and a carillon of forty-four bells, high on Nob Hill.",
+          "hints": [
+            "Nob Hill, on California Street.",
+            "Grace Cathedral."
+          ],
+          "answer": "Grace Cathedral",
+          "target": {
+            "lat": 37.79182,
+            "lon": -122.4135
+          },
+          "radius": 100,
+          "fact": "Grace Cathedral's parish was founded in 1849 and lost its earlier church in the 1906 earthquake.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "Established in 1847, I am one of the city's first parks, with an Italian church on my edge and cafes all around.",
+          "hints": [
+            "North Beach.",
+            "Washington Square."
+          ],
+          "answer": "Washington Square",
+          "target": {
+            "lat": 37.80086,
+            "lon": -122.4101
+          },
+          "radius": 100,
+          "fact": "Washington Square is a 2.8-acre park in North Beach, across from Saints Peter and Paul Church.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Washington_Square_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "The first all-paperback bookstore in the country, and the publisher of a poem that went on trial.",
+          "hints": [
+            "Columbus Avenue in North Beach.",
+            "City Lights."
+          ],
+          "answer": "City Lights Booksellers",
+          "target": {
+            "lat": 37.79765,
+            "lon": -122.40662
+          },
+          "radius": 80,
+          "fact": "In 1957 Judge Clayton Horn ruled that Allen Ginsberg's Howl was not obscene, a landmark free speech decision.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/City_Lights_Bookstore"
+          ]
+        },
+        {
+          "riddle": "The Italian Cathedral of the West, with Masses in English, Italian and Cantonese, facing Washington Square.",
+          "hints": [
+            "North Beach, at 666 Filbert Street.",
+            "Saints Peter and Paul Church."
+          ],
+          "answer": "Saints Peter and Paul Church",
+          "target": {
+            "lat": 37.80163,
+            "lon": -122.41023
+          },
+          "radius": 90,
+          "fact": "The church is administered by the Salesians of Don Bosco and is the home church of the city's Italian-American community.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Saints_Peter_and_Paul_Church,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "A gift from the Republic of China in 1969, I mark the southern entrance of the oldest Chinatown in North America.",
+          "hints": [
+            "Grant Avenue at Bush Street.",
+            "The Dragon Gate."
+          ],
+          "answer": "The Dragon Gate",
+          "target": {
+            "lat": 37.79069,
+            "lon": -122.40559
+          },
+          "radius": 80,
+          "fact": "The Dragon Gate is one of the most photographed places in Chinatown.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Dragon_Gate_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "The city's first park, where the American flag went up in 1846 and gold was announced in 1848.",
+          "hints": [
+            "Chinatown, on Kearny Street.",
+            "Portsmouth Square."
+          ],
+          "answer": "Portsmouth Square",
+          "target": {
+            "lat": 37.79483,
+            "lon": -122.40543
+          },
+          "radius": 90,
+          "fact": "Portsmouth Square was named for the USS Portsmouth, whose men raised the flag here.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Portsmouth_Square"
+          ]
+        },
+        {
+          "riddle": "An actress's gift to the city in 1875 that became the meeting place after the 1906 earthquake.",
+          "hints": [
+            "Market Street, where Geary and Kearny meet it.",
+            "Lotta's Fountain."
+          ],
+          "answer": "Lotta's Fountain",
+          "target": {
+            "lat": 37.78794,
+            "lon": -122.4033
+          },
+          "radius": 80,
+          "fact": "Lotta Crabtree commissioned it. Survivors of 1906 gathered here at 5:12 a.m. every April 18.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Lotta%27s_Fountain"
+          ]
+        },
+        {
+          "riddle": "My first version burned in 1906. I reopened on the same corner of Market and New Montgomery in 1909.",
+          "hints": [
+            "Market Street at New Montgomery.",
+            "The Palace Hotel."
+          ],
+          "answer": "The Palace Hotel",
+          "target": {
+            "lat": 37.78795,
+            "lon": -122.40192
+          },
+          "radius": 90,
+          "fact": "The new Palace Hotel opened on December 19, 1909, and was renovated and seismically retrofitted from 1989 to 1991.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Palace_Hotel,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "The first museum on the West Coast devoted solely to 20th-century art, with more than 33,000 works.",
+          "hints": [
+            "Third Street in SoMa, beside Yerba Buena Gardens.",
+            "The San Francisco Museum of Modern Art."
+          ],
+          "answer": "SFMOMA",
+          "target": {
+            "lat": 37.78592,
+            "lon": -122.40074
+          },
+          "radius": 110,
+          "fact": "SFMOMA displays its collection in 170,000 square feet of exhibition space.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_Museum_of_Modern_Art"
+          ]
+        },
+        {
+          "riddle": "Nicknamed the Granite Lady, I pressed the nation's coins from 1874 to 1937 and survived 1906.",
+          "hints": [
+            "Fifth and Mission streets.",
+            "The Old San Francisco Mint."
+          ],
+          "answer": "The Old Mint",
+          "target": {
+            "lat": 37.78274,
+            "lon": -122.40727
+          },
+          "radius": 90,
+          "fact": "The Old Mint was designated a National Historic Landmark in 1961.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Old_San_Francisco_Mint"
+          ]
+        },
+        {
+          "riddle": "A museum of Asian art whose building and collection belong to the city, in the Civic Center.",
+          "hints": [
+            "Civic Center, on Larkin Street.",
+            "The Asian Art Museum."
+          ],
+          "answer": "The Asian Art Museum",
+          "target": {
+            "lat": 37.78032,
+            "lon": -122.41599
+          },
+          "radius": 90,
+          "fact": "Its full name is the Asian Art Museum of San Francisco, Chong-Moon Lee Center for Asian Art and Culture.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Asian_Art_Museum_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "Home of the San Francisco Opera since 1932, and the room where the United Nations first assembled in 1945.",
+          "hints": [
+            "Van Ness Avenue, behind City Hall.",
+            "The War Memorial Opera House."
+          ],
+          "answer": "The War Memorial Opera House",
+          "target": {
+            "lat": 37.77854,
+            "lon": -122.42093
+          },
+          "radius": 100,
+          "fact": "The Treaty of San Francisco, restoring peace between Japan and the Allies, was signed here in September 1951.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/War_Memorial_Opera_House"
+          ]
+        },
+        {
+          "riddle": "Short, golden and heroic. In 1906 I kept the water flowing and saved a neighborhood from the fire.",
+          "hints": [
+            "A corner of Dolores Park, at 20th and Church.",
+            "The Golden Fire Hydrant."
+          ],
+          "answer": "The Golden Fire Hydrant",
+          "target": {
+            "lat": 37.7583,
+            "lon": -122.428
+          },
+          "radius": 60,
+          "fact": "It is painted gold every April 18, except in 2012, when someone bought silver by mistake.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Golden_Fire_Hydrant"
+          ]
+        },
+        {
+          "riddle": "Bounded by 18th and 20th, Dolores and Church, I am the city's favorite sunny lawn, two blocks south of a mission.",
+          "hints": [
+            "The western edge of the Mission District.",
+            "Mission Dolores Park."
+          ],
+          "answer": "Dolores Park",
+          "target": {
+            "lat": 37.75972,
+            "lon": -122.42713
+          },
+          "radius": 160,
+          "fact": "The northern end of Dolores Park faces Mission High School.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Mission_Dolores_Park"
+          ]
+        },
+        {
+          "riddle": "A plaza where Market, Castro and 17th streets meet, above the stairs to the Muni Metro, named for a beloved city supervisor.",
+          "hints": [
+            "The Castro, where Market Street meets Castro Street.",
+            "Harvey Milk Plaza."
+          ],
+          "answer": "Harvey Milk Plaza",
+          "target": {
+            "lat": 37.76228,
+            "lon": -122.43561
+          },
+          "radius": 70,
+          "fact": "Harvey Milk Plaza serves as the southern entrance to Castro station.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Harvey_Milk_Plaza"
+          ]
+        },
+        {
+          "riddle": "Two streets crossed and gave their names to a counterculture. Find the corner.",
+          "hints": [
+            "West of Buena Vista Park.",
+            "The corner of Haight and Ashbury."
+          ],
+          "answer": "Haight and Ashbury",
+          "target": {
+            "lat": 37.77014,
+            "lon": -122.44599
+          },
+          "radius": 100,
+          "fact": "The Haight-Ashbury became the center of the 1967 Summer of Love.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Haight-Ashbury"
+          ]
+        },
+        {
+          "riddle": "Established in 1867 as Hill Park, I am the oldest official park in the city, rising 575 feet above Haight Street.",
+          "hints": [
+            "Between Haight Street and Buena Vista Avenue.",
+            "Buena Vista Park."
+          ],
+          "answer": "Buena Vista Park",
+          "target": {
+            "lat": 37.76836,
+            "lon": -122.44128
+          },
+          "radius": 160,
+          "fact": "Buena Vista Park covers 38.3 acres on a steep hill.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Buena_Vista_Park"
+          ]
+        },
+        {
+          "riddle": "A hill that is also an island, in a lake that is in a park, in a city on a peninsula.",
+          "hints": [
+            "The middle of Golden Gate Park.",
+            "Strawberry Hill."
+          ],
+          "answer": "Strawberry Hill",
+          "target": {
+            "lat": 37.76854,
+            "lon": -122.47553
+          },
+          "radius": 130,
+          "fact": "Strawberry Hill occupies an entire island in Blue Heron Lake, connected to the park by two bridges.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Strawberry_Hill_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "The younger of the two windmills at the western edge of Golden Gate Park, completed in 1908 on the south side.",
+          "hints": [
+            "The western edge of Golden Gate Park, near Ocean Beach.",
+            "The Murphy Windmill."
+          ],
+          "answer": "The Murphy Windmill",
+          "target": {
+            "lat": 37.765,
+            "lon": -122.5087
+          },
+          "radius": 100,
+          "fact": "The Murphy Windmill was added to the San Francisco Designated Landmark list in 2000.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Murphy_Windmill"
+          ]
+        },
+        {
+          "riddle": "A Spanish Colonial Revival building at the very western end of Golden Gate Park, facing the ocean.",
+          "hints": [
+            "The Great Highway, at the end of Golden Gate Park.",
+            "The Beach Chalet."
+          ],
+          "answer": "The Beach Chalet",
+          "target": {
+            "lat": 37.76947,
+            "lon": -122.51022
+          },
+          "radius": 90,
+          "fact": "The Beach Chalet has been a San Francisco Designated Landmark since 1985.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Beach_Chalet"
+          ]
+        },
+        {
+          "riddle": "A giant camera you can stand inside, perched beside the Cliff House on the headland.",
+          "hints": [
+            "Lands End, next to the Cliff House.",
+            "The Camera Obscura."
+          ],
+          "answer": "The Camera Obscura",
+          "target": {
+            "lat": 37.77827,
+            "lon": -122.51423
+          },
+          "radius": 70,
+          "fact": "The Camera Obscura was added to the National Register of Historic Places in 2001.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Camera_Obscura_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "A memorial on the cliffs at Lands End to a cruiser that earned 17 battle stars.",
+          "hints": [
+            "The Coastal Trail at Lands End.",
+            "The USS San Francisco Memorial."
+          ],
+          "answer": "The USS San Francisco Memorial",
+          "target": {
+            "lat": 37.7828,
+            "lon": -122.51153
+          },
+          "radius": 90,
+          "fact": "USS San Francisco was one of the most decorated U.S. ships of World War II.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/USS_San_Francisco_(CA-38)"
+          ]
+        },
+        {
+          "riddle": "Half a mile of sand just south of the Golden Gate, with the bridge as the backdrop for every photo.",
+          "hints": [
+            "The Pacific shore of the Presidio.",
+            "Baker Beach."
+          ],
+          "answer": "Baker Beach",
+          "target": {
+            "lat": 37.79312,
+            "lon": -122.48382
+          },
+          "radius": 200,
+          "fact": "Battery Chamberlin, a seacoast artillery battery built in 1904, sits at Baker Beach.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Baker_Beach",
+            "https://en.wikipedia.org/wiki/Presidio_of_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "Twenty-five pipes and no keyboard. The bay plays me, best at high tide.",
+          "hints": [
+            "The tip of the jetty by the yacht club in the Marina.",
+            "The Wave Organ."
+          ],
+          "answer": "The Wave Organ",
+          "target": {
+            "lat": 37.80849,
+            "lon": -122.44021
+          },
+          "radius": 70,
+          "fact": "Its stones were salvaged from the demolished Laurel Hill Cemetery.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Wave_Organ"
+          ]
+        },
+        {
+          "riddle": "A former Army airfield on a filled-in marsh, now a shoreline park with the marsh brought back.",
+          "hints": [
+            "The northern shore of the Presidio, east of the Golden Gate Bridge.",
+            "Crissy Field."
+          ],
+          "answer": "Crissy Field",
+          "target": {
+            "lat": 37.8046,
+            "lon": -122.46661
+          },
+          "radius": 200,
+          "fact": "Crissy Field closed as an airfield after 1974 and the National Park Service took control in 1994.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Crissy_Field"
+          ]
+        },
+        {
+          "riddle": "During World War II I was the principal port for the Pacific campaign. Now my piers hold theaters and galleries.",
+          "hints": [
+            "Between the Marina and Aquatic Park.",
+            "Fort Mason."
+          ],
+          "answer": "Fort Mason",
+          "target": {
+            "lat": 37.80778,
+            "lon": -122.42972
+          },
+          "radius": 160,
+          "fact": "Fort Mason was named in 1882 for Richard Barnes Mason, a military governor before statehood.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Fort_Mason"
+          ]
+        },
+        {
+          "riddle": "A museum about a famous animator's life, facing the Presidio's parade ground, opened in 2009.",
+          "hints": [
+            "The Presidio's Main Post.",
+            "The Walt Disney Family Museum."
+          ],
+          "answer": "The Walt Disney Family Museum",
+          "target": {
+            "lat": 37.80136,
+            "lon": -122.45872
+          },
+          "radius": 90,
+          "fact": "The museum opened on October 1, 2009, at 104 Montgomery Street in the Presidio.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Walt_Disney_Family_Museum"
+          ]
+        },
+        {
+          "riddle": "A 70-foot bow and arrow planted beside the Embarcadero, as if a giant had missed.",
+          "hints": [
+            "Rincon Park, south of the Ferry Building.",
+            "Cupid's Span."
+          ],
+          "answer": "Cupid's Span",
+          "target": {
+            "lat": 37.79153,
+            "lon": -122.39002
+          },
+          "radius": 80,
+          "fact": "Claes Oldenburg and Coosje van Bruggen made it, commissioned by Gap founders Donald and Doris Fisher.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Cupid%27s_Span"
+          ]
+        },
+        {
+          "riddle": "A small oval park in SoMa, wrapped by its own looping street, between Second and Third.",
+          "hints": [
+            "Between Bryant and Brannan streets.",
+            "South Park."
+          ],
+          "answer": "South Park",
+          "target": {
+            "lat": 37.78159,
+            "lon": -122.39397
+          },
+          "radius": 80,
+          "fact": "South Park covers just 0.85 acres.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/South_Park,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "A drawbridge that lifts to let boats through, carrying Third Street over Mission Creek beside the ballpark.",
+          "hints": [
+            "Next to Oracle Park.",
+            "The Lefty O'Doul Bridge."
+          ],
+          "answer": "The Lefty O'Doul Bridge",
+          "target": {
+            "lat": 37.77676,
+            "lon": -122.39025
+          },
+          "radius": 80,
+          "fact": "The bascule bridge was originally called the Third Street Bridge.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Lefty_O%27Doul_Bridge"
+          ]
+        },
+        {
+          "riddle": "A campus at the foot of Telegraph Hill that holds the headquarters of a famous blue jeans company.",
+          "hints": [
+            "The eastern foot of Telegraph Hill.",
+            "Levi's Plaza."
+          ],
+          "answer": "Levi's Plaza",
+          "target": {
+            "lat": 37.80284,
+            "lon": -122.4015
+          },
+          "radius": 100,
+          "fact": "A business reporter once called it the only true corporate campus in San Francisco.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Levi%27s_Plaza"
+          ]
+        },
+        {
+          "riddle": "A temple to the sea goddess Mazu, founded around 1852, on a Chinatown street that takes its Chinese name from me.",
+          "hints": [
+            "Waverly Place in Chinatown.",
+            "Tin How Temple."
+          ],
+          "answer": "Tin How Temple",
+          "target": {
+            "lat": 37.79456,
+            "lon": -122.40701
+          },
+          "radius": 70,
+          "fact": "It is one of the oldest Chinese temples still operating in the United States.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Tin_How_Temple"
+          ]
+        },
+        {
+          "riddle": "Rocks just off the Cliff House where sea lions haul out, though my name gives the credit to seals.",
+          "hints": [
+            "Just offshore from the Cliff House.",
+            "Seal Rocks."
+          ],
+          "answer": "Seal Rocks",
+          "target": {
+            "lat": 37.7782,
+            "lon": -122.51567
+          },
+          "radius": 120,
+          "fact": "Both Steller and California sea lions haul out on Seal Rocks.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Seal_Rocks_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "A bandshell from 1900, a gift from a sugar magnate, and one of the largest in North America.",
+          "hints": [
+            "The Music Concourse in Golden Gate Park.",
+            "The Spreckels Temple of Music."
+          ],
+          "answer": "The Spreckels Temple of Music",
+          "target": {
+            "lat": 37.76988,
+            "lon": -122.46859
+          },
+          "radius": 90,
+          "fact": "Claus Spreckels gave the bandshell to the city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Spreckels_Temple_of_Music"
+          ]
+        },
+        {
+          "riddle": "A wooded lane on Russian Hill with wooden steps and bay views. A novelist turned me into Barbary Lane.",
+          "hints": [
+            "Russian Hill, between Leavenworth and Taylor.",
+            "Macondray Lane."
+          ],
+          "answer": "Macondray Lane",
+          "target": {
+            "lat": 37.79921,
+            "lon": -122.41518
+          },
+          "radius": 80,
+          "fact": "Armistead Maupin confirmed Macondray Lane inspired Barbary Lane in Tales of the City.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Macondray_Lane"
+          ]
+        },
+        {
+          "riddle": "One block, eight hairpin turns, and up to 17,000 visitors on a busy summer day.",
+          "hints": [
+            "Russian Hill.",
+            "The crooked block of Lombard Street."
+          ],
+          "answer": "Lombard Street",
+          "target": {
+            "lat": 37.8021,
+            "lon": -122.4188
+          },
+          "radius": 100,
+          "fact": "Surveyor Jasper O'Farrell named it after Lombard Street in Philadelphia.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Lombard_Street_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "At 928 feet I am the highest natural point in San Francisco, with a 103-foot cross on my crown.",
+          "hints": [
+            "South of Twin Peaks, past Portola Drive.",
+            "Mount Davidson."
+          ],
+          "answer": "Mount Davidson",
+          "target": {
+            "lat": 37.73826,
+            "lon": -122.4533
+          },
+          "radius": 160,
+          "fact": "Each Easter a prayer service is held here and the cross is illuminated.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Mount_Davidson_(California)"
+          ]
+        },
+        {
+          "riddle": "A one-block alley where nearly every garage door and fence has been a mural since 1973.",
+          "hints": [
+            "The Mission, between 24th and 25th streets.",
+            "Balmy Alley."
+          ],
+          "answer": "Balmy Alley",
+          "target": {
+            "lat": 37.75182,
+            "lon": -122.41241
+          },
+          "radius": 90,
+          "fact": "Balmy Alley is in the Calle 24 Latino Cultural District.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Balmy_Alley"
+          ]
+        },
+        {
+          "riddle": "The city's largest convention center, opened in 1981 and named for a mayor.",
+          "hints": [
+            "South of Market, along Howard Street.",
+            "The Moscone Center."
+          ],
+          "answer": "The Moscone Center",
+          "target": {
+            "lat": 37.78471,
+            "lon": -122.40031
+          },
+          "radius": 130,
+          "fact": "The Moscone Center spreads three main halls across three blocks.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Moscone_Center"
+          ]
+        },
+        {
+          "riddle": "A sloping lawn between the Conservatory of Flowers and Haight Street where drum circles start on their own.",
+          "hints": [
+            "The eastern end of Golden Gate Park.",
+            "Hippie Hill."
+          ],
+          "answer": "Hippie Hill",
+          "target": {
+            "lat": 37.7698,
+            "lon": -122.4579
+          },
+          "radius": 100,
+          "fact": "Hippie Hill looks out over Robin Williams Meadow.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Hippie_Hill"
+          ]
+        },
+        {
+          "riddle": "At 1,070 feet I am the tallest building in San Francisco, and in 2018 I took that title from a three-legged tower.",
+          "hints": [
+            "Mission Street, between First and Fremont.",
+            "Salesforce Tower."
+          ],
+          "answer": "Salesforce Tower",
+          "target": {
+            "lat": 37.78977,
+            "lon": -122.39693
+          },
+          "radius": 120,
+          "fact": "Designed by Cesar Pelli, it was the last of his buildings completed in his lifetime.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Salesforce_Tower",
+            "https://en.wikipedia.org/wiki/Sutro_Tower"
+          ]
+        },
+        {
+          "riddle": "Four office towers, two hotels and an ice rink every winter, between Clay and Sacramento streets.",
+          "hints": [
+            "The Financial District, just west of the Ferry Building.",
+            "Embarcadero Center."
+          ],
+          "answer": "Embarcadero Center",
+          "target": {
+            "lat": 37.794722,
+            "lon": -122.397778
+          },
+          "radius": 130,
+          "fact": "Offices at Embarcadero Center hold about 14,000 people.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Embarcadero_Center"
+          ]
+        },
+        {
+          "riddle": "Hidden under a lawn in the Sunset, I am the city's largest reservoir, with 720 columns holding up my roof.",
+          "hints": [
+            "24th Avenue and Ortega Street.",
+            "Sunset Reservoir."
+          ],
+          "answer": "Sunset Reservoir",
+          "target": {
+            "lat": 37.75099,
+            "lon": -122.4838
+          },
+          "radius": 160,
+          "fact": "The underground reservoir was completed in 1960.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Sunset_Reservoir"
+          ]
+        },
+        {
+          "riddle": "A 12.9-acre park capping the western edge of Pacific Heights, named for a spring.",
+          "hints": [
+            "Pacific Heights, west of Lafayette Park.",
+            "Alta Plaza Park."
+          ],
+          "answer": "Alta Plaza Park",
+          "target": {
+            "lat": 37.79118,
+            "lon": -122.43767
+          },
+          "radius": 120,
+          "fact": "Alta Plaza Park takes its name from an eponymous spring.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Alta_Plaza_Park"
+          ]
+        },
+        {
+          "riddle": "Eight blocks long and one block wide, I am the handle of the city's biggest park.",
+          "hints": [
+            "Between Fell and Oak streets.",
+            "The Panhandle."
+          ],
+          "answer": "The Panhandle",
+          "target": {
+            "lat": 37.772,
+            "lon": -122.45
+          },
+          "radius": 220,
+          "fact": "The Panhandle is three-quarters of a mile long and is cut in half by Masonic Avenue.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Panhandle_(San_Francisco)"
+          ]
+        },
+        {
+          "riddle": "A dell in eastern Golden Gate Park, set aside as a national place to remember those lost to AIDS.",
+          "hints": [
+            "The de Laveaga Dell in Golden Gate Park.",
+            "The National AIDS Memorial Grove."
+          ],
+          "answer": "The National AIDS Memorial Grove",
+          "target": {
+            "lat": 37.77,
+            "lon": -122.46139
+          },
+          "radius": 100,
+          "fact": "The Grove is a national memorial where people touched by HIV and AIDS gather to heal and remember.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/AIDS_Memorial_Grove"
+          ]
+        },
+        {
+          "riddle": "Fifty-five acres holding nearly 9,000 kinds of plants, once known as Strybing Arboretum.",
+          "hints": [
+            "Golden Gate Park, near Ninth Avenue.",
+            "The San Francisco Botanical Garden."
+          ],
+          "answer": "The San Francisco Botanical Garden",
+          "target": {
+            "lat": 37.76736,
+            "lon": -122.46968
+          },
+          "radius": 200,
+          "fact": "It is one of the three Gardens of Golden Gate Park, with the Japanese Tea Garden and the Conservatory of Flowers.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_Botanical_Garden"
+          ]
+        },
+        {
+          "riddle": "Three and a half miles of sand, strong currents and famous fog along the city's western edge.",
+          "hints": [
+            "The Pacific side of the city.",
+            "Ocean Beach."
+          ],
+          "answer": "Ocean Beach",
+          "target": {
+            "lat": 37.75615,
+            "lon": -122.51019
+          },
+          "radius": 300,
+          "fact": "Ocean Beach is part of the Golden Gate National Recreation Area.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "A park above the Cliff House on a mayor's old estate, looking down on Seal Rocks.",
+          "hints": [
+            "Above the Cliff House at Lands End.",
+            "Sutro Heights Park."
+          ],
+          "answer": "Sutro Heights Park",
+          "target": {
+            "lat": 37.77745,
+            "lon": -122.511
+          },
+          "radius": 120,
+          "fact": "Sutro Heights Park is part of the Sutro Historic District.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Sutro_Heights_Park",
+            "https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco"
+          ]
+        },
+        {
+          "riddle": "One of only four cemeteries inside the city limits, resting in the Presidio.",
+          "hints": [
+            "The Presidio, near the Main Post.",
+            "The San Francisco National Cemetery."
+          ],
+          "answer": "The San Francisco National Cemetery",
+          "target": {
+            "lat": 37.79951,
+            "lon": -122.46465
+          },
+          "radius": 150,
+          "fact": "San Francisco banned new burials in 1900 and later moved most of its graves to Colma, which is why so few cemeteries remain.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/San_Francisco_National_Cemetery",
+            "https://www.colma.ca.gov/departments/cemeteries"
+          ]
+        }
+      ]
+    }
+  }
+]

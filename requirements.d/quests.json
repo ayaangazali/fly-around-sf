@@ -1,0 +1,6 @@
+[
+  { "id": "R-RIDDLE", "owner": "quests", "text": "Imperial riddles unlock hints at 60 s and 120 s, are solved by flying to the hidden answer, and time out." },
+  { "id": "R-SCAVENGER", "owner": "quests", "text": "Scavenger hunts hide tokens that only appear up close, pulse warmer or colder, and fail when time runs out." },
+  { "id": "R-DIALOGUE", "owner": "quests", "text": "Story dialogue types out beside the Emperor's portrait, advances on F or click, and can be skipped." },
+  { "id": "R-QUESTLOG", "owner": "quests", "text": "The quest log shows the story so far and the current objective, and sets a waypoint that a beacon marks in the world." }
+]

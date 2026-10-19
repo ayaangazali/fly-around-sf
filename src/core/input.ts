@@ -1,6 +1,6 @@
 import type { FlightInput } from '../player/flight';
 
-export type Action = 'interact' | 'photo' | 'map' | 'journal' | 'dex' | 'view' | 'menu' | 'chat' | 'ping' | 'help' | 'talk';
+export type Action = 'interact' | 'photo' | 'map' | 'journal' | 'dex' | 'view' | 'menu' | 'chat' | 'ping' | 'help' | 'talk' | 'quests';
 
 export const KEYMAP: Record<string, Action> = {
   KeyF: 'interact',
@@ -14,6 +14,7 @@ export const KEYMAP: Record<string, Action> = {
   KeyG: 'ping',
   KeyH: 'help',
   KeyT: 'talk',
+  KeyL: 'quests',
 };
 
 const GAMEPAD_ACTIONS: [number, Action][] = [

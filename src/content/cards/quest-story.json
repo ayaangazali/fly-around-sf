@@ -1,0 +1,223 @@
+[
+  {
+    "id": "quest-emperor-norton",
+    "name": "Norton I, Emperor of the United States",
+    "category": "history",
+    "rarity": "legendary",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79412, "lon": -122.40389 },
+    "year": 1859,
+    "blurb": "The businessman who lost everything on rice and proclaimed himself Emperor. San Francisco played along for twenty years.",
+    "lore": "Joshua Norton arrived in San Francisco in 1849, prospered, then lost his fortune trying to corner the rice market in 1852. On September 17, 1859, he hand-delivered a letter to the Daily Evening Bulletin declaring himself Emperor of these United States. He wore a blue uniform with gold epaulettes from the Presidio's officers and a beaver hat with a feather and rosette, inspected sidewalks and cable cars, and issued decrees, including several calling for a bridge or tunnel between Oakland and San Francisco.",
+    "facts": [
+      "He abolished the United States Congress by decree on October 12, 1859. Congress did not notice.",
+      "The 1870 census listed his occupation as Emperor.",
+      "His scrip, in notes from fifty cents to ten dollars, was honored by some restaurants. Surviving notes sell for more than $10,000.",
+      "About 10,000 people came to view his body after he died on January 8, 1880."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Emperor_Norton"]
+  },
+  {
+    "id": "quest-presidio-1776",
+    "name": "El Presidio, 1776",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79806, "lon": -122.46583 },
+    "year": 1776,
+    "blurb": "A Spanish fort at the Golden Gate that stayed a military post for 218 years, then became a park.",
+    "lore": "New Spain established El Presidio Real de San Francisco on September 17, 1776, to gain a foothold on San Francisco Bay. It passed to Mexico in 1820 and to the United States in 1848. After a base closure vote, the Army handed it to the National Park Service on October 1, 1994, ending 218 years of military use.",
+    "facts": [
+      "Its founding date, September 17, is the same day Norton proclaimed himself Emperor 83 years later.",
+      "The Presidio Trust made the park financially self-sufficient in 2005, eight years ahead of the deadline Congress set.",
+      "Fort Point, below the Golden Gate Bridge, was the only fort of its kind on the West Coast."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Presidio_of_San_Francisco", "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site"]
+  },
+  {
+    "id": "quest-niantic",
+    "name": "The Ship Under Clay Street",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79491, "lon": -122.40183 },
+    "year": 1849,
+    "blurb": "A Gold Rush whaler run aground, turned into a hotel, then buried under the growing city.",
+    "lore": "The whaleship Niantic brought fortune seekers to San Francisco in 1849. Most of her crew deserted for the gold fields within days, so she was floated into the shallows of Yerba Buena Cove and used as a storeship and hotel. Landfill swallowed her. Artifacts excavated in 1978 and her log from the last voyage are on display at the San Francisco Maritime Museum.",
+    "facts": [
+      "The ship's site, beside the Transamerica Pyramid, is a California Historical Landmark.",
+      "She was floated in on a high tide with empty whale oil barrels lashed to her hull for buoyancy.",
+      "The Financial District stands on what was once the shoreline of Yerba Buena Cove."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Niantic_(whaling_vessel)", "https://en.wikipedia.org/wiki/Transamerica_Pyramid"]
+  },
+  {
+    "id": "quest-portsmouth-square",
+    "name": "Gold! Portsmouth Square, 1848",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79483, "lon": -122.40543 },
+    "year": 1848,
+    "blurb": "The city's first park, where the American flag went up and the Gold Rush was announced.",
+    "lore": "Originally the Plaza de Yerba Buena, Portsmouth Square was renamed for the USS Portsmouth, whose men raised the American flag here on July 9, 1846. On May 11, 1848, Sam Brannan showed a crowd his gold, and the rush began. Today it is the heart of the oldest Chinatown in North America.",
+    "facts": [
+      "It predates both Washington Square (1847) and Union Square (1850).",
+      "The Robert Louis Stevenson Memorial, topped with a bronze galleon, has stood here since 1897.",
+      "A marker here notes the eastern terminus of the Clay Street Hill Railroad, the first cable car line."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Portsmouth_Square", "https://en.wikipedia.org/wiki/Chinatown,_San_Francisco"]
+  },
+  {
+    "id": "quest-telegraph-semaphore",
+    "name": "The Telegraph Hill Semaphore",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Telegraph Hill",
+    "at": { "lat": 37.80238, "lon": -122.40583 },
+    "year": 1849,
+    "blurb": "Before the telegraph, a windmill-like signal on a hilltop told the city which ships were arriving.",
+    "lore": "In September 1849 a semaphore went up on the summit to signal the kinds of ships entering the Golden Gate. On October 18, 1850, the ship Oregon signaled the news of California's statehood. In September 1853 the first telegraph in California replaced it, and the hill took the name Telegraph Hill.",
+    "facts": [
+      "Townspeople knew the signals so well that a heckler once answered an actor's raised arms with a shout of 'Sidewheel steamer!'",
+      "Coit Tower now stands in Pioneer Park on the summit, built with Lillie Hitchcock Coit's bequest.",
+      "The tower's resemblance to a fire hose nozzle is a coincidence."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Telegraph_Hill,_San_Francisco", "https://en.wikipedia.org/wiki/Coit_Tower", "https://en.wikipedia.org/wiki/Pioneer_Park_(San_Francisco)"]
+  },
+  {
+    "id": "quest-occupation-of-alcatraz",
+    "name": "Indians of All Tribes, 1969",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Alcatraz",
+    "at": { "lat": 37.82672, "lon": -122.42276 },
+    "year": 1969,
+    "blurb": "For 19 months, an abandoned prison island became a stand for Indigenous rights.",
+    "lore": "From November 20, 1969, to June 11, 1971, 89 American Indians and their supporters occupied Alcatraz Island, which the government had declared surplus after the penitentiary closed in 1963. Calling themselves Indians of All Tribes, and led by Richard Oakes, LaNada Means and others, with John Trudell as spokesman, they claimed the island under the 1868 Treaty of Fort Laramie.",
+    "facts": [
+      "The occupation inspired the annual Unthanksgiving Day dawn ceremony on the island.",
+      "The first lighthouse on the US West Coast was lit on Alcatraz in 1854; today's tower replaced it in 1909.",
+      "The federal penitentiary operated from 1934 until March 21, 1963."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Occupation_of_Alcatraz", "https://en.wikipedia.org/wiki/Alcatraz_Island", "https://en.wikipedia.org/wiki/Alcatraz_Island_Light"]
+  },
+  {
+    "id": "quest-clay-street-railroad",
+    "name": "Clay Street Hill Railroad, 1873",
+    "category": "transit",
+    "rarity": "rare",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79476, "lon": -122.41185 },
+    "year": 1873,
+    "blurb": "The first successful cable-hauled street railway, the prototype for every cable car since.",
+    "lore": "Developed under Andrew Smith Hallidie and engineered by William Eppelsheimer, the Clay Street Hill Railroad began service on September 1, 1873, climbing Nob Hill with an underground moving cable instead of horses. Its grip-and-cable system became the model for cable railways around the world.",
+    "facts": [
+      "Grip car No. 8 survives at the Cable Car Museum, in the working powerhouse at Washington and Mason.",
+      "One story says the first gripman refused to take the car down the hill from Jones Street, so Hallidie did it himself.",
+      "San Francisco's cable cars are one of only two street railways named a National Historic Landmark."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Clay_Street_Hill_Railroad", "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system", "https://en.wikipedia.org/wiki/Andrew_Smith_Hallidie"]
+  },
+  {
+    "id": "quest-1906-earthquake",
+    "name": "April 18, 1906",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Market Street",
+    "at": { "lat": 37.78794, "lon": -122.4033 },
+    "year": 1906,
+    "blurb": "The earthquake and three days of fire that destroyed most of the city, and the rebuilding that followed.",
+    "lore": "At 5:12 in the morning on April 18, 1906, a great earthquake struck the coast of Northern California. Fires burned for three days. More than 3,000 people died and over 80 percent of the city was destroyed. Lotta's Fountain on Market Street became the meeting place for survivors, who gathered there at 5:12 every anniversary.",
+    "facts": [
+      "The city officially recognizes a death toll of more than 3,000, adopted by the Board of Supervisors in 2005.",
+      "The Palace Hotel reopened on its original site on December 19, 1909.",
+      "City Hall was rebuilt two blocks from the old one and reopened in 1915, its dome 42 feet taller than the U.S. Capitol's."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/1906_San_Francisco_earthquake", "https://en.wikipedia.org/wiki/Lotta%27s_Fountain", "https://en.wikipedia.org/wiki/Palace_Hotel,_San_Francisco", "https://en.wikipedia.org/wiki/San_Francisco_City_Hall"]
+  },
+  {
+    "id": "quest-golden-hydrant",
+    "name": "The Little Giant",
+    "category": "hidden",
+    "rarity": "rare",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.7583, "lon": -122.428 },
+    "year": 1906,
+    "blurb": "The fire hydrant that kept running in 1906 and saved the Mission. It gets a new coat of gold every April 18.",
+    "lore": "When the 1906 earthquake broke the cisterns and water mains, this hydrant on the corner of Dolores Park was one of the few that still worked, and the Fire Department used it to stop the fire spreading through the Mission District. In the 1960s historian Doc Bulloch began the tradition of painting it every April 18.",
+    "facts": [
+      "The San Francisco History Association has painted it gold every year except 2012, when silver paint was bought by mistake.",
+      "It stands at the corner of 20th and Church streets.",
+      "Nearby Mission Dolores' adobe chapel, finished in 1791, is the oldest intact building in the city."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Golden_Fire_Hydrant", "https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs"]
+  },
+  {
+    "id": "quest-summer-of-love",
+    "name": "The Human Be-In, 1967",
+    "category": "culture",
+    "rarity": "rare",
+    "neighborhood": "Golden Gate Park",
+    "at": { "lat": 37.76818, "lon": -122.49276 },
+    "year": 1967,
+    "blurb": "Twenty or thirty thousand people on the Polo Field, and the prelude to the Summer of Love.",
+    "lore": "On January 14, 1967, the Human Be-In filled the Golden Gate Park Polo Field. Timothy Leary made his first San Francisco appearance and set the tone with 'Turn on, tune in, drop out', and Allen Ginsberg chanted mantras. That summer, as many as 100,000 young people converged on the Haight-Ashbury and Golden Gate Park.",
+    "facts": [
+      "Reports never agreed whether 20,000 or 30,000 people came.",
+      "On October 6, 1967, those still in the Haight staged a mock funeral, The Death of the Hippie, in Buena Vista Park.",
+      "Local bands including the Grateful Dead and Jefferson Airplane rose to national fame that year."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Human_Be-In", "https://en.wikipedia.org/wiki/Summer_of_Love", "https://en.wikipedia.org/wiki/Haight-Ashbury"]
+  },
+  {
+    "id": "quest-sutro-baths",
+    "name": "Sutro Baths",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Lands End",
+    "at": { "lat": 37.78025, "lon": -122.51363 },
+    "year": 1896,
+    "blurb": "Once the largest indoor swimming establishment in the world. Now a ruin the Pacific still swims in.",
+    "lore": "Adolph Sutro, who made his fortune at the Comstock Lode and served as mayor from 1895 to 1897, built a privately owned public saltwater bathing palace below his estate at Lands End. The Sutro Baths opened on March 14, 1896, and burned to their concrete foundations in June 1966.",
+    "facts": [
+      "Sutro also rebuilt the Cliff House in 1896 as a seven-story Victorian chateau nicknamed the Gingerbread Palace.",
+      "The ruins are part of the Golden Gate National Recreation Area and the Sutro Historic District.",
+      "Seal Rocks, just offshore, are named for the sea lions that haul out there."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Sutro_Baths", "https://en.wikipedia.org/wiki/Adolph_Sutro", "https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco"]
+  },
+  {
+    "id": "quest-norton-bridge",
+    "name": "The Emperor's Bridge",
+    "category": "history",
+    "rarity": "legendary",
+    "neighborhood": "Embarcadero",
+    "at": { "lat": 37.79939, "lon": -122.37658 },
+    "year": 1936,
+    "blurb": "Norton decreed a bridge from Oakland to San Francisco. The city built it 56 years after he died.",
+    "lore": "Among Emperor Norton's proclamations were several calling for a suspension bridge or tunnel connecting Oakland and San Francisco. The San Francisco-Oakland Bay Bridge opened on November 12, 1936, six months before the Golden Gate Bridge, and the Transbay Tube followed decades later. Admirers have campaigned since the 1930s to give the bridge his name.",
+    "facts": [
+      "In 1939 E Clampus Vitus dedicated a plaque to Norton's bridge idea. It has hung at the Cliff House, the Transbay Terminal and the Salesforce Transit Center.",
+      "In 2004 the Board of Supervisors voted to name the new eastern span after him, but Oakland never agreed.",
+      "In 2025 the Emperor Norton Trust proposed naming the bridge's Yerba Buena Island tunnel the Emperor Norton Tunnel."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Emperor_Norton", "https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge"]
+  },
+  {
+    "id": "quest-norton-scrip",
+    "name": "Imperial Scrip",
+    "category": "history",
+    "rarity": "rare",
+    "neighborhood": "Financial District",
+    "year": 1870,
+    "blurb": "The Emperor's own money. Some restaurants took it. Collectors pay a fortune for it now.",
+    "lore": "Emperor Norton issued scrip, promissory notes in his own name, in denominations between fifty cents and ten dollars, and some San Francisco restaurants accepted them. He also sold Imperial bonds to tourists at a fictitious 7 percent interest. A handful of those bonds were found in his room after he died.",
+    "facts": [
+      "Surviving notes routinely sell for more than $10,000 at auction.",
+      "From 1953 to 1962 the San Francisco Chronicle ran the Emperor Norton Treasure Hunt, burying a medallion worth $1,000 and printing clues until someone found it.",
+      "Norton received free ferry and train passage from sympathetic friends."
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Emperor_Norton"]
+  }
+]
