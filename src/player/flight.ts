@@ -27,6 +27,7 @@ export interface FlightEnv {
   collide(p: Vec3, r: number): boolean;
   wind?: { x: number; z: number };
   batteryDrain?: number;
+  turnRate?: number;
 }
 
 export interface FlightResult {
@@ -60,7 +61,7 @@ export function forwardVector(yaw: number): { x: number; z: number } {
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
 export function stepFlight(s: FlightState, input: FlightInput, dt: number, env: FlightEnv): FlightResult {
-  s.yaw -= clamp(input.yaw, -1, 1) * FLIGHT.yawRate * dt;
+  s.yaw -= clamp(input.yaw, -1, 1) * FLIGHT.yawRate * (env.turnRate ?? 1) * dt;
   const f = forwardVector(s.yaw);
   const rx = -f.z;
   const rz = f.x;

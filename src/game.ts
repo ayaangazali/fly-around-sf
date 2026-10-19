@@ -157,7 +157,7 @@ export class Game {
     onProgress(0.6, 'Reading 172,000 buildings');
     const city = new CityData(cityBuf, (x, z) => Math.max(0, terrain.heightAt(x, z)));
     this.world = new World(terrain, city);
-    this.env = { groundAt: (x, z) => this.world.surfaceAt(x, z), collide: (p, r) => this.world.collide(p, r) };
+    this.env = { groundAt: (x, z) => (this.world.isWater(x, z) ? -1 : this.world.surfaceAt(x, z)), collide: (p, r) => this.world.collide(p, r) };
 
     const landmarks = Object.values(import.meta.glob<Landmark>('./world/landmarks/*.ts', { eager: true, import: 'landmark' }));
     city.applyExclusions(landmarks.flatMap((l) => l.exclusions ?? []));

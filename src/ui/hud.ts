@@ -12,6 +12,8 @@ export class Hud {
   private prompt: HTMLElement;
   private toasts: HTMLElement;
   private last = '';
+  readonly widgets: { update(): void }[] = [];
+  readonly muted = new Set<string>();
 
   constructor(private game: Game) {
     this.root = el('div', 'hud');
@@ -43,6 +45,7 @@ export class Hud {
   }
 
   toast(text: string, kind: string): void {
+    if (this.muted.delete(text)) return;
     const t = el('div', `toast toast-${kind}`, text);
     this.toasts.append(t);
     while (this.toasts.children.length > 4) this.toasts.firstElementChild?.remove();
@@ -51,6 +54,7 @@ export class Hud {
   }
 
   update(): void {
+    for (const w of this.widgets) w.update();
     const g = this.game;
     const f = g.flight;
     const metric = g.save.data.settings.units !== 'imperial';

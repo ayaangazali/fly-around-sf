@@ -1,0 +1,64 @@
+.loading.title { display: block; overflow-x: hidden; overflow-y: auto; background: linear-gradient(180deg, #0b1626 0%, #1d2c48 34%, #6b4a5c 58%, #e9875a 76%, #ffc78a 88%); }
+.title-sky { position: absolute; inset: 0; pointer-events: none; }
+.title-sun { position: absolute; left: 62%; bottom: 30%; width: 220px; height: 220px; margin-left: -110px; border-radius: 50%; background: radial-gradient(circle, #fff3d6 0%, #ffd08a 35%, rgba(255, 160, 90, 0.4) 60%, transparent 72%); animation: sun-breathe 9s ease-in-out infinite; }
+@keyframes sun-breathe { 50% { transform: scale(1.06); opacity: 0.9; } }
+.title-svg { position: absolute; left: 0; bottom: 0; width: 100%; height: 72%; }
+.t-hills { fill: #2a2f45; }
+.t-sutro path { stroke: #2a2f45; stroke-width: 3; fill: none; }
+.t-city { fill: #131b2b; }
+.t-windows rect { fill: #ffd28a; opacity: 0; animation: twinkle 6s ease-in-out infinite; }
+@keyframes twinkle { 30%, 70% { opacity: 0.85; } }
+.t-bridge path { stroke: #d9502c; stroke-linecap: square; }
+.t-water { fill: #0d1828; }
+.t-shimmer rect { fill: #ffb37a; opacity: 0; animation: shimmer 4s ease-in-out infinite; }
+@keyframes shimmer { 50% { opacity: 0.45; transform: translateX(14px); } }
+.fog { position: absolute; left: -30%; width: 160%; height: 26%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(240, 217, 166, 0.34), transparent 70%); filter: blur(10px); }
+.fog.f1 { bottom: 24%; animation: fog-drift 38s linear infinite; }
+.fog.f2 { bottom: 16%; opacity: 0.7; animation: fog-drift 54s linear infinite reverse; }
+.fog.f3 { bottom: 34%; height: 18%; opacity: 0.5; animation: fog-drift 70s linear infinite; }
+@keyframes fog-drift { 0% { transform: translateX(-12%); } 50% { transform: translateX(12%); } 100% { transform: translateX(-12%); } }
+.title-drone { position: absolute; z-index: 2; left: 0; top: 60%; width: 64px; color: #f2f2ee; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)); animation: drone-path 22s ease-in-out infinite; }
+.title-drone svg { width: 100%; display: block; animation: drone-bob 1.8s ease-in-out infinite; }
+.title-drone .blink { animation: blink 1.2s steps(2) infinite; }
+@keyframes drone-path { 0% { transform: translate(-10vw, 4vh) rotate(4deg); } 45% { transform: translate(60vw, -2vh) rotate(3deg); } 50% { transform: translate(64vw, -3vh) rotate(-3deg) scaleX(-1); } 95% { transform: translate(-6vw, 5vh) rotate(-4deg) scaleX(-1); } 100% { transform: translate(-10vw, 4vh) rotate(4deg); } }
+@keyframes drone-bob { 50% { transform: translateY(5px); } }
+@keyframes blink { 50% { opacity: 0; } }
+
+.title-card { position: relative; z-index: 1; width: min(460px, calc(100vw - 32px)); margin: max(9vh, calc(env(safe-area-inset-top) + 32px)) auto 0; padding: 26px 26px 22px; border-radius: 26px; text-align: center; background: rgba(12, 17, 25, 0.62); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); animation: title-in 0.9s var(--ease-out, ease) both; }
+@keyframes title-in { from { opacity: 0; transform: translateY(16px); } }
+.title-card h1 { font-size: clamp(38px, 9vw, 58px); letter-spacing: -0.045em; line-height: 0.95; margin: 0 0 10px; font-weight: 850; }
+.title-card h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 30px rgba(255, 106, 61, 0.5); }
+.title-tag { color: var(--ink-dim); margin: 0 0 20px; font-size: 15px; }
+.title-progress { transition: opacity 0.4s, max-height 0.4s; max-height: 60px; overflow: hidden; }
+.title-progress.done { opacity: 0; max-height: 0; }
+.title-progress .loading-label { margin-top: 10px; font-size: 12px; color: var(--ink-dim); font-family: var(--mono); }
+.title-menu { display: grid; gap: 14px; animation: rise-in 0.5s var(--ease-out, ease) both; }
+.title-menu[hidden] { display: none; }
+.title-buttons { display: grid; gap: 8px; }
+.title-btn { display: grid; gap: 2px; padding: 14px 18px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); text-align: left; transition: transform 0.15s, background 0.15s; }
+.title-btn b { font-size: 17px; }
+.title-btn small { font-size: 12px; color: var(--ink-dim); }
+.title-btn:hover { background: rgba(255, 255, 255, 0.11); }
+.title-btn:active { transform: scale(0.98); }
+.title-btn.primary { background: linear-gradient(135deg, #ff6a3d, #ff8a4c); border-color: transparent; box-shadow: 0 12px 30px rgba(255, 106, 61, 0.38); }
+.title-btn.primary small { color: rgba(255, 255, 255, 0.85); }
+.title-btn.primary:hover { background: linear-gradient(135deg, #ff7a52, #ff9a62); }
+.title-setup { display: grid; gap: 12px; text-align: left; }
+.title-setup[hidden] { display: none; }
+.title-field { display: grid; gap: 6px; }
+.title-field > span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
+.title-name { width: 100%; min-height: 46px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.07); color: var(--ink); font: 600 17px var(--font); }
+.title-edit { justify-self: center; min-height: 40px; border: 0; background: none; color: var(--ink-dim); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.title-install { justify-self: center; min-height: 40px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line); background: transparent; font-size: 13px; }
+.title-credit { position: absolute; left: 0; right: 0; bottom: max(10px, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: 11px; color: rgba(246, 243, 236, 0.5); z-index: 1; }
+@media (max-height: 640px) { .title-card { margin-top: 12px; padding: 18px; } .title-tag { margin-bottom: 12px; } }
+@media (max-height: 500px) {
+  .title-card { width: min(680px, calc(100vw - 32px)); margin-top: max(10px, env(safe-area-inset-top)); margin-bottom: 10px; padding: 14px 20px; }
+  .title-card h1 { font-size: 34px; margin-bottom: 4px; }
+  .title-tag { margin-bottom: 10px; font-size: 13px; }
+  .title-setup:not([hidden]) { grid-template-columns: 1fr 1.3fr; align-items: start; }
+  .title-menu { gap: 10px; }
+  .title-btn { padding: 10px 16px; }
+  .title-credit { display: none; }
+  .title-drone { z-index: 0; top: 40%; }
+}

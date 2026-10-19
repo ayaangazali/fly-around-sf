@@ -17,6 +17,7 @@ export class PanelHost {
   readonly sheet: HTMLElement;
   openId: string | null = null;
   private cleanup: (() => void) | void = undefined;
+  private opener: HTMLElement | null = null;
 
   constructor(private game: Game) {
     this.bar = el('nav', 'menubar');
@@ -25,11 +26,12 @@ export class PanelHost {
     this.sheet.setAttribute('role', 'dialog');
     this.sheet.setAttribute('aria-modal', 'true');
     this.sheet.hidden = true;
+    this.sheet.setAttribute('aria-labelledby', 'sheet-title');
     this.sheet.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
         this.close();
-      }
+      } else if (e.key === 'Tab') trapTab(this.sheet, e);
     });
     game.ui.append(this.bar, this.sheet);
   }
@@ -60,12 +62,17 @@ export class PanelHost {
   open(id: string): boolean {
     const p = this.panels.get(id);
     if (!p) return false;
+    const from = document.activeElement as HTMLElement | null;
+    const opener = this.openId ? this.opener : from && from !== document.body ? from : null;
+    this.opener = null;
     this.close();
+    this.opener = opener;
     this.openId = id;
     this.sheet.hidden = false;
     this.sheet.dataset.panel = id;
     const head = el('header', 'sheet-head');
     const h = el('h2');
+    h.id = 'sheet-title';
     h.textContent = `${p.icon}  ${p.title}`;
     const x = el('button', 'sheet-close');
     x.textContent = '✕';
@@ -73,6 +80,8 @@ export class PanelHost {
     x.addEventListener('click', () => this.close());
     head.append(h, x);
     const body = el('div', 'sheet-body');
+    body.tabIndex = 0;
+    body.setAttribute('aria-labelledby', 'sheet-title');
     this.sheet.replaceChildren(head, body);
     this.cleanup = p.render(body, this.game);
     this.game.input.held.clear();
@@ -90,11 +99,30 @@ export class PanelHost {
     this.sheet.hidden = true;
     this.sheet.replaceChildren();
     this.game.bus.emit('panel:close', { id });
+    const back = this.opener;
+    this.opener = null;
+    if (back?.isConnected) back.focus();
   }
 
   toggle(id: string): void {
     if (this.openId === id) this.close();
     else this.open(id);
+  }
+}
+
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+
+function trapTab(root: HTMLElement, e: KeyboardEvent): void {
+  const items = [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.offsetParent !== null || n === document.activeElement);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
   }
 }
 

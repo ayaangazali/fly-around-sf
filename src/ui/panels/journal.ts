@@ -1,6 +1,7 @@
 import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { ActivityDef } from '../../activities/types';
+import { setWaypoint } from '../waypoint';
 
 export const panel: Panel = {
   id: 'journal',
@@ -21,7 +22,7 @@ export const panel: Panel = {
     };
     const all = game.activities
       .list()
-      .filter((d) => !d.hidden || game.save.isDone(d.id))
+      .filter((d) => d.kind !== 'achievement' && (!d.hidden || game.save.isDone(d.id)))
       .sort((a, b) => Number(game.save.isDone(a.id)) - Number(game.save.isDone(b.id)) || dist(a) - dist(b));
     const draw = () => {
       const q = filter.value.trim().toLowerCase();
@@ -43,6 +44,15 @@ export const panel: Panel = {
           el('span', 'journal-meta', `${kind.label} · ${d.neighborhood} · ${km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(1)} km`}${done ? ' · ✓' : locked ? ' · 🔒' : ''}`),
           el('p', '', d.blurb),
         );
+        if (!done) {
+          const go = el('button', 'journal-go', 'Go');
+          go.setAttribute('aria-label', `Go to ${d.title}`);
+          go.addEventListener('click', () => {
+            setWaypoint(game, game.activities.position(d), d.title);
+            game.panels.close();
+          });
+          li.append(go);
+        }
         list.append(li);
       }
     };
