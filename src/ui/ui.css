@@ -34,7 +34,7 @@
 .menu-tile b { display: flex; align-items: center; gap: 6px; }
 .menu-tile b kbd { margin-left: auto; font-weight: 500; }
 .menu-tile small { font-weight: 400; font-size: 12px; color: var(--ink-dim); }
-.menu-tile.primary small { color: rgba(255, 255, 255, 0.85); }
+.menu-tile.primary small { color: rgba(29, 26, 20, 0.85); }
 .menu-tile:active { transform: scale(0.98); }
 
 .journal-item { grid-template-columns: 32px 1fr auto; }

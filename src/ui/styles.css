@@ -83,7 +83,7 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
 .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
 .menu-tile { text-align: left; padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); font-weight: 600; }
 .menu-tile:hover { background: rgba(255, 255, 255, 0.09); }
-.menu-tile.primary { background: var(--accent); border-color: transparent; color: #fff; }
+.menu-tile.primary { background: var(--accent); border-color: transparent; color: #1d1a14; }
 .keys { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 18px 0 0; font-size: 14px; }
 .keys dt { font-family: var(--mono); color: var(--accent-2); }
 .keys dd { margin: 0; color: var(--ink-dim); }
