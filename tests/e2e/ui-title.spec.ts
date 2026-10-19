@@ -7,7 +7,7 @@ const onStep = (page: Page, id: string) => expect(page.locator(`.onboard[data-st
 const hold = async (page: Page, keys: string[], seconds: number) => {
   for (const k of keys) await page.keyboard.down(k);
   await step(page, seconds);
-  await page.waitForTimeout(80);
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
   for (const k of keys) await page.keyboard.up(k);
 };
 
