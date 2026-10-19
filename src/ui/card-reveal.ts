@@ -12,10 +12,12 @@ export function installCardReveal(game: Game): void {
     const card = id ? allCards().find((c) => c.id === id) : undefined;
     if (!card) {
       showing = false;
+      document.documentElement.classList.remove('revealing');
       if (queue.length) next();
       return;
     }
     showing = true;
+    document.documentElement.classList.add('revealing');
     const root = el('div', `reveal rarity-${card.rarity}`);
     root.setAttribute('role', 'status');
     root.dataset.card = card.id;

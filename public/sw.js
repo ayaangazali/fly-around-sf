@@ -1,4 +1,4 @@
-const VERSION = 'fly-sf-v1';
+const VERSION = `fly-sf-${new URL(self.location.href).searchParams.get('v') || 'dev'}`;
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icons/icon-192.png', './icons/icon-512.png'];
 const DATA = ['./data/terrain.bin', './data/city.bin'];
 

@@ -38,7 +38,7 @@ export function installButton(cls = 'btn'): HTMLButtonElement {
 export function registerServiceWorker(base: string): void {
   if (!('serviceWorker' in navigator)) return;
   navigator.serviceWorker
-    .register(`${base}sw.js`)
+    .register(`${base}sw.js?v=${encodeURIComponent(new URL(import.meta.url).pathname.split('/').pop() ?? 'dev')}`)
     .then(() => navigator.serviceWorker.ready)
     .then((reg) => {
       const urls = performance

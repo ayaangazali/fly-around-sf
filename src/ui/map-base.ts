@@ -10,18 +10,18 @@ export interface BaseMap {
 }
 
 const BUCKETS: [number, string][] = [
-  [8, '#3a4652'],
-  [16, '#4b5865'],
-  [30, '#5f6d7a'],
-  [60, '#7c8995'],
-  [120, '#a5afb8'],
+  [8, '#69737e'],
+  [16, '#7a8590'],
+  [30, '#8d98a3'],
+  [60, '#a7b1bb'],
+  [120, '#c9d0d7'],
   [Infinity, '#ffd9b0'],
 ];
 
-const LAND_LO = [36, 46, 52];
-const LAND_HI = [58, 70, 60];
-const WATER_SHALLOW = [22, 52, 74];
-const WATER_DEEP = [9, 24, 40];
+const LAND_LO = [46, 56, 52];
+const LAND_HI = [96, 104, 80];
+const WATER_SHALLOW = [34, 84, 116];
+const WATER_DEEP = [12, 36, 62];
 
 let cache: BaseMap | null = null;
 

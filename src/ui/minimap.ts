@@ -95,7 +95,7 @@ export function installMinimap(game: Game): { update(): void } {
       ctx.closePath();
       ctx.stroke();
       ctx.fill();
-      const nr = SIZE / 2 - 11;
+      const nr = wrap.clientWidth / 2 - 11;
       north.style.transform = `translate(${-Math.sin(h) * nr}px, ${-Math.cos(h) * nr}px)`;
     },
   };

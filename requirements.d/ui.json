@@ -1,0 +1,7 @@
+[
+  { "id": "R-TITLE", "owner": "ui", "text": "The title screen shows load progress, then Start, Continue, New pilot or Join friends, and keeps the pilot name and drone color." },
+  { "id": "R-ACHIEVEMENTS", "owner": "ui", "text": "At least 30 stat-driven achievements unlock exactly once, announce themselves and show progress in the pilot log." },
+  { "id": "R-WAYPOINT", "owner": "ui", "text": "A waypoint shows an on-screen marker with distance, an edge arrow when off-screen, a compass pip, and clears on arrival." },
+  { "id": "R-CARD-REVEAL", "owner": "ui", "text": "Unlocking a card plays a reveal that can open the card in the collection book." },
+  { "id": "R-HUD-FX", "owner": "ui", "text": "Crash and splash flashes, speed lines and the FPS counter respond to flight and settings." }
+]

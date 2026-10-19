@@ -17,7 +17,7 @@
 .fog.f2 { bottom: 16%; opacity: 0.7; animation: fog-drift 54s linear infinite reverse; }
 .fog.f3 { bottom: 34%; height: 18%; opacity: 0.5; animation: fog-drift 70s linear infinite; }
 @keyframes fog-drift { 0% { transform: translateX(-12%); } 50% { transform: translateX(12%); } 100% { transform: translateX(-12%); } }
-.title-drone { position: absolute; left: 0; top: 30%; width: 64px; color: #f2f2ee; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)); animation: drone-path 22s ease-in-out infinite; }
+.title-drone { position: absolute; z-index: 2; left: 0; top: 60%; width: 64px; color: #f2f2ee; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4)); animation: drone-path 22s ease-in-out infinite; }
 .title-drone svg { width: 100%; display: block; animation: drone-bob 1.8s ease-in-out infinite; }
 .title-drone .blink { animation: blink 1.2s steps(2) infinite; }
 @keyframes drone-path { 0% { transform: translate(-10vw, 4vh) rotate(4deg); } 45% { transform: translate(60vw, -2vh) rotate(3deg); } 50% { transform: translate(64vw, -3vh) rotate(-3deg) scaleX(-1); } 95% { transform: translate(-6vw, 5vh) rotate(-4deg) scaleX(-1); } 100% { transform: translate(-10vw, 4vh) rotate(4deg); } }
