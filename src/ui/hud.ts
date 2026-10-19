@@ -88,7 +88,7 @@ export class Hud {
     const many = g.activities.nearbyList.length;
     this.next.hidden = this.prompt.hidden || many < 2;
     if (near && !a) {
-      const more = many > 1 ? `<span class="hud-prompt-more">${g.activities.nearbyList.indexOf(near) + 1} of ${many} here · <kbd>C</kbd> next</span>` : '';
+      const more = many > 1 ? `<span class="hud-prompt-more">${g.activities.nearbyList.indexOf(near) + 1} of ${many} here<span class="hud-prompt-key"> · <kbd>C</kbd> next</span></span>` : '';
       this.prompt.innerHTML = `<kbd>F</kbd> ${escapeHtml(near.title)}<small>${escapeHtml(near.blurb)}</small>${more}`;
     }
   }

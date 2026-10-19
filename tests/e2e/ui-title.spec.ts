@@ -123,6 +123,36 @@ test.describe('onboarding', () => {
     await expect(page.locator('.onboard')).toHaveCount(0);
   });
 
+  test('[R-ONBOARD] at spawn the tutorial, the activity prompt and the drone never cover each other @touch', async ({ page }) => {
+    await boot(page, 'title');
+    await page.locator('.title-btn[data-action="start"]').click();
+    await onStep(page, 'forward');
+    const layout = () =>
+      page.evaluate(async () => {
+        window.__fly.step(0.1);
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+        const g = window.__fly.game;
+        const box = (s: string) => {
+          const e = document.querySelector(s);
+          const r = e?.getBoundingClientRect();
+          return r && r.width > 0 ? { l: r.left, t: r.top, r: r.right, b: r.bottom } : null;
+        };
+        const Vec = g.camera.position.constructor as new (x: number, y: number, z: number) => { project(c: unknown): { x: number; y: number } };
+        const v = new Vec(g.flight.pos.x, g.flight.pos.y, g.flight.pos.z).project(g.camera);
+        return { card: box('.onboard'), prompt: box('.hud-prompt'), drone: { x: ((v.x + 1) / 2) * innerWidth, y: ((1 - v.y) / 2) * innerHeight }, W: innerWidth };
+      });
+    type Box = { l: number; t: number; r: number; b: number } | null;
+    const meet = (a: Box, b: Box) => !!a && !!b && a.l < b.r && b.l < a.r && a.t < b.b && b.t < a.b;
+    const first = await layout();
+    expect(first.card).not.toBeNull();
+    expect(meet(first.card, first.prompt)).toBe(false);
+    await page.getByRole('button', { name: 'Skip tutorial' }).click();
+    const { prompt, drone, W } = await layout();
+    expect(prompt).not.toBeNull();
+    expect(prompt!.r - prompt!.l).toBeGreaterThanOrEqual(Math.min(300, W - 90));
+    expect(meet(prompt, { l: drone.x - 20, t: drone.y - 20, r: drone.x + 20, b: drone.y + 20 })).toBe(false);
+  });
+
   test('[R-ONBOARD] the tutorial can be skipped and replayed from settings', async ({ page }) => {
     await boot(page, 'title');
     await page.locator('.title-btn[data-action="start"]').click();
