@@ -1,0 +1,60 @@
+.qd { position: absolute; left: 50%; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 84px); transform: translateX(-50%); width: min(660px, calc(100vw - 32px)); display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: start; padding: 16px 18px 12px 16px; border-radius: 20px; background: linear-gradient(180deg, rgba(28, 30, 38, 0.92), rgba(14, 17, 23, 0.94)); border: 1px solid rgba(240, 195, 65, 0.35); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); pointer-events: auto; cursor: pointer; z-index: 3; }
+.qd[hidden] { display: none; }
+.qd.enter { animation: qd-in 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+@keyframes qd-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.qd-portrait { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45); }
+.qd-portrait svg { width: 100%; height: 100%; display: block; }
+.qd-portrait span { font-size: 44px; }
+.qd-body { min-width: 0; display: grid; gap: 6px; }
+.qd-who { font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #f0c341; }
+.qd-text { margin: 0; font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif; font-size: 18px; line-height: 1.45; color: var(--ink); min-height: 2.9em; overflow-wrap: anywhere; }
+.qd.typing .qd-typed::after { content: '▍'; color: #f0c341; margin-left: 1px; animation: qd-caret 0.8s steps(1) infinite; }
+@keyframes qd-caret { 50% { opacity: 0; } }
+.qd-foot { display: flex; align-items: center; gap: 8px; justify-content: end; }
+.qd-count { margin-right: auto; font-family: var(--mono); font-size: 12px; color: var(--ink-dim); }
+.qd-next, .qd-skip, .qd-copy { min-height: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); font-size: 14px; font-weight: 650; }
+.qd-next { background: #f0c341; color: #221a05; border-color: transparent; }
+.qd-next kbd { background: rgba(0, 0, 0, 0.12); border-color: rgba(0, 0, 0, 0.15); margin-left: 4px; }
+.qd-next:hover { filter: brightness(1.06); }
+.qd-skip:hover, .qd-copy:hover { background: rgba(255, 255, 255, 0.12); }
+.qd-share { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; cursor: auto; }
+.qd-share[hidden] { display: none; }
+.qd-share-text { margin: 0; padding: 10px 12px; border-radius: 12px; background: rgba(0, 0, 0, 0.35); border: 1px dashed rgba(240, 195, 65, 0.4); font-family: var(--mono); font-size: 13px; line-height: 1.5; white-space: pre-wrap; user-select: text; -webkit-user-select: text; }
+.qd.clue { background: linear-gradient(180deg, #f4e7c6, #e8d4a6); border-color: #b48a45; color: #2b2113; }
+.qd.clue .qd-who { color: #7d4a12; }
+.qd.clue .qd-text { color: #2b2113; font-family: 'American Typewriter', 'Courier New', Courier, monospace; font-size: 16px; }
+.qd.clue .qd-count { color: #6b5636; }
+.qd.clue .qd-skip { color: #2b2113; border-color: rgba(43, 33, 19, 0.25); background: rgba(43, 33, 19, 0.06); }
+.qd.clue .qd-portrait { background: radial-gradient(circle at 50% 40%, #fff6dc, #d9bf86); }
+.qd .sr-only, .ql .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.qt { position: absolute; top: max(14px, env(safe-area-inset-top)); left: 16px; width: min(320px, calc(50vw - 230px)); min-width: 220px; padding: 12px 14px; border-radius: 16px; background: var(--glass-strong); border: 1px solid var(--line); border-left: 3px solid #f0c341; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: grid; gap: 6px; pointer-events: auto; }
+.qt[hidden] { display: none; }
+.qt.bump { animation: qt-bump 0.45s ease; }
+@keyframes qt-bump { 0% { box-shadow: 0 0 0 0 rgba(240, 195, 65, 0.55); } 100% { box-shadow: 0 0 0 14px rgba(240, 195, 65, 0); } }
+.qt-head { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.qt-icon { font-size: 18px; }
+.qt-title { flex: 1; min-width: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #f0c341; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.qt-abandon { min-width: 40px; height: 40px; margin: -8px -8px -8px 0; border-radius: 10px; border: 0; background: transparent; color: var(--ink-dim); font-size: 13px; }
+.qt-abandon:hover { background: rgba(255, 255, 255, 0.08); color: var(--ink); }
+.qt-text { margin: 0; font-size: 14px; line-height: 1.4; white-space: pre-line; max-height: 9.8em; overflow: auto; }
+.qt-hint { margin: 0; font-size: 13px; line-height: 1.4; color: var(--accent-2); white-space: pre-line; }
+.qt-hint[hidden], .qt-heat[hidden] { display: none; }
+.qt-heat { --heat: 0; --beat: 1.6s; position: relative; height: 26px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); overflow: hidden; display: flex; align-items: center; }
+.qt-heat i { position: absolute; inset: 0 auto 0 0; width: calc(8% + var(--heat) * 92%); background: linear-gradient(90deg, #4fa3ff, #ffc15e 55%, #ff5a2c); border-radius: 99px; transition: width 0.4s ease; animation: qt-pulse var(--beat) ease-in-out infinite; }
+.qt-heat span { position: relative; padding-left: 12px; font-size: 12px; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
+.qt-heat[data-trend='warmer'] span::after { content: ' ▲'; color: #ffd08a; }
+.qt-heat[data-trend='colder'] span::after { content: ' ▼'; color: #a8d4ff; }
+@keyframes qt-pulse { 0%, 100% { opacity: 0.65; } 40% { opacity: 1; } }
+
+@media (max-width: 900px) {
+  .qt { top: auto; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 70px); width: min(300px, calc(100vw - 32px)); min-width: 0; }
+  .qd { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 70px); }
+  .qd:not([hidden]) ~ .qt { display: none; }
+}
+@media (max-width: 640px) {
+  .qd { grid-template-columns: 56px 1fr; gap: 10px; padding: 12px; }
+  .qd-portrait { width: 56px; height: 56px; }
+  .qd-portrait span { font-size: 30px; }
+  .qd-text { font-size: 16px; }
+}

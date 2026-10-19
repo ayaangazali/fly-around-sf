@@ -1,0 +1,965 @@
+[
+  {
+    "id": "quest-initial-commit",
+    "kind": "quest",
+    "title": "Initial Commit",
+    "blurb": "A ghost in a plumed hat needs a pilot. San Francisco is forgetting itself, and Emperor Norton knows why.",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.80778, "lon": -122.42972, "alt": 25 },
+    "xp": 120,
+    "card": "quest-emperor-norton",
+    "tags": ["story", "main quest", "emperor norton", "chapter 1"],
+    "params": {
+      "chapter": 1,
+      "intro": [
+        "Halt, citizen! You there, with the small whirring flying machine. I am Norton the First, Emperor of these United States and Protector of Mexico. Yes, I have been dead since 1880. That is no excuse for idleness.",
+        "Something dreadful has happened. Someone has force-pushed over San Francisco. The city's entire history, every commit since the first shellmound, overwritten with one careless line.",
+        "Already the city forgets. A cable car gripman asked me this morning what hills were for. A sea lion barked at me in what I am fairly sure was Python.",
+        "But nothing in a repository is truly gone until the garbage collector comes. The old commits are scattered across the city like broken glass. Fly them home and we restore her. We begin at the fair."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Fly to the rotunda of the Palace of Fine Arts.",
+          "at": { "lat": 37.80292, "lon": -122.4484, "alt": 30 },
+          "say": [
+            "In 1915 the whole city threw a party right here: the Panama-Pacific International Exposition, February to December. Officially it celebrated the Panama Canal. Really it told the world that San Francisco had risen from the 1906 ashes.",
+            "Bernard Maybeck designed this rotunda to look like a Roman ruin on purpose. It was plaster and burlap, meant to last one year, and so loved that it was completely rebuilt between 1964 and 1974. Even a ruin can be refactored."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard of lost history washed up at the Wave Organ, at the end of the jetty past the yacht club. Find it.",
+          "at": { "lat": 37.80849, "lon": -122.44021, "alt": 4 },
+          "say": [
+            "Listen. Twenty-five pipes, and the bay plays them. The Exploratorium built the Wave Organ in 1986 from stone salvaged when the old Laurel Hill Cemetery was demolished.",
+            "Old headstones, singing with the tide. This city recycles everything except a grudge."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "The shard holds a recovered log entry. Read it on Marina Green.",
+          "at": { "lat": 37.8066, "lon": -122.43912, "alt": 15 },
+          "clue": { "from": "Recovered reflog", "text": "a3f9c1e (HEAD -> main, forced)  Author: Frisco  Message: fresh start, nobody reads history anyway" },
+          "say": [
+            "Frisco. FRISCO! A decree often credited to me declares that whoever utters that abominable word shall pay twenty-five dollars into the Imperial Treasury. Historians call the evidence that I wrote it elusive. I call the fine overdue."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Follow the shoreline west to Crissy Field.",
+          "at": { "lat": 37.8046, "lon": -122.46661, "alt": 20 },
+          "say": [
+            "This meadow was a tidal marsh, filled in by the time of the 1915 fair, then an Army airfield until after 1974. The Park Service restored the marsh, and by 2001 it was open again. Some history is worth undoing. Most is not."
+          ]
+        }
+      ],
+      "outro": [
+        "Splendid flying. One commit recovered, a villain named, and only modest screaming from the seagulls.",
+        "Frisco will not stop at the Marina. Meet me at the Presidio's Main Post. The Army officers there once gave me this very uniform, and I intend to collect on the favor."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/Palace_of_Fine_Arts",
+        "https://en.wikipedia.org/wiki/Panama%E2%80%93Pacific_International_Exposition",
+        "https://en.wikipedia.org/wiki/Wave_Organ",
+        "https://en.wikipedia.org/wiki/Crissy_Field"
+      ]
+    }
+  },
+  {
+    "id": "quest-git-blame",
+    "kind": "quest",
+    "title": "Git Blame",
+    "blurb": "Frisco has been through the Presidio blaming everyone. Run the history of the Golden Gate back to the fort that refused to be erased.",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.8002, "lon": -122.45848, "alt": 25 },
+    "xp": 140,
+    "card": "quest-presidio-1776",
+    "requires": ["quest-initial-commit"],
+    "tags": ["story", "main quest", "chapter 2", "golden gate bridge"],
+    "params": {
+      "chapter": 2,
+      "intro": [
+        "The Presidio. Spain raised a fort here on September 17, 1776. Eighty-three years later to the day, on September 17, 1859, I proclaimed myself Emperor. I like to think the date was paying attention.",
+        "Frisco has been through here, blaming everyone for everything. Let us run git blame on the Golden Gate itself and see who really built what."
+      ],
+      "objectives": [
+        {
+          "type": "riddle",
+          "text": "I was built to sink warships before the Civil War, so low to the water that cannonballs could skip like stones. A great bridge was meant to erase me, but its engineer drew an arch instead. Fly to me.",
+          "at": { "lat": 37.81056, "lon": -122.47722, "alt": 20 },
+          "radius": 120,
+          "hints": ["Look for brick and granite at the very edge of the Golden Gate, west of here.", "It sits directly beneath the south end of the Golden Gate Bridge: Fort Point."],
+          "say": [
+            "Fort Point, begun in 1853, the only fort of its kind on the West Coast. Chief Engineer Joseph Strauss redesigned the bridge to save it and said it should be preserved as a fine example of the mason's art. That, citizen, is a merge without conflicts."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Frisco snapped a commit into three pieces and hung them along the Golden Gate Bridge. Collect all three above the deck.",
+          "pieces": [
+            { "lat": 37.8136, "lon": -122.4776, "alt": 90 },
+            { "lat": 37.8195, "lon": -122.4784, "alt": 90 },
+            { "lat": 37.824, "lon": -122.479, "alt": 90 }
+          ],
+          "say": [
+            "The bridge opened on May 27, 1937, with a 4,200-foot main span, the longest in the world until 1964. Architect Irving Morrow chose the International Orange. The Navy wanted black and yellow stripes. The Navy was overruled."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Swing south along the cliffs to Baker Beach.",
+          "at": { "lat": 37.79312, "lon": -122.48382, "alt": 20 },
+          "say": [
+            "Behind these dunes sits Battery Chamberlin, a coastal gun battery built in 1904. San Francisco spent a century bracing for an invasion by sea. The invasion came by git push."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "The last shard glints somewhere around Inspiration Point, the overlook above the Presidio forest. Search the trees.",
+          "at": { "lat": 37.79222, "lon": -122.45826, "alt": 5 },
+          "say": [
+            "Got it. The Presidio was an Army post for 219 years before it was handed to the National Park Service in 1994. It has seen Spain, Mexico and the United States come and go. It is not impressed by Frisco."
+          ]
+        }
+      ],
+      "outro": [
+        "Blame assigned, history restored. Frisco's trail now leads downtown, to land that used to be water.",
+        "Meet me in the little redwood grove at the foot of the Transamerica Pyramid. Bring your sense of buoyancy."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Presidio_of_San_Francisco",
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site",
+        "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+        "https://en.wikipedia.org/wiki/Baker_Beach"
+      ]
+    }
+  },
+  {
+    "id": "quest-buried-fleet",
+    "kind": "quest",
+    "title": "The Buried Fleet",
+    "blurb": "The Financial District stands on a harbor full of ships. Dig up the commit Frisco buried with them.",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79526, "lon": -122.40218, "alt": 25 },
+    "xp": 150,
+    "card": "quest-niantic",
+    "requires": ["quest-git-blame"],
+    "tags": ["story", "main quest", "chapter 3", "gold rush"],
+    "params": {
+      "chapter": 3,
+      "intro": [
+        "Look at all this concrete and tell me it was ocean. It was. When I arrived in 1849, Yerba Buena Cove lapped right up to Montgomery Street.",
+        "Ships arrived every day, and their crews ran off to the gold fields. The whaler Niantic lost most of hers within days. So the city did what it always does: it built on top of whatever it found.",
+        "Frisco has buried a commit down there with the ships. Let us go digging."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Circle the spire of the Transamerica Pyramid.",
+          "at": { "lat": 37.79519, "lon": -122.40279, "alt": 15 },
+          "radius": 80,
+          "say": [
+            "Finished in 1972 and the tallest building in the city until 2017. It stands where the Montgomery Block stood from 1853, which in its day was the tallest building west of the Mississippi. Height is a family tradition on this corner."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard is buried at the site of the ship Niantic, one block east on Clay Street. Find it.",
+          "at": { "lat": 37.79491, "lon": -122.40183, "alt": 4 },
+          "say": [
+            "The Niantic was run aground and turned into a storeship and a hotel. Diggers found her again in 1978, and her log is on display at the San Francisco Maritime Museum.",
+            "A ship that became a hotel that became a foundation. Every startup's arc, really."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "Fly up Jackson Street to the old Hotaling warehouse and read what is written there.",
+          "at": { "lat": 37.79641, "lon": -122.40286, "alt": 15 },
+          "clue": { "from": "Charles K. Field, after 1906", "text": "If, as they say, God spanked the town for being over-frisky, why did He burn His churches down and spare Hotaling's whiskey?" },
+          "say": [
+            "Jackson Square kept several of its buildings through the fire of 1906, Hotaling's whiskey warehouse among them. Poetry, whiskey and brick: the three pillars of local resilience."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Find the 600 block of Commercial Street, between Montgomery and Kearny. The Emperor lived here.",
+          "at": { "lat": 37.79412, "lon": -122.40389, "alt": 15 },
+          "say": [
+            "My home from 1865 until the end: a small room on the top floor of the Eureka Lodgings, 624 Commercial Street. The census of 1870 listed my occupation as Emperor. Accurate, for once.",
+            "In 2023 the city named this block Emperor Norton Place. It only took them 143 years."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "I am a lady made of granite who never spent a cent and yet made millions. From 1874 to 1937 I pressed coins for the nation, and in 1906 I stood while the city burned around me. Find the lady.",
+          "at": { "lat": 37.78274, "lon": -122.40727, "alt": 20 },
+          "radius": 100,
+          "hints": ["She lives south of Market Street, at Fifth and Mission.", "Look for a columned granite building: the Old Mint."],
+          "say": [
+            "The Old San Francisco Mint, called the Granite Lady, one of the few buildings to survive 1906. I approve of any institution that makes money and keeps it."
+          ]
+        }
+      ],
+      "outro": [
+        "The Financial District remembers it was once a harbor. Well flown.",
+        "Next, the oldest Chinatown in North America, where I made my rounds every day, and where I made my exit. Meet me at Portsmouth Square."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Niantic_(whaling_vessel)",
+        "https://en.wikipedia.org/wiki/Transamerica_Pyramid",
+        "https://en.wikipedia.org/wiki/Montgomery_Block",
+        "https://en.wikipedia.org/wiki/Hotaling_Building",
+        "https://en.wikipedia.org/wiki/Jackson_Square,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/Old_San_Francisco_Mint",
+        "https://www.openstreetmap.org/way/26769761"
+      ]
+    }
+  },
+  {
+    "id": "quest-imperial-decree",
+    "kind": "quest",
+    "title": "Imperial Decree",
+    "blurb": "Gold was announced in this square in 1848. Restore Chinatown's history, carefully, the way one handles porcelain.",
+    "neighborhood": "Chinatown",
+    "at": { "lat": 37.79483, "lon": -122.40543, "alt": 25 },
+    "xp": 150,
+    "card": "quest-portsmouth-square",
+    "requires": ["quest-buried-fleet"],
+    "tags": ["story", "main quest", "chapter 4", "chinatown"],
+    "params": {
+      "chapter": 4,
+      "intro": [
+        "Portsmouth Square, the city's first park. On July 9, 1846, Captain Montgomery's men raised the American flag here. On May 11, 1848, Sam Brannan showed a crowd his gold.",
+        "That began a stampede, and I was part of it. Most of us turned out to be very bad at gold.",
+        "Frisco has scrambled Chinatown's history. We will set it right, carefully, the way one handles porcelain."
+      ],
+      "objectives": [
+        {
+          "type": "find",
+          "text": "Search Portsmouth Square for the bronze galleon on the old memorial. A shard is caught in its rigging.",
+          "at": { "lat": 37.79483, "lon": -122.40543, "alt": 4 },
+          "say": [
+            "The Robert Louis Stevenson Memorial, erected in 1897 and topped with a bronze galleon. Stevenson put me in a novel, The Wrecker. I have forgiven him."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Fly up Waverly Place to the Tin How Temple.",
+          "at": { "lat": 37.79456, "lon": -122.40701, "alt": 15 },
+          "say": [
+            "Tin How Temple, founded around 1852 and dedicated to the sea goddess Mazu, one of the oldest Chinese temples still operating in the United States. The Chinese name for Waverly Place means Tin How Temple Street."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "Go to the clock tower of Old St. Mary's Cathedral on California Street and read the words beneath the clock face.",
+          "at": { "lat": 37.79279, "lon": -122.40579, "alt": 20 },
+          "clue": { "from": "Beneath the clock of Old St. Mary's", "text": "Son, observe the time and fly from evil." },
+          "say": [
+            "Old St. Mary's, dedicated at Christmas Midnight Mass in 1854, the first cathedral in California built to be one. Fly from evil: good advice for a pilot.",
+            "On this corner, on the evening of January 8, 1880, I collapsed on my way to a debate at the California Academy of Sciences. I missed the debate. I am told it was dull."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Fly south down Grant Avenue to the Dragon Gate at Bush Street.",
+          "at": { "lat": 37.79069, "lon": -122.40559, "alt": 15 },
+          "say": [
+            "The Dragon Gate, built in 1969 as a gift from the Republic of China in the style of a traditional pailou. It marks the southern entrance of the oldest Chinatown in North America."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Gather three scattered shards: on the roof of Kong Chow Temple, at the Chinese Historical Society of America on Clay Street, and in Ross Alley by the fortune cookie factory.",
+          "pieces": [
+            { "lat": 37.79389, "lon": -122.40808, "alt": 5 },
+            { "lat": 37.79386, "lon": -122.40882, "alt": 5 },
+            { "lat": 37.7957, "lon": -122.40735, "alt": 5 }
+          ],
+          "say": [
+            "Kong Chow Temple honors Guan Di. And speaking of fortune cookies: the city's own Court of Historical Review once ruled that the modern fortune cookie was first served at the Japanese Tea Garden by Makoto Hagiwara. A city that holds trials about cookies is a city worth saving."
+          ]
+        }
+      ],
+      "outro": [
+        "Chinatown remembers. And Frisco's trail climbs, as every trail in this city eventually does.",
+        "Up Telegraph Hill, citizen. Meet me in Washington Square."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Portsmouth_Square",
+        "https://en.wikipedia.org/wiki/Tin_How_Temple",
+        "https://en.wikipedia.org/wiki/Old_St._Mary%27s_Cathedral",
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/Dragon_Gate_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Chinatown,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Kong_Chow_Temple",
+        "https://en.wikipedia.org/wiki/Fortune_cookie"
+      ]
+    }
+  },
+  {
+    "id": "quest-semaphore",
+    "kind": "quest",
+    "title": "Semaphore",
+    "blurb": "Before telegraphs, the city got its news from a hill. Frisco has jammed the signal. Climb Telegraph Hill and restart it.",
+    "neighborhood": "North Beach",
+    "at": { "lat": 37.80086, "lon": -122.4101, "alt": 25 },
+    "xp": 150,
+    "card": "quest-telegraph-semaphore",
+    "requires": ["quest-imperial-decree"],
+    "tags": ["story", "main quest", "chapter 5", "telegraph hill"],
+    "params": {
+      "chapter": 5,
+      "intro": [
+        "Before the telegraph, this city learned its news from a hill. In September 1849 a semaphore went up on that summit, arms spread like a scarecrow, signaling which ships were coming through the Golden Gate.",
+        "The signals were so well known that when an actor once raised his arms on stage and cried, 'What does this mean?', someone in the gallery shouted 'Sidewheel steamer!' and brought the house down.",
+        "Frisco has jammed the signal. Let us climb."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Hover in front of the twin spires of Saints Peter and Paul Church.",
+          "at": { "lat": 37.80163, "lon": -122.41023, "alt": 25 },
+          "say": [
+            "Saints Peter and Paul, the Italian Cathedral of the West, with Masses in English, Italian and Cantonese. That is North Beach in one sentence."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Drop down Columbus Avenue to City Lights.",
+          "at": { "lat": 37.79765, "lon": -122.40662, "alt": 15 },
+          "say": [
+            "City Lights, founded in 1953 and the first all-paperback bookstore in the country. In 1957 Lawrence Ferlinghetti stood trial for publishing Allen Ginsberg's Howl, and Judge Clayton Horn ruled the poem was not obscene. Free speech won. So did paperbacks."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard fell into the narrow alley between City Lights and Vesuvio. Find it.",
+          "at": { "lat": 37.79752, "lon": -122.40664, "alt": 4 },
+          "say": [
+            "Jack Kerouac Alley. The Beats drank on one side and read on the other. I would have issued a decree, but they did not care for decrees."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "Firebelle Lil chased fire engines at fifteen and smoked cigars before it was polite. She left a fortune to beautify the city, and the city built a fluted column on the hill where the signal station stood. Some say it looks like a fire hose nozzle. Fly to it.",
+          "at": { "lat": 37.80238, "lon": -122.40583, "alt": 20 },
+          "radius": 100,
+          "hints": ["It crowns Telegraph Hill, east of here.", "A 210-foot tower named for Lillie Hitchcock Coit."],
+          "say": [
+            "Coit Tower, finished in 1933 with Lillie Hitchcock Coit's bequest, its walls painted with murals by more than twenty artists. The nozzle resemblance is a coincidence, the historians insist. Lillie would have enjoyed the rumor."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Frisco tossed three signal flags down the east face of the hill. Collect them: on the Filbert Steps, at Julius' Castle, and in Levi's Plaza.",
+          "pieces": [
+            { "lat": 37.80186, "lon": -122.40535, "alt": 5 },
+            { "lat": 37.80306, "lon": -122.40506, "alt": 5 },
+            { "lat": 37.80284, "lon": -122.4015, "alt": 5 }
+          ],
+          "say": [
+            "Flags recovered. In 1853 the first telegraph in California replaced the semaphore and the hill took its name. The signal is clear again."
+          ]
+        }
+      ],
+      "outro": [
+        "The semaphore reports: one Emperor, one pilot, approaching from the hill.",
+        "Next, the waterfront, and an island that has been a fortress, a prison and a protest. Meet me at Pier 39, and mind the sea lions."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Telegraph_Hill,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Saints_Peter_and_Paul_Church,_San_Francisco",
+        "https://en.wikipedia.org/wiki/City_Lights_Bookstore",
+        "https://en.wikipedia.org/wiki/Coit_Tower",
+        "https://en.wikipedia.org/wiki/Lillie_Hitchcock_Coit",
+        "https://en.wikipedia.org/wiki/Pioneer_Park_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Levi%27s_Plaza"
+      ]
+    }
+  },
+  {
+    "id": "quest-escape-velocity",
+    "kind": "quest",
+    "title": "Escape Velocity",
+    "blurb": "Frisco hid a commit on the Rock. Luckily you have a flying machine, which is more than any inmate ever had.",
+    "neighborhood": "Fisherman's Wharf",
+    "at": { "lat": 37.80881, "lon": -122.41009, "alt": 25 },
+    "xp": 160,
+    "card": "quest-occupation-of-alcatraz",
+    "requires": ["quest-semaphore"],
+    "tags": ["story", "main quest", "chapter 6", "alcatraz"],
+    "params": {
+      "chapter": 6,
+      "intro": [
+        "Pier 39. A colony of sea lions first hauled out on these docks in September 1989. People blame the Loma Prieta earthquake, but the sea lions got here first. They simply know good waterfront property.",
+        "Frisco has hidden a commit on Alcatraz. Fortunately you have a flying machine, which is more than any inmate ever had."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Fly out across the bay to Alcatraz and find the water tower.",
+          "at": { "lat": 37.82757, "lon": -122.42393, "alt": 35 },
+          "say": [
+            "On November 20, 1969, 89 American Indians and their supporters, calling themselves Indians of All Tribes, occupied this island. They held it for 19 months, citing the 1868 Treaty of Fort Laramie, which they said returned abandoned federal land to the people who once lived on it.",
+            "The federal prison had closed in 1963. The occupation nudged federal Indian policy and became a symbol for a generation. This rock has held more history than prisoners."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard is hidden near the Alcatraz lighthouse. Search the island's crown.",
+          "at": { "lat": 37.82626, "lon": -122.4223, "alt": 5 },
+          "say": [
+            "The oldest operating lighthouse on the West Coast of the United States. It has watched every escape attempt. It is not talking."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "Three hundred machines and not one needs a charger. Drop a coin and the old arcade wakes: fortune tellers, player pianos, tiny mechanical dramas. I once lived beneath the Cliff House; now I live on the wharf. Fly back and find me.",
+          "at": { "lat": 37.80925, "lon": -122.41579, "alt": 15 },
+          "radius": 90,
+          "hints": ["Head back to Fisherman's Wharf, near Pier 45.", "A museum of antique coin-operated machines: the Musee Mecanique."],
+          "say": [
+            "The Musee Mecanique, over 300 machines and one of the largest privately owned collections in the world. It lived in the basement of the Cliff House from 1972 until renovations sent it here."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Salute the old Liberty ship tied up at Pier 45.",
+          "at": { "lat": 37.80876, "lon": -122.40686, "alt": 20 },
+          "say": [
+            "The SS Jeremiah O'Brien sailed with the D-Day armada off Normandy on June 6, 1944. Of the 2,710 Liberty ships built, she is one of only a handful still afloat. Salute properly. She has earned it."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Gather three shards along the western waterfront: Hyde Street Pier, Aquatic Park and Ghirardelli Square.",
+          "pieces": [
+            { "lat": 37.80834, "lon": -122.42098, "alt": 6 },
+            { "lat": 37.80701, "lon": -122.42231, "alt": 6 },
+            { "lat": 37.80587, "lon": -122.42295, "alt": 6 }
+          ],
+          "say": [
+            "Ghirardelli Square, a chocolate works and woolen mill turned public square at the foot of Russian Hill. Restoring history is hungry work. I recommend a sundae."
+          ]
+        }
+      ],
+      "outro": [
+        "Escape achieved, which is more than the official record of Alcatraz allows.",
+        "Now we climb Nob Hill. The cables under the streets are slipping, and Frisco is the reason. Meet me at the Cable Car Museum."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pier_39",
+        "https://en.wikipedia.org/wiki/Occupation_of_Alcatraz",
+        "https://en.wikipedia.org/wiki/Alcatraz_Island",
+        "https://en.wikipedia.org/wiki/Mus%C3%A9e_M%C3%A9canique",
+        "https://en.wikipedia.org/wiki/SS_Jeremiah_O%27Brien",
+        "https://en.wikipedia.org/wiki/Ghirardelli_Square"
+      ]
+    }
+  },
+  {
+    "id": "quest-pulling-cable",
+    "kind": "quest",
+    "title": "Pulling Cable",
+    "blurb": "The cables under Nob Hill are slipping. Tighten the grip on the world's first practical cable car line.",
+    "neighborhood": "Nob Hill",
+    "at": { "lat": 37.79476, "lon": -122.41185, "alt": 25 },
+    "xp": 160,
+    "card": "quest-clay-street-railroad",
+    "requires": ["quest-escape-velocity"],
+    "tags": ["story", "main quest", "chapter 7", "cable cars"],
+    "params": {
+      "chapter": 7,
+      "intro": [
+        "Listen. Hear that hum? Under the streets, steel cables run all day, pulled by the great wheels in this very building, the powerhouse and car barn at Washington and Mason.",
+        "On September 1, 1873, Andrew Hallidie's Clay Street Hill Railroad began service, the world's first practical cable car line. Some accounts say the first gripman looked down the hill from Jones Street and refused, so Hallidie took the grip himself.",
+        "Frisco has loosened the grip. Shall we tighten it?"
+      ],
+      "objectives": [
+        {
+          "type": "find",
+          "text": "A shard rolled downhill into Huntington Park, the small square on the summit of Nob Hill. Find it.",
+          "at": { "lat": 37.79217, "lon": -122.41218, "alt": 4 },
+          "say": [
+            "Collis P. Huntington Park, just 1.3 acres on the summit of Nob Hill. Small, but the view does the heavy lifting."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Fly to the brownstone mansion on the corner of California and Mason.",
+          "at": { "lat": 37.79225, "lon": -122.41134, "alt": 20 },
+          "say": [
+            "The Flood Mansion, built for silver magnate James Clair Flood and considered the first brownstone west of the Mississippi. Today it is home to the Pacific-Union Club, formed in 1889 when two older clubs merged.",
+            "One of them was the Pacific Club, whose members paid for my rosewood casket in 1880. Generous people. Excellent taste in caskets."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "Fly to the great doors of Grace Cathedral and read the guide card.",
+          "at": { "lat": 37.79182, "lon": -122.4135, "alt": 20 },
+          "clue": { "from": "Guide card, Grace Cathedral", "text": "These doors are cast from Lorenzo Ghiberti's Gates of Paradise in Florence. Two labyrinths wait here, one inside and one out. The pilot who seeks the crooked path should look north." },
+          "say": [
+            "A labyrinth! Frisco hid the next commit in the most famous crooked path in the city. You know the one."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "Eight hairpin turns packed into a single block, and two million visitors a year insist on driving it slowly. Find the street that calls itself the crookedest in the world.",
+          "at": { "lat": 37.8021, "lon": -122.4188, "alt": 20 },
+          "radius": 110,
+          "hints": ["It is on Russian Hill, north of here, and it zigzags down through flowerbeds.", "Lombard Street, the one-block stretch with eight hairpin turns."],
+          "say": [
+            "Lombard Street. Surveyor Jasper O'Farrell named it after Lombard Street in Philadelphia, which has never once been this interesting."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Gather three shards across Russian Hill: Macondray Lane, Ina Coolbrith Park and George Sterling Park.",
+          "pieces": [
+            { "lat": 37.79921, "lon": -122.41518, "alt": 6 },
+            { "lat": 37.79823, "lon": -122.41339, "alt": 6 },
+            { "lat": 37.80144, "lon": -122.42034, "alt": 6 }
+          ],
+          "say": [
+            "Macondray Lane inspired Barbary Lane in Armistead Maupin's Tales of the City. Russian Hill has always been slightly fictional. It suits it."
+          ]
+        }
+      ],
+      "outro": [
+        "The cables run true again. But I smell smoke. Old smoke, the kind that never quite leaves this city.",
+        "Meet me at Lotta's Fountain on Market Street. We have an anniversary to keep."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system",
+        "https://en.wikipedia.org/wiki/Clay_Street_Hill_Railroad",
+        "https://en.wikipedia.org/wiki/Huntington_Park_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Pacific-Union_Club",
+        "https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Lombard_Street_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Macondray_Lane",
+        "https://en.wikipedia.org/wiki/Emperor_Norton"
+      ]
+    }
+  },
+  {
+    "id": "quest-five-twelve",
+    "kind": "quest",
+    "title": "5:12 AM",
+    "blurb": "April 18, 1906. Frisco wants the city to forget the morning it fell and the years it spent rising. We will not.",
+    "neighborhood": "Market Street",
+    "at": { "lat": 37.78794, "lon": -122.4033, "alt": 25 },
+    "xp": 170,
+    "card": "quest-1906-earthquake",
+    "requires": ["quest-pulling-cable"],
+    "tags": ["story", "main quest", "chapter 8", "1906 earthquake"],
+    "params": {
+      "chapter": 8,
+      "intro": [
+        "At 5:12 in the morning on April 18, 1906, the earth moved. Then came the fires, for three days. More than 3,000 people died and over 80 percent of the city was destroyed.",
+        "This fountain was the actress Lotta Crabtree's gift to the city in 1875. After the earthquake it became the place where people came to find one another, and for more than a century survivors gathered here at 5:12 every April 18.",
+        "Frisco wants us to forget. We will not."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Cross Market Street to the Palace Hotel.",
+          "at": { "lat": 37.78795, "lon": -122.40192, "alt": 20 },
+          "say": [
+            "The original Palace of 1875 was gutted by the 1906 fire. This one opened on the same spot on December 19, 1909. The city rebuilt itself in three years, out of sheer stubbornness."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard is spinning on the cable car turntable at Powell and Market. Find it.",
+          "at": { "lat": 37.78471, "lon": -122.4077, "alt": 4 },
+          "say": [
+            "Found it, spinning like a cable car at the end of the line. On to the Civic Center."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "My dome rises forty-two feet higher than the Capitol's in Washington, and I intend to keep it that way. My predecessor fell in 1906, two blocks away. Joe and Marilyn said their vows beneath me. What am I?",
+          "at": { "lat": 37.77929, "lon": -122.41926, "alt": 30 },
+          "radius": 120,
+          "hints": ["Head west along Market Street to the Civic Center.", "San Francisco City Hall, the great domed seat of government."],
+          "say": [
+            "San Francisco City Hall, reopened in 1915. Joe DiMaggio and Marilyn Monroe married here in January 1954. The 1989 earthquake twisted the dome four inches on its base. It is still standing, and still slightly smug."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "An old newspaper is blowing across United Nations Plaza. Catch it and read it.",
+          "at": { "lat": 37.78014, "lon": -122.41369, "alt": 12 },
+          "clue": { "from": "Daily Alta California, 1867", "text": "He had shed no blood; robbed no one; and despoiled no country; which is more than can be said of his fellows in that line." },
+          "say": [
+            "In 1867 a special officer arrested me to have me committed. The newspapers were outraged. The police chief released me and apologized, and from then on the officers of this city saluted me in the street.",
+            "I granted the arresting officer an Imperial Pardon. Mercy is cheaper than grudges, and far easier to carry."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Finish at the War Memorial Opera House on Van Ness Avenue.",
+          "at": { "lat": 37.77854, "lon": -122.42093, "alt": 25 },
+          "say": [
+            "In April 1945 this opera house hosted the San Francisco Conference, the first assembly of the newly organized United Nations. In 1951 the treaty that made peace with Japan was signed here too.",
+            "A city that burned to the ground in 1906 became, within forty years, the place where the world came to make peace. Write that down, Frisco."
+          ]
+        }
+      ],
+      "outro": [
+        "1906 is remembered. And now we must visit a hydrant. You heard me correctly.",
+        "The bravest fire hydrant in America lives in the Mission. Meet me at Mission Dolores."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/1906_San_Francisco_earthquake",
+        "https://en.wikipedia.org/wiki/Lotta%27s_Fountain",
+        "https://en.wikipedia.org/wiki/Palace_Hotel,_San_Francisco",
+        "https://en.wikipedia.org/wiki/San_Francisco_City_Hall",
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/War_Memorial_Opera_House",
+        "https://www.openstreetmap.org/node/8641952045"
+      ]
+    }
+  },
+  {
+    "id": "quest-golden-hydrant",
+    "kind": "quest",
+    "title": "The Little Giant",
+    "blurb": "The Mission writes its history on its walls, which makes it very hard to force-push. Frisco is trying anyway.",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76435, "lon": -122.42695, "alt": 25 },
+    "xp": 170,
+    "card": "quest-golden-hydrant",
+    "requires": ["quest-five-twelve"],
+    "tags": ["story", "main quest", "chapter 9", "mission"],
+    "params": {
+      "chapter": 9,
+      "intro": [
+        "Mission Dolores. Its adobe chapel was finished in 1791, built mostly by Ohlone labor, and it is the oldest intact building in San Francisco.",
+        "It outlasted Spain, Mexico and the 1906 earthquake that destroyed the brick church beside it. It will outlast Frisco.",
+        "He has been painting over the Mission's walls. Fortunately this neighborhood knows a great deal about walls."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Fly two blocks south to Dolores Park.",
+          "at": { "lat": 37.75972, "lon": -122.42713, "alt": 20 },
+          "say": [
+            "Dolores Park, from 18th Street to 20th, Dolores to Church. On a sunny afternoon half the city is here and the other half is looking for parking."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "Find the small hydrant on the corner of 20th and Church streets. It is wearing a fresh coat of paint.",
+          "at": { "lat": 37.7583, "lon": -122.428, "alt": 3 },
+          "radius": 14,
+          "say": [
+            "The Little Giant. In 1906, with most of the water mains broken, this hydrant still ran, and firefighters used it to stop the fire from spreading through the Mission.",
+            "Every April 18 it gets a fresh coat of gold paint. In 2012 someone bought silver by mistake, and nobody noticed until the sun came up."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "One block long and painted end to end. Since 1973 nearly every fence and garage door on me has become a mural. Find the alley.",
+          "at": { "lat": 37.75182, "lon": -122.41241, "alt": 15 },
+          "radius": 110,
+          "hints": ["Head southeast to 24th Street, the heart of the Calle 24 Latino Cultural District.", "Balmy Alley, between 24th and 25th streets near Garfield Square."],
+          "say": [
+            "Balmy Alley, painted since 1973 in the Calle 24 Latino Cultural District. Frisco's grey paint did not stand a chance."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Gather three shards on the way back north: 826 Valencia, Clarion Alley and the 16th Street BART plaza.",
+          "pieces": [
+            { "lat": 37.75956, "lon": -122.42156, "alt": 5 },
+            { "lat": 37.76299, "lon": -122.4206, "alt": 5 },
+            { "lat": 37.76507, "lon": -122.41968, "alt": 5 }
+          ],
+          "say": [
+            "Clarion Alley's walls belong to the Clarion Alley Mural Project. Restoring history is easy when the neighborhood refuses to let it fade."
+          ]
+        }
+      ],
+      "outro": [
+        "The Mission remembers. It never really forgot.",
+        "Now, citizen, put a flower behind your propeller. We are going to the Haight. Meet me at Haight and Ashbury."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs",
+        "https://en.wikipedia.org/wiki/Mission_Dolores_Park",
+        "https://en.wikipedia.org/wiki/Golden_Fire_Hydrant",
+        "https://en.wikipedia.org/wiki/Balmy_Alley",
+        "https://en.wikipedia.org/wiki/Clarion_Alley"
+      ]
+    }
+  },
+  {
+    "id": "quest-be-in",
+    "kind": "quest",
+    "title": "Be-In",
+    "blurb": "Frisco turned the volume down on 1967. Turn it back up, from Haight and Ashbury to the Polo Field.",
+    "neighborhood": "Haight-Ashbury",
+    "at": { "lat": 37.77014, "lon": -122.44599, "alt": 25 },
+    "xp": 180,
+    "card": "quest-summer-of-love",
+    "requires": ["quest-golden-hydrant"],
+    "tags": ["story", "main quest", "chapter 10", "summer of love"],
+    "params": {
+      "chapter": 10,
+      "intro": [
+        "Haight and Ashbury. In the summer of 1967 as many as 100,000 young people converged on this neighborhood and on Golden Gate Park. They called it the Summer of Love.",
+        "I would have issued a proclamation in support, but they were not much for proclamations.",
+        "Frisco has turned the volume all the way down. Let us turn it back up."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Climb to Buena Vista Park, the wooded hill above Haight Street.",
+          "at": { "lat": 37.76836, "lon": -122.44128, "alt": 25 },
+          "say": [
+            "Buena Vista Park, established in 1867 as Hill Park, the oldest official park in the city. In October 1967 the last of the hippies staged a mock funeral here called The Death of the Hippie. Even the counterculture needed closure."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard is lying on the grass of Hippie Hill, between Haight Street and the Conservatory of Flowers.",
+          "at": { "lat": 37.7698, "lon": -122.4579, "alt": 4 },
+          "say": [
+            "Hippie Hill, where drum circles still start without asking anyone's permission. Splendid. Permission is overrated."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Fly to the white glass Conservatory of Flowers.",
+          "at": { "lat": 37.77261, "lon": -122.46023, "alt": 20 },
+          "say": [
+            "The Conservatory of Flowers, finished in 1879, the oldest building in Golden Gate Park and the oldest remaining municipal wooden conservatory in the country.",
+            "All of this was sand dunes, the Outside Lands, until William Hammond Hall and his crews planted it into a park. Nobody believed it could be done. Sound familiar?"
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "On January 14, 1967, twenty or thirty thousand people gathered on my grass. A man told them to turn on, tune in, drop out. A poet chanted mantras. On most days the horses have me to themselves. Where was the Human Be-In?",
+          "at": { "lat": 37.76818, "lon": -122.49276, "alt": 20 },
+          "radius": 160,
+          "hints": ["Fly west through Golden Gate Park, past the lakes.", "The Golden Gate Park Polo Field."],
+          "say": [
+            "The Polo Field. Timothy Leary made his first San Francisco appearance here, and Allen Ginsberg chanted. The Be-In was the prelude to the Summer of Love."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Collect three shards across the park: the Spreckels Temple of Music, the top of Strawberry Hill and Rainbow Falls.",
+          "pieces": [
+            { "lat": 37.76988, "lon": -122.46859, "alt": 6 },
+            { "lat": 37.76854, "lon": -122.47553, "alt": 6 },
+            { "lat": 37.77161, "lon": -122.47822, "alt": 6 }
+          ],
+          "say": [
+            "The bandshell was sugar baron Claus Spreckels' gift to the city in 1900. Strawberry Hill is an island in a lake in a park in a city on a peninsula. Golden Gate Park contains multitudes."
+          ]
+        }
+      ],
+      "outro": [
+        "The music is back. Can you hear it? Of course you can.",
+        "Now we go to the very edge of the map, where a mayor once built a palace of water. Meet me at the Cliff House."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Summer_of_Love",
+        "https://en.wikipedia.org/wiki/Haight-Ashbury",
+        "https://en.wikipedia.org/wiki/Buena_Vista_Park",
+        "https://en.wikipedia.org/wiki/Hippie_Hill",
+        "https://en.wikipedia.org/wiki/Conservatory_of_Flowers",
+        "https://en.wikipedia.org/wiki/Golden_Gate_Park",
+        "https://en.wikipedia.org/wiki/Human_Be-In",
+        "https://en.wikipedia.org/wiki/Spreckels_Temple_of_Music",
+        "https://en.wikipedia.org/wiki/Strawberry_Hill_(San_Francisco)"
+      ]
+    }
+  },
+  {
+    "id": "quest-edge-of-the-map",
+    "kind": "quest",
+    "title": "Edge of the Map",
+    "blurb": "Sutro's baths, the sea lions' rocks and a lighthouse that lost its head. The far west remembers everything.",
+    "neighborhood": "Lands End",
+    "at": { "lat": 37.77855, "lon": -122.51408, "alt": 30 },
+    "xp": 180,
+    "card": "quest-sutro-baths",
+    "requires": ["quest-be-in"],
+    "tags": ["story", "main quest", "chapter 11", "lands end"],
+    "params": {
+      "chapter": 11,
+      "intro": [
+        "The Cliff House. Since 1863 people have come here to eat and stare at the Pacific. In 1896 Adolph Sutro rebuilt it as a seven-story Victorian chateau they called the Gingerbread Palace.",
+        "Sutro made his fortune with a tunnel to drain the silver mines of the Comstock Lode, then served as mayor from 1895 to 1897. A practical man. He would have liked you.",
+        "Frisco fled west, toward the edge. Let us follow."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Fly down to the ruins of the Sutro Baths.",
+          "at": { "lat": 37.78025, "lon": -122.51363, "alt": 15 },
+          "say": [
+            "The Sutro Baths opened on March 14, 1896, the largest indoor swimming establishment in the world. They burned to the foundations in June 1966. The waves still use the pools."
+          ]
+        },
+        {
+          "type": "find",
+          "text": "A shard washed onto Seal Rocks, just offshore. Hover low and find it.",
+          "at": { "lat": 37.7782, "lon": -122.51567, "alt": 5 },
+          "say": [
+            "Seal Rocks, named for the sea lions that haul out on them, who are, strictly speaking, not seals. Nobody tell them."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "Fly north along the Coastal Trail to the ship's bridge memorial and read the record.",
+          "at": { "lat": 37.7828, "lon": -122.51153, "alt": 15 },
+          "clue": { "from": "Navy record, USS San Francisco", "text": "Heavy cruiser, commissioned 1934. Seventeen battle stars and the Presidential Unit Citation. Heavily damaged at the Naval Battle of Guadalcanal, where her captain and admiral were killed." },
+          "say": [
+            "Her memorial stands here at Lands End, looking out to sea. The city does not forget its own, whatever Frisco says."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "I was finished in 1906 on a rock off these cliffs. Sixty years later they cut off my tower and gave me a landing pad for helicopters. Find the lighthouse that lost its head.",
+          "at": { "lat": 37.79277, "lon": -122.51034, "alt": 20 },
+          "radius": 140,
+          "hints": ["Look out to sea from the Lands End cliffs, toward the Golden Gate.", "Mile Rocks Lighthouse, on a rock off Lands End."],
+          "say": [
+            "Mile Rocks Lighthouse. Automated in 1966, tower removed, helipad added. Modernized, like the rest of us. I prefer my hat."
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Race the fog down Ocean Beach and gather three shards: at the Beach Chalet, on the sand, and in Sunset Dunes.",
+          "pieces": [
+            { "lat": 37.76947, "lon": -122.51022, "alt": 8 },
+            { "lat": 37.75615, "lon": -122.51019, "alt": 8 },
+            { "lat": 37.75069, "lon": -122.50851, "alt": 8 }
+          ],
+          "say": [
+            "Ocean Beach runs three and a half miles, known for strong currents and famous fog. The fog is not on our side. The fog is never on anyone's side."
+          ]
+        }
+      ],
+      "outro": [
+        "We reached the edge of the map and found it remembers everything.",
+        "Frisco has fled to the highest place he can find. One last chapter, citizen. Meet me on Twin Peaks."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cliff_House,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Adolph_Sutro",
+        "https://en.wikipedia.org/wiki/Sutro_Baths",
+        "https://en.wikipedia.org/wiki/Seal_Rocks_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/USS_San_Francisco_(CA-38)",
+        "https://en.wikipedia.org/wiki/Lands_End_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Mile_Rocks_Lighthouse",
+        "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco"
+      ]
+    }
+  },
+  {
+    "id": "quest-force-push",
+    "kind": "quest",
+    "title": "Force Push",
+    "blurb": "The finale. Chase Frisco from the highest hill in the city across the Bay Bridge the Emperor decreed, and merge San Francisco's history home.",
+    "neighborhood": "Twin Peaks",
+    "at": { "lat": 37.75333, "lon": -122.44742, "alt": 30 },
+    "xp": 300,
+    "card": "quest-norton-bridge",
+    "requires": ["quest-edge-of-the-map"],
+    "tags": ["story", "main quest", "chapter 12", "finale", "bay bridge"],
+    "params": {
+      "chapter": 12,
+      "intro": [
+        "Twin Peaks, about 925 feet. From here you can see every place we have restored. Look how bright it all is now.",
+        "Frisco is up here somewhere, sulking in the fog. He thought he could rewrite San Francisco with one careless command. He forgot that a city is not a repository. A city is a reflog. Everyone remembers something.",
+        "Let us finish this."
+      ],
+      "objectives": [
+        {
+          "type": "goto",
+          "text": "Fly to the three-legged tower on the next ridge.",
+          "at": { "lat": 37.75524, "lon": -122.45306, "alt": 60 },
+          "radius": 90,
+          "say": [
+            "Sutro Tower, 977 feet on three legs, finished in 1973 so television signals could clear the city's hills. Frisco tried to broadcast his force-push from here. We are broadcasting a correction."
+          ]
+        },
+        {
+          "type": "riddle",
+          "text": "I am the true summit: 928 feet, a few feet taller than the peaks you just left. A great concrete cross stands on my crown. Frisco is hiding on the highest natural point in the city. Find it.",
+          "at": { "lat": 37.73826, "lon": -122.4533, "alt": 25 },
+          "radius": 150,
+          "hints": ["Look south of Twin Peaks, past Portola Drive.", "Mount Davidson, crowned by a 103-foot cross."],
+          "say": [
+            "Mount Davidson! There he goes, bolting for the bay. After him, citizen!"
+          ]
+        },
+        {
+          "type": "collect",
+          "text": "Frisco is shedding stolen commits across the Bay Bridge. Collect all three above the western span.",
+          "pieces": [
+            { "lat": 37.7922, "lon": -122.384, "alt": 90 },
+            { "lat": 37.79939, "lon": -122.37658, "alt": 90 },
+            { "lat": 37.8059, "lon": -122.371, "alt": 90 }
+          ],
+          "say": [
+            "The Bay Bridge opened on November 12, 1936, six months before the Golden Gate. I issued decrees calling for a suspension bridge from Oakland to San Francisco. They built it 56 years after I died. Punctuality has never been this city's gift."
+          ]
+        },
+        {
+          "type": "goto",
+          "text": "Follow him to Yerba Buena Island, in the middle of the bay.",
+          "at": { "lat": 37.8112, "lon": -122.36709, "alt": 40 },
+          "radius": 120,
+          "say": [
+            "Yerba Buena Island, once called Goat Island. In 2025 my admirers proposed naming the bridge's tunnel through this island the Emperor Norton Tunnel. A tunnel! I asked for one of those too. Frisco has doubled back toward the city!"
+          ]
+        },
+        {
+          "type": "find",
+          "text": "Frisco is clinging to the top of the Ferry Building clock tower. Catch him.",
+          "at": { "lat": 37.7955, "lon": -122.3937, "alt": 8 },
+          "radius": 16,
+          "say": [
+            "Got him! Frisco, you are hereby fined twenty-five dollars, payable to the Imperial Treasury. Norton scrip accepted.",
+            "The Ferry Building, completed in 1898, its 245-foot tower perhaps inspired by the Giralda of Seville. It came through 1906 and 1989 with little damage. It has survived far worse than you."
+          ]
+        },
+        {
+          "type": "read",
+          "text": "Fly to the rooftop park on the Salesforce Transit Center and read the final log entry.",
+          "at": { "lat": 37.78912, "lon": -122.39665, "alt": 15 },
+          "clue": { "from": "git log, restored", "text": "Merge pull request #1849 from pilot/restore-history. San Francisco remembers itself." },
+          "say": [
+            "Merged. The plaque that the E Clampus Vitus society made for me in 1939 once hung in the old Transbay Terminal on this very site, and for a time in this new transit center, before it went to a tavern in Colma. Even my plaques have adventures."
+          ]
+        }
+      ],
+      "outro": [
+        "It is done. San Francisco remembers itself: the cove and the fire, the fog and the songs, every stubborn and generous thing.",
+        "I proclaimed myself Emperor because I believed the people deserved someone who cared. It turns out they had each other all along. And now they have you.",
+        "By Imperial Decree, you are named Restorer of the Lost Commit, entitled to fly anywhere in this city at any hour. Which you were going to do anyway. Go on, citizen. The city is yours."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Sutro_Tower",
+        "https://en.wikipedia.org/wiki/Mount_Davidson_(California)",
+        "https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge",
+        "https://en.wikipedia.org/wiki/Yerba_Buena_Island",
+        "https://en.wikipedia.org/wiki/Emperor_Norton",
+        "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building",
+        "https://en.wikipedia.org/wiki/Salesforce_Transit_Center"
+      ]
+    }
+  }
+]

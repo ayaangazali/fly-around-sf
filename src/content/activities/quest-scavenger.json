@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "scavenger-north-beach",
+    "kind": "scavenger",
+    "title": "North Beach Notes",
+    "blurb": "Six notes scattered from Washington Square to the top of Coit Tower.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80086,
+      "lon": -122.4101,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "north beach"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.80163,
+          "lon": -122.41023,
+          "name": "Saints Peter and Paul"
+        },
+        {
+          "lat": 37.79765,
+          "lon": -122.40662,
+          "name": "City Lights"
+        },
+        {
+          "lat": 37.79806,
+          "lon": -122.40618,
+          "name": "The Beat Museum"
+        },
+        {
+          "lat": 37.80238,
+          "lon": -122.40583,
+          "name": "Top of Coit Tower"
+        },
+        {
+          "lat": 37.80186,
+          "lon": -122.40535,
+          "name": "Filbert Steps"
+        },
+        {
+          "lat": 37.80033,
+          "lon": -122.40905,
+          "name": "Stockton Street"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/3702219083",
+        "https://www.openstreetmap.org/node/5581588797",
+        "https://www.openstreetmap.org/way/18583270",
+        "https://www.openstreetmap.org/way/28824850",
+        "https://www.openstreetmap.org/way/29902626",
+        "https://www.openstreetmap.org/way/32858754",
+        "https://www.openstreetmap.org/way/940067366"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-chinatown",
+    "kind": "scavenger",
+    "title": "Chinatown Notes",
+    "blurb": "Six notes tucked into the alleys and rooftops of the oldest Chinatown in North America.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79483,
+      "lon": -122.40543,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "chinatown"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.79069,
+          "lon": -122.40559,
+          "name": "The Dragon Gate"
+        },
+        {
+          "lat": 37.79279,
+          "lon": -122.40579,
+          "name": "Old St. Mary's"
+        },
+        {
+          "lat": 37.79456,
+          "lon": -122.40701,
+          "name": "Waverly Place"
+        },
+        {
+          "lat": 37.79389,
+          "lon": -122.40808,
+          "name": "Kong Chow Temple"
+        },
+        {
+          "lat": 37.7957,
+          "lon": -122.40735,
+          "name": "Ross Alley"
+        },
+        {
+          "lat": 37.79204,
+          "lon": -122.40518,
+          "name": "St. Mary's Square"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/1308317902",
+        "https://www.openstreetmap.org/node/2923578988",
+        "https://www.openstreetmap.org/node/65328703",
+        "https://www.openstreetmap.org/relation/14547583",
+        "https://www.openstreetmap.org/way/260520154",
+        "https://www.openstreetmap.org/way/260523829",
+        "https://www.openstreetmap.org/way/28841124"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-fishermans-wharf",
+    "kind": "scavenger",
+    "title": "Wharf Notes",
+    "blurb": "Six notes along the wharf, from the sea lions to the cartoon museum.",
+    "neighborhood": "Fisherman's Wharf",
+    "at": {
+      "lat": 37.80881,
+      "lon": -122.41009,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "fisherman's wharf"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.80877,
+          "lon": -122.40931,
+          "name": "Aquarium of the Bay"
+        },
+        {
+          "lat": 37.80868,
+          "lon": -122.41077,
+          "name": "The sea lion statue"
+        },
+        {
+          "lat": 37.80852,
+          "lon": -122.4149,
+          "name": "Jefferson Street"
+        },
+        {
+          "lat": 37.80925,
+          "lon": -122.41579,
+          "name": "Pier 45"
+        },
+        {
+          "lat": 37.80777,
+          "lon": -122.41847,
+          "name": "Jefferson and Leavenworth"
+        },
+        {
+          "lat": 37.80638,
+          "lon": -122.42179,
+          "name": "Cartoon Art Museum"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/368166365",
+        "https://www.openstreetmap.org/node/4149743879",
+        "https://www.openstreetmap.org/node/434874627",
+        "https://www.openstreetmap.org/node/5038430321",
+        "https://www.openstreetmap.org/way/28518695",
+        "https://www.openstreetmap.org/way/288396169",
+        "https://www.openstreetmap.org/way/37312428"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-park-east",
+    "kind": "scavenger",
+    "title": "Music Concourse Notes",
+    "blurb": "Six notes around the museums and gardens of eastern Golden Gate Park.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77261,
+      "lon": -122.46023,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "golden gate park"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.7715,
+          "lon": -122.46909,
+          "name": "The de Young"
+        },
+        {
+          "lat": 37.76982,
+          "lon": -122.4661,
+          "name": "California Academy of Sciences"
+        },
+        {
+          "lat": 37.77029,
+          "lon": -122.47012,
+          "name": "Japanese Tea Garden"
+        },
+        {
+          "lat": 37.76988,
+          "lon": -122.46859,
+          "name": "The bandshell"
+        },
+        {
+          "lat": 37.76967,
+          "lon": -122.46222,
+          "name": "The AIDS Memorial Grove"
+        },
+        {
+          "lat": 37.76736,
+          "lon": -122.46968,
+          "name": "Botanical Garden"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/relation/1652482",
+        "https://www.openstreetmap.org/way/1065401157",
+        "https://www.openstreetmap.org/way/120480164",
+        "https://www.openstreetmap.org/way/28695389",
+        "https://www.openstreetmap.org/way/30675038",
+        "https://www.openstreetmap.org/way/30896932",
+        "https://www.openstreetmap.org/way/30900516"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-park-west",
+    "kind": "scavenger",
+    "title": "Windmill Notes",
+    "blurb": "Five notes between the model yacht lake and the windmills by the sea.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.771,
+      "lon": -122.49411,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "golden gate park"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.77043,
+          "lon": -122.50941,
+          "name": "Dutch Windmill"
+        },
+        {
+          "lat": 37.765,
+          "lon": -122.5087,
+          "name": "Murphy Windmill"
+        },
+        {
+          "lat": 37.76947,
+          "lon": -122.51022,
+          "name": "Beach Chalet"
+        },
+        {
+          "lat": 37.76818,
+          "lon": -122.49276,
+          "name": "The Polo Field"
+        },
+        {
+          "lat": 37.77038,
+          "lon": -122.48926,
+          "name": "Lindley Meadow"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/417235672",
+        "https://www.openstreetmap.org/way/16750564",
+        "https://www.openstreetmap.org/way/287921407",
+        "https://www.openstreetmap.org/way/287927026",
+        "https://www.openstreetmap.org/way/417407474",
+        "https://www.openstreetmap.org/way/476267889"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-presidio",
+    "kind": "scavenger",
+    "title": "Presidio Notes",
+    "blurb": "Six notes across the old Army post, from the parade ground to the forest.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.8002,
+      "lon": -122.45848,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "presidio"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.80136,
+          "lon": -122.45872,
+          "name": "Walt Disney Family Museum"
+        },
+        {
+          "lat": 37.79882,
+          "lon": -122.45049,
+          "name": "The Yoda Fountain"
+        },
+        {
+          "lat": 37.8029,
+          "lon": -122.45591,
+          "name": "Presidio Tunnel Tops"
+        },
+        {
+          "lat": 37.80252,
+          "lon": -122.46734,
+          "name": "The Pet Cemetery"
+        },
+        {
+          "lat": 37.7941,
+          "lon": -122.45371,
+          "name": "El Polin Spring"
+        },
+        {
+          "lat": 37.79222,
+          "lon": -122.45826,
+          "name": "Inspiration Point"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/1278501872",
+        "https://www.openstreetmap.org/node/332786657",
+        "https://www.openstreetmap.org/node/665688981",
+        "https://www.openstreetmap.org/node/8083525525",
+        "https://www.openstreetmap.org/way/112072219",
+        "https://www.openstreetmap.org/way/288340246",
+        "https://www.openstreetmap.org/way/91114607"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-marina",
+    "kind": "scavenger",
+    "title": "Marina Notes",
+    "blurb": "Five notes between the yacht harbor, the Palace and Fort Mason.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.8066,
+      "lon": -122.43912,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "marina"
+    ],
+    "params": {
+      "timeLimit": 360,
+      "tokens": [
+        {
+          "lat": 37.80849,
+          "lon": -122.44021,
+          "name": "The Wave Organ"
+        },
+        {
+          "lat": 37.80292,
+          "lon": -122.4484,
+          "name": "Palace of Fine Arts"
+        },
+        {
+          "lat": 37.80724,
+          "lon": -122.44695,
+          "name": "St. Francis Yacht Club"
+        },
+        {
+          "lat": 37.80772,
+          "lon": -122.4426,
+          "name": "Golden Gate Yacht Club"
+        },
+        {
+          "lat": 37.80778,
+          "lon": -122.42972,
+          "name": "Fort Mason"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/590952130",
+        "https://www.openstreetmap.org/node/984659510",
+        "https://www.openstreetmap.org/node/984659529",
+        "https://www.openstreetmap.org/way/16761472",
+        "https://www.openstreetmap.org/way/288371295"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-soma",
+    "kind": "scavenger",
+    "title": "SoMa Notes",
+    "blurb": "Six notes around Yerba Buena Gardens, up to the rooftop park and down to South Park.",
+    "neighborhood": "South of Market",
+    "at": {
+      "lat": 37.78465,
+      "lon": -122.40234,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "south of market"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.78592,
+          "lon": -122.40074,
+          "name": "SFMOMA"
+        },
+        {
+          "lat": 37.78453,
+          "lon": -122.40225,
+          "name": "The King memorial"
+        },
+        {
+          "lat": 37.78427,
+          "lon": -122.4033,
+          "name": "Fourth Street"
+        },
+        {
+          "lat": 37.78307,
+          "lon": -122.40167,
+          "name": "Children's Creativity Museum"
+        },
+        {
+          "lat": 37.78912,
+          "lon": -122.39665,
+          "name": "Salesforce Park"
+        },
+        {
+          "lat": 37.78159,
+          "lon": -122.39397,
+          "name": "South Park"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/1250280509",
+        "https://www.openstreetmap.org/relation/8524888",
+        "https://www.openstreetmap.org/way/24052083",
+        "https://www.openstreetmap.org/way/24307421",
+        "https://www.openstreetmap.org/way/28842443",
+        "https://www.openstreetmap.org/way/288716388",
+        "https://www.openstreetmap.org/way/41692824"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-mission",
+    "kind": "scavenger",
+    "title": "Mission Notes",
+    "blurb": "Six notes from Dolores Park to Valencia Street.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.75972,
+      "lon": -122.42713,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "mission"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.7583,
+          "lon": -122.428,
+          "name": "The Golden Fire Hydrant"
+        },
+        {
+          "lat": 37.76435,
+          "lon": -122.42695,
+          "name": "Mission Dolores"
+        },
+        {
+          "lat": 37.76143,
+          "lon": -122.42261,
+          "name": "18th Street"
+        },
+        {
+          "lat": 37.76146,
+          "lon": -122.42395,
+          "name": "Guerrero and 18th"
+        },
+        {
+          "lat": 37.75956,
+          "lon": -122.42156,
+          "name": "Valencia Street"
+        },
+        {
+          "lat": 37.76299,
+          "lon": -122.4206,
+          "name": "Clarion Alley"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/1609600152",
+        "https://www.openstreetmap.org/node/2247590960",
+        "https://www.openstreetmap.org/way/1377955129",
+        "https://www.openstreetmap.org/way/23871270",
+        "https://www.openstreetmap.org/way/256442760",
+        "https://www.openstreetmap.org/way/260194175"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-castro",
+    "kind": "scavenger",
+    "title": "Castro Notes",
+    "blurb": "Six notes from Harvey Milk Plaza up to the chert summit of Corona Heights.",
+    "neighborhood": "Castro",
+    "at": {
+      "lat": 37.76228,
+      "lon": -122.43561,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "castro"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.76199,
+          "lon": -122.43475,
+          "name": "Castro Theatre"
+        },
+        {
+          "lat": 37.76231,
+          "lon": -122.43627,
+          "name": "Pink Triangle Park"
+        },
+        {
+          "lat": 37.76258,
+          "lon": -122.43486,
+          "name": "Jane Warner Plaza"
+        },
+        {
+          "lat": 37.76077,
+          "lon": -122.43561,
+          "name": "GLBT History Museum"
+        },
+        {
+          "lat": 37.76478,
+          "lon": -122.43934,
+          "name": "Corona Heights"
+        },
+        {
+          "lat": 37.76348,
+          "lon": -122.44115,
+          "name": "Vulcan Stairway"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/2321383070",
+        "https://www.openstreetmap.org/way/1206216224",
+        "https://www.openstreetmap.org/way/188964530",
+        "https://www.openstreetmap.org/way/219036309",
+        "https://www.openstreetmap.org/way/225182880",
+        "https://www.openstreetmap.org/way/225526801",
+        "https://www.openstreetmap.org/way/8916229"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-haight",
+    "kind": "scavenger",
+    "title": "Haight Notes",
+    "blurb": "Five notes from Haight and Ashbury into the southeast corner of the park.",
+    "neighborhood": "Haight-Ashbury",
+    "at": {
+      "lat": 37.77014,
+      "lon": -122.44599,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "haight-ashbury"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.76836,
+          "lon": -122.44128,
+          "name": "Buena Vista Park"
+        },
+        {
+          "lat": 37.7698,
+          "lon": -122.4579,
+          "name": "Hippie Hill"
+        },
+        {
+          "lat": 37.76687,
+          "lon": -122.45601,
+          "name": "Kezar Stadium"
+        },
+        {
+          "lat": 37.7683,
+          "lon": -122.45823,
+          "name": "Sharon Art Studio"
+        },
+        {
+          "lat": 37.77165,
+          "lon": -122.45474,
+          "name": "McLaren Lodge"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/6949011895",
+        "https://www.openstreetmap.org/way/112433952",
+        "https://www.openstreetmap.org/way/272711313",
+        "https://www.openstreetmap.org/way/30675203",
+        "https://www.openstreetmap.org/way/44671094",
+        "https://www.openstreetmap.org/way/7459901"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-lands-end",
+    "kind": "scavenger",
+    "title": "Lands End Notes",
+    "blurb": "Six notes along the cliffs where the city runs out of land.",
+    "neighborhood": "Lands End",
+    "at": {
+      "lat": 37.77976,
+      "lon": -122.5116,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "lands end"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.78025,
+          "lon": -122.51363,
+          "name": "Sutro Baths"
+        },
+        {
+          "lat": 37.77855,
+          "lon": -122.51408,
+          "name": "The Cliff House"
+        },
+        {
+          "lat": 37.77827,
+          "lon": -122.51423,
+          "name": "Camera Obscura"
+        },
+        {
+          "lat": 37.7828,
+          "lon": -122.51153,
+          "name": "USS San Francisco Memorial"
+        },
+        {
+          "lat": 37.7874,
+          "lon": -122.50622,
+          "name": "Mile Rock Beach"
+        },
+        {
+          "lat": 37.78456,
+          "lon": -122.50096,
+          "name": "Legion of Honor"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/358803480",
+        "https://www.openstreetmap.org/relation/21115818",
+        "https://www.openstreetmap.org/way/168942987",
+        "https://www.openstreetmap.org/way/168942988",
+        "https://www.openstreetmap.org/way/195638010",
+        "https://www.openstreetmap.org/way/250216260",
+        "https://www.openstreetmap.org/way/32776564"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-financial-district",
+    "kind": "scavenger",
+    "title": "Financial District Notes",
+    "blurb": "Six notes between the towers, the plazas and the piers.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.7949,
+      "lon": -122.39495,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "financial district"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.7955,
+          "lon": -122.3937,
+          "name": "The Ferry Building"
+        },
+        {
+          "lat": 37.79519,
+          "lon": -122.40279,
+          "name": "Transamerica Pyramid"
+        },
+        {
+          "lat": 37.79559,
+          "lon": -122.39962,
+          "name": "Maritime Plaza"
+        },
+        {
+          "lat": 37.79751,
+          "lon": -122.39903,
+          "name": "Sydney G. Walton Square"
+        },
+        {
+          "lat": 37.79128,
+          "lon": -122.39921,
+          "name": "Mechanics Monument"
+        },
+        {
+          "lat": 37.79944,
+          "lon": -122.39553,
+          "name": "Pier 7"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/12440345641",
+        "https://www.openstreetmap.org/node/358803325",
+        "https://www.openstreetmap.org/way/23605169",
+        "https://www.openstreetmap.org/way/23916482",
+        "https://www.openstreetmap.org/way/24222973",
+        "https://www.openstreetmap.org/way/27146063"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-nob-hill",
+    "kind": "scavenger",
+    "title": "Nob Hill Notes",
+    "blurb": "Six notes over the grand hotels of Nob Hill and down Russian Hill.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79476,
+      "lon": -122.41185,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "nob hill"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.79182,
+          "lon": -122.4135,
+          "name": "Grace Cathedral"
+        },
+        {
+          "lat": 37.79217,
+          "lon": -122.41218,
+          "name": "Huntington Park"
+        },
+        {
+          "lat": 37.79242,
+          "lon": -122.40977,
+          "name": "The Fairmont"
+        },
+        {
+          "lat": 37.79142,
+          "lon": -122.41023,
+          "name": "Mark Hopkins"
+        },
+        {
+          "lat": 37.79823,
+          "lon": -122.41339,
+          "name": "Ina Coolbrith Park"
+        },
+        {
+          "lat": 37.8021,
+          "lon": -122.4188,
+          "name": "Lombard Street"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/relation/16217497",
+        "https://www.openstreetmap.org/way/114151121",
+        "https://www.openstreetmap.org/way/1361492525",
+        "https://www.openstreetmap.org/way/30029681",
+        "https://www.openstreetmap.org/way/32946942",
+        "https://www.openstreetmap.org/way/32946958",
+        "https://www.openstreetmap.org/way/402111597"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-mission-bay",
+    "kind": "scavenger",
+    "title": "Mission Bay Notes",
+    "blurb": "Six notes around the ballpark, the arena and the Dogpatch waterfront.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77278,
+      "lon": -122.39601,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "mission bay"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.77861,
+          "lon": -122.38947,
+          "name": "Oracle Park"
+        },
+        {
+          "lat": 37.77762,
+          "lon": -122.38847,
+          "name": "McCovey Cove"
+        },
+        {
+          "lat": 37.77676,
+          "lon": -122.39025,
+          "name": "Lefty O'Doul Bridge"
+        },
+        {
+          "lat": 37.7679,
+          "lon": -122.38742,
+          "name": "Chase Center"
+        },
+        {
+          "lat": 37.76871,
+          "lon": -122.39222,
+          "name": "UCSF Mission Bay"
+        },
+        {
+          "lat": 37.76255,
+          "lon": -122.38711,
+          "name": "Crane Cove Park"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/317091394",
+        "https://www.openstreetmap.org/relation/7325085",
+        "https://www.openstreetmap.org/way/1088314479",
+        "https://www.openstreetmap.org/way/224832527",
+        "https://www.openstreetmap.org/way/56656116",
+        "https://www.openstreetmap.org/way/579646390",
+        "https://www.openstreetmap.org/way/853562207"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-bayview",
+    "kind": "scavenger",
+    "title": "Bayview Notes",
+    "blurb": "Four notes from Third Street to the shoreline of India Basin.",
+    "neighborhood": "Bayview",
+    "at": {
+      "lat": 37.73515,
+      "lon": -122.39017,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "bayview"
+    ],
+    "params": {
+      "timeLimit": 360,
+      "tokens": [
+        {
+          "lat": 37.73515,
+          "lon": -122.39017,
+          "name": "Bayview Opera House"
+        },
+        {
+          "lat": 37.73464,
+          "lon": -122.37599,
+          "name": "India Basin"
+        },
+        {
+          "lat": 37.7329,
+          "lon": -122.38365,
+          "name": "Hilltop Park"
+        },
+        {
+          "lat": 37.72319,
+          "lon": -122.38433,
+          "name": "Yosemite Slough"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/8163687310",
+        "https://www.openstreetmap.org/way/28670189",
+        "https://www.openstreetmap.org/way/288836717",
+        "https://www.openstreetmap.org/way/414033716"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-twin-peaks",
+    "kind": "scavenger",
+    "title": "Twin Peaks Notes",
+    "blurb": "Six notes on the hills at the center of the city.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.7516,
+      "lon": -122.4477,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "twin peaks"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.75524,
+          "lon": -122.45306,
+          "name": "Sutro Tower"
+        },
+        {
+          "lat": 37.76002,
+          "lon": -122.44753,
+          "name": "Tank Hill"
+        },
+        {
+          "lat": 37.75625,
+          "lon": -122.44854,
+          "name": "Twin Peaks Reservoir"
+        },
+        {
+          "lat": 37.75841,
+          "lon": -122.44157,
+          "name": "Kite Hill"
+        },
+        {
+          "lat": 37.75811,
+          "lon": -122.45718,
+          "name": "Mount Sutro"
+        },
+        {
+          "lat": 37.74356,
+          "lon": -122.44027,
+          "name": "Christopher Playground"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/12056865382",
+        "https://www.openstreetmap.org/node/7707941361",
+        "https://www.openstreetmap.org/relation/3829019",
+        "https://www.openstreetmap.org/way/24295266",
+        "https://www.openstreetmap.org/way/34856612",
+        "https://www.openstreetmap.org/way/391857390"
+      ]
+    }
+  },
+  {
+    "id": "scavenger-sunset-heights",
+    "kind": "scavenger",
+    "title": "Golden Gate Heights Notes",
+    "blurb": "Five notes on the stairways and hilltops above the Sunset.",
+    "neighborhood": "Golden Gate Heights",
+    "at": {
+      "lat": 37.75645,
+      "lon": -122.47183,
+      "alt": 25
+    },
+    "xp": 50,
+    "tags": [
+      "scavenger hunt",
+      "imperial notes",
+      "golden gate heights"
+    ],
+    "params": {
+      "timeLimit": 420,
+      "tokens": [
+        {
+          "lat": 37.7596,
+          "lon": -122.47363,
+          "name": "Hidden Garden Steps"
+        },
+        {
+          "lat": 37.74999,
+          "lon": -122.46957,
+          "name": "Golden Gate Heights Park"
+        },
+        {
+          "lat": 37.75285,
+          "lon": -122.46253,
+          "name": "Laguna Honda"
+        },
+        {
+          "lat": 37.75099,
+          "lon": -122.4838,
+          "name": "Sunset Reservoir"
+        },
+        {
+          "lat": 37.74743,
+          "lon": -122.46358,
+          "name": "Forest Hill"
+        }
+      ],
+      "sources": [
+        "https://www.openstreetmap.org/node/140983295",
+        "https://www.openstreetmap.org/way/128241105",
+        "https://www.openstreetmap.org/way/1293746848",
+        "https://www.openstreetmap.org/way/30969894",
+        "https://www.openstreetmap.org/way/402061421",
+        "https://www.openstreetmap.org/way/47174862"
+      ]
+    }
+  }
+]

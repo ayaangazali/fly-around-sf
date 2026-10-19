@@ -1,0 +1,1307 @@
+[
+  {
+    "id": "riddle-mosaic-staircase",
+    "kind": "riddle",
+    "title": "The Mosaic Staircase",
+    "blurb": "The Emperor has a riddle about a staircase that would rather be a painting.",
+    "neighborhood": "Golden Gate Heights",
+    "at": {
+      "lat": 37.74999,
+      "lon": -122.46957,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "golden gate heights"
+    ],
+    "params": {
+      "riddle": "One hundred and sixty-three steps, and every one wears a coat of colored glass and tile, more than 75,000 fragments in all. Climb the staircase that turned itself into a picture.",
+      "hints": [
+        "It climbs a hill in the Sunset District, near 16th Avenue and Moraga Street.",
+        "The 16th Avenue Tiled Steps, leading up to Grandview Park."
+      ],
+      "answer": "The 16th Avenue Tiled Steps",
+      "target": {
+        "lat": 37.7563,
+        "lon": -122.4733
+      },
+      "radius": 130,
+      "fact": "Fodor's calls them possibly the world's largest mosaic staircase: 163 steps rising 90 feet, covered in more than 2,000 tiles.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/16th_Avenue_Tiled_Steps",
+        "https://www.openstreetmap.org/way/402061421"
+      ]
+    }
+  },
+  {
+    "id": "riddle-postcard-lawn",
+    "kind": "riddle",
+    "title": "The Postcard Lawn",
+    "blurb": "Find the hilltop lawn that has been on more postcards than anyone in town.",
+    "neighborhood": "Alamo Square",
+    "at": {
+      "lat": 37.76984,
+      "lon": -122.43249,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "alamo square"
+    ],
+    "params": {
+      "riddle": "Four city blocks on a hilltop, ringed by grand old houses, with a row of painted Victorians that has posed for more postcards than any family in town. Find the lawn with the famous view of downtown.",
+      "hints": [
+        "It is in the Western Addition, between Hayes and Fulton streets.",
+        "Alamo Square, home of the Painted Ladies view."
+      ],
+      "answer": "Alamo Square",
+      "target": {
+        "lat": 37.77636,
+        "lon": -122.4347
+      },
+      "radius": 150,
+      "fact": "Alamo Square park covers four city blocks overlooking downtown. The term painted ladies was first used for San Francisco Victorians in a 1978 book.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Alamo_Square,_San_Francisco",
+        "https://en.wikipedia.org/wiki/Painted_ladies"
+      ]
+    }
+  },
+  {
+    "id": "riddle-garden-from-a-fair",
+    "kind": "riddle",
+    "title": "A Garden From a Fair",
+    "blurb": "A riddle about the oldest garden of its kind in the country.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77261,
+      "lon": -122.46023,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "golden gate park"
+    ],
+    "params": {
+      "riddle": "I was born at a world's fair in 1894 and I am the oldest public garden of my kind in the country. A gardener named Hagiwara kept me for decades, and some say the modern fortune cookie was first served here. Find the teahouse.",
+      "hints": [
+        "Look west of the Music Concourse in Golden Gate Park.",
+        "The Japanese Tea Garden."
+      ],
+      "answer": "The Japanese Tea Garden",
+      "target": {
+        "lat": 37.77029,
+        "lon": -122.47012
+      },
+      "radius": 110,
+      "fact": "Built for the California Midwinter International Exposition of 1894, it is the oldest public Japanese garden in the United States. Its pagoda came from the 1915 Panama-Pacific Exposition.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Japanese_Tea_Garden_(San_Francisco)",
+        "https://en.wikipedia.org/wiki/Fortune_cookie"
+      ]
+    }
+  },
+  {
+    "id": "riddle-admirals-square",
+    "kind": "riddle",
+    "title": "The Admiral's Square",
+    "blurb": "An admiral, a victory and a square full of shoppers.",
+    "neighborhood": "Union Square",
+    "at": {
+      "lat": 37.78433,
+      "lon": -122.40816,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "union square"
+    ],
+    "params": {
+      "riddle": "An admiral won a battle in Manila Bay, and this city raised a monument to him in 1903, right in the middle of its busiest shopping square. Find him.",
+      "hints": [
+        "North of Market Street, bounded by Geary, Powell, Post and Stockton.",
+        "The Dewey Monument at the center of Union Square."
+      ],
+      "answer": "The Dewey Monument in Union Square",
+      "target": {
+        "lat": 37.78793,
+        "lon": -122.40752
+      },
+      "radius": 90,
+      "fact": "Robert Ingersoll Aitken's Dewey Monument honors Admiral George Dewey's victory in the Battle of Manila Bay. Work began in 1901 and it was dedicated in 1903.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dewey_Monument",
+        "https://www.openstreetmap.org/way/616479962"
+      ]
+    }
+  },
+  {
+    "id": "riddle-splash-hits",
+    "kind": "riddle",
+    "title": "Splash Hits",
+    "blurb": "Where a home run can end up in the bay.",
+    "neighborhood": "South Beach",
+    "at": {
+      "lat": 37.78159,
+      "lon": -122.39397,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "south beach"
+    ],
+    "params": {
+      "riddle": "Hit one over my right-field wall and it lands in a cove named for a slugger. I have worn four names, but the Giants never left. Fly to the ballpark by the bay.",
+      "hints": [
+        "Follow the waterfront south of the Bay Bridge.",
+        "Oracle Park, home of the San Francisco Giants, beside McCovey Cove."
+      ],
+      "answer": "Oracle Park",
+      "target": {
+        "lat": 37.77861,
+        "lon": -122.38947
+      },
+      "radius": 160,
+      "fact": "Oracle Park has been home to the Giants since 2000. The water beyond right field is unofficially called McCovey Cove, after Willie McCovey.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Oracle_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-new-arena",
+    "kind": "riddle",
+    "title": "The New Arena",
+    "blurb": "The newest big room in town has a riddle waiting.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.76871,
+      "lon": -122.39222,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "mission bay"
+    ],
+    "params": {
+      "riddle": "I was the newest big room in town when I opened in September 2019. Two Golden State teams call me home, one that moved across the bay to me and one that was born here. Fly to the arena on the Mission Bay shore.",
+      "hints": [
+        "It sits on the waterfront in Mission Bay, south of the ballpark.",
+        "Chase Center, home of the Golden State Warriors."
+      ],
+      "answer": "Chase Center",
+      "target": {
+        "lat": 37.7679,
+        "lon": -122.38742
+      },
+      "radius": 150,
+      "fact": "Chase Center opened on September 6, 2019, and seats 18,064 for basketball. It is home to the Warriors and the WNBA's Golden State Valkyries.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Chase_Center"
+      ]
+    }
+  },
+  {
+    "id": "riddle-movie-palace",
+    "kind": "riddle",
+    "title": "Movie Palace",
+    "blurb": "A riddle about a palace where the kings are on screen.",
+    "neighborhood": "Castro",
+    "at": {
+      "lat": 37.75972,
+      "lon": -122.42713,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "castro"
+    ],
+    "params": {
+      "riddle": "A movie palace from 1922 in Spanish Baroque dress, given an Art Deco marquee in 1937. Fourteen hundred people can fit inside for a concert. Find the theater.",
+      "hints": [
+        "Fly west from Dolores Park into the Castro.",
+        "The Castro Theatre on Castro Street."
+      ],
+      "answer": "The Castro Theatre",
+      "target": {
+        "lat": 37.76199,
+        "lon": -122.43475
+      },
+      "radius": 90,
+      "fact": "The Castro Theatre was designed by Timothy L. Pflueger, who also designed Oakland's Paramount Theater.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Castro_Theatre"
+      ]
+    }
+  },
+  {
+    "id": "riddle-palace-without-a-king",
+    "kind": "riddle",
+    "title": "A Palace Without a King",
+    "blurb": "Find the palace that holds paintings instead of princes.",
+    "neighborhood": "Lincoln Park",
+    "at": {
+      "lat": 37.7835,
+      "lon": -122.49365,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "lincoln park"
+    ],
+    "params": {
+      "riddle": "I am a palace with no king, filled with art and perched in a park above the Golden Gate. My sister museum lives in Golden Gate Park, and we share our keepers. Find me.",
+      "hints": [
+        "It sits in Lincoln Park on the cliffs of the Outer Richmond.",
+        "The Legion of Honor art museum."
+      ],
+      "answer": "The Legion of Honor",
+      "target": {
+        "lat": 37.78456,
+        "lon": -122.50096
+      },
+      "radius": 140,
+      "fact": "Formally the California Palace of the Legion of Honor, it belongs to the Fine Arts Museums of San Francisco together with the de Young.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Legion_of_Honor_(museum)"
+      ]
+    }
+  },
+  {
+    "id": "riddle-three-legs",
+    "kind": "riddle",
+    "title": "Three Legs in the Fog",
+    "blurb": "A riddle you can see from almost anywhere in the city.",
+    "neighborhood": "Midtown Terrace",
+    "at": {
+      "lat": 37.76002,
+      "lon": -122.44753,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "midtown terrace"
+    ],
+    "params": {
+      "riddle": "I stand on three legs and wear the fog like a skirt. Since 1973 I have carried television over the hills that used to block it. Find the tallest thing on the western ridges.",
+      "hints": [
+        "It rises between Twin Peaks and Mount Sutro.",
+        "Sutro Tower."
+      ],
+      "answer": "Sutro Tower",
+      "target": {
+        "lat": 37.75524,
+        "lon": -122.45306
+      },
+      "radius": 150,
+      "fact": "Sutro Tower is 977 feet tall and was the tallest structure in San Francisco from 1973 until Salesforce Tower passed it in 2018.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sutro_Tower"
+      ]
+    }
+  },
+  {
+    "id": "riddle-lost-pool",
+    "kind": "riddle",
+    "title": "The Lost Pool",
+    "blurb": "Fly to a pool that is not there anymore.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.73275,
+      "lon": -122.50239,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "outer sunset"
+    ],
+    "params": {
+      "riddle": "In 1925 I was one of the largest outdoor swimming pools in the world, filled with seawater beside the zoo. I closed in 1971 and was demolished in 2000. Fly to where the giant pool once lay.",
+      "hints": [
+        "The southwest corner of the city, by Sloat Boulevard and the Great Highway.",
+        "The site of Fleishhacker Pool, next to the San Francisco Zoo."
+      ],
+      "answer": "The site of Fleishhacker Pool",
+      "target": {
+        "lat": 37.733477,
+        "lon": -122.505978
+      },
+      "radius": 150,
+      "fact": "Fleishhacker Pool was a saltwater pool complex beside the zoo that stayed open for more than four decades.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fleishhacker_Pool"
+      ]
+    }
+  },
+  {
+    "id": "riddle-summer-grove",
+    "kind": "riddle",
+    "title": "The Summer Grove",
+    "blurb": "A riddle with a soundtrack.",
+    "neighborhood": "Parkside",
+    "at": {
+      "lat": 37.73766,
+      "lon": -122.46918,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "parkside"
+    ],
+    "params": {
+      "riddle": "A green hollow in the Parkside where free concerts have played every summer since 1938. Find the grove.",
+      "hints": [
+        "It is in the Parkside District, west of West Portal.",
+        "Sigmund Stern Recreation Grove, called Stern Grove."
+      ],
+      "answer": "Stern Grove",
+      "target": {
+        "lat": 37.73609,
+        "lon": -122.4786
+      },
+      "radius": 170,
+      "fact": "Stern Grove covers 33 acres and hosts the Stern Grove Festival, held every summer since 1938.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sigmund_Stern_Recreation_Grove"
+      ]
+    }
+  },
+  {
+    "id": "riddle-guns-to-dogs",
+    "kind": "riddle",
+    "title": "From Guns to Dogs",
+    "blurb": "A fort that traded artillery for tennis balls.",
+    "neighborhood": "Lake Merced",
+    "at": {
+      "lat": 37.73302,
+      "lon": -122.49025,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "lake merced"
+    ],
+    "params": {
+      "riddle": "Once I guarded the coast with heavy guns. Now the guns are gone and the dogs run free on my windswept bluffs above the Pacific. I am named for a general. Find me.",
+      "hints": [
+        "The southwest corner of the city, on the bluffs west of Lake Merced.",
+        "Fort Funston."
+      ],
+      "answer": "Fort Funston",
+      "target": {
+        "lat": 37.7191,
+        "lon": -122.5033
+      },
+      "radius": 220,
+      "fact": "Fort Funston, once the Lake Merced Military Reservation, is named for Major General Frederick Funston and is now widely used as an off-leash dog park.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fort_Funston"
+      ]
+    }
+  },
+  {
+    "id": "riddle-elder-sister",
+    "kind": "riddle",
+    "title": "The Elder Sister",
+    "blurb": "Two sisters guard the western end of the park. Find the older one.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.76818,
+      "lon": -122.49276,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "golden gate park"
+    ],
+    "params": {
+      "riddle": "I am the elder of two sisters at the windy western edge of Golden Gate Park, finished in 1903, and my sails still turn. Find me.",
+      "hints": [
+        "Fly to the far western end of Golden Gate Park, near Ocean Beach.",
+        "The Dutch Windmill, the northern of the park's two windmills."
+      ],
+      "answer": "The Dutch Windmill",
+      "target": {
+        "lat": 37.77043,
+        "lon": -122.50941
+      },
+      "radius": 110,
+      "fact": "Golden Gate Park has two historic windmills: the Dutch Windmill, completed in 1903 in the north, and the Murphy Windmill, completed in 1908 in the south.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Golden_Gate_Park_windmills",
+        "https://www.openstreetmap.org/way/287921407"
+      ]
+    }
+  },
+  {
+    "id": "riddle-specimens",
+    "kind": "riddle",
+    "title": "Forty-Six Million Specimens",
+    "blurb": "The Emperor was on his way to a debate here the night he died.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.7698,
+      "lon": -122.4579,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "golden gate park"
+    ],
+    "params": {
+      "riddle": "I hold more than 46 million specimens and began in 1853 as a learned society. In 1880 an Emperor collapsed on his way to one of my debates. Find me in the park.",
+      "hints": [
+        "On the Music Concourse in Golden Gate Park.",
+        "The California Academy of Sciences."
+      ],
+      "answer": "The California Academy of Sciences",
+      "target": {
+        "lat": 37.76982,
+        "lon": -122.4661
+      },
+      "radius": 110,
+      "fact": "The Academy is one of the largest natural history museums in the world. Its Golden Gate Park building was completely rebuilt in 2008.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/California_Academy_of_Sciences",
+        "https://en.wikipedia.org/wiki/Emperor_Norton"
+      ]
+    }
+  },
+  {
+    "id": "riddle-third-cathedral",
+    "kind": "riddle",
+    "title": "The Third Cathedral",
+    "blurb": "Three cathedrals, one name. Find the newest.",
+    "neighborhood": "Cathedral Hill",
+    "at": {
+      "lat": 37.77605,
+      "lon": -122.42738,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "cathedral hill"
+    ],
+    "params": {
+      "riddle": "San Francisco has built three cathedrals of my name. The second burned in 1962. I, the third, was completed in 1970 on the hill that took my title. Find me.",
+      "hints": [
+        "On Gough Street, on Cathedral Hill.",
+        "The Cathedral of Saint Mary of the Assumption."
+      ],
+      "answer": "Saint Mary's Cathedral",
+      "target": {
+        "lat": 37.78402,
+        "lon": -122.42534
+      },
+      "radius": 120,
+      "fact": "Saint Mary's Cathedral is the mother church for Catholics in San Francisco, Marin and San Mateo counties.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cathedral_of_Saint_Mary_of_the_Assumption_(San_Francisco)"
+      ]
+    }
+  },
+  {
+    "id": "riddle-six-blocks",
+    "kind": "riddle",
+    "title": "Six Blocks and a Pagoda",
+    "blurb": "A neighborhood riddle from the Western Addition.",
+    "neighborhood": "Japantown",
+    "at": {
+      "lat": 37.79146,
+      "lon": -122.42786,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "japantown"
+    ],
+    "params": {
+      "riddle": "About six city blocks, one of the largest and oldest neighborhoods of my kind in the country, with a pagoda of peace in my plaza. Find it.",
+      "hints": [
+        "Look in the Western Addition, around Buchanan Street.",
+        "Japantown and its Peace Pagoda."
+      ],
+      "answer": "Japantown",
+      "target": {
+        "lat": 37.78507,
+        "lon": -122.42986
+      },
+      "radius": 160,
+      "fact": "Japantown, Nihonmachi in Japanese, covers about six city blocks and is one of the largest and oldest ethnic enclaves in the United States.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Japantown,_San_Francisco",
+        "https://www.openstreetmap.org/way/1458363734"
+      ]
+    }
+  },
+  {
+    "id": "riddle-majestic-hall",
+    "kind": "riddle",
+    "title": "Majestic Hall",
+    "blurb": "A music riddle. Bring earplugs.",
+    "neighborhood": "Fillmore",
+    "at": {
+      "lat": 37.79118,
+      "lon": -122.43767,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "fillmore"
+    ],
+    "params": {
+      "riddle": "I opened in 1912 as the Majestic Hall and took my famous name in 1954. Promoters have been borrowing my name for other clubs ever since. Find the hall.",
+      "hints": [
+        "On Geary Boulevard in the Western Addition.",
+        "The Fillmore."
+      ],
+      "answer": "The Fillmore",
+      "target": {
+        "lat": 37.78408,
+        "lon": -122.43317
+      },
+      "radius": 90,
+      "fact": "The Fillmore became the Fillmore Auditorium in 1954. Live Nation has run it since 2007 and named other clubs after it.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Fillmore"
+      ]
+    }
+  },
+  {
+    "id": "riddle-gardens-over-a-convention",
+    "kind": "riddle",
+    "title": "Gardens Over a Convention",
+    "blurb": "Green space with a secret underneath.",
+    "neighborhood": "South of Market",
+    "at": {
+      "lat": 37.78274,
+      "lon": -122.40727,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "south of market"
+    ],
+    "params": {
+      "riddle": "Two blocks of green in the middle of SoMa, opened in 1993 and 1998 and joined by a bridge over Howard Street, with a memorial to Dr. Martin Luther King Jr. Find the gardens.",
+      "hints": [
+        "Between Third and Fourth streets, Mission and Folsom.",
+        "Yerba Buena Gardens."
+      ],
+      "answer": "Yerba Buena Gardens",
+      "target": {
+        "lat": 37.78465,
+        "lon": -122.40234
+      },
+      "radius": 120,
+      "fact": "The bridge between the two blocks of Yerba Buena Gardens sits on top of part of the Moscone Center.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Yerba_Buena_Gardens"
+      ]
+    }
+  },
+  {
+    "id": "riddle-oldest-stage",
+    "kind": "riddle",
+    "title": "The Oldest Stage",
+    "blurb": "A theater riddle from the southeast.",
+    "neighborhood": "Bayview",
+    "at": {
+      "lat": 37.73464,
+      "lon": -122.37599,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "bayview"
+    ],
+    "params": {
+      "riddle": "Founded in 1888 as the South San Francisco Opera House, I am said to be the oldest theater still standing in the city. Find me.",
+      "hints": [
+        "The heart of Bayview, on Third Street.",
+        "The Bayview Opera House, 4705 Third Street."
+      ],
+      "answer": "The Bayview Opera House",
+      "target": {
+        "lat": 37.73515,
+        "lon": -122.39017
+      },
+      "radius": 100,
+      "fact": "The Bayview Opera House was renovated from 2014 to 2016 and is on the National Register of Historic Places.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Bayview_Opera_House"
+      ]
+    }
+  },
+  {
+    "id": "riddle-birdwatchers-point",
+    "kind": "riddle",
+    "title": "The Birdwatchers' Point",
+    "blurb": "A wetland riddle for patient pilots.",
+    "neighborhood": "Hunters Point",
+    "at": {
+      "lat": 37.75395,
+      "lon": -122.38305,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "hunters point"
+    ],
+    "params": {
+      "riddle": "A spit of wetland on the southern waterfront, about 22 acres, where birdwatchers gather and an EcoCenter teaches. I am named for a wading bird. Find me.",
+      "hints": [
+        "The southeastern waterfront, just north of India Basin.",
+        "Heron's Head Park."
+      ],
+      "answer": "Heron's Head Park",
+      "target": {
+        "lat": 37.73889,
+        "lon": -122.37464
+      },
+      "radius": 160,
+      "fact": "Heron's Head Park is maintained by the Port of San Francisco and is known for its bird watching.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Heron%27s_Head_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-point-of-no-ships",
+    "kind": "riddle",
+    "title": "The Point of No Ships",
+    "blurb": "The Navy planned a shipyard. The state built a park.",
+    "neighborhood": "Candlestick",
+    "at": {
+      "lat": 37.71529,
+      "lon": -122.39348,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "candlestick"
+    ],
+    "params": {
+      "riddle": "The Navy meant to build ships on me in World War II but walked away. Neighbors dumped trash. Then in 1977 California voted to make me a park. Find the point at the southeastern tip of the city.",
+      "hints": [
+        "Fly to the far southeastern corner of San Francisco, along the bay.",
+        "Candlestick Point State Recreation Area."
+      ],
+      "answer": "Candlestick Point",
+      "target": {
+        "lat": 37.71719,
+        "lon": -122.38042
+      },
+      "radius": 260,
+      "fact": "Candlestick Point is a 170-acre landfill that the state bought in 1973 for 10 million dollars and turned into a state park.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Candlestick_Point_State_Recreation_Area"
+      ]
+    }
+  },
+  {
+    "id": "riddle-fourth-park",
+    "kind": "riddle",
+    "title": "The Fourth Largest",
+    "blurb": "A big green riddle in the southeast hills.",
+    "neighborhood": "Excelsior",
+    "at": {
+      "lat": 37.72028,
+      "lon": -122.43328,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "excelsior"
+    ],
+    "params": {
+      "riddle": "Three hundred and thirteen acres of hills in the southeast, the fourth largest park in the city. An amphitheater here carries the name of a famous guitarist. Find me.",
+      "hints": [
+        "Look between the Excelsior and Visitacion Valley.",
+        "John McLaren Park."
+      ],
+      "answer": "McLaren Park",
+      "target": {
+        "lat": 37.7180842,
+        "lon": -122.4190721
+      },
+      "radius": 320,
+      "fact": "At 313.7 acres, McLaren Park is the fourth largest park in San Francisco, after Golden Gate Park, the Presidio and Lake Merced Park.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_McLaren_Park",
+        "https://www.openstreetmap.org/way/430142484"
+      ]
+    }
+  },
+  {
+    "id": "riddle-canyon-in-the-city",
+    "kind": "riddle",
+    "title": "Canyon in the City",
+    "blurb": "Find the place where San Francisco still looks like it did before the streets.",
+    "neighborhood": "Glen Park",
+    "at": {
+      "lat": 37.74141,
+      "lon": -122.43327,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "glen park"
+    ],
+    "params": {
+      "riddle": "A deep green canyon in the middle of the city where a creek still runs free, the way this land looked before the streets came. Find me.",
+      "hints": [
+        "Between Glen Park and Diamond Heights.",
+        "Glen Canyon Park, where Islais Creek flows."
+      ],
+      "answer": "Glen Canyon Park",
+      "target": {
+        "lat": 37.74039,
+        "lon": -122.44201
+      },
+      "radius": 220,
+      "fact": "Glen Canyon Park covers about 70 acres along a deep canyon, with free-flowing Islais Creek running through it.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Glen_Canyon_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-red-rock-lookout",
+    "kind": "riddle",
+    "title": "Red Rock Lookout",
+    "blurb": "A bare hilltop with one of the best views in town.",
+    "neighborhood": "Corona Heights",
+    "at": {
+      "lat": 37.76228,
+      "lon": -122.43561,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "corona heights"
+    ],
+    "params": {
+      "riddle": "A bald hilltop of red chert above the Castro, with a museum tucked on my slope. Climb to 520 feet and look at the whole city. Find me.",
+      "hints": [
+        "Just south of Buena Vista Park, above 16th Street.",
+        "Corona Heights Park."
+      ],
+      "answer": "Corona Heights Park",
+      "target": {
+        "lat": 37.76478,
+        "lon": -122.43934
+      },
+      "radius": 130,
+      "fact": "Corona Heights rises to 520 feet on Franciscan chert bedrock, and the Randall Museum sits within the park.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Corona_Heights_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-island-for-a-fair",
+    "kind": "riddle",
+    "title": "An Island Built for a Fair",
+    "blurb": "A riddle in the middle of the bay.",
+    "neighborhood": "Treasure Island",
+    "at": {
+      "lat": 37.8112,
+      "lon": -122.36709,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "treasure island"
+    ],
+    "params": {
+      "riddle": "I was built up from the bay in 1936 and 1937 for a world's fair, and a publicist with an eye for adventure gave me my name. A causeway ties me to my natural neighbor. Find me.",
+      "hints": [
+        "Fly out to the middle of the bay, north of the Bay Bridge.",
+        "Treasure Island."
+      ],
+      "answer": "Treasure Island",
+      "target": {
+        "lat": 37.82381,
+        "lon": -122.37041
+      },
+      "radius": 400,
+      "fact": "Treasure Island was built for the 1939 Golden Gate International Exposition and named by Clyde Milner Vandeburg of the fair's publicity team.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Treasure_Island,_San_Francisco"
+      ]
+    }
+  },
+  {
+    "id": "riddle-nick-and-nora",
+    "kind": "riddle",
+    "title": "Nick and Nora",
+    "blurb": "Two old cranes keep watch over a new park.",
+    "neighborhood": "Dogpatch",
+    "at": {
+      "lat": 37.76389,
+      "lon": -122.39934,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "dogpatch"
+    ],
+    "params": {
+      "riddle": "Two old cranes named after a pair of movie detectives watch over me. Ships slid into the bay from my ramp, and so did pieces of the tube that carries BART under the bay. Find the park.",
+      "hints": [
+        "Along the Dogpatch waterfront at historic Pier 70.",
+        "Crane Cove Park."
+      ],
+      "answer": "Crane Cove Park",
+      "target": {
+        "lat": 37.76255,
+        "lon": -122.38711
+      },
+      "radius": 130,
+      "fact": "Crane Cove Park opened in 2020. Sections of the BART Transbay Tube were built and launched there between 1965 and 1969.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Crane_Cove_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-victorian-survivor",
+    "kind": "riddle",
+    "title": "A Victorian Survivor",
+    "blurb": "A house that outlasted 1906 and now tells its story.",
+    "neighborhood": "Pacific Heights",
+    "at": {
+      "lat": 37.79118,
+      "lon": -122.43767,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "pacific heights"
+    ],
+    "params": {
+      "riddle": "Built in 1886 for William and Bertha Haas, I survived the 1906 earthquake and fire, and now I am a museum of Victorian life. Find the house.",
+      "hints": [
+        "Pacific Heights, on Franklin Street.",
+        "The Haas-Lilienthal House, 2007 Franklin Street."
+      ],
+      "answer": "The Haas-Lilienthal House",
+      "target": {
+        "lat": 37.79328,
+        "lon": -122.42499
+      },
+      "radius": 90,
+      "fact": "The Haas-Lilienthal House was donated to San Francisco Heritage in 1973 and receives thousands of visitors a year.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Haas%E2%80%93Lilienthal_House"
+      ]
+    }
+  },
+  {
+    "id": "riddle-tiny-sails",
+    "kind": "riddle",
+    "title": "Tiny Sails",
+    "blurb": "A lake for sailors who never get wet.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77038,
+      "lon": -122.48926,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "golden gate park"
+    ],
+    "params": {
+      "riddle": "I was finished in 1904 for sailors who never get wet, because their boats are small enough to carry home. Find the lake where model yachts race.",
+      "hints": [
+        "On the north side of Golden Gate Park, west of the Polo Field.",
+        "Spreckels Lake, the model yacht lake."
+      ],
+      "answer": "Spreckels Lake",
+      "target": {
+        "lat": 37.771,
+        "lon": -122.49411
+      },
+      "radius": 130,
+      "fact": "The Spreckels Lake Model Yacht Facility, completed in March 1904, was built for racing model sail and power boats.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Spreckels_Lake"
+      ]
+    }
+  },
+  {
+    "id": "riddle-touching-is-mandatory",
+    "kind": "riddle",
+    "title": "Touching Is Mandatory",
+    "blurb": "A museum where the exhibits want your hands on them.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.80284,
+      "lon": -122.4015,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "embarcadero"
+    ],
+    "params": {
+      "riddle": "A physicist founded me in 1969. I first lived in the Palace of Fine Arts and invented Pi Day there in 1988. In 2013 I moved to the waterfront. Find the museum where touching is mandatory.",
+      "hints": [
+        "Along the Embarcadero, on Pier 15.",
+        "The Exploratorium."
+      ],
+      "answer": "The Exploratorium",
+      "target": {
+        "lat": 37.8009,
+        "lon": -122.39853
+      },
+      "radius": 110,
+      "fact": "Frank Oppenheimer founded the Exploratorium, which now has more than 1,000 participatory exhibits on Piers 15 and 17.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Exploratorium"
+      ]
+    }
+  },
+  {
+    "id": "riddle-little-glass-house",
+    "kind": "riddle",
+    "title": "The Little Glass House",
+    "blurb": "A quiet neighborhood keeps a glass secret.",
+    "neighborhood": "Sunnyside",
+    "at": {
+      "lat": 37.72143,
+      "lon": -122.44755,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "sunnyside"
+    ],
+    "params": {
+      "riddle": "A little glass house built in 1902 in a quiet neighborhood south of Glen Park, now an event space and city landmark number 78. Find me.",
+      "hints": [
+        "On Monterey Boulevard in the Sunnyside neighborhood.",
+        "Sunnyside Conservatory."
+      ],
+      "answer": "Sunnyside Conservatory",
+      "target": {
+        "lat": 37.73216,
+        "lon": -122.44059
+      },
+      "radius": 100,
+      "fact": "Sunnyside Conservatory became a San Francisco Designated Landmark in 1975 and has been owned by Recreation and Parks since 1980.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sunnyside_Conservatory"
+      ]
+    }
+  },
+  {
+    "id": "riddle-copper-dome",
+    "kind": "riddle",
+    "title": "Under the Copper Dome",
+    "blurb": "A quiet riddle from 1898.",
+    "neighborhood": "Inner Richmond",
+    "at": {
+      "lat": 37.772,
+      "lon": -122.45,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "inner richmond"
+    ],
+    "params": {
+      "riddle": "Built in 1898 under a copper dome, I am the only non-denominational resting place in the city still open to the public with room to spare. Find me just north of Golden Gate Park.",
+      "hints": [
+        "In the Inner Richmond, on Loraine Court.",
+        "The San Francisco Columbarium."
+      ],
+      "answer": "The San Francisco Columbarium",
+      "target": {
+        "lat": 37.78065,
+        "lon": -122.45708
+      },
+      "radius": 90,
+      "fact": "The neoclassical Columbarium was designed by architect Bernard J.S. Cahill.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/San_Francisco_Columbarium",
+        "https://en.wikipedia.org/wiki/Panhandle_(San_Francisco)"
+      ]
+    }
+  },
+  {
+    "id": "riddle-engineers-lake",
+    "kind": "riddle",
+    "title": "The Engineer's Lake",
+    "blurb": "A small park with a famous designer.",
+    "neighborhood": "Inner Richmond",
+    "at": {
+      "lat": 37.78741,
+      "lon": -122.45971,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "inner richmond"
+    ],
+    "params": {
+      "riddle": "Fourteen acres in the Richmond, laid out around 1875 by the engineer who designed Golden Gate Park, with a lake at its heart. Find it.",
+      "hints": [
+        "North of Lake Street, at the southern edge of the Presidio.",
+        "Mountain Lake Park."
+      ],
+      "answer": "Mountain Lake Park",
+      "target": {
+        "lat": 37.78724,
+        "lon": -122.46935
+      },
+      "radius": 160,
+      "fact": "Mountain Lake Park was designed by William Hammond Hall, who was strongly influenced by Frederick Law Olmsted.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mountain_Lake_Park"
+      ]
+    }
+  },
+  {
+    "id": "riddle-birthplace-of-the-niners",
+    "kind": "riddle",
+    "title": "Birthplace of the Niners",
+    "blurb": "A football riddle from the corner of the park.",
+    "neighborhood": "Cole Valley",
+    "at": {
+      "lat": 37.77014,
+      "lon": -122.44599,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "cole valley"
+    ],
+    "params": {
+      "riddle": "The 49ers were born on my field, and the Raiders borrowed me for their very first season. Now high schoolers battle here for the Turkey Bowl. Find the stadium.",
+      "hints": [
+        "At the southeastern corner of Golden Gate Park.",
+        "Kezar Stadium."
+      ],
+      "answer": "Kezar Stadium",
+      "target": {
+        "lat": 37.76687,
+        "lon": -122.45601
+      },
+      "radius": 130,
+      "fact": "Kezar Stadium was the original home of the San Francisco 49ers and hosted the Oakland Raiders in their first AFL season.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kezar_Stadium"
+      ]
+    }
+  },
+  {
+    "id": "riddle-lake-and-links",
+    "kind": "riddle",
+    "title": "Three Golf Courses and a Lake",
+    "blurb": "The southwest corner hides a lot of water.",
+    "neighborhood": "Lake Merced",
+    "at": {
+      "lat": 37.72824,
+      "lon": -122.47702,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "lake merced"
+    ],
+    "params": {
+      "riddle": "A freshwater lake in the city's southwest corner, ringed by three golf courses, a university and the dunes of the Pacific. Find the water.",
+      "hints": [
+        "The southwest corner of the city, south of the zoo.",
+        "Lake Merced."
+      ],
+      "answer": "Lake Merced",
+      "target": {
+        "lat": 37.72,
+        "lon": -122.495
+      },
+      "radius": 400,
+      "fact": "Lake Merced, Laguna de Merced in Spanish, is surrounded by the Olympic Club, the San Francisco Golf Club and TPC Harding Park.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lake_Merced"
+      ]
+    }
+  },
+  {
+    "id": "riddle-jesuit-church",
+    "kind": "riddle",
+    "title": "The Church on the Hilltop Campus",
+    "blurb": "A riddle from a university campus.",
+    "neighborhood": "Lone Mountain",
+    "at": {
+      "lat": 37.7791,
+      "lon": -122.45192,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "lone mountain"
+    ],
+    "params": {
+      "riddle": "I stand on the campus of a Jesuit university, dedicated to the founder of the Society of Jesus, and I serve as the university's chapel. Find me.",
+      "hints": [
+        "On Fulton Street, on the University of San Francisco campus.",
+        "Saint Ignatius Church."
+      ],
+      "answer": "Saint Ignatius Church",
+      "target": {
+        "lat": 37.77547,
+        "lon": -122.45248
+      },
+      "radius": 100,
+      "fact": "Saint Ignatius Church is staffed by priests of the Society of Jesus and dedicated to Ignatius of Loyola.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Saint_Ignatius_Church_(San_Francisco)"
+      ]
+    }
+  },
+  {
+    "id": "riddle-wise-and-green",
+    "kind": "riddle",
+    "title": "Wise and Green",
+    "blurb": "Small he is. Find him, you must.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.79284,
+      "lon": -122.44649,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "presidio"
+    ],
+    "params": {
+      "riddle": "Small and green, wise and very old, I stand in a fountain outside a campus where movie magic is made. Find me, you must.",
+      "hints": [
+        "In the eastern Presidio, at the Letterman Digital Arts Center.",
+        "The Yoda Fountain at Lucasfilm's Presidio campus."
+      ],
+      "answer": "The Yoda Fountain",
+      "target": {
+        "lat": 37.79882,
+        "lon": -122.45049
+      },
+      "radius": 90,
+      "fact": "Since 2005 the Letterman Digital Arts Center has been home to Industrial Light and Magic, Lucasfilm Games and Lucasfilm Animation.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Letterman_Digital_Arts_Center",
+        "https://www.openstreetmap.org/node/665688981"
+      ]
+    }
+  },
+  {
+    "id": "riddle-great-white-fleet",
+    "kind": "riddle",
+    "title": "The Great White Fleet",
+    "blurb": "A shipyard riddle from the southeastern point.",
+    "neighborhood": "Hunters Point",
+    "at": {
+      "lat": 37.73464,
+      "lon": -122.37599,
+      "alt": 25
+    },
+    "xp": 40,
+    "tags": [
+      "riddle",
+      "imperial riddle",
+      "hunters point"
+    ],
+    "params": {
+      "riddle": "I began in 1870 as a commercial shipyard with two dry docks. A president trusted his Great White Fleet to my crews in 1907, and later the Navy took me over. Find the old shipyard.",
+      "hints": [
+        "The southeastern waterfront, past India Basin.",
+        "Hunters Point Naval Shipyard."
+      ],
+      "answer": "Hunters Point Naval Shipyard",
+      "target": {
+        "lat": 37.72894,
+        "lon": -122.36006
+      },
+      "radius": 400,
+      "fact": "Hunters Point began as a commercial shipyard in 1870 and grew into a 638-acre United States Navy shipyard.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Hunters_Point_Naval_Shipyard"
+      ]
+    }
+  }
+]
