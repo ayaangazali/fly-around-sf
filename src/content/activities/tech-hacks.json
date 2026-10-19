@@ -1,0 +1,338 @@
+[
+  {
+    "id": "hack-noisebridge",
+    "kind": "hack",
+    "title": "Hack Night at Noisebridge",
+    "blurb": "The Mission's open hackerspace. Grab six glowing commits before the soldering irons cool.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.76235,
+      "lon": -122.41863
+    },
+    "xp": 50,
+    "requires": ["discover-noisebridge"],
+    "tags": ["tech", "hack", "hackerspace"],
+    "params": {
+      "venue": "Noisebridge",
+      "timeLimit": 60,
+      "spread": 45
+    },
+    "sources": ["https://en.wikipedia.org/wiki/Noisebridge", "https://meetup.com/noisebridge"]
+  },
+  {
+    "id": "hack-shack15",
+    "kind": "hack",
+    "title": "AI Hackathon at SHACK15",
+    "blurb": "Upstairs in the Ferry Building, the builders club runs AI hackathons. Ship before the ferry leaves.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.7956,
+      "lon": -122.39369
+    },
+    "xp": 50,
+    "requires": ["discover-shack15"],
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "SHACK15",
+      "timeLimit": 70,
+      "spread": 70
+    },
+    "sources": ["https://sfstandard.com/2024/06/27/sfs-hottest-club-might-be-this-co-working-space-with-a-venture-capital-arm/"]
+  },
+  {
+    "id": "hack-frontier-tower",
+    "kind": "hack",
+    "title": "Sixteen Floors of Frontier",
+    "blurb": "A vertical village with a theme on every floor. Commits are scattered around the tower.",
+    "neighborhood": "Mid-Market",
+    "at": {
+      "lat": 37.78225,
+      "lon": -122.40996
+    },
+    "xp": 55,
+    "requires": ["discover-frontier-tower"],
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "Frontier Tower",
+      "timeLimit": 70,
+      "spread": 50
+    },
+    "sources": ["https://sfstandard.com/2025/05/18/first-look-frontier-tower-san-francisco-vertical-village/", "https://luma.com/hackclub-teen-hackathon"]
+  },
+  {
+    "id": "hack-pier-48",
+    "kind": "hack",
+    "title": "Disrupt Hackathon, Pier 48",
+    "blurb": "TechCrunch ran its Disrupt hackathon in this pier shed in 2014. Hack the waterfront, fast.",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.7752,
+      "lon": -122.3868
+    },
+    "xp": 50,
+    "tags": ["tech", "hack", "history"],
+    "params": {
+      "venue": "Pier 48",
+      "timeLimit": 70,
+      "spread": 80
+    },
+    "sources": ["https://techcrunch.com/events/disrupt-sf-hackathon-2014/event-info/", "https://techcrunch.com/2017/05/22/disrupt-sf-2017-is-headed-back-to-pier-48/"]
+  },
+  {
+    "id": "hack-github",
+    "kind": "hack",
+    "title": "Hack Night at GitHub HQ",
+    "blurb": "Builder groups host evening hack nights under the Oval Office replica. Push six commits.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78229,
+      "lon": -122.39117
+    },
+    "xp": 55,
+    "requires": ["discover-github"],
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "GitHub HQ",
+      "timeLimit": 60,
+      "spread": 50
+    },
+    "sources": ["https://luma.com/hacknight-at-github-11-13-25", "https://github.blog/news-insights/the-library/hacktoberfest-launch-party-at-github-hq/"]
+  },
+  {
+    "id": "hack-internet-archive",
+    "kind": "hack",
+    "title": "Aaron Swartz Day Hackathon",
+    "blurb": "Every November the Internet Archive hosts a hackathon in its old church. Save every commit.",
+    "neighborhood": "Inner Richmond",
+    "at": {
+      "lat": 37.7823,
+      "lon": -122.47175
+    },
+    "xp": 55,
+    "requires": ["discover-internet-archive"],
+    "tags": ["tech", "hack", "history"],
+    "params": {
+      "venue": "Internet Archive",
+      "timeLimit": 60,
+      "spread": 45
+    },
+    "sources": ["https://www.aaronswartzday.org/sfhackathon/", "https://blog.archive.org/2019/11/06/7th-annual-aaron-swartz-day-at-the-internet-archive/"]
+  },
+  {
+    "id": "hack-founders-inc",
+    "kind": "hack",
+    "title": "Night Hack at Fort Mason",
+    "blurb": "Five hours, live demos only. Founders, Inc. opens Building C for hardware and software hacks.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80672,
+      "lon": -122.4314
+    },
+    "xp": 50,
+    "requires": ["discover-founders-inc"],
+    "tags": ["tech", "hack", "hardware"],
+    "params": {
+      "venue": "Founders, Inc.",
+      "timeLimit": 65,
+      "spread": 60
+    },
+    "sources": ["https://luma.com/nighthack", "https://sensaihack.notion.site/Worlds-in-Action-Hack-San-Francisco-27dd7964cb7c80eebd4af085a55b7832"]
+  },
+  {
+    "id": "hack-aws-builder-loft",
+    "kind": "hack",
+    "title": "Hack Day at the Builder Loft",
+    "blurb": "AWS runs a builder loft in First Market Tower. Commits float all the way down the tower.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79063,
+      "lon": -122.39933
+    },
+    "xp": 60,
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "AWS Builder Loft",
+      "timeLimit": 80,
+      "spread": 60
+    },
+    "sources": ["https://startups.aws.com/lp/aws-gen-ai-loft-san-francisco", "https://luma.com/hack-day-aws-builder-loft-sep17-2026"]
+  },
+  {
+    "id": "hack-gray-area",
+    "kind": "hack",
+    "title": "Creative Code at Gray Area",
+    "blurb": "Art meets code in the old Grand Theater. Collect six commits of generative art.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.7544,
+      "lon": -122.41829
+    },
+    "xp": 50,
+    "requires": ["discover-gray-area"],
+    "tags": ["tech", "hack", "art"],
+    "params": {
+      "venue": "Gray Area",
+      "timeLimit": 60,
+      "spread": 45
+    },
+    "sources": ["https://en.wikipedia.org/wiki/Gray_Area_Foundation_for_the_Arts", "https://www.calle24sf.org/event-details/creative-code-showcase-spring-2025"]
+  },
+  {
+    "id": "hack-exploratorium",
+    "kind": "hack",
+    "title": "Tinker on Pier 15",
+    "blurb": "The Exploratorium's Tinkering Studio is a maker space inside a museum. Tinker fast.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.80155,
+      "lon": -122.39793
+    },
+    "xp": 50,
+    "requires": ["discover-exploratorium"],
+    "tags": ["tech", "hack", "maker"],
+    "params": {
+      "venue": "Exploratorium",
+      "timeLimit": 70,
+      "spread": 90
+    },
+    "sources": ["https://en.wikipedia.org/wiki/Exploratorium", "https://www.igi-global.com/chapter/tinkering-studio-at-the-exploratorium/220505"]
+  },
+  {
+    "id": "hack-autodesk-pier-9",
+    "kind": "hack",
+    "title": "Robot Shop on Pier 9",
+    "blurb": "Autodesk turned a pier into a workshop of CNC machines and robots. Mill six commits.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.80032,
+      "lon": -122.39741
+    },
+    "xp": 50,
+    "requires": ["discover-autodesk-pier-9"],
+    "tags": ["tech", "hack", "maker"],
+    "params": {
+      "venue": "Autodesk Pier 9",
+      "timeLimit": 70,
+      "spread": 85
+    },
+    "sources": ["https://geoweeknews.com/news/future-of-manufacturing-opens-in-san-francisco", "https://technologycenterstours.autodesk.com/san-francisco"]
+  },
+  {
+    "id": "hack-cloudflare",
+    "kind": "hack",
+    "title": "Gopher Gala at Cloudflare",
+    "blurb": "Cloudflare hosted a Go hackathon here in 2016, beside the lava lamp wall. Grab the entropy.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78023,
+      "lon": -122.39047
+    },
+    "xp": 50,
+    "requires": ["discover-cloudflare"],
+    "tags": ["tech", "hack", "history"],
+    "params": {
+      "venue": "Cloudflare",
+      "timeLimit": 60,
+      "spread": 50
+    },
+    "sources": ["https://blog.cloudflare.com/were-hosting-a-go-hackathon"]
+  },
+  {
+    "id": "hack-the-midway",
+    "kind": "hack",
+    "title": "Crypto Hackathon at The Midway",
+    "blurb": "This Dogpatch arts complex hosted Paradigm Frontiers, a developer summit and hackathon, in 2025.",
+    "neighborhood": "Dogpatch",
+    "at": {
+      "lat": 37.74928,
+      "lon": -122.38567
+    },
+    "xp": 50,
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "The Midway",
+      "timeLimit": 65,
+      "spread": 60
+    },
+    "sources": ["https://corporate.themidwaysf.com/?p=12427"]
+  },
+  {
+    "id": "hack-galvanize",
+    "kind": "hack",
+    "title": "Coding Campus on Tehama",
+    "blurb": "Galvanize's five-floor SoMa campus hosted hackathons and coding bootcamps. Rooftop sprint.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78743,
+      "lon": -122.39643
+    },
+    "xp": 50,
+    "tags": ["tech", "hack", "history"],
+    "params": {
+      "venue": "Galvanize SF",
+      "timeLimit": 60,
+      "spread": 50
+    },
+    "sources": ["https://www.sfstation.com/galvanize-b38987077", "https://launch.wilmerhale.com/research/events/tech-inclusion-2015"]
+  },
+  {
+    "id": "hack-code-for-america",
+    "kind": "hack",
+    "title": "Civic Hack Night",
+    "blurb": "Code for San Francisco met here every Wednesday to build tools for the city. Ship civic code.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.77561,
+      "lon": -122.41373
+    },
+    "xp": 50,
+    "requires": ["discover-code-for-america"],
+    "tags": ["tech", "hack", "civic"],
+    "params": {
+      "venue": "Code for America",
+      "timeLimit": 60,
+      "spread": 45
+    },
+    "sources": ["https://localwiki.org/sf/Code_for_America", "https://5bbec62582d3f109f7ce3eca--codeforsanfrancisco.netlify.com/2017/07/31/noob-a-first-timers-account-of-code-for-san-franci/"]
+  },
+  {
+    "id": "hack-moscone-west",
+    "kind": "hack",
+    "title": "Disrupt Hackathon, Moscone West",
+    "blurb": "800 hackers, one convention hall, the room where the iPhone was unveiled. Commits are everywhere.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.7831,
+      "lon": -122.4035
+    },
+    "xp": 60,
+    "requires": ["discover-moscone-west"],
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "Moscone West",
+      "timeLimit": 75,
+      "spread": 95,
+      "commits": 7
+    },
+    "sources": ["https://techcrunch.com/events/disrupt-sf-2019/hackathon", "https://techcrunch.com/marketing/techcrunch-is-scaling-up-disrupt-sf-with-a-move-to-moscone-west-in-september-2018"]
+  },
+  {
+    "id": "hack-ybca",
+    "kind": "hack",
+    "title": "Ship It at Yerba Buena",
+    "blurb": "GitHub held its Universe developer conference at Yerba Buena Center for the Arts. Ship before the keynote.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78554,
+      "lon": -122.40208
+    },
+    "xp": 50,
+    "tags": ["tech", "hack"],
+    "params": {
+      "venue": "Yerba Buena Center for the Arts",
+      "timeLimit": 65,
+      "spread": 60
+    },
+    "sources": ["https://github.blog/2022-10-05-two-ways-you-can-experience-github-universe/", "https://en.wikipedia.org/wiki/Yerba_Buena_Center_for_the_Arts"]
+  }
+]

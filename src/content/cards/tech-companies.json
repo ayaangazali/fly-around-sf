@@ -1,0 +1,691 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.77006, "lon": -122.38877 },
+    "year": 2015,
+    "blurb": "The ChatGPT lab, now living in Uber's old Mission Bay campus.",
+    "lore": "OpenAI was formed as a nonprofit in December 2015 by a group that included Sam Altman, Elon Musk, Ilya Sutskever and Greg Brockman. It first ran out of Brockman's living room, moved to the Pioneer Building in the Mission in September 2016, and released ChatGPT in late 2022. Its headquarters is now 1455 and 1515 Third Street, the twin buildings Uber built for itself in Mission Bay.",
+    "facts": [
+      "ChatGPT reached over 100 million users within about two months of launch.",
+      "In 2016 OpenAI spent $7 million on its first 52 employees.",
+      "The founders pledged $1 billion, but tax filings showed only $133 million had arrived by 2021."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/OpenAI",
+      "https://sfstandard.com/2023/10/27/openai-uber-headquarters-mission-bay/",
+      "https://www.costar.com/article/2129899755/openai-ramps-up-san-francisco-expansion-with-latest-full-building-lease"
+    ]
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78843, "lon": -122.39669 },
+    "year": 2021,
+    "blurb": "The Claude lab, inside the building Slack used to call home.",
+    "lore": "Anthropic was founded in 2021 by seven former OpenAI employees, including siblings Dario and Daniela Amodei, and is organized as a public benefit corporation. In 2023 it took over the entire former Slack headquarters at 500 Howard Street, first as a sublease, and later signed directly with the landlord. It also leases all of 300 and 342 Howard Street nearby.",
+    "facts": [
+      "500 Howard Street is also called Foundry Square IV.",
+      "Some employees consider the name Claude a nod to Claude Shannon, the father of information theory.",
+      "Slack moved out of 500 Howard in 2023, after Salesforce bought it, and Anthropic moved in."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Anthropic",
+      "https://www.connectcre.com/stories/ai-company-anthropic-subleases-former-slack-headquarters-building/",
+      "https://www.bisnow.com/news/san-francisco/office/anthropic-cements-240k-sf-lease-howard-street-133989"
+    ]
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.77333, "lon": -122.39999 },
+    "year": 2010,
+    "blurb": "Payments for the internet, born to two Irish brothers.",
+    "lore": "Brothers John and Patrick Collison started Stripe in Palo Alto in 2010 and moved it to San Francisco in 2012. In 2015 it signed for 510 Townsend Street as its own standalone headquarters. In 2021 it moved its headquarters to South San Francisco, just south of this map, and Google later leased the Townsend building.",
+    "facts": [
+      "Stripe raised $2 million in 2011 from investors including Elon Musk and Peter Thiel.",
+      "Stripe reported more than $1.9 trillion in payment volume in 2025.",
+      "Dublin became Stripe's second headquarters in October 2025."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stripe,_Inc.",
+      "https://globest.com/2015/05/04/alexandria-lands-fast-growing-stripe",
+      "https://sfyimby.com/2022/07/google-leases-510-townsend-street-in-soma-san-francisco.html"
+    ]
+  },
+  {
+    "id": "corgi",
+    "name": "Corgi",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79, "lon": -122.40436 },
+    "year": 2024,
+    "blurb": "A YC insurance carrier with a 24-hour cafe on Claude Lane.",
+    "lore": "Nico Laqua and Emily Yuan founded Corgi in San Francisco in 2024 and went through Y Combinator's Summer 2024 batch. Rather than broker policies, Corgi is a licensed insurance carrier for startups, selling directors and officers, cyber and AI liability cover. In February 2026 it opened the 24-hour Corgi Cafe in the retail space below its Financial District headquarters on Claude Lane.",
+    "facts": [
+      "Corgi received regulatory approval as a carrier in July 2025.",
+      "Despite the name, there are no corgis at the cafe, and reviewers have complained about it.",
+      "A June 2026 round valued the company at $2.6 billion."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Corgi_(insurance_company)",
+      "https://sf.gazetteer.co/come-for-the-all-night-coffee-stay-for-the-ai-insurance",
+      "https://hoodline.com/2026/09/24-7-corgi-cafe-headed-for-former-church-st-cafe-space/"
+    ]
+  },
+  {
+    "id": "salesforce",
+    "name": "Salesforce",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78993, "lon": -122.3971 },
+    "year": 1999,
+    "blurb": "Cloud software that started in a Telegraph Hill apartment.",
+    "lore": "Marc Benioff, a former Oracle executive, started Salesforce on March 8, 1999 with Parker Harris, Dave Moellenhoff and Frank Dominguez, coding in a rented one-bedroom apartment on Telegraph Hill. Its early marketing declared the end of software, including actors holding signs outside a rival's conference. Today its headquarters is Salesforce Tower at 415 Mission Street, where it leased more than half of the 61-story building.",
+    "facts": [
+      "The first Dreamforce, in 2003, drew about 1,300 attendees.",
+      "Salesforce paid $20 million for a 20-year license to use Albert Einstein's image.",
+      "Salesforce bought Slack for $27.7 billion in 2021."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Salesforce",
+      "https://www.salesforce.com/news/stories/the-history-of-salesforce/",
+      "https://techcrunch.com/2014/04/11/salesforce-will-pay-680m-to-expand-its-sf-hq-into-the-new-salesforce-tower/"
+    ]
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78843, "lon": -122.39669 },
+    "year": 2009,
+    "blurb": "The work chat that began as a failed video game's internal tool.",
+    "lore": "Slack started as Tiny Speck, founded in 2009 by Flickr co-founder Stewart Butterfield and team. Its first product was Glitch, an online game that launched in 2011 and shut down in December 2012. The chat tool the team built to make Glitch survived and became Slack, which leased 500 Howard Street as its headquarters in 2017.",
+    "facts": [
+      "Slack stands for Searchable Log of All Conversation and Knowledge.",
+      "Slack went public in 2019 through a direct listing under the ticker WORK.",
+      "Salesforce closed its $27.7 billion purchase of Slack in July 2021."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Slack_Technologies",
+      "https://www.connectcre.com/stories/ai-company-anthropic-subleases-former-slack-headquarters-building/"
+    ]
+  },
+  {
+    "id": "airbnb",
+    "name": "Airbnb",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.77201, "lon": -122.40519 },
+    "year": 2008,
+    "blurb": "Air mattresses, cereal boxes, and a former battery factory.",
+    "lore": "In October 2007 roommates Brian Chesky and Joe Gebbia could not make rent, so they put an air mattress in their living room and rented it out during a design conference when hotels were full. Nathan Blecharczyk joined in 2008 and the site launched as AirBed & Breakfast. Its headquarters at 888 Brannan Street was a battery factory in the early 1900s.",
+    "facts": [
+      "The founders raised $30,000 selling cereal boxes themed on the 2008 presidential candidates.",
+      "Y Combinator invested $20,000 for 6% in the Winter 2009 batch.",
+      "The name was shortened to Airbnb in March 2009 so people would stop thinking it was only about air mattresses."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Airbnb",
+      "https://www.sfexaminer.com/news/airbnb-unveils-new-san-francisco-headquarters-at-888-brannan-street/article_d4e028d6-b013-5f2b-8a88-c5b0daac5e05.html",
+      "https://www.floornature.com/blog/airbnb-and-the-new-headquarters-at-888-brannan-in-san-francisco-10898/"
+    ]
+  },
+  {
+    "id": "uber",
+    "name": "Uber",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.76732, "lon": -122.38857 },
+    "year": 2009,
+    "blurb": "Push a button, get a ride. It started as UberCab.",
+    "lore": "Garrett Camp and Travis Kalanick founded Uber in March 2009, partly after spending $800 on a private driver one New Year's Eve, and partly after Camp could not find a taxi on a snowy night in Paris. It launched in San Francisco as UberCab and dropped Cab in 2011 after complaints from local taxi operators. Its headquarters is 1725 Third Street, beside Chase Center.",
+    "facts": [
+      "Uber's campus was developed in a joint venture with Alexandria Real Estate and the Golden State Warriors.",
+      "In 2016 Uber sold its China business to DiDi for an 18% stake.",
+      "OpenAI now occupies Uber's earlier Mission Bay buildings at 1455 and 1515 Third Street."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Uber",
+      "https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm",
+      "https://www.cbre.com/press-releases/cbre-secured-500-million-in-financing-for-uber-headquarters-in-mission-bay"
+    ]
+  },
+  {
+    "id": "lyft",
+    "name": "Lyft",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.77658, "lon": -122.39212 },
+    "year": 2012,
+    "blurb": "The ride app famous for pink furry mustaches.",
+    "lore": "Logan Green and John Zimmer first built Zimride, a college carpooling service, in 2007. In summer 2012 they launched Lyft as a side project for short city rides, renamed the company Lyft in 2013 and sold Zimride to Enterprise. Lyft is headquartered at 185 Berry Street in China Basin.",
+    "facts": [
+      "Early Lyft cars wore big pink furry mustaches on their grilles.",
+      "In 2015 the mustache shrank into a glowing dashboard version called the glowstache.",
+      "Lyft's 2019 IPO valued it at $24.3 billion."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lyft",
+      "https://costar.com/article/1588462379/lyft-cuts-san-francisco-headquarters-by-more-than-half-in-latest-deal"
+    ]
+  },
+  {
+    "id": "dropbox",
+    "name": "Dropbox",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Mission Bay",
+    "at": { "lat": 37.76515, "lon": -122.39259 },
+    "year": 2007,
+    "blurb": "Born because Drew Houston kept forgetting his USB drive.",
+    "lore": "MIT students Drew Houston and Arash Ferdowsi founded Dropbox in 2007 after Houston kept forgetting his USB flash drive. Y Combinator provided seed money and an early demo video pulled in users. Dropbox built its headquarters campus at 1800 Owens Street, then subleased most of it as work went remote, and the complex became life science labs.",
+    "facts": [
+      "Dropbox was first incorporated as Evenflow, Inc.",
+      "Its stock jumped 42% on its first trading day in March 2018.",
+      "Dropbox paid about $79 million in fees to exit part of its Mission Bay lease."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dropbox",
+      "https://costar.com/article/137656155/san-francisco-tech-giant-pays-80-million-to-officially-cut-ties-with-chunk-of-global-hq",
+      "https://therealdeal.com/san-francisco/2022/05/18/former-dropbox-hq-in-mission-bay-turned-into-750k-sf-of-life-sciences-labs/"
+    ]
+  },
+  {
+    "id": "pinterest",
+    "name": "Pinterest",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.77523, "lon": -122.39963 },
+    "year": 2010,
+    "blurb": "A failed shopping app's users kept saving things, so it became a pinboard.",
+    "lore": "Ben Silbermann and Paul Sciarra first built Tote, a catalog shopping app that struggled. Users kept collecting favorite items, so with Evan Sharp they pivoted to Pinterest, which opened as a closed beta in March 2010. It moved from Palo Alto to San Francisco in 2012 and keeps its headquarters at 651 Brannan Street.",
+    "facts": [
+      "Joining required an invitation until August 2012.",
+      "In January 2012 it became the fastest site ever to reach 10 million unique US visitors.",
+      "In 2020 Pinterest paid $89.5 million to walk away from a planned SoMa office."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pinterest",
+      "https://www.bisnow.com/news/san-francisco/technology/pinterest-looks-to-reduce-san-francisco-office-space-118293"
+    ]
+  },
+  {
+    "id": "reddit",
+    "name": "Reddit",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78529, "lon": -122.39557 },
+    "year": 2005,
+    "blurb": "The front page of the internet, from Y Combinator's very first batch.",
+    "lore": "University of Virginia roommates Steve Huffman and Alexis Ohanian joined Y Combinator's first class in 2005 with an idea for ordering food by text message. Paul Graham pushed them toward a better one, and Reddit launched that June. To make the empty site look busy, the founders posted under hundreds of fake accounts. Reddit's offices are in the South Tower of 303 Second Street.",
+    "facts": [
+      "Reddit was first written in Common Lisp, then rewritten in Python.",
+      "Ohanian doodled the alien mascot Snoo during a marketing class.",
+      "In 2007 Reddit voted to name a Greenpeace-tracked whale Mister Splashy Pants."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Reddit",
+      "https://finance.yahoo.com/quote/RDDT/profile"
+    ]
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Potrero Hill",
+    "at": { "lat": 37.76419, "lon": -122.40169 },
+    "year": 2015,
+    "blurb": "Voice chat built by a game studio that could not coordinate its own raids.",
+    "lore": "Jason Citron sold his first company, OpenFeint, for $104 million, then started a game studio called Hammer & Chisel. Its game Fates Forever did not take off, but the team noticed how bad voice tools were for playing together. Discord launched on May 13, 2015, and is headquartered in a converted industrial building at 444 De Haro Street.",
+    "facts": [
+      "Discord's mascot is a creature named Wumpus.",
+      "The Midjourney server passed 15 million members, the largest on Discord.",
+      "The founders picked the name because it sounds cool and has to do with talking."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Discord",
+      "https://clay.com/dossier/discord-headquarters-office-locations"
+    ]
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Union Square",
+    "at": { "lat": 37.78635, "lon": -122.40541 },
+    "year": 2012,
+    "blurb": "Design in the browser, from two Brown students. Adobe tried to buy it.",
+    "lore": "Dylan Field and Evan Wallace started Figma in 2012 out of Brown University, with Field leaving school on a Thiel Fellowship. Before design tools they tinkered with drone software and a meme generator. The public release came in September 2016, and the company works from the historic Phelan Building at 760 Market Street.",
+    "facts": [
+      "Adobe's $20 billion deal for Figma collapsed in 2023 and Adobe paid a $1 billion breakup fee.",
+      "Figma began trading on the NYSE under FIG on July 31, 2025.",
+      "Figma renewed 97,600 square feet in the Phelan Building in 2024."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Figma",
+      "https://us.jll.com/en/newsroom/figma-extends-lease-commitment-at-downtown-san-francisco-headquarters"
+    ]
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "Mission",
+    "at": { "lat": 37.76051, "lon": -122.41282 },
+    "year": 2013,
+    "blurb": "The all-in-one workspace, made of blocks, built in the Mission.",
+    "lore": "Notion Labs was started in San Francisco in 2013 by a team that included Ivan Zhao and Simon Last. Money was tight early on, and Notion 1.0 did not ship until August 2016, when tech enthusiasts picked it up fast. The company is based at 2300 Harrison Street in the Mission.",
+    "facts": [
+      "In May 2020 Notion removed the 1,000-block cap on free accounts.",
+      "Notion raised a seed round of about $2 million before shipping 1.0."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Notion_(productivity_software)",
+      "https://craft.co/notion-labs"
+    ]
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78229, "lon": -122.39117 },
+    "year": 2008,
+    "blurb": "Home of the world's code, with an Oval Office in the lobby.",
+    "lore": "Tom Preston-Werner, Chris Wanstrath, P. J. Hyett and Scott Chacon started GitHub in early 2008 and launched it that April. In 2013 it opened a three-story headquarters in a former dried-fruit warehouse at 88 Colin P. Kelly Jr. Street. Its reception room is an exact replica of the White House Oval Office, next to themed rooms like a Situation Room.",
+    "facts": [
+      "Microsoft bought GitHub for $7.5 billion in 2018.",
+      "In 2020 GitHub stored 21 TB of open source code on film in an Arctic mine in Svalbard.",
+      "The Octocat began as clip art by Simon Oxley, the same designer behind Twitter's first bird."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/GitHub",
+      "https://fm-arch.com/architonic-features-github/",
+      "https://www.sfgov.org/mayoredlee/event/mayor-lee-cut-ribbon-open-new-github-headquarters-make-new-announcement-kick-october"
+    ]
+  },
+  {
+    "id": "twitter",
+    "name": "Twitter",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "Mid-Market",
+    "at": { "lat": 37.77712, "lon": -122.41647 },
+    "year": 2006,
+    "blurb": "140 characters out of an Art Deco furniture mart. Now X, and gone.",
+    "lore": "Twitter grew out of Odeo, a podcasting startup, where Jack Dorsey and Florian Weber built a status-update prototype in 2006. It launched as twttr and took off at SXSW 2007. A city payroll tax break helped bring it to 1355 Market Street, a 1937 building built as the Western Furniture Exchange and Merchandise Mart. After the company became X it left the building in 2024.",
+    "facts": [
+      "During SXSW 2007, usage jumped from 20,000 to 60,000 tweets a day.",
+      "The first bird logo was clip art by designer Simon Oxley.",
+      "The service was renamed from twttr about six months after launch, once the team bought twitter.com."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Twitter",
+      "https://en.wikipedia.org/wiki/Market_Square_(San_Francisco)",
+      "https://www.costar.com/article/226804927/elon-musk-says-no-choice-but-to-close-xs-longtime-san-francisco-headquarters"
+    ]
+  },
+  {
+    "id": "square",
+    "name": "Square",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Mid-Market",
+    "at": { "lat": 37.77586, "lon": -122.41804 },
+    "year": 2009,
+    "blurb": "A lost $2,000 glass sale led to the little white card reader.",
+    "lore": "Glass artist Jim McKelvey could not close a $2,000 sale of faucets because he could not take a credit card. He and Jack Dorsey, with Tristan O'Tierney, founded Square in February 2009 and named it after its square card reader. In 2013 Square moved into 1455 Market Street, a 1970s Bank of America data center built to process checks. The company renamed itself Block in December 2021.",
+    "facts": [
+      "Square grew to 469,056 square feet at 1455 Market Street.",
+      "In 2020 Square put about $50 million, roughly 1% of its assets, into Bitcoin.",
+      "Uber also kept its headquarters in the same building for years."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Block,_Inc.",
+      "https://preview-prod.w.sfchronicle.com/sf/article/market-street-city-building-17850485.php",
+      "https://preview-prod.w.sfchronicle.com/business/article/Square-expands-headquarters-in-one-of-SF-s-13123725.php"
+    ]
+  },
+  {
+    "id": "twitch",
+    "name": "Twitch",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79099, "lon": -122.40338 },
+    "year": 2011,
+    "blurb": "Live streaming that spun out of a guy streaming his whole life.",
+    "lore": "Justin Kan and Emmett Shear launched Justin.tv in 2007, with Michael Seibel, Kyle Vogt and Kevin Lin. The gaming channel grew fastest, so in June 2011 it spun off as TwitchTV, and Amazon bought it for $970 million in 2014. Its headquarters at 350 Bush Street kept only the front of the old San Francisco Curb Exchange.",
+    "facts": [
+      "Twitch Plays Pokemon let chat control a game of Pokemon Red in 2014.",
+      "Kyle Vogt, a Justin.tv co-founder, later co-founded Cruise.",
+      "Visitors walk through a rebuilt trading hall to reach the modern tower behind the facade."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Twitch_(service)",
+      "https://sfstandard.com/2024/01/10/san-francisco-twitch-laying-off-hundreds-workers/"
+    ]
+  },
+  {
+    "id": "instacart",
+    "name": "Instacart",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79124, "lon": -122.39646 },
+    "year": 2012,
+    "blurb": "Got into YC by delivering a six-pack of beer through its own app.",
+    "lore": "Apoorva Mehta had started many companies before Instacart, which he founded in 2012 with Max Mullen and Brandon Leonardo. He missed Y Combinator's deadline, so he used the app to deliver a six-pack from 21st Amendment Brewery to a YC partner, got a meeting, and joined the Summer 2012 batch. The company's headquarters is 50 Beale Street.",
+    "facts": [
+      "Its legal name is Maplebear: maple for Canada, bear for the California flag.",
+      "YC helped Instacart raise $2.3 million after the batch."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Instacart"
+    ]
+  },
+  {
+    "id": "doordash",
+    "name": "DoorDash",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78529, "lon": -122.39557 },
+    "year": 2013,
+    "blurb": "Started as PaloAltoDelivery.com by four Stanford students.",
+    "lore": "Stanford students Tony Xu, Andy Fang, Stanley Tang and Evan Moore launched PaloAltoDelivery.com in January 2013 and incorporated as DoorDash that June. Y Combinator put in $120,000 for 7% that summer. DoorDash leases the eighth floor of the South Tower at 303 Second Street, a few floors above Reddit.",
+    "facts": [
+      "In 2021 DoorDash bought Chowbotics, a salad-making robot company.",
+      "Evan Moore is sometimes called the forgotten fourth co-founder."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/DoorDash",
+      "https://www.sec.gov/Archives/edgar/data/1792789/000119312520292381/d752207dex1019.htm"
+    ]
+  },
+  {
+    "id": "yelp",
+    "name": "Yelp",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.79089, "lon": -122.39669 },
+    "year": 2004,
+    "blurb": "Born when a PayPal alum caught the flu and could not find a doctor.",
+    "lore": "Former PayPal employees Jeremy Stoppelman and Russel Simmons started Yelp in October 2004 at MRL Ventures, with $1 million from Max Levchin. Stoppelman had the flu and struggled to find a doctor recommendation online. The first version was an email referral network, but users loved writing reviews. Yelp spent years in the old PacBell Building at 140 New Montgomery before moving to 350 Mission Street in 2021.",
+    "facts": [
+      "In 2009 Google reportedly offered about $500 million for Yelp, then Yahoo offered $1 billion. Neither deal happened.",
+      "Yelp bought Eat24 for $134 million and sold it to Grubhub two years later for $287.5 million."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yelp",
+      "https://www.nbcbayarea.com/news/local/yelp-moves-into-new-historical-digs/2072708/"
+    ]
+  },
+  {
+    "id": "zynga",
+    "name": "Zynga",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "Showplace Square",
+    "at": { "lat": 37.77071, "lon": -122.40332 },
+    "year": 2007,
+    "blurb": "FarmVille's maker, named after a bulldog, once owned this building.",
+    "lore": "Mark Pincus founded Presidio Media in April 2007 and renamed it Zynga after his American bulldog, Zinga. FarmVille launched on Facebook in 2009 and reached 80 million players within months. In 2012 Zynga bought its headquarters at 650 Townsend Street, nicknamed the Dog House, for $228 million, and sold it in 2019 for about $600 million.",
+    "facts": [
+      "FarmVille hit 10 million daily players within six weeks of launch.",
+      "Take-Two bought Zynga for $12.7 billion in 2022.",
+      "Zynga moved its headquarters to San Mateo in 2022."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zynga",
+      "https://www.sec.gov/Archives/edgar/data/1439404/000156459019020540/znga-8k_20190524.htm",
+      "https://therealdeal.com/san-francisco/2022/09/22/zynga-moves-hq-to-smaller-footprint-in-san-mateo/"
+    ]
+  },
+  {
+    "id": "scale-ai",
+    "name": "Scale AI",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Showplace Square",
+    "at": { "lat": 37.77071, "lon": -122.40332 },
+    "year": 2016,
+    "blurb": "The data labeling giant that moved into Zynga's old Dog House.",
+    "lore": "Alexandr Wang and Lucy Guo founded Scale AI in 2016 through Y Combinator to label the data that trains AI models. In 2024 it subleased about 178,000 square feet at 650 Townsend Street, the city's biggest office lease that year. In 2025 Meta agreed to buy a 49% non-voting stake in the company.",
+    "facts": [
+      "Meta's stake was reported at about $14.8 billion.",
+      "The 650 Townsend lease tripled Scale's office space from 155 5th Street.",
+      "650 Townsend was Zynga's headquarters before Scale moved in."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Scale_AI",
+      "https://costar.com/article/1065348164/ai-startup-inks-san-francisco-lease-in-latest-recovery-signal-for-hard-hit-office-market",
+      "https://therealdeal.com/company/scaleai"
+    ]
+  },
+  {
+    "id": "databricks",
+    "name": "Databricks",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79157, "lon": -122.39339 },
+    "year": 2013,
+    "blurb": "The creators of Apache Spark, straight out of UC Berkeley.",
+    "lore": "Databricks was founded in 2013 by the researchers behind Apache Spark at UC Berkeley's AMPLab, including Ali Ghodsi, Matei Zaharia and Ion Stoica. It grew up at 160 Spear Street. In 2025 it announced a new headquarters at One Sansome Street and committed $1 billion to its San Francisco operations.",
+    "facts": [
+      "Its 2023 open model was named Dolly, after Dolly the sheep.",
+      "The new One Sansome headquarters starts at 150,000 square feet.",
+      "Databricks extended its Data + AI Summit in San Francisco for five more years."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Databricks",
+      "https://www.sfexaminer.com/news/technology/databricks-gives-downtown-sf-billion-dollar-vote-of-confidence/article_36efcc28-fec7-11ef-b5f3-236f9bfdbe61.html"
+    ]
+  },
+  {
+    "id": "waymo",
+    "name": "Waymo",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Bayview",
+    "at": { "lat": 37.74513, "lon": -122.39639 },
+    "year": 2009,
+    "blurb": "Driverless taxis that charge and get washed at a Bayview depot.",
+    "lore": "Google started its self-driving car project at Google X on January 17, 2009 and spun it out as Waymo in December 2016. Full commercial robotaxi service opened in the Bay Area in June 2024. Waymo's headquarters is in Mountain View, but its big San Francisco depot at 201 Toland Street is where the cars charge, get cleaned and get repaired.",
+    "facts": [
+      "The name comes from a new way forward in mobility.",
+      "Waymo cut its lidar cost by about 90% from a $75,000 starting point.",
+      "Google spent $1.1 billion on the project from 2009 to 2015."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Waymo",
+      "https://www.understandingai.org/p/waymos-investments-in-san-francisco"
+    ]
+  },
+  {
+    "id": "cruise",
+    "name": "Cruise",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78093, "lon": -122.39242 },
+    "year": 2013,
+    "blurb": "GM's robotaxi startup, a famous rise and a sudden stop.",
+    "lore": "Kyle Vogt and Dan Kan founded Cruise in 2013 and went through Y Combinator. General Motors bought it in 2016, and in 2019 it signed leases at 301, 333 and 345 Brannan Street. After an October 2023 crash, California suspended its driverless permits. GM stopped funding robotaxis in December 2024 and folded Cruise into GM in 2025.",
+    "facts": [
+      "Cruise reported its cars asked for remote help about every 4 to 5 miles in dense city driving.",
+      "Federal regulators fined Cruise $1.5 million in 2024 over crash reporting."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)",
+      "https://sfstandard.com/2024/04/22/cruise-soma-building-sublease"
+    ]
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78023, "lon": -122.39047 },
+    "year": 2009,
+    "blurb": "A wall of lava lamps in the lobby helps encrypt the internet.",
+    "lore": "Matthew Prince, Lee Holloway and Michelle Zatlyn founded Cloudflare on July 26, 2009, building on Prince and Holloway's anti-spam work on Project Honey Pot. In the lobby at 101 Townsend Street, about 100 lava lamps sit on a wall while a camera photographs them, and the pixels feed randomness into encryption keys.",
+    "facts": [
+      "People walking in front of the lava lamp camera actually add more entropy.",
+      "The company was almost called WebWall.",
+      "Cloudflare hosted Gopher Gala, a Go hackathon, in its San Francisco office in 2016."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cloudflare",
+      "https://cloudflare.com/learning/ssl/lava-lamp-encryption",
+      "https://blog.cloudflare.com/were-hosting-a-go-hackathon"
+    ]
+  },
+  {
+    "id": "twilio",
+    "name": "Twilio",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "Financial District",
+    "at": { "lat": 37.79231, "lon": -122.39331 },
+    "year": 2008,
+    "blurb": "Phone calls as an API. Developers fell in love.",
+    "lore": "Jeff Lawson, Evan Cooke and John Wolthuis founded Twilio in 2008. Its first product, Twilio Voice, launched on November 20, 2008 as an API to make and receive phone calls hosted in the cloud. The company is headquartered at 101 Spear Street.",
+    "facts": [
+      "Twilio's stock rose 92% on its first trading day in 2016.",
+      "Twilio bought email service SendGrid in a deal announced at $2 billion."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Twilio",
+      "https://finance.yahoo.com/quote/TWLO/profile"
+    ]
+  },
+  {
+    "id": "planet",
+    "name": "Planet",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78351, "lon": -122.3959 },
+    "year": 2010,
+    "blurb": "Ex-NASA scientists photographing the whole Earth with shoebox satellites.",
+    "lore": "Former NASA scientists Chris Boshuizen, Will Marshall and Robbie Schingler founded the company as Cosmogia in December 2010. Its Dove satellites are tiny CubeSats that image the planet from about 400 km up. Planet is headquartered at 645 Harrison Street.",
+    "facts": [
+      "Each Dove weighs about 4 kg and measures 10 by 10 by 30 cm.",
+      "A Dove is roughly 1,000 times lighter than other commercial imaging satellites."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Planet_Labs",
+      "https://orbitcodex.com/organizations/planet-labs"
+    ]
+  },
+  {
+    "id": "gusto",
+    "name": "Gusto",
+    "category": "company",
+    "rarity": "common",
+    "neighborhood": "Dogpatch",
+    "at": { "lat": 37.76057, "lon": -122.38562 },
+    "year": 2011,
+    "blurb": "Payroll software in a shipyard brick building across from YC.",
+    "lore": "Joshua Reeves, Tomer London and Edward Kim founded ZenPayroll in 2011, went through Y Combinator's Winter 2012 batch and renamed the company Gusto in 2015. Its headquarters at 525 20th Street is one of the arched brick Pier 70 buildings that once made steel and iron parts for ships, right across the street from Y Combinator.",
+    "facts": [
+      "Gusto shares its brick shipyard buildings with satellite maker Astranis.",
+      "Gusto passed $1 billion in annual revenue by early 2026."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gusto_(company)",
+      "https://www.potreroview.net/?p=9707",
+      "https://www.clay.com/dossier/gusto-headquarters-office-locations"
+    ]
+  },
+  {
+    "id": "astranis",
+    "name": "Astranis",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Dogpatch",
+    "at": { "lat": 37.76057, "lon": -122.38562 },
+    "year": 2015,
+    "blurb": "Building geostationary satellites where battleships were built.",
+    "lore": "John Gedmark and Ryan McLinko founded Astranis in October 2015 and went through Y Combinator in Winter 2016. It builds small geostationary communications satellites inside Pier 70, in the building that was once the headquarters of Union Iron Works and then Bethlehem Steel, a production line for battleships and submarines in both World Wars.",
+    "facts": [
+      "Its first test satellite, launched in 2018, weighed under 3 kg.",
+      "The Arcturus satellite tested at up to 8.5 Gbit/s, above its 7.5 Gbit/s design spec."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Astranis",
+      "https://www.astranis.com/old/company",
+      "https://fastcompany.com/91456505/astranis-microgeo-satellites-john-gedmark"
+    ]
+  },
+  {
+    "id": "lucasfilm",
+    "name": "Lucasfilm",
+    "category": "company",
+    "rarity": "legendary",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79883, "lon": -122.4505 },
+    "year": 1971,
+    "blurb": "Star Wars and ILM in the Presidio. Yoda guards the door.",
+    "lore": "George Lucas founded Lucasfilm in 1971. In 2005 it opened the Letterman Digital Arts Center in the Presidio, an 850,000 square foot campus built on the grounds of the old Letterman Army Hospital, home to Industrial Light & Magic. A life-size Yoda statue stands in a fountain outside Building B.",
+    "facts": [
+      "Disney bought Lucasfilm for $4.05 billion in 2012.",
+      "The campus earned LEED Gold, partly by recycling material from the hospital it replaced.",
+      "Building B's lobby is open to the public and shows Star Wars props and costumes.",
+      "Pixar began inside Lucasfilm as The Graphics Group and was sold to Steve Jobs in 1986."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lucasfilm",
+      "https://en.wikipedia.org/wiki/Letterman_Digital_Arts_Center",
+      "https://presidio.gov/explore/attractions/letterman-digital-arts-center"
+    ]
+  },
+  {
+    "id": "levi-strauss",
+    "name": "Levi Strauss & Co.",
+    "category": "company",
+    "rarity": "rare",
+    "neighborhood": "Telegraph Hill",
+    "at": { "lat": 37.80179, "lon": -122.40231 },
+    "year": 1853,
+    "blurb": "San Francisco's original hardware: riveted denim since 1873.",
+    "lore": "Levi Strauss opened a West Coast branch of his family's dry goods business in San Francisco in 1853. In 1873 he and tailor Jacob Davis patented copper rivets for work pants, and blue jeans were born. The company has been headquartered at Levi's Plaza, 1155 Battery Street, since it opened in the early 1980s on land that was once a wharf.",
+    "facts": [
+      "Builders digging Levi's Plaza rediscovered a ship buried under the old wharf.",
+      "Company records burned in the 1906 earthquake, so nobody knows why jeans are called 501.",
+      "A 1930s Levi's jacket owned by Albert Einstein sold for 110,500 pounds in 2016."
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Levi_Strauss_%26_Co.",
+      "https://en.wikipedia.org/wiki/Levi%27s_Plaza",
+      "https://www.levistrauss.com/2025/10/01/a-new-chapter-at-our-san-francisco-headquarters/"
+    ]
+  }
+]
