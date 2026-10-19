@@ -113,6 +113,7 @@ canvas#view.shake { animation: shake 0.35s ease-out; }
 .reveal-caption small { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); }
 .reveal-caption strong { font-size: 26px; letter-spacing: -0.02em; }
 .reveal-caption span { color: var(--ink-dim); font-size: 14px; }
+.reveal-tip { margin: 6px 0 0; font-size: 13px; color: var(--accent-2); }
 .reveal-actions { display: flex; gap: 8px; margin-top: 10px; }
 .reveal.still .reveal-flip, .reveal.still .reveal-burst { animation: fade-in 0.3s ease; }
 

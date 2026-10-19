@@ -51,7 +51,7 @@ export function startOnboarding(game: Game): void {
       card.dataset.step = 'done';
       count.textContent = 'Tutorial complete';
       title.textContent = 'You are cleared for takeoff';
-      hint.textContent = 'Open the map with M to find everything else. Have fun out there.';
+      hint.innerHTML = `${touch ? 'Tap 📜' : 'Press <kbd>L</kbd>'} for The Lost Commit: Emperor Norton needs a pilot to fly the city's story back together.`;
       skip.remove();
       setTimeout(() => card.classList.add('out'), 3800);
       setTimeout(() => card.remove(), 4400);
