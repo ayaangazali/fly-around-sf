@@ -8,7 +8,7 @@ const DATA = new URL('../public/data/', import.meta.url);
 const Q = 2;
 const LIMIT = 15000;
 
-export const SOURCES = {
+const SOURCES = {
   streets: 'https://data.sf.gov/d/3psu-pn9h',
   parks: 'https://data.sf.gov/d/gtr9-ntp6',
   trees: 'https://data.sf.gov/d/tkzw-k3nq',
@@ -291,8 +291,8 @@ function pointInRing([x, z], ring) {
   return c;
 }
 
-export const TREE = { broadleaf: 0, conifer: 1, eucalyptus: 2, palm: 3 };
-export const TINT = { green: 0, dark: 1, purple: 2, cherry: 3, gray: 4, fallRed: 5, fallYellow: 6, jacaranda: 7, redBloom: 8 };
+const TREE = { broadleaf: 0, conifer: 1, eucalyptus: 2, palm: 3 };
+const TINT = { green: 0, dark: 1, purple: 2, cherry: 3, gray: 4, fallRed: 5, fallYellow: 6, jacaranda: 7, redBloom: 8 };
 
 function treeKind(species) {
   const s = species.toLowerCase();
@@ -407,3 +407,4 @@ const lines = await buildStreets();
 await buildGreen();
 await buildTrees(lines);
 await buildStars();
+for (const [k, v] of Object.entries(SOURCES)) console.log(`source ${k}: ${v}`);

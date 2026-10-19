@@ -106,7 +106,7 @@ export function patchGround(mat: THREE.MeshLambertMaterial, tex: THREE.Texture, 
         float gn = fract(sin(dot(gq, vec2(12.9898, 78.233))) * 43758.5453);
         float far = smoothstep(600.0, 2500.0, length(vGround - cameraPosition));
         gn = mix(gn, 0.5, far);
-        float land = smoothstep(2.5, 5.0, vGround.y);
+        float land = smoothstep(0.3, 1.5, vGround.y);
         vec3 urban = mix(vec3(0.55, 0.535, 0.5), vec3(0.62, 0.6, 0.56), gn);
         vec3 base = mix(diffuseColor.rgb, urban, land * 0.85);
         vec3 grass = mix(vec3(0.44, 0.6, 0.3), vec3(0.52, 0.66, 0.34), gn);
