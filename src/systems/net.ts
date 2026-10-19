@@ -3,7 +3,6 @@ import type { Game, GameSystem } from '../game';
 import { Net } from '../net/session';
 import { NetView } from '../net/view';
 import { NetHud } from '../net/hud';
-import { normalizeCode } from '../net/protocol';
 import { rayToGround } from '../net/math';
 
 declare module '../game' {
@@ -42,8 +41,7 @@ export const system: GameSystem = {
       net.leave();
       net.sync.stop();
     });
-    const code = normalizeCode(game.opts.room);
-    if (code) void net.join(code);
+    if (game.opts.room && game.opts.test && !new URLSearchParams(location.search).has('title')) void net.join(game.opts.room);
   },
   update(dt, game) {
     if (failed) return;
