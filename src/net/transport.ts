@@ -13,7 +13,7 @@ export interface Transport {
   readonly kind: TransportKind;
   send(msg: unknown, to?: string): void;
   addStream(stream: MediaStream, to?: string): void;
-  removeStream(stream: MediaStream): void;
+  removeStream(stream: MediaStream, to?: string): void;
   relays(): number;
   leave(): void;
 }

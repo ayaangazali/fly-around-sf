@@ -18,7 +18,7 @@ export function openP2P(room: string, h: TransportHandlers, maxBytes: number): T
     kind: 'p2p',
     send: (msg, to) => void action.send(msg as JsonValue, to ? { target: to } : undefined).catch(() => undefined),
     addStream: (stream, to) => quiet(r.addStream(stream, to ? { target: to } : undefined)),
-    removeStream: (stream) => r.removeStream(stream),
+    removeStream: (stream, to) => r.removeStream(stream, to ? { target: to } : undefined),
     relays: () => Object.values((getRelaySockets() ?? {}) as Record<string, WebSocket | undefined>).filter((s) => s?.readyState === 1).length,
     leave: () => void r.leave().catch(() => undefined),
   };

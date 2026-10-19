@@ -64,6 +64,7 @@ export class Net {
   transport: Transport | null = null;
   match: Match | null = null;
   readonly peers = new Map<string, RemotePeer>();
+  private past = new Map<string, RemotePeer>();
   readonly chat: ChatLine[] = [];
   readonly pings = new Map<string, PingMark>();
   readonly voice: Voice;
@@ -180,7 +181,10 @@ export class Net {
     if (this.voice.mic) this.transport?.removeStream(this.voice.mic);
     this.transport?.leave();
     this.transport = null;
-    for (const id of this.peers.keys()) this.voice.drop(id);
+    for (const p of this.peers.values()) {
+      this.voice.drop(p.id);
+      this.past.set(p.id, p);
+    }
     this.peers.clear();
     this.streams.clear();
     this.pings.clear();
@@ -230,7 +234,13 @@ export class Net {
 
   private sayHi(to?: string): void {
     this.lastHi = this.hiKey();
-    this.transport?.send({ t: 'hi', name: this.name, color: this.color }, to);
+    const hi = { t: 'hi', name: this.name, color: this.color };
+    if (to) this.transport?.send(hi, to);
+    else this.send(hi);
+  }
+
+  private send(msg: unknown): void {
+    for (const p of this.peers.values()) if (!p.blocked) this.transport?.send(msg, p.id);
   }
 
   private mic(): Mic {
@@ -238,14 +248,13 @@ export class Net {
   }
 
   private pulse(): void {
-    const t = this.transport;
-    if (!t) return;
+    if (!this.transport) return;
     const f = this.game.flight;
-    t.send(encode({ t: 'st', p: f.pos, v: f.vel, yaw: f.yaw, mic: this.mic() }));
+    this.send(encode({ t: 'st', p: f.pos, v: f.vel, yaw: f.yaw, mic: this.mic() }));
     if (++this.ticks % (SEND_HZ * 5) === 0) this.sayHi();
     if (this.ticks % 3 === 0 && this.match && this.match.phase !== 'done') {
       const m = this.match.flush();
-      if (m) t.send(m);
+      if (m) this.send(m);
     }
   }
 
@@ -258,9 +267,13 @@ export class Net {
   private peerJoin(id: string): void {
     if (this.peers.has(id)) return;
     const f = this.game.flight;
-    this.peers.set(id, { id, name: 'Pilot', color: DEFAULT_COLOR, known: false, pos: { ...f.pos }, yaw: 0, vel: { x: 0, y: 0, z: 0 }, mic: 0, sample: null, muted: false, blocked: false });
-    this.sayHi(id);
-    if (this.voice.mic) this.transport?.addStream(this.voice.mic, id);
+    const p: RemotePeer = { id, name: 'Pilot', color: DEFAULT_COLOR, known: false, muted: false, blocked: false, ...this.past.get(id), pos: { ...f.pos }, yaw: 0, vel: { x: 0, y: 0, z: 0 }, mic: 0, sample: null };
+    this.peers.set(id, p);
+    if (!p.blocked) {
+      if (p.known) this.greet(p);
+      this.sayHi(id);
+      if (this.voice.mic) this.transport?.addStream(this.voice.mic, id);
+    }
     this.checkRelays();
     this.changed();
   }
@@ -269,6 +282,7 @@ export class Net {
     const p = this.peers.get(id);
     if (!p) return;
     this.peers.delete(id);
+    this.past.set(id, p);
     this.streams.delete(id);
     this.voice.drop(id);
     this.pings.delete(id);
@@ -293,13 +307,11 @@ export class Net {
     switch (m.t) {
       case 'hi': {
         const first = !p.known;
+        const taken = m.name === this.name || [...this.peers.values()].some((o) => o !== p && o.known && o.name === m.name);
         p.known = true;
-        p.name = m.name;
+        p.name = taken ? `${m.name} (${p.id.slice(0, 4)})` : m.name;
         p.color = m.color;
-        if (first) {
-          this.game.toast(`${p.name} joined the room`, 'reward');
-          this.game.bus.emit('net:join', { id: p.id, name: p.name });
-        }
+        if (first) this.greet(p);
         this.changed();
         return;
       }
@@ -326,6 +338,11 @@ export class Net {
     }
   }
 
+  private greet(p: RemotePeer): void {
+    this.game.toast(`${p.name} joined the room`, 'reward');
+    this.game.bus.emit('net:join', { id: p.id, name: p.name });
+  }
+
   private pushChat(line: ChatLine): void {
     this.chat.push(line);
     if (this.chat.length > CHAT_KEEP) this.chat.splice(0, this.chat.length - CHAT_KEEP);
@@ -338,7 +355,7 @@ export class Net {
     if (!text) return 'empty';
     if (!this.transport) return 'offline';
     if (!this.chatLimiter.allow('self', 'chat', performance.now())) return 'slow';
-    this.transport.send({ t: 'chat', text });
+    this.send({ t: 'chat', text });
     this.pushChat({ id: this.selfId, name: this.name, color: this.color, text, self: true, at: Date.now() });
     return 'ok';
   }
@@ -353,7 +370,7 @@ export class Net {
 
   ping(p: Vec3): void {
     const [x, y, z] = wireVec(p);
-    this.transport?.send(encode({ t: 'ping', p }));
+    this.send(encode({ t: 'ping', p }));
     this.addPing({ id: this.selfId, name: this.name, color: this.color, p: { x, y, z }, t: 0 });
   }
 
@@ -368,17 +385,24 @@ export class Net {
     if (!p) return;
     p.blocked = blocked;
     const stream = this.streams.get(id);
+    const mic = this.voice.mic;
     if (blocked) {
       this.voice.drop(id);
       this.pings.delete(id);
+      if (mic) this.transport?.removeStream(mic, id);
       this.game.toast(`${p.name} is blocked for this session`, 'info');
-    } else if (stream) this.voice.attach(id, stream);
+    } else {
+      if (stream) this.voice.attach(id, stream);
+      if (mic) this.transport?.addStream(mic, id);
+      this.sayHi(id);
+    }
     this.changed();
   }
 
   async enableVoice(): Promise<VoiceResult> {
     const r = await this.voice.enable();
-    if (r === 'on' && this.voice.mic) this.transport?.addStream(this.voice.mic);
+    const mic = this.voice.mic;
+    if (r === 'on' && mic) for (const p of this.peers.values()) if (!p.blocked) this.transport?.addStream(mic, p.id);
     this.changed();
     return r;
   }
@@ -393,7 +417,7 @@ export class Net {
     return {
       game: this.game,
       selfId: this.selfId,
-      send: (m) => this.transport?.send(m),
+      send: (m) => this.send(m),
       present: (id) => id === this.selfId || !!this.peers.get(id)?.known,
       pos: (id) => (id === this.selfId ? this.game.flight.pos : (this.peers.get(id)?.pos ?? null)),
       name: (id) => (id === this.selfId ? this.name : (this.peers.get(id)?.name ?? 'Pilot')),
@@ -452,7 +476,7 @@ export class Net {
       role,
     };
     if (mode === 'race' && !this.game.activities.defs.get(spec.activity)) return false;
-    this.transport.send(spec);
+    this.send(spec);
     this.begin(spec, this.selfId);
     return !!this.match;
   }

@@ -9,6 +9,8 @@ const fake = vi.hoisted(() => ({
   relays: 0,
   fail: false,
   streams: [] as [unknown, string | undefined][],
+  removed: [] as [unknown, string | undefined][],
+  sent: [] as [unknown, string | undefined][],
 }));
 
 vi.mock('../../src/net/p2p', () => ({
@@ -18,9 +20,9 @@ vi.mock('../../src/net/p2p', () => ({
     return {
       selfId: 'me',
       kind: 'p2p',
-      send: () => undefined,
+      send: (m, to) => void fake.sent.push([m, to]),
       addStream: (s, to) => void fake.streams.push([s, to]),
-      removeStream: () => undefined,
+      removeStream: (s, to) => void fake.removed.push([s, to]),
       relays: () => fake.relays,
       leave: () => undefined,
     };
@@ -33,7 +35,17 @@ afterEach(() => {
   fake.relays = 0;
   fake.fail = false;
   fake.streams = [];
+  fake.removed = [];
+  fake.sent = [];
 });
+
+function micVoice(): Voice {
+  const ctx = new FakeCtx();
+  return new Voice(
+    () => ctx as unknown as AudioContext,
+    () => ({ getUserMedia: (() => Promise.resolve({ getTracks: () => [], getAudioTracks: () => [] })) as unknown as MediaDevices['getUserMedia'] }),
+  );
+}
 
 const listener = { pos: { x: 0, y: 0, z: 0 }, forward: { x: 0, y: 0, z: -1 }, up: { x: 0, y: 1, z: 0 } };
 
@@ -74,11 +86,7 @@ describe('net session over the P2P transport', () => {
 
   it('[R-VOICE] audio that arrives before the hello survives, blocking cuts it and unblocking restores it', async () => {
     const game = await netGame();
-    const ctx = new FakeCtx();
-    const voice = new Voice(
-      () => ctx as unknown as AudioContext,
-      () => ({ getUserMedia: (() => Promise.resolve({ getTracks: () => [], getAudioTracks: () => [] })) as unknown as MediaDevices['getUserMedia'] }),
-    );
+    const voice = micVoice();
     const net = new Net(game, 'p2p', voice);
     await net.join('VQCE2');
     const h = fake.h!;
@@ -107,6 +115,57 @@ describe('net session over the P2P transport', () => {
     h.leave('p1');
     expect(voice.chains.has('p1')).toBe(false);
     expect(game.toasts.at(-1)).toBe('Pia left');
+    net.leave();
+  });
+
+  it('[R-NET-SAFE] a block covers your mic, position, chat and pings, survives a reconnect, and a copied name gets an id suffix', async () => {
+    const game = await netGame();
+    game.save.data.settings.playerName = 'Me';
+    const voice = micVoice();
+    const net = new Net(game, 'p2p', voice);
+    expect(await net.join('BLKAB')).toBe(true);
+    const h = fake.h!;
+    for (const [id, name] of [['pal', 'Alex'], ['troll', 'Alex'], ['copy', 'Me']]) {
+      h.join(id);
+      h.message({ t: 'hi', name, color: '#3fa9f5' }, id);
+    }
+    expect(net.visiblePeers().map((p) => p.name)).toEqual(['Alex', 'Alex (trol)', 'Me (copy)']);
+    expect(await net.enableVoice()).toBe('on');
+    net.setBlocked('troll', true);
+    expect(fake.removed).toEqual([[voice.mic, 'troll']]);
+    fake.sent = [];
+    net.sendChat('meet me at Coit Tower');
+    net.ping({ x: 1, y: 2, z: 3 });
+    await new Promise((r) => setTimeout(r, 200));
+    const types = (to: string) => fake.sent.filter(([, t]) => t === to).map(([m]) => (m as { t: string }).t);
+    expect(types('pal')).toEqual(expect.arrayContaining(['chat', 'ping', 'st']));
+    expect(types('troll')).toEqual([]);
+    expect(fake.sent.every(([, to]) => to !== undefined)).toBe(true);
+    h.leave('troll');
+    h.join('troll');
+    h.message({ t: 'hi', name: 'Troll', color: '#ff0000' }, 'troll');
+    h.message({ t: 'chat', text: 'I am back' }, 'troll');
+    expect(net.peers.get('troll')?.blocked).toBe(true);
+    expect(net.visiblePeers().map((p) => p.id)).toEqual(['pal', 'copy']);
+    expect(net.chat.map((l) => l.text)).toEqual(['meet me at Coit Tower']);
+    expect(fake.streams.filter(([, to]) => to === 'troll')).toHaveLength(1);
+    net.setBlocked('troll', false);
+    expect(fake.streams.at(-1)).toEqual([voice.mic, 'troll']);
+    net.leave();
+  });
+
+  it('[R-NET-PING] a friend whose link drops and comes back keeps their name, so a ping sent before their next hello still lands', async () => {
+    const game = await netGame();
+    const net = new Net(game, 'p2p');
+    expect(await net.join('PNG22')).toBe(true);
+    const h = fake.h!;
+    h.join('p1');
+    h.message({ t: 'hi', name: 'Ana', color: '#5ec8ff' }, 'p1');
+    h.leave('p1');
+    h.join('p1');
+    h.message({ t: 'ping', p: [10, 2, -30] }, 'p1');
+    expect(net.pings.get('p1')).toMatchObject({ name: 'Ana', p: { x: 10, y: 2, z: -30 } });
+    expect(game.toasts).toEqual(['Ana joined the room', 'Ana left', 'Ana joined the room']);
     net.leave();
   });
 });
