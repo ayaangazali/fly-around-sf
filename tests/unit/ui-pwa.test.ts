@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
+import { runInNewContext } from 'node:vm';
 import { join } from 'node:path';
 import { ROOT } from './helpers';
 
@@ -28,13 +29,37 @@ describe('progressive web app', () => {
     expect(pngSize('icons/apple-touch-icon.png')).toEqual({ width: 180, height: 180 });
   });
 
-  it('[R-PWA] index links the manifest and the service worker caches the shell and data with a version', () => {
+  it('[R-PWA] index links the manifest and the service worker precaches a versioned shell', () => {
     const html = readFileSync(join(ROOT, 'index.html'), 'utf8');
     expect(html).toContain('rel="manifest" href="./manifest.webmanifest"');
     expect(html).toContain('rel="apple-touch-icon"');
     const sw = readFileSync(pub('sw.js'), 'utf8');
     expect(sw).toMatch(/const VERSION = `fly-sf-\$\{new URL\(self\.location\.href\)\.searchParams\.get\('v'\)/);
-    for (const f of ['./index.html', './manifest.webmanifest', './data/terrain.bin', './data/city.bin']) expect(sw).toContain(`'${f}'`);
+    for (const f of ['./index.html', './manifest.webmanifest']) expect(sw).toContain(`'${f}'`);
     expect(sw).toContain('caches.delete');
+  });
+
+  it('[R-PWA] only a successful navigation replaces the cached shell', async () => {
+    const on: Record<string, (e: unknown) => void> = {};
+    const puts: string[] = [];
+    let status = 404;
+    const cache = { put: async (k: string) => void puts.push(k) };
+    runInNewContext(readFileSync(pub('sw.js'), 'utf8'), {
+      URL,
+      self: { location: { href: 'https://fly.test/sw.js?v=a', origin: 'https://fly.test' }, addEventListener: (t: string, f: (e: unknown) => void) => (on[t] = f) },
+      caches: { open: async () => cache },
+      fetch: async () => ({ ok: status < 400, status, type: 'basic', clone: () => ({}) }),
+    });
+    const navigate = async () => {
+      let res: Promise<unknown> = Promise.resolve();
+      on.fetch({ request: { url: 'https://fly.test/', method: 'GET', mode: 'navigate' }, respondWith: (p: Promise<unknown>) => (res = p) });
+      await res;
+      await new Promise((r) => setTimeout(r));
+    };
+    await navigate();
+    expect(puts).toEqual([]);
+    status = 200;
+    await navigate();
+    expect(puts).toEqual(['./']);
   });
 });

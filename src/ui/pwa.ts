@@ -44,7 +44,7 @@ export function registerServiceWorker(base: string): void {
       const urls = performance
         .getEntriesByType('resource')
         .map((r) => r.name)
-        .filter((u) => u.startsWith(location.origin) && !u.includes('/data/'));
+        .filter((u) => u.startsWith(location.origin));
       reg.active?.postMessage({ type: 'cache', urls: [location.href.split('?')[0], ...urls] });
     })
     .catch(() => undefined);

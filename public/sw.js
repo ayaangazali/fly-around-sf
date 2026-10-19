@@ -1,12 +1,11 @@
 const VERSION = `fly-sf-${new URL(self.location.href).searchParams.get('v') || 'dev'}`;
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icons/icon-192.png', './icons/icon-512.png'];
-const DATA = ['./data/terrain.bin', './data/city.bin'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches
       .open(VERSION)
-      .then((c) => c.addAll(SHELL).then(() => Promise.allSettled(DATA.map((u) => c.add(u)))))
+      .then((c) => c.addAll(SHELL))
       .then(() => self.skipWaiting()),
   );
 });
@@ -34,8 +33,10 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(VERSION).then((c) => c.put('./', copy));
+          if (res.ok && res.type === 'basic') {
+            const copy = res.clone();
+            caches.open(VERSION).then((c) => c.put('./', copy));
+          }
           return res;
         })
         .catch(() => caches.match('./', { ignoreSearch: true, ignoreVary: true })),

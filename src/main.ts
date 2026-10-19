@@ -24,6 +24,7 @@ game
   .then(() => {
     game.start();
     installUi(game);
+    if (import.meta.env.PROD && !opts.test) registerServiceWorker(import.meta.env.BASE_URL);
     if (api) api.ready = true;
     if (api && !new URLSearchParams(location.search).has('title')) return title.remove();
     title.ready(game, () => beginFlight(game));
@@ -32,5 +33,3 @@ game
     title.fail(`Could not load: ${e instanceof Error ? e.message : String(e)}`);
     errors.push(String(e));
   });
-
-if (import.meta.env.PROD && !opts.test) registerServiceWorker(import.meta.env.BASE_URL);
