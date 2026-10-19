@@ -5,7 +5,10 @@
     "category": "tech",
     "rarity": "legendary",
     "neighborhood": "Inner Richmond",
-    "at": { "lat": 37.7823, "lon": -122.47175 },
+    "at": {
+      "lat": 37.7823,
+      "lon": -122.47175
+    },
     "year": 1996,
     "blurb": "The Wayback Machine lives in a former Christian Science church.",
     "lore": "Brewster Kahle founded the Internet Archive in 1996 and opened the Wayback Machine to the public in 2001. Since 2009 it has lived at 300 Funston Avenue, built in 1923 as the Fourth Church of Christ, Scientist. The archive chose it partly because the columned front looks like its logo. Inside, the old pews hold ceramic statues of staff and friends of the archive.",
@@ -26,7 +29,10 @@
     "category": "tech",
     "rarity": "rare",
     "neighborhood": "Financial District",
-    "at": { "lat": 37.79049, "lon": -122.40094 },
+    "at": {
+      "lat": 37.79049,
+      "lon": -122.40094
+    },
     "year": 2003,
     "blurb": "The nonprofit behind Wikipedia, in a much smaller office than you think.",
     "lore": "Jimmy Wales set up the Wikimedia Foundation in St. Petersburg, Florida on June 20, 2003 to run Wikipedia. It moved to San Francisco by early 2008 for the talent and the partners nearby. In October 2024 it moved about 300 meters from One Montgomery Tower to a small administrative office at One Sansome Street, with 86% less space, since most staff work remotely.",
@@ -40,32 +46,15 @@
     ]
   },
   {
-    "id": "exploratorium",
-    "name": "Exploratorium",
-    "category": "tech",
-    "rarity": "rare",
-    "neighborhood": "Embarcadero",
-    "at": { "lat": 37.8014, "lon": -122.3976 },
-    "year": 1969,
-    "blurb": "A hands-on science museum where you can smell the machine shop.",
-    "lore": "Physicist Frank Oppenheimer opened the Exploratorium in 1969 inside the Palace of Fine Arts. In April 2013 it moved to Piers 15 and 17 on the Embarcadero, with more than 600 hands-on exhibits there. Oppenheimer put the exhibit workshop beside the entrance with no wall, so visitors could smell the oil from the lathes.",
-    "facts": [
-      "Pi Day began here in 1988.",
-      "The Tactile Dome is a pitch-black maze you explore by touch.",
-      "Its Tinkering Studio is a maker space inside the museum."
-    ],
-    "sources": [
-      "https://en.wikipedia.org/wiki/Exploratorium",
-      "https://techcrunch.com/2013/04/12/inside-sfs-new-exploratorium-the-hands-on-museum-beloved-by-techies-tctv"
-    ]
-  },
-  {
     "id": "autodesk-pier-9",
     "name": "Autodesk Pier 9",
     "category": "tech",
     "rarity": "rare",
     "neighborhood": "Embarcadero",
-    "at": { "lat": 37.80032, "lon": -122.39741 },
+    "at": {
+      "lat": 37.80032,
+      "lon": -122.39741
+    },
     "year": 2013,
     "blurb": "A software company's giant workshop on a historic pier.",
     "lore": "Autodesk opened its Pier 9 workshop in September 2013, with CEO Carl Bass and Mayor Ed Lee cutting the ribbon. The space was built as a maker and research shop full of CNC machines, laser cutters and robots. It is now the Autodesk Technology Center San Francisco, a hub for startups and researchers exploring the future of manufacturing.",
@@ -85,7 +74,10 @@
     "category": "tech",
     "rarity": "rare",
     "neighborhood": "Mission",
-    "at": { "lat": 37.76235, "lon": -122.41863 },
+    "at": {
+      "lat": 37.76235,
+      "lon": -122.41863
+    },
     "year": 2007,
     "blurb": "San Francisco's open hackerspace. Ring the bell, come in, build.",
     "lore": "Noisebridge was organized in 2007 by volunteer hackers inspired by Metalab in Vienna and c-base in Berlin. It spent years in a third-floor space at 2169 Mission Street, then moved in 2020 to a warehouse at 272 Capp Street, directly behind the old space. Anyone can visit to learn, teach and build.",
@@ -105,7 +97,10 @@
     "category": "tech",
     "rarity": "common",
     "neighborhood": "Embarcadero",
-    "at": { "lat": 37.7956, "lon": -122.39369 },
+    "at": {
+      "lat": 37.7956,
+      "lon": -122.39369
+    },
     "year": 2020,
     "blurb": "A members club for builders upstairs in the Ferry Building.",
     "lore": "SHACK15 opened in 2020 on the upper floor of the Ferry Building, a 51,000 square foot club and coworking space with arched windows over the bay. Membership costs around $2,000 a year and needs a referral from a current member. It hosts hackathons, AI film screenings and talks.",
@@ -123,7 +118,10 @@
     "category": "tech",
     "rarity": "rare",
     "neighborhood": "Mid-Market",
-    "at": { "lat": 37.78225, "lon": -122.40996 },
+    "at": {
+      "lat": 37.78225,
+      "lon": -122.40996
+    },
     "year": 2025,
     "blurb": "A 16-story vertical village with one frontier technology per floor.",
     "lore": "In 2025 three German entrepreneurs bought 995 Market Street, a 16-story building that had been a WeWork and the headquarters of the Burning Man Project. They turned it into Frontier Tower, a membership vertical village where each floor has its own theme and lead, from AI and robotics to biotech, neurotech and arts.",
@@ -142,7 +140,10 @@
     "category": "tech",
     "rarity": "common",
     "neighborhood": "Mission",
-    "at": { "lat": 37.7544, "lon": -122.41829 },
+    "at": {
+      "lat": 37.7544,
+      "lon": -122.41829
+    },
     "year": 2006,
     "blurb": "Art and technology in a restored Mission Street movie palace.",
     "lore": "Josette Melchor founded Gray Area as a gallery in SoMa in 2006, and it became a nonprofit by 2008. In 2014 it moved into the historic Grand Theater at 2665 Mission Street and turned it into a performance space and incubator. It teaches creative coding and runs the Gray Area Festival.",
@@ -161,7 +162,10 @@
     "category": "tech",
     "rarity": "legendary",
     "neighborhood": "SoMa",
-    "at": { "lat": 37.78325, "lon": -122.40329 },
+    "at": {
+      "lat": 37.78325,
+      "lon": -122.40329
+    },
     "year": 2003,
     "blurb": "The hall where Steve Jobs pulled out the first iPhone.",
     "lore": "Moscone Center is named for Mayor George Moscone and opened in 1981. Its West hall was added in 2003. On January 9, 2007, at Macworld in Moscone West, Steve Jobs introduced the iPhone as an iPod, a phone and an internet communicator in one device. Apple held WWDC at Moscone from 2003 to 2016, and Dreamforce has filled it since 2005.",
@@ -181,7 +185,10 @@
     "category": "tech",
     "rarity": "legendary",
     "neighborhood": "South Beach",
-    "at": { "lat": 37.78234, "lon": -122.38725 },
+    "at": {
+      "lat": 37.78234,
+      "lon": -122.38725
+    },
     "year": 2010,
     "blurb": "Instagram was born at a $500 a month desk on this pier.",
     "lore": "Polaris Partners ran Dogpatch Labs, a startup space on Pier 38. Kevin Systrom and Mike Krieger rented a desk there for about $500 a month to build Burbn, a check-in app. Users mostly loved sharing photos, so they cut everything else and launched Instagram on October 6, 2010. The very first Instagram photo, posted that July, shows South Beach Harbor at Pier 38.",
@@ -202,7 +209,10 @@
     "category": "tech",
     "rarity": "rare",
     "neighborhood": "SoMa",
-    "at": { "lat": 37.78139, "lon": -122.39389 },
+    "at": {
+      "lat": 37.78139,
+      "lon": -122.39389
+    },
     "year": 1855,
     "blurb": "A London-style oval park that became ground zero of the dot-com boom.",
     "lore": "George Gordon laid out South Park in 1855 as an exclusive oval of 58 homes around a private garden, modeled on a London square, with the city's first paved streets. The rich moved to Nob Hill and the 1906 earthquake wrecked the houses, but the oval survived. In the late 1990s its cheap lofts made it ground zero of the dot-com boom, and later Odeo, Twitter and Wired all worked around the park.",
@@ -221,7 +231,10 @@
     "category": "tech",
     "rarity": "common",
     "neighborhood": "Mission Bay",
-    "at": { "lat": 37.7671, "lon": -122.39228 },
+    "at": {
+      "lat": 37.7671,
+      "lon": -122.39228
+    },
     "year": 2003,
     "blurb": "A biomedical campus built on old rail yards and earthquake rubble.",
     "lore": "Mission Bay was a marsh and lagoon, filled with debris including rubble from the 1906 earthquake and later used as a Southern Pacific rail yard. UCSF's first building there, Genentech Hall, opened in January 2003 and grew into a research campus. Biotech companies clustered around it, and today Chase Center, Uber and OpenAI are its neighbors.",
@@ -241,7 +254,10 @@
     "category": "tech",
     "rarity": "common",
     "neighborhood": "SoMa",
-    "at": { "lat": 37.77561, "lon": -122.41373 },
+    "at": {
+      "lat": 37.77561,
+      "lon": -122.41373
+    },
     "year": 2009,
     "blurb": "Civic hacking for government, with weekly hack nights on 9th Street.",
     "lore": "Jennifer Pahlka founded Code for America in 2009 to bring modern technology to government. Its fellowship placed coders inside city halls, and its volunteer Brigades grew to 60 chapters. At its former headquarters at 155 9th Street, Code for San Francisco met every Wednesday night for civic hack nights.",

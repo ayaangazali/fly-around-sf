@@ -149,7 +149,7 @@ canvas#view.shake { animation: shake 0.35s ease-out; }
 .touch .hud-stats { left: max(12px, env(safe-area-inset-left)); bottom: auto; top: calc(var(--top) + 52px); }
 .touch .hud-stat, .touch .hud-battery { font-size: 15px; min-width: 64px; padding: 5px 8px; }
 .touch .minimap { right: auto; left: max(12px, env(safe-area-inset-left)); bottom: auto; top: calc(var(--top) + 110px); width: 104px; height: 104px; }
-.touch .hud-prompt { bottom: calc(var(--bottom) + 168px); }
+.touch .hud-prompt-row { bottom: calc(var(--bottom) + 168px); }
 .touch .onboard { bottom: auto; top: calc(var(--top) + 100px); }
 .touch .ach-host { top: auto; bottom: calc(var(--bottom) + 240px); }
 
@@ -190,7 +190,7 @@ canvas#view.shake { animation: shake 0.35s ease-out; }
   .toasts { top: calc(var(--top) + 140px); width: calc(100vw - 32px); }
   .stick { width: 120px; height: 120px; }
   .touch-buttons { bottom: calc(var(--bottom) + 150px); }
-  .touch .hud-prompt { bottom: calc(var(--bottom) + 222px); }
+  .touch .hud-prompt-row { bottom: calc(var(--bottom) + 222px); }
   .set-row { grid-template-columns: 1fr; gap: 8px; }
   .minimap { width: 120px; height: 120px; }
 }
@@ -235,7 +235,7 @@ canvas#view { transition: filter 0.25s ease; }
   .reveal .tcard-info b { font-size: 12px; }
   .touch .toasts { top: calc(var(--top) + 8px); }
   .touch .touch-buttons { bottom: calc(var(--bottom) + 8px); right: calc(max(20px, env(safe-area-inset-right)) + 150px); }
-  .touch .hud-prompt { bottom: calc(var(--bottom) + 70px); }
+  .touch .hud-prompt-row { bottom: calc(var(--bottom) + 70px); }
 }
 .hud-battery { flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 8px 12px; }
 .hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }

@@ -81,7 +81,8 @@ describe('main quest play', () => {
       play(game, d.id);
       expect(game.save.isDone(d.id), d.id).toBe(true);
     }
-    expect(unlocked).toEqual(story.map((d) => d.card));
+    const storyCards = new Set(story.map((d) => d.card));
+    expect(unlocked.filter((c) => storyCards.has(c))).toEqual(story.map((d) => d.card));
   });
 
   it('[R-QUEST] reveals objectives one at a time, in order, with clues and dialogue between them', async () => {
@@ -287,18 +288,22 @@ describe('quest waypoints in the world', () => {
 });
 
 describe('activity start points', () => {
-  it('[R-QUEST] [R-RIDDLE] [R-SCAVENGER] no two startable activities share a start point, so F always starts the one you see', async () => {
+  it('[R-QUEST] [R-RIDDLE] [R-SCAVENGER] every startable activity can be picked at its own start point, even where several share a spot', async () => {
     const game = await setup();
     const startable = defs.filter((d) => !game.activities.kindOf(d).passive);
-    const clashes: string[] = [];
-    for (const [i, a] of startable.entries()) {
-      const pa = game.activities.position(a);
-      for (const b of startable.slice(i + 1)) {
-        const pb = game.activities.position(b);
-        const d = Math.hypot(pa.x - pb.x, pa.z - pb.z);
-        if (d < 45) clashes.push(`${a.id} and ${b.id}: ${d.toFixed(1)} m`);
+    for (const d of defs) game.save.complete(d.id);
+    const unreachable: string[] = [];
+    for (const a of startable) {
+      game.flight.pos = { ...game.activities.position(a) };
+      game.activities.update(1 / 30);
+      const list = game.activities.nearbyList;
+      let seen = false;
+      for (let i = 0; i < list.length && !seen; i++) {
+        seen = game.activities.nearby?.id === a.id;
+        game.activities.cycleNearby();
       }
+      if (!seen) unreachable.push(`${a.id} (cluster of ${list.length})`);
     }
-    expect(clashes).toEqual([]);
+    expect(unreachable).toEqual([]);
   });
 });

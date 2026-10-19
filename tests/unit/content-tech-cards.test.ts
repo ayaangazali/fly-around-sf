@@ -71,11 +71,10 @@ describe('tech venues on real roofs', () => {
     }
   });
 
-  it('[R-TECH-VENUES] tech meetups are far enough apart that each start prompt is unambiguous', () => {
-    const startable = defs.filter((d) => d.kind !== 'discover');
+  it('[R-TECH-VENUES] no two tech meetups share a start spot', () => {
     for (const d of meetups) {
       const a = toLocal(d.at.lat, d.at.lon);
-      for (const o of startable) {
+      for (const o of meetups) {
         if (o.id === d.id) continue;
         const b = toLocal(o.at.lat, o.at.lon);
         expect(Math.hypot(a.x - b.x, a.z - b.z), `${d.id} vs ${o.id}`).toBeGreaterThan(40);

@@ -10,6 +10,7 @@ export class Hud {
   private compass: HTMLElement;
   private status: HTMLElement;
   private prompt: HTMLElement;
+  private next: HTMLElement;
   private toasts: HTMLElement;
   private last = '';
   readonly widgets: { update(): void }[] = [];
@@ -37,9 +38,15 @@ export class Hud {
     this.prompt = el('button', 'hud-prompt');
     this.prompt.hidden = true;
     this.prompt.addEventListener('click', () => game.interact());
+    this.next = el('button', 'hud-prompt-next', '▸');
+    this.next.hidden = true;
+    this.next.setAttribute('aria-label', 'Next activity here');
+    this.next.addEventListener('click', () => game.activities.cycleNearby());
+    const row = el('div', 'hud-prompt-row');
+    row.append(this.prompt, this.next);
     this.toasts = el('div', 'toasts');
     this.toasts.setAttribute('aria-live', 'polite');
-    this.root.append(this.compass, this.status, this.stats, this.prompt, this.toasts);
+    this.root.append(this.compass, this.status, this.stats, row, this.toasts);
     game.ui.append(this.root);
     game.bus.on('toast', ({ text, kind }) => this.toast(text, kind ?? 'info'));
   }
@@ -65,7 +72,7 @@ export class Hud {
     const heading = ((((-f.yaw * 180) / Math.PI) % 360) + 360) % 360;
     const a = g.activities.active;
     const near = g.activities.nearby;
-    const key = `${speed}|${alt}|${agl.toFixed(0)}|${f.battery.toFixed(2)}|${heading.toFixed(0)}|${a ? a.inst.hud() : ''}|${near?.id ?? ''}`;
+    const key = `${speed}|${alt}|${agl.toFixed(0)}|${f.battery.toFixed(2)}|${heading.toFixed(0)}|${a ? a.inst.hud() : ''}|${near?.id ?? ''}|${g.activities.nearbyList.length}`;
     if (key === this.last) return;
     this.last = key;
     this.speed.innerHTML = `<span>SPD</span>${speed}`;
@@ -78,7 +85,12 @@ export class Hud {
     this.status.textContent = a ? a.inst.hud() : '';
     this.status.hidden = !a;
     this.prompt.hidden = !near || !!a;
-    if (near && !a) this.prompt.innerHTML = `<kbd>F</kbd> ${escapeHtml(near.title)}<small>${escapeHtml(near.blurb)}</small>`;
+    const many = g.activities.nearbyList.length;
+    this.next.hidden = this.prompt.hidden || many < 2;
+    if (near && !a) {
+      const more = many > 1 ? `<span class="hud-prompt-more">${g.activities.nearbyList.indexOf(near) + 1} of ${many} here · <kbd>C</kbd> next</span>` : '';
+      this.prompt.innerHTML = `<kbd>F</kbd> ${escapeHtml(near.title)}<small>${escapeHtml(near.blurb)}</small>${more}`;
+    }
   }
 }
 

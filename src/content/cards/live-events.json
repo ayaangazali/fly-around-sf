@@ -24,13 +24,9 @@
     "category": "transit",
     "rarity": "rare",
     "neighborhood": "SFO and OAK airspace",
-    "at": {
-      "lat": 37.6188,
-      "lon": -122.3754
-    },
     "year": 1927,
     "blurb": "You had a close call with an airliner over the bay.",
-    "lore": "More than 95 percent of the time SFO runs its West Plan: planes land on runways 28L and 28R and generally take off from 1L and 1R, so departures climb out over the bay toward the city. Oakland's long runway 30 points toward San Francisco too.",
+    "lore": "More than 95 percent of the time SFO runs its West Plan: planes land on runways 28L and 28R and generally take off from 1L and 1R, so departures climb out over the bay toward the city. Oakland's long runway 30 points toward San Francisco too. On a clear evening the arrival lights line up over the bay like beads on a string.",
     "facts": [
       "SFO began as Mills Field: a 5,770-foot dirt runway was dedicated there on May 7, 1927.",
       "Under SFO's West Plan, used more than 95 percent of the time, planes land on 28L and 28R and generally take off from 1L and 1R.",

@@ -235,6 +235,7 @@ export class Game {
       ['view', () => this.toast(`Camera: ${this.chase.cycle()}`)],
       ['menu', () => (this.panels.openId ? this.panels.close() : this.panels.open('menu'))],
       ['interact', () => this.interact()],
+      ['cycle', () => this.activities.cycleNearby()],
     ];
     for (const [action, fn] of map) if (this.input.consume(action)) fn();
     for (const p of this.panels.list()) if (p.action && this.input.consume(p.action)) this.panels.toggle(p.id);

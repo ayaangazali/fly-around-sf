@@ -6,7 +6,7 @@ import { BOUNDS, toLocal } from '../../src/core/geo';
 import { CityData } from '../../src/world/city-data';
 import { Terrain } from '../../src/world/terrain';
 import { World, type Landmark } from '../../src/world/world';
-import { createCityMaterial } from '../../src/world/city';
+import { createCityMaterial } from '../../src/world/city-shader';
 import { Site, catenary, inside, loft, roundedRect, yawBetween, type LandmarkSource, type Pt } from '../../src/world/landmark-kit';
 import { TOWERS, HEIGHT_FIXES } from '../../src/world/landmarks/skyline-modern';
 import { clockAngles } from '../../src/world/landmarks/ferry-building';
@@ -63,7 +63,7 @@ function landmarkGame(buildings: { h: number; ring: [number, number][] }[] = [],
   const terrain = new Terrain(2, 2, 100000, -50000, -50000, Int16Array.from([ground * 10, ground * 10, ground * 10, ground * 10]));
   const city = new CityData(cityBuffer(buildings), () => ground);
   const world = new World(terrain, city);
-  return { world, cityRenderer: { material: createCityMaterial() }, date: () => new Date('2026-10-19T19:30:00Z') } as unknown as Game;
+  return { world, cityRenderer: { material: createCityMaterial({ value: 0 }) }, date: () => new Date('2026-10-19T19:30:00Z') } as unknown as Game;
 }
 
 function solidCentroid(game: Game, at: { x: number; z: number }, y: number, radius: number): { n: number; off: number } {
@@ -166,7 +166,7 @@ describe('hand-built landmarks', () => {
     const buf = readFileSync(join(ROOT, 'public/data/city.bin'));
     const city = new CityData(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer, (x, z) => terrain.heightAt(x, z));
     const world = new World(terrain, city);
-    const game = { world, cityRenderer: { material: createCityMaterial() }, date: () => new Date() } as unknown as Game;
+    const game = { world, cityRenderer: { material: createCityMaterial({ value: 0 }) }, date: () => new Date() } as unknown as Game;
     city.applyExclusions(entries.flatMap((e) => e.landmark.exclusions ?? []));
     for (const e of entries) e.landmark.build(game);
     for (const e of entries.filter((x) => x.file !== 'skyline-modern')) {

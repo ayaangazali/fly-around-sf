@@ -3,6 +3,7 @@ import type { Vec3 } from '../player/flight';
 import type { ActivityDef, ActivityInstance, ActivityKind } from './types';
 
 const START_RADIUS = 45;
+export const MAX_NEARBY = 8;
 
 export class ActivityRunner {
   readonly defs = new Map<string, ActivityDef>();
@@ -10,6 +11,8 @@ export class ActivityRunner {
   active: { def: ActivityDef; inst: ActivityInstance; t: number } | null = null;
   private passive = new Map<string, ActivityInstance>();
   nearby: ActivityDef | null = null;
+  nearbyList: ActivityDef[] = [];
+  private pickedId: string | null = null;
 
   constructor(private game: Game) {}
 
@@ -67,6 +70,14 @@ export class ActivityRunner {
     return true;
   }
 
+  cycleNearby(dir = 1): void {
+    const n = this.nearbyList.length;
+    if (n < 2) return;
+    const i = Math.max(0, this.nearbyList.findIndex((d) => d.id === this.pickedId));
+    this.nearby = this.nearbyList[(((i + dir) % n) + n) % n];
+    this.pickedId = this.nearby.id;
+  }
+
   stop(): void {
     this.active?.inst.dispose?.();
     this.active = null;
@@ -75,8 +86,7 @@ export class ActivityRunner {
   update(dt: number): void {
     const save = this.game.save;
     const p = this.game.flight.pos;
-    this.nearby = null;
-    let best = START_RADIUS;
+    const near: { def: ActivityDef; d: number; done: boolean }[] = [];
     for (const def of this.defs.values()) {
       const kind = this.kinds.get(def.kind);
       if (!kind) continue;
@@ -93,11 +103,12 @@ export class ActivityRunner {
       if (this.active || this.locked(def)) continue;
       const pos = this.position(def);
       const d = Math.hypot(pos.x - p.x, pos.z - p.z);
-      if (d < best && Math.abs(pos.y - p.y) < 120) {
-        best = d;
-        this.nearby = def;
-      }
+      if (d < START_RADIUS && Math.abs(pos.y - p.y) < 120) near.push({ def, d, done: save.isDone(def.id) });
     }
+    near.sort((a, b) => Number(a.done) - Number(b.done) || a.d - b.d);
+    this.nearbyList = near.slice(0, MAX_NEARBY).map((n) => n.def);
+    this.nearby = this.nearbyList.find((d) => d.id === this.pickedId) ?? this.nearbyList[0] ?? null;
+    this.pickedId = this.nearby?.id ?? null;
     if (this.active) {
       this.active.t += dt;
       const status = this.active.inst.update(dt);

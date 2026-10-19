@@ -43,6 +43,7 @@ export function fakeGame(ground = 0): Game {
     world: { toLocal, groundAt: () => ground, surfaceAt: () => ground, heightAt: () => ground, point, isWater: () => false },
     input: { press() {}, consume: () => false },
     panels: { openId: null },
+    date: () => new Date('2026-10-19T19:30:00Z'),
     toast() {},
   } as unknown as Game;
   (game as unknown as { activities: ActivityRunner }).activities = new ActivityRunner(game);
