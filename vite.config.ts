@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   base: './',
-  build: { target: 'es2022', chunkSizeWarningLimit: 2000, assetsInlineLimit: 0 },
+  build: { target: 'es2022', chunkSizeWarningLimit: 2000, assetsInlineLimit: 0, manifest: true },
   worker: { format: 'es' },
   test: {
     include: ['tests/unit/**/*.test.ts'],
