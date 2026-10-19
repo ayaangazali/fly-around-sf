@@ -250,7 +250,7 @@ export class NetView {
         continue;
       }
       const dist = Math.hypot(p.pos.x - me.x, p.pos.y - me.y, p.pos.z - me.z);
-      const role = m && m.phase !== 'done' && m.role === id ? (m.spec.mode === 'tag' ? 'IT · ' : m.spec.mode === 'hide' ? 'SEEKER · ' : m.spec.mode === 'formation' ? 'LEADER · ' : '') : '';
+      const role = m?.phase === 'live' && m.role === id ? (m.spec.mode === 'tag' ? 'IT · ' : m.spec.mode === 'hide' ? 'SEEKER · ' : m.spec.mode === 'formation' ? 'LEADER · ' : '') : '';
       r.tag.classList.toggle('talking', p.mic === 2);
       r.tag.classList.toggle('muted', p.muted);
       this.place(r.tag, p.pos, 1.6, `${role}${fmt(dist, imperial)}${p.mic === 2 ? ' · talking' : ''}`, true);

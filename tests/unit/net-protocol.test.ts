@@ -77,6 +77,12 @@ describe('net protocol', () => {
     expect(parse({ t: 'save', code: 'a'.repeat(LIMITS.save + 1) })).toBeNull();
     expect(parse({ t: 'ack', added: 3.4 })).toEqual({ t: 'ack', added: 3 });
     expect(parse({ t: 'ack' })).toBeNull();
+    expect(parse({ t: 'in', id: 'm1', on: 'yes' })).toEqual({ t: 'in', id: 'm1', on: false });
+    expect(parse({ t: 'in', id: 'm1', on: true })).toEqual({ t: 'in', id: 'm1', on: true });
+    expect(parse({ t: 'in' })).toBeNull();
+    expect(parse({ t: 'claim', key: 'AB2C' })).toEqual({ t: 'claim', key: 'AB2C' });
+    expect(parse({ t: 'claim', key: 'ab<c' })).toBeNull();
+    expect(parse({ t: 'claim', key: 'A'.repeat(9) })).toBeNull();
   });
 
   it('[R-NET-SAFE] unknown, malformed and non-object messages are dropped', () => {

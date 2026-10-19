@@ -2,7 +2,7 @@ import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { Game } from '../../game';
 import { cleanText, LIMITS, MODE_IDS, normalizeCode, type ModeId } from '../../net/protocol';
-import { MODES } from '../../net/modes';
+import { COUNTDOWN, MODES, READY } from '../../net/modes';
 import { fmt } from '../../net/view';
 import type { VoiceResult } from '../../net/voice';
 import type { SyncPhase } from '../../net/sync';
@@ -24,8 +24,9 @@ const SYNC_TEXT: Record<SyncPhase, string> = {
   sent: 'Delivered. Your other device merged it.',
   receiving: 'Looking for your other device...',
   merged: '',
-  'bad-code': 'That code does not look right. Codes are 6 letters and numbers.',
+  'bad-code': 'That code does not look right. Codes are 8 letters and numbers.',
   failed: 'Could not reach the other device. Check both are online and try again.',
+  refused: 'Someone entered the wrong code several times, so nothing was sent. Start again for a fresh code.',
 };
 
 function plural(n: number, one: string, many: string): string {
@@ -299,14 +300,31 @@ function renderModes(game: Game, area: HTMLElement): () => void {
     tile.append(go);
     grid.append(tile);
   }
-  const cancel = button('End match for everyone', 'ghost', () => net.cancelMatch());
-  body.append(note, grid, cancel);
+  const act = button('', '', () => {
+    const m = net.match;
+    if (m?.host === net.selfId) net.cancelMatch();
+    else if (m?.playing) net.leaveMatch();
+    else net.joinMatch();
+  });
+  body.append(note, grid, act);
   return () => {
     const friends = net.visiblePeers().length;
-    const busy = !!net.match && net.match.phase !== 'done';
-    note.textContent = busy ? `${net.match?.info.title} in progress.` : friends ? `Starts for you and ${friends} ${friends === 1 ? 'friend' : 'friends'} after a 3 second countdown.` : 'Needs at least one friend in the room.';
+    const m = net.match;
+    const busy = !!m && m.phase !== 'done';
+    const host = m?.host === net.selfId;
+    const hostName = net.peers.get(m?.host ?? '')?.name ?? 'A friend';
+    note.textContent = m?.invited
+      ? `${hostName} started ${m.info.title}. Join before the countdown ends.`
+      : busy
+        ? `${m.info.title} in progress.`
+        : friends
+          ? `Your ${friends === 1 ? 'friend gets' : `${friends} friends get`} ${COUNTDOWN - READY} seconds to join, then a ${READY} second countdown.`
+          : 'Needs at least one friend in the room.';
     for (const b of starts) b.disabled = busy || !friends || (b.dataset.action === 'start-race' && !races.length);
-    cancel.hidden = !busy || net.match?.host !== net.selfId;
+    act.hidden = !busy;
+    act.textContent = host ? 'End match for everyone' : m?.playing ? 'Leave match' : 'Join match';
+    act.dataset.action = host ? 'end-match' : m?.playing ? 'leave-match' : 'join-match';
+    act.className = `fr-btn ${busy && !host && !m?.playing ? 'primary' : 'ghost'}`;
   };
 }
 
@@ -376,7 +394,7 @@ function renderSync(game: Game): { box: HTMLElement; draw: () => void } {
   const draw = () => {
     const offering = sync.phase === 'waiting' || sync.phase === 'sending' || sync.phase === 'sent';
     codeBox.hidden = !offering;
-    big.textContent = offering ? (sync.code ?? '') : '';
+    big.textContent = offering && sync.code ? `${sync.code.slice(0, 4)} ${sync.code.slice(4)}` : '';
     status.dataset.status = sync.phase;
     status.textContent = sync.phase === 'merged' && sync.result ? `Merged: ${plural(sync.result.added, 'new activity', 'new activities')} and ${plural(sync.result.cards, 'new card', 'new cards')}.` : SYNC_TEXT[sync.phase];
     cancel.hidden = sync.phase === 'idle';

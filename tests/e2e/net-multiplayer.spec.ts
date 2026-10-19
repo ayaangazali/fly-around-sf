@@ -23,6 +23,12 @@ async function step(pages: Page[], seconds: number, chunk = 0.5): Promise<void> 
 }
 
 const selfId = (p: Page) => p.evaluate(() => window.__fly.game.net.selfId);
+const COUNTDOWN = 10;
+
+async function joinFrom(p: Page): Promise<void> {
+  await expect.poll(() => p.evaluate(() => !!window.__fly.game.net.match?.invited)).toBe(true);
+  expect(await p.evaluate(() => window.__fly.game.net.joinMatch())).toBe(true);
+}
 
 test.describe.serial('multiplayer over the local test channel', () => {
   let ctx: BrowserContext;
@@ -149,13 +155,49 @@ test.describe.serial('multiplayer over the local test channel', () => {
     expect(await a.evaluate(() => window.__fly.game.net.sendChat('   '))).toBe('empty');
   });
 
+  test('[R-NET-MODES] an invite never interrupts a friend: no forced panel close, activity stop or teleport until they join', async () => {
+    await b.evaluate(() => {
+      const g = window.__fly.game;
+      g.activities.start('rings-marina-warmup');
+      g.panels.open('friends');
+    });
+    const before = await b.evaluate(() => window.__fly.state().pos);
+    expect(await a.evaluate(() => window.__fly.game.net.startMatch('race', { activity: 'rings-marina-warmup' }))).toBe(true);
+    await expect.poll(() => b.evaluate(() => !!window.__fly.game.net.match?.invited)).toBe(true);
+    await step([b], 2);
+    expect(
+      await b.evaluate(() => {
+        const g = window.__fly.game;
+        return { open: g.panels.openId, active: g.activities.active?.def.id ?? null, playing: g.net.match?.playing };
+      }),
+    ).toEqual({ open: 'friends', active: 'rings-marina-warmup', playing: false });
+    const after = await b.evaluate(() => window.__fly.state().pos);
+    expect(Math.hypot(after.x - before.x, after.z - before.z)).toBeLessThan(40);
+    await expect(b.locator('.fr-modes [data-action="join-match"]')).toBeVisible();
+    await expect(b.locator('.fr-modes .fr-note')).toContainText('Ana started Ring race');
+    await b.evaluate(() => window.__fly.game.panels.close());
+    await b.evaluate(() => window.__fly.step(0.05));
+    await b.locator('.net-invite [data-action="skip-match"]').click();
+    expect(await b.evaluate(() => window.__fly.game.net.match)).toBeNull();
+    expect(await b.evaluate(() => window.__fly.game.activities.active?.def.id)).toBe('rings-marina-warmup');
+    await step([a], COUNTDOWN + 0.5);
+    expect(await a.evaluate(() => window.__fly.game.net.match)).toBeNull();
+    await b.evaluate(() => window.__fly.game.activities.stop());
+  });
+
   test('[R-NET-MODES] ring race: countdown, live ranking and a finish order', async () => {
     const started = await a.evaluate(() => window.__fly.game.net.startMatch('race', { activity: 'rings-marina-warmup' }));
     expect(started).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.spec.mode)).toBe('race');
     await b.evaluate(() => window.__fly.step(0.05));
+    await expect(b.locator('.net-invite')).toBeVisible();
+    await expect(b.locator('.net-match-hint')).toContainText('Ana invites you');
+    await b.locator('.net-invite [data-action="join-match"]').click();
+    const joiner = await selfId(b);
+    await expect.poll(() => a.evaluate((id) => !!window.__fly.game.net.match?.joined.has(id), joiner)).toBe(true);
+    await step([a, b], COUNTDOWN - 2.5);
     await expect(b.locator('.net-count')).toHaveText('3');
-    await step([a, b], 3.5);
+    await step([a, b], 3);
     expect(await a.evaluate(() => window.__fly.game.net.match?.phase)).toBe('live');
     const ringsOf = (p: Page, wait: number) =>
       p.evaluate(async (w) => {
@@ -196,7 +238,8 @@ test.describe.serial('multiplayer over the local test channel', () => {
     const bId = await selfId(b);
     expect(await a.evaluate((id) => window.__fly.game.net.startMatch('tag', { role: id, duration: 20 }), aId)).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.role)).toBe(aId);
-    await step([a, b], 3.5);
+    await joinFrom(b);
+    await step([a, b], COUNTDOWN + 0.5);
     const pos = await a.evaluate(() => window.__fly.state().pos);
     await b.evaluate((p) => {
       window.__fly.teleport({ x: p.x + 3, y: p.y, z: p.z + 3 });
@@ -220,19 +263,22 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await step([a, b], 13, 1);
   });
 
-  test('[R-NET-MODES] fog hide and seek: seeker is blinded, hunts in thick fog and finds the hider', async () => {
+  test('[R-NET-MODES] fog hide and seek: seeker is blinded, hunts in thick fog and wins by finding the hider after a long hunt', async () => {
     const aId = await selfId(a);
     const fogBefore = await a.evaluate(() => window.__fly.game.sky.fogDensity);
     expect(await a.evaluate((id) => window.__fly.game.net.startMatch('hide', { role: id, duration: 120 }), aId)).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.role)).toBe(aId);
-    await step([a, b], 5);
+    await joinFrom(b);
+    await step([a, b], COUNTDOWN + 2);
     expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(120);
     expect(await b.evaluate(() => window.__fly.game.sky.fogDensity)).toBeLessThan(10);
     await expect(a.locator('.net-tag', { hasText: 'Ben' })).toBeHidden();
-    await step([a, b], 19);
+    await step([a, b], 18.5);
     expect(await a.evaluate(() => window.__fly.game.net.match?.seeking)).toBe(true);
     expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(40);
-    await step([a, b], 4);
+    await step([a, b], 35, 1);
+    const live = await a.evaluate(() => window.__fly.game.net.match!.standings().map((r) => r.name));
+    expect(live[0]).toBe('Ben');
     const pos = await a.evaluate(() => window.__fly.state().pos);
     await b.evaluate((p) => {
       window.__fly.teleport({ x: p.x + 6, y: p.y, z: p.z });
@@ -245,16 +291,20 @@ test.describe.serial('multiplayer over the local test channel', () => {
       })
       .toEqual(['done', 'done']);
     expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(fogBefore);
-    const res = await b.evaluate(() => window.__fly.game.net.match!.results!.map((r) => r.label));
-    expect(res.join('|')).toMatch(/seeker · 1 found/);
-    expect(res.join('|')).toMatch(/found at \d+ s/);
+    for (const p of [a, b]) {
+      const res = await p.evaluate(() => window.__fly.game.net.match!.results!.map((r) => [r.name, r.label]));
+      expect(res[0]).toEqual(['Ana', 'seeker · 1 found']);
+      expect(res[1][0]).toBe('Ben');
+      expect(Number(/found at (\d+) s/.exec(res[1][1])?.[1])).toBeGreaterThanOrEqual(34);
+    }
     await step([a, b], 13, 1);
   });
 
   test('[R-NET-MODES] formation: followers score time near the leader', async () => {
     expect(await a.evaluate(() => window.__fly.game.net.startMatch('formation', { duration: 20 }))).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.spec.mode)).toBe('formation');
-    await step([a, b], 3.5);
+    await joinFrom(b);
+    await step([a, b], COUNTDOWN + 0.5);
     for (let i = 0; i < 10; i++) {
       const pos = await a.evaluate(() => window.__fly.state().pos);
       await b.evaluate((p) => window.__fly.teleport({ x: p.x + 8, y: p.y, z: p.z + 8 }), pos);
@@ -316,13 +366,14 @@ test.describe.serial('multiplayer over the local test channel', () => {
   test('[R-SYNC-DEVICES] a sync code moves progress and the receiver merges it', async () => {
     await a.evaluate(() => {
       const s = window.__fly.game.save;
-      s.data.completed = { 'discover-coit-tower': 100, 'discover-ferry-building': 200 };
-      s.data.cards = ['coit-tower'];
+      s.data.completed = { 'discover-coit-tower': 100, 'discover-ferry-building': 200, 'not-a-real-activity': 1 };
+      s.data.cards = ['coit-tower', 'not-a-real-card'];
       s.data.best = { 'rings-marina-warmup': 30 };
       s.data.xp = 500;
       s.persist();
     });
     await b.evaluate(() => {
+      window.__fly.game.activities.defs.get('discover-coit-tower')!.card = 'coit-tower';
       const s = window.__fly.game.save;
       s.data.completed = { 'discover-palace-of-fine-arts': 50, 'discover-coit-tower': 300 };
       s.data.cards = ['palace-of-fine-arts'];
@@ -334,7 +385,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await a.evaluate(() => window.__fly.game.panels.open('friends'));
     await a.locator('[data-action="sync-send"]').click();
     const code = (await a.locator('.fr-sync .fr-roomcode').textContent())!.trim();
-    expect(code).toMatch(/^[A-Z2-9]{6}$/);
+    expect(code).toMatch(/^[A-Z2-9]{4} [A-Z2-9]{4}$/);
     await b.bringToFront();
     await b.evaluate(() => window.__fly.game.panels.open('friends'));
     await b.locator('.fr-sync .fr-code-input').fill(code.toLowerCase());

@@ -4,7 +4,8 @@ import type { ActivityInstance } from '../activities/types';
 import type { ModeId, Msg } from './protocol';
 import { distance } from './math';
 
-export const COUNTDOWN = 3;
+export const COUNTDOWN = 10;
+export const READY = 3;
 export const TAG_RADIUS = 8;
 export const TAG_COOLDOWN = 3;
 export const FIND_RADIUS = 15;
@@ -24,7 +25,7 @@ export interface ModeInfo {
 export const MODES: Record<ModeId, ModeInfo> = {
   race: { title: 'Ring race', icon: '🏁', blurb: 'Everyone lines up at the same ring run. Fastest through every ring wins.', duration: 240 },
   tag: { title: 'Drone tag', icon: '🎯', blurb: 'Whoever is IT tags the next drone by flying within 8 m. Most time free wins.', duration: 120 },
-  hide: { title: 'Fog hide and seek', icon: '🌫️', blurb: 'Hiders get 20 seconds. The seeker hunts through thick Karl-the-Fog. Last one hidden wins.', duration: 180 },
+  hide: { title: 'Fog hide and seek', icon: '🌫️', blurb: 'Hiders get 20 seconds. The seeker hunts through thick Karl-the-Fog. Anyone still hidden at the end wins; find them all and the seeker wins.', duration: 180 },
   formation: { title: 'Formation', icon: '🪿', blurb: 'Follow the leader like a flock of geese. Score every second you stay within 30 m.', duration: 90 },
 };
 
@@ -69,8 +70,9 @@ export class Match {
   tags = 0;
   results: Standing[] | null = null;
   readonly scores = new Map<string, Score>();
+  readonly joined: Set<string>;
   private lastTag = -Infinity;
-  private anchor: { p: Vec3; yaw: number } | null;
+  private anchor: { p: Vec3; yaw: number } | null = null;
   private race: { inst: ActivityInstance | null; total: number; def: string } | null = null;
   private fogBefore: number | null = null;
   private sent = '';
@@ -81,28 +83,55 @@ export class Match {
     readonly host: string,
     private env: MatchEnv,
   ) {
-    const game = env.game;
     this.role = spec.role;
+    this.joined = new Set(host === env.selfId ? [] : [host]);
     for (const id of spec.roster) this.scores.set(id, { s: 0, x: 0, d: false });
+    if (host === env.selfId) this.enter();
+  }
+
+  get playing(): boolean {
+    return this.joined.has(this.self);
+  }
+
+  get invited(): boolean {
+    return !this.playing && this.phase === 'countdown' && this.countdown > READY;
+  }
+
+  enter(): boolean {
+    if (this.playing || this.phase !== 'countdown' || (this.self !== this.host && this.countdown <= READY)) return false;
+    this.joined.add(this.self);
+    this.env.send({ t: 'in', id: this.spec.id, on: true });
+    const game = this.env.game;
     game.activities.stop();
-    const f = game.flight;
-    this.anchor = { p: { ...f.pos }, yaw: f.yaw };
-    if (spec.mode === 'race') {
-      const def = game.activities.defs.get(spec.activity);
+    if (this.spec.mode === 'race') {
+      const def = game.activities.defs.get(this.spec.activity);
       const rings = (def?.params as { rings?: { lat: number; lon: number }[] } | undefined)?.rings ?? [];
       if (def) {
         const start = game.activities.position(def);
         const first = rings[0] ? game.world.point({ alt: 25, ...rings[0] }) : start;
         const yaw = Math.atan2(-(first.x - start.x), -(first.z - start.z));
-        const i = spec.roster.indexOf(env.selfId);
-        const side = (i - (spec.roster.length - 1) / 2) * 6;
+        const roster = this.spec.roster;
+        const side = (roster.indexOf(this.self) - (roster.length - 1) / 2) * 6;
         const p = { x: start.x + Math.cos(yaw) * side, y: start.y, z: start.z - Math.sin(yaw) * side };
         this.anchor = { p, yaw };
         game.teleport(p, yaw);
       }
-      this.race = { inst: null, total: rings.length, def: spec.activity };
+      this.race = { inst: null, total: rings.length, def: this.spec.activity };
     }
-    if (spec.mode === 'hide' && this.self === this.role && game.sky) this.fogBefore = game.sky.fogDensity;
+    return true;
+  }
+
+  exit(): void {
+    if (!this.playing) return;
+    this.joined.delete(this.self);
+    this.env.send({ t: 'in', id: this.spec.id, on: false });
+    this.race?.inst?.dispose?.();
+    this.restoreFog();
+  }
+
+  private restoreFog(): void {
+    if (this.fogBefore !== null) this.env.game.sky.fogDensity = this.fogBefore;
+    this.fogBefore = null;
   }
 
   get self(): string {
@@ -134,7 +163,7 @@ export class Match {
   }
 
   private players(): string[] {
-    return this.spec.roster.filter((id) => this.env.present(id));
+    return this.spec.roster.filter((id) => this.joined.has(id) && this.env.present(id));
   }
 
   targets(): Vec3[] {
@@ -143,11 +172,12 @@ export class Match {
 
   tick(dt: number): void {
     this.t += dt;
-    if (this.phase === 'done') return;
+    if (this.phase === 'done' || !this.playing) return;
     const game = this.env.game;
-    if (this.phase === 'countdown' && this.t >= COUNTDOWN) this.go();
-    const frozen = this.phase === 'countdown' || (this.spec.mode === 'hide' && this.self === this.role && !this.seeking);
-    if (frozen && this.anchor) {
+    if (this.phase === 'countdown' && this.t >= COUNTDOWN && !this.go()) return;
+    const frozen = (this.phase === 'countdown' && this.countdown <= READY) || (this.spec.mode === 'hide' && this.self === this.role && !this.seeking);
+    if (frozen) {
+      this.anchor ??= { p: { ...game.flight.pos }, yaw: game.flight.yaw };
       game.flight.pos = { ...this.anchor.p };
       game.flight.vel = { x: 0, y: 0, z: 0 };
       game.flight.yaw = this.anchor.yaw;
@@ -157,14 +187,23 @@ export class Match {
     if (this.phase === 'live' && (this.t >= COUNTDOWN + this.spec.duration || this.over())) this.finish();
   }
 
-  private go(): void {
-    this.phase = 'live';
+  private go(): boolean {
     const game = this.env.game;
+    const players = this.players();
+    if (players.length < 2) {
+      game.toast('Nobody joined in time, so the match is off', 'info');
+      this.finish();
+      return false;
+    }
+    if (!players.includes(this.role)) this.role = players.sort()[0];
+    this.phase = 'live';
     if (this.race) {
       const def = game.activities.defs.get(this.race.def);
       if (def) this.race.inst = game.activities.kindOf(def).start(def, game);
     }
+    if (this.spec.mode === 'hide' && this.self === this.role && game.sky) this.fogBefore = game.sky.fogDensity;
     game.toast(`${this.info.icon} Go!`, 'reward');
+    return true;
   }
 
   private play(dt: number): void {
@@ -194,8 +233,6 @@ export class Match {
           const near = this.nearest(hiders, FIND_RADIUS);
           if (near) this.claim(near);
         }
-        me.s = this.tags * 30;
-        me.x = this.tags;
       } else if (this.seeking && !me.d) me.s += dt;
     } else if (mode === 'formation') {
       if (self === this.role) {
@@ -250,12 +287,19 @@ export class Match {
   }
 
   onMessage(m: Msg, from: string): void {
-    if (!this.spec.roster.includes(from)) return;
-    if (m.t === 'score' && m.id === this.spec.id && from !== this.self) {
+    if (from === this.self || !this.spec.roster.includes(from) || !('id' in m) || m.id !== this.spec.id) return;
+    if (m.t === 'in') {
+      if (m.on && this.phase === 'countdown') this.joined.add(from);
+      else if (!m.on && this.joined.delete(from)) this.onLeave(from);
+    } else if (!this.joined.has(from)) return;
+    else if (m.t === 'score') {
       const prev = this.scores.get(from) as Score;
       this.scores.set(from, { s: m.s, x: m.x, d: prev.d || m.d });
-    } else if (m.t === 'tag' && m.id === this.spec.id) this.applyTag(from, m.to, m.n);
-    else if (m.t === 'end' && m.id === this.spec.id && from === this.host) this.finish();
+    } else if (m.t === 'tag') this.applyTag(from, m.to, m.n);
+    else if (m.t === 'end' && from === this.host) {
+      if (this.phase === 'countdown' && this.playing) this.env.game.toast(`${this.env.name(from)} called off the match`, 'info');
+      this.finish();
+    }
   }
 
   onLeave(id: string): void {
@@ -290,13 +334,14 @@ export class Match {
 
   finish(): void {
     if (this.phase === 'done') return;
-    this.flushNow();
+    const played = this.phase === 'live' && this.playing;
+    if (played) this.flushNow();
     this.phase = 'done';
     this.doneAt = this.t;
     this.race?.inst?.dispose?.();
-    if (this.fogBefore !== null) this.env.game.sky.fogDensity = this.fogBefore;
-    this.fogBefore = null;
+    this.restoreFog();
     if (this.self === this.host) this.env.send({ t: 'end', id: this.spec.id });
+    if (!played) return;
     this.results = this.standings();
     const save = this.env.game.save;
     const rank = this.results.findIndex((r) => r.self) + 1;
@@ -310,7 +355,7 @@ export class Match {
   standings(): Standing[] {
     const mode = this.spec.mode;
     const total = this.race?.total ?? 0;
-    const rows = this.spec.roster.map((id) => {
+    const rows = this.spec.roster.filter((id) => this.joined.has(id)).map((id) => {
       const sc = this.scores.get(id) as Score;
       let score = sc.s;
       let label: string;
@@ -319,7 +364,11 @@ export class Match {
         score = finished ? 1e5 - sc.x : sc.s;
         label = finished ? `${sc.x.toFixed(2)} s` : sc.d ? 'DNF' : `${sc.s}/${total} rings`;
       } else if (mode === 'tag') label = `${sc.s.toFixed(0)} s free${id === this.role ? ' · IT' : ''}`;
-      else if (mode === 'hide') label = id === this.role ? `seeker · ${this.tags} found` : sc.d ? `found at ${sc.s.toFixed(0)} s` : `${sc.s.toFixed(0)} s hidden`;
+      else if (mode === 'hide') {
+        const seeker = id === this.role;
+        score = seeker ? 1e5 + this.tags : !sc.d && this.env.present(id) ? 2e5 + sc.s : sc.s;
+        label = seeker ? `seeker · ${this.tags} found` : sc.d ? `found at ${sc.s.toFixed(0)} s` : `${sc.s.toFixed(0)} s hidden`;
+      }
       else label = id === this.role ? `leader · ${sc.s.toFixed(0)} s avg` : `${sc.s.toFixed(0)} s in formation`;
       return { id, name: this.env.name(id), color: this.env.color(id), score, label, self: id === this.self };
     });
@@ -333,7 +382,8 @@ export class Match {
       const q = this.env.pos(id);
       return q ? `${Math.round(distance(q, this.env.game.flight.pos))} m` : 'out of sight';
     };
-    if (this.phase === 'countdown') return 'Get ready';
+    if (!this.playing) return `${this.env.name(this.host)} invites you. Starts in ${Math.ceil(this.countdown)} s`;
+    if (this.phase === 'countdown') return this.countdown > READY ? `Waiting for friends to join: ${this.players().length} of ${this.spec.roster.length} in` : 'Get ready';
     if (this.phase === 'done') return 'Match over';
     switch (this.spec.mode) {
       case 'race':

@@ -1,6 +1,7 @@
 import type { Game } from '../game';
 import { el } from '../ui/panel-host';
 import { LIMITS } from './protocol';
+import { READY } from './modes';
 import type { ChatLine, Net } from './session';
 import './net.css';
 
@@ -16,6 +17,7 @@ export class NetHud {
   private counter: HTMLElement;
   private voice: HTMLButtonElement;
   private card: HTMLElement;
+  private invite: HTMLElement;
   private count: HTMLElement;
   private cache = new Map<HTMLElement, string>();
   touchTalk = false;
@@ -35,6 +37,15 @@ export class NetHud {
     this.card = el('section', 'net-match');
     this.card.setAttribute('aria-live', 'polite');
     this.card.hidden = true;
+    this.invite = el('div', 'net-invite');
+    this.invite.hidden = true;
+    const join = el('button', 'fr-btn primary small', 'Join');
+    join.dataset.action = 'join-match';
+    join.addEventListener('click', () => net.joinMatch());
+    const skip = el('button', 'fr-btn ghost small', 'Not now');
+    skip.dataset.action = 'skip-match';
+    skip.addEventListener('click', () => net.leaveMatch());
+    this.invite.append(join, skip);
     this.count = el('div', 'net-count');
     this.count.hidden = true;
     this.feed = el('ol', 'net-feed');
@@ -63,7 +74,7 @@ export class NetHud {
     const row = el('div', 'net-row');
     row.append(this.chip, this.voice);
     const stack = el('div', 'net-stack');
-    stack.append(row, this.banner, this.card);
+    stack.append(row, this.banner, this.card, this.invite);
     this.root.append(stack, this.count, this.feed, this.form);
     game.ui.insertBefore(this.root, game.panels.bar);
 
@@ -157,7 +168,8 @@ export class NetHud {
 
     const m = net.match;
     this.card.hidden = !m;
-    this.count.hidden = !m || m.phase !== 'countdown';
+    this.invite.hidden = !m?.invited;
+    this.count.hidden = !m?.playing || m.phase !== 'countdown' || m.countdown > READY;
     if (!m) return;
     if (m.phase === 'countdown') this.set(this.count, String(Math.ceil(m.countdown)));
     this.card.dataset.phase = m.phase;
@@ -173,7 +185,7 @@ export class NetHud {
       const li = el('li', r.self ? 'self' : '');
       const dot = el('i', 'net-tag-dot');
       dot.style.background = r.color;
-      li.append(el('span', 'rank', String(i + 1)), dot, el('b', '', r.name), el('span', 'label', r.label));
+      li.append(el('span', 'rank', String(i + 1)), dot, el('b', '', r.name), el('span', 'label', m.phase === 'countdown' ? (r.id === m.host ? 'host' : 'in') : r.label));
       list.append(li);
     });
     this.card.replaceChildren(head, el('p', 'net-match-hint', m.hint()), list);

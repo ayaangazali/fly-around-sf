@@ -59,7 +59,7 @@ export const system: GameSystem = {
       cam.getWorldDirection(dir);
       up.set(0, 1, 0).applyQuaternion(cam.quaternion);
       net.update(dt, { pos: cam.position, forward: dir, up });
-      if (net.match && net.match.phase !== 'done') game.activities.nearby = null;
+      if (net.match?.playing && net.match.phase !== 'done') game.activities.nearby = null;
       view.update();
       hud.update();
     } catch (e) {

@@ -21,7 +21,9 @@
 .net-chip[data-status='online']::before { background: var(--good); }
 .net-chip[data-status='connecting']::before { animation: net-blink 1s ease-in-out infinite; }
 .net-chip[data-status='unreachable']::before { background: #ff6b6b; }
-.net-chip[hidden], .net-voice[hidden], .net-banner[hidden], .net-match[hidden], .net-count[hidden], .net-feed[hidden], .net-chat[hidden] { display: none; }
+.net-invite { pointer-events: auto; display: flex; gap: 8px; }
+.net-invite .fr-btn.ghost { background: var(--glass-strong); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.net-chip[hidden], .net-voice[hidden], .net-banner[hidden], .net-match[hidden], .net-invite[hidden], .net-count[hidden], .net-feed[hidden], .net-chat[hidden] { display: none; }
 .net-voice { touch-action: none; user-select: none; -webkit-user-select: none; }
 .net-voice.live { border-color: var(--good); background: rgba(40, 92, 64, 0.72); box-shadow: 0 0 18px rgba(125, 224, 166, 0.35); }
 .net-banner { padding: 10px 12px; border-radius: 12px; background: var(--glass-strong); border: 1px solid rgba(255, 107, 107, 0.5); font-size: 13px; line-height: 1.4; }

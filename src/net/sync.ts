@@ -1,5 +1,6 @@
-import { decodeSave, encodeSave, normalize, type SaveData } from '../core/save';
+import { decodeSave, emptySave, encodeSave, normalize, type SaveData } from '../core/save';
 import type { Game } from '../game';
+import { loadCards } from '../content/types';
 import { LIMITS, makeCode, normalizeCode, parse } from './protocol';
 import { openTransport, type Transport, type TransportKind } from './transport';
 
@@ -32,9 +33,49 @@ export function mergeSaves(local: SaveData, incoming: SaveData): MergeResult {
   };
 }
 
-export type SyncPhase = 'idle' | 'waiting' | 'sending' | 'sent' | 'receiving' | 'merged' | 'bad-code' | 'failed';
+export interface Known {
+  activities: Set<string>;
+  cards: Set<string>;
+}
 
+export function knownContent(game: Game): Known {
+  const defs = [...game.activities.defs.values()];
+  return { activities: new Set(defs.map((d) => d.id)), cards: new Set([...loadCards().map((c) => c.id), ...defs.flatMap((d) => (d.card ? [d.card] : []))]) };
+}
+
+const MAX_XP = 10_000_000;
+const MAX_STAT = 1e9;
+const MAX_BEST = 86_400;
+const MP_FLAGS = ['mpPlayed', 'mpWins'];
+
+const positive = (v: unknown, max: number): v is number => typeof v === 'number' && Number.isFinite(v) && v > 0 && v <= max;
+const clamp = (v: unknown, max: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.min(max, Math.max(0, v)) : 0);
+
+export function cleanSave(raw: SaveData, known: Known): SaveData {
+  const keep = (rec: Record<string, unknown>, max: number) => Object.fromEntries(Object.entries(rec).filter(([id, v]) => known.activities.has(id) && positive(v, max))) as Record<string, number>;
+  const base = emptySave();
+  const stats = { ...base.stats };
+  for (const k of Object.keys(stats) as (keyof SaveData['stats'])[]) stats[k] = clamp(raw.stats[k], MAX_STAT);
+  const flags: SaveData['flags'] = {};
+  for (const f of MP_FLAGS) if (positive(raw.flags[f], MAX_STAT)) flags[f] = Math.floor(raw.flags[f] as number);
+  return {
+    ...base,
+    completed: keep(raw.completed, Number.MAX_SAFE_INTEGER),
+    best: keep(raw.best, MAX_BEST),
+    cards: raw.cards.filter((c) => known.cards.has(c)),
+    xp: Math.round(clamp(raw.xp, MAX_XP)),
+    flags,
+    stats,
+  };
+}
+
+export type SyncPhase = 'idle' | 'waiting' | 'sending' | 'sent' | 'receiving' | 'merged' | 'bad-code' | 'failed' | 'refused';
+
+export const SYNC_CODE = 8;
 const EXPIRE_MS = 10 * 60 * 1000;
+const STRIKES = 3;
+const room = (code: string) => `sync-${code.slice(0, SYNC_CODE / 2)}`;
+const secret = (code: string) => code.slice(SYNC_CODE / 2);
 
 export class DeviceSync {
   phase: SyncPhase = 'idle';
@@ -61,24 +102,34 @@ export class DeviceSync {
 
   async offer(): Promise<string> {
     this.stop();
-    const code = makeCode(6);
+    const code = makeCode(SYNC_CODE);
     this.code = code;
     this.set('waiting');
-    const payload = encodeSave(this.game.save.data);
+    const payload = encodeSave({ ...this.game.save.data, settings: {} });
     if (payload.length > LIMITS.save) {
       this.set('failed');
       return code;
     }
+    let peer: string | null = null;
+    let strikes = 0;
     try {
-      this.t = await openTransport(this.kind, `sync-${code}`, {
-        join: (peer) => {
-          this.set('sending');
-          this.t?.send({ t: 'save', code: payload }, peer);
-        },
+      this.t = await openTransport(this.kind, room(code), {
+        join: () => undefined,
         leave: () => undefined,
-        message: (raw) => {
+        message: (raw, from) => {
           const m = parse(raw);
-          if (m?.t !== 'ack' || this.phase === 'sent') return;
+          if (m?.t === 'claim' && !peer) {
+            if (m.key === secret(code)) {
+              peer = from;
+              this.set('sending');
+              this.t?.send({ t: 'save', code: payload }, from);
+            } else if (++strikes >= STRIKES) {
+              this.close();
+              this.set('refused');
+            }
+            return;
+          }
+          if (m?.t !== 'ack' || from !== peer || this.phase !== 'sending') return;
           this.result = { added: m.added, cards: 0 };
           this.set('sent');
           this.game.toast('Progress delivered to your other device', 'reward');
@@ -95,22 +146,22 @@ export class DeviceSync {
   async receive(raw: string): Promise<boolean> {
     const code = normalizeCode(raw);
     this.stop();
-    if (!code) {
+    if (!code || code.length !== SYNC_CODE) {
       this.set('bad-code');
       return false;
     }
     this.code = code;
     this.set('receiving');
     try {
-      this.t = await openTransport(this.kind, `sync-${code}`, {
-        join: () => undefined,
+      this.t = await openTransport(this.kind, room(code), {
+        join: (peer) => this.t?.send({ t: 'claim', key: secret(code) }, peer),
         leave: () => undefined,
         message: (data, from) => {
           const m = parse(data);
           if (m?.t !== 'save' || this.phase !== 'receiving') return;
           let incoming: SaveData;
           try {
-            incoming = decodeSave(m.code);
+            incoming = cleanSave(decodeSave(m.code), knownContent(this.game));
           } catch {
             return;
           }

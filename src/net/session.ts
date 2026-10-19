@@ -406,9 +406,31 @@ export class Net {
       if (!def || def.kind !== 'rings') return;
     }
     this.match = new Match(spec, host, this.env());
+    const info = MODES[spec.mode];
+    if (host === this.selfId) this.entered();
+    else this.game.toast(`${this.peers.get(host)?.name ?? 'A friend'} started ${info.icon} ${info.title}. Press Join to play`, 'info');
+    this.changed();
+  }
+
+  private entered(): void {
+    const m = this.match as Match;
     this.game.panels?.close();
-    this.game.bus.emit('net:match', { phase: 'start', mode: spec.mode });
-    this.game.toast(`${MODES[spec.mode].icon} ${MODES[spec.mode].title} starting`, 'reward');
+    this.game.bus.emit('net:match', { phase: 'start', mode: m.spec.mode });
+    this.game.toast(`${m.info.icon} ${m.info.title} starting`, 'reward');
+  }
+
+  joinMatch(): boolean {
+    if (!this.match?.enter()) return false;
+    this.entered();
+    this.changed();
+    return true;
+  }
+
+  leaveMatch(): void {
+    const m = this.match;
+    if (!m || m.host === this.selfId) return;
+    m.exit();
+    this.match = null;
     this.changed();
   }
 
@@ -455,14 +477,15 @@ export class Net {
       p.yaw = approachAngle(p.yaw, p.sample.yaw, dt);
     }
     for (const [id, mark] of this.pings) if ((mark.t += dt) > PING_SECONDS) this.pings.delete(id);
-    if (this.match) {
-      const was = this.match.phase;
-      this.match.tick(dt);
-      if (was !== 'done' && this.match.phase === 'done') {
-        this.game.bus.emit('net:match', { phase: 'done', mode: this.match.spec.mode });
+    const m = this.match;
+    if (m) {
+      const was = m.phase;
+      m.tick(dt);
+      if (m.playing && was !== 'done' && m.phase === 'done') {
+        this.game.bus.emit('net:match', { phase: 'done', mode: m.spec.mode });
         this.changed();
       }
-      if (this.match.expired) {
+      if (m.expired || (!m.playing && !m.invited) || (m.phase === 'done' && !m.results)) {
         this.match = null;
         this.changed();
       }

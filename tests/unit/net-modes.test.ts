@@ -1,25 +1,30 @@
 import { describe, it, expect } from 'vitest';
-import { Match, ordinal, COUNTDOWN, HIDE_TIME, BLIND_FOG, SEEKER_FOG, TAG_COOLDOWN, RESULTS_SECONDS, MODES, type MatchEnv, type StartSpec } from '../../src/net/modes';
+import { Match, ordinal, COUNTDOWN, READY, HIDE_TIME, BLIND_FOG, SEEKER_FOG, TAG_COOLDOWN, RESULTS_SECONDS, MODES, type MatchEnv, type StartSpec } from '../../src/net/modes';
 import type { Msg, ModeId } from '../../src/net/protocol';
 import type { Vec3 } from '../../src/player/flight';
 import { netGame } from './net-helpers';
 
-async function setup(mode: ModeId, role = 'me', extra: Partial<StartSpec> = {}) {
+async function setup(mode: ModeId, role = 'me', extra: Partial<StartSpec> = {}, opts: { host?: string; join?: boolean } = {}) {
   const game = await netGame();
   const sent: Msg[] = [];
   const pos = new Map<string, Vec3>([['p2', { x: 500, y: 50, z: 500 }]]);
-  const present = new Set(['me', 'p2']);
+  const spec: StartSpec = { id: 'm1', mode, roster: ['me', 'p2'], duration: 60, activity: mode === 'race' ? 'rings-marina-warmup' : '', role, ...extra };
+  const present = new Set(spec.roster);
   const env: MatchEnv = {
     game,
     selfId: 'me',
     send: (m) => sent.push(m),
     present: (id) => present.has(id),
     pos: (id) => (id === 'me' ? game.flight.pos : (pos.get(id) ?? null)),
-    name: (id) => (id === 'me' ? 'Ana' : 'Ben'),
+    name: (id) => (id === 'me' ? 'Ana' : id === 'p2' ? 'Ben' : 'Cy'),
     color: () => '#ffffff',
   };
-  const spec: StartSpec = { id: 'm1', mode, roster: ['me', 'p2'], duration: 60, activity: mode === 'race' ? 'rings-marina-warmup' : '', role, ...extra };
-  const m = new Match(spec, role === 'p2' ? 'p2' : 'me', env);
+  const host = opts.host ?? (role === 'me' ? 'me' : 'p2');
+  const m = new Match(spec, host, env);
+  if (opts.join !== false) {
+    if (host !== 'me') m.enter();
+    for (const id of spec.roster) if (id !== host && id !== 'me') m.onMessage({ t: 'in', id: 'm1', on: true }, id);
+  }
   const run = (seconds: number) => {
     for (let t = 0; t < seconds - 1e-9; t += 0.1) m.tick(0.1);
   };
@@ -39,14 +44,18 @@ describe('multiplayer modes', () => {
   it('[R-NET-MODES] race: lines up at the start, freezes for the countdown, then ranks finishers by time', async () => {
     const { m, game, sent, run } = await setup('race');
     const start = { ...game.flight.pos };
+    expect(sent[0]).toEqual({ t: 'in', id: 'm1', on: true });
+    expect(m.hint()).toBe('Waiting for friends to join: 2 of 2 in');
     game.flight.pos.x += 50;
     run(1);
+    expect(game.flight.pos.x).toBe(start.x + 50);
+    run(COUNTDOWN - READY - 1 + 0.1);
     expect(game.flight.pos).toEqual(start);
     expect(m.phase).toBe('countdown');
     expect(m.countdown).toBeGreaterThan(1.5);
     expect(m.hint()).toBe('Get ready');
     expect(m.flush()).toBeNull();
-    run(2.1);
+    run(READY);
     expect(m.phase).toBe('live');
     expect(game.toasts.at(-1)).toContain('Go!');
     expect(m.targets()).toHaveLength(5);
@@ -122,8 +131,8 @@ describe('multiplayer modes', () => {
     expect(m.phase).toBe('done');
   });
 
-  it('[R-NET-MODES] hide and seek: the seeker is blinded and frozen, then finds hiders in thick fog', async () => {
-    const { m, game, sent, pos, run } = await setup('hide', 'me');
+  it('[R-NET-MODES] hide and seek: the seeker is blinded and frozen, then a late find after a long hunt still wins', async () => {
+    const { m, game, sent, pos, run } = await setup('hide', 'me', { duration: 120 });
     const start = { ...game.flight.pos };
     run(COUNTDOWN + 1);
     expect(game.sky.fogDensity).toBe(BLIND_FOG);
@@ -135,13 +144,41 @@ describe('multiplayer modes', () => {
     expect(m.seeking).toBe(true);
     expect(game.sky.fogDensity).toBe(SEEKER_FOG);
     expect(m.hint()).toContain('Hunt them down');
+    run(40);
+    m.onMessage({ t: 'score', id: 'm1', s: 40, x: 0, d: false }, 'p2');
+    expect(m.standings()[0].id).toBe('p2');
     pos.set('p2', { ...game.flight.pos, z: game.flight.pos.z + 10 });
     run(0.1);
     expect(sent.find((x) => x.t === 'tag')).toMatchObject({ to: 'p2', n: 1 });
     expect(m.phase).toBe('done');
     expect(game.sky.fogDensity).toBe(1);
-    expect(m.results!.find((r) => r.id === 'me')!.label).toBe('seeker · 1 found');
+    expect(m.results!.map((r) => [r.id, r.label])).toEqual([
+      ['me', 'seeker · 1 found'],
+      ['p2', 'found at 40 s'],
+    ]);
     expect(game.save.data.flags.mpWins).toBe(1);
+    expect(game.toasts.at(-1)).toContain('1st of 2');
+  });
+
+  it('[R-NET-MODES] hide and seek: a hider still hidden at the buzzer beats the seeker, who beats anyone found', async () => {
+    const solo = await setup('hide', 'p2', { duration: 40 });
+    solo.run(COUNTDOWN + 40 + 0.2);
+    expect(solo.m.phase).toBe('done');
+    expect(solo.m.results!.map((r) => [r.id, r.label])).toEqual([
+      ['me', '20 s hidden'],
+      ['p2', 'seeker · 0 found'],
+    ]);
+    expect(solo.game.save.data.flags.mpWins).toBe(1);
+    const trio = await setup('hide', 'me', { roster: ['me', 'p2', 'p3'] });
+    trio.run(COUNTDOWN + HIDE_TIME + 1);
+    trio.pos.set('p2', { ...trio.game.flight.pos, x: trio.game.flight.pos.x + 5 });
+    trio.run(0.1);
+    trio.m.onMessage({ t: 'score', id: 'm1', s: 2, x: 0, d: true }, 'p2');
+    trio.m.onMessage({ t: 'score', id: 'm1', s: 39, x: 0, d: false }, 'p3');
+    trio.run(40);
+    expect(trio.m.phase).toBe('done');
+    expect(trio.m.results!.map((r) => r.id)).toEqual(['p3', 'me', 'p2']);
+    expect(trio.game.toasts.at(-1)).toContain('2nd of 3');
   });
 
   it('[R-NET-MODES] hide and seek: a hider scores while hidden and stops once found', async () => {
@@ -185,6 +222,61 @@ describe('multiplayer modes', () => {
     lead.run(0.1);
     expect(lead.m.scores.get('me')!.s).toBe(12);
     expect(lead.m.standings().map((r) => r.label)).toEqual(['leader · 12 s avg', '12 s in formation']);
+  });
+
+  it('[R-NET-MODES] an invite changes nothing until the player joins, and lapses at the countdown', async () => {
+    const { m, game, sent, run } = await setup('race', 'p2', {}, { join: false });
+    expect(game.activities.start('rings-marina-warmup')).toBe(true);
+    const start = { ...game.flight.pos };
+    expect(m).toMatchObject({ playing: false, invited: true });
+    expect(m.hint()).toBe('Ben invites you. Starts in 10 s');
+    run(2);
+    expect(game.flight.pos).toEqual(start);
+    expect(game.activities.active?.def.id).toBe('rings-marina-warmup');
+    expect(sent).toEqual([]);
+    expect(m.enter()).toBe(true);
+    expect(m.enter()).toBe(false);
+    expect(sent).toEqual([{ t: 'in', id: 'm1', on: true }]);
+    expect(game.activities.active).toBeNull();
+    expect(game.flight.pos).not.toEqual(start);
+    m.exit();
+    expect(sent.at(-1)).toEqual({ t: 'in', id: 'm1', on: false });
+    expect(m.playing).toBe(false);
+    run(COUNTDOWN - READY - 2 + 0.1);
+    expect(m.invited).toBe(false);
+    expect(m.enter()).toBe(false);
+    m.exit();
+    expect(sent).toHaveLength(2);
+  });
+
+  it('[R-NET-MODES] with nobody joining the match is called off, and an absent IT is replaced', async () => {
+    const alone = await setup('tag', 'me', {}, { join: false });
+    alone.run(COUNTDOWN + 0.1);
+    expect(alone.m.phase).toBe('done');
+    expect(alone.m.results).toBeNull();
+    expect(alone.game.toasts.at(-1)).toContain('Nobody joined');
+    expect(alone.game.save.data.flags.mpPlayed).toBeUndefined();
+    const trio = await setup('tag', 'p3', { roster: ['me', 'p2', 'p3'] }, { host: 'me', join: false });
+    trio.m.onMessage({ t: 'in', id: 'm1', on: true }, 'p2');
+    trio.m.onMessage({ t: 'in', id: 'm1', on: true }, 'p3');
+    trio.m.onMessage({ t: 'in', id: 'm1', on: false }, 'p3');
+    trio.m.onMessage({ t: 'score', id: 'm1', s: 50, x: 0, d: false }, 'p3');
+    expect(trio.m.scores.get('p3')!.s).toBe(0);
+    trio.run(COUNTDOWN + 0.1);
+    expect(trio.m.phase).toBe('live');
+    expect(trio.m.role).toBe('me');
+    expect(trio.m.standings().map((r) => r.id)).toEqual(['me', 'p2']);
+    trio.m.onMessage({ t: 'in', id: 'm1', on: true }, 'p3');
+    expect(trio.m.joined.has('p3')).toBe(false);
+  });
+
+  it('[R-NET-MODES] the host calling a match off in the countdown records nothing', async () => {
+    const { m, game } = await setup('formation', 'p2');
+    m.onMessage({ t: 'end', id: 'm1' }, 'p2');
+    expect(m.phase).toBe('done');
+    expect(m.results).toBeNull();
+    expect(game.toasts.at(-1)).toBe('Ben called off the match');
+    expect(game.save.data.flags.mpPlayed).toBeUndefined();
   });
 
   it('[R-NET-MODES] a match ends early when only one player is left', async () => {

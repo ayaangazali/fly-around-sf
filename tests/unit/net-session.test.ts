@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { Net } from '../../src/net/session';
+import { COUNTDOWN, READY } from '../../src/net/modes';
 import { LocalTransport, openTransport } from '../../src/net/transport';
 import { netGame, until } from './net-helpers';
 
@@ -131,24 +132,42 @@ describe('net session over the local transport', () => {
     }
   });
 
-  it('[R-NET-MODES] matches need a friend and start for everyone in the room', async () => {
+  it('[R-NET-MODES] a match is an invite: friends opt in, can leave, and the host can call it off', async () => {
     const solo = new Net(await netGame(), 'local');
     expect(solo.startMatch('tag')).toBe(false);
-    const { a, b } = await pair('RYM8');
+    const { a, b, ga, gb } = await pair('RYM8');
     expect(a.raceOptions().map((r) => r.id)).toContain('rings-marina-warmup');
     expect(a.startMatch('race', { activity: 'nope' })).toBe(false);
+    expect(gb.activities.start('rings-marina-warmup')).toBe(true);
     expect(a.startMatch('tag', { role: b.selfId, duration: 30 })).toBe(true);
     expect(a.startMatch('formation')).toBe(false);
+    expect(ga.toasts.at(-1)).toContain('Drone tag starting');
     await until(() => !!b.match);
-    expect(b.match?.role).toBe(b.selfId);
-    expect(b.match?.host).toBe(a.selfId);
+    expect(b.match).toMatchObject({ host: a.selfId, playing: false, invited: true });
+    expect(gb.activities.active).not.toBeNull();
+    expect(gb.toasts.at(-1)).toBe('Ana started 🎯 Drone tag. Press Join to play');
     b.cancelMatch();
     expect(b.match?.phase).toBe('countdown');
+    expect(b.joinMatch()).toBe(true);
+    expect(b.joinMatch()).toBe(false);
+    expect(gb.activities.active).toBeNull();
+    await until(() => !!a.match?.joined.has(b.selfId));
+    b.leaveMatch();
+    expect(b.match).toBeNull();
+    await until(() => !a.match?.joined.has(b.selfId));
+    a.leaveMatch();
+    expect(a.match?.phase).toBe('countdown');
     a.cancelMatch();
     expect(a.match?.phase).toBe('done');
-    await until(() => b.match?.phase === 'done');
-    for (let i = 0; i < 14; i++) a.update(1);
+    a.update(0.1);
     expect(a.match).toBeNull();
+    expect(a.startMatch('formation', { duration: 30 })).toBe(true);
+    await until(() => !!b.match?.invited);
+    b.update(COUNTDOWN - READY + 0.1);
+    expect(b.match).toBeNull();
+    a.update(COUNTDOWN + 0.1);
+    expect(a.match).toBeNull();
+    expect(ga.toasts.at(-1)).toContain('Nobody joined');
   });
 
   it('[R-NET-SYNC] the local transport ignores its own echoes, other targets and junk', async () => {

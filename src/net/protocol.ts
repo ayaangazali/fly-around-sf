@@ -31,6 +31,8 @@ export type Msg =
   | { t: 'score'; id: string; s: number; x: number; d: boolean }
   | { t: 'tag'; id: string; to: string; n: number }
   | { t: 'end'; id: string }
+  | { t: 'in'; id: string; on: boolean }
+  | { t: 'claim'; key: string }
   | { t: 'save'; code: string }
   | { t: 'ack'; added: number };
 
@@ -124,6 +126,10 @@ export function parse(raw: unknown): Msg | null {
       return { t: 'tag', id: r.id, to: r.to, n: r.n };
     case 'end':
       return str(r.id, LIMITS.id) ? { t: 'end', id: r.id } : null;
+    case 'in':
+      return str(r.id, LIMITS.id) ? { t: 'in', id: r.id, on: r.on === true } : null;
+    case 'claim':
+      return str(r.key, 8) && /^[A-Z2-9]+$/.test(r.key) ? { t: 'claim', key: r.key } : null;
     case 'save':
       return str(r.code, LIMITS.save) && /^[A-Za-z0-9_-]+$/.test(r.code) ? { t: 'save', code: r.code } : null;
     case 'ack':
@@ -142,6 +148,8 @@ const RATES: Record<MsgType, [perSecond: number, burst: number]> = {
   score: [8, 16],
   tag: [4, 6],
   end: [1, 3],
+  in: [1, 4],
+  claim: [1, 3],
   save: [0.2, 1],
   ack: [1, 2],
 };
