@@ -33,7 +33,7 @@ export const TIERS = [
 export const towerHeight = (commits: number) => 40 + 46 * Math.log10(1 + commits);
 export const towerWidth = (stars: number) => 8 + 3.2 * Math.log10(1 + stars);
 export const towerTier = (commits: number) => TIERS.reduce((tier, t, i) => (commits >= t.min ? i : tier), 0);
-export const fireflyCount = (commits: number) => Math.round(12 * Math.log10(1 + commits));
+export const fireflyCount = (commits: number) => Math.round(16 * Math.log10(1 + commits));
 
 export function layoutTowers(stats: TowerStat[], cards: CardDef[], toLocal: (lat: number, lon: number) => { x: number; z: number }): Tower[] {
   const byId = new Map(cards.map((c) => [c.id, c]));
@@ -55,6 +55,9 @@ export function layoutTowers(stats: TowerStat[], cards: CardDef[], toLocal: (lat
   }
   return towers;
 }
+
+const LABEL_RANGE = 3200;
+export const FLOAT = 28;
 
 const compact = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${(n / 1e3).toFixed(1)}k` : String(n));
 
@@ -113,13 +116,15 @@ const towerShader = {
     void main() {
       float edge = smoothstep(0.86, 1.0, abs(vUv.x * 2.0 - 1.0));
       float y = vY * vH;
-      float scan = fract(y / 7.0 - uTime * 0.45);
-      float rung = smoothstep(0.0, 0.08, scan) * (1.0 - smoothstep(0.08, 0.22, scan));
-      float floors = step(0.93, fract(y / 3.6)) * 0.5;
-      float body = mix(0.07, 0.2, uNight) * (0.3 + 0.7 * (1.0 - vY));
-      float a = body + edge * mix(0.3, 0.75, uNight) + rung * mix(0.18, 0.4, uNight) + floors * 0.12;
-      a *= 1.0 - smoothstep(4000.0, 8000.0, vDist);
-      gl_FragColor = vec4(vColor * (0.7 + 0.9 * edge + 0.6 * rung), a);
+      float near = 1.0 - smoothstep(400.0, 1400.0, vDist);
+      float scan = fract(y / 9.0 - uTime * 0.5);
+      float rung = smoothstep(0.0, 0.06, scan) * (1.0 - smoothstep(0.06, 0.25, scan)) * near;
+      float floors = step(0.95, fract(y / 12.0)) * near;
+      float cap = smoothstep(0.92, 1.0, vY);
+      float body = mix(0.2, 0.24, uNight) * (0.55 + 0.45 * (1.0 - vY));
+      float a = body + edge * mix(0.5, 0.85, uNight) + rung * 0.35 + floors * 0.15 + cap * 0.3;
+      a *= (1.0 - smoothstep(4500.0, 9000.0, vDist)) * smoothstep(15.0, 90.0, vDist);
+      gl_FragColor = vec4(vColor * (0.8 + 0.8 * edge + 0.6 * rung + 0.5 * cap), min(a, 1.0));
     }`,
 };
 
@@ -139,7 +144,7 @@ const fireflyShader = {
       vec4 mv = modelViewMatrix * vec4(p, 1.0);
       vA = (1.0 - y / h) * (1.0 - smoothstep(3000.0, 6000.0, -mv.z));
       vColor = aColor;
-      gl_PointSize = clamp(uScale * 1.4 / -mv.z, 1.5, 24.0);
+      gl_PointSize = clamp(uScale * 2.6 / -mv.z, 3.0, 30.0);
       gl_Position = projectionMatrix * mv;
     }`,
   fragment: `
@@ -172,19 +177,22 @@ export class CommitTowers {
     const base: number[] = [];
     const tops: number[] = [];
     const colors: number[] = [];
+    const tether: number[] = [];
     this.towers.forEach((t, i) => {
-      const y = game.world.groundAt(t.x, t.z) + 1;
+      const roof = game.world.groundAt(t.x, t.z);
+      const y = roof + FLOAT;
       m.makeScale(t.width, t.height, t.width).setPosition(t.x, y, t.z);
+      tether.push(t.x, roof, t.z, t.x, y, t.z);
       this.mesh.setMatrixAt(i, m);
       color.set(TIERS[t.tier].color);
       this.mesh.setColorAt(i, color);
       const l = label(t);
-      l.position.set(t.x, y + t.height + 14, t.z);
+      l.position.set(t.x, y + t.height + 16, t.z);
       this.labels.push(l);
       for (let k = 0; k < fireflyCount(t.commits30d); k++) {
-        base.push(t.x, y, t.z);
+        base.push(t.x, roof, t.z);
         seeds.push((Math.random() - 0.5) * t.width * 1.6, (Math.random() - 0.5) * t.width * 1.6, Math.random(), 6 + Math.random() * 10);
-        tops.push(t.height);
+        tops.push(t.height + FLOAT);
         colors.push(color.r, color.g, color.b);
       }
     });
@@ -197,7 +205,10 @@ export class CommitTowers {
     this.fireflies = new THREE.Points(pts, new THREE.ShaderMaterial({ uniforms: this.uniforms, vertexShader: fireflyShader.vertex, fragmentShader: fireflyShader.fragment, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
     this.fireflies.name = 'commit-fireflies';
     this.fireflies.frustumCulled = false;
-    this.root.add(this.mesh, this.fireflies, ...this.labels);
+    const lines = new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(tether, 3));
+    const tethers = new THREE.LineSegments(lines, new THREE.LineBasicMaterial({ color: '#9fe6b0', transparent: true, opacity: 0.35, depthWrite: false }));
+    tethers.name = 'commit-tethers';
+    this.root.add(this.mesh, this.fireflies, tethers, ...this.labels);
     game.scene.add(this.root);
   }
 
@@ -205,7 +216,17 @@ export class CommitTowers {
     const cam = this.game.camera;
     this.uniforms.uTime.value = performance.now() / 1000;
     this.uniforms.uScale.value = this.game.renderer.domElement.height / (2 * Math.tan((cam.fov * Math.PI) / 360));
-    for (const l of this.labels) l.visible = l.position.distanceToSquared(cam.position) < 2600 * 2600;
+    const mat = this.mesh.material as THREE.ShaderMaterial;
+    const blending = this.uniforms.uNight.value > 0.5 ? THREE.AdditiveBlending : THREE.NormalBlending;
+    if (mat.blending !== blending) {
+      mat.blending = blending;
+      mat.needsUpdate = true;
+    }
+    for (const l of this.labels) {
+      const d = l.position.distanceTo(cam.position);
+      l.visible = d < LABEL_RANGE;
+      l.scale.set(120, 37.5, 1).multiplyScalar(Math.min(1.8, Math.max(0.12, d / 650)));
+    }
   }
 }
 

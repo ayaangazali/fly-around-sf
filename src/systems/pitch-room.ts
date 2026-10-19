@@ -13,12 +13,12 @@ function activePitch(game: Game): { id: string; inst: PitchInstance } | null {
 }
 
 function buildPad(): { root: THREE.Group; ring: THREE.Mesh; beam: THREE.Mesh } {
-  const glow = (opacity: number) => new THREE.MeshBasicMaterial({ color: '#ff6a3d', transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending });
+  const glow = (opacity: number) => new THREE.MeshBasicMaterial({ color: '#ff6a3d', transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide });
   const root = new THREE.Group();
   root.name = 'pitch-pad';
-  const disc = new THREE.Mesh(new THREE.CircleGeometry(PITCH.padRadius, 40), glow(0.18));
-  const ring = new THREE.Mesh(new THREE.RingGeometry(PITCH.padRadius - 0.9, PITCH.padRadius, 48), glow(0.95));
-  const inner = new THREE.Mesh(new THREE.RingGeometry(1.6, 2.3, 32), glow(0.8));
+  const disc = new THREE.Mesh(new THREE.CircleGeometry(PITCH.padRadius, 40), glow(0.12));
+  const ring = new THREE.Mesh(new THREE.RingGeometry(PITCH.padRadius - 0.6, PITCH.padRadius, 48), glow(0.9));
+  const inner = new THREE.Mesh(new THREE.RingGeometry(1.7, 2.1, 32), glow(0.7));
   for (const m of [disc, ring, inner]) {
     m.rotation.x = -Math.PI / 2;
     root.add(m);
@@ -26,7 +26,8 @@ function buildPad(): { root: THREE.Group; ring: THREE.Mesh; beam: THREE.Mesh } {
   disc.position.y = 0.2;
   ring.position.y = 0.25;
   inner.position.y = 0.25;
-  const beam = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 120, 16, 1, true), glow(0.22));
+  const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 120, 12, 1, true), glow(0.3));
+  beam.material.blending = THREE.AdditiveBlending;
   beam.position.y = 60;
   root.add(beam);
   root.visible = false;
@@ -69,12 +70,13 @@ class PitchRoom {
     const landing = inst.phase() === 'land';
     this.pad.root.position.set(inst.pad.x, inst.pad.y, inst.pad.z);
     this.pad.ring.scale.setScalar(landing ? 1 + 0.06 * Math.sin(t * 5) : 1);
-    this.pad.beam.visible = landing;
+    this.pad.beam.visible = landing && this.game.flight.pos.y - inst.pad.y > 12;
     const key = `${active!.id}|${inst.phase()}|${inst.round()}|${inst.chosen()}`;
     if (key !== this.key) {
       this.key = key;
       this.render(inst);
     }
+    this.box.style.visibility = this.game.panels.openId ? 'hidden' : '';
     if (this.timer) this.timer.style.transform = `scaleX(${inst.timeLeft() / (inst.params.roundTime ?? PITCH.roundTime)})`;
   }
 
