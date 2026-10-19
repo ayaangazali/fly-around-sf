@@ -4,7 +4,7 @@ import type { Transport, TransportHandlers } from './transport';
 export const APP_ID = 'fly-around-sf';
 
 export function openP2P(room: string, h: TransportHandlers, maxBytes: number): Transport {
-  const r = joinRoom({ appId: APP_ID, relayConfig: { warnOnRelayFailure: false } }, room, {
+  const r = joinRoom({ appId: APP_ID, relayConfig: { warnOnRelayFailure: false, redundancy: 10 } }, room, {
     onJoinError: (d) => h.error?.(d.peerId),
   });
   const action = r.makeAction<JsonValue>('m', { onReceive: ({ byteLength }) => byteLength <= maxBytes });

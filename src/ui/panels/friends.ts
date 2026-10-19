@@ -185,7 +185,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
       lastKey = key;
       metas.clear();
       peers.replaceChildren();
-      if (!rows.length) peers.append(el('li', 'fr-empty', 'Nobody else is here yet. Share the link: whoever opens it lands in this room.'));
+      if (!rows.length) peers.append(el('li', 'fr-empty', 'Looking for your friends. Share the link: whoever opens it lands in this room. Finding each other can take a minute.'));
       for (const p of rows) {
         const li = el('li', 'fr-peer');
         li.dataset.peer = p.id;

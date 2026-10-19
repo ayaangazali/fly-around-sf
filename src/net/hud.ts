@@ -155,7 +155,7 @@ export class NetHud {
     if (inRoom) {
       const n = net.visiblePeers().length;
       this.chip.dataset.status = net.status;
-      const state = net.status === 'online' ? `${n} ${n === 1 ? 'friend' : 'friends'}` : net.status === 'connecting' ? 'connecting' : 'offline';
+      const state = net.status === 'online' ? (n ? `${n} ${n === 1 ? 'friend' : 'friends'}` : 'finding friends') : net.status === 'connecting' ? 'connecting' : 'offline';
       this.set(this.chip, `${net.room} · ${state}`);
       this.chip.setAttribute('aria-label', `Room ${net.room}, ${state}. Open friends`);
     }
