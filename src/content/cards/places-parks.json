@@ -25,15 +25,15 @@
     "neighborhood": "Presidio",
     "at": { "lat": 37.79806, "lon": -122.46583, "alt": 60 },
     "year": 1776,
-    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
-    "lore": "Spain planted a fort here on September 17, 1776, Mexico took it over, and the U.S. Army ran it until 1994. That is 219 years of soldiers on one hilltop. When the Army left, the Presidio became a national park with a twist: Congress told it to pay its own way, and it did, years ahead of schedule. The old barracks hold restaurants, offices and museums, while eucalyptus and cypress forests hide trails, art and coyotes.",
+    "blurb": "A former Army post of 218 years, now a forested national park at the foot of the bridge.",
+    "lore": "Spain planted a fort here on September 17, 1776, Mexico took it over, and the U.S. Army ran it until 1994. That is 218 years of soldiers on one hilltop. When the Army left, the Presidio became a national park with a twist: Congress told it to pay its own way, and it did, years ahead of schedule. The old barracks hold restaurants, offices and museums, while eucalyptus and cypress forests hide trails, art and coyotes.",
     "facts": [
       "The Spanish established the Presidio on September 17, 1776.",
       "It passed to Mexico in 1820 and to the United States in 1848.",
       "The Army transferred it to the National Park Service on October 1, 1994.",
       "The Presidio Trust made the park financially self-sufficient in 2005, eight years early."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Presidio_of_San_Francisco", "https://www.presidio.gov/"]
+    "sources": ["https://en.wikipedia.org/wiki/Presidio_of_San_Francisco", "https://www.presidio.gov/", "https://www.nps.gov/prsf/index.htm"]
   },
   {
     "id": "crissy-field",

@@ -803,7 +803,7 @@
     "id": "trivia-presidio",
     "kind": "trivia",
     "title": "The Presidio Trivia",
-    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
+    "blurb": "A former Army post of 218 years, now a forested national park at the foot of the bridge.",
     "neighborhood": "Presidio",
     "at": {
       "lat": 37.79806,
@@ -823,7 +823,7 @@
       "question": "How long was the Presidio a military post?",
       "options": [
         "50 years",
-        "219 years",
+        "218 years",
         "100 years",
         "12 years"
       ],
