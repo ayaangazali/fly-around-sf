@@ -46,7 +46,7 @@ export const panel: Panel = {
         );
         if (!done) {
           const go = el('button', 'journal-go', 'Go');
-          go.setAttribute('aria-label', `Set waypoint to ${d.title}`);
+          go.setAttribute('aria-label', `Go to ${d.title}`);
           go.addEventListener('click', () => {
             setWaypoint(game, game.activities.position(d), d.title);
             game.panels.close();

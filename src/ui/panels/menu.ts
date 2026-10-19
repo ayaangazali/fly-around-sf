@@ -64,7 +64,6 @@ export const panel: Panel = {
         const b = el('button', 'menu-next-item');
         b.dataset.activity = def.id;
         b.append(el('span', 'menu-next-icon', kind.icon), el('b', '', def.title), el('small', '', `${kind.label} · ${formatDistance(dist, imperial)}`));
-        b.setAttribute('aria-label', `Set waypoint to ${def.title}, ${formatDistance(dist, imperial)} away`);
         b.addEventListener('click', () => {
           setWaypoint(game, game.activities.position(def), def.title);
           game.panels.close();

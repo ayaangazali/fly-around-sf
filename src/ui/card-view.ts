@@ -15,10 +15,16 @@ export function cardFace(card: CardDef, owned: boolean, tag: 'button' | 'div' = 
   const badge = el('span', 'tcard-badge', meta.icon);
   badge.setAttribute('aria-hidden', 'true');
   const info = el('div', 'tcard-info');
-  info.append(el('b', '', owned ? card.name : '???'), el('small', '', owned ? `${meta.label.replace(/s$/, '')} · ${RARITY_LABEL[card.rarity]}` : `${meta.label.replace(/s$/, '')} · ${card.neighborhood}`));
+  const name = el('b', '', owned ? card.name : '???');
+  info.append(name, el('small', '', owned ? `${meta.label.replace(/s$/, '')} · ${RARITY_LABEL[card.rarity]}` : `${meta.label.replace(/s$/, '')} · ${card.neighborhood}`));
   root.append(art, el('div', 'tcard-foil'), badge, info);
-  if (!owned) root.append(el('span', 'tcard-q', '?'));
-  if (tag === 'button') root.setAttribute('aria-label', owned ? `${card.name}, ${RARITY_LABEL[card.rarity]} ${meta.label.replace(/s$/, '').toLowerCase()} card` : `Locked ${meta.label.replace(/s$/, '').toLowerCase()} card from ${card.neighborhood}`);
+  if (!owned) {
+    name.setAttribute('aria-hidden', 'true');
+    info.prepend(el('span', 'sr-only', 'Locked card'));
+    const q = el('span', 'tcard-q', '?');
+    q.setAttribute('aria-hidden', 'true');
+    root.append(q);
+  }
   return root;
 }
 

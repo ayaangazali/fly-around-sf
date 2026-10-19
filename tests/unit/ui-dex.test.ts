@@ -51,11 +51,13 @@ describe('collection book', () => {
     expect(locked.classList.contains('locked')).toBe(true);
     expect(locked.textContent).toContain('???');
     expect(locked.textContent).not.toContain('coit tower');
-    expect(locked.getAttribute('aria-label')).not.toContain('coit tower');
+    expect(locked.querySelector('.sr-only')?.textContent).toBe('Locked card');
+    expect(locked.querySelector('b')?.getAttribute('aria-hidden')).toBe('true');
     const open = cardFace(CARDS[1], true);
     expect(open.textContent).toContain('transamerica');
     expect(open.className).toContain('rarity-legendary');
-    expect(open.getAttribute('aria-label')).toContain('Legendary');
+    expect(open.textContent).toContain('Legendary');
+    expect(open.querySelector('.sr-only')).toBeNull();
   });
 
   it('[R-DEX] card art is generated per card, deterministic, and never loads an image', () => {
