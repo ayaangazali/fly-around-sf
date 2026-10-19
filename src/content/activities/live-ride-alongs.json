@@ -1,0 +1,1115 @@
+[
+  {
+    "id": "ride-along-hyde-street-plunge",
+    "kind": "ride-along",
+    "title": "Down Hyde Street to the Bay",
+    "blurb": "Shadow a Powell-Hyde cable car from Lombard Street down the steep drop to Aquatic Park, with Alcatraz straight ahead.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80191,
+      "lon": -122.41962,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80191,
+          -122.41962
+        ],
+        [
+          37.802,
+          -122.41963
+        ],
+        [
+          37.80282,
+          -122.41981
+        ],
+        [
+          37.80293,
+          -122.41981
+        ],
+        [
+          37.80664,
+          -122.42056
+        ]
+      ],
+      "speed": 4,
+      "model": "powell",
+      "paint": "#8e1b20"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-hyde-street-climb",
+    "kind": "ride-along",
+    "title": "Climb Hyde Street from the Turnaround",
+    "blurb": "Leave the Hyde and Beach turnaround with a Powell-Hyde car and stay with it all the way up to Lombard Street.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.80666,
+      "lon": -122.42057,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80666,
+          -122.42057
+        ],
+        [
+          37.80293,
+          -122.41981
+        ],
+        [
+          37.80187,
+          -122.4196
+        ]
+      ],
+      "speed": 4,
+      "model": "powell",
+      "paint": "#8e1b20"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-powell-street",
+    "kind": "ride-along",
+    "title": "Up Powell from Market Street",
+    "blurb": "Follow a cable car from the Powell and Market turntable past Union Square and up toward Nob Hill.",
+    "neighborhood": "Union Square",
+    "at": {
+      "lat": 37.7847,
+      "lon": -122.40771,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.7847,
+          -122.40771
+        ],
+        [
+          37.78641,
+          -122.40805
+        ],
+        [
+          37.78724,
+          -122.40823
+        ],
+        [
+          37.78737,
+          -122.40824
+        ],
+        [
+          37.78817,
+          -122.4084
+        ],
+        [
+          37.78829,
+          -122.40841
+        ],
+        [
+          37.79015,
+          -122.40879
+        ]
+      ],
+      "speed": 4,
+      "model": "powell",
+      "paint": "#8e1b20"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-mason-street",
+    "kind": "ride-along",
+    "title": "Powell-Mason to the Wharf",
+    "blurb": "Ride with a Powell-Mason car down Mason Street and Columbus Avenue to its Bay and Taylor terminal near Fisherman's Wharf.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80095,
+      "lon": -122.41267,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80095,
+          -122.41267
+        ],
+        [
+          37.80219,
+          -122.41292
+        ],
+        [
+          37.80263,
+          -122.41359
+        ],
+        [
+          37.80275,
+          -122.41374
+        ],
+        [
+          37.80336,
+          -122.41464
+        ],
+        [
+          37.80355,
+          -122.41489
+        ],
+        [
+          37.80523,
+          -122.41522
+        ]
+      ],
+      "speed": 4,
+      "model": "powell",
+      "paint": "#24476e"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-california-street",
+    "kind": "ride-along",
+    "title": "California Street up Nob Hill",
+    "blurb": "Stay with a California Street cable car as it climbs from Montgomery Street through Chinatown to the top of Nob Hill at Powell.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79288,
+      "lon": -122.40261,
+      "alt": 10
+    },
+    "xp": 60,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79288,
+          -122.40261
+        ],
+        [
+          37.79272,
+          -122.40384
+        ],
+        [
+          37.79265,
+          -122.40428
+        ],
+        [
+          37.79249,
+          -122.40567
+        ],
+        [
+          37.79202,
+          -122.40942
+        ]
+      ],
+      "speed": 4,
+      "model": "california",
+      "paint": "#7a1a1f"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-f-line-embarcadero",
+    "kind": "ride-along",
+    "title": "F-Line up the Embarcadero",
+    "blurb": "Follow a historic F-line streetcar from the Ferry Building north along the piers of the Embarcadero.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79485,
+      "lon": -122.39362,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "streetcar",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79485,
+          -122.39362
+        ],
+        [
+          37.79667,
+          -122.39541
+        ],
+        [
+          37.79795,
+          -122.39652
+        ],
+        [
+          37.79951,
+          -122.39794
+        ],
+        [
+          37.80253,
+          -122.40058
+        ],
+        [
+          37.80321,
+          -122.4012
+        ]
+      ],
+      "speed": 6.5,
+      "model": "streetcar",
+      "paint": "#2e6b4f"
+    }
+  },
+  {
+    "id": "ride-along-f-line-castro",
+    "kind": "ride-along",
+    "title": "F-Line from the Castro",
+    "blurb": "Pick up an F-line streetcar at its 17th and Castro terminal and follow it down Market Street to Church Street.",
+    "neighborhood": "Castro",
+    "at": {
+      "lat": 37.76255,
+      "lon": -122.43502,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "streetcar",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.76255,
+          -122.43502
+        ],
+        [
+          37.76267,
+          -122.4352
+        ],
+        [
+          37.76401,
+          -122.43338
+        ],
+        [
+          37.7642,
+          -122.43308
+        ],
+        [
+          37.76568,
+          -122.43128
+        ],
+        [
+          37.76729,
+          -122.42925
+        ]
+      ],
+      "speed": 6,
+      "model": "streetcar",
+      "paint": "#d9822b"
+    }
+  },
+  {
+    "id": "ride-along-f-line-wharf",
+    "kind": "ride-along",
+    "title": "F-Line along the Wharf",
+    "blurb": "Leave Jones and Beach with an F-line streetcar and follow it along Beach Street past Pier 39 to the Embarcadero.",
+    "neighborhood": "Fisherman's Wharf",
+    "at": {
+      "lat": 37.80714,
+      "lon": -122.41728,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "streetcar",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80714,
+          -122.41728
+        ],
+        [
+          37.80707,
+          -122.41727
+        ],
+        [
+          37.80744,
+          -122.41414
+        ],
+        [
+          37.80748,
+          -122.41397
+        ],
+        [
+          37.80786,
+          -122.41083
+        ],
+        [
+          37.8081,
+          -122.40906
+        ],
+        [
+          37.80737,
+          -122.40731
+        ],
+        [
+          37.80671,
+          -122.40596
+        ]
+      ],
+      "speed": 6.5,
+      "model": "streetcar",
+      "paint": "#b8312f"
+    }
+  },
+  {
+    "id": "ride-along-39-coit",
+    "kind": "ride-along",
+    "title": "The 39 Coit up Telegraph Hill",
+    "blurb": "Follow the 39 Coit bus up the switchbacks of Telegraph Hill Boulevard to Coit Tower.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.80346,
+      "lon": -122.40805,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80346,
+          -122.40805
+        ],
+        [
+          37.80364,
+          -122.4066
+        ],
+        [
+          37.80362,
+          -122.40635
+        ],
+        [
+          37.80357,
+          -122.40629
+        ],
+        [
+          37.80346,
+          -122.40628
+        ],
+        [
+          37.80331,
+          -122.40643
+        ],
+        [
+          37.80326,
+          -122.40657
+        ],
+        [
+          37.80315,
+          -122.40669
+        ],
+        [
+          37.80293,
+          -122.40672
+        ],
+        [
+          37.80284,
+          -122.40669
+        ],
+        [
+          37.80257,
+          -122.40645
+        ],
+        [
+          37.80208,
+          -122.40622
+        ],
+        [
+          37.80198,
+          -122.40613
+        ],
+        [
+          37.80183,
+          -122.40593
+        ],
+        [
+          37.80178,
+          -122.40571
+        ],
+        [
+          37.80193,
+          -122.40544
+        ],
+        [
+          37.8021,
+          -122.40538
+        ],
+        [
+          37.80231,
+          -122.40544
+        ],
+        [
+          37.80269,
+          -122.40576
+        ],
+        [
+          37.80276,
+          -122.40575
+        ],
+        [
+          37.80283,
+          -122.4058
+        ],
+        [
+          37.80283,
+          -122.40588
+        ],
+        [
+          37.80278,
+          -122.40595
+        ],
+        [
+          37.80272,
+          -122.40594
+        ],
+        [
+          37.80268,
+          -122.40588
+        ],
+        [
+          37.80269,
+          -122.40579
+        ]
+      ],
+      "speed": 5,
+      "model": "bus",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-30-stockton-columbus",
+    "kind": "ride-along",
+    "title": "Trolley Bus down Columbus Avenue",
+    "blurb": "Follow a 30 Stockton trolley bus down Columbus Avenue through North Beach to Stockton Street.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80264,
+      "lon": -122.4136,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80264,
+          -122.4136
+        ],
+        [
+          37.79949,
+          -122.40903
+        ],
+        [
+          37.79928,
+          -122.40898
+        ]
+      ],
+      "speed": 5.5,
+      "model": "trolley",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-oakland-ferry",
+    "kind": "ride-along",
+    "title": "Escort the Oakland Ferry",
+    "blurb": "Fly alongside the San Francisco Bay Ferry to Oakland as it pulls away from the Ferry Building and heads out across the bay.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79436,
+      "lon": -122.39079,
+      "alt": 20
+    },
+    "xp": 60,
+    "tags": [
+      "ferry",
+      "transit",
+      "follow",
+      "water"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79436,
+          -122.39079
+        ],
+        [
+          37.79567,
+          -122.38979
+        ],
+        [
+          37.79692,
+          -122.3871
+        ],
+        [
+          37.79717,
+          -122.3857
+        ],
+        [
+          37.7964,
+          -122.37804
+        ],
+        [
+          37.79424,
+          -122.36911
+        ],
+        [
+          37.79344,
+          -122.36323
+        ]
+      ],
+      "speed": 11,
+      "model": "catamaran",
+      "paint": "#f6f4ef",
+      "radius": 70
+    },
+    "card": "ferry-spotter"
+  },
+  {
+    "id": "ride-along-sausalito-ferry",
+    "kind": "ride-along",
+    "title": "Escort the Sausalito Ferry",
+    "blurb": "Fly with the Golden Gate Ferry to Sausalito as it leaves the Ferry Building and runs up the waterfront.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79583,
+      "lon": -122.39232,
+      "alt": 20
+    },
+    "xp": 60,
+    "tags": [
+      "ferry",
+      "transit",
+      "follow",
+      "water"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79583,
+          -122.39232
+        ],
+        [
+          37.79602,
+          -122.39204
+        ],
+        [
+          37.79658,
+          -122.39192
+        ],
+        [
+          37.79876,
+          -122.39055
+        ],
+        [
+          37.80148,
+          -122.38949
+        ],
+        [
+          37.80259,
+          -122.38931
+        ],
+        [
+          37.80386,
+          -122.38944
+        ],
+        [
+          37.8066,
+          -122.39039
+        ],
+        [
+          37.80783,
+          -122.39115
+        ],
+        [
+          37.80968,
+          -122.39278
+        ],
+        [
+          37.81215,
+          -122.39533
+        ],
+        [
+          37.81595,
+          -122.39971
+        ]
+      ],
+      "speed": 11,
+      "model": "ferry",
+      "paint": "#f6f4ef",
+      "radius": 70
+    },
+    "card": "ferry-spotter"
+  },
+  {
+    "id": "ride-along-14-mission",
+    "kind": "ride-along",
+    "title": "The 14 down Mission Street",
+    "blurb": "Follow a 14 Mission trolley bus from 16th Street to 20th Street through the heart of the Mission.",
+    "neighborhood": "Mission District",
+    "at": {
+      "lat": 37.76481,
+      "lon": -122.41967,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.76481,
+          -122.41967
+        ],
+        [
+          37.75817,
+          -122.41903
+        ]
+      ],
+      "speed": 5.5,
+      "model": "trolley",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-22-fillmore-heights",
+    "kind": "ride-along",
+    "title": "The 22 over Pacific Heights",
+    "blurb": "Stay with a 22 Fillmore trolley bus as it climbs Fillmore Street from Sacramento Street to Broadway.",
+    "neighborhood": "Pacific Heights",
+    "at": {
+      "lat": 37.78973,
+      "lon": -122.43402,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.78973,
+          -122.43402
+        ],
+        [
+          37.79415,
+          -122.43491
+        ]
+      ],
+      "speed": 5,
+      "model": "trolley",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-1-california-presidio-heights",
+    "kind": "ride-along",
+    "title": "The 1 through Presidio Heights",
+    "blurb": "Follow a 1 California trolley bus west along California Street from Presidio Avenue to Cherry Street.",
+    "neighborhood": "Presidio Heights",
+    "at": {
+      "lat": 37.78725,
+      "lon": -122.44697,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.78725,
+          -122.44697
+        ],
+        [
+          37.78598,
+          -122.45682
+        ]
+      ],
+      "speed": 6,
+      "model": "trolley",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-5-fulton-park",
+    "kind": "ride-along",
+    "title": "The 5 along Golden Gate Park",
+    "blurb": "Follow a 5 Fulton trolley bus along Fulton Street, the north edge of Golden Gate Park, from 6th Avenue to Park Presidio.",
+    "neighborhood": "Inner Richmond",
+    "at": {
+      "lat": 37.77362,
+      "lon": -122.46384,
+      "alt": 10
+    },
+    "xp": 45,
+    "tags": [
+      "bus",
+      "transit",
+      "follow",
+      "park"
+    ],
+    "params": {
+      "path": [
+        [
+          37.77362,
+          -122.46384
+        ],
+        [
+          37.77343,
+          -122.46534
+        ],
+        [
+          37.77339,
+          -122.46602
+        ],
+        [
+          37.77311,
+          -122.47218
+        ]
+      ],
+      "speed": 6,
+      "model": "trolley",
+      "paint": "#e9ebec"
+    }
+  },
+  {
+    "id": "ride-along-larkspur-ferry",
+    "kind": "ride-along",
+    "title": "Escort the Larkspur Ferry",
+    "blurb": "Fly alongside the Golden Gate Ferry to Larkspur as it leaves the Ferry Building and heads up the bay.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79585,
+      "lon": -122.39232,
+      "alt": 20
+    },
+    "xp": 60,
+    "tags": [
+      "ferry",
+      "transit",
+      "follow",
+      "water"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79585,
+          -122.39232
+        ],
+        [
+          37.79843,
+          -122.38975
+        ],
+        [
+          37.80019,
+          -122.38851
+        ],
+        [
+          37.80199,
+          -122.38759
+        ],
+        [
+          37.80403,
+          -122.3871
+        ],
+        [
+          37.80714,
+          -122.38742
+        ],
+        [
+          37.81759,
+          -122.39127
+        ]
+      ],
+      "speed": 11,
+      "model": "ferry",
+      "paint": "#f6f4ef",
+      "radius": 70
+    },
+    "card": "ferry-spotter"
+  },
+  {
+    "id": "ride-along-tiburon-ferry",
+    "kind": "ride-along",
+    "title": "Escort the Tiburon Ferry",
+    "blurb": "Fly with the Golden Gate Ferry to Tiburon as it pulls out of the Ferry Building.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.79583,
+      "lon": -122.39232,
+      "alt": 20
+    },
+    "xp": 60,
+    "tags": [
+      "ferry",
+      "transit",
+      "follow",
+      "water"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79583,
+          -122.39232
+        ],
+        [
+          37.79602,
+          -122.39204
+        ],
+        [
+          37.79884,
+          -122.39033
+        ],
+        [
+          37.80137,
+          -122.38932
+        ],
+        [
+          37.80248,
+          -122.38913
+        ],
+        [
+          37.80379,
+          -122.38921
+        ],
+        [
+          37.80572,
+          -122.38974
+        ],
+        [
+          37.80862,
+          -122.39154
+        ],
+        [
+          37.81202,
+          -122.39491
+        ],
+        [
+          37.81564,
+          -122.39891
+        ],
+        [
+          37.816,
+          -122.39934
+        ]
+      ],
+      "speed": 11,
+      "model": "ferry",
+      "paint": "#f6f4ef",
+      "radius": 70
+    },
+    "card": "ferry-spotter"
+  },
+  {
+    "id": "ride-along-california-van-ness",
+    "kind": "ride-along",
+    "title": "California Street to Van Ness",
+    "blurb": "Follow a California Street cable car from Jones Street down the west side of Nob Hill to the Van Ness Avenue terminal.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.79142,
+      "lon": -122.41411,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79142,
+          -122.41411
+        ],
+        [
+          37.79121,
+          -122.41577
+        ],
+        [
+          37.79095,
+          -122.41757
+        ],
+        [
+          37.79079,
+          -122.41905
+        ],
+        [
+          37.79039,
+          -122.42224
+        ]
+      ],
+      "speed": 4,
+      "model": "california",
+      "paint": "#7a1a1f"
+    },
+    "card": "cable-car-spotter"
+  },
+  {
+    "id": "ride-along-f-line-market",
+    "kind": "ride-along",
+    "title": "F-Line up Market Street",
+    "blurb": "Follow an F-line streetcar from Steuart Street up Market Street through downtown to Kearny Street.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79392,
+      "lon": -122.39349,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "streetcar",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.79392,
+          -122.39349
+        ],
+        [
+          37.79368,
+          -122.39379
+        ],
+        [
+          37.79447,
+          -122.39476
+        ],
+        [
+          37.79074,
+          -122.39948
+        ],
+        [
+          37.78808,
+          -122.40291
+        ],
+        [
+          37.78771,
+          -122.40334
+        ]
+      ],
+      "speed": 6.5,
+      "model": "streetcar",
+      "paint": "#3d6fa8"
+    }
+  },
+  {
+    "id": "ride-along-powell-mason-climb",
+    "kind": "ride-along",
+    "title": "Powell-Mason from Bay and Taylor",
+    "blurb": "Leave the Bay and Taylor terminal with a Powell-Mason car and follow it up Columbus Avenue to Mason Street.",
+    "neighborhood": "Fisherman's Wharf",
+    "at": {
+      "lat": 37.80527,
+      "lon": -122.41523,
+      "alt": 10
+    },
+    "xp": 50,
+    "tags": [
+      "cable car",
+      "transit",
+      "follow"
+    ],
+    "params": {
+      "path": [
+        [
+          37.80527,
+          -122.41523
+        ],
+        [
+          37.80448,
+          -122.41506
+        ],
+        [
+          37.80375,
+          -122.41494
+        ],
+        [
+          37.80355,
+          -122.41489
+        ],
+        [
+          37.80286,
+          -122.41393
+        ],
+        [
+          37.80275,
+          -122.41374
+        ],
+        [
+          37.80219,
+          -122.41292
+        ],
+        [
+          37.80184,
+          -122.41285
+        ]
+      ],
+      "speed": 4,
+      "model": "powell",
+      "paint": "#2f5d3a"
+    },
+    "card": "cable-car-spotter"
+  }
+]
