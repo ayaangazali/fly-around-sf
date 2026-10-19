@@ -1,4 +1,4 @@
-import { ShaderChunk, ShaderLib, UniformsLib } from 'three';
+import { DataTexture, LinearFilter, RedFormat, RepeatWrapping, ShaderChunk, ShaderLib, UniformsLib } from 'three';
 import { toLocal } from '../core/geo';
 
 const OCEAN_BEACH = toLocal(37.7594, -122.5107);
@@ -51,9 +51,21 @@ export function karlState(date: Date, fogDensity: number, lon: number): KarlStat
   };
 }
 
+const LATTICE = 256;
+const lattice = new Uint8Array(LATTICE * LATTICE);
+for (let j = 0; j < LATTICE; j++)
+  for (let i = 0; i < LATTICE; i++) {
+    const s = Math.sin(i * 127.1 + j * 311.7) * 43758.5453;
+    lattice[j * LATTICE + i] = Math.floor((s - Math.floor(s)) * 256);
+  }
+
+export const noiseTexture = new DataTexture(lattice, LATTICE, LATTICE, RedFormat);
+noiseTexture.wrapS = noiseTexture.wrapT = RepeatWrapping;
+noiseTexture.magFilter = noiseTexture.minFilter = LinearFilter;
+noiseTexture.needsUpdate = true;
+
 function hash(x: number, y: number): number {
-  const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
-  return s - Math.floor(s);
+  return lattice[(y & (LATTICE - 1)) * LATTICE + (x & (LATTICE - 1))] / 255;
 }
 
 export function noise(x: number, y: number): number {
@@ -108,6 +120,7 @@ export const envUniforms = {
   envKarlC: new Float32Array(4),
   envFogGlow: new Float32Array(4),
   envSun: new Float32Array([0, 1, 0, 0]),
+  envNoiseTex: noiseTexture,
 };
 
 export function applyKarl(k: KarlState, color: { r: number; g: number; b: number }): void {
@@ -122,12 +135,10 @@ uniform vec4 envKarlB;
 uniform vec4 envKarlC;
 uniform vec4 envFogGlow;
 uniform vec4 envSun;
-float envHash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+uniform sampler2D envNoiseTex;
 float envNoise(vec2 p) {
-  vec2 i = floor(p);
   vec2 f = fract(p);
-  vec2 u = f * f * (3.0 - 2.0 * f);
-  return mix(mix(envHash(i), envHash(i + vec2(1.0, 0.0)), u.x), mix(envHash(i + vec2(0.0, 1.0)), envHash(i + vec2(1.0, 1.0)), u.x), u.y);
+  return texture(envNoiseTex, (floor(p) + f * f * (3.0 - 2.0 * f) + 0.5) / ${LATTICE.toFixed(1)}).r;
 }
 float karlMask(vec2 p) {
   float t = envKarlA.z;
@@ -153,8 +164,15 @@ float karlG(float y, float top) {
   return a + e - e * e / ${(KARL_SOFT * 2).toFixed(1)};
 }
 float karlDepth(vec3 a, vec3 b) {
-  if (envKarlA.x < 0.001) return 0.0;
+  float lid = envKarlA.y + 80.0;
+  if (envKarlA.x < 0.001 || min(a.y, b.y) > lid) return 0.0;
   vec3 d = b - a;
+  if (max(a.y, b.y) > lid) {
+    vec3 c = a + d * ((lid - a.y) / d.y);
+    if (a.y > lid) a = c;
+    else b = c;
+    d = b - a;
+  }
   float seg = length(d) / float(KARL_STEPS);
   float total = 0.0;
   for (int i = 0; i < KARL_STEPS; i++) {

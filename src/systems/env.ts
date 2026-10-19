@@ -26,9 +26,9 @@ export interface EnvTier {
 }
 
 export const TIERS: Record<Quality, EnvTier> = {
-  low: { trees: { street: 0.3, wood: 0.18, grass: 0.012, scrub: 0.03 }, treeDist: 1400, treeLod: 350, roadDist: 2600, lampDist: 3500, cell: 16, roadStep: 16, karlSteps: 3, waterDetail: 0, treeShadows: false },
-  medium: { trees: { street: 0.65, wood: 0.45, grass: 0.035, scrub: 0.09 }, treeDist: 2600, treeLod: 550, roadDist: 4500, lampDist: 7000, cell: 8, roadStep: 10, karlSteps: 5, waterDetail: 1, treeShadows: false },
-  high: { trees: { street: 1, wood: 0.75, grass: 0.06, scrub: 0.15 }, treeDist: 4000, treeLod: 800, roadDist: 7000, lampDist: 12000, cell: 8, roadStep: 8, karlSteps: 6, waterDetail: 1, treeShadows: true },
+  low: { trees: { street: 0.3, wood: 0.18, grass: 0.012, scrub: 0.03 }, treeDist: 1400, treeLod: 350, roadDist: 2600, lampDist: 3500, cell: 16, roadStep: 16, karlSteps: 2, waterDetail: 0, treeShadows: false },
+  medium: { trees: { street: 0.65, wood: 0.45, grass: 0.035, scrub: 0.09 }, treeDist: 2600, treeLod: 550, roadDist: 4500, lampDist: 7000, cell: 8, roadStep: 10, karlSteps: 3, waterDetail: 1, treeShadows: false },
+  high: { trees: { street: 1, wood: 0.75, grass: 0.06, scrub: 0.15 }, treeDist: 4000, treeLod: 800, roadDist: 7000, lampDist: 12000, cell: 8, roadStep: 8, karlSteps: 4, waterDetail: 1, treeShadows: true },
 };
 
 const DAY = 86400000;

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
 import { SkySystem, skyColors } from '../../src/world/sky';
 import { moonIllumination, moonPosition, directionFrom, horizontal, siderealTime } from '../../src/world/moon';
-import { envUniforms, eveningFactor, karlDensity, karlMask, karlState, karlTop, noise, patchFogChunks, solarHour, visibility, KARL_SOFT } from '../../src/world/karl';
+import { envUniforms, eveningFactor, karlDensity, karlMask, karlState, karlTop, noise, noiseTexture, patchFogChunks, solarHour, visibility, KARL_SOFT } from '../../src/world/karl';
 import { CITY_FRAGMENT, CITY_VERTEX, createCityMaterial, patch } from '../../src/world/city-shader';
 import { buildingInfo } from '../../src/world/city-mesh';
 import { modeTarget, TIERS } from '../../src/systems/env';
@@ -121,8 +121,10 @@ describe('Karl the Fog', () => {
     expect(vThick).toBeLessThan(400);
     expect(visibility(ob.x, 30, ob.z, karlState(new Date('2026-10-19T20:00:00Z'), 1, ORIGIN.lon), 8000)).toBe(8000);
     expect(karlMask(downtown.x, downtown.z, karlState(new Date('2026-10-20T06:00:00Z'), 3, ORIGIN.lon))).toBeGreaterThan(0.9);
-    expect(noise(1.5, 2.5)).toBeGreaterThanOrEqual(0);
-    expect(noise(1.5, 2.5)).toBeLessThanOrEqual(1);
+    const lattice = noiseTexture.image.data as Uint8Array;
+    expect(noise(3, 5)).toBe(lattice[5 * 256 + 3] / 255);
+    expect(noise(3 - 512, 5 + 256)).toBe(noise(3, 5));
+    expect(noise(3.5, 5)).toBeCloseTo((lattice[5 * 256 + 3] + lattice[5 * 256 + 4]) / 510);
   });
 
   it('[R-ENV-FOG] patches every built-in fog shader with shared Karl uniforms', () => {
