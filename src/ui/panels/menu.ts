@@ -3,6 +3,9 @@ import { el } from '../panel-host';
 import { KEYMAP } from '../../core/input';
 import { pilotLevel } from '../stats-model';
 import { settingsOf } from '../settings-model';
+import { nearestOpen } from '../nearby';
+import { formatDistance } from '../map-view';
+import { setWaypoint } from '../waypoint';
 
 const ABOUT: Record<string, string> = {
   map: 'Every building, every activity',
@@ -50,6 +53,25 @@ export const panel: Panel = {
       b.addEventListener('click', () => game.panels.open(p.id));
       grid.append(b);
     }
+    const near = nearestOpen(game, 3);
     root.append(head, grid);
+    if (near.length) {
+      const next = el('section', 'menu-next');
+      next.append(el('h3', '', 'Up next nearby'));
+      const imperial = settingsOf(game).units === 'imperial';
+      for (const { def, dist } of near) {
+        const kind = game.activities.kindOf(def);
+        const b = el('button', 'menu-next-item');
+        b.dataset.activity = def.id;
+        b.append(el('span', 'menu-next-icon', kind.icon), el('b', '', def.title), el('small', '', `${kind.label} · ${formatDistance(dist, imperial)}`));
+        b.setAttribute('aria-label', `Set waypoint to ${def.title}, ${formatDistance(dist, imperial)} away`);
+        b.addEventListener('click', () => {
+          setWaypoint(game, game.activities.position(def), def.title);
+          game.panels.close();
+        });
+        next.append(b);
+      }
+      root.append(next);
+    }
   },
 };

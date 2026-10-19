@@ -16,7 +16,8 @@ describe('card reveal', () => {
     const { installCardReveal } = await import('../../src/ui/card-reveal');
     const ui = document.createElement('div');
     document.body.replaceChildren(ui);
-    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()) } as unknown as Game;
+    const panels = { openId: null as string | null };
+    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels } as unknown as Game;
     installCardReveal(game);
     game.bus.emit('card:unlock', { id: 'no-such-card' });
     expect(ui.querySelector('.reveal')).toBeNull();
@@ -36,6 +37,15 @@ describe('card reveal', () => {
     vi.advanceTimersByTime(7000);
     expect(ui.querySelector('.reveal')).toBeNull();
     expect(document.documentElement.classList.contains('revealing')).toBe(false);
+    panels.openId = 'map';
+    game.bus.emit('card:unlock', { id: 'fort-point' });
+    expect(ui.querySelector('.reveal')).toBeNull();
+    panels.openId = null;
+    game.bus.emit('panel:close', { id: 'map' });
+    expect((ui.querySelector('.reveal') as HTMLElement).dataset.card).toBe('fort-point');
+    game.bus.emit('panel:open', { id: 'dex' });
+    vi.advanceTimersByTime(400);
+    expect(ui.querySelector('.reveal')).toBeNull();
     vi.useRealTimers();
   });
 });

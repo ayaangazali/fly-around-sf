@@ -6,6 +6,7 @@ import { isTouchDevice } from '../touch';
 const KEYBOARD: [string[], string][] = [
   [['W', 'S'], 'Fly forward and back'],
   [['A', 'D'], 'Turn left and right'],
+  [['↑', '↓', '←', '→'], 'Arrows work like W, S, A and D'],
   [['Q', 'E'], 'Slide sideways'],
   [['Space'], 'Climb'],
   [['Shift'], 'Descend'],

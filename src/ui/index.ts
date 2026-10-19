@@ -4,6 +4,7 @@ import { applySettings, osReducedMotion, randomPilotName, type QualitySetting } 
 import { installWaypoint } from './waypoint';
 import { installEffects } from './effects';
 import { installMinimap } from './minimap';
+import { installCompassPips } from './nearby';
 import { installTouch } from './touch';
 import { installCardReveal } from './card-reveal';
 import { installAchievementBanner } from './achievement-banner';
@@ -22,7 +23,7 @@ export function installUi(game: Game): void {
   if (s.reducedMotion === undefined && osReducedMotion()) s.reducedMotion = true;
   game.save.persist();
   applySettings(game);
-  game.hud.widgets.push(installWaypoint(game), installEffects(game), installMinimap(game), installTouch(game), onboardingWidget);
+  game.hud.widgets.push(installWaypoint(game), installEffects(game), installMinimap(game), installCompassPips(game), installTouch(game), onboardingWidget);
   installCardReveal(game);
   installAchievementBanner(game);
   game.bus.on('panel:open', () => document.documentElement.classList.add('panel-open'));

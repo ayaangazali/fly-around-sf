@@ -85,3 +85,17 @@ describe('onboarding', () => {
     expect(firstActivity(g)).toBeNull();
   });
 });
+
+describe('nearby', () => {
+  it('[R-WAYPOINT] nearest open activities are sorted, capped and limited by range', async () => {
+    const { nearestOpen } = await import('../../src/ui/nearby');
+    const g = fakeGame();
+    const ring = (id: string, lat: number) => ({ id, kind: 'rings', title: id, blurb: 'b', neighborhood: 'n', at: { lat, lon: -122.42 }, params: { rings: [{ lat, lon: -122.42 }, { lat: lat + 0.001, lon: -122.42 }] } });
+    g.activities.register([rings], [ring('rings-a', 37.77), ring('rings-b', 37.78), ring('rings-c', 37.8), { ...ring('rings-d', 37.7701), hidden: true }]);
+    g.flight.pos = { ...g.world.point({ lat: 37.77, lon: -122.42 }) };
+    expect(nearestOpen(g, 5).map((n) => n.def.id)).toEqual(['rings-a', 'rings-b', 'rings-c']);
+    expect(nearestOpen(g, 1).map((n) => n.def.id)).toEqual(['rings-a']);
+    expect(nearestOpen(g, 5, 2000).map((n) => n.def.id)).toEqual(['rings-a', 'rings-b']);
+    expect(nearestOpen(g, 5)[1].dist).toBeCloseTo(1112, -1);
+  });
+});

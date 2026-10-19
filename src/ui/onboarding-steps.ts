@@ -1,5 +1,6 @@
 import type { Game } from '../game';
 import type { ActivityDef } from '../activities/types';
+import { nearestOpen } from './nearby';
 
 export interface OnboardStep {
   id: string;
@@ -20,19 +21,7 @@ export const STEPS: OnboardStep[] = [
 export const FLAG = 'onboarded';
 
 export function firstActivity(game: Game): ActivityDef | null {
-  const p = game.flight.pos;
-  let best: ActivityDef | null = null;
-  let bestD = Infinity;
-  for (const d of game.activities.list()) {
-    if (game.activities.kindOf(d).passive || d.hidden || game.save.isDone(d.id) || game.activities.locked(d)) continue;
-    const q = game.activities.position(d);
-    const dist = Math.hypot(q.x - p.x, q.z - p.z);
-    if (dist < bestD) {
-      bestD = dist;
-      best = d;
-    }
-  }
-  return best;
+  return nearestOpen(game, 1)[0]?.def ?? null;
 }
 
 export class OnboardingTracker {

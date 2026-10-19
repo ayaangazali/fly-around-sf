@@ -3,19 +3,22 @@ import { el } from './panel-host';
 import { cardFace, RARITY_LABEL } from './card-view';
 import { allCards, openCard } from './panels/dex';
 import { settingsOf } from './settings-model';
+import type { CardDef } from '../content/types';
 
 export function installCardReveal(game: Game): void {
   const queue: string[] = [];
   let showing = false;
+  let dismiss: (() => void) | null = null;
   const next = () => {
-    const id = queue.shift();
-    const card = id ? allCards().find((c) => c.id === id) : undefined;
-    if (!card) {
-      showing = false;
-      document.documentElement.classList.remove('revealing');
-      if (queue.length) next();
-      return;
+    showing = false;
+    document.documentElement.classList.remove('revealing');
+    if (game.panels.openId) return;
+    let card: CardDef | undefined;
+    while (!card && queue.length) {
+      const id = queue.shift();
+      card = allCards().find((c) => c.id === id);
     }
+    if (!card) return;
     showing = true;
     document.documentElement.classList.add('revealing');
     const root = el('div', `reveal rarity-${card.rarity}`);
@@ -43,6 +46,7 @@ export function installCardReveal(game: Game): void {
     const close = () => {
       if (closed) return;
       closed = true;
+      dismiss = null;
       root.classList.add('out');
       setTimeout(() => {
         root.remove();
@@ -54,8 +58,11 @@ export function installCardReveal(game: Game): void {
       openCard(game, card.id);
     });
     keep.addEventListener('click', close);
-    setTimeout(close, 6500);
+    dismiss = close;
+    setTimeout(close, queue.length ? 3000 : 6500);
   };
+  game.bus.on('panel:open', () => dismiss?.());
+  game.bus.on('panel:close', () => !showing && queue.length && next());
   game.bus.on('card:unlock', ({ id }) => {
     queue.push(id);
     if (!showing) next();

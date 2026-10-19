@@ -239,3 +239,12 @@ canvas#view { transition: filter 0.25s ease; }
 }
 .hud-battery { flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 8px 12px; }
 .hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }
+.compass-pip { --c: var(--accent-2); position: absolute; bottom: 3px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--c); box-shadow: 0 0 6px var(--c); pointer-events: none; }
+.compass-pip[hidden] { display: none; }
+.menu-next { margin-top: 18px; display: grid; gap: 6px; }
+.menu-next h3 { margin: 0 0 4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2); }
+.menu-next-item { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 10px; min-height: 48px; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); text-align: left; transition: background 0.15s; }
+.menu-next-item:hover { background: rgba(255, 106, 61, 0.12); border-color: rgba(255, 106, 61, 0.45); }
+.menu-next-icon { font-size: 18px; text-align: center; }
+.menu-next-item small { font: 500 12px var(--mono); color: var(--ink-dim); }
+@media (max-width: 640px) { .menu-next-item { grid-template-columns: 28px 1fr; } .menu-next-item small { grid-column: 2; } }
