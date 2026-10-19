@@ -39,6 +39,21 @@ export class Terrain {
     return (a * (1 - dx) + b * dx) * (1 - dz) + (c * (1 - dx) + d * dx) * dz;
   }
 
+  meshHeightAt(x: number, z: number, stride: number): number {
+    const fx = (x - this.minX) / (this.cell * stride);
+    const fz = (z - this.minZ) / (this.cell * stride);
+    const q = Math.floor(fx);
+    const r = Math.floor(fz);
+    const u = fx - q;
+    const v = fz - r;
+    const a = this.at(q * stride, r * stride);
+    const b = this.at((q + 1) * stride, r * stride);
+    const d = this.at(q * stride, (r + 1) * stride);
+    if (u + v <= 1) return a + (b - a) * u + (d - a) * v;
+    const e = this.at((q + 1) * stride, (r + 1) * stride);
+    return e + (d - e) * (1 - u) + (b - e) * (1 - v);
+  }
+
   buildMesh(stride: number): THREE.Mesh {
     const cols = Math.floor((this.w - 1) / stride) + 1;
     const rows = Math.floor((this.h - 1) / stride) + 1;
