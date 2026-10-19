@@ -151,6 +151,7 @@ export class Game {
       }
       return out.buffer;
     };
+    const content = Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()));
     onProgress(0, 'Downloading terrain');
     const terrain = Terrain.parse(await fetchBin('terrain.bin', 0, 0.15));
     const cityBuf = await fetchBin('city.bin', 0.15, 0.6);
@@ -175,7 +176,7 @@ export class Game {
     for (const l of landmarks) l.build(this);
 
     const kinds = Object.values(import.meta.glob<ActivityKind>('./activities/kinds/*.ts', { eager: true, import: 'kind' }));
-    const defs = (await Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()))).flat();
+    const defs = (await content).flat();
     const errors = this.activities.register(kinds, defs);
     if (errors.length) console.warn(`content errors:\n${errors.join('\n')}`);
 
