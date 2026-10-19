@@ -2,10 +2,11 @@ import * as THREE from 'three';
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
 import { el } from './panel-host';
-import { bearingDeg, edgePoint, formatDistance, headingDeg, relativeDeg } from './map-view';
+import { avoidBoxes, bearingDeg, edgePoint, formatDistance, headingDeg, relativeDeg, type Box } from './map-view';
 
 const userWaypoints = new WeakSet<object>();
 const ARRIVE = 30;
+const WIDGETS = '.minimap, .hud-stats, .onboard, .stick, .touch-buttons';
 
 export function setWaypoint(game: Game, p: Vec3, label: string): void {
   const wp = { x: p.x, y: p.y, z: p.z, label };
@@ -36,6 +37,9 @@ export function installWaypoint(game: Game): { update(): void } {
   game.hud.root.append(marker);
   game.hud.root.querySelector('.hud-compass')?.append(compassPip);
   const v = new THREE.Vector3();
+  let boxes: Box[] = [];
+  let foot: Box = { left: 0, top: 0, right: 0, bottom: 0 };
+  let measured = -Infinity;
   return {
     update() {
       const t = guideTarget(game);
@@ -77,8 +81,16 @@ export function installWaypoint(game: Game): { update(): void } {
         dy = -dy;
       }
       if (Math.hypot(dx, dy) < 1) dy = 1;
-      const e = edgePoint(dx, dy, W / 2 - 56, H / 2 - 70);
-      marker.style.transform = `translate(${W / 2 + e.x}px, ${H / 2 + e.y}px)`;
+      const now = performance.now();
+      if (now - measured > 500) {
+        measured = now;
+        boxes = [...game.ui.querySelectorAll(WIDGETS)].map((n) => n.getBoundingClientRect()).filter((r) => r.width > 0);
+        const half = Math.max(18, label.offsetWidth / 2) + 6;
+        foot = { left: half, right: half, top: 20, bottom: label.offsetTop + label.offsetHeight + 6 };
+      }
+      const e = edgePoint(dx, dy, W / 2 - 90, H / 2 - 70);
+      const at = avoidBoxes(W / 2 + e.x, H / 2 + e.y, boxes, foot, W, H);
+      marker.style.transform = `translate(${at.x}px, ${at.y}px)`;
       arrow.style.transform = `rotate(${e.angle}rad)`;
     },
   };

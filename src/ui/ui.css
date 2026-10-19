@@ -46,12 +46,12 @@
 .wp-compass.edge { opacity: 0.55; }
 .wp-compass[hidden] { display: none; }
 
-.wp { position: absolute; left: 0; top: 0; pointer-events: none; will-change: transform; }
+.wp { position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none; will-change: transform; }
 .wp[hidden] { display: none; }
 .wp-ring { position: absolute; left: -16px; top: -16px; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: 0 0 0 4px rgba(255, 106, 61, 0.2), 0 0 18px rgba(255, 106, 61, 0.6); animation: wp-pulse 1.8s ease-in-out infinite; }
 .wp-ring::after { content: ''; position: absolute; inset: 9px; border-radius: 50%; background: var(--accent); }
 @keyframes wp-pulse { 50% { box-shadow: 0 0 0 10px rgba(255, 106, 61, 0), 0 0 24px rgba(255, 106, 61, 0.8); } }
-.wp-label { position: absolute; left: 0; top: 22px; transform: translateX(-50%); display: grid; justify-items: center; padding: 4px 10px; border-radius: 10px; background: var(--glass-strong); border: 1px solid rgba(255, 106, 61, 0.45); white-space: nowrap; }
+.wp-label { position: absolute; left: 0; top: 22px; width: max-content; transform: translateX(-50%); display: grid; justify-items: center; padding: 4px 10px; border-radius: 10px; background: var(--glass-strong); border: 1px solid rgba(255, 106, 61, 0.45); white-space: nowrap; }
 .wp-label b { font-size: 12px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
 .wp-label span { font: 600 12px var(--mono); color: var(--accent-2); }
 .wp-arrow { display: none; position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; }

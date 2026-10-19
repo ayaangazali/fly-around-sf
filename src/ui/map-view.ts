@@ -71,3 +71,25 @@ export function edgePoint(dx: number, dy: number, halfW: number, halfH: number):
   const k = Math.min(halfW / Math.abs(Math.cos(angle) || 1e-9), halfH / Math.abs(Math.sin(angle) || 1e-9));
   return { x: Math.cos(angle) * k, y: Math.sin(angle) * k, angle };
 }
+
+export interface Box {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
+export function avoidBoxes(x: number, y: number, boxes: Box[], f: Box, w: number, h: number): { x: number; y: number } {
+  const hit = (px: number, py: number) => boxes.some((b) => px + f.right > b.left && px - f.left < b.right && py + f.bottom > b.top && py - f.top < b.bottom);
+  if (!hit(x, y)) return { x, y };
+  const free = boxes
+    .flatMap((b) => [
+      { x: b.left - f.right, y },
+      { x: b.right + f.left, y },
+      { x, y: b.top - f.bottom },
+      { x, y: b.bottom + f.top },
+    ])
+    .filter((p) => p.x - f.left >= 0 && p.x + f.right <= w && p.y - f.top >= 0 && p.y + f.bottom <= h && !hit(p.x, p.y));
+  free.sort((a, b) => Math.hypot(a.x - x, a.y - y) - Math.hypot(b.x - x, b.y - y));
+  return free[0] ?? { x, y };
+}

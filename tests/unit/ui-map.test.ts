@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fakeGame } from './helpers';
-import { bearingDeg, clampView, edgePoint, fitScale, formatDistance, headingDeg, panBy, relativeDeg, toScreen, toWorld, zoomAt, MAX_SCALE, MIN_SCALE, type MapView } from '../../src/ui/map-view';
+import { avoidBoxes, bearingDeg, clampView, edgePoint, fitScale, formatDistance, headingDeg, panBy, relativeDeg, toScreen, toWorld, zoomAt, MAX_SCALE, MIN_SCALE, type MapView } from '../../src/ui/map-view';
 import { kindColor, mappable } from '../../src/ui/map-style';
 import { guideTarget } from '../../src/ui/waypoint';
 import { forwardVector } from '../../src/player/flight';
@@ -85,6 +85,17 @@ describe('waypoint', () => {
     const corner = edgePoint(-400, 300, 400, 300);
     expect(corner.x).toBeCloseTo(-400);
     expect(corner.y).toBeCloseTo(300);
+  });
+
+  it('[R-WAYPOINT] the edge arrow and its label step out from under HUD widgets to the nearest free spot', () => {
+    const minimap = { left: 1100, top: 620, right: 1250, bottom: 770 };
+    const stats = { left: 16, top: 720, right: 400, bottom: 780 };
+    const foot = { left: 60, right: 60, top: 20, bottom: 70 };
+    expect(avoidBoxes(640, 600, [minimap, stats], foot, 1280, 800)).toEqual({ x: 640, y: 600 });
+    expect(avoidBoxes(1150, 720, [minimap, stats], foot, 1280, 800)).toEqual({ x: 1040, y: 720 });
+    expect(avoidBoxes(1200, 600, [minimap, stats], foot, 1280, 800)).toEqual({ x: 1200, y: 550 });
+    expect(avoidBoxes(300, 700, [stats], foot, 1280, 800)).toEqual({ x: 300, y: 650 });
+    expect(avoidBoxes(300, 700, [{ left: 0, top: 0, right: 1280, bottom: 800 }], foot, 1280, 800)).toEqual({ x: 300, y: 700 });
   });
 
   it('[R-WAYPOINT] a player waypoint wins over the active activity target', () => {
