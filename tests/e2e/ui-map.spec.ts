@@ -66,8 +66,9 @@ test.describe('map and waypoints', () => {
   test('[R-WAYPOINT] the HUD marker shows distance, flips to an edge arrow when behind, and clears on arrival', async ({ page }) => {
     await boot(page);
     await page.evaluate(() => window.__fly.game.panels.open('journal'));
-    const label = await page.locator('.journal-item strong').first().textContent();
-    await page.locator('.journal-go').first().click();
+    const far = page.locator('.journal-item').filter({ has: page.locator('.journal-meta', { hasText: / km/ }) }).first();
+    const label = await far.locator('strong').textContent();
+    await far.locator('.journal-go').click();
     await page.evaluate(() => {
       const w = window.__fly.game.waypoint!;
       window.__fly.teleport({ x: w.x, y: w.y, z: w.z + 400 }, 0);

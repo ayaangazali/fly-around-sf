@@ -3,7 +3,8 @@ import { test, expect, boot } from './fixtures';
 import type { Page } from '@playwright/test';
 
 const serious = async (page: Page, selector: string) => {
-  const r = await new AxeBuilder({ page }).include(selector).analyze();
+  await page.locator(selector).evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished)));
+  const r =await new AxeBuilder({ page }).include(selector).analyze();
   return r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);
 };
 
