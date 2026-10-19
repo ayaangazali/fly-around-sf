@@ -1,4 +1,4 @@
-import { ShapeUtils, Vector2 } from 'three';
+import { Color, ShapeUtils, Vector2 } from 'three';
 
 export const CHUNK = 500;
 const SKIRT = 3;
@@ -26,14 +26,12 @@ export interface ChunkGeometry {
   buildings: number;
 }
 
+const linear = (hex: string) => new Color(hex).toArray().map((c) => Math.round(c * 255));
 const LOW_PALETTE = [
-  [238, 232, 220], [244, 236, 214], [226, 214, 196], [236, 222, 204], [214, 226, 232],
-  [240, 220, 206], [222, 230, 214], [232, 210, 196], [210, 214, 224], [246, 240, 228],
-  [200, 216, 206], [236, 200, 186],
-];
-const TALL_PALETTE = [
-  [176, 190, 204], [196, 200, 206], [160, 176, 192], [212, 206, 196], [150, 166, 178],
-];
+  '#f1eadb', '#e9dcc0', '#d7c8a8', '#efd08a', '#e8b48a', '#d9826b', '#c98f9e', '#b8a2c8', '#8fb2d4',
+  '#b9cfe0', '#6f8fb3', '#9cc2ae', '#a7b98c', '#5e8a7a', '#c4694c', '#9a5a48', '#8c8f96',
+].map(linear);
+const TALL_PALETTE = ['#8fa9c0', '#b4c0cb', '#6d859b', '#cfc4b0', '#9a9da3', '#5f7384'].map(linear);
 
 function hash(n: number): number {
   let h = n | 0;
