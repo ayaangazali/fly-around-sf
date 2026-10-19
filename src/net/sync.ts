@@ -26,27 +26,33 @@ export function mergeSaves(local: SaveData, incoming: SaveData): MergeResult {
   const cards = [...new Set([...a.cards, ...b.cards])];
   const stats = { ...a.stats };
   for (const k of Object.keys(stats) as (keyof SaveData['stats'])[]) stats[k] = Math.max(a.stats[k] ?? 0, b.stats[k] ?? 0);
+  const flags = { ...b.flags, ...a.flags };
+  for (const [k, v] of Object.entries(b.flags)) if (typeof v === 'number' && typeof flags[k] === 'number') flags[k] = Math.max(v, flags[k] as number);
+  const daily = String(b.flags['daily:last'] ?? '') > String(a.flags['daily:last'] ?? '') ? b : a;
+  for (const k of ['daily:last', 'daily:streak']) if (k in daily.flags) flags[k] = daily.flags[k];
   return {
-    save: { ...a, completed, best, cards, xp: Math.max(a.xp, b.xp), flags: { ...b.flags, ...a.flags }, stats },
+    save: { ...a, completed, best, cards, xp: Math.max(a.xp, b.xp), flags, stats },
     added,
     cards: cards.length - a.cards.length,
   };
 }
 
 export interface Known {
-  activities: Set<string>;
+  activities: Map<string, string>;
   cards: Set<string>;
 }
 
 export function knownContent(game: Game): Known {
   const defs = [...game.activities.defs.values()];
-  return { activities: new Set(defs.map((d) => d.id)), cards: new Set([...loadCards().map((c) => c.id), ...defs.flatMap((d) => (d.card ? [d.card] : []))]) };
+  return { activities: new Map(defs.map((d) => [d.id, d.kind])), cards: new Set([...loadCards().map((c) => c.id), ...defs.flatMap((d) => (d.card ? [d.card] : []))]) };
 }
 
 const MAX_XP = 10_000_000;
 const MAX_STAT = 1e9;
 const MAX_BEST = 86_400;
-const MP_FLAGS = ['mpPlayed', 'mpWins'];
+const COUNTERS = ['mpPlayed', 'mpWins', 'daily:streak', 'daily:count'];
+const MAX_SHARE = 300;
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 const positive = (v: unknown, max: number): v is number => typeof v === 'number' && Number.isFinite(v) && v > 0 && v <= max;
 const clamp = (v: unknown, max: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.min(max, Math.max(0, v)) : 0);
@@ -57,7 +63,20 @@ export function cleanSave(raw: SaveData, known: Known): SaveData {
   const stats = { ...base.stats };
   for (const k of Object.keys(stats) as (keyof SaveData['stats'])[]) stats[k] = clamp(raw.stats[k], MAX_STAT);
   const flags: SaveData['flags'] = {};
-  for (const f of MP_FLAGS) if (positive(raw.flags[f], MAX_STAT)) flags[f] = Math.floor(raw.flags[f] as number);
+  for (const [k, v] of Object.entries(raw.flags)) {
+    const [, head, id = ''] = /^(\w+):(.+)$/.exec(k) ?? [];
+    const kind = known.activities.get(id);
+    const ok = COUNTERS.includes(k)
+      ? positive(v, MAX_STAT)
+      : head === 'medal'
+        ? !!kind && positive(v, 3)
+        : head === 'points'
+          ? !!kind && positive(v, kind === 'photo' ? 3 : 100)
+          : k === 'daily:last'
+            ? typeof v === 'string' && DATE.test(v)
+            : head === 'daily' && DATE.test(id) && typeof v === 'string' && v.length <= MAX_SHARE;
+    if (ok) flags[k] = typeof v === 'number' ? Math.floor(v) : v;
+  }
   return {
     ...base,
     completed: keep(raw.completed, Number.MAX_SAFE_INTEGER),
