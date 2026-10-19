@@ -4,7 +4,7 @@ import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { Game } from '../../game';
 import { loadCards, type CardDef } from '../../content/types';
-import { answerOffline, bestQuote, contextFor, entriesFrom, formatDistance, nearest, search, whatIsThat, type Answer, type LoreEntry, type Sighting } from '../../ai/lore';
+import { answerOffline, bestQuote, contextFor, entriesFrom, formatDistance, nearest, pointsAhead, search, whatIsThat, type Answer, type LoreEntry, type Sighting } from '../../ai/lore';
 import { askLive, proxyUrl } from '../../ai/live';
 
 declare module '../../core/bus' {
@@ -23,6 +23,7 @@ interface Exchange {
 }
 
 const thread: Exchange[] = [];
+let redraw: (() => void) | null = null;
 const MAX_THREAD = 20;
 const MAX_QUESTION = 300;
 
@@ -50,12 +51,13 @@ export const panel: Panel & { cards: CardDef[] | null } = {
     );
     const imperial = game.save.data.settings.units === 'imperial';
     const pos = () => ({ x: game.flight.pos.x, z: game.flight.pos.z });
-    let disposed = false;
+    const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+    const cards = entries.filter((e) => e.card).length;
 
     const mode = el('p', 'ask-mode');
     const drawMode = () => {
       const url = liveUrl(game);
-      mode.replaceChildren(el('span', `ask-dot ${url ? 'live' : ''}`), el('span', '', url ? 'Live guide on, with the archive as backup' : `Archive mode · ${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} of handwritten lore`));
+      mode.replaceChildren(el('span', `ask-dot ${url ? 'live' : ''}`), el('span', '', url ? 'Live guide on, with the archive as backup' : `Archive mode · ${plural(cards, 'lore card')}, ${plural(entries.length - cards, 'place')}`));
     };
     drawMode();
 
@@ -194,7 +196,7 @@ export const panel: Panel & { cards: CardDef[] | null } = {
         }
       } else x.mode = 'offline';
       game.bus.emit('ask:answer', { question: x.question, entry: x.answer.entry?.id ?? null, mode: x.mode as 'offline' | 'live' | 'fallback' });
-      if (!disposed) drawThread();
+      redraw?.();
     };
 
     const push = (x: Exchange) => {
@@ -205,15 +207,16 @@ export const panel: Panel & { cards: CardDef[] | null } = {
     const ask = (raw: string) => {
       const question = raw.trim().slice(0, MAX_QUESTION);
       if (!question) return;
+      input.value = '';
+      if (pointsAhead(question, entries)) return lookAhead();
       const answer = answerOffline(question, entries, pos());
       const x: Exchange = { question, sighting: null, answer, live: null, mode: 'offline' };
       push(x);
-      input.value = '';
       const matches = search(question, entries, pos()).map((m) => m.entry);
       void settle(x, matches.length ? matches : answer.related);
     };
 
-    look.addEventListener('click', () => {
+    const lookAhead = () => {
       const s = whatIsThat(entries, cameraPose(game));
       if (!s) {
         const empty = answerOffline('', []);
@@ -222,7 +225,7 @@ export const panel: Panel & { cards: CardDef[] | null } = {
         return;
       }
       const target = s.entry;
-      const away = `${formatDistance(s.dist, imperial)} ${s.side === 'behind' ? 'behind you' : s.side === 'ahead' ? 'ahead' : `to your ${s.side}`}`;
+      const away = `${formatDistance(s.dist, imperial)} ${s.side === 'behind' ? 'behind you' : s.side === 'ahead' ? 'away, just off your heading' : `to your ${s.side}`}`;
       const answer: Answer = {
         entry: target,
         lead: s.ahead ? `That is ${target.name}.` : `Nothing I know is straight ahead. The closest is ${target.name}, ${away}.`,
@@ -232,7 +235,8 @@ export const panel: Panel & { cards: CardDef[] | null } = {
       const x: Exchange = { question: s.ahead ? `What is ${target.name}?` : 'What is that?', sighting: s, answer, live: null, mode: 'offline' };
       push(x);
       void settle(x, [target]);
-    });
+    };
+    look.addEventListener('click', lookAhead);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -265,10 +269,11 @@ export const panel: Panel & { cards: CardDef[] | null } = {
     cfg.append(cfgSummary, cfgHelp, cfgRow);
 
     root.append(mode, look, form, chips, list, cfg);
+    redraw = drawThread;
     drawThread();
     if (matchMedia('(pointer: fine)').matches) queueMicrotask(() => input.focus());
     return () => {
-      disposed = true;
+      if (redraw === drawThread) redraw = null;
     };
   },
 };

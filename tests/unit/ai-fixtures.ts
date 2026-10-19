@@ -36,7 +36,7 @@ export const FIXTURE_CARDS: CardDef[] = [
     at: { lat: 37.7952, lon: -122.4028 },
     year: 1972,
     blurb: 'The spire that defines the skyline.',
-    lore: 'The Transamerica Pyramid was completed in 1972 and was the tallest building in San Francisco until 2018. It rises 853 feet.',
+    lore: 'The Transamerica Pyramid was completed in 1972 and was the tallest building in San Francisco until 2017. It rises 853 feet.',
     facts: ['Architect William Pereira designed it.'],
     sources: ['https://en.wikipedia.org/wiki/Transamerica_Pyramid'],
   },

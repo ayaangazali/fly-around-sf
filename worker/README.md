@@ -8,9 +8,11 @@ The browser never sees the API key. It posts the question plus the nearest card 
 
 You need a Cloudflare account and an Anthropic API key from https://platform.claude.com.
 
+**Cap your spend first.** The `Origin` allowlist only stops other websites from calling the worker from a browser. Any script can send the allowed `Origin` header (the `curl` check below does exactly that), so the per-IP limit of 10 questions a minute is the only other guard, and someone with many IPs can still run up your bill. Before deploying, set a monthly spend limit in the Claude Console: Billing page (https://platform.claude.com/settings/billing), **Spend limits**, **Adjust limit**. Better still, create the key in its own workspace and give that workspace a low spend limit (the default workspace cannot have one). Once a limit is hit the API refuses requests, the worker returns `upstream_error`, and the game answers from the archive. See https://platform.claude.com/docs/en/api/rate-limits#setting-your-own-spend-limit. If the bill climbs anyway, `wrangler secret delete ANTHROPIC_API_KEY` or `wrangler delete` turns the guide off and the game falls back to the archive.
+
 ```sh
 cd worker
-pnpm install
+pnpm install                                     # pnpm-workspace.yaml allows the esbuild and workerd build scripts wrangler needs
 pnpm exec wrangler login                         # opens the browser once
 pnpm exec wrangler secret put ANTHROPIC_API_KEY  # paste the key when asked
 pnpm exec wrangler deploy                        # prints https://fly-around-sf-ask.<you>.workers.dev
@@ -56,8 +58,8 @@ At most 4 context notes. Success is `200 { "answer": "...", "model": "claude-opu
 | 500 | `not_configured` | No `ANTHROPIC_API_KEY` secret |
 | 502 | `upstream_error`, `upstream_refused`, `upstream_empty` | The API failed, declined, or returned no text |
 | 503 | `upstream_busy` | The API rate limited the worker |
-| 504 | `upstream_timeout` | No answer within 20 s |
+| 504 | `upstream_timeout` | No answer within 12 s (one attempt, no retries) |
 
-The game treats any non-200 or a 15 s timeout as "live guide unreachable" and answers from the archive instead.
+The worker gives up before the game does. The game treats any non-200 or a 15 s timeout as "live guide unreachable" and answers from the archive instead.
 
 Tests live in `tests/unit/ai-worker.test.ts` at the repo root and run with `pnpm test`.

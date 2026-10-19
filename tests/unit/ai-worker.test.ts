@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import worker, { DEFAULT_ORIGINS, MAX_BODY_BYTES, MODEL, SYSTEM_PROMPT, handle, parseAsk, resetRateLimits, userMessage, type Env } from '../../worker/src/index';
-import { askLive, proxyUrl } from '../../src/ai/live';
+import worker, { DEFAULT_ORIGINS, MAX_BODY_BYTES, MODEL, SYSTEM_PROMPT, UPSTREAM_TIMEOUT_MS, handle, parseAsk, resetRateLimits, userMessage, type Env } from '../../worker/src/index';
+import { LIVE_TIMEOUT_MS, askLive, proxyUrl } from '../../src/ai/live';
 
 const ORIGIN = 'https://ayaangazali.github.io';
 const env: Env = { ANTHROPIC_API_KEY: 'sk-ant-test-key' };
@@ -131,10 +131,13 @@ describe('Cloudflare Worker proxy', () => {
     expect(f).not.toHaveBeenCalled();
   });
 
-  it('[R-AI-WORKER] maps upstream failures, refusals and a missing key to clear error JSON', async () => {
+  it('[R-AI-WORKER] maps upstream failures, refusals and a missing key to clear error JSON, without retrying past the game timeout', async () => {
     expect((await read(await handle(req(), {}, upstream()))).body.error).toBe('not_configured');
-    const r500 = await read(await handle(req(), env, upstream(500, { type: 'error', error: { type: 'api_error', message: 'boom' } })));
+    const failing = upstream(500, { type: 'error', error: { type: 'api_error', message: 'boom' } });
+    const r500 = await read(await handle(req(), env, failing));
     expect(r500.status).toBe(502);
+    expect(failing).toHaveBeenCalledTimes(1);
+    expect(UPSTREAM_TIMEOUT_MS).toBeLessThan(LIVE_TIMEOUT_MS);
     expect(r500.body).toEqual({ error: 'upstream_error', message: 'Upstream error 500.' });
     const r429 = await read(await handle(req(), env, upstream(429, { type: 'error', error: { type: 'rate_limit_error', message: 'slow' } })));
     expect(r429.status).toBe(503);

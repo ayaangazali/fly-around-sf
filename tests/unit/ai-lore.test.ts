@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { toLocal } from '../../src/core/geo';
-import { answerOffline, bestQuote, contextFor, entriesFrom, formatDistance, leadFor, nearest, search, sentences, tokens, whatIsThat } from '../../src/ai/lore';
+import { answerOffline, bestQuote, contextFor, entriesFrom, formatDistance, leadFor, nearest, pointsAhead, search, sentences, tokens, whatIsThat } from '../../src/ai/lore';
 import type { ActivityDef } from '../../src/activities/types';
 import { FIXTURE_CARDS } from './ai-fixtures';
 import { loadDefs } from './helpers';
@@ -29,7 +29,7 @@ describe('Ask the City offline answers', () => {
   });
 
   it('[R-AI-ASK] quotes the sentence that answers how tall, when and who', () => {
-    expect(answerOffline('How tall is the Transamerica Pyramid?', entries).quote).toBe('The Transamerica Pyramid was completed in 1972 and was the tallest building in San Francisco until 2018. It rises 853 feet.');
+    expect(answerOffline('How tall is the Transamerica Pyramid?', entries).quote).toBe('The Transamerica Pyramid was completed in 1972 and was the tallest building in San Francisco until 2017. It rises 853 feet.');
     expect(answerOffline('Who designed the Transamerica Pyramid?', entries).quote).toBe('Architect William Pereira designed it.');
     expect(answerOffline('How long is the main span of the Golden Gate Bridge?', entries).quote).toBe('The main span is 4,200 feet long.');
     expect(answerOffline('What year were the Coit Tower murals painted?', entries).quote).toMatch(/murals painted in 1934/);
@@ -81,6 +81,8 @@ describe('Ask the City offline answers', () => {
     const alone = answerOffline('golden gate', entriesFrom([], defs));
     expect(alone.entry?.card).toBeNull();
     expect(alone.quote.length).toBeGreaterThan(5);
+    expect(alone.lead).toBe('Here is what the map knows:');
+    expect(answerOffline('golden gate', entries).lead).not.toBe('Here is what the map knows:');
   });
 
   it('[R-AI-ASK] splits lore into sentences, keeps leads deterministic and builds bounded live context', () => {
@@ -118,6 +120,11 @@ describe('Ask the City offline answers', () => {
     expect(whatIsThat(entries, { ...from, yaw: Math.PI })!.side).toBe('left');
     expect(whatIsThat(entries, { ...coit, yaw: 1 })!.ahead).toBe(true);
     expect(whatIsThat([{ ...entries[0], at: null }], { x: 0, z: 0, yaw: 0 })).toBeNull();
+  });
+
+  it('[R-AI-WHAT] typed "what is that" questions defer to the camera unless they name a place', () => {
+    for (const q of ['what is that over there', "What's this?", 'whats that', 'What am I looking at?']) expect(pointsAhead(q, entries), q).toBe(true);
+    for (const q of ['what is that tower on Telegraph Hill', 'What is Coit Tower?', 'tell me about that', 'how tall is this']) expect(pointsAhead(q, entries), q).toBe(false);
   });
 
   it('[R-AI-ASK] formats distances in metric and imperial', () => {

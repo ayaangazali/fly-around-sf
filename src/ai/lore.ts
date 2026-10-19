@@ -165,7 +165,13 @@ export function answerOffline(question: string, entries: LoreEntry[], pos: { x: 
     .filter((h) => h.score >= best.score * 0.4)
     .slice(0, 3)
     .map((h) => h.entry);
-  return { entry: best.entry, lead: leadFor(question), quote: bestQuote(best.entry, question), related };
+  return { entry: best.entry, lead: sentences(best.entry).length ? leadFor(question) : 'Here is what the map knows:', quote: bestQuote(best.entry, question), related };
+}
+
+const POINTING = /^(what(['’]?s| is) (that|this)|what am i looking at)\b/i;
+
+export function pointsAhead(question: string, entries: LoreEntry[]): boolean {
+  return POINTING.test(question.trim()) && (search(question, entries)[0]?.score ?? 0) < MIN_SCORE;
 }
 
 export function nearest(entries: LoreEntry[], pos: { x: number; z: number } | null, n: number): LoreEntry[] {

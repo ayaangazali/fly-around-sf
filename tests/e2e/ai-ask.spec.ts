@@ -43,7 +43,7 @@ test.describe('Ask the City', () => {
     const errors = await setup(page);
     await openAsk(page);
     await expect(page.locator('.ask-input').first()).toBeFocused();
-    await expect(page.locator('.ask-mode')).toContainText('Archive mode');
+    await expect(page.locator('.ask-mode')).toContainText('Archive mode · 3 lore cards, ');
     await expect(page.locator('.ask-chip').first()).toBeVisible();
     await askQuestion(page, 'Who paid for the tower on Telegraph Hill?');
     const x = page.locator('.ask-x').first();
@@ -81,6 +81,31 @@ test.describe('Ask the City', () => {
     expect(bodies).toHaveLength(1);
     expect(bodies[0].question).toBe('Tell me about Coit Tower');
     expect(bodies[0].context[0].name).toBe('Coit Tower');
+  });
+
+  test('[R-AI-PROXY] a live answer that lands while the panel was closed shows when it reopens', async ({ page }) => {
+    let release!: () => void;
+    const held = new Promise<void>((r) => (release = r));
+    await page.route(`${PROXY}**`, async (route: Route) => {
+      if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204, headers: cors });
+      await held;
+      await route.fulfill({ status: 200, headers: { ...cors, 'content-type': 'application/json' }, body: JSON.stringify({ answer: 'Ah, the Golden Gate! It opened in 1937.' }) });
+    });
+    await setup(page, FIXTURE_CARDS, PROXY);
+    await openAsk(page);
+    await askQuestion(page, 'When did the bridge open?');
+    await expect(page.locator('.ask-x').first()).toHaveAttribute('data-mode', 'pending');
+    await page.evaluate(() => {
+      const g = window.__fly.game;
+      g.panels.close();
+      g.panels.open('ask');
+    });
+    await expect(page.locator('.ask-x').first()).toHaveAttribute('data-mode', 'pending');
+    release();
+    const x = page.locator('.ask-x').first();
+    await expect(x).toHaveAttribute('data-mode', 'live');
+    await expect(x.locator('.ask-live')).toHaveText('Ah, the Golden Gate! It opened in 1937.');
+    await expect(page.locator('.ask-shimmer')).toHaveCount(0);
   });
 
   test('[R-AI-PROXY] falls back to the offline archive when the proxy returns 500', async ({ page }) => {
@@ -124,6 +149,24 @@ test.describe('Ask the City', () => {
     expect(wp?.label).toBe('Coit Tower');
   });
 
+  test('[R-AI-WHAT] a typed "what is that" uses the camera like the button does', async ({ page }) => {
+    await setup(page);
+    await page.evaluate(() => {
+      const g = window.__fly.game;
+      const from = g.world.toLocal(37.8, -122.418);
+      const to = g.world.toLocal(37.7952, -122.4028);
+      window.__fly.teleport(g.world.point({ lat: 37.8, lon: -122.418, alt: 60 }), Math.atan2(-(to.x - from.x), -(to.z - from.z)));
+      window.__fly.step(0.1);
+    });
+    await page.waitForTimeout(300);
+    await openAsk(page);
+    await askQuestion(page, 'what is that over there');
+    const x = page.locator('.ask-x').first();
+    await expect(x.locator('.ask-q')).toContainText('You pointed at Transamerica Pyramid');
+    await expect(x.locator('.ask-lead')).toHaveText('That is Transamerica Pyramid.');
+    await expect(page.locator('.ask-input').first()).toHaveValue('');
+  });
+
   test('[R-AI-WHAT] facing away it says where the closest place is', async ({ page }) => {
     await setup(page);
     await page.evaluate(() => {
@@ -162,6 +205,8 @@ test.describe('Ask the City', () => {
     const x = page.locator('.ask-x').first();
     await expect(x.locator('.ask-entry strong')).toHaveText('Golden Gate Bridge');
     await expect(x.locator('.ask-tag')).toHaveText('place');
+    await expect(x.locator('.ask-lead')).toHaveText('Here is what the map knows:');
+    await expect(page.locator('.ask-mode')).toContainText('0 lore cards, ');
     await expect(x.locator('[data-ask="dex"]')).toHaveCount(0);
     await askQuestion(page, 'best ramen recipe');
     await expect(page.locator('.ask-x').first().locator('.ask-quote')).toContainText('Nothing in the archive');

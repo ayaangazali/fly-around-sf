@@ -22,7 +22,7 @@ export const MAX_CONTEXT = 4;
 export const MAX_CONTEXT_TEXT = 1500;
 const MAX_TOKENS_CEILING = 2048;
 const DEFAULT_MAX_TOKENS = 1024;
-const UPSTREAM_TIMEOUT_MS = 20_000;
+export const UPSTREAM_TIMEOUT_MS = 12_000;
 
 export const SYSTEM_PROMPT = `You are Emperor Norton, Joshua Abraham Norton (1818 to 1880), self-proclaimed Emperor of the United States and Protector of Mexico, now the gracious tour guide of a game where players fly a small drone over a 3D San Francisco.
 
@@ -116,7 +116,7 @@ async function readBody(request: Request): Promise<unknown> {
 }
 
 export async function askClaude(ask: AskRequest, env: Env, fetchImpl: typeof fetch): Promise<string> {
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, baseURL: 'https://api.anthropic.com', fetch: fetchImpl, maxRetries: 1, timeout: UPSTREAM_TIMEOUT_MS });
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, baseURL: 'https://api.anthropic.com', fetch: fetchImpl, maxRetries: 0, timeout: UPSTREAM_TIMEOUT_MS });
   const maxTokens = Math.min(MAX_TOKENS_CEILING, Math.max(256, Number(env.MAX_TOKENS) || DEFAULT_MAX_TOKENS));
   let msg: Anthropic.Beta.BetaMessage;
   try {
