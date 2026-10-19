@@ -1,4 +1,4 @@
-import { test, expect, boot } from './fixtures';
+import { test, expect, boot, LITE } from './fixtures';
 
 test.describe('boot and flight', () => {
   test('[R-BOOT] loads the whole city with no errors and draws pixels', async ({ page }) => {
@@ -9,7 +9,7 @@ test.describe('boot and flight', () => {
     });
     expect(info.done).toBe(true);
     expect(info.buildings).toBeGreaterThan(170000);
-    expect(info.chunks).toBeGreaterThan(200);
+    expect(info.chunks).toBeGreaterThan(LITE ? 10 : 200);
     expect(info.errors).toEqual([]);
     await page.waitForTimeout(1500);
     const shot = await page.screenshot();

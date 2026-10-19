@@ -24,6 +24,7 @@ export interface GameOptions {
   spawn: { lat: number; lon: number; yaw: number } | null;
   quality: Quality;
   room: string | null;
+  cityRadius: number;
   base: string;
 }
 
@@ -54,6 +55,7 @@ export function parseOptions(search: string, base = './'): GameOptions {
     spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
     quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') ? 'low' : touch ? 'medium' : 'high',
     room: q.get('room'),
+    cityRadius: Number(q.get('cityRadius')) || 0,
     base,
   };
 }
@@ -180,6 +182,10 @@ export class Game {
       this.teleport(p, s.yaw);
     }
 
+    if (this.opts.cityRadius > 0) {
+      const { x, z } = this.flight.pos;
+      for (let b = 0; b < city.count; b++) if (Math.hypot(city.cx[b] - x, city.cz[b] - z) > this.opts.cityRadius) city.hidden[b] = 1;
+    }
     onProgress(0.65, 'Raising the skyline');
     const cityDone = this.cityRenderer.build(city, this.flight.pos.x, this.flight.pos.z);
     const systems = Object.values(import.meta.glob<GameSystem>('./systems/*.ts', { eager: true, import: 'system' }));
