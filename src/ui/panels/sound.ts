@@ -78,8 +78,12 @@ export const panel: Panel = {
       chips.set(spot.id, chip);
       title.append(el('strong', '', spot.name), chip);
       const links = el('div', 'snd-links');
+      const seen = new Map<string, number>();
       spot.sources.forEach((url) => {
-        const a = el('a', '', new URL(url).hostname.replace(/^www\./, ''));
+        const host = new URL(url).hostname.replace(/^www\./, '');
+        const n = (seen.get(host) ?? 0) + 1;
+        seen.set(host, n);
+        const a = el('a', '', n > 1 ? `${host} (${n})` : host);
         a.href = url;
         a.target = '_blank';
         a.rel = 'noopener';
@@ -108,16 +112,17 @@ export const panel: Panel = {
       const muted = audio?.engine.muted ?? readMix(settings).muted;
       const m = MOODS[audio?.mood() ?? 'day'];
       mood.textContent = !audio?.graph ? 'Sound starts with your first click or key press' : muted ? 'Muted' : `${m.label}, ${m.bpm} BPM`;
-      chord.textContent = running && audio?.music ? `Now playing ${audio.music.chord.name}` : 'Generated live, never the same twice';
+      chord.textContent = running && !muted && audio?.music ? `Now playing ${audio.music.chord.name}` : 'Generated live, never the same twice';
       eq.classList.toggle('on', running && !muted);
       mute.textContent = muted ? '🔇  Unmute' : '🔊  Mute';
       mute.setAttribute('aria-pressed', String(muted));
       const c = audio?.conditions() ?? { fog: game.sky?.fogDensity ?? 1, night: game.sky?.night ?? 0, hour: 12 };
       const p = game.flight.pos;
       for (const spot of PLACED) {
-        const playing = !!audio?.ambience?.live.has(spot.id) && running && !muted;
+        const inRange = !!audio?.ambience?.live.has(spot.id);
+        const playing = inRange && running && !muted;
         const chip = chips.get(spot.id) as HTMLElement;
-        chip.textContent = spotStatus(spot, c, closestOnLines(spot.local, p.x, p.z).d, playing);
+        chip.textContent = inRange && muted ? 'In earshot, sound is off' : spotStatus(spot, c, closestOnLines(spot.local, p.x, p.z).d, playing);
         chip.classList.toggle('live', playing);
       }
     };
