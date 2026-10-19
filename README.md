@@ -27,6 +27,9 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Every hard requirement in [req
 
 - Buildings: [DataSF Building Footprints](https://data.sf.gov/d/ynuv-fyni) (City and County of San Francisco).
 - Terrain and bathymetry: [Terrain Tiles on AWS](https://registry.opendata.aws/terrain-tiles/) (Mapzen, USGS, NOAA and others).
+- Streets, parks and street trees: [DataSF](https://datasf.org/opendata/).
+- Land cover: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL.
+- Stars: Yale Bright Star Catalog.
 
 ## Planning notes
 

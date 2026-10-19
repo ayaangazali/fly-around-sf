@@ -80,7 +80,8 @@ export function mountTitle(root: HTMLElement, room: string | null): Title {
   const error = el('div', 'loading-error');
   error.id = 'loading-error';
   card.append(h1, tag, prog, menu, error);
-  const credit = el('p', 'title-credit', 'Buildings: DataSF footprints with 2010 LiDAR heights. Terrain: AWS Terrain Tiles.');
+  const credit = el('p', 'title-credit');
+  credit.innerHTML = 'Buildings: DataSF footprints with 2010 LiDAR heights. Streets, parks and trees: DataSF. Land cover © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>. Terrain: AWS Terrain Tiles. Stars: Yale Bright Star Catalog.';
   root.append(sky, card, credit);
 
   let done = false;

@@ -8,7 +8,6 @@ import { buildRoads, createRoadMaterial, resample, roadMesh, ROAD } from '../wor
 import { buildTreeTiles, createTreeMaterial, plantTrees, setTreeLod, type Density, type TreeTile } from '../world/trees';
 import { createWaterMaterial, waterTexture, type WaterUniforms } from '../world/water';
 import { envUniforms, KARL_GLSL, patchFogChunks, solarHour, visibility } from '../world/karl';
-import './env.css';
 
 export type TimeMode = 'real' | 'golden' | 'noon' | 'night';
 
@@ -161,10 +160,6 @@ class Env {
     this.group.add(roadGroup, treeGroup, this.lamps);
     g.world.root.add(this.group);
     g.sky.sky.onBeforeRender = () => this.frame();
-    document.querySelector('#loading .loading-card')?.insertAdjacentHTML(
-      'beforeend',
-      '<p class="loading-credit">Streets, parks and street trees from DataSF. Land cover © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>. Stars from the Yale Bright Star Catalog.</p>',
-    );
     this.applyTime();
     this.frame();
   }

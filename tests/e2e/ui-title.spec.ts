@@ -21,6 +21,7 @@ test.describe('title screen', () => {
     await page.getByRole('radio', { name: 'Drone color #7de0a6' }).click();
     await expect(page.getByRole('radio', { name: 'Drone color #7de0a6' })).toHaveAttribute('aria-checked', 'true');
     await expect(page.locator('.title-btn[data-action="continue"]')).toHaveCount(0);
+    await expect(page.locator('.title-credit')).toContainText('OpenStreetMap contributors');
     const axe = await new AxeBuilder({ page }).include('#loading').analyze();
     expect(axe.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => v.id)).toEqual([]);
     await page.locator('.title-btn[data-action="start"]').click();
