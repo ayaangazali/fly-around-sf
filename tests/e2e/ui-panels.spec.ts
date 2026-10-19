@@ -70,6 +70,19 @@ test.describe('menus', () => {
     await expect(page.locator('.sheet')).toBeHidden();
   });
 
+  test('[R-HOLD] wind does not carry the drone away while a panel is open', async ({ page }) => {
+    await boot(page);
+    const drift = await page.evaluate(() => {
+      const g = window.__fly.game;
+      g.env.wind = { x: 5, z: 0 };
+      g.panels.open('journal');
+      const from = { ...g.flight.pos };
+      window.__fly.step(30);
+      return Math.hypot(g.flight.pos.x - from.x, g.flight.pos.z - from.z);
+    });
+    expect(drift).toBeLessThan(1);
+  });
+
   test('[R-PANELS] the journal searches and sets a waypoint', async ({ page }) => {
     await boot(page);
     await page.evaluate(() => window.__fly.game.panels.open('journal'));
