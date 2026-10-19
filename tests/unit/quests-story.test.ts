@@ -6,7 +6,8 @@ import type { ActivityDef } from '../../src/activities/types';
 import type { CardDef } from '../../src/content/types';
 import type { Game } from '../../src/game';
 import { chapters, kind as quest, objectivePoints, type QuestParams } from '../../src/activities/kinds/quest';
-import { clock, geoErrors, guide, hintsUnlocked, reached, touched, type Line, type QuestInstance } from '../../src/activities/quest-common';
+import { clock, geoErrors, guide, hintsUnlocked, pointTo, reached, touched, type Line, type QuestInstance } from '../../src/activities/quest-common';
+import { arrived, nextChapterWaypoint, questMarkers } from '../../src/systems/quests';
 
 const defs = loadDefs();
 const story = chapters(defs);
@@ -98,6 +99,41 @@ describe('main quest play', () => {
     expect(said.at(-1)?.text).toBe(p.outro.at(-1));
   });
 
+  it('[R-QUEST] waypoints lead to the next chapter, then to each objective in turn', async () => {
+    const game = await setup();
+    game.bus.on('activity:complete', ({ id }) => nextChapterWaypoint(game, id));
+    play(game, story[0].id);
+    const ch2 = story[1];
+    expect(game.waypoint).toMatchObject({ ...game.activities.position(ch2), label: `Chapter 2: ${ch2.title}` });
+    game.flight.pos = { ...game.activities.position(ch2) };
+    game.activities.update(0.05);
+    expect(game.activities.nearby?.id).toBe(ch2.id);
+    expect(game.activities.start(ch2.id)).toBe(true);
+    for (const o of (ch2.params as unknown as QuestParams).objectives) {
+      const pts = objectivePoints(o, game);
+      if (o.type === 'find' || o.type === 'riddle') expect(game.waypoint, o.text).toBeNull();
+      else expect(game.waypoint, o.text).toMatchObject({ x: pts[0].x, z: pts[0].z, label: o.text });
+      for (const [i, q] of pts.entries()) {
+        game.flight.pos = { ...q };
+        game.activities.update(0.05);
+        if (o.type === 'collect' && i + 1 < pts.length) expect(game.waypoint).toMatchObject({ x: pts[i + 1].x, z: pts[i + 1].z });
+      }
+    }
+    game.activities.update(0.05);
+    expect(game.save.isDone(ch2.id)).toBe(true);
+    expect(game.waypoint?.label).toBe(`Chapter 3: ${story[2].title}`);
+  });
+
+  it('[R-QUEST] the next-chapter waypoint never replaces a waypoint the player set elsewhere', async () => {
+    const game = await setup();
+    game.bus.on('activity:complete', ({ id }) => nextChapterWaypoint(game, id));
+    game.waypoint = { x: 1, y: 2, z: 3, label: 'mine' };
+    play(game, story[0].id);
+    expect(game.waypoint.label).toBe('mine');
+    nextChapterWaypoint(game, 'not-a-chapter');
+    expect(game.waypoint.label).toBe('mine');
+  });
+
   it('[R-QUEST] cannot start chapter two before chapter one', async () => {
     const game = await setup();
     expect(game.activities.start(story[1].id)).toBe(false);
@@ -186,7 +222,15 @@ describe('quest kind mechanics', () => {
     expect(game.waypoint.label).toBe('mine');
     second.dispose?.();
     expect(game.waypoint.label).toBe('mine');
-    expect(guide(game, null, null, '')).toBeNull();
+    guide(game, null, '');
+    expect(game.waypoint.label).toBe('mine');
+  });
+
+  it('[R-QUEST] a chapter takes over a waypoint set from the quest log', () => {
+    const game = fakeGame();
+    pointTo(game, { x: 9, y: 9, z: 9 }, 'Chapter 1: Q');
+    run(params(), game);
+    expect(game.waypoint?.label).toBe('go there');
   });
 });
 
@@ -206,5 +250,55 @@ describe('quest helpers', () => {
     expect(reached({ x: 50, y: 10, z: 0 }, t, 40)).toBe(false);
     expect(touched({ x: 3, y: 14, z: 0 }, t, 5)).toBe(true);
     expect(touched({ x: 3, y: 20, z: 0 }, t, 5)).toBe(false);
+  });
+});
+
+describe('quest waypoints in the world', () => {
+  it('[R-QUESTLOG] a quest waypoint gets its own beacon, a player waypoint does not', () => {
+    const game = fakeGame();
+    expect(questMarkers(game, null)).toEqual([]);
+    game.waypoint = { x: 1, y: 2, z: 3, label: 'mine' };
+    expect(questMarkers(game, null)).toEqual([]);
+    pointTo(game, { x: 5, y: 6, z: 7 }, 'Chapter 1: Q');
+    expect(questMarkers(game, null)).toEqual([{ p: game.waypoint, style: 'beacon' }]);
+    const { inst } = (() => {
+      const def = { ...base, params: params() } as unknown as ActivityDef;
+      return { inst: quest.start(def, game) as QuestInstance };
+    })();
+    expect(questMarkers(game, inst)).toHaveLength(1);
+  });
+
+  it('[R-QUESTLOG] arriving at a riddle or hunt clears the quest waypoint that led there', async () => {
+    const game = await setup();
+    const riddle = defs.find((d) => d.kind === 'riddle') as ActivityDef;
+    const other = defs.find((d) => d.kind === 'scavenger') as ActivityDef;
+    pointTo(game, game.activities.position(other), other.title);
+    arrived(game, riddle.id);
+    expect(game.waypoint?.label).toBe(other.title);
+    pointTo(game, game.activities.position(riddle), riddle.title);
+    arrived(game, story[0].id);
+    arrived(game, 'missing');
+    expect(game.waypoint?.label).toBe(riddle.title);
+    arrived(game, riddle.id);
+    expect(game.waypoint).toBeNull();
+    arrived(game, riddle.id);
+    expect(game.waypoint).toBeNull();
+  });
+});
+
+describe('activity start points', () => {
+  it('[R-QUEST] [R-RIDDLE] [R-SCAVENGER] no two startable activities share a start point, so F always starts the one you see', async () => {
+    const game = await setup();
+    const startable = defs.filter((d) => !game.activities.kindOf(d).passive);
+    const clashes: string[] = [];
+    for (const [i, a] of startable.entries()) {
+      const pa = game.activities.position(a);
+      for (const b of startable.slice(i + 1)) {
+        const pb = game.activities.position(b);
+        const d = Math.hypot(pa.x - pb.x, pa.z - pb.z);
+        if (d < 45) clashes.push(`${a.id} and ${b.id}: ${d.toFixed(1)} m`);
+      }
+    }
+    expect(clashes).toEqual([]);
   });
 });

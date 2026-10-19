@@ -1,7 +1,7 @@
 import type { ActivityDef, ActivityKind, GeoPoint, SolverStep } from '../types';
 import type { Game } from '../../game';
 import type { Vec3 } from '../../player/flight';
-import { HINT_TIMES, NORTON, clock, geoErrors, guide, hintErrors, hintsUnlocked, reached, say, textErrors, touched, type Marker, type QuestInstance, type Waypoint } from '../quest-common';
+import { HINT_TIMES, NORTON, clock, geoErrors, guide, hintErrors, hintsUnlocked, reached, say, textErrors, touched, type Marker, type QuestInstance } from '../quest-common';
 
 export type ObjectiveType = 'goto' | 'find' | 'read' | 'riddle' | 'collect';
 
@@ -73,7 +73,6 @@ export const kind: ActivityKind = {
     let t = 0;
     let since = 0;
     let hints = 0;
-    let owned: Waypoint | null = null;
 
     const current = () => p.objectives[index];
     const radius = (o: Objective) => o.radius ?? RADIUS[o.type];
@@ -88,7 +87,7 @@ export const kind: ActivityKind = {
       left = [...points];
       since = 0;
       hints = 0;
-      owned = guide(game, owned, o.type === 'goto' || o.type === 'read' ? points[0] : o.type === 'collect' ? left[0] : null, o.text);
+      guide(game, o.type === 'goto' || o.type === 'read' ? points[0] : o.type === 'collect' ? left[0] : null, o.text);
       announce();
     };
     const finishObjective = () => {
@@ -125,7 +124,7 @@ export const kind: ActivityKind = {
           left = left.filter((q) => !touched(pos, q, radius(o)));
           if (left.length < before && left.length) {
             game.bus.emit('toast', { text: `Commit shard ${points.length - left.length}/${points.length}`, kind: 'info' });
-            owned = guide(game, owned, left[0], o.text);
+            guide(game, left[0], o.text);
           }
           if (!left.length) finishObjective();
         } else if (o.type === 'find' ? touched(pos, points[0], radius(o)) : reached(pos, points[0], radius(o))) finishObjective();
@@ -157,7 +156,7 @@ export const kind: ActivityKind = {
       },
       elapsed: () => t,
       dispose() {
-        guide(game, owned, null, '');
+        guide(game, null, '');
       },
     };
     return inst;

@@ -120,7 +120,7 @@
           "text": "The last shard glints somewhere around Inspiration Point, the overlook above the Presidio forest. Search the trees.",
           "at": { "lat": 37.79222, "lon": -122.45826, "alt": 5 },
           "say": [
-            "Got it. The Presidio was an Army post for 219 years before it was handed to the National Park Service in 1994. It has seen Spain, Mexico and the United States come and go. It is not impressed by Frisco."
+            "Got it. The Presidio was a military post for 218 years, under three flags, before it was handed to the National Park Service in 1994. Spain, Mexico and the United States all came and went. It is not impressed by Frisco."
           ]
         }
       ],
@@ -414,7 +414,7 @@
           "text": "A shard is hidden near the Alcatraz lighthouse. Search the island's crown.",
           "at": { "lat": 37.82626, "lon": -122.4223, "alt": 5 },
           "say": [
-            "The oldest operating lighthouse on the West Coast of the United States. It has watched every escape attempt. It is not talking."
+            "The first lighthouse on the US West Coast was lit here in 1854; today's tower replaced it in 1909. It has watched every escape attempt. It is not talking."
           ]
         },
         {
@@ -456,6 +456,7 @@
         "https://en.wikipedia.org/wiki/Pier_39",
         "https://en.wikipedia.org/wiki/Occupation_of_Alcatraz",
         "https://en.wikipedia.org/wiki/Alcatraz_Island",
+        "https://en.wikipedia.org/wiki/Alcatraz_Island_Light",
         "https://en.wikipedia.org/wiki/Mus%C3%A9e_M%C3%A9canique",
         "https://en.wikipedia.org/wiki/SS_Jeremiah_O%27Brien",
         "https://en.wikipedia.org/wiki/Ghirardelli_Square"
@@ -606,7 +607,7 @@
           "text": "Finish at the War Memorial Opera House on Van Ness Avenue.",
           "at": { "lat": 37.77854, "lon": -122.42093, "alt": 25 },
           "say": [
-            "In April 1945 this opera house hosted the San Francisco Conference, the first assembly of the newly organized United Nations. In 1951 the treaty that made peace with Japan was signed here too.",
+            "In April 1945 this opera house hosted the San Francisco Conference, where fifty nations drafted the charter that created the United Nations. In 1951 the treaty that made peace with Japan was signed here too.",
             "A city that burned to the ground in 1906 became, within forty years, the place where the world came to make peace. Write that down, Frisco."
           ]
         }

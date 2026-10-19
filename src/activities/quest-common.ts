@@ -29,6 +29,7 @@ export interface QuestInstance extends ActivityInstance {
 
 export interface Waypoint extends Vec3 {
   label: string;
+  quest?: boolean;
 }
 
 declare module '../core/bus' {
@@ -74,8 +75,18 @@ export function say(game: Game, id: string, who: string, texts: string[]): void 
   if (texts.length) game.bus.emit('quest:say', { id, lines: texts.map((text) => ({ who, text })) });
 }
 
-export function guide(game: Game, owned: Waypoint | null, target: Vec3 | null, label: string): Waypoint | null {
-  if (game.waypoint && game.waypoint !== owned) return null;
-  game.waypoint = target ? { ...target, label } : null;
-  return game.waypoint;
+export function questWaypoint(game: Game): Waypoint | null {
+  const w = game.waypoint as Waypoint | null;
+  return w?.quest ? w : null;
+}
+
+export function pointTo(game: Game, target: Vec3, label: string): void {
+  const w: Waypoint = { x: target.x, y: target.y, z: target.z, label, quest: true };
+  game.waypoint = w;
+}
+
+export function guide(game: Game, target: Vec3 | null, label: string): void {
+  if (game.waypoint && !questWaypoint(game)) return;
+  if (target) pointTo(game, target, label);
+  else game.waypoint = null;
 }

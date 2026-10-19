@@ -3,11 +3,11 @@
     "id": "scavenger-north-beach",
     "kind": "scavenger",
     "title": "North Beach Notes",
-    "blurb": "Six notes scattered from Washington Square to the top of Coit Tower.",
+    "blurb": "Six notes scattered from the Beat cafes of North Beach to the top of Coit Tower.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.80086,
-      "lon": -122.4101,
+      "lat": 37.79867,
+      "lon": -122.4073,
       "alt": 25
     },
     "xp": 50,
@@ -57,7 +57,8 @@
         "https://www.openstreetmap.org/way/28824850",
         "https://www.openstreetmap.org/way/29902626",
         "https://www.openstreetmap.org/way/32858754",
-        "https://www.openstreetmap.org/way/940067366"
+        "https://www.openstreetmap.org/way/940067366",
+        "https://www.openstreetmap.org/node/331389010"
       ]
     }
   },
@@ -68,8 +69,8 @@
     "blurb": "Six notes tucked into the alleys and rooftops of the oldest Chinatown in North America.",
     "neighborhood": "Chinatown",
     "at": {
-      "lat": 37.79483,
-      "lon": -122.40543,
+      "lat": 37.79386,
+      "lon": -122.40882,
       "alt": 25
     },
     "xp": 50,
@@ -119,7 +120,8 @@
         "https://www.openstreetmap.org/relation/14547583",
         "https://www.openstreetmap.org/way/260520154",
         "https://www.openstreetmap.org/way/260523829",
-        "https://www.openstreetmap.org/way/28841124"
+        "https://www.openstreetmap.org/way/28841124",
+        "https://www.openstreetmap.org/node/806240639"
       ]
     }
   },
@@ -130,8 +132,8 @@
     "blurb": "Six notes along the wharf, from the sea lions to the cartoon museum.",
     "neighborhood": "Fisherman's Wharf",
     "at": {
-      "lat": 37.80881,
-      "lon": -122.41009,
+      "lat": 37.80833,
+      "lon": -122.41532,
       "alt": 25
     },
     "xp": 50,
@@ -181,7 +183,8 @@
         "https://www.openstreetmap.org/node/5038430321",
         "https://www.openstreetmap.org/way/28518695",
         "https://www.openstreetmap.org/way/288396169",
-        "https://www.openstreetmap.org/way/37312428"
+        "https://www.openstreetmap.org/way/37312428",
+        "https://www.openstreetmap.org/node/1455172168"
       ]
     }
   },
@@ -310,8 +313,8 @@
     "blurb": "Six notes across the old Army post, from the parade ground to the forest.",
     "neighborhood": "Presidio",
     "at": {
-      "lat": 37.8002,
-      "lon": -122.45848,
+      "lat": 37.80197,
+      "lon": -122.45683,
       "alt": 25
     },
     "xp": 50,
@@ -361,7 +364,8 @@
         "https://www.openstreetmap.org/node/8083525525",
         "https://www.openstreetmap.org/way/112072219",
         "https://www.openstreetmap.org/way/288340246",
-        "https://www.openstreetmap.org/way/91114607"
+        "https://www.openstreetmap.org/way/91114607",
+        "https://www.openstreetmap.org/way/32650187"
       ]
     }
   },
@@ -609,11 +613,11 @@
     "id": "scavenger-haight",
     "kind": "scavenger",
     "title": "Haight Notes",
-    "blurb": "Five notes from Haight and Ashbury into the southeast corner of the park.",
+    "blurb": "Five notes from Haight Street into the southeast corner of the park.",
     "neighborhood": "Haight-Ashbury",
     "at": {
-      "lat": 37.77014,
-      "lon": -122.44599,
+      "lat": 37.76986,
+      "lon": -122.44884,
       "alt": 25
     },
     "xp": 50,
@@ -657,7 +661,8 @@
         "https://www.openstreetmap.org/way/272711313",
         "https://www.openstreetmap.org/way/30675203",
         "https://www.openstreetmap.org/way/44671094",
-        "https://www.openstreetmap.org/way/7459901"
+        "https://www.openstreetmap.org/way/7459901",
+        "https://www.openstreetmap.org/node/677290614"
       ]
     }
   },
@@ -791,8 +796,8 @@
     "blurb": "Six notes over the grand hotels of Nob Hill and down Russian Hill.",
     "neighborhood": "Nob Hill",
     "at": {
-      "lat": 37.79476,
-      "lon": -122.41185,
+      "lat": 37.79117,
+      "lon": -122.41299,
       "alt": 25
     },
     "xp": 50,
@@ -842,7 +847,8 @@
         "https://www.openstreetmap.org/way/30029681",
         "https://www.openstreetmap.org/way/32946942",
         "https://www.openstreetmap.org/way/32946958",
-        "https://www.openstreetmap.org/way/402111597"
+        "https://www.openstreetmap.org/way/402111597",
+        "https://www.openstreetmap.org/way/32947040"
       ]
     }
   },

@@ -78,8 +78,8 @@
     "blurb": "A riddle about the oldest garden of its kind in the country.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.77261,
-      "lon": -122.46023,
+      "lat": 37.77154,
+      "lon": -122.45762,
       "alt": 25
     },
     "xp": 40,
@@ -103,7 +103,8 @@
       "fact": "Built for the California Midwinter International Exposition of 1894, it is the oldest public Japanese garden in the United States. Its pagoda came from the 1915 Panama-Pacific Exposition.",
       "sources": [
         "https://en.wikipedia.org/wiki/Japanese_Tea_Garden_(San_Francisco)",
-        "https://en.wikipedia.org/wiki/Fortune_cookie"
+        "https://en.wikipedia.org/wiki/Fortune_cookie",
+        "https://www.openstreetmap.org/way/71874542"
       ]
     }
   },
@@ -220,8 +221,8 @@
     "blurb": "A riddle about a palace where the kings are on screen.",
     "neighborhood": "Castro",
     "at": {
-      "lat": 37.75972,
-      "lon": -122.42713,
+      "lat": 37.75995,
+      "lon": -122.43637,
       "alt": 25
     },
     "xp": 40,
@@ -233,7 +234,7 @@
     "params": {
       "riddle": "A movie palace from 1922 in Spanish Baroque dress, given an Art Deco marquee in 1937. Fourteen hundred people can fit inside for a concert. Find the theater.",
       "hints": [
-        "Fly west from Dolores Park into the Castro.",
+        "A few blocks north of here, on Castro Street between Market and 18th.",
         "The Castro Theatre on Castro Street."
       ],
       "answer": "The Castro Theatre",
@@ -244,7 +245,8 @@
       "radius": 90,
       "fact": "The Castro Theatre was designed by Timothy L. Pflueger, who also designed Oakland's Paramount Theater.",
       "sources": [
-        "https://en.wikipedia.org/wiki/Castro_Theatre"
+        "https://en.wikipedia.org/wiki/Castro_Theatre",
+        "https://www.openstreetmap.org/way/690982876"
       ]
     }
   },
@@ -573,8 +575,8 @@
     "blurb": "A music riddle. Bring earplugs.",
     "neighborhood": "Fillmore",
     "at": {
-      "lat": 37.79118,
-      "lon": -122.43767,
+      "lat": 37.7844,
+      "lon": -122.43606,
       "alt": 25
     },
     "xp": 40,
@@ -597,7 +599,8 @@
       "radius": 90,
       "fact": "The Fillmore became the Fillmore Auditorium in 1954. Live Nation has run it since 2007 and named other clubs after it.",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Fillmore"
+        "https://en.wikipedia.org/wiki/The_Fillmore",
+        "https://www.openstreetmap.org/way/545151976"
       ]
     }
   },
@@ -819,8 +822,8 @@
     "blurb": "A bare hilltop with one of the best views in town.",
     "neighborhood": "Corona Heights",
     "at": {
-      "lat": 37.76228,
-      "lon": -122.43561,
+      "lat": 37.75841,
+      "lon": -122.44157,
       "alt": 25
     },
     "xp": 40,
@@ -843,7 +846,8 @@
       "radius": 130,
       "fact": "Corona Heights rises to 520 feet on Franciscan chert bedrock, and the Randall Museum sits within the park.",
       "sources": [
-        "https://en.wikipedia.org/wiki/Corona_Heights_Park"
+        "https://en.wikipedia.org/wiki/Corona_Heights_Park",
+        "https://www.openstreetmap.org/way/34856612"
       ]
     }
   },
@@ -1135,8 +1139,8 @@
     "blurb": "A football riddle from the corner of the park.",
     "neighborhood": "Cole Valley",
     "at": {
-      "lat": 37.77014,
-      "lon": -122.44599,
+      "lat": 37.76572,
+      "lon": -122.45016,
       "alt": 25
     },
     "xp": 40,
@@ -1159,7 +1163,8 @@
       "radius": 130,
       "fact": "Kezar Stadium was the original home of the San Francisco 49ers and hosted the Oakland Raiders in their first AFL season.",
       "sources": [
-        "https://en.wikipedia.org/wiki/Kezar_Stadium"
+        "https://en.wikipedia.org/wiki/Kezar_Stadium",
+        "https://www.openstreetmap.org/node/6392302657"
       ]
     }
   },
@@ -1276,8 +1281,8 @@
     "blurb": "A shipyard riddle from the southeastern point.",
     "neighborhood": "Hunters Point",
     "at": {
-      "lat": 37.73464,
-      "lon": -122.37599,
+      "lat": 37.7329,
+      "lon": -122.38365,
       "alt": 25
     },
     "xp": 40,
@@ -1300,7 +1305,8 @@
       "radius": 400,
       "fact": "Hunters Point began as a commercial shipyard in 1870 and grew into a 638-acre United States Navy shipyard.",
       "sources": [
-        "https://en.wikipedia.org/wiki/Hunters_Point_Naval_Shipyard"
+        "https://en.wikipedia.org/wiki/Hunters_Point_Naval_Shipyard",
+        "https://www.openstreetmap.org/way/414033716"
       ]
     }
   }

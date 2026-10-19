@@ -68,7 +68,12 @@ export class QuestDialogue {
     this.root.addEventListener('pointerleave', () => (this.hover = false));
     game.ui.append(this.root);
     game.bus.on('quest:say', ({ lines }) => this.push(lines));
-    game.bus.on('interact', () => this.advance());
+    game.bus.on('interact', () => {
+      if (!this.line) return;
+      // game.interact() reads nearby after this event, so F reads the story instead of starting whatever is close.
+      game.activities.nearby = null;
+      this.advance();
+    });
     game.bus.on('panel:open', () => this.root.classList.add('paused'));
     game.bus.on('panel:close', () => this.root.classList.remove('paused'));
   }
@@ -174,6 +179,7 @@ export class QuestTracker {
   private hint = el('p', 'qt-hint');
   private heat = el('div', 'qt-heat');
   private heatLabel = el('span');
+  private more = el('span', 'qt-more', '▾');
   private abandon = el('button', 'qt-abandon', '✕');
   id: string | null = null;
   private confirmUntil = 0;
@@ -184,7 +190,11 @@ export class QuestTracker {
     this.text.setAttribute('aria-live', 'polite');
     this.abandon.setAttribute('aria-label', 'Abandon this activity');
     this.abandon.title = 'Abandon';
-    this.abandon.addEventListener('click', () => {
+    this.more.setAttribute('aria-hidden', 'true');
+    this.root.setAttribute('aria-expanded', 'false');
+    this.root.addEventListener('click', () => this.expand(!this.root.classList.contains('open')));
+    this.abandon.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (performance.now() < this.confirmUntil) {
         game.activities.stop();
         game.toast('Abandoned. It will be waiting when you come back.', 'info');
@@ -197,7 +207,7 @@ export class QuestTracker {
     });
     this.heat.append(el('i'), this.heatLabel);
     const head = el('div', 'qt-head');
-    head.append(this.icon, this.title, this.abandon);
+    head.append(this.icon, this.title, this.more, this.abandon);
     this.root.append(head, this.text, this.hint, this.heat);
     game.ui.append(this.root);
     game.bus.on('quest:objective', (o) => {
@@ -208,10 +218,18 @@ export class QuestTracker {
       this.hint.textContent = o.hint ? `💡 ${o.hint}` : '';
       this.hint.hidden = !o.hint;
       this.root.hidden = false;
+      this.expand(false);
       this.root.classList.remove('bump');
       void this.root.offsetWidth;
       this.root.classList.add('bump');
     });
+    game.bus.on('panel:open', () => this.root.classList.add('paused'));
+    game.bus.on('panel:close', () => this.root.classList.remove('paused'));
+  }
+
+  private expand(open: boolean): void {
+    this.root.classList.toggle('open', open);
+    this.root.setAttribute('aria-expanded', String(open));
   }
 
   hide(): void {

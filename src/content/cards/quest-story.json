@@ -25,8 +25,8 @@
     "neighborhood": "Presidio",
     "at": { "lat": 37.79806, "lon": -122.46583 },
     "year": 1776,
-    "blurb": "A Spanish fort at the Golden Gate that stayed a military post for 219 years, then became a park.",
-    "lore": "New Spain established El Presidio Real de San Francisco on September 17, 1776, to gain a foothold on San Francisco Bay. It passed to Mexico in 1820 and to the United States in 1848. After a base closure vote, the Army handed it to the National Park Service on October 1, 1994, ending 219 years of military use.",
+    "blurb": "A Spanish fort at the Golden Gate that stayed a military post for 218 years, then became a park.",
+    "lore": "New Spain established El Presidio Real de San Francisco on September 17, 1776, to gain a foothold on San Francisco Bay. It passed to Mexico in 1820 and to the United States in 1848. After a base closure vote, the Army handed it to the National Park Service on October 1, 1994, ending 218 years of military use.",
     "facts": [
       "Its founding date, September 17, is the same day Norton proclaimed himself Emperor 83 years later.",
       "The Presidio Trust made the park financially self-sufficient in 2005, eight years ahead of the deadline Congress set.",
@@ -97,10 +97,10 @@
     "lore": "From November 20, 1969, to June 11, 1971, 89 American Indians and their supporters occupied Alcatraz Island, which the government had declared surplus after the penitentiary closed in 1963. Calling themselves Indians of All Tribes, and led by Richard Oakes, LaNada Means and others, with John Trudell as spokesman, they claimed the island under the 1868 Treaty of Fort Laramie.",
     "facts": [
       "The occupation inspired the annual Unthanksgiving Day dawn ceremony on the island.",
-      "Alcatraz has the oldest operating lighthouse on the West Coast.",
+      "The first lighthouse on the US West Coast was lit on Alcatraz in 1854; today's tower replaced it in 1909.",
       "The federal penitentiary operated from 1934 until March 21, 1963."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Occupation_of_Alcatraz", "https://en.wikipedia.org/wiki/Alcatraz_Island"]
+    "sources": ["https://en.wikipedia.org/wiki/Occupation_of_Alcatraz", "https://en.wikipedia.org/wiki/Alcatraz_Island", "https://en.wikipedia.org/wiki/Alcatraz_Island_Light"]
   },
   {
     "id": "quest-clay-street-railroad",

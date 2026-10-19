@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import type { Game, GameSystem } from '../game';
-import type { Marker, MarkerStyle, QuestInstance } from '../activities/quest-common';
+import { guide, questWaypoint, type Marker, type MarkerStyle, type QuestInstance } from '../activities/quest-common';
 import { chapters, type QuestParams } from '../activities/kinds/quest';
 import { QuestDialogue, QuestTracker } from '../ui/quest-dialogue';
 
@@ -103,8 +103,24 @@ export function nextChapterWaypoint(game: Game, id: string): void {
     return;
   }
   const n = (next.params as unknown as QuestParams).chapter;
-  game.waypoint = { ...game.activities.position(next), label: `Chapter ${n}: ${next.title}` };
-  game.toast(`Next: Chapter ${n}, ${next.title}. Waypoint set.`, 'info');
+  const label = `Chapter ${n}: ${next.title}`;
+  guide(game, game.activities.position(next), label);
+  game.toast(`Next: Chapter ${n}, ${next.title}.${game.waypoint?.label === label ? ' Waypoint set.' : ''}`, 'info');
+}
+
+export function arrived(game: Game, id: string): void {
+  const w = questWaypoint(game);
+  const def = game.activities.defs.get(id);
+  if (!w || !def || def.kind === 'quest') return;
+  const p = game.activities.position(def);
+  if (Math.hypot(p.x - w.x, p.z - w.z) < 60) game.waypoint = null;
+}
+
+export function questMarkers(game: Game, inst: QuestInstance | null): Marker[] {
+  const markers = inst?.markers?.() ?? [];
+  const w = questWaypoint(game);
+  if (w && !markers.some((m) => m.style === 'beacon' && Math.hypot(m.p.x - w.x, m.p.z - w.z) < 1)) markers.push({ p: w, style: 'beacon' });
+  return markers;
 }
 
 let tracker: QuestTracker | null = null;
@@ -119,11 +135,12 @@ export const system: GameSystem = {
     layer = new MarkerLayer();
     game.scene.add(layer.group);
     game.bus.on('activity:complete', ({ id }) => nextChapterWaypoint(game, id));
+    game.bus.on('activity:start', ({ id }) => arrived(game, id));
   },
   update(_dt, game) {
     const a = game.activities.active;
     const inst = a && QUEST_KINDS.has(a.def.kind) ? (a.inst as QuestInstance) : null;
     tracker?.update(inst ? (a?.def.id ?? null) : null, inst);
-    layer?.sync(inst?.markers?.() ?? [], game.simTime);
+    layer?.sync(questMarkers(game, inst), game.simTime);
   },
 };

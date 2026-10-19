@@ -7,6 +7,7 @@ import { chapters, objectivePoints, type QuestParams } from '../../activities/ki
 import { decreeNumber, sfDate, shiftDate } from '../../activities/kinds/daily';
 import { nortonSvg } from '../norton';
 import { copyShare } from '../quest-dialogue';
+import { pointTo } from '../../activities/quest-common';
 
 type Tab = 'story' | 'daily' | 'riddles' | 'hunts';
 const TABS: [Tab, string][] = [
@@ -20,7 +21,7 @@ let tab: Tab = 'story';
 function waypointButton(game: Game, label: string, p: () => { x: number; y: number; z: number }, text = 'Set waypoint'): HTMLButtonElement {
   const b = el('button', 'ql-btn', `📍 ${text}`);
   b.addEventListener('click', () => {
-    game.waypoint = { ...p(), label };
+    pointTo(game, p(), label);
     game.toast(`Waypoint set: ${label}`, 'info');
     game.panels.close();
   });

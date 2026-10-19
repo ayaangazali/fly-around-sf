@@ -116,9 +116,10 @@
             "lon": -122.42276
           },
           "radius": 260,
-          "fact": "Alcatraz has the oldest operating lighthouse on the West Coast. The penitentiary closed on March 21, 1963.",
+          "fact": "The first lighthouse on the US West Coast was lit here in 1854; today's tower replaced it in 1909. The penitentiary closed on March 21, 1963.",
           "sources": [
-            "https://en.wikipedia.org/wiki/Alcatraz_Island"
+            "https://en.wikipedia.org/wiki/Alcatraz_Island",
+            "https://en.wikipedia.org/wiki/Alcatraz_Island_Light"
           ]
         },
         {
@@ -1157,9 +1158,10 @@
             "lon": -122.46465
           },
           "radius": 150,
-          "fact": "Around 1937 San Francisco voters stopped new cemeteries inside the city, which is why so few remain.",
+          "fact": "San Francisco banned new burials in 1900 and later moved most of its graves to Colma, which is why so few cemeteries remain.",
           "sources": [
-            "https://en.wikipedia.org/wiki/San_Francisco_National_Cemetery"
+            "https://en.wikipedia.org/wiki/San_Francisco_National_Cemetery",
+            "https://www.colma.ca.gov/departments/cemeteries"
           ]
         }
       ]

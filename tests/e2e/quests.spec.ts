@@ -41,6 +41,67 @@ test.describe('quests', () => {
     expect(r.cards).toContain('quest-norton-bridge');
   });
 
+  test('[R-QUEST] [R-RIDDLE] [R-SCAVENGER] [R-DAILY] every chapter, riddle and hunt starts by flying to its beacon and pressing F', async ({ page }) => {
+    test.setTimeout(300_000);
+    await boot(page);
+    const wrong = await page.evaluate((kinds) => {
+      const g = window.__fly.game;
+      const out: string[] = [];
+      for (const a of window.__fly.activities().filter((x) => kinds.includes(x.kind))) {
+        window.__fly.reset();
+        document.querySelector<HTMLButtonElement>('.qd-skip')?.click();
+        const unlock = (id: string) => {
+          for (const r of g.activities.defs.get(id)?.requires ?? []) {
+            unlock(r);
+            g.save.complete(r, 0);
+          }
+        };
+        unlock(a.id);
+        g.teleport(g.activities.position(g.activities.defs.get(a.id)!));
+        window.__fly.step(0.1);
+        g.input.press('interact');
+        window.__fly.step(1 / 30);
+        const active = window.__fly.state().active;
+        if (active !== a.id) out.push(`${a.id} started ${active}`);
+      }
+      return out;
+    }, MINE);
+    expect(wrong).toEqual([]);
+
+    await page.evaluate(() => {
+      window.__fly.reset();
+      document.querySelector<HTMLButtonElement>('.qd-skip')?.click();
+      const g = window.__fly.game;
+      g.save.complete('quest-initial-commit', 0);
+      g.teleport(g.activities.position(g.activities.defs.get('quest-git-blame')!));
+      window.__fly.step(0.1);
+    });
+    await page.keyboard.press('KeyF');
+    await page.evaluate(() => window.__fly.step(0.05));
+    expect(await page.evaluate(() => window.__fly.state().active)).toBe('quest-git-blame');
+  });
+
+  test('[R-DIALOGUE] while the Emperor is talking, F reads on instead of starting the activity next to you', async ({ page }) => {
+    await boot(page);
+    await page.evaluate(async () => {
+      await window.__fly.solve('quest-initial-commit');
+      const g = window.__fly.game;
+      g.teleport(g.activities.position(g.activities.defs.get('riddle-movie-palace')!));
+      window.__fly.step(0.1);
+    });
+    await expect(page.locator('.qd')).toBeVisible();
+    expect(await page.evaluate(() => window.__fly.game.activities.nearby?.id)).toBe('riddle-movie-palace');
+    await page.keyboard.press('KeyF');
+    await page.evaluate(() => window.__fly.step(0.05));
+    expect(await page.evaluate(() => window.__fly.state().active)).toBeNull();
+    await page.locator('.qd-skip').click();
+    await expect(page.locator('.qd')).toBeHidden();
+    await page.evaluate(() => window.__fly.step(0.05));
+    await page.keyboard.press('KeyF');
+    await page.evaluate(() => window.__fly.step(0.05));
+    expect(await page.evaluate(() => window.__fly.state().active)).toBe('riddle-movie-palace');
+  });
+
   test('[R-DIALOGUE] the Emperor speaks with a portrait, typewriter text, F to advance, click and skip', async ({ page }) => {
     await boot(page);
     await page.evaluate(() => {
@@ -81,7 +142,14 @@ test.describe('quests', () => {
     await expect(page.locator('.ql-chapter.current strong')).toHaveText('Initial Commit');
     await page.locator('.ql-chapter.current .ql-btn').click();
     await expect(page.locator('.sheet')).toBeHidden();
-    expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBe('Chapter 1: Initial Commit');
+    const beacon = await page.evaluate(() => {
+      const g = window.__fly.game;
+      window.__fly.step(0.05);
+      const w = g.waypoint!;
+      const shown = g.scene.getObjectByName('quest-markers')!.children.filter((c) => c.visible);
+      return { label: w.label, count: shown.length, off: Math.hypot(shown[0].position.x - w.x, shown[0].position.z - w.z) };
+    });
+    expect(beacon).toEqual({ label: 'Chapter 1: Initial Commit', count: 1, off: 0 });
 
     await page.evaluate(async () => {
       await window.__fly.solve('quest-initial-commit');
@@ -91,9 +159,11 @@ test.describe('quests', () => {
       window.__fly.step(0.1);
       g.activities.start('quest-git-blame');
     });
+    await expect(page.locator('.qt')).toBeVisible();
     await page.keyboard.press('KeyL');
     await page.evaluate(() => window.__fly.step(0.05));
     await expect(page.locator('.sheet[data-panel="quests"]')).toBeVisible();
+    await expect(page.locator('.qt')).toBeHidden();
     await expect(page.locator('.ql-progress span').first()).toHaveText('1 of 12 chapters restored');
     await expect(page.locator('.ql-objectives .now')).toContainText('cannonballs could skip');
     await page.locator('.ql-chapter.done summary').click();
@@ -102,6 +172,7 @@ test.describe('quests', () => {
     await expect(page.locator('.ql-item')).toHaveCount(await page.evaluate(() => window.__fly.activities().filter((a) => a.kind === 'riddle').length));
     await page.locator('.ql-item .ql-btn').first().click();
     expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBeTruthy();
+    await expect(page.locator('.qt')).toBeVisible();
   });
 
   test('[R-DAILY] the daily decree starts from the log and copies a shareable result', async ({ page, context }) => {
@@ -165,4 +236,34 @@ test('[R-QUESTLOG] the quest log and dialogue fit on touch screens @touch', asyn
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
   const heights = await page.locator('.ql-tab, .ql-btn').evaluateAll((els) => els.map((e) => (e as HTMLElement).offsetHeight));
   expect(Math.min(...heights)).toBeGreaterThanOrEqual(40);
+});
+
+test('[R-QUESTLOG] the objective tracker stays out of the way on small screens and expands on tap @touch', async ({ page }) => {
+  await boot(page);
+  await page.evaluate(() => {
+    const g = window.__fly.game;
+    g.teleport(g.activities.position(g.activities.defs.get('riddle-movie-palace')!));
+    window.__fly.step(0.1);
+    g.activities.start('riddle-movie-palace');
+    window.__fly.step(121, 0.25);
+  });
+  await page.locator('.qd-skip').click();
+  const tracker = page.locator('.qt');
+  await expect(tracker).toBeVisible();
+  const narrow = page.viewportSize()!.width <= 640;
+  const before = (await tracker.boundingBox())!.height;
+  if (narrow) {
+    await expect(page.locator('.qt-hint')).toBeHidden();
+    expect(before).toBeLessThan(110);
+  }
+  await tracker.click();
+  await expect(tracker).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('.qt-hint')).toBeVisible();
+  await expect(page.locator('.qt-hint')).toContainText('between Market and 18th');
+  if (narrow) expect((await tracker.boundingBox())!.height).toBeGreaterThan(before);
+  await page.evaluate(() => window.__fly.game.panels.open('quests'));
+  await expect(tracker).toBeHidden();
+  await page.evaluate(() => window.__fly.game.panels.close());
+  await expect(tracker).toBeVisible();
+  expect(await page.evaluate(() => window.__fly.state().active)).toBe('riddle-movie-palace');
 });
