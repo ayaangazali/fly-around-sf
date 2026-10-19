@@ -16,7 +16,7 @@ export function cardFace(card: CardDef, owned: boolean, tag: 'button' | 'div' = 
   badge.setAttribute('aria-hidden', 'true');
   const info = el('div', 'tcard-info');
   const name = el('b', '', owned ? card.name : '???');
-  info.append(name, el('small', '', owned ? `${meta.label.replace(/s$/, '')} · ${RARITY_LABEL[card.rarity]}` : `${meta.label.replace(/s$/, '')} · ${card.neighborhood}`));
+  info.append(name, el('small', '', owned ? `${meta.one} · ${RARITY_LABEL[card.rarity]}` : `${meta.one} · ${card.neighborhood}`));
   root.append(art, el('div', 'tcard-foil'), badge, info);
   if (!owned) {
     name.setAttribute('aria-hidden', 'true');

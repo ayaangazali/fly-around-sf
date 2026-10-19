@@ -1,17 +1,17 @@
 import type { CardCategory, CardDef } from '../content/types';
 
-export const CATEGORY: Record<CardCategory, { label: string; icon: string; colors: [string, string] }> = {
-  landmark: { label: 'Landmarks', icon: '🌉', colors: ['#ff6a3d', '#ffc15e'] },
-  park: { label: 'Parks', icon: '🌳', colors: ['#2f8f4e', '#c6f07a'] },
-  wildlife: { label: 'Wildlife', icon: '🦭', colors: ['#1f8f86', '#a6f0d6'] },
-  food: { label: 'Food', icon: '🥐', colors: ['#e0663d', '#ffd36b'] },
-  history: { label: 'History', icon: '📜', colors: ['#8a6440', '#f0d9a6'] },
-  culture: { label: 'Culture', icon: '🎨', colors: ['#8f5cff', '#ff7eb6'] },
-  company: { label: 'Companies', icon: '🏢', colors: ['#2f5fe0', '#7de0ff'] },
-  tech: { label: 'Tech', icon: '💾', colors: ['#00a891', '#5fb4ff'] },
-  transit: { label: 'Transit', icon: '🚋', colors: ['#b8322a', '#f4d03f'] },
-  event: { label: 'Events', icon: '🎆', colors: ['#e0306f', '#ffc15e'] },
-  hidden: { label: 'Hidden SF', icon: '🗝️', colors: ['#3a3f6c', '#9fa8ff'] },
+export const CATEGORY: Record<CardCategory, { label: string; one: string; icon: string; colors: [string, string] }> = {
+  landmark: { label: 'Landmarks', one: 'Landmark', icon: '🌉', colors: ['#ff6a3d', '#ffc15e'] },
+  park: { label: 'Parks', one: 'Park', icon: '🌳', colors: ['#2f8f4e', '#c6f07a'] },
+  wildlife: { label: 'Wildlife', one: 'Wildlife', icon: '🦭', colors: ['#1f8f86', '#a6f0d6'] },
+  food: { label: 'Food', one: 'Food', icon: '🥐', colors: ['#e0663d', '#ffd36b'] },
+  history: { label: 'History', one: 'History', icon: '📜', colors: ['#8a6440', '#f0d9a6'] },
+  culture: { label: 'Culture', one: 'Culture', icon: '🎨', colors: ['#8f5cff', '#ff7eb6'] },
+  company: { label: 'Companies', one: 'Company', icon: '🏢', colors: ['#2f5fe0', '#7de0ff'] },
+  tech: { label: 'Tech', one: 'Tech', icon: '💾', colors: ['#00a891', '#5fb4ff'] },
+  transit: { label: 'Transit', one: 'Transit', icon: '🚋', colors: ['#b8322a', '#f4d03f'] },
+  event: { label: 'Events', one: 'Event', icon: '🎆', colors: ['#e0306f', '#ffc15e'] },
+  hidden: { label: 'Hidden SF', one: 'Hidden SF', icon: '🗝️', colors: ['#3a3f6c', '#9fa8ff'] },
 };
 
 export function hash(s: string): number {

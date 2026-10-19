@@ -119,7 +119,7 @@ export const panel: Panel = {
       const info = el('div', 'dex-info');
       const title = el('h3', '', have ? c.name : 'Undiscovered card');
       const tags = el('p', 'dex-tags');
-      for (const t of [`${meta.icon} ${meta.label.replace(/s$/, '')}`, RARITY_LABEL[c.rarity], c.neighborhood, ...(have && c.year ? [String(c.year)] : [])]) tags.append(el('span', `tag${t === RARITY_LABEL[c.rarity] ? ` rarity-${c.rarity}` : ''}`, t));
+      for (const t of [`${meta.icon} ${meta.one}`, RARITY_LABEL[c.rarity], c.neighborhood, ...(have && c.year ? [String(c.year)] : [])]) tags.append(el('span', `tag${t === RARITY_LABEL[c.rarity] ? ` rarity-${c.rarity}` : ''}`, t));
       info.append(title, tags);
       if (have) {
         info.append(el('p', 'dex-blurb', c.blurb), el('p', 'dex-lore', c.lore));
