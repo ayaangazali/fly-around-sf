@@ -41,11 +41,11 @@ export function buildWindmill(game: Game, id: string, at: LandmarkSource, spec: 
     parts.push(new THREE.BoxGeometry(0.5, arm, 0.4).translate(0, arm / 2, 0).applyMatrix4(rot));
     lattice.push(new THREE.BoxGeometry(arm * 0.13, arm * 0.78, 0.08).translate(arm * 0.08, arm * 0.58, -0.25).applyMatrix4(rot));
   }
+  parts.push(new THREE.CylinderGeometry(0.6, 0.6, 1.4, 8).rotateX(Math.PI / 2));
   const sails = new THREE.Mesh(mergeGeometries(lattice), sail);
   const spars = new THREE.Mesh(mergeGeometries(parts), frame);
-  hub.add(spars, sails, new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 1.4, 8).rotateX(Math.PI / 2), frame));
+  hub.add(spars, sails);
   sails.castShadow = spars.castShadow = true;
-  spars.frustumCulled = false;
   spars.onBeforeRender = () => {
     hub.rotation.z = -(performance.now() / 1000) * 0.35;
   };

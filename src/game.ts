@@ -175,7 +175,7 @@ export class Game {
     for (const l of landmarks) l.build(this);
 
     const kinds = Object.values(import.meta.glob<ActivityKind>('./activities/kinds/*.ts', { eager: true, import: 'kind' }));
-    const defs = Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { eager: true, import: 'default' })).flat();
+    const defs = (await Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()))).flat();
     const errors = this.activities.register(kinds, defs);
     if (errors.length) console.warn(`content errors:\n${errors.join('\n')}`);
 

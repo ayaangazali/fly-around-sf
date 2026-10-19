@@ -28,8 +28,38 @@ function cached<M extends THREE.Material>(key: string, make: () => M): M {
   return m;
 }
 
+const baked = new WeakMap<THREE.Material, { into: THREE.MeshLambertMaterial; glow: THREE.Color }>();
+
+function bakedMaterial(flat: boolean, double: boolean): THREE.MeshLambertMaterial {
+  return cached(`baked:${flat}:${double}`, () => {
+    const m = withNight(
+      new THREE.MeshLambertMaterial({ vertexColors: true, emissive: '#ffffff', flatShading: flat, side: double ? THREE.DoubleSide : THREE.FrontSide }),
+      `glow:baked:${flat}:${double}`,
+      '\n  totalEmissiveRadiance *= vGlow;',
+    );
+    const night = m.onBeforeCompile;
+    m.onBeforeCompile = (s, r) => {
+      night(s, r);
+      s.vertexShader = s.vertexShader.replace('#include <common>', '#include <common>\nattribute vec3 aGlow;\nvarying vec3 vGlow;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvGlow = aGlow;');
+      s.fragmentShader = s.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec3 vGlow;');
+    };
+    return m;
+  });
+}
+
 export function paint(color: string, flat = false, double = false): THREE.MeshLambertMaterial {
-  return cached(`paint:${color}:${flat}:${double}`, () => new THREE.MeshLambertMaterial({ color, flatShading: flat, side: double ? THREE.DoubleSide : THREE.FrontSide }));
+  return cached(`paint:${color}:${flat}:${double}`, () => {
+    const m = new THREE.MeshLambertMaterial({ color, flatShading: flat, side: double ? THREE.DoubleSide : THREE.FrontSide });
+    baked.set(m, { into: bakedMaterial(flat, double), glow: new THREE.Color(0, 0, 0) });
+    return m;
+  });
+}
+
+function tint(geo: THREE.BufferGeometry, c: THREE.Color, name = 'color'): void {
+  const n = geo.getAttribute('position').count;
+  const col = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) col.set([c.r, c.g, c.b], i * 3);
+  geo.setAttribute(name, new THREE.BufferAttribute(col, 3));
 }
 
 export function glass(color: string, shininess = 80): THREE.MeshPhongMaterial {
@@ -53,7 +83,11 @@ function withNight(m: THREE.MeshLambertMaterial, key: string, extra = ''): THREE
 }
 
 export function glow(color: string, base = '#3a3a3a', intensity = 1): THREE.MeshLambertMaterial {
-  return cached(`glow:${color}:${base}:${intensity}`, () => withNight(new THREE.MeshLambertMaterial({ color: base, emissive: color, emissiveIntensity: intensity }), 'glow'));
+  return cached(`glow:${color}:${base}:${intensity}`, () => {
+    const m = withNight(new THREE.MeshLambertMaterial({ color: base, emissive: color, emissiveIntensity: intensity }), 'glow');
+    baked.set(m, { into: bakedMaterial(false, false), glow: m.emissive.clone().multiplyScalar(intensity) });
+    return m;
+  });
 }
 
 export function beacon(color = '#ff2a1a', period = 1.5): THREE.MeshLambertMaterial {
@@ -170,6 +204,12 @@ export class Site {
     this.q.setFromEuler(this.e);
     this.m.compose(new THREE.Vector3(x, y, z), this.q, new THREE.Vector3(sx, sy, sz));
     geo.applyMatrix4(this.m);
+    const b = baked.get(mat);
+    if (b) {
+      tint(geo, (mat as THREE.MeshLambertMaterial).color);
+      tint(geo, b.glow, 'aGlow');
+      mat = b.into;
+    }
     let list = this.parts.get(mat);
     if (!list) this.parts.set(mat, (list = []));
     list.push(geo);
@@ -208,11 +248,7 @@ export class Site {
 
   windows(color: string, g: THREE.BufferGeometry, x = 0, y = 0, z = 0, ry = 0): this {
     const geo = g.index ? g.toNonIndexed() : g;
-    const c = new THREE.Color(color);
-    const n = geo.getAttribute('position').count;
-    const col = new Float32Array(n * 3);
-    for (let i = 0; i < n; i++) col.set([c.r, c.g, c.b], i * 3);
-    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    tint(geo, new THREE.Color(color));
     return this.add(this.game.cityRenderer.material, geo, x, y, z, ry);
   }
 
