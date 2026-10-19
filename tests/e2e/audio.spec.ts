@@ -271,6 +271,7 @@ test.describe('audio', () => {
       g.bus.emit('photo', { x: 0, y: 0, z: 0, yaw: 0, pitch: 0 });
       g.panels.open('sound');
       g.panels.close();
+      window.__fly.step(0.1);
     }, ids);
     await page.waitForTimeout(400);
     await page.evaluate(() => {
@@ -342,6 +343,7 @@ test.describe('audio', () => {
     await expect(pier).toHaveText('In earshot, sound is off');
     await page.locator('.snd-mute').click();
     await expect(page.locator('.snd-mute')).toHaveAttribute('aria-pressed', 'false');
+    await page.waitForFunction(() => window.__audio().graph!.ctx.state === 'running');
     await page.evaluate(() => window.__fly.step(0.5));
     await expect(pier).toHaveText('Playing now');
 
