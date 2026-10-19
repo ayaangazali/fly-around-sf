@@ -140,7 +140,7 @@ test.describe('minigames', () => {
     expect(bad).toEqual([]);
   });
 
-  test('[R-MARKERS] beacons, rings, guide arrow, props and waypoint beacon all render', async ({ page }) => {
+  test('[R-MARKERS] beacons, rings, props and waypoint beacon render, and the guide arrow shows only when the target is off screen', async ({ page }) => {
     await boot(page);
     const r = await page.evaluate(() => {
       const f = window.__fly;
@@ -155,9 +155,14 @@ test.describe('minigames', () => {
       f.step(0.1);
       const rings = (g.scene.getObjectByName('ring-targets') as unknown as { count: number }).count;
       const targets = g.activities.active!.inst.targets!().length;
-      f.teleport({ x: g.flight.pos.x - 200, y: g.flight.pos.y + 40, z: g.flight.pos.z });
-      f.step(0.1);
-      const arrow = g.scene.getObjectByName('guide-arrow')!.visible;
+      const t = g.activities.active!.inst.targets!()[0];
+      const arrowFacing = (yaw: number) => {
+        f.teleport({ x: t.x - 200, y: t.y + 10, z: t.z }, yaw);
+        f.step(0.05);
+        return g.scene.getObjectByName('guide-arrow')!.visible;
+      };
+      const arrow = arrowFacing(Math.PI / 2);
+      const arrowAhead = arrowFacing(-Math.PI / 2);
       g.activities.stop();
       g.activities.start('follow-powell-hyde-cable-car');
       f.step(0.1);
@@ -170,12 +175,13 @@ test.describe('minigames', () => {
       f.step(0.1);
       const withWaypoint = count('beacon-beams');
       g.waypoint = null;
-      return { beacons, rings, targets, arrow, props, marker, before, withWaypoint };
+      return { beacons, rings, targets, arrow, arrowAhead, props, marker, before, withWaypoint };
     });
     expect(r.beacons).toBeGreaterThan(3);
     expect(r.rings).toBe(r.targets);
     expect(r.rings).toBeGreaterThan(2);
     expect(r.arrow).toBe(true);
+    expect(r.arrowAhead).toBe(false);
     expect(r.props).toBe(1);
     expect(r.marker).toBe(true);
     expect(r.withWaypoint).toBe(r.before + 1);

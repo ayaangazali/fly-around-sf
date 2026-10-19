@@ -8,6 +8,8 @@ import { World } from '../../src/world/world';
 import { collectPoints } from '../../src/activities/kinds/collect';
 import { buildRoute, along } from '../../src/activities/kinds/follow';
 import { isMedals } from '../../src/activities/minigame';
+import { kind as photo, lineBlocked, scoreShot, subjectPoint, viewfinder, type PhotoParams } from '../../src/activities/kinds/photo';
+import type { SolverStep } from '../../src/activities/types';
 import type { ActivityDef, GeoPoint } from '../../src/activities/types';
 import type { Game } from '../../src/game';
 
@@ -87,6 +89,18 @@ describe('minigame flyability against the real city', () => {
         const a = (k / 16) * Math.PI * 2;
         expect(city.roofAt(x + Math.cos(a) * r, z + Math.sin(a) * r), d.id).toBeCloseTo(roof, 0);
       }
+    }
+  });
+
+  it('[R-PHOTO] every photo challenge has an open viewpoint that scores three stars in the real city', () => {
+    const sun = { day: 40, golden: 4, night: -20 };
+    for (const d of byKind('photo')) {
+      const p = d.params as unknown as PhotoParams;
+      const [go, aim] = photo.solve(d, game) as [Extract<SolverStep, { teleport: unknown }>, Extract<SolverStep, { call: unknown }>];
+      aim.call(game);
+      const s = subjectPoint(game, p);
+      expect(clear(go.teleport, 2), d.id).toBe(true);
+      expect(scoreShot(p, { ...go.teleport, yaw: go.yaw ?? 0, pitch: viewfinder.tilt }, s, sun[p.time ?? 'day'], lineBlocked(game, go.teleport, s, p.clear ?? 30)).stars, d.id).toBe(3);
     }
   });
 

@@ -339,12 +339,19 @@ function guide(game: Game, target: Vec3 | null): void {
     arrow.visible = false;
     return;
   }
-  const d = Math.hypot(target.x - f.pos.x, target.y - f.pos.y, target.z - f.pos.z);
-  arrow.visible = d > 25;
+  const dx = target.x - f.pos.x;
+  const dz = target.z - f.pos.z;
+  const h = Math.hypot(dx, dz);
+  const d = Math.hypot(h, target.y - f.pos.y);
+  const off = Math.atan2(-dx, -dz) - f.yaw;
+  const turn = Math.abs(Math.atan2(Math.sin(off), Math.cos(off)));
+  const ahead = Math.max(turn / 0.35, Math.abs(Math.atan2(target.y - f.pos.y, h)) / 0.26);
+  const opacity = Math.min(0.9, (d - 25) / 50, (ahead - 0.7) / 0.6);
+  arrow.visible = opacity > 0.02;
   if (!arrow.visible) return;
   arrow.position.set(f.pos.x - Math.sin(f.yaw) * 5, f.pos.y + 2.4, f.pos.z - Math.cos(f.yaw) * 5);
   arrow.lookAt(target.x, target.y, target.z);
-  arrow.material.opacity = Math.min(0.9, (d - 25) / 50);
+  arrow.material.opacity = opacity;
 }
 
 export const system: GameSystem = {

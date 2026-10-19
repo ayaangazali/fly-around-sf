@@ -43,9 +43,9 @@ function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): vo
   const head = el('p', 'results-kind', `${kind.icon} ${kind.label} · ${def.neighborhood}`);
   const title = el('h3', '', def.title);
   const verdict = el('p', 'results-verdict', won ? (r.medal ? `${MEDAL_NAMES[r.medal]} medal` : 'Complete') : r.fail ?? 'Try again');
+  if (r.score) verdict.append(el('span', 'results-score', r.score));
   const stats = el('dl', 'results-stats');
   stats.append(stat('Time', formatTime(r.time)));
-  if (r.score) stats.append(stat('Score', r.score));
   const top = bestMedal(game.save, def.id);
   stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none'));
   stats.append(stat('Top medal', top ? MEDAL_NAMES[top] : 'none'));
