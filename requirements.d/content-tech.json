@@ -1,0 +1,7 @@
+[
+  { "id": "R-TECH-CARDS", "owner": "content-tech", "text": "At least 50 SF tech cards (companies, investors, institutions) with a founding year, origin lore, facts and https sources; every located card has a discovery at its verified address." },
+  { "id": "R-TECH-PITCH", "owner": "content-tech", "text": "At least 12 rooftop pitch meetings: land on the pad, answer market, traction and team rounds by key, click or tap; 2 of 3 wins a term sheet, fewer is a pass." },
+  { "id": "R-TECH-HACK", "owner": "content-tech", "text": "At least 16 hackathons at real venues: collect every glowing commit around the building before time runs out, with animated pixel hackers on the venue roofs." },
+  { "id": "R-TECH-VENUES", "owner": "content-tech", "text": "Every pitch pad and hack venue sits on a real building rooftop in the city data, and no two tech meetups share a start spot." },
+  { "id": "R-COMMIT-TOWERS", "owner": "content-tech", "text": "Commit Towers draw one glowing tower per baked GitHub org above its HQ, log-scaled by 30-day commits, with labels and rising fireflies, and make no GitHub calls at runtime." }
+]

@@ -42,6 +42,7 @@ export function fakeGame(ground = 0): Game {
     flight: createFlight(0, 50, 0),
     world: { toLocal, groundAt: () => ground, surfaceAt: () => ground, heightAt: () => ground, point, isWater: () => false },
     input: { press() {}, consume: () => false },
+    panels: { openId: null },
     toast() {},
   } as unknown as Game;
   (game as unknown as { activities: ActivityRunner }).activities = new ActivityRunner(game);

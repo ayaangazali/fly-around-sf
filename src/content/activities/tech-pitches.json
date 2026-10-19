@@ -1,0 +1,650 @@
+[
+  {
+    "id": "pitch-y-combinator",
+    "kind": "pitch",
+    "title": "Pitch Y Combinator",
+    "blurb": "Ten minutes, one group partner, one shot at the batch. Land on the shipyard office roof.",
+    "neighborhood": "Dogpatch",
+    "at": { "lat": 37.76082, "lon": -122.38604 },
+    "xp": 60,
+    "requires": ["discover-y-combinator"],
+    "tags": ["tech", "pitch", "accelerator"],
+    "params": {
+      "firm": "Y Combinator",
+      "partner": "Group partner in a quarter-zip",
+      "startup": "Fogcast: hyperlocal fog forecasts for Ocean Beach surfers",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "How big can this get?",
+          "options": [
+            "Surfing is a $10 billion industry, so if we get just 1% of it we are a $100M company.",
+            "12,000 local surfers already pay for surf apps. We win them, then every foggy coast.",
+            "Everyone checks the weather daily, so every phone in the world is our market."
+          ],
+          "best": 1,
+          "yes": "Bottoms-up and specific. That is how we like it.",
+          "no": "Top-down TAM math. Every partner here has seen that slide."
+        },
+        {
+          "topic": "traction",
+          "ask": "What have you got so far?",
+          "options": [
+            "We're pre-launch, but our waitlist has 4,000 signups from one Hacker News post.",
+            "We've spent eight months perfecting the model in stealth so launch is flawless.",
+            "340 paying users three weeks after launch, growing 15% a week."
+          ],
+          "best": 2,
+          "yes": "15% a week. Keep that up and nothing else matters.",
+          "no": "Make something people want, then come back."
+        },
+        {
+          "topic": "team",
+          "ask": "Who's building it?",
+          "options": [
+            "Two founders who write all the code and surf Ocean Beach every morning.",
+            "I'm the business founder. We'll hire a technical cofounder once the round closes.",
+            "A dev agency built v1, so we can stay focused on sales and fundraising."
+          ],
+          "best": 0,
+          "yes": "Technical founders who are their own users. Great sign.",
+          "no": "So who writes the code on Monday morning?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-a16z",
+    "kind": "pitch",
+    "title": "Pitch Andreessen Horowitz",
+    "blurb": "Software is eating the world. Convince a16z it is also eating parking.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.77937, "lon": -122.39261 },
+    "xp": 60,
+    "requires": ["discover-a16z"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Andreessen Horowitz",
+      "partner": "General partner who also hosts a podcast",
+      "startup": "SpotBot: predicts which San Francisco curb will open up next",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Why is this happening now and not ten years ago?",
+          "options": [
+            "Large language models changed everything, and parking is next on the list.",
+            "Parking has been painful forever, so the demand for a fix like this has always been there.",
+            "Curb sensors, phones and instant payments now all exist, so parking can go online."
+          ],
+          "best": 2,
+          "yes": "A real why-now. Write that on slide two.",
+          "no": "That is not a why-now. That is a vibe."
+        },
+        {
+          "topic": "traction",
+          "ask": "Show me the numbers.",
+          "options": [
+            "Revenue doubled twice this year and 60% of drivers still use it after 3 months.",
+            "Two million downloads in one month, thanks to the free parking giveaway we ran in May.",
+            "We're at $1M ARR, nearly all from one enterprise pilot that renews in spring."
+          ],
+          "best": 0,
+          "yes": "Retention like that is the whole game.",
+          "no": "Nice number. Now tell me which part of it survives next quarter."
+        },
+        {
+          "topic": "team",
+          "ask": "Why are you the ones who win this?",
+          "options": [
+            "We have 14 advisors, including two former transit agency heads and a famous angel.",
+            "We built parking data systems for five years and know every meter on Valencia.",
+            "We're first-time founders, which means we see this with completely fresh eyes."
+          ],
+          "best": 1,
+          "yes": "Founder-market fit. Love it.",
+          "no": "Advisors and fresh eyes are nice. What do you know that others don't?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-founders-inc",
+    "kind": "pitch",
+    "title": "Pitch Founders, Inc.",
+    "blurb": "Demo a hardware startup on the Fort Mason campus roof. Bring a prototype, not a render.",
+    "neighborhood": "Marina",
+    "at": { "lat": 37.8068, "lon": -122.4319 },
+    "xp": 60,
+    "requires": ["discover-founders-inc"],
+    "tags": ["tech", "pitch", "accelerator", "hardware"],
+    "params": {
+      "firm": "Founders, Inc.",
+      "partner": "Hardware lab lead with solder on one sleeve",
+      "startup": "BurritoDrop: drone burrito delivery to Dolores Park",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Who buys this first?",
+          "options": [
+            "Anyone who eats burritos, which is basically everyone in San Francisco.",
+            "Saturday crowds on the Dolores Park slope, served by four Mission taquerias.",
+            "Big chains like Chipotle. We'll license the drone to all of them once it works."
+          ],
+          "best": 1,
+          "yes": "A beachhead you can fly over. Nice.",
+          "no": "Too broad, or too far off. Who is buying in month one?"
+        },
+        {
+          "topic": "traction",
+          "ask": "Does it actually fly?",
+          "options": [
+            "Our simulator says it handles fog and wind better than any drone on the market.",
+            "A patent pending on the propeller, plus a letter of intent from a taqueria.",
+            "220 test deliveries in a fenced lot, zero spilled salsa."
+          ],
+          "best": 2,
+          "yes": "Real flights beat real slides. Every time.",
+          "no": "We asked if it flies. Paper and simulations don't count."
+        },
+        {
+          "topic": "team",
+          "ask": "Who is on the team?",
+          "options": [
+            "A visionary CEO with two exits, plus a contract hardware shop in Shenzhen for the rest.",
+            "Three software engineers. Hardware is just software you can drop, right?",
+            "An ex drone racer, a firmware engineer and a burrito obsessive. V1 was built here."
+          ],
+          "best": 2,
+          "yes": "You already shipped here. That counts.",
+          "no": "Hardware is hard. Who is holding the soldering iron?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-founders-fund",
+    "kind": "pitch",
+    "title": "Pitch Founders Fund",
+    "blurb": "They wanted flying cars. Pitch them something almost as wild in the Presidio.",
+    "neighborhood": "Presidio",
+    "at": { "lat": 37.79888, "lon": -122.44932 },
+    "xp": 60,
+    "requires": ["discover-founders-fund"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Founders Fund",
+      "partner": "Contrarian partner in a plain black tee",
+      "startup": "Karl Water: nets that turn the fog into drinking water",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "What do you believe that almost nobody agrees with?",
+          "options": [
+            "That fog is an untapped water source for coastal cities, and nets make it cheap.",
+            "That climate tech is the biggest market of the next decade, and it's still early.",
+            "That clean water is a human right, and people will pay a premium for it."
+          ],
+          "best": 0,
+          "yes": "A real secret. Those are rare.",
+          "no": "Everybody already agrees with that."
+        },
+        {
+          "topic": "traction",
+          "ask": "Is any of this real yet?",
+          "options": [
+            "A Fortune 500 beverage company said they'd love to pilot it sometime next year.",
+            "Our first net on a Sunset rooftop collected 900 liters last month.",
+            "Our 3D renders went viral and 10,000 people joined the waitlist overnight."
+          ],
+          "best": 1,
+          "yes": "Water in a bucket. Now that is a demo.",
+          "no": "Interest is not water. Show me a full bucket."
+        },
+        {
+          "topic": "team",
+          "ask": "Why are you the people to build this?",
+          "options": [
+            "We're generalists from top consulting firms. We can learn any industry fast.",
+            "We read every fog harvesting paper this year, and we care deeply about water.",
+            "One of us designed desalination plants, the other built sails for racing yachts."
+          ],
+          "best": 2,
+          "yes": "Weird, deep, and exactly right.",
+          "no": "Smart and sincere, but where is the edge?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-general-catalyst",
+    "kind": "pitch",
+    "title": "Pitch General Catalyst",
+    "blurb": "Twenty floors up on Hawthorne Street. Sell them on flatter bike routes.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78544, "lon": -122.39802 },
+    "xp": 60,
+    "requires": ["discover-general-catalyst"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "General Catalyst",
+      "partner": "Operator turned investor with a standing desk",
+      "startup": "Steepr: e-bike routes that dodge San Francisco's worst hills",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Who pays, and why?",
+          "options": [
+            "Bike share fleets pay per ride, since flatter routes mean fewer dead batteries.",
+            "Riders see sponsored stops along their route, so local cafes pay us for traffic.",
+            "Every rider hates hills, so we'll charge $9.99 a month and most will pay."
+          ],
+          "best": 0,
+          "yes": "A buyer with a budget and a real pain. Good.",
+          "no": "Nobody with a budget feels that pain. Who signs the check?"
+        },
+        {
+          "topic": "traction",
+          "ask": "How is it going so far?",
+          "options": [
+            "TechCrunch covered our launch and our launch thread got two million views.",
+            "Two fleets in pilots, and their battery swaps dropped 18%.",
+            "50,000 free downloads. We'll switch on the paid tier once we hit a million."
+          ],
+          "best": 1,
+          "yes": "A metric your customer already cares about.",
+          "no": "Attention and free users are not adoption."
+        },
+        {
+          "topic": "team",
+          "ask": "Tell me about the founders.",
+          "options": [
+            "Two ex-Google PMs. Neither of us bikes, which gives us truly fresh eyes.",
+            "Three of us, equal equity and equal titles, and we'll pick a CEO after the round closes.",
+            "A former bike share ops lead and a mapping engineer who rides up Twin Peaks daily."
+          ],
+          "best": 2,
+          "yes": "You've lived the problem. That shows.",
+          "no": "Fresh eyes and shared titles are not a plan. Who knows bikes, and who decides?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-greylock",
+    "kind": "pitch",
+    "title": "Pitch Greylock",
+    "blurb": "Network effects, top of the old phone company tower. Land on the roof, 120 m up.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78661, "lon": -122.40001 },
+    "xp": 70,
+    "requires": ["discover-greylock"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Greylock",
+      "partner": "Network effects whiteboard enthusiast",
+      "startup": "Roomies: a rental marketplace that gets better with every renter",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Where is the network effect?",
+          "options": [
+            "Our referral bonus gives every renter $50 for each friend who signs a lease.",
+            "Each renter's review improves listings for the next one, and landlords follow.",
+            "We have the best brand in rentals, and brand is the strongest moat there is."
+          ],
+          "best": 1,
+          "yes": "Each user makes it better for the next. That compounds.",
+          "no": "Coupons and brand are not a network effect."
+        },
+        {
+          "topic": "traction",
+          "ask": "Is the loop actually spinning?",
+          "options": [
+            "70% of new renters arrive through another renter's review, and it rises monthly.",
+            "We grew 40% last month, and nearly all of it came from paid Instagram ads.",
+            "Signups doubled after we launched a $100 bonus for every new account."
+          ],
+          "best": 0,
+          "yes": "Organic growth from the product itself. Beautiful.",
+          "no": "If you stop paying, does anyone still show up?"
+        },
+        {
+          "topic": "team",
+          "ask": "What's the team's unfair advantage?",
+          "options": [
+            "We work 100-hour weeks. Nobody will outwork this team, period.",
+            "We're former landlords, so we know exactly what renters want.",
+            "We ran growth at a marketplace and built its review system."
+          ],
+          "best": 2,
+          "yes": "You've grown a loop before. Do it again.",
+          "no": "Hustle and opinions are nice. Have you grown a loop before?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-lightspeed",
+    "kind": "pitch",
+    "title": "Pitch Lightspeed",
+    "blurb": "Snapchat's first venture investor sits on South Park. Pitch them something fleeting.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78237, "lon": -122.39316 },
+    "xp": 60,
+    "requires": ["discover-lightspeed"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Lightspeed",
+      "partner": "Consumer partner who answers texts in under a minute",
+      "startup": "Fogpost: photos that vanish when the fog rolls in",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Who is this for?",
+          "options": [
+            "Gen Z friend groups who want to share moments without a permanent record.",
+            "Enterprises that need compliant, auto-expiring photo sharing for their teams.",
+            "Everyone with a phone camera, which is more than four billion people."
+          ],
+          "best": 0,
+          "yes": "Clear audience, clear behavior. Next.",
+          "no": "That's not who uses vanishing photos. Who is it really for?"
+        },
+        {
+          "topic": "traction",
+          "ask": "How many people use it?",
+          "options": [
+            "We have 50 users, and every one of them is an investor who loves it.",
+            "Downloads spiked to 80,000 when an influencer posted about us last week.",
+            "11,000 daily users at three campuses, sending 40 photos a day each."
+          ],
+          "best": 2,
+          "yes": "Daily habit on campus. That is how this starts.",
+          "no": "Investors and spikes are not users. Show me a habit."
+        },
+        {
+          "topic": "team",
+          "ask": "Why your team?",
+          "options": [
+            "We're still in school and we use it ourselves every day.",
+            "We hired a famous advisor who sat on the board of a big social app.",
+            "We'll outsource the app so we can stay focused on marketing."
+          ],
+          "best": 0,
+          "yes": "Users building for users. Classic.",
+          "no": "Who is building the thing, though?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-500-global",
+    "kind": "pitch",
+    "title": "Pitch 500 Global",
+    "blurb": "The accelerator that backed thousands. Make yours memorable on Mission Street.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78441, "lon": -122.40495 },
+    "xp": 60,
+    "requires": ["discover-500-global"],
+    "tags": ["tech", "pitch", "accelerator"],
+    "params": {
+      "firm": "500 Global",
+      "partner": "Accelerator partner with a growth spreadsheet open",
+      "startup": "Starter Club: a subscription for sourdough starter, shipped fresh",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "How do you reach customers cheaply?",
+          "options": [
+            "A big billboard campaign on the 101 so every commuter learns our name.",
+            "Every loaf posted online is free marketing, and each jar has a QR code to share.",
+            "We'll hire a TikTok agency and go viral. Bread content always performs."
+          ],
+          "best": 1,
+          "yes": "Built-in sharing. Your customers are your ads.",
+          "no": "Billboards are not cheap, and viral is not a plan."
+        },
+        {
+          "topic": "traction",
+          "ask": "What does growth look like?",
+          "options": [
+            "We're waiting for the perfect launch moment, probably after the holidays.",
+            "Revenue tripled last month, though most of it came from friends and family.",
+            "Revenue is up 30% a month for four months. A $9 customer is worth $90 to us."
+          ],
+          "best": 2,
+          "yes": "Payback in weeks. That is a business.",
+          "no": "Friends and family are not a market, and waiting is not a launch."
+        },
+        {
+          "topic": "team",
+          "ask": "Who are the founders?",
+          "options": [
+            "A baker and a growth marketer who have shipped 5,000 jars together.",
+            "Just me for now. A cofounder slows decisions down, so I'm going solo.",
+            "Four cofounders from our MBA class, with equal shares and equal titles."
+          ],
+          "best": 0,
+          "yes": "Product plus distribution. Balanced team.",
+          "no": "Who bakes, who sells, and who decides?"
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-initialized",
+    "kind": "pitch",
+    "title": "Pitch Initialized",
+    "blurb": "A seed fund on Tehama Street. Pitch a pothole bounty to former founders.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.78014, "lon": -122.40611 },
+    "xp": 60,
+    "requires": ["discover-initialized"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Initialized Capital",
+      "partner": "Seed partner who used to be a designer",
+      "startup": "Bump: pays drivers small bounties for verified pothole reports",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Who is the customer?",
+          "options": [
+            "City public works teams. They pay per verified pothole and skip inspection trips.",
+            "Drivers. Everyone hates potholes, so they'll pay a monthly fee to report them.",
+            "Car companies. They'll license our data someday, probably for self-driving."
+          ],
+          "best": 0,
+          "yes": "A clear buyer who saves money. Good.",
+          "no": "Hating potholes is not a budget. Who saves money?"
+        },
+        {
+          "topic": "traction",
+          "ask": "What's working?",
+          "options": [
+            "A city employee emailed to say they love it and will pass it along.",
+            "We've mapped 3,000 potholes and two cities signed paid pilots.",
+            "We redesigned the app twice this quarter. Dark mode just shipped."
+          ],
+          "best": 1,
+          "yes": "Paid pilots with government is real progress.",
+          "no": "Nice emails and dark mode are not contracts."
+        },
+        {
+          "topic": "team",
+          "ask": "How do you two work together?",
+          "options": [
+            "We argue about everything, and that's fine because nobody makes final calls.",
+            "We met at a hackathon last Tuesday and instantly knew we were the team.",
+            "We built two products together before, and we split decisions by area."
+          ],
+          "best": 2,
+          "yes": "Cofounders who already shipped together. Low risk.",
+          "no": "Cofounder trouble kills more startups than competitors."
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-redpoint",
+    "kind": "pitch",
+    "title": "Pitch Redpoint",
+    "blurb": "Enterprise software on Maiden Lane. Pitch a bakery inventory tool to a SaaS crowd.",
+    "neighborhood": "Union Square",
+    "at": { "lat": 37.7883, "lon": -122.40416 },
+    "xp": 60,
+    "requires": ["discover-redpoint"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Redpoint",
+      "partner": "SaaS partner who loves a good cohort chart",
+      "startup": "OvenOps: inventory software for neighborhood bakeries",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "How big is this, really?",
+          "options": [
+            "Bakeries are a $2 trillion global market, and we only need 1% of it.",
+            "Every restaurant on Earth needs inventory software. Bakeries are just step one.",
+            "Thousands of independent US bakeries waste money on unsold bread. We start in SF."
+          ],
+          "best": 2,
+          "yes": "Specific, countable, with a starting point. Good.",
+          "no": "Top-down hand waving. Count your actual customers."
+        },
+        {
+          "topic": "traction",
+          "ask": "How do customers behave after they sign up?",
+          "options": [
+            "Net revenue retention is 130%: bakeries add locations and seats.",
+            "Most cancel after the free trial, but new signups more than make up for it.",
+            "We'll track retention once we hit 1,000 customers. Growth comes first."
+          ],
+          "best": 0,
+          "yes": "Customers paying more every year. That is SaaS gold.",
+          "no": "A leaky bucket fills slowly."
+        },
+        {
+          "topic": "team",
+          "ask": "Why you?",
+          "options": [
+            "My uncle owns a bakery, so I've seen the problem up close for years.",
+            "One of us ran a 12-location bakery, the other built inventory software.",
+            "We're ex-FAANG engineers. Software is software, whatever the industry."
+          ],
+          "best": 1,
+          "yes": "Deep domain plus technical depth. Strong.",
+          "no": "Seen it, or done it? We back the ones who've done it."
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-index-ventures",
+    "kind": "pitch",
+    "title": "Pitch Index Ventures",
+    "blurb": "A European firm a block from a16z. Show them your startup works on two continents.",
+    "neighborhood": "SoMa",
+    "at": { "lat": 37.77978, "lon": -122.39134 },
+    "xp": 60,
+    "requires": ["discover-index-ventures"],
+    "tags": ["tech", "pitch", "vc"],
+    "params": {
+      "firm": "Index Ventures",
+      "partner": "Partner who just flew in from London",
+      "startup": "Lingo Lift: live translation for taxi and rideshare rides",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Is this a global business?",
+          "options": [
+            "Our home zip code first. We'll think about other cities in a few years.",
+            "Tourism is a $10 trillion industry, so we're addressing a huge market.",
+            "Every tourist city has riders and drivers with no shared language. SF and Lisbon first."
+          ],
+          "best": 2,
+          "yes": "Global from day one. Our favorite kind.",
+          "no": "Too small, or too vague. Where else does this work?"
+        },
+        {
+          "topic": "traction",
+          "ask": "What do drivers think?",
+          "options": [
+            "Drivers using it get 0.3 more stars on average, and 4,000 pay monthly.",
+            "We haven't shown drivers yet. We want the app perfect before they see it.",
+            "Riders love the logo, and our app store page converts at 30%."
+          ],
+          "best": 0,
+          "yes": "A measurable win for the user who pays.",
+          "no": "Go ride along with a driver first."
+        },
+        {
+          "topic": "team",
+          "ask": "Can this team build in two countries?",
+          "options": [
+            "We'll figure out Europe later. Our lawyer says it's mostly paperwork.",
+            "Founders in both cities who speak six languages, and the app runs in both.",
+            "We use translation apps ourselves when traveling, so we get the problem."
+          ],
+          "best": 1,
+          "yes": "Already operating on two continents. Impressive.",
+          "no": "International is hard. Show us you can do it."
+        }
+      ]
+    }
+  },
+  {
+    "id": "pitch-dogpatch-labs",
+    "kind": "pitch",
+    "title": "It's 2010: Pitch at Dogpatch Labs",
+    "blurb": "Instagram's founders worked on this pier. Pitch a check-in app and find the pivot.",
+    "neighborhood": "South Beach",
+    "at": { "lat": 37.7827, "lon": -122.3863 },
+    "xp": 70,
+    "requires": ["discover-dogpatch-labs"],
+    "tags": ["tech", "pitch", "history"],
+    "params": {
+      "firm": "Dogpatch Labs, 2010",
+      "partner": "Incubator mentor holding a brand new iPhone 4",
+      "startup": "Pierpic: a location check-in app with photos",
+      "rounds": [
+        {
+          "topic": "market",
+          "ask": "Foursquare already owns check-ins. Why you?",
+          "options": [
+            "We'll out-check-in them with more cities, more venues and faster check-ins.",
+            "Users skip the check-in and just share photos, so we're cutting all but photos.",
+            "We'll add more badges and mayorships. Gamification is what drives retention."
+          ],
+          "best": 1,
+          "yes": "Do one thing people love. That's a pivot worth making.",
+          "no": "More features won't beat the leader."
+        },
+        {
+          "topic": "traction",
+          "ask": "What happens after people try it?",
+          "options": [
+            "People love the badges and try every feature once, then they drift off.",
+            "Nobody has tried it yet. We're waiting on the App Store review.",
+            "Test users post photos every day and keep asking us for filters."
+          ],
+          "best": 2,
+          "yes": "Users begging for filters is a signal. Ship them.",
+          "no": "No pull from users means no product yet."
+        },
+        {
+          "topic": "team",
+          "ask": "Can two people really build this?",
+          "options": [
+            "Yes. One of us does product and design, the other engineering. We ship weekly.",
+            "Not yet. We need to hire 40 engineers before the first public launch.",
+            "Yes, as long as we outsource the iOS app and the backend to an agency."
+          ],
+          "best": 0,
+          "yes": "Two people, fast iterations. Go build it.",
+          "no": "Small teams win by shipping. Can you?"
+        }
+      ]
+    }
+  }
+]
