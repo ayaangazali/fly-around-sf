@@ -1,7 +1,7 @@
 import type { Game, GameSystem } from '../game';
 import type { ActivityDef } from '../activities/types';
 import { el } from '../ui/panel-host';
-import { MEDAL_NAMES, bestMedal, formatTime, isMedals, medalFor, saveMedal, type MinigameResult } from '../activities/minigame';
+import { MEDAL_NAMES, bestMedal, bestOf, formatTime, isMedals, keepBest, medalFor, saveMedal, type MinigameResult } from '../activities/minigame';
 import '../ui/minigames.css';
 
 let card: HTMLElement;
@@ -9,6 +9,11 @@ let shownAt: { x: number; z: number } | null = null;
 let current: ActivityDef | null = null;
 let pending: MinigameResult | null = null;
 let prevBest: number | undefined;
+
+const SCORED: Record<string, { label: string; gold: string; text: (v: number) => string }> = {
+  photo: { label: 'Best shot', gold: 'Gold needs a three star shot', text: (v) => `${'★'.repeat(v)}${'☆'.repeat(3 - v)}` },
+  follow: { label: 'Best formation', gold: 'Gold needs 75% in close formation', text: (v) => `${v}%` },
+};
 
 function hide(): void {
   card.hidden = true;
@@ -34,7 +39,11 @@ function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): vo
   const kind = game.activities.kindOf(def);
   const best = game.save.data.best[def.id];
   const improved = won && saveMedal(game.save, def.id, r.medal);
-  const newBest = won && prevBest !== undefined && best !== undefined && best < prevBest;
+  const scored = SCORED[def.kind];
+  const pointsKey = `points:${def.id}`;
+  const hadPoints = bestOf(game.save, pointsKey) > 0;
+  const newPoints = won && r.points !== undefined && keepBest(game.save, pointsKey, r.points) && hadPoints;
+  const newBest = !scored && won && prevBest !== undefined && best !== undefined && best < prevBest;
   const medals = def.params?.medals;
   card.className = `results ${won ? `results-win medal-${r.medal}` : 'results-fail'}`;
   const badge = el('div', 'results-medal', won ? (r.medal ? '★' : '✓') : '✕');
@@ -47,11 +56,15 @@ function show(game: Game, def: ActivityDef, r: MinigameResult, won: boolean): vo
   const stats = el('dl', 'results-stats');
   stats.append(stat('Time', formatTime(r.time)));
   const top = bestMedal(game.save, def.id);
-  stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none'));
+  const points = bestOf(game.save, pointsKey);
+  if (scored) stats.append(stat(scored.label, points ? scored.text(points) : 'none'));
+  else stats.append(stat('Best', best !== undefined ? formatTime(best) : 'none'));
   stats.append(stat('Top medal', top ? MEDAL_NAMES[top] : 'none'));
   const notes: string[] = [];
   if (newBest) notes.push('New best time!');
+  if (newPoints && scored) notes.push(`New ${scored.label.toLowerCase()}!`);
   if (improved && r.medal) notes.push(`New ${MEDAL_NAMES[r.medal].toLowerCase()} medal`);
+  if (scored && won && r.medal < 3) notes.push(scored.gold);
   if (isMedals(medals) && r.medal < 3) notes.push(`Gold under ${formatTime(medals[0])} · Silver ${formatTime(medals[1])} · Bronze ${formatTime(medals[2])}`);
   const note = el('p', 'results-note', notes.join('  ·  '));
   note.hidden = !notes.length;

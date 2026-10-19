@@ -94,7 +94,7 @@ export const kind: ActivityKind = {
         }
         if (t - lead >= duration) {
           const frac = Math.min(1, tight / duration);
-          report(game, def, { medal: frac >= 0.75 ? 3 : frac >= 0.45 ? 2 : 1, time: t, score: `${Math.round(frac * 100)}% in close formation` });
+          report(game, def, { medal: frac >= 0.75 ? 3 : frac >= 0.45 ? 2 : 1, time: t, score: `${Math.round(frac * 100)}% in close formation`, points: Math.round(frac * 100) });
           return 'done';
         }
         return 'running';

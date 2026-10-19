@@ -1,5 +1,5 @@
 import type { ActivityKind, GeoPoint, SolverStep } from '../types';
-import { clock, dist3, isGeo, medalFor, prop, report, rng, validateTimed, type Medals, type MinigameInstance } from '../minigame';
+import { clock, dist3, isGeo, medalFor, prop, report, rng, spot as place, validateTimed, type Medals, type MinigameInstance } from '../minigame';
 
 interface HoverParams {
   spot: GeoPoint & { name: string };
@@ -36,7 +36,7 @@ export const kind: ActivityKind = {
     const strength = p.gust ?? 5;
     const rand = rng(def.id);
     const ph = [rand() * 6, rand() * 6, rand() * 6];
-    const spot = game.world.point(p.spot, 40);
+    const spot = place(game, p.spot, 40);
     const zone = prop('zone', spot, 0, tol);
     const props = [zone];
     let t = 0;
@@ -74,7 +74,7 @@ export const kind: ActivityKind = {
   },
   solve(def, game) {
     const p = def.params as unknown as HoverParams;
-    const spot = game.world.point(p.spot, 40);
+    const spot = place(game, p.spot, 40);
     const steps: SolverStep[] = [];
     for (let s = 0; s < p.hold * 1.5 + 2; s += 0.25) steps.push({ teleport: spot }, { wait: 0.25 });
     return steps;

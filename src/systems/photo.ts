@@ -18,11 +18,16 @@ let ui: {
   feedback: HTMLElement;
   flash: HTMLElement;
   button: HTMLButtonElement;
+  keep: HTMLButtonElement;
 };
 let live = 0;
 let lastInfo = '';
 let lastChecks = '';
 let feedbackTimer = 0;
+let best = 0;
+
+const touch = () => navigator.maxTouchPoints > 0;
+const startHint = () => (touch() ? 'Tap 📷 to open the viewfinder' : 'Press P to open the viewfinder');
 
 function challenge(game: Game): PhotoParams | null {
   const a = game.activities.active;
@@ -38,7 +43,9 @@ function setOpen(game: Game, open: boolean): void {
   lastInfo = lastChecks = '';
   if (open) {
     aim(game);
-    game.toast('Viewfinder: P shutter · Z/X or wheel tilt · Esc close', 'info');
+    const stale = startHint();
+    for (const t of game.ui.querySelectorAll('.toast')) if (t.textContent === stale) t.remove();
+    game.toast(touch() ? 'Tap the shutter to shoot, ▲ ▼ to tilt' : 'Viewfinder: P shutter · Z/X or wheel tilt · Esc close', 'info');
   }
 }
 
@@ -96,11 +103,12 @@ function placeName(game: Game): string {
 function shoot(game: Game): void {
   const f = game.flight;
   const img = thumbnail(game);
-  let scored: { stars: number; hint: string } | null = null;
+  let scored: { stars: number; best: number; hint: string } | null = null;
   const off = game.bus.on('photo:scored', (s) => void (scored = s));
   game.bus.emit('photo', { x: f.pos.x, y: f.pos.y, z: f.pos.z, yaw: f.yaw, pitch: viewfinder.tilt });
   off();
-  const s = scored as { stars: number; hint: string } | null;
+  const s = scored as { stars: number; best: number; hint: string } | null;
+  if (s) best = s.best;
   const res = addPhoto({ t: Date.now(), title: placeName(game), stars: s?.stars ?? 0, img, p: [Math.round(f.pos.x), Math.round(f.pos.y), Math.round(f.pos.z)] });
   ui.flash.classList.remove('go');
   void ui.flash.offsetWidth;
@@ -109,6 +117,7 @@ function shoot(game: Game): void {
   ui.feedback.replaceChildren();
   if (s) ui.feedback.append(el('b', `vf-stars s${s.stars}`, s.stars ? `${'★'.repeat(s.stars)}${'☆'.repeat(3 - s.stars)}` : '☆☆☆'));
   ui.feedback.append(el('span', '', s ? s.hint : saved), el('small', '', s ? saved : ''));
+  if (s && best > 0 && best < 3) ui.feedback.append(el('small', '', `Best so far ${'★'.repeat(best)}${'☆'.repeat(3 - best)}. ${touch() ? 'Tap ✓ to keep it' : 'Press F to keep it'}, or shoot again`));
   ui.feedback.hidden = false;
   feedbackTimer = 3;
 }
@@ -182,6 +191,9 @@ function build(game: Game): void {
       game.panels.open('album');
     }),
   );
+  const keep = btn('vf-btn vf-keep', '✓', 'Keep best shot (F)', () => game.interact());
+  keep.hidden = true;
+  bar.append(keep);
   frame.append(el('div', 'vf-rec', 'VIEWFINDER'), info, checks);
   root.append(frame, feedback, bar);
   const button = el('button', 'photo-btn', '📷');
@@ -190,7 +202,7 @@ function build(game: Game): void {
   button.title = 'Camera (P)';
   button.addEventListener('click', () => (viewfinder.open ? shoot(game) : setOpen(game, true)));
   game.ui.append(root, button);
-  ui = { root, frame, subject, info, checks, feedback, flash, button };
+  ui = { root, frame, subject, info, checks, feedback, flash, button, keep };
 }
 
 export const system: GameSystem = {
@@ -226,7 +238,8 @@ export const system: GameSystem = {
     );
     game.bus.on('panel:open', () => setOpen(game, false));
     game.bus.on('activity:start', ({ id }) => {
-      if (game.activities.defs.get(id)?.kind === 'photo') game.toast(navigator.maxTouchPoints > 0 ? 'Tap 📷 to open the viewfinder' : 'Press P to open the viewfinder', 'info');
+      best = 0;
+      if (game.activities.defs.get(id)?.kind === 'photo' && !viewfinder.open) game.toast(startHint(), 'info');
     });
     game.bus.on('activity:complete', ({ id }) => {
       if (game.activities.defs.get(id)?.kind === 'photo') setTimeout(() => setOpen(game, false), 900);
@@ -244,6 +257,8 @@ export const system: GameSystem = {
     const stick = -(pad?.axes[3] ?? 0);
     const dir = (held.has('KeyZ') ? 1 : 0) - (held.has('KeyX') ? 1 : 0) + (Math.abs(stick) > 0.15 ? stick : 0);
     if (dir) viewfinder.tilt = Math.max(PHOTO.tiltMin, Math.min(PHOTO.tiltMax, viewfinder.tilt + dir * 0.8 * dt));
+    const keep = !!challenge(game) && best > 0 && best < 3;
+    if (ui.keep.hidden === keep) ui.keep.hidden = !keep;
     refresh(game, dt);
   },
 };

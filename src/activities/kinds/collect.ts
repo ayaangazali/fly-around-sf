@@ -1,7 +1,7 @@
 import type { ActivityDef, ActivityKind } from '../types';
 import type { Game } from '../../game';
 import type { Vec3 } from '../../player/flight';
-import { PROP_EMOJI, clock, dist3, isRange, medalFor, prop, report, rng, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
+import { PROP_EMOJI, clock, dist3, isRange, lift, medalFor, prop, report, rng, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
 
 interface CollectParams {
   item: string;
@@ -25,7 +25,8 @@ export function collectPoints(def: ActivityDef, game: Game): Vec3[] {
     const x = c.x + Math.cos(a) * d;
     const z = c.z + Math.sin(a) * d;
     const ground = Math.max(game.world.groundAt(x, z), game.world.groundAt(x + 6, z), game.world.groundAt(x - 6, z), game.world.groundAt(x, z + 6), game.world.groundAt(x, z - 6));
-    return { x, y: ground + lo + rand() * (hi - lo), z };
+    const alt = lo + rand() * (hi - lo);
+    return lift(game, x, ground + alt, z, alt);
   });
 }
 

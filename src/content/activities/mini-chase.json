@@ -136,8 +136,8 @@
     "blurb": "A common raven is playing in the wind over the summit.",
     "neighborhood": "Twin Peaks",
     "at": {
-      "lat": 37.752415,
-      "lon": -122.447587,
+      "lat": 37.7518,
+      "lon": -122.4473,
       "alt": 30
     },
     "xp": 30,
@@ -168,8 +168,8 @@
     "blurb": "One cherry-headed conure has strayed from the flock. Catch up before it vanishes into the trees.",
     "neighborhood": "Telegraph Hill",
     "at": {
-      "lat": 37.802379,
-      "lon": -122.405834,
+      "lat": 37.802697,
+      "lon": -122.405813,
       "alt": 30
     },
     "xp": 30,
@@ -190,7 +190,8 @@
     },
     "sources": [
       "https://en.wikipedia.org/wiki/The_Wild_Parrots_of_Telegraph_Hill",
-      "https://www.openstreetmap.org/way/28824850"
+      "https://www.openstreetmap.org/way/28824850",
+      "https://www.openstreetmap.org/node/4045442977"
     ]
   },
   {
@@ -200,8 +201,8 @@
     "blurb": "A gull grabbed a crab claw at the wharf stands.",
     "neighborhood": "Fisherman’s Wharf",
     "at": {
-      "lat": 37.808522,
-      "lon": -122.414897,
+      "lat": 37.8091,
+      "lon": -122.4147,
       "alt": 30
     },
     "xp": 30,
@@ -265,8 +266,8 @@
     "blurb": "A raven is riding the updraft along the cliffs.",
     "neighborhood": "Lands End",
     "at": {
-      "lat": 37.77976,
-      "lon": -122.511604,
+      "lat": 37.7804,
+      "lon": -122.5114,
       "alt": 30
     },
     "xp": 30,
@@ -296,8 +297,8 @@
     "blurb": "A gull is circling the farmers market looking for a target.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.795549,
-      "lon": -122.393475,
+      "lat": 37.796,
+      "lon": -122.3922,
       "alt": 30
     },
     "xp": 30,

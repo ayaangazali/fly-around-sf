@@ -1,5 +1,5 @@
 import type { ActivityKind, GeoPoint } from '../types';
-import { clock, dist3, isGeo, medalFor, meters, prop, report, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
+import { clock, dist3, isGeo, medalFor, meters, prop, report, spot, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
 
 interface Stop extends GeoPoint {
   name: string;
@@ -35,8 +35,8 @@ export const kind: ActivityKind = {
   start(def, game): MinigameInstance {
     const p = def.params as unknown as DeliveryParams;
     const r = p.radius ?? 16;
-    const a = game.world.point(p.pickup, 10);
-    const b = game.world.point(p.dropoff, 10);
+    const a = spot(game, p.pickup, 10);
+    const b = spot(game, p.dropoff, 10);
     const parcel = prop(p.prop ?? 'parcel', a);
     const props = [parcel];
     let t = 0;
@@ -87,6 +87,6 @@ export const kind: ActivityKind = {
   },
   solve(def, game) {
     const p = def.params as unknown as DeliveryParams;
-    return [{ teleport: game.world.point(p.pickup, 10) }, { wait: 0.1 }, { teleport: game.world.point(p.dropoff, 10) }, { wait: 0.1 }];
+    return [{ teleport: spot(game, p.pickup, 10) }, { wait: 0.1 }, { teleport: spot(game, p.dropoff, 10) }, { wait: 0.1 }];
   },
 };

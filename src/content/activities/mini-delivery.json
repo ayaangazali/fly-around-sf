@@ -131,8 +131,8 @@
     "blurb": "Boudin has baked sourdough in the city since 1849. Fly a loaf to the Great Meadow at Fort Mason.",
     "neighborhood": "Fisherman’s Wharf",
     "at": {
-      "lat": 37.808522,
-      "lon": -122.414897,
+      "lat": 37.808,
+      "lon": -122.415,
       "alt": 15
     },
     "xp": 30,
@@ -170,7 +170,7 @@
     "id": "delivery-ghirardelli-to-coit",
     "kind": "delivery",
     "title": "Chocolate to Coit",
-    "blurb": "Chocolate from Ghirardelli, a San Francisco chocolatier since 1852, to the steps of Coit Tower.",
+    "blurb": "Chocolate from Ghirardelli, a San Francisco chocolatier since 1852, up to the parking circle at the foot of Coit Tower.",
     "neighborhood": "Fisherman’s Wharf",
     "at": {
       "lat": 37.805871,
@@ -189,9 +189,9 @@
         "name": "Ghirardelli Square"
       },
       "dropoff": {
-        "lat": 37.802379,
-        "lon": -122.405834,
-        "name": "Coit Tower"
+        "lat": 37.802697,
+        "lon": -122.405813,
+        "name": "Coit Tower parking circle"
       },
       "item": "chocolate bars",
       "prop": "parcel",
@@ -205,7 +205,8 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ghirardelli_Chocolate_Company",
       "https://www.openstreetmap.org/way/28824850",
-      "https://www.openstreetmap.org/way/27104863"
+      "https://www.openstreetmap.org/way/27104863",
+      "https://www.openstreetmap.org/node/4045442977"
     ]
   },
   {
@@ -258,8 +259,8 @@
     "blurb": "A latte from the Ferry Building to the rooftop park over the Transit Center. Fragile.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.796003,
-      "lon": -122.393844,
+      "lat": 37.79575,
+      "lon": -122.3944,
       "alt": 15
     },
     "xp": 30,
@@ -595,8 +596,8 @@
     "blurb": "Oysters from Hog Island at the Ferry Building to Cupid’s Span in Rincon Park.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.79593,
-      "lon": -122.393527,
+      "lat": 37.79535,
+      "lon": -122.3945,
       "alt": 15
     },
     "xp": 30,
@@ -843,7 +844,7 @@
     "id": "delivery-java-beach-to-windmill",
     "kind": "delivery",
     "title": "Coffee for the Windmill",
-    "blurb": "A coffee from Java Beach near the end of the N line to the Dutch Windmill.",
+    "blurb": "A coffee from Java Beach near the end of the N line to the tulip garden at the foot of the Dutch Windmill.",
     "neighborhood": "Outer Sunset",
     "at": {
       "lat": 37.760449,
@@ -862,9 +863,9 @@
         "name": "Java Beach Cafe"
       },
       "dropoff": {
-        "lat": 37.770434,
-        "lon": -122.509406,
-        "name": "Dutch Windmill"
+        "lat": 37.770256,
+        "lon": -122.509212,
+        "name": "Queen Wilhelmina Tulip Garden"
       },
       "item": "coffee",
       "prop": "coffee",
@@ -878,7 +879,8 @@
     },
     "sources": [
       "https://www.openstreetmap.org/way/287921407",
-      "https://www.openstreetmap.org/node/960932055"
+      "https://www.openstreetmap.org/node/960932055",
+      "https://www.openstreetmap.org/way/120483945"
     ]
   }
 ]

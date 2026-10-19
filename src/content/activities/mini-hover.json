@@ -3,7 +3,7 @@
     "id": "hover-coit-tower-crown",
     "kind": "hover",
     "title": "Coit Crown Hold",
-    "blurb": "Hold steady just above the crown of Coit Tower while the bay wind gusts.",
+    "blurb": "Hold steady 10 m above the crown of the 64 m Coit Tower while the bay wind gusts.",
     "neighborhood": "Telegraph Hill",
     "at": {
       "lat": 37.801298,
@@ -16,7 +16,7 @@
     ],
     "params": {
       "spot": {
-        "lat": 37.802379,
+        "lat": 37.802377,
         "lon": -122.405834,
         "alt": 10,
         "name": "Coit Tower crown"
@@ -31,7 +31,8 @@
       "timeLimit": 60
     },
     "sources": [
-      "https://www.openstreetmap.org/way/28824850"
+      "https://www.openstreetmap.org/way/28824850",
+      "https://en.wikipedia.org/wiki/Coit_Tower"
     ]
   },
   {
@@ -216,7 +217,7 @@
     "id": "hover-transamerica-spire",
     "kind": "hover",
     "title": "Spire Hold",
-    "blurb": "Balance over the tip of the Transamerica spire.",
+    "blurb": "Balance 10 m over the tip of the 260 m Transamerica spire while the downtown wind gusts.",
     "neighborhood": "Financial District",
     "at": {
       "lat": 37.794107,
@@ -229,8 +230,8 @@
     ],
     "params": {
       "spot": {
-        "lat": 37.795188,
-        "lon": -122.40279,
+        "lat": 37.795166,
+        "lon": -122.402786,
         "alt": 10,
         "name": "Transamerica spire"
       },
@@ -245,7 +246,8 @@
       "timeLimit": 60
     },
     "sources": [
-      "https://www.openstreetmap.org/way/24222973"
+      "https://www.openstreetmap.org/way/24222973",
+      "https://en.wikipedia.org/wiki/Transamerica_Pyramid"
     ]
   },
   {

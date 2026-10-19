@@ -7,7 +7,7 @@ import { kind as follow, along, buildRoute } from '../../src/activities/kinds/fo
 import { kind as chase } from '../../src/activities/kinds/chase';
 import { kind as hover, gust } from '../../src/activities/kinds/hover';
 import { kind as photo, viewfinder } from '../../src/activities/kinds/photo';
-import { bestMedal, clock, formatTime, isMedals, medalFor, meters, rng, saveMedal, validateTimed, type MinigameInstance, type MinigameResult } from '../../src/activities/minigame';
+import { bestMedal, bestOf, clock, formatTime, isMedals, keepBest, lift, medalFor, meters, rng, saveMedal, spot, validateTimed, type MinigameInstance, type MinigameResult } from '../../src/activities/minigame';
 import type { ActivityDef, ActivityKind, SolverStep } from '../../src/activities/types';
 import type { Game } from '../../src/game';
 import { stepFlight, type FlightInput } from '../../src/player/flight';
@@ -20,7 +20,7 @@ const near = (dn: number, de = 0) => ({ lat: here.lat + dn / 111000, lon: here.l
 function game(): Game {
   const g = fakeGame();
   Object.assign(g.world, { collide: () => false });
-  Object.assign(g, { env: {}, date: () => new Date('2026-10-19T19:30:00Z'), teleport: (p: { x: number; y: number; z: number }) => void (g.flight.pos = { ...p }) });
+  Object.assign(g, { env: {}, date: () => new Date('2026-10-19T19:30:00Z'), interact: () => g.bus.emit('interact', {}), teleport: (p: { x: number; y: number; z: number }) => void (g.flight.pos = { ...p }) });
   return g;
 }
 
@@ -337,6 +337,134 @@ describe('chase', () => {
     const steady = seeds.map((s) => run(s, 25));
     expect(steady.every((r) => r.status === 'done' && r.t > 6)).toBe(true);
     expect(seeds.filter((s) => run(s, 0).status === 'done').length).toBeLessThanOrEqual(5);
+  });
+});
+
+describe('chase around landmarks', () => {
+  const home = fakeGame().world.toLocal(here.lat, here.lon);
+  const tower = { x: home.x, z: home.z - 170, r: 30, top: 400 };
+  const inTower = (p: { x: number; y: number; z: number }, r: number) => Math.hypot(p.x - tower.x, p.z - tower.z) < tower.r + r && p.y - r < tower.top;
+
+  it('[R-MINIGAMES] the bird steers around a landmark collider instead of flying through it', () => {
+    const g = game();
+    Object.assign(g.world, {
+      collide: (p: { x: number; y: number; z: number }, r: number) => {
+        if (!inTower(p, r)) return false;
+        const h = Math.hypot(p.x - tower.x, p.z - tower.z) || 1;
+        p.x = tower.x + ((p.x - tower.x) / h) * (tower.r + r);
+        p.z = tower.z + ((p.z - tower.z) / h) * (tower.r + r);
+        return true;
+      },
+    });
+    const def = { ...chaseDef, at: { ...here, alt: 40 } };
+    const inst = chase.start(def, g) as MinigameInstance;
+    const bird = inst.targets!()[0];
+    let inside = 0;
+    let closest = Infinity;
+    for (let i = 0; i < 1800; i++) {
+      g.flight.pos = { x: bird.x, y: bird.y, z: bird.z + 30 };
+      inst.update(DT);
+      if (inTower(bird, 0)) inside++;
+      closest = Math.min(closest, Math.hypot(bird.x - tower.x, bird.z - tower.z));
+    }
+    expect(closest).toBeLessThan(tower.r + 15);
+    expect(inside).toBe(0);
+  });
+
+  it('[R-MINIGAMES] over a roof taller than its ceiling the bird stays above the roof', () => {
+    const g = game();
+    const inst = chase.start(chaseDef, g) as MinigameInstance;
+    const bird = inst.targets!()[0];
+    Object.assign(g.world, { groundAt: (x: number) => (x > bird.x - 1 ? 500 : 0) });
+    inst.update(DT);
+    expect(bird.y).toBeGreaterThan(500);
+  });
+});
+
+describe('placement', () => {
+  const block = { top: 120, half: 20 };
+  const solidGame = () => {
+    const g = game();
+    Object.assign(g.world, { collide: (p: { x: number; y: number; z: number }, r: number) => Math.abs(p.x) < block.half + r && Math.abs(p.z) < block.half + r && p.y - r < block.top });
+    return g;
+  };
+
+  it('[R-FLYABLE] a point that lands inside a landmark is lifted to the same height above its real top', () => {
+    const g = solidGame();
+    const p = lift(g, 0, 30, 0, 10);
+    expect(p.y).toBeGreaterThan(block.top + 10);
+    expect(p.y).toBeLessThan(block.top + 10.2);
+    expect(lift(g, 100, 30, 0, 10)).toEqual({ x: 100, y: 30, z: 0 });
+    const over = spot(g, { ...here, alt: 5 }, 40);
+    expect(over.y).toBe(5);
+  });
+
+  it('[R-FLYABLE] hover, delivery, landing and collect points all sit above a landmark under them', () => {
+    const g = solidGame();
+    const { x, z } = g.world.toLocal(here.lat, here.lon);
+    Object.assign(g.world, { collide: (p: { x: number; y: number; z: number }, r: number) => Math.abs(p.x - x) < block.half + r && Math.abs(p.z - z) < block.half + r && p.y - r < block.top });
+    const h = hover.start(hoverDef, g) as MinigameInstance;
+    expect(h.targets!()[0].y).toBeCloseTo(block.top + 20, 0);
+    const l = landing.solve(landingDef, g)[0] as Extract<SolverStep, { teleport: unknown }>;
+    expect(l.teleport.y).toBeGreaterThan(block.top);
+    const d = delivery.solve(deliveryDef, g)[0] as Extract<SolverStep, { teleport: unknown }>;
+    expect(d.teleport.y).toBeCloseTo(block.top + 10, 0);
+    const c = collect.start({ ...collectDef, params: { ...collectDef.params, radius: 40 } }, g) as MinigameInstance;
+    for (const q of c.props()) if (Math.abs(q.pos.x - x) < block.half && Math.abs(q.pos.z - z) < block.half) expect(q.pos.y).toBeGreaterThan(block.top);
+  });
+});
+
+describe('photo challenge', () => {
+  const shoot = (g: Game, s: SolverStep[]) => {
+    const go = s[0] as Extract<SolverStep, { teleport: unknown }>;
+    g.flight.pos = { ...go.teleport };
+    g.flight.yaw = go.yaw ?? 0;
+    (s[1] as Extract<SolverStep, { call: unknown }>).call(g);
+  };
+
+  it('[R-PHOTO] a two star shot keeps the run going until the pilot keeps it with F', () => {
+    const def = { ...photoDef, params: { ...photoDef.params, time: 'night' } };
+    const { g, results } = setup(photo, def);
+    g.activities.start(def.id);
+    shoot(g, photo.solve(def, g));
+    const scored: { stars: number; best: number }[] = [];
+    g.bus.on('photo:scored', (r) => scored.push(r));
+    g.bus.emit('photo', { ...g.flight.pos, yaw: g.flight.yaw, pitch: viewfinder.tilt });
+    g.flight.pos = { x: 1e4, y: 400, z: 1e4 };
+    g.bus.emit('photo', { ...g.flight.pos, yaw: g.flight.yaw, pitch: viewfinder.tilt });
+    expect(scored).toEqual([{ id: def.id, stars: 2, best: 2, hint: expect.any(String) }, { id: def.id, stars: 0, best: 2, hint: expect.any(String) }]);
+    for (let i = 0; i < 30; i++) g.activities.update(DT);
+    expect(g.activities.active?.def.id).toBe(def.id);
+    expect(g.activities.active?.inst.hud()).toContain('best ★★☆');
+    g.interact();
+    g.activities.update(DT);
+    expect(g.save.isDone(def.id)).toBe(true);
+    expect(results.at(-1)).toMatchObject({ medal: 2, points: 2, score: '★★☆' });
+  });
+
+  it('[R-PHOTO] the time limit ends a run on the best shot, and F without a shot does nothing', () => {
+    const def = { ...photoDef, params: { ...photoDef.params, time: 'night', timeLimit: 5 } };
+    const { g, results, fails } = setup(photo, def);
+    g.activities.start(def.id);
+    g.interact();
+    g.activities.update(DT);
+    expect(g.activities.active?.def.id).toBe(def.id);
+    shoot(g, photo.solve(def, g));
+    g.bus.emit('photo', { ...g.flight.pos, yaw: g.flight.yaw, pitch: viewfinder.tilt });
+    for (let t = 0; t < 6 && g.activities.active; t += DT) g.activities.update(DT);
+    expect(fails).toEqual([]);
+    expect(results.at(-1)).toMatchObject({ medal: 2, points: 2 });
+  });
+});
+
+describe('best scores', () => {
+  it('[R-RESULTS] keeps the highest score per key and ignores worse ones', () => {
+    const g = game();
+    expect(bestOf(g.save, 'points:x')).toBe(0);
+    expect(keepBest(g.save, 'points:x', 40)).toBe(true);
+    expect(keepBest(g.save, 'points:x', 30)).toBe(false);
+    expect(keepBest(g.save, 'points:x', 80)).toBe(true);
+    expect(bestOf(g.save, 'points:x')).toBe(80);
   });
 });
 

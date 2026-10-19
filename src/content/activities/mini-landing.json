@@ -281,8 +281,8 @@
     ],
     "params": {
       "pad": {
-        "lat": 37.769824,
-        "lon": -122.466097,
+        "lat": 37.769779,
+        "lon": -122.466159,
         "name": "Living Roof"
       },
       "padRadius": 6,
@@ -305,8 +305,8 @@
     "blurb": "The top of the twisting Hamon Tower, above the observation floor.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.771498,
-      "lon": -122.466251,
+      "lat": 37.77087,
+      "lon": -122.46625,
       "alt": 30
     },
     "xp": 30,

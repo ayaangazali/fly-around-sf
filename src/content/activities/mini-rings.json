@@ -854,7 +854,7 @@
         {
           "lat": 37.802379,
           "lon": -122.405834,
-          "alt": 20
+          "alt": 80
         }
       ],
       "medals": [
@@ -898,9 +898,9 @@
           "alt": 108
         },
         {
-          "lat": 37.795,
-          "lon": -122.404133,
-          "alt": 86
+          "lat": 37.7955,
+          "lon": -122.4038,
+          "alt": 88
         },
         {
           "lat": 37.796016,
@@ -928,9 +928,9 @@
           "alt": 218
         },
         {
-          "lat": 37.795,
-          "lon": -122.404133,
-          "alt": 244
+          "lat": 37.7955,
+          "lon": -122.4038,
+          "alt": 246
         },
         {
           "lat": 37.796016,
@@ -2235,8 +2235,8 @@
     "blurb": "Low and fast past the brick fort tucked under the southern end of the Golden Gate Bridge.",
     "neighborhood": "Presidio",
     "at": {
-      "lat": 37.805317,
-      "lon": -122.476834,
+      "lat": 37.809,
+      "lon": -122.4712,
       "alt": 15
     },
     "xp": 40,
@@ -2251,24 +2251,24 @@
       "radius": 14,
       "rings": [
         {
-          "lat": 37.808103,
-          "lon": -122.470432,
+          "lat": 37.8098,
+          "lon": -122.473,
           "alt": 12
         },
         {
-          "lat": 37.809544,
-          "lon": -122.472023,
+          "lat": 37.8108,
+          "lon": -122.4752,
           "alt": 14
         },
         {
-          "lat": 37.809904,
-          "lon": -122.473842,
+          "lat": 37.8113,
+          "lon": -122.477,
           "alt": 16
         },
         {
-          "lat": 37.808823,
-          "lon": -122.47566,
-          "alt": 18
+          "lat": 37.8112,
+          "lon": -122.4795,
+          "alt": 14
         }
       ],
       "medals": [
@@ -2279,7 +2279,8 @@
       "timeLimit": 138
     },
     "sources": [
-      "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site"
+      "https://en.wikipedia.org/wiki/Fort_Point,_San_Francisco",
+      "https://www.openstreetmap.org/relation/5504536"
     ]
   }
 ]

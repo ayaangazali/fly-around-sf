@@ -54,6 +54,11 @@ describe('minigame content', () => {
     }
   });
 
+  it('[R-MINI-CONTENT] every minigame has a start beacon of its own, so F always reaches it', () => {
+    const at = defs.map((d) => ({ id: d.id, ...fakeGame().world.toLocal(d.at.lat, d.at.lon) }));
+    for (const [i, a] of at.entries()) for (const b of at.slice(i + 1)) expect(Math.hypot(a.x - b.x, a.z - b.z), `${a.id} and ${b.id}`).toBeGreaterThanOrEqual(20);
+  });
+
   it('[R-MEDALS] every timed minigame has ordered medals that fit its time limit', () => {
     for (const d of defs.filter((x) => x.kind !== 'photo' && x.kind !== 'follow')) {
       const p = d.params as { medals?: unknown; timeLimit?: number };

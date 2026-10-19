@@ -1,5 +1,5 @@
 import type { ActivityKind, SolverStep } from '../types';
-import { PROP_EMOJI, clock, dist3, medalFor, meters, prop, report, rng, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
+import { PROP_EMOJI, clock, dist3, medalFor, meters, prop, report, rng, spot, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
 import { chaseTarget } from './follow';
 
 interface ChaseParams {
@@ -16,6 +16,8 @@ const SPOOK = 90;
 const BREAK = 16;
 const TIRED = 0.55;
 const TIRE_TIME = 40;
+const LOOK = 0.8;
+const BODY = 3;
 
 export const kind: ActivityKind = {
   kind: 'chase',
@@ -38,13 +40,14 @@ export const kind: ActivityKind = {
     const arena = p.radius ?? 320;
     const reach = p.catch ?? 6;
     const rand = rng(def.id);
-    const home = game.world.point(def.at, 40);
+    const home = spot(game, def.at, 40);
     const phase = rand() * 10;
     const bird = prop(p.animal, { x: home.x + (rand() - 0.5) * 80, y: home.y + 10, z: home.z - 50 - rand() * 40 });
     const props = [bird];
     const vel = { x: 0, y: 0, z: 0 };
     const goal = { x: home.x, z: home.z };
     const brk = { x: 0, z: 0 };
+    const look = { x: 0, y: 0, z: 0 };
     let t = 0;
     let wander = 0;
     let stamina = 1;
@@ -115,6 +118,19 @@ export const kind: ActivityKind = {
           dx = dx / n + ((home.x - b.x) / h) * k;
           dz = dz / n + ((home.z - b.z) / h) * k;
         }
+        look.x = b.x + vel.x * LOOK;
+        look.y = b.y + vel.y * LOOK;
+        look.z = b.z + vel.z * LOOK;
+        const lx = look.x;
+        const ly = look.y;
+        const lz = look.z;
+        if (game.world.collide(look, BODY * 2)) {
+          const n = Math.hypot(dx, dz, dy) || 1;
+          const m = Math.hypot(look.x - lx, look.y - ly, look.z - lz) || 1;
+          dx = dx / n + ((look.x - lx) / m) * 2;
+          dy = dy / n + ((look.y - ly) / m) * 2;
+          dz = dz / n + ((look.z - lz) / m) * 2;
+        }
         const n = Math.hypot(dx, dz, dy) || 1;
         const k = Math.min(1, dt * (dodge > 0 ? 6 : 2.5));
         vel.x += ((dx / n) * v - vel.x) * k;
@@ -123,13 +139,14 @@ export const kind: ActivityKind = {
         b.x += vel.x * dt;
         b.y += vel.y * dt;
         b.z += vel.z * dt;
+        b.y = Math.min(b.y, home.y + 120);
         const floor = Math.max(game.world.groundAt(b.x, b.z), game.world.groundAt(b.x + vel.x, b.z + vel.z)) + 12;
         if (b.y < floor) {
           b.y += (floor - b.y) * Math.min(1, dt * 6);
           vel.y = Math.max(vel.y, 0);
         }
         b.y = Math.max(b.y, floor - 4);
-        b.y = Math.min(b.y, home.y + 120);
+        game.world.collide(b, BODY);
         bird.yaw = Math.atan2(-vel.x, -vel.z);
         return 'running';
       },

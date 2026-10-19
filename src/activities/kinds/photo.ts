@@ -143,17 +143,20 @@ export const kind: ActivityKind = {
     const p = params(def);
     const subject = subjectPoint(game, p);
     let t = 0;
-    let stars = 0;
-    const off = game.bus.on('photo', (shot) => {
+    let best = 0;
+    let keep = false;
+    const offShot = game.bus.on('photo', (shot) => {
       const r = evaluate(game, p, shot, true);
-      stars = r.stars;
-      game.bus.emit('photo:scored', { id: def.id, stars, hint: r.hint });
+      best = Math.max(best, r.stars);
+      game.bus.emit('photo:scored', { id: def.id, stars: r.stars, best, hint: r.hint });
     });
+    const offKeep = game.bus.on('interact', () => void (keep = best > 0));
+    const stars = () => `${'★'.repeat(best)}${'☆'.repeat(3 - best)}`;
     return {
       update(dt) {
         t += dt;
-        if (stars > 0) {
-          report(game, def, { medal: stars, time: t, score: `${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}` });
+        if (best === 3 || keep || (best > 0 && t > p.timeLimit)) {
+          report(game, def, { medal: best, time: t, score: stars(), points: best });
           return 'done';
         }
         if (t > p.timeLimit) {
@@ -162,15 +165,19 @@ export const kind: ActivityKind = {
         }
         return 'running';
       },
-      progress: () => stars / 3,
+      progress: () => best / 3,
       hud: () => {
         const f = game.flight.pos;
-        return `📷 ${p.subject.name} · ${meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z))} · ${clock(t, p.timeLimit)}`;
+        const kept = best ? ` · best ${stars()}` : '';
+        return `📷 ${p.subject.name} · ${meters(Math.hypot(f.x - subject.x, f.y - subject.y, f.z - subject.z))}${kept} · ${clock(t, p.timeLimit)}`;
       },
       targets: () => [subject],
       elapsed: () => t,
       props: () => [],
-      dispose: off,
+      dispose: () => {
+        offShot();
+        offKeep();
+      },
     };
   },
   solve(def, game) {
@@ -201,5 +208,6 @@ function aim(pos: Vec3, s: Vec3): SolverStep[] {
     { call: () => void (viewfinder.tilt = tilt) },
     { action: 'photo' },
     { action: 'photo' },
+    { call: (g) => g.interact() },
   ];
 }

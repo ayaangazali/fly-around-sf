@@ -483,8 +483,8 @@
     "blurb": "The brick fort that mounted its first cannon in 1861, tucked under the steel arch of the bridge.",
     "neighborhood": "Presidio",
     "at": {
-      "lat": 37.808463,
-      "lon": -122.469978,
+      "lat": 37.8115,
+      "lon": -122.4745,
       "alt": 20
     },
     "xp": 30,
@@ -493,8 +493,8 @@
     ],
     "params": {
       "subject": {
-        "lat": 37.808463,
-        "lon": -122.473387,
+        "lat": 37.810592,
+        "lon": -122.477081,
         "alt": 12,
         "name": "Fort Point"
       },
@@ -511,8 +511,8 @@
       "bearing": 60
     },
     "sources": [
-      "https://en.wikipedia.org/wiki/Fort_Point_National_Historic_Site",
-      "https://www.openstreetmap.org/relation/21597568"
+      "https://en.wikipedia.org/wiki/Fort_Point,_San_Francisco",
+      "https://www.openstreetmap.org/relation/5504536"
     ]
   },
   {

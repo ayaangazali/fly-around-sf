@@ -1,7 +1,7 @@
 import type { ActivityKind, GeoPoint } from '../types';
 import type { Game } from '../../game';
 import { FLIGHT } from '../../player/flight';
-import { clock, isGeo, medalFor, meters, prop, report, validateTimed, type Medals, type MinigameInstance } from '../minigame';
+import { clock, isGeo, medalFor, meters, prop, report, spot, validateTimed, type Medals, type MinigameInstance } from '../minigame';
 
 interface LandingParams {
   pad: GeoPoint & { name: string };
@@ -39,9 +39,8 @@ export const kind: ActivityKind = {
     const p = def.params as unknown as LandingParams;
     const max = p.maxSpeed ?? 3;
     const radius = p.padRadius ?? 5;
-    const { x, z } = game.world.toLocal(p.pad.lat, p.pad.lon);
-    const pad = { x, y: game.world.groundAt(x, z), z };
-    const marker = { x, y: pad.y + 3, z };
+    const pad = spot(game, p.pad, 0);
+    const marker = { ...pad, y: pad.y + 3 };
     const pads = [prop('pad', pad, 0, radius)];
     let t = 0;
     let last = airspeed(game);
@@ -85,7 +84,7 @@ export const kind: ActivityKind = {
   },
   solve(def, game) {
     const p = def.params as unknown as LandingParams;
-    const { x, z } = game.world.toLocal(p.pad.lat, p.pad.lon);
-    return [{ teleport: { x, y: game.world.groundAt(x, z) + FLIGHT.radius + 0.2, z } }, { wait: 0.2 }];
+    const pad = spot(game, p.pad, 0);
+    return [{ teleport: { ...pad, y: pad.y + FLIGHT.radius + 0.2 } }, { wait: 0.2 }];
   },
 };

@@ -61,13 +61,14 @@ export interface MinigameResult {
   medal: number;
   time: number;
   score?: string;
+  points?: number;
   fail?: string;
 }
 
 declare module '../core/bus' {
   interface GameEvents {
     'minigame:result': MinigameResult;
-    'photo:scored': { id: string; stars: number; hint: string };
+    'photo:scored': { id: string; stars: number; best: number; hint: string };
   }
 }
 
@@ -84,17 +85,21 @@ export function medalFor(medals: unknown, time: number): number {
   return time <= medals[0] ? 3 : time <= medals[1] ? 2 : time <= medals[2] ? 1 : 0;
 }
 
-export function bestMedal(save: SaveStore, id: string): number {
-  const m = save.data.flags[`medal:${id}`];
+export function bestOf(save: SaveStore, key: string): number {
+  const m = save.data.flags[key];
   return typeof m === 'number' ? m : 0;
 }
 
-export function saveMedal(save: SaveStore, id: string, medal: number): boolean {
-  if (medal <= bestMedal(save, id)) return false;
-  save.data.flags[`medal:${id}`] = medal;
+export function keepBest(save: SaveStore, key: string, value: number): boolean {
+  if (value <= bestOf(save, key)) return false;
+  save.data.flags[key] = value;
   save.persist();
   return true;
 }
+
+export const bestMedal = (save: SaveStore, id: string): number => bestOf(save, `medal:${id}`);
+
+export const saveMedal = (save: SaveStore, id: string, medal: number): boolean => keepBest(save, `medal:${id}`, medal);
 
 export function isGeo(g: unknown): g is GeoPoint {
   const p = g as GeoPoint | undefined;
@@ -145,6 +150,29 @@ export function dist3(a: Vec3, b: Vec3): number {
 
 export function meters(m: number): string {
   return m >= 1000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m)} m`;
+}
+
+// Content altitudes are meters above whatever stands at the spot. groundAt only knows the
+// 2010 footprints, so a point (x, y, z) that lands inside a hand-built landmark is lifted
+// to alt meters above that landmark's real top.
+export function lift(game: Game, x: number, y: number, z: number, alt: number): Vec3 {
+  const solid = (h: number) => game.world.collide({ x, y: h, z }, 0.05);
+  if (!solid(y)) return { x, y, z };
+  let hi = y + 2;
+  while (solid(hi) && hi < y + 600) hi += 2;
+  let lo = hi - 2;
+  for (let i = 0; i < 7; i++) {
+    const mid = (lo + hi) / 2;
+    if (solid(mid)) lo = mid;
+    else hi = mid;
+  }
+  return { x, y: hi + alt, z };
+}
+
+export function spot(game: Game, g: GeoPoint, alt: number): Vec3 {
+  const { x, z } = game.world.toLocal(g.lat, g.lon);
+  const a = g.alt ?? alt;
+  return lift(game, x, game.world.groundAt(x, z) + a, z, a);
 }
 
 export function prop(type: PropType, pos: Vec3, yaw = 0, scale = 1): Prop {

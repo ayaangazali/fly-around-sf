@@ -50,6 +50,9 @@ test.describe('minigames', () => {
       expect(won.medal, kind).toBeGreaterThan(0);
       await expect(page.locator('.results.results-win'), kind).toBeVisible();
       await expect(page.locator('.results h3'), kind).not.toBeEmpty();
+      const best = kind === 'photo' ? 'Best shot★' : kind === 'follow' ? 'Best formation' : 'Best';
+      await expect(page.locator('.results-stats'), kind).toContainText(best);
+      if (kind === 'follow') await expect(page.locator('.results-stats'), kind).toContainText('%');
       const lost = await page.evaluate((aid) => {
         const f = window.__fly;
         const g = f.game;
@@ -119,24 +122,40 @@ test.describe('minigames', () => {
     await expect(page.locator('.results-note')).toContainText('Gold under');
   });
 
-  test('[R-FLYABLE] no ring, pad, stop or hover spot sits inside a building of the loaded city', async ({ page }) => {
+  test('[R-FLYABLE] no start, ring, pad, stop, collectible or hover spot sits inside a building or landmark', async ({ page }) => {
     await boot(page);
-    const bad = await page.evaluate(() => {
-      const g = window.__fly.game;
+    const bad = await page.evaluate((kinds) => {
+      const f = window.__fly;
+      const g = f.game;
       const out: string[] = [];
       const clear = (p: { x: number; y: number; z: number }, r: number) => !g.world.collide({ ...p }, r);
       for (const d of g.activities.list()) {
+        if (!kinds.includes(d.kind) && d.kind !== 'rings') continue;
         const p = (d.params ?? {}) as Record<string, any>;
+        if (!clear(g.activities.position(d), 2)) out.push(`${d.id} start`);
         if (d.kind === 'rings') for (const r of p.rings) if (!clear(g.world.point({ alt: 25, ...r }), (p.radius ?? 14) * 0.6)) out.push(`${d.id} ring`);
-        if (d.kind === 'delivery') for (const s of [p.pickup, p.dropoff]) if (!clear(g.world.point(s, 10), 3)) out.push(`${d.id} stop`);
-        if (d.kind === 'hover' && !clear(g.world.point(p.spot, 40), (p.tolerance ?? 4) + 1)) out.push(`${d.id} spot`);
-        if (d.kind === 'landing') {
-          const { x, z } = g.world.toLocal(p.pad.lat, p.pad.lon);
-          if (![...g.world.city.near(x, z, 0)].some((b) => g.world.city.contains(b, x, z))) out.push(`${d.id} pad`);
+        if (['delivery', 'hover', 'landing'].includes(d.kind)) {
+          const spots = (g.activities.kindOf(d).solve(d, g) as { teleport?: { x: number; y: number; z: number } }[]).flatMap((s) => (s.teleport ? [s.teleport] : []));
+          for (const s of new Set(spots)) if (!clear(s, d.kind === 'landing' ? 0.5 : 2)) out.push(`${d.id} spot`);
+          if (d.kind === 'landing') {
+            const s = spots[0];
+            const top = s.y - 1.4;
+            const flat = (x: number, z: number) => g.world.collide({ x, y: top, z }, 0.3) && !g.world.collide({ x, y: top + 0.9, z }, 0.3);
+            const r = (p.padRadius ?? 5) * 0.8;
+            const loaded = top - g.world.surfaceAt(s.x, s.z) > 1;
+            if (loaded && ![[0, 0], [r, 0], [-r, 0], [0, r], [0, -r]].every(([dx, dz]) => flat(s.x + dx, s.z + dz))) out.push(`${d.id} pad not on a flat roof`);
+          }
+        }
+        if (d.kind === 'collect') {
+          f.reset();
+          g.activities.start(d.id);
+          const inst = g.activities.active!.inst as unknown as { props(): { pos: { x: number; y: number; z: number } }[] };
+          inst.props().forEach((q, i) => clear(q.pos, 2) || out.push(`${d.id} item ${i}`));
+          g.activities.stop();
         }
       }
       return out;
-    });
+    }, KINDS);
     expect(bad).toEqual([]);
   });
 
