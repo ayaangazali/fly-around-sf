@@ -157,17 +157,58 @@ test.describe('world environment', () => {
     expect(diff / (a.data.length * 0.1)).toBeGreaterThan(0.5);
   });
 
-  test('[R-ENV-SKY] fog matches the horizon, and night brings stars and the moon', async ({ page }) => {
+  test('[R-ENV-SKY] distant fog meets the sky without a seam at every time of day, and night brings stars and the moon', async ({ page }) => {
     await boot(page);
-    await look(page, { lat: 37.792, lon: -122.396, yaw: 0, alt: 80, mode: 'night' });
-    const r = await page.evaluate(() => {
-      const s = window.__fly.game.sky;
-      return { karl: window.__fly.game.camera.position.y > 0 && s.karl.strength, same: s.fog.color.equals(s.colors.horizon), stars: s.stars.visible && s.stars.geometry.getAttribute('aStar').count, night: s.night, sky: s.sky.visible, moonY: s.moonDir.y, moonVisible: s.moon.visible };
+    for (const mode of ['noon', 'golden', 'night']) {
+      await look(page, { lat: 37.722, lon: -122.36, yaw: -2.356, alt: 400, mode });
+      const seam = await page.evaluate(() => {
+        const g = window.__fly.game;
+        const cam = g.camera;
+        const flat = cam.getWorldDirection(cam.position.clone()).setY(0).normalize();
+        const c = g.renderer.domElement;
+        const gl = g.renderer.getContext();
+        g.render(0);
+        const at = (k: number) => {
+          const p = cam.position.clone().addScaledVector(flat, cam.far * k).setY(0).project(cam);
+          const o = new Uint8Array(4);
+          gl.readPixels(Math.round(((p.x + 1) / 2) * c.width), Math.round(((p.y + 1) / 2) * c.height), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, o);
+          return Array.from(o.slice(0, 3));
+        };
+        return { sea: at(0.95), sky: at(1.1), fogged: g.sky.fog.far < cam.far * 0.95 };
+      });
+      expect(seam.fogged).toBe(true);
+      for (let c = 0; c < 3; c++) expect(Math.abs(seam.sky[c] - seam.sea[c]), `${mode} channel ${c}`).toBeLessThan(6);
+    }
+    await page.evaluate(() => (window.__fly.game.clockOffset = -86400000));
+    await look(page, { lat: 37.81, lon: -122.42, yaw: 0, alt: 120, mode: 'night' });
+    const moon = await page.evaluate(() => {
+      const g = window.__fly.game;
+      const d = g.sky.moonDir;
+      window.__fly.teleport(g.flight.pos, Math.atan2(-d.x, -d.z));
+      window.__fly.step(0.1);
+      g.render(0);
+      const cam = g.camera;
+      const p = cam.position.clone().addScaledVector(d, 1000).project(cam);
+      const c = g.renderer.domElement;
+      const x = Math.round(((p.x + 1) / 2) * c.width);
+      const y = Math.round(((1 - p.y) / 2) * c.height);
+      const gl = g.renderer.getContext();
+      const lum = (x: number, y: number) => {
+        const o = new Uint8Array(4);
+        gl.readPixels(x, c.height - 1 - y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, o);
+        return 0.2126 * o[0] + 0.7152 * o[1] + 0.0722 * o[2];
+      };
+      const ring = [0, 1, 2, 3].map((k) => lum(x + Math.round(30 * Math.cos(k * 1.57)), y + Math.round(30 * Math.sin(k * 1.57))));
+      return { x, y, w: c.width, h: c.height, disk: lum(x, y), ring: Math.max(...ring), alt: d.y, stars: g.sky.stars.visible ? g.sky.stars.geometry.getAttribute('aStar').count : 0, night: g.sky.night };
     });
-    expect(r.same).toBe(true);
-    expect(r.stars).toBeGreaterThan(1500);
-    expect(r.night).toBe(1);
-    expect(r.moonVisible).toBe(r.moonY > -0.03);
+    expect(moon.alt).toBeGreaterThan(0.1);
+    expect(moon.x).toBeGreaterThan(40);
+    expect(moon.x).toBeLessThan(moon.w - 40);
+    expect(moon.y).toBeGreaterThan(40);
+    expect(moon.y).toBeLessThan(moon.h - 40);
+    expect(moon.disk).toBeGreaterThan(moon.ring + 60);
+    expect(moon.stars).toBeGreaterThan(1500);
+    expect(moon.night).toBe(1);
     const sky = stats(await pixels(page), 0.05, 0.3);
     expect(sky.mean).toBeLessThan(60);
   });
@@ -258,19 +299,26 @@ test.describe('world environment', () => {
     expect(night.bright).toBeGreaterThan(dark.bright * 4);
   });
 
-  test('[R-ENV-PERF] every quality tier stays under its draw call and triangle budget', async ({ page }) => {
-    test.setTimeout(600_000);
-    const budget = { low: { calls: 320, tris: 3.5e6 }, medium: { calls: 560, tris: 6.5e6 }, high: { calls: 720, tris: 10e6 } };
+  test('[R-ENV-PERF] every quality tier stays under its draw call and triangle budget in the worst views', async ({ page }) => {
+    test.setTimeout(900_000);
+    const budget = { low: { calls: 280, tris: 3.0e6 }, medium: { calls: 590, tris: 6.6e6 }, high: { calls: 710, tris: 10.6e6 } };
+    const views: View[] = [
+      { lat: 37.7985, lon: -122.388, yaw: 2.4, alt: 180, mode: 'noon' },
+      { lat: 37.799, lon: -122.383, yaw: 1.9, alt: 200, mode: 'night' },
+      { lat: 37.8005, lon: -122.3985, yaw: 2.4, alt: 14, mode: 'noon' },
+      { lat: 37.7605, lon: -122.4195, yaw: 0, alt: 40, mode: 'night' },
+      { lat: 37.7544, lon: -122.4477, yaw: -2.2, alt: 120, mode: 'noon' },
+      { lat: 37.803, lon: -122.462, yaw: 0.35, alt: 90, mode: 'golden' },
+      { lat: 37.8075, lon: -122.4655, yaw: 0.9, alt: 120, mode: 'night' },
+      { lat: 37.7605, lon: -122.508, yaw: 1.57, alt: 60, mode: 'golden', fog: 3 },
+      { lat: 37.78, lon: -122.45, yaw: -1.4, alt: 300, mode: 'night' },
+    ];
     const seen: Record<string, { calls: number; tris: number; trees: number; shadow: number; far: number }> = {};
     for (const q of ['low', 'medium', 'high'] as const) {
       await boot(page, `quality=${q}`);
       const worst = { calls: 0, tris: 0 };
-      for (const v of [
-        { lat: 37.7985, lon: -122.388, yaw: 2.4, alt: 180 },
-        { lat: 37.7605, lon: -122.4195, yaw: 0, alt: 40 },
-        { lat: 37.7544, lon: -122.4477, yaw: -2.2, alt: 120 },
-      ]) {
-        await look(page, { ...v, mode: 'noon' });
+      for (const v of views) {
+        await look(page, v);
         const s = await env(page);
         worst.calls = Math.max(worst.calls, s.calls);
         worst.tris = Math.max(worst.tris, s.triangles);

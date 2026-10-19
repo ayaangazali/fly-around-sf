@@ -65,7 +65,6 @@ void main() {
   vec3 d = normalize(vDir);
   float up = max(d.y, 0.0);
   vec3 col = mix(uHorizon, uZenith, pow(up, 0.55));
-  col = mix(col, uHorizon * 0.92, smoothstep(0.0, -0.08, d.y));
   vec2 sh = normalize(uSunDir.xz + 1e-4);
   float sunward = max(dot(normalize(d.xz + 1e-4), sh), 0.0);
   float low = 1.0 - smoothstep(0.0, 0.45, up);
@@ -282,7 +281,7 @@ export class SkySystem {
     this.moon.visible = mp.altitude > -0.03;
     this.stars.material.uniforms.uLst.value = siderealTime(date, ORIGIN.lon) % (2 * Math.PI);
 
-    this.fog.color.copy(this.colors.horizon);
+    this.fog.color.copy(this.colors.horizon).convertSRGBToLinear();
     this.fog.near = 900 / this.fogDensity;
     this.fog.far = (this.viewFar * 0.92) / this.fogDensity;
     envUniforms.envSun.set([this.sunDir.x, this.sunDir.y, this.sunDir.z, 0]);

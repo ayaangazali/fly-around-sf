@@ -25,14 +25,15 @@ describe('sky', () => {
     expect(skyColors(2, out).glow.r).toBeGreaterThan(0.6);
   });
 
-  it('[R-ENV-SKY] fog color is the sky horizon color at every time of day', () => {
+  it('[R-ENV-SKY] fog reaches the screen as the sky dome horizon color at every time of day', () => {
     const scene = new THREE.Scene();
     const sky = new SkySystem(scene, 1024);
     expect(scene.fog).toBe(sky.fog);
     expect(sky.sun.castShadow).toBe(true);
     for (let h = 0; h < 24; h += 1.5) {
       sky.update(new Date(Date.UTC(2026, 9, 19, h, 7)), new THREE.Vector3(10, 20, 30));
-      expect(sky.fog.color.equals(sky.colors.horizon)).toBe(true);
+      const shown = sky.fog.color.getRGB({ r: 0, g: 0, b: 0 }, THREE.SRGBColorSpace);
+      for (const c of ['r', 'g', 'b'] as const) expect(shown[c]).toBeCloseTo(sky.colors.horizon[c], 4);
       expect(sky.sky.material.uniforms.uHorizon.value).toBe(sky.colors.horizon);
       expect(sky.sun.target.position.x).toBe(10);
     }
