@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { decodeSave, emptySave, type SaveData } from '../../src/core/save';
+import { decodeSave, emptySave, encodeSave, type SaveData } from '../../src/core/save';
 import { cleanSave, knownContent, mergeSaves, DeviceSync } from '../../src/net/sync';
 import { netGame, until } from './net-helpers';
 
@@ -121,7 +121,7 @@ describe('device sync', () => {
     const code = await a.offer();
     expect(code).toMatch(/^[A-Z2-9]{8}$/);
     expect(a.phase).toBe('waiting');
-    const wire = snoop(`sync-${code.slice(0, 4)}`);
+    const wire = snoop(`sync-${code}`);
     expect(await b.receive(`${code.slice(0, 4)}-${code.slice(4)}`.toLowerCase())).toBe(true);
     await until(() => b.phase === 'merged' && a.phase === 'sent');
     expect(wire.saves).toHaveLength(1);
@@ -160,7 +160,7 @@ describe('device sync', () => {
     g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
     const s = new DeviceSync(g, 'local');
     await s.receive('ABCDEFGH');
-    const ch = new BroadcastChannel('fly-around-sf:sync-ABCD');
+    const ch = new BroadcastChannel('fly-around-sf:sync-ABCDEFGH');
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'bm90LWpzb24' } }));
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'eyJ2IjoyfQ' } }));
     await new Promise((r) => setTimeout(r, 80));
@@ -175,7 +175,7 @@ describe('device sync', () => {
     const g = await netGame();
     const s = new DeviceSync(g, 'local');
     const code = await s.offer();
-    const wire = snoop(`sync-${code.slice(0, 4)}`);
+    const wire = snoop(`sync-${code}`);
     const wrong = code.slice(4) === 'AAAA' ? 'BBBB' : 'AAAA';
     wire.post({ t: 'ack', added: 5 });
     wire.post({ t: 'claim', key: wrong });
@@ -189,6 +189,24 @@ describe('device sync', () => {
     expect(wire.saves).toEqual([]);
     expect(s.phase).toBe('refused');
     wire.close();
+    s.stop();
+  });
+
+  it('[R-SYNC-DEVICES] a peer that knows only the first half of the code hears no secret and cannot inject a save', async () => {
+    const g = await netGame();
+    g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
+    const s = new DeviceSync(g, 'local');
+    await s.receive('QRSTWXYZ');
+    const half = new BroadcastChannel('fly-around-sf:sync-QRST');
+    const heard: unknown[] = [];
+    half.onmessage = (e) => heard.push(JSON.parse(e.data as string).d);
+    half.postMessage(JSON.stringify({ k: 'hello', from: 'evil' }));
+    half.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: encodeSave(save({ completed: { 'discover-coit-tower': 1 }, xp: 9_999_999 })) } }));
+    await new Promise((r) => setTimeout(r, 80));
+    expect(heard.filter(Boolean)).toEqual([]);
+    expect(s.phase).toBe('receiving');
+    expect(g.save.data.xp).toBe(7);
+    half.close();
     s.stop();
   });
 });

@@ -94,7 +94,7 @@ export type SyncPhase = 'idle' | 'waiting' | 'sending' | 'sent' | 'receiving' | 
 export const SYNC_CODE = 8;
 const EXPIRE_MS = 10 * 60 * 1000;
 const STRIKES = 3;
-const room = (code: string) => `sync-${code.slice(0, SYNC_CODE / 2)}`;
+const room = (code: string) => `sync-${code}`;
 const secret = (code: string) => code.slice(SYNC_CODE / 2);
 
 export class DeviceSync {
