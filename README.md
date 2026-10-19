@@ -14,7 +14,12 @@ Fly a tiny drone around a 3D San Francisco built from all 172,368 real buildings
 | Space / Shift | up / down |
 | R (hold) | boost |
 | F | start the activity you are next to |
+| C | next activity, when several are here |
+| M / J / K | map / things to do / card collection |
+| L | quest log: The Lost Commit |
+| / | ask the city |
 | V | camera view |
+| H | all controls |
 | Esc | menu |
 
 Gamepads and touch screens work too.
