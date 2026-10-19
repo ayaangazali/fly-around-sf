@@ -34,7 +34,7 @@ export const system: GameSystem = {
     view = new NetView(game, net);
     hud = new NetHud(game, net);
     const wake = () => {
-      if (net.voice.ctx?.state === 'suspended') void net.voice.ctx.resume().catch(() => undefined);
+      if (net.room || net.voice.ctx) net.voice.audio();
     };
     window.addEventListener('pointerdown', wake);
     window.addEventListener('keydown', wake);
@@ -59,6 +59,7 @@ export const system: GameSystem = {
       cam.getWorldDirection(dir);
       up.set(0, 1, 0).applyQuaternion(cam.quaternion);
       net.update(dt, { pos: cam.position, forward: dir, up });
+      if (net.match && net.match.phase !== 'done') game.activities.nearby = null;
       view.update();
       hud.update();
     } catch (e) {

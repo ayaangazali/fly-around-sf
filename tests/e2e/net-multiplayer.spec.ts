@@ -226,12 +226,12 @@ test.describe.serial('multiplayer over the local test channel', () => {
     expect(await a.evaluate((id) => window.__fly.game.net.startMatch('hide', { role: id, duration: 120 }), aId)).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.role)).toBe(aId);
     await step([a, b], 5);
-    expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(60);
+    expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(120);
     expect(await b.evaluate(() => window.__fly.game.sky.fogDensity)).toBeLessThan(10);
     await expect(a.locator('.net-tag', { hasText: 'Ben' })).toBeHidden();
     await step([a, b], 19);
     expect(await a.evaluate(() => window.__fly.game.net.match?.seeking)).toBe(true);
-    expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(16);
+    expect(await a.evaluate(() => window.__fly.game.sky.fogDensity)).toBe(40);
     await step([a, b], 4);
     const pos = await a.evaluate(() => window.__fly.state().pos);
     await b.evaluate((p) => {

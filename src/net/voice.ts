@@ -147,9 +147,7 @@ export class Voice {
       l.setPosition(p.x, p.y, p.z);
       l.setOrientation(f.x, f.y, f.z, u.x, u.y, u.z);
     }
-    const live = new Set<string>();
     for (const peer of peers) {
-      live.add(peer.id);
       const c = this.ensure(peer.id);
       const d = Math.hypot(peer.pos.x - p.x, peer.pos.y - p.y, peer.pos.z - p.z);
       c.gain.gain.setTargetAtTime(voiceGain(d, peer.volume), t, 0.05);
@@ -157,7 +155,6 @@ export class Voice {
       c.panner.positionY.setTargetAtTime(peer.pos.y, t, 0.02);
       c.panner.positionZ.setTargetAtTime(peer.pos.z, t, 0.02);
     }
-    for (const id of [...this.chains.keys()]) if (!live.has(id)) this.drop(id);
   }
 
   close(): void {

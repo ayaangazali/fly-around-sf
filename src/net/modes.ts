@@ -10,8 +10,8 @@ export const TAG_COOLDOWN = 3;
 export const FIND_RADIUS = 15;
 export const HIDE_TIME = 20;
 export const FORMATION_RADIUS = 30;
-export const SEEKER_FOG = 16;
-export const BLIND_FOG = 60;
+export const SEEKER_FOG = 40;
+export const BLIND_FOG = 120;
 export const RESULTS_SECONDS = 12;
 
 export interface ModeInfo {

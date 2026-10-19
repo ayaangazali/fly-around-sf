@@ -1,61 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { voiceGain, voiceVolume, VOICE_FAR, VOICE_NEAR, predict, approach, approachAngle, rayToGround, MAX_EXTRAPOLATE, SNAP_DISTANCE } from '../../src/net/math';
 import { Voice } from '../../src/net/voice';
-
-class Param {
-  value = 0;
-  setTargetAtTime(v: number) {
-    this.value = v;
-  }
-  setValueAtTime(v: number) {
-    this.value = v;
-  }
-  linearRampToValueAtTime(v: number) {
-    this.value = v;
-  }
-  exponentialRampToValueAtTime(v: number) {
-    this.value = v;
-  }
-}
-
-class Node {
-  connected: Node[] = [];
-  disconnected = false;
-  connect(n: Node) {
-    this.connected.push(n);
-    return n;
-  }
-  disconnect() {
-    this.disconnected = true;
-  }
-}
-
-class FakeCtx {
-  state = 'running';
-  currentTime = 0;
-  destination = new Node();
-  oscillators = 0;
-  listener = { positionX: new Param(), positionY: new Param(), positionZ: new Param(), forwardX: new Param(), forwardY: new Param(), forwardZ: new Param(), upX: new Param(), upY: new Param(), upZ: new Param() };
-  createGain() {
-    return Object.assign(new Node(), { gain: new Param() });
-  }
-  createPanner() {
-    return Object.assign(new Node(), { panningModel: 'equalpower', distanceModel: 'inverse', rolloffFactor: 1, positionX: new Param(), positionY: new Param(), positionZ: new Param() });
-  }
-  createMediaStreamSource() {
-    return new Node();
-  }
-  createOscillator() {
-    this.oscillators++;
-    return Object.assign(new Node(), { type: '', frequency: new Param(), start() {}, stop() {} });
-  }
-  resume() {
-    return Promise.resolve();
-  }
-  close() {
-    return Promise.resolve();
-  }
-}
+import { FakeCtx, type FakeNode as Node } from './net-helpers';
 
 function track() {
   return { enabled: true, stopped: false, stop() {
@@ -101,7 +47,7 @@ describe('proximity voice', () => {
     expect(voiceVolume({}, true)).toBe(0);
   });
 
-  it('[R-VOICE] one HRTF panner per peer sits at the drone, mute silences it, leaving drops it', async () => {
+  it('[R-VOICE] one HRTF panner per peer sits at the drone, mute silences it, dropping disconnects it', async () => {
     const { v, ctx } = voice();
     expect(await v.enable()).toBe('on');
     v.update(listener, [
@@ -121,6 +67,8 @@ describe('proximity voice', () => {
     expect(ctx.listener.forwardZ.value).toBe(-1);
     v.update(listener, [{ id: 'a', pos: { x: 5, y: 0, z: 0 }, volume: 0 }]);
     expect(a.gain.gain.value).toBe(0);
+    expect(v.chains.get('b')).toBe(b);
+    v.drop('b');
     expect(v.chains.has('b')).toBe(false);
     expect((b.gain as unknown as Node).disconnected).toBe(true);
   });

@@ -75,6 +75,7 @@ export class Net {
   private ticks = 0;
   private lastHi = '';
   private listeners = new Set<() => void>();
+  private streams = new Map<string, MediaStream>();
 
   constructor(
     readonly game: Game,
@@ -146,6 +147,7 @@ export class Net {
         join: (id) => this.peerJoin(id),
         leave: (id) => this.peerLeave(id),
         stream: (stream, id) => {
+          this.streams.set(id, stream);
           if (!this.peers.get(id)?.blocked) this.voice.attach(id, stream);
         },
         error: () => this.game.toast('A friend could not connect directly. Their network may block peer to peer.', 'warn'),
@@ -179,6 +181,7 @@ export class Net {
     this.transport = null;
     for (const id of this.peers.keys()) this.voice.drop(id);
     this.peers.clear();
+    this.streams.clear();
     this.pings.clear();
     const had = this.room !== null;
     this.room = null;
@@ -265,6 +268,7 @@ export class Net {
     const p = this.peers.get(id);
     if (!p) return;
     this.peers.delete(id);
+    this.streams.delete(id);
     this.voice.drop(id);
     this.pings.delete(id);
     this.limiter.forget(id);
@@ -362,11 +366,12 @@ export class Net {
     const p = this.peers.get(id);
     if (!p) return;
     p.blocked = blocked;
+    const stream = this.streams.get(id);
     if (blocked) {
       this.voice.drop(id);
       this.pings.delete(id);
       this.game.toast(`${p.name} is blocked for this session`, 'info');
-    }
+    } else if (stream) this.voice.attach(id, stream);
     this.changed();
   }
 

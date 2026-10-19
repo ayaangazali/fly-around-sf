@@ -150,7 +150,9 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
   link.setAttribute('aria-label', 'Share link');
   link.addEventListener('focus', () => link.select());
   const peers = el('ul', 'fr-peers');
-  online.append(codeBig, actions, link, status, peers);
+  const keys = el('p', 'fr-keys');
+  for (const [k, v] of [['Enter', 'chat'], ['G', 'ping where you look'], ['T', 'hold to talk']]) keys.append(el('kbd', '', k), el('span', '', v));
+  online.append(codeBig, actions, link, status, peers, keys);
   const metas = new Map<string, HTMLElement>();
   let lastKey: string | null = null;
   body.append(offline, online);

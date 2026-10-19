@@ -27,3 +27,58 @@ export async function until(fn: () => boolean, ms = 3000): Promise<void> {
     await new Promise((r) => setTimeout(r, 10));
   }
 }
+
+export class Param {
+  value = 0;
+  setTargetAtTime(v: number) {
+    this.value = v;
+  }
+  setValueAtTime(v: number) {
+    this.value = v;
+  }
+  linearRampToValueAtTime(v: number) {
+    this.value = v;
+  }
+  exponentialRampToValueAtTime(v: number) {
+    this.value = v;
+  }
+}
+
+export class FakeNode {
+  connected: FakeNode[] = [];
+  disconnected = false;
+  connect(n: FakeNode) {
+    this.connected.push(n);
+    return n;
+  }
+  disconnect() {
+    this.disconnected = true;
+  }
+}
+
+export class FakeCtx {
+  state = 'running';
+  currentTime = 0;
+  destination = new FakeNode();
+  oscillators = 0;
+  listener = { positionX: new Param(), positionY: new Param(), positionZ: new Param(), forwardX: new Param(), forwardY: new Param(), forwardZ: new Param(), upX: new Param(), upY: new Param(), upZ: new Param() };
+  createGain() {
+    return Object.assign(new FakeNode(), { gain: new Param() });
+  }
+  createPanner() {
+    return Object.assign(new FakeNode(), { panningModel: 'equalpower', distanceModel: 'inverse', rolloffFactor: 1, positionX: new Param(), positionY: new Param(), positionZ: new Param() });
+  }
+  createMediaStreamSource() {
+    return new FakeNode();
+  }
+  createOscillator() {
+    this.oscillators++;
+    return Object.assign(new FakeNode(), { type: '', frequency: new Param(), start() {}, stop() {} });
+  }
+  resume() {
+    return Promise.resolve();
+  }
+  close() {
+    return Promise.resolve();
+  }
+}
