@@ -123,13 +123,15 @@ export function showTour(game: Game, def: ActivityDef, stops: TourStop[]): TourV
     li.title = s.name;
     dots.append(li);
   }
+  const head = el('p', 'tour-title');
+  head.append(el('b', 'tour-badge', '🧭'), el('span', undefined, def.title));
   const kicker = el('p', 'tour-kicker');
   const name = el('h3', 'tour-name');
   const line = el('p', 'tour-line');
   const next = el('p', 'tour-next');
   const body = el('div', 'tour-body');
   body.append(kicker, name, line, next);
-  root.append(dots, body);
+  root.append(head, dots, body);
   const render = (k: string, n: string, l: string, nx: string, done: number) => {
     kicker.textContent = k;
     name.textContent = n;
@@ -143,7 +145,7 @@ export function showTour(game: Game, def: ActivityDef, stops: TourStop[]): TourV
     void body.offsetWidth;
     body.classList.add('swap');
   };
-  render(`Guided tour · ${stops.length} stops`, def.title, def.blurb, `First stop: ${stops[0].name}`, 0);
+  render(`Guided tour · ${stops.length} stops`, `Fly to ${stops[0].name}`, def.blurb, '', 0);
   game.ui.append(root);
   let arrived = 0;
   return {

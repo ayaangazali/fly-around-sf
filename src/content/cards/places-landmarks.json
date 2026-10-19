@@ -105,7 +105,7 @@
       "The elevated Embarcadero Freeway that blocked it was demolished after the 1989 Loma Prieta earthquake.",
       "It reopened in 2003 as a marketplace while still serving ferries."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building", "https://www.ferrybuildingmarketplace.com/history/"]
+    "sources": ["https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building"]
   },
   {
     "id": "salesforce-tower",
@@ -248,7 +248,7 @@
       "It is named for San Francisco newspaperman M. H. de Young.",
       "It is part of the Fine Arts Museums of San Francisco with the Legion of Honor."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/De_Young_Museum", "https://www.famsf.org/visit/de-young"]
+    "sources": ["https://en.wikipedia.org/wiki/De_Young_Museum"]
   },
   {
     "id": "california-academy-of-sciences",
@@ -320,7 +320,7 @@
       "A cast of Rodin's The Thinker stands in its Court of Honor.",
       "It sits in Lincoln Park and is one of the Fine Arts Museums of San Francisco."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Legion_of_Honor_(museum)", "https://www.famsf.org/visit/legion-of-honor"]
+    "sources": ["https://en.wikipedia.org/wiki/Legion_of_Honor_(museum)"]
   },
   {
     "id": "conservatory-of-flowers",
@@ -410,7 +410,7 @@
       "The Ohlone people provided most of the labor that built the chapel.",
       "The neighboring basilica was completed in 1918 after the 1906 earthquake."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs", "https://www.missiondolores.org/history"]
+    "sources": ["https://en.wikipedia.org/wiki/Mission_San_Francisco_de_As%C3%ADs"]
   },
   {
     "id": "dragon-gate",
@@ -446,7 +446,7 @@
       "Its main doors are casts of Ghiberti's Gates of Paradise.",
       "It has a Keith Haring altarpiece and two labyrinths."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco", "https://gracecathedral.org/our-history/"]
+    "sources": ["https://en.wikipedia.org/wiki/Grace_Cathedral,_San_Francisco"]
   },
   {
     "id": "st-marys-cathedral",
