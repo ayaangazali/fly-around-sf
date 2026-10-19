@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { PNG } from 'pngjs';
 import { ROOT } from './helpers';
 
 const pub = (p: string) => join(ROOT, 'public', p);
+const pngSize = (p: string) => {
+  const b = readFileSync(pub(p));
+  expect(b.subarray(1, 4).toString()).toBe('PNG');
+  return { width: b.readUInt32BE(16), height: b.readUInt32BE(20) };
+};
 
 describe('progressive web app', () => {
   const manifest = JSON.parse(readFileSync(pub('manifest.webmanifest'), 'utf8'));
@@ -16,12 +20,12 @@ describe('progressive web app', () => {
     for (const icon of manifest.icons) {
       expect(existsSync(pub(icon.src)), icon.src).toBe(true);
       if (icon.type !== 'image/png') continue;
-      const png = PNG.sync.read(readFileSync(pub(icon.src)));
+      const png = pngSize(icon.src);
       expect(`${png.width}x${png.height}`).toBe(icon.sizes);
       sizes.add(`${icon.sizes} ${icon.purpose}`);
     }
     expect(sizes).toEqual(new Set(['192x192 any', '512x512 any', '512x512 maskable']));
-    expect(PNG.sync.read(readFileSync(pub('icons/apple-touch-icon.png'))).width).toBe(180);
+    expect(pngSize('icons/apple-touch-icon.png')).toEqual({ width: 180, height: 180 });
   });
 
   it('[R-PWA] index links the manifest and the service worker caches the shell and data with a version', () => {
