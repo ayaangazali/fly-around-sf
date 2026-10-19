@@ -48,12 +48,12 @@ export function parseOptions(search: string, base = './'): GameOptions {
   const spawn = q.get('spawn')?.split(',').map(Number);
   const t = q.get('time');
   const quality = q.get('quality');
-  const touch = typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) < 820;
+  const touch = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
   return {
     test: q.has('test'),
     time: t && !Number.isNaN(Date.parse(t)) ? new Date(t) : q.has('test') ? new Date('2026-10-19T19:30:00Z') : null,
     spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
-    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') ? 'low' : touch ? 'medium' : 'high',
+    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') || touch ? 'low' : 'high',
     room: q.get('room'),
     cityRadius: Number(q.get('cityRadius')) || 0,
     base,

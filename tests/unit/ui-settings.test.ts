@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { fakeGame } from './helpers';
 import { DEFAULTS, readSettings, sanitize, setSetting, settingsOf, timeModeOffset, cleanName, randomPilotName } from '../../src/ui/settings-model';
 import { savedQuality } from '../../src/ui';
@@ -92,5 +92,16 @@ describe('settings', () => {
     const before = auto.quality;
     savedQuality(auto, '', 'auto');
     expect(auto.quality).toBe(before);
+  });
+
+  it('[R-PERF-AUTO] auto quality starts touch-first phones and tablets on the low tier', () => {
+    expect(parseOptions('').quality).toBe('high');
+    vi.stubGlobal('matchMedia', (q: string) => ({ matches: q === '(pointer: coarse)' }));
+    try {
+      expect(parseOptions('').quality).toBe('low');
+      expect(parseOptions('?quality=medium').quality).toBe('medium');
+    } finally {
+      vi.unstubAllGlobals();
+    }
   });
 });
