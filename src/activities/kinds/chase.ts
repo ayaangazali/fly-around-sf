@@ -13,6 +13,9 @@ interface ChaseParams {
 }
 
 const SPOOK = 90;
+const BREAK = 16;
+const TIRED = 0.55;
+const TIRE_TIME = 40;
 
 export const kind: ActivityKind = {
   kind: 'chase',
@@ -41,8 +44,12 @@ export const kind: ActivityKind = {
     const props = [bird];
     const vel = { x: 0, y: 0, z: 0 };
     const goal = { x: home.x, z: home.z };
+    const brk = { x: 0, z: 0 };
     let t = 0;
     let wander = 0;
+    let stamina = 1;
+    let cool = 0;
+    let dodge = 0;
     return {
       update(dt) {
         t += dt;
@@ -61,14 +68,35 @@ export const kind: ActivityKind = {
         let dz: number;
         let dy = 0;
         let v = speed * 0.45;
+        cool -= dt;
+        dodge -= dt;
         if (d < SPOOK) {
+          stamina = Math.max(TIRED, stamina - dt / TIRE_TIME);
           const h = Math.hypot(b.x - me.x, b.z - me.z) || 1;
-          const jink = Math.sin(t * 2.6 + phase) * 0.9;
-          dx = (b.x - me.x) / h - ((b.z - me.z) / h) * jink;
-          dz = (b.z - me.z) / h + ((b.x - me.x) / h) * jink;
+          const ax = (b.x - me.x) / h;
+          const az = (b.z - me.z) / h;
+          const fv = game.flight.vel;
+          const closing = fv.x * ax + fv.z * az - vel.x * ax - vel.z * az;
+          if (d < BREAK + Math.max(0, closing) * 0.5 && cool <= 0) {
+            const side = Math.sign(fv.x * az - fv.z * ax) || 1;
+            brk.x = -az * side;
+            brk.z = ax * side;
+            dodge = 0.7;
+            cool = 1.6 + rand();
+          }
+          if (dodge > 0) {
+            dx = brk.x + ax * 0.3;
+            dz = brk.z + az * 0.3;
+            v = speed * stamina * 1.5;
+          } else {
+            const jink = Math.sin(t * 2.6 + phase) * 0.9;
+            dx = ax - az * jink;
+            dz = az + ax * jink;
+            v = speed * stamina * (d < 25 ? 1.15 : 1);
+          }
           dy = me.y < b.y ? 0.35 : -0.25;
-          v = speed * (d < 25 ? 1.15 : 1);
         } else {
+          stamina = Math.min(1, stamina + dt / 10);
           wander -= dt;
           if (wander <= 0) {
             const a = rand() * Math.PI * 2;
@@ -88,7 +116,7 @@ export const kind: ActivityKind = {
           dz = dz / n + ((home.z - b.z) / h) * k;
         }
         const n = Math.hypot(dx, dz, dy) || 1;
-        const k = Math.min(1, dt * 2.5);
+        const k = Math.min(1, dt * (dodge > 0 ? 6 : 2.5));
         vel.x += ((dx / n) * v - vel.x) * k;
         vel.y += ((dy / n) * v - vel.y) * k;
         vel.z += ((dz / n) * v - vel.z) * k;

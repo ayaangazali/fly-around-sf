@@ -10,6 +10,7 @@ import { kind as photo, viewfinder } from '../../src/activities/kinds/photo';
 import { bestMedal, clock, formatTime, isMedals, medalFor, meters, rng, saveMedal, validateTimed, type MinigameInstance, type MinigameResult } from '../../src/activities/minigame';
 import type { ActivityDef, ActivityKind, SolverStep } from '../../src/activities/types';
 import type { Game } from '../../src/game';
+import { stepFlight, type FlightInput } from '../../src/player/flight';
 
 const DT = 1 / 30;
 const base = { neighborhood: 'Test', blurb: 'a test minigame' };
@@ -62,6 +63,24 @@ function idle(k: ActivityKind, def: ActivityDef, seconds: number, far = true) {
   ctx.g.activities.start(def.id);
   for (let t = 0; t < seconds && ctx.g.activities.active; t += DT) ctx.g.activities.update(DT);
   return ctx;
+}
+
+function pilot(g: Game, inst: MinigameInstance, ctl: (t: number) => Partial<FlightInput>, seconds: number): string {
+  const env = { groundAt: () => 0, collide: () => false };
+  for (let t = 0; t < seconds; t += 1 / 60) {
+    stepFlight(g.flight, { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false, ...ctl(t) }, 1 / 60, env);
+    const s = inst.update(1 / 60);
+    if (s !== 'running') return s;
+  }
+  return 'running';
+}
+
+function chaseInput(g: Game, to: { x: number; y: number; z: number }, boost: boolean): Partial<FlightInput> {
+  const f = g.flight;
+  const err = Math.atan2(-(to.x - f.pos.x), -(to.z - f.pos.z)) - f.yaw;
+  const turn = Math.atan2(Math.sin(err), Math.cos(err));
+  const sign = (v: number, dead: number) => (v > dead ? 1 : v < -dead ? -1 : 0);
+  return { forward: 1, boost, yaw: -sign(turn, 0.05), lift: sign(to.y - f.pos.y, 0.6) };
 }
 
 const deliveryDef: ActivityDef = { ...base, id: 'delivery-test', kind: 'delivery', title: 'Burrito Run', at: here, params: { pickup: { ...here, name: 'Taqueria' }, dropoff: { ...near(600), name: 'Park' }, item: 'burrito', timeLimit: 90, medals: [20, 40, 60] } };
@@ -176,6 +195,29 @@ describe('landing', () => {
     expect(results.at(-1)?.fail).toContain('9.0 m/s');
   });
 
+  it('[R-MINIGAMES] feathered keyboard taps settle onto the pad, holding descend slams into it', () => {
+    for (const start of [4, 4.3, 4.6, 4.9, 5.2, 5.5, 5.8]) {
+      const g = game();
+      const inst = landing.start(landingDef, g) as MinigameInstance;
+      const pad = inst.targets!()[0];
+      g.flight.pos = { x: pad.x, y: start, z: pad.z };
+      let until = -1;
+      const feather = (t: number) => {
+        if (t >= until + 0.3 && Math.abs(g.flight.vel.y) < 0.6) until = t + 0.1;
+        return { lift: t < until ? -1 : 0 };
+      };
+      expect(pilot(g, inst, feather, 30), `from ${start} m`).toBe('done');
+    }
+    const g = game();
+    const results: MinigameResult[] = [];
+    g.bus.on('minigame:result', (r) => results.push(r));
+    const inst = landing.start(landingDef, g) as MinigameInstance;
+    const pad = inst.targets!()[0];
+    g.flight.pos = { x: pad.x, y: 15, z: pad.z };
+    expect(pilot(g, inst, () => ({ lift: -1 }), 10)).toBe('failed');
+    expect(results.at(-1)?.fail).toMatch(/^Hard landing at [4-9]\.\d m\/s/);
+  });
+
   it('[R-MINIGAMES] warns about speed near the pad and lights it up', () => {
     const g = game();
     const inst = landing.start(landingDef, g) as MinigameInstance;
@@ -275,6 +317,26 @@ describe('chase', () => {
       expect(bird.y).toBeGreaterThanOrEqual(8);
       expect(Math.hypot(bird.x - home.x, bird.z - home.z)).toBeLessThan(320 * 1.5);
     }
+  });
+
+  it('[R-MINIGAMES] a full-boost lunge overshoots the bird, steady pursuit wears it down', () => {
+    const run = (seed: string, boostBeyond: number) => {
+      const def = { ...chaseDef, id: `chase-${seed}` };
+      const g = game();
+      const inst = chase.start(def, g) as MinigameInstance;
+      g.flight.pos = { ...g.world.point(def.at, 30) };
+      let t = 0;
+      const status = pilot(g, inst, (now) => {
+        t = now;
+        const b = inst.targets!()[0];
+        return chaseInput(g, b, Math.hypot(b.x - g.flight.pos.x, b.z - g.flight.pos.z) > boostBeyond);
+      }, 60);
+      return { status, t };
+    };
+    const seeds = [...'abcdefghij'];
+    const steady = seeds.map((s) => run(s, 25));
+    expect(steady.every((r) => r.status === 'done' && r.t > 6)).toBe(true);
+    expect(seeds.filter((s) => run(s, 0).status === 'done').length).toBeLessThanOrEqual(5);
   });
 });
 

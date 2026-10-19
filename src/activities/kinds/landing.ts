@@ -11,7 +11,10 @@ interface LandingParams {
   medals?: Medals;
 }
 
-const TOUCH = FLIGHT.radius + 0.6;
+const TOUCH = 0.6;
+const CONTACT = 0.15;
+const CUSHION = 3;
+const CUSHION_DRAG = 6;
 
 export function airspeed(game: Game): number {
   const v = game.flight.vel;
@@ -48,15 +51,20 @@ export const kind: ActivityKind = {
         const f = game.flight;
         const h = Math.hypot(f.pos.x - pad.x, f.pos.z - pad.z);
         pads[0].on = h < radius * 6;
-        if (h <= radius && f.pos.y - pad.y <= TOUCH) {
-          if (last > max) {
+        const above = f.pos.y - pad.y - FLIGHT.radius;
+        if (h <= radius * 1.5 && above < CUSHION && f.vel.y < 0) f.vel.y *= Math.exp(-CUSHION_DRAG * (1 - Math.max(0, above) / CUSHION) * dt);
+        const v = airspeed(game);
+        if (h <= radius && above <= TOUCH) {
+          if (above <= CONTACT && last > max) {
             report(game, def, { medal: 0, time: t, fail: `Hard landing at ${last.toFixed(1)} m/s. The limit is ${max} m/s` });
             return 'failed';
           }
-          report(game, def, { medal: medalFor(p.medals, t), time: t, score: `touchdown at ${last.toFixed(1)} m/s` });
-          return 'done';
+          if (v <= max) {
+            report(game, def, { medal: medalFor(p.medals, t), time: t, score: `touchdown at ${v.toFixed(1)} m/s` });
+            return 'done';
+          }
         }
-        last = airspeed(game);
+        last = v;
         if (t > p.timeLimit) {
           report(game, def, { medal: 0, time: t, fail: 'Out of time before touchdown' });
           return 'failed';

@@ -82,7 +82,7 @@
     "params": {
       "animal": "falcon",
       "name": "peregrine falcon",
-      "speed": 44,
+      "speed": 36,
       "radius": 380,
       "medals": [
         25,
