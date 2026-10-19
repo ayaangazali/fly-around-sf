@@ -13,10 +13,9 @@ export const FACTS = {
   towerHeight: 160,
   clearance: 67,
   mainSpan: 704,
-  sideSpan: 354,
   sasTowerHeight: 160,
   sasMainSpan: 385,
-  bayLightsCables: 300,
+  bayLightsLeds2013: 25000,
   bayLightsLeds2026: 48000,
   sources: [
     'https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge',
@@ -38,6 +37,7 @@ const SAS_EAST = { lat: 37.817675, lon: -122.354682 };
 const RINCON = { lat: 37.78635, lon: -122.39135 };
 
 const HALF_W = 10;
+const SIDE_SPAN = 354;
 
 function westSpan(game: Game): void {
   const site = new Site(game, 'bay-bridge', source, yawBetween(W2, W6), 0);
@@ -50,8 +50,8 @@ function westSpan(game: Game): void {
 
   const towers = [W2, W3, W5, W6].map((p) => site.at(p.lat, p.lon).z);
   const center = (towers[1] + towers[2]) / 2;
-  const sfEnd = towers[0] - FACTS.sideSpan;
-  const ybiEnd = towers[3] + FACTS.sideSpan;
+  const sfEnd = towers[0] - SIDE_SPAN;
+  const ybiEnd = towers[3] + SIDE_SPAN;
   const top = (z: number) => {
     for (const [a, b] of [
       [towers[0], towers[1]],
@@ -62,8 +62,8 @@ function westSpan(game: Game): void {
         return 72 + 6 * Math.sin(Math.PI * t);
       }
     }
-    if (z < towers[0]) return 72 - 10 * Math.min(1, (towers[0] - z) / FACTS.sideSpan);
-    if (z > towers[3]) return 72 - 8 * Math.min(1, (z - towers[3]) / FACTS.sideSpan);
+    if (z < towers[0]) return 72 - 10 * Math.min(1, (towers[0] - z) / SIDE_SPAN);
+    if (z > towers[3]) return 72 - 8 * Math.min(1, (z - towers[3]) / SIDE_SPAN);
     return 72;
   };
   const depth = 9.5;

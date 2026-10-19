@@ -11,7 +11,7 @@ export const source: LandmarkSource = {
 };
 
 export const FACTS = {
-  arrived: 1990,
+  arrived: 1989,
   floats: 43,
   sources: ['https://en.wikipedia.org/wiki/Pier_39', 'https://www.openstreetmap.org/way/1103154712', 'https://www.openstreetmap.org/way/23605142'],
 };

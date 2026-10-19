@@ -12,7 +12,7 @@ export const source: LandmarkSource = {
 
 export const FACTS = {
   roofAcres: 2.5,
-  roofHills: 7,
+  roofPlants: 1700000,
   opened: 2008,
   architect: 'Renzo Piano',
   sources: ['https://en.wikipedia.org/wiki/California_Academy_of_Sciences', 'https://www.openstreetmap.org/way/28695389'],

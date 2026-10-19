@@ -12,7 +12,6 @@ export const source: LandmarkSource = {
 
 export const FACTS = {
   opened: 2000,
-  capacity: 41915,
   bottle: 24.4,
   rightFieldWall: 7.3,
   leftField: 103,

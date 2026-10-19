@@ -13,7 +13,6 @@ export const source: LandmarkSource = {
 export const FACTS = {
   houses: 7,
   built: '1892 to 1896',
-  style: 'Queen Anne',
   sources: ['https://en.wikipedia.org/wiki/Painted_ladies', 'https://data.sfgov.org/Housing-and-Buildings/Building-Footprints/ynuv-fyni'],
 };
 
