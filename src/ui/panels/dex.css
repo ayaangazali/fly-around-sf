@@ -1,0 +1,48 @@
+.sheet[data-panel="dex"] { width: min(1040px, calc(100vw - 24px)); }
+.dex-head { display: grid; grid-template-columns: auto 1fr minmax(180px, 260px); gap: 14px; align-items: center; margin-bottom: 12px; }
+.dex-ring { --p: 0; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--accent) calc(var(--p) * 1%), rgba(255, 255, 255, 0.1) 0); position: relative; }
+.dex-ring::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: #121921; }
+.dex-ring b { position: relative; font: 700 13px var(--mono); }
+.dex-head-text { display: grid; gap: 2px; }
+.dex-head-text strong { font-size: 17px; }
+.dex-head-text span { font-size: 13px; color: var(--ink-dim); }
+.dex-search { width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); color: var(--ink); font: inherit; }
+.dex-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; margin-bottom: 8px; }
+.dex-tabs::-webkit-scrollbar { display: none; }
+.dex-tab { flex: none; display: inline-flex; gap: 8px; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 99px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); font-size: 13px; font-weight: 600; color: var(--ink-dim); }
+.dex-tab small { font: 500 11px var(--mono); color: var(--ink-dim); }
+.dex-tab[aria-selected="true"] { background: var(--ink); color: #11161d; border-color: transparent; }
+.dex-tab[aria-selected="true"] small { color: #3a434d; }
+.dex-section { margin: 10px 0 18px; }
+.dex-section h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; font-size: 15px; }
+.dex-section h3 small { font: 500 12px var(--mono); color: var(--ink-dim); }
+.dex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; }
+.dex-empty { color: var(--ink-dim); text-align: center; padding: 40px 0; }
+.dex-back { margin-bottom: 12px; }
+.dex-detail { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 24px; align-items: start; animation: card-in 0.25s ease; }
+.tcard.big { max-width: 300px; border-radius: 20px; }
+.tcard.big .tcard-info b { font-size: 19px; }
+.tcard.big .tcard-info small { font-size: 12px; }
+.tcard.big .tcard-badge { width: 34px; height: 34px; font-size: 17px; }
+.dex-info h3 { margin: 0 0 8px; font-size: 26px; letter-spacing: -0.02em; line-height: 1.1; }
+.dex-info h4 { margin: 18px 0 6px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
+.dex-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.tag { padding: 4px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--line); }
+.tag.rarity-rare { color: #a8d8ff; border-color: rgba(140, 200, 255, 0.45); }
+.tag.rarity-legendary { color: #ffd59a; border-color: rgba(255, 200, 110, 0.6); background: rgba(255, 190, 90, 0.12); }
+.dex-blurb { font-size: 17px; font-weight: 600; margin: 0 0 8px; line-height: 1.35; }
+.dex-lore { color: var(--ink-dim); line-height: 1.55; margin: 0; font-size: 15px; }
+.dex-facts { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.45; font-size: 14px; }
+.dex-sources { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.dex-sources a { display: inline-block; padding: 6px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); color: var(--accent-2); font-size: 12px; text-decoration: none; }
+.dex-sources a:hover { background: rgba(255, 255, 255, 0.12); }
+.dex-hint { font-size: 16px; color: var(--accent-2); line-height: 1.45; }
+.dex-actions { display: flex; gap: 8px; margin-top: 18px; }
+
+@media (max-width: 640px) {
+  .dex-head { grid-template-columns: auto 1fr; }
+  .dex-search { grid-column: 1 / -1; }
+  .dex-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+  .dex-detail { grid-template-columns: 1fr; justify-items: center; }
+  .tcard.big { max-width: 220px; }
+}

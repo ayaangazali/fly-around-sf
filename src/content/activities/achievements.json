@@ -1,0 +1,1000 @@
+[
+  {
+    "id": "achievement-first-kilometer",
+    "kind": "achievement",
+    "title": "First Kilometer",
+    "blurb": "Fly your first 1,000 meters over the city.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "distance",
+      "gte": 1000
+    }
+  },
+  {
+    "id": "achievement-bridge-length",
+    "kind": "achievement",
+    "title": "Bridge Length",
+    "blurb": "Fly 2,737 meters, the Golden Gate Bridge from end to end.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 15,
+    "params": {
+      "metric": "distance",
+      "gte": 2737
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+    ]
+  },
+  {
+    "id": "achievement-bay-to-breakers",
+    "kind": "achievement",
+    "title": "Bay to Breakers",
+    "blurb": "Fly 12 km, the length of the city's famous footrace from the Bay to Ocean Beach.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 25,
+    "params": {
+      "metric": "distance",
+      "gte": 12000
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bay_to_Breakers"
+    ]
+  },
+  {
+    "id": "achievement-marathon",
+    "kind": "achievement",
+    "title": "Marathon Pilot",
+    "blurb": "Fly 42.195 km, a full marathon. The San Francisco Marathon runs across the Golden Gate Bridge.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "distance",
+      "gte": 42195
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Marathon"
+    ]
+  },
+  {
+    "id": "achievement-century",
+    "kind": "achievement",
+    "title": "Century",
+    "blurb": "Fly 100 km in total.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 60,
+    "params": {
+      "metric": "distance",
+      "gte": 100000
+    }
+  },
+  {
+    "id": "achievement-long-haul",
+    "kind": "achievement",
+    "title": "Long Haul",
+    "blurb": "Fly 250 km in total. That is a lot of laps around the Bay.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 100,
+    "params": {
+      "metric": "distance",
+      "gte": 250000
+    }
+  },
+  {
+    "id": "achievement-airborne",
+    "kind": "achievement",
+    "title": "Airborne",
+    "blurb": "Spend 10 minutes in the air.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "flightTime",
+      "gte": 600
+    }
+  },
+  {
+    "id": "achievement-first-hour",
+    "kind": "achievement",
+    "title": "First Hour",
+    "blurb": "Log a full hour of flight time.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "flightTime",
+      "gte": 3600
+    }
+  },
+  {
+    "id": "achievement-frequent-flyer",
+    "kind": "achievement",
+    "title": "Frequent Flyer",
+    "blurb": "Log five hours of flight time.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 80,
+    "params": {
+      "metric": "flightTime",
+      "gte": 18000
+    }
+  },
+  {
+    "id": "achievement-bump",
+    "kind": "achievement",
+    "title": "Bump and Learn",
+    "blurb": "Bounce off something. Everyone does.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 5,
+    "params": {
+      "metric": "crashes",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-bumper-drone",
+    "kind": "achievement",
+    "title": "Bumper Drone",
+    "blurb": "Survive 10 hard bumps.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "crashes",
+      "gte": 10
+    }
+  },
+  {
+    "id": "achievement-built-tough",
+    "kind": "achievement",
+    "title": "Built Tough",
+    "blurb": "Survive 50 hard bumps. The drone is fine. Probably.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 20,
+    "params": {
+      "metric": "crashes",
+      "gte": 50
+    }
+  },
+  {
+    "id": "achievement-welcome-back",
+    "kind": "achievement",
+    "title": "Welcome Back",
+    "blurb": "Come back for a second flight session.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "sessions",
+      "gte": 2
+    }
+  },
+  {
+    "id": "achievement-regular",
+    "kind": "achievement",
+    "title": "Regular",
+    "blurb": "Fly on 7 different sessions.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "sessions",
+      "gte": 7
+    }
+  },
+  {
+    "id": "achievement-local",
+    "kind": "achievement",
+    "title": "Local",
+    "blurb": "Fly on 30 different sessions. You live here now.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 80,
+    "params": {
+      "metric": "sessions",
+      "gte": 30
+    }
+  },
+  {
+    "id": "achievement-xp-100",
+    "kind": "achievement",
+    "title": "Getting Started",
+    "blurb": "Earn 100 XP.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "params": {
+      "metric": "xp",
+      "gte": 100
+    }
+  },
+  {
+    "id": "achievement-xp-500",
+    "kind": "achievement",
+    "title": "Rising Pilot",
+    "blurb": "Earn 500 XP.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "params": {
+      "metric": "xp",
+      "gte": 500
+    }
+  },
+  {
+    "id": "achievement-xp-1500",
+    "kind": "achievement",
+    "title": "Ace",
+    "blurb": "Earn 1,500 XP.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "params": {
+      "metric": "xp",
+      "gte": 1500
+    }
+  },
+  {
+    "id": "achievement-xp-5000",
+    "kind": "achievement",
+    "title": "Legend of the Bay",
+    "blurb": "Earn 5,000 XP.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "params": {
+      "metric": "xp",
+      "gte": 5000
+    }
+  },
+  {
+    "id": "achievement-cards-1",
+    "kind": "achievement",
+    "title": "First Card",
+    "blurb": "Unlock your first collection card.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "cards",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-cards-10",
+    "kind": "achievement",
+    "title": "Collector",
+    "blurb": "Unlock 10 collection cards.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 25,
+    "params": {
+      "metric": "cards",
+      "gte": 10
+    }
+  },
+  {
+    "id": "achievement-cards-25",
+    "kind": "achievement",
+    "title": "Archivist",
+    "blurb": "Unlock 25 collection cards.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 50,
+    "params": {
+      "metric": "cards",
+      "gte": 25
+    }
+  },
+  {
+    "id": "achievement-cards-50",
+    "kind": "achievement",
+    "title": "Curator",
+    "blurb": "Unlock 50 collection cards.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 80,
+    "params": {
+      "metric": "cards",
+      "gte": 50
+    }
+  },
+  {
+    "id": "achievement-cards-100",
+    "kind": "achievement",
+    "title": "Living Encyclopedia",
+    "blurb": "Unlock 100 collection cards.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 150,
+    "params": {
+      "metric": "cards",
+      "gte": 100
+    }
+  },
+  {
+    "id": "achievement-done-1",
+    "kind": "achievement",
+    "title": "Off the Ground",
+    "blurb": "Complete your first activity.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "completed",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-done-10",
+    "kind": "achievement",
+    "title": "Getting Around",
+    "blurb": "Complete 10 activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 25,
+    "params": {
+      "metric": "completed",
+      "gte": 10
+    }
+  },
+  {
+    "id": "achievement-done-25",
+    "kind": "achievement",
+    "title": "Busy Pilot",
+    "blurb": "Complete 25 activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 50,
+    "params": {
+      "metric": "completed",
+      "gte": 25
+    }
+  },
+  {
+    "id": "achievement-done-50",
+    "kind": "achievement",
+    "title": "Fifty Up",
+    "blurb": "Complete 50 activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 80,
+    "params": {
+      "metric": "completed",
+      "gte": 50
+    }
+  },
+  {
+    "id": "achievement-done-100",
+    "kind": "achievement",
+    "title": "Centurion",
+    "blurb": "Complete 100 activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 150,
+    "params": {
+      "metric": "completed",
+      "gte": 100
+    }
+  },
+  {
+    "id": "achievement-done-150",
+    "kind": "achievement",
+    "title": "Every Corner",
+    "blurb": "Complete 150 activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 250,
+    "params": {
+      "metric": "completed",
+      "gte": 150
+    }
+  },
+  {
+    "id": "achievement-ring-leader",
+    "kind": "achievement",
+    "title": "Ring Leader",
+    "blurb": "Finish 5 ring runs.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "rings"
+    }
+  },
+  {
+    "id": "achievement-sightseer",
+    "kind": "achievement",
+    "title": "Sightseer",
+    "blurb": "Make 5 discoveries.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 20,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "discover"
+    }
+  },
+  {
+    "id": "achievement-explorer",
+    "kind": "achievement",
+    "title": "Explorer",
+    "blurb": "Make 25 discoveries.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 60,
+    "params": {
+      "metric": "completed",
+      "gte": 25,
+      "kind": "discover"
+    }
+  },
+  {
+    "id": "achievement-shutterbug",
+    "kind": "achievement",
+    "title": "Shutterbug",
+    "blurb": "Complete 5 photo challenges.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "photo"
+    }
+  },
+  {
+    "id": "achievement-courier",
+    "kind": "achievement",
+    "title": "Courier",
+    "blurb": "Complete 5 deliveries.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "completed",
+      "gte": 5,
+      "kind": "delivery"
+    }
+  },
+  {
+    "id": "achievement-neighborly",
+    "kind": "achievement",
+    "title": "Neighborly",
+    "blurb": "Complete activities in 3 different neighborhoods.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 15,
+    "params": {
+      "metric": "neighborhoods",
+      "gte": 3
+    }
+  },
+  {
+    "id": "achievement-block-hopper",
+    "kind": "achievement",
+    "title": "Block Hopper",
+    "blurb": "Complete activities in 5 different neighborhoods.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "neighborhoods",
+      "gte": 5
+    }
+  },
+  {
+    "id": "achievement-stopwatch",
+    "kind": "achievement",
+    "title": "Stopwatch",
+    "blurb": "Set a best time on 5 timed activities.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 25,
+    "params": {
+      "metric": "bests",
+      "gte": 5
+    }
+  },
+  {
+    "id": "achievement-over-salesforce",
+    "kind": "achievement",
+    "title": "Over Salesforce",
+    "blurb": "Climb above 326 m, the height of Salesforce Tower, the tallest building in the city.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 20,
+    "params": {
+      "metric": "altitude",
+      "gte": 326
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Salesforce_Tower"
+    ]
+  },
+  {
+    "id": "achievement-over-sutro",
+    "kind": "achievement",
+    "title": "Over Sutro",
+    "blurb": "Climb above 552 m, where the tip of Sutro Tower stands above sea level.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 30,
+    "params": {
+      "metric": "altitude",
+      "gte": 552
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sutro_Tower"
+    ]
+  },
+  {
+    "id": "achievement-ceiling",
+    "kind": "achievement",
+    "title": "Ceiling",
+    "blurb": "Climb to 880 m, the top of drone airspace in this game.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 40,
+    "params": {
+      "metric": "altitude",
+      "gte": 880
+    }
+  },
+  {
+    "id": "achievement-afterburner",
+    "kind": "achievement",
+    "title": "Afterburner",
+    "blurb": "Hit 200 km/h on boost.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 20,
+    "params": {
+      "metric": "speed",
+      "gte": 55.6
+    }
+  },
+  {
+    "id": "achievement-wave-skimmer",
+    "kind": "achievement",
+    "title": "Wave Skimmer",
+    "blurb": "Race across the Bay lower than 5 m at 70 km/h or more.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 25,
+    "params": {
+      "metric": "skim",
+      "gte": 19.5
+    }
+  },
+  {
+    "id": "achievement-splashdown",
+    "kind": "achievement",
+    "title": "Splashdown",
+    "blurb": "Dip the drone into the Bay. It is waterproof.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 10,
+    "params": {
+      "metric": "splash",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-night-owl",
+    "kind": "achievement",
+    "title": "Night Owl",
+    "blurb": "Fly after dark, when the city lights come on.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 15,
+    "params": {
+      "metric": "night",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-golden-hour",
+    "kind": "achievement",
+    "title": "Golden Hour",
+    "blurb": "Fly while the sun sits low on the horizon.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 15,
+    "params": {
+      "metric": "golden",
+      "gte": 1
+    }
+  },
+  {
+    "id": "achievement-running-on-fumes",
+    "kind": "achievement",
+    "title": "Running on Fumes",
+    "blurb": "Fly until the battery drops under 5 percent.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 15,
+    "params": {
+      "metric": "drain",
+      "gte": 0.95
+    }
+  },
+  {
+    "id": "achievement-cartographer",
+    "kind": "achievement",
+    "title": "Cartographer",
+    "blurb": "Open the map.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 5,
+    "params": {
+      "metric": "panel",
+      "gte": 1,
+      "panel": "map"
+    }
+  },
+  {
+    "id": "achievement-bookworm",
+    "kind": "achievement",
+    "title": "Bookworm",
+    "blurb": "Open the collection book.",
+    "neighborhood": "Citywide",
+    "at": {
+      "lat": 37.77919,
+      "lon": -122.41914
+    },
+    "hidden": true,
+    "tags": [
+      "achievement"
+    ],
+    "xp": 5,
+    "params": {
+      "metric": "panel",
+      "gte": 1,
+      "panel": "dex"
+    }
+  }
+]

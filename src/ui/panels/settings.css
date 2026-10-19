@@ -1,0 +1,2 @@
+.sheet[data-panel="settings"] { width: min(720px, calc(100vw - 24px)); }
+.settings-body > .btn { margin: 4px 0 8px; }
