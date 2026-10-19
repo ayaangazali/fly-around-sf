@@ -1,6 +1,17 @@
-import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 
 const req = JSON.parse(readFileSync(new URL('../requirements.json', import.meta.url), 'utf8'));
+const extraDir = new URL('../requirements.d/', import.meta.url);
+if (existsSync(extraDir)) {
+  for (const f of readdirSync(extraDir).filter((n) => n.endsWith('.json')).sort()) {
+    req.requirements.push(...JSON.parse(readFileSync(new URL(f, extraDir), 'utf8')));
+  }
+}
+const dupes = req.requirements.map((r) => r.id).filter((id, i, a) => a.indexOf(id) !== i);
+if (dupes.length) {
+  console.error(`duplicate requirement ids: ${dupes.join(', ')}`);
+  process.exit(1);
+}
 const results = [];
 
 function addVitest(file) {

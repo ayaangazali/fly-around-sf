@@ -109,3 +109,11 @@ declare module '../core/bus' {
 ### Styling
 
 Use the CSS variables in `src/ui/styles.css` (`--glass`, `--ink`, `--accent`, `--radius`, `--mono`...). Put team CSS in its own file next to the module and import it from that module (`import './map.css'`). Phone layouts must not overflow horizontally; touch targets are at least 40px.
+
+### Adding requirements
+
+`requirements.json` is the base list. A team adds its own hard requirements as a JSON array in `requirements.d/<team>.json` (same shape: `id`, `owner`, `text`), never by editing the base file. Ids must be unique across all files.
+
+### Naming
+
+Slugs are shared across teams: a landmark model `golden-gate-bridge`, its card `golden-gate-bridge`, its discovery `discover-golden-gate-bridge`. Activity ids are `<kind>-<slug>`.
