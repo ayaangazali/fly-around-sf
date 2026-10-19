@@ -72,15 +72,16 @@ test.describe('live data', () => {
     await expect(page.locator('.live-chip[data-feed="weather"]')).toHaveAttribute('data-status', 'live');
   });
 
-  test('[R-LIVE-QUAKE] a quake reported mid-session shakes the camera, toasts and grants the rare card', async ({ page }) => {
+  test('[R-LIVE-QUAKE] an M2.5 or larger quake reported mid-session shakes the camera, toasts and grants the rare card', async ({ page }) => {
     const usgs = JSON.parse(fixture('usgs-bay-area.json'));
     const newest = usgs.features[0].properties.time as number;
     let body = JSON.stringify({ ...usgs, features: usgs.features.slice(1) });
+    usgs.features[0].properties.mag = 3.2;
     await page.clock.setFixedTime(new Date(newest + 120_000));
     await offline(page, { 'earthquake.usgs.gov': () => body });
     await boot(page, 'live');
     await expect.poll(() => page.evaluate(liveState).then((s) => s.feeds.quakes), { timeout: 30_000 }).toBe('live');
-    body = fixture('usgs-bay-area.json');
+    body = JSON.stringify(usgs);
     const r = await page.evaluate(async (now) => {
       const g = window.__fly.game;
       const sys = g.systems.find((s) => s.id === 'live-quakes') as unknown as { poll(g: unknown, now: number): Promise<void> };
@@ -89,7 +90,7 @@ test.describe('live data', () => {
     }, newest + 600_000);
     expect(r.shake).toBeGreaterThan(0.2);
     expect(r.cards).toContain('felt-a-quake');
-    await expect(page.locator('.toast').filter({ hasText: 'Earthquake! M1.7' })).toBeVisible();
+    await expect(page.locator('.toast').filter({ hasText: 'Earthquake! M3.2' })).toBeVisible();
     await page.evaluate(() => window.__fly.game.panels.open('live'));
     await expect(page.locator('.live-quakes')).toContainText('San Ramon');
   });

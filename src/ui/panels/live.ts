@@ -179,7 +179,7 @@ function render(root: HTMLElement, game: Game): void {
   } else {
     qc.body.append(el('p', 'live-note', 'No live feed right now. The last big one was Loma Prieta: magnitude 6.9 at 5:04 pm on October 17, 1989.'));
   }
-  qc.body.append(el('p', 'live-note', 'A new Bay Area quake during your flight shakes the camera and earns a rare card.'));
+  qc.body.append(el('p', 'live-note', 'A new Bay Area quake of magnitude 2.5 or more during your flight shakes the camera and earns a rare card.'));
   grid.append(qc.root);
 
   const pc = card('Planes', 'live-planes');

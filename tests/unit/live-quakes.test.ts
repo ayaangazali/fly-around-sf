@@ -42,8 +42,9 @@ describe('live earthquakes', () => {
     expect(shakeFor({ mag: 4, km: 10 })).toBeGreaterThan(shakeFor({ mag: 3, km: 10 }));
   });
 
-  it('[R-LIVE-QUAKE] a new quake during the session shakes the camera, toasts and grants the rare card once', async () => {
+  it('[R-LIVE-QUAKE] a new M2.5 or larger quake during the session shakes the camera, toasts and grants the rare card once', async () => {
     const first = { ...raw, features: raw.features.slice(1) };
+    const felt = { ...raw.features[0], id: 'felt', properties: { ...raw.features[0].properties, mag: 3.2, time: raw.features[0].properties.time + 60_000 } };
     let body: unknown = first;
     vi.stubGlobal('fetch', vi.fn(() => respond(body)));
     const game = liveGame('2026-10-18T19:00:00Z');
@@ -55,11 +56,16 @@ describe('live earthquakes', () => {
     expect(game.chase.shake).toBe(0);
     body = raw;
     await system.poll(game, now);
+    expect(liveState(game).quakes[0]).toMatchObject({ id: 'nc75451991', mag: 1.71 });
+    expect(game.chase.shake).toBe(0);
+    expect(game.toasts).toEqual([]);
+    body = { ...raw, features: [felt, ...raw.features] };
+    await system.poll(game, now + 120_000);
     expect(game.chase.shake).toBeGreaterThan(0);
-    expect(game.toasts).toEqual(['Earthquake! M1.7, 1 km SW of San Ramon, CA (38 km away)', 'New card: Felt a Quake']);
+    expect(game.toasts).toEqual(['Earthquake! M3.2, 1 km SW of San Ramon, CA (38 km away)', 'New card: Felt a Quake']);
     expect(game.save.data.cards).toEqual(['felt-a-quake']);
-    expect(liveState(game).quakes[0].id).toBe('nc75451991');
-    await system.poll(game, now + 200_000);
+    expect(liveState(game).quakes[0].id).toBe('felt');
+    await system.poll(game, now + 240_000);
     expect(game.toasts).toHaveLength(2);
     vi.useRealTimers();
   });

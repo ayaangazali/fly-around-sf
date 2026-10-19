@@ -5,8 +5,8 @@
     "category": "event",
     "rarity": "rare",
     "neighborhood": "Bay Area",
-    "blurb": "A real Bay Area earthquake was recorded by the USGS while you were flying.",
-    "lore": "San Francisco sits between the San Andreas Fault to the west and the Hayward Fault across the bay. Small quakes rattle the region almost every day; this card only drops when the USGS reports a new one within 100 km during your flight.",
+    "blurb": "A Bay Area earthquake of magnitude 2.5 or more was recorded by the USGS while you were flying.",
+    "lore": "San Francisco sits between the San Andreas Fault to the west and the Hayward Fault across the bay. Small quakes rattle the region almost every day; this card only drops when the USGS reports a new one of magnitude 2.5 or more within 100 km during your flight.",
     "facts": [
       "The 1989 Loma Prieta earthquake was magnitude 6.9 and struck at 5:04 pm on October 17, 1989.",
       "The USGS estimates a 72 percent chance of at least one magnitude 6.7 or larger earthquake in the Bay Area between 2014 and 2043.",

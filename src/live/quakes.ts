@@ -14,6 +14,7 @@ export interface Quake {
 
 export const SF = { lat: 37.7749, lon: -122.4194 };
 export const QUAKE_RADIUS_KM = 100;
+export const ALERT_MAG = 2.5;
 
 export const quakeSpec: FeedSpec<Quake[]> = {
   id: 'quakes',

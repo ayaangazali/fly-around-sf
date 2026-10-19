@@ -1,6 +1,6 @@
 import type { Game, GameSystem } from '../game';
 import { addFeed, due, getFeed, grantCard, liveState, refresh } from '../live/state';
-import { newQuakes, quakeSpec, shakeFor } from '../live/quakes';
+import { ALERT_MAG, newQuakes, quakeSpec, shakeFor } from '../live/quakes';
 
 const seen = new WeakMap<Game, { ids: Set<string>; primed: boolean }>();
 
@@ -16,7 +16,7 @@ async function poll(game: Game, now = Date.now()): Promise<void> {
   const report = memo.primed && s.online;
   memo.primed = true;
   if (!report) return;
-  for (const q of fresh) {
+  for (const q of fresh.filter((q) => q.mag >= ALERT_MAG)) {
     game.chase.shake = Math.max(game.chase.shake, shakeFor(q));
     game.toast(`Earthquake! M${q.mag.toFixed(1)}, ${q.place} (${Math.round(q.km)} km away)`, 'warn');
     game.bus.emit('live:quake', { id: q.id, mag: q.mag, place: q.place, km: q.km });
