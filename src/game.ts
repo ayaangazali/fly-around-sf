@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { Bus } from './core/bus';
 import { SaveStore } from './core/save';
 import { Input, type Action } from './core/input';
-import { toLocal } from './core/geo';
+import { inBounds, toLocal } from './core/geo';
 import { Terrain } from './world/terrain';
 import { CityData } from './world/city-data';
 import { CityRenderer } from './world/city';
@@ -37,6 +37,8 @@ export interface GameSystem {
 
 export const SPAWN = { lat: 37.8066, lon: -122.4318, yaw: 1.22, alt: 24 };
 
+const CENTURY_MS = 100 * 365.25 * 86_400_000;
+
 const QUALITY = {
   low: { pixelRatio: 1, shadow: 0, stride: 3, far: 6000 },
   medium: { pixelRatio: 1.5, shadow: 1024, stride: 2, far: 10000 },
@@ -46,13 +48,13 @@ const QUALITY = {
 export function parseOptions(search: string, base = './'): GameOptions {
   const q = new URLSearchParams(search);
   const spawn = q.get('spawn')?.split(',').map(Number);
-  const t = q.get('time');
+  const t = Date.parse(q.get('time') ?? '');
   const quality = q.get('quality');
   const touch = typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) < 820;
   return {
     test: q.has('test'),
-    time: t && !Number.isNaN(Date.parse(t)) ? new Date(t) : q.has('test') ? new Date('2026-10-19T19:30:00Z') : null,
-    spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
+    time: Math.abs(t - Date.now()) < CENTURY_MS ? new Date(t) : q.has('test') ? new Date('2026-10-19T19:30:00Z') : null,
+    spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) && inBounds(spawn[0], spawn[1]) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
     quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') ? 'low' : touch ? 'medium' : 'high',
     room: q.get('room'),
     cityRadius: Number(q.get('cityRadius')) || 0,
@@ -286,6 +288,7 @@ export class Game {
     this.last = performance.now();
     const frame = (now: number) => {
       if (!this.running) return;
+      requestAnimationFrame(frame);
       const dt = Math.min(0.1, (now - this.last) / 1000);
       this.last = now;
       if (this.autoSim) {
@@ -296,7 +299,6 @@ export class Game {
         }
       }
       this.render(dt);
-      requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
     window.setInterval(() => {
