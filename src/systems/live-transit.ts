@@ -80,7 +80,6 @@ function build(game: Game, data: ReturnType<typeof parseTransit>) {
     const m = MODELS[id];
     const mk = (g: THREE.BufferGeometry, mat: THREE.Material) => {
       const mesh = new THREE.InstancedMesh(g, mat, n);
-      mesh.frustumCulled = false;
       mesh.count = 0;
       mesh.castShadow = true;
       group.add(mesh);
@@ -144,11 +143,13 @@ export const system: GameSystem = {
       for (const m of [layer.paint, layer.trim, layer.glass]) {
         m.count = layer.n;
         m.instanceMatrix.needsUpdate = true;
+        m.computeBoundingSphere();
       }
       if (layer.paint.instanceColor) layer.paint.instanceColor.needsUpdate = true;
       if (layer.wake) {
         layer.wake.count = layer.w;
         layer.wake.instanceMatrix.needsUpdate = true;
+        layer.wake.computeBoundingSphere();
       }
     }
     L.glass.emissiveIntensity = (game.sky?.night ?? 0) * 1.1;

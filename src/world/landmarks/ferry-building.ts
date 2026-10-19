@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { Landmark } from '../world';
 import type { Game } from '../../game';
 import { Site, circle, glow, paint, type LandmarkSource } from '../landmark-kit';
@@ -74,32 +75,25 @@ export const landmark: Landmark = {
 
     const face = glow('#fff6dc', '#f4f1e8', 1.4);
     const hands = new THREE.MeshBasicMaterial({ color: '#1c1c1c' });
-    const clocks: { hour: THREE.Object3D; minute: THREE.Object3D }[] = [];
+    const pivots: THREE.Matrix4[] = [];
     for (let k = 0; k < 4; k++) {
       const a = (k * Math.PI) / 2;
       const dx = Math.sin(a);
       const dz = Math.cos(a);
       site.add(face, new THREE.CircleGeometry(3.4, 24), dx * (T / 2 + 0.1), 50.6, tz + dz * (T / 2 + 0.1), a);
-      const pivot = new THREE.Group();
-      pivot.position.set(dx * (T / 2 + 0.25), 50.6, tz + dz * (T / 2 + 0.25));
-      pivot.rotation.y = a;
-      const hour = new THREE.Mesh(new THREE.BoxGeometry(0.35, 2, 0.12).translate(0, 0.9, 0), hands);
-      const minute = new THREE.Mesh(new THREE.BoxGeometry(0.22, 3, 0.12).translate(0, 1.4, 0.06), hands);
-      pivot.add(hour, minute);
-      site.group.add(pivot);
-      clocks.push({ hour, minute });
+      pivots.push(new THREE.Matrix4().makeRotationY(a).setPosition(dx * (T / 2 + 0.25), 50.6, tz + dz * (T / 2 + 0.25)));
     }
-    let last = -1;
-    clocks[0].hour.frustumCulled = false;
-    clocks[0].hour.onBeforeRender = () => {
+    const handGeo = ({ hour, minute }: { hour: number; minute: number }) =>
+      mergeGeometries(pivots.flatMap((m) => [new THREE.BoxGeometry(0.35, 2, 0.12).translate(0, 0.9, 0).rotateZ(-hour).applyMatrix4(m), new THREE.BoxGeometry(0.22, 3, 0.12).translate(0, 1.4, 0.06).rotateZ(-minute).applyMatrix4(m)]));
+    const clock = new THREE.Mesh(handGeo(clockAngles(game.date())), hands);
+    site.group.add(clock);
+    const pos = clock.geometry.getAttribute('position') as THREE.BufferAttribute;
+    let last = Math.floor(game.date().getTime() / 30000);
+    clock.onBeforeRender = () => {
       const t = Math.floor(game.date().getTime() / 30000);
       if (t === last) return;
       last = t;
-      const { hour, minute } = clockAngles(game.date());
-      for (const c of clocks) {
-        c.hour.rotation.z = -hour;
-        c.minute.rotation.z = -minute;
-      }
+      pos.copyArray(handGeo(clockAngles(game.date())).getAttribute('position').array).needsUpdate = true;
     };
 
     site.solidBox(0, -1, 0, L, 16, W).solidBox(0, 14, 0, L - 6, 7, W - 6);
