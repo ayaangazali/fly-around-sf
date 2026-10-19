@@ -1,0 +1,764 @@
+[
+  {
+    "id": "follow-powell-hyde-cable-car",
+    "kind": "follow",
+    "title": "Ride the Hyde Street Hill",
+    "blurb": "Stay with a Powell-Hyde cable car as it drops down Hyde Street to the turntable at Aquatic Park. The cable moves at 9.5 mph.",
+    "neighborhood": "Russian Hill",
+    "at": {
+      "lat": 37.801995,
+      "lon": -122.41963,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.801995,
+          "lon": -122.41963
+        },
+        {
+          "lat": 37.802529,
+          "lon": -122.419738
+        },
+        {
+          "lat": 37.803063,
+          "lon": -122.419846
+        },
+        {
+          "lat": 37.803597,
+          "lon": -122.419953
+        },
+        {
+          "lat": 37.80413,
+          "lon": -122.420062
+        },
+        {
+          "lat": 37.804664,
+          "lon": -122.420167
+        },
+        {
+          "lat": 37.805198,
+          "lon": -122.420276
+        },
+        {
+          "lat": 37.805731,
+          "lon": -122.420385
+        },
+        {
+          "lat": 37.806265,
+          "lon": -122.420491
+        },
+        {
+          "lat": 37.806587,
+          "lon": -122.420554
+        }
+      ],
+      "speed": 4.25,
+      "vehicle": "cable-car",
+      "name": "Powell-Hyde cable car",
+      "distance": 40
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system"
+    ]
+  },
+  {
+    "id": "follow-powell-mason-cable-car",
+    "kind": "follow",
+    "title": "Up Powell Street",
+    "blurb": "Follow a cable car from the Powell and Market turntable up the hill past Union Square.",
+    "neighborhood": "Union Square",
+    "at": {
+      "lat": 37.785414,
+      "lon": -122.40777,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.785414,
+          "lon": -122.40777
+        },
+        {
+          "lat": 37.785445,
+          "lon": -122.407815
+        },
+        {
+          "lat": 37.785974,
+          "lon": -122.407965
+        },
+        {
+          "lat": 37.786498,
+          "lon": -122.408151
+        },
+        {
+          "lat": 37.787038,
+          "lon": -122.408208
+        },
+        {
+          "lat": 37.787591,
+          "lon": -122.408161
+        },
+        {
+          "lat": 37.788124,
+          "lon": -122.408273
+        },
+        {
+          "lat": 37.788653,
+          "lon": -122.408418
+        },
+        {
+          "lat": 37.789169,
+          "lon": -122.408674
+        },
+        {
+          "lat": 37.789713,
+          "lon": -122.408695
+        },
+        {
+          "lat": 37.790239,
+          "lon": -122.408862
+        },
+        {
+          "lat": 37.790773,
+          "lon": -122.408973
+        },
+        {
+          "lat": 37.791179,
+          "lon": -122.409063
+        },
+        {
+          "lat": 37.791179,
+          "lon": -122.409063
+        }
+      ],
+      "speed": 4.25,
+      "vehicle": "cable-car",
+      "name": "Powell-Mason cable car",
+      "distance": 40
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system"
+    ]
+  },
+  {
+    "id": "follow-california-cable-car",
+    "kind": "follow",
+    "title": "California Street Climb",
+    "blurb": "Ride shotgun with a California Street car from the foot of the line up toward Nob Hill.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.793687,
+      "lon": -122.396352,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.793687,
+          "lon": -122.396352
+        },
+        {
+          "lat": 37.793591,
+          "lon": -122.397023
+        },
+        {
+          "lat": 37.793504,
+          "lon": -122.397696
+        },
+        {
+          "lat": 37.793419,
+          "lon": -122.398369
+        },
+        {
+          "lat": 37.793334,
+          "lon": -122.399043
+        },
+        {
+          "lat": 37.793249,
+          "lon": -122.399716
+        },
+        {
+          "lat": 37.793164,
+          "lon": -122.400389
+        },
+        {
+          "lat": 37.793079,
+          "lon": -122.401063
+        },
+        {
+          "lat": 37.792994,
+          "lon": -122.401736
+        },
+        {
+          "lat": 37.792908,
+          "lon": -122.402409
+        },
+        {
+          "lat": 37.792823,
+          "lon": -122.403083
+        },
+        {
+          "lat": 37.792738,
+          "lon": -122.403756
+        },
+        {
+          "lat": 37.792655,
+          "lon": -122.40443
+        },
+        {
+          "lat": 37.792568,
+          "lon": -122.405103
+        },
+        {
+          "lat": 37.792481,
+          "lon": -122.405775
+        },
+        {
+          "lat": 37.792396,
+          "lon": -122.406449
+        },
+        {
+          "lat": 37.792311,
+          "lon": -122.407122
+        },
+        {
+          "lat": 37.792226,
+          "lon": -122.407795
+        },
+        {
+          "lat": 37.792141,
+          "lon": -122.408469
+        },
+        {
+          "lat": 37.792079,
+          "lon": -122.408954
+        }
+      ],
+      "speed": 4.25,
+      "vehicle": "cable-car",
+      "name": "California Street cable car",
+      "distance": 40
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/California_Street_Cable_Railroad",
+      "https://en.wikipedia.org/wiki/San_Francisco_cable_car_system"
+    ]
+  },
+  {
+    "id": "follow-f-line-streetcar",
+    "kind": "follow",
+    "title": "F-Line to the Wharf",
+    "blurb": "Shadow a vintage F-line streetcar up the Embarcadero from the Ferry Building toward Fisherman’s Wharf.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.795145,
+      "lon": -122.393813,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.795145,
+          "lon": -122.393813
+        },
+        {
+          "lat": 37.795727,
+          "lon": -122.394349
+        },
+        {
+          "lat": 37.796295,
+          "lon": -122.394909
+        },
+        {
+          "lat": 37.796887,
+          "lon": -122.395426
+        },
+        {
+          "lat": 37.797472,
+          "lon": -122.395957
+        },
+        {
+          "lat": 37.798057,
+          "lon": -122.396488
+        },
+        {
+          "lat": 37.798641,
+          "lon": -122.39702
+        },
+        {
+          "lat": 37.799239,
+          "lon": -122.39752
+        },
+        {
+          "lat": 37.799839,
+          "lon": -122.398017
+        },
+        {
+          "lat": 37.800426,
+          "lon": -122.398544
+        },
+        {
+          "lat": 37.801014,
+          "lon": -122.39907
+        },
+        {
+          "lat": 37.801601,
+          "lon": -122.399597
+        },
+        {
+          "lat": 37.802188,
+          "lon": -122.400125
+        },
+        {
+          "lat": 37.802776,
+          "lon": -122.400651
+        },
+        {
+          "lat": 37.803361,
+          "lon": -122.401182
+        },
+        {
+          "lat": 37.803951,
+          "lon": -122.401704
+        },
+        {
+          "lat": 37.804501,
+          "lon": -122.402288
+        },
+        {
+          "lat": 37.804988,
+          "lon": -122.402959
+        },
+        {
+          "lat": 37.805469,
+          "lon": -122.403636
+        },
+        {
+          "lat": 37.805953,
+          "lon": -122.404309
+        },
+        {
+          "lat": 37.806377,
+          "lon": -122.405043
+        },
+        {
+          "lat": 37.806773,
+          "lon": -122.405802
+        },
+        {
+          "lat": 37.807142,
+          "lon": -122.406583
+        },
+        {
+          "lat": 37.807468,
+          "lon": -122.407388
+        },
+        {
+          "lat": 37.807769,
+          "lon": -122.40821
+        },
+        {
+          "lat": 37.808099,
+          "lon": -122.409018
+        },
+        {
+          "lat": 37.808157,
+          "lon": -122.409391
+        }
+      ],
+      "speed": 8,
+      "vehicle": "streetcar",
+      "name": "F-line streetcar",
+      "distance": 45
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/F_Market_%26_Wharves",
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/node/621529017",
+      "https://www.openstreetmap.org/way/1189071437"
+    ]
+  },
+  {
+    "id": "follow-n-judah",
+    "kind": "follow",
+    "title": "N Judah to the Beach",
+    "blurb": "Follow the N Judah west down Judah Street all the way to Ocean Beach.",
+    "neighborhood": "Sunset",
+    "at": {
+      "lat": 37.761666,
+      "lon": -122.476739,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.761666,
+          "lon": -122.476739
+        },
+        {
+          "lat": 37.761605,
+          "lon": -122.477872
+        },
+        {
+          "lat": 37.761558,
+          "lon": -122.479006
+        },
+        {
+          "lat": 37.761508,
+          "lon": -122.480141
+        },
+        {
+          "lat": 37.761506,
+          "lon": -122.48127
+        },
+        {
+          "lat": 37.761469,
+          "lon": -122.482401
+        },
+        {
+          "lat": 37.761418,
+          "lon": -122.483536
+        },
+        {
+          "lat": 37.761368,
+          "lon": -122.48467
+        },
+        {
+          "lat": 37.761318,
+          "lon": -122.485805
+        },
+        {
+          "lat": 37.761268,
+          "lon": -122.48694
+        },
+        {
+          "lat": 37.761217,
+          "lon": -122.488074
+        },
+        {
+          "lat": 37.761168,
+          "lon": -122.489209
+        },
+        {
+          "lat": 37.761118,
+          "lon": -122.490343
+        },
+        {
+          "lat": 37.761068,
+          "lon": -122.491478
+        },
+        {
+          "lat": 37.761017,
+          "lon": -122.492613
+        },
+        {
+          "lat": 37.760967,
+          "lon": -122.493747
+        },
+        {
+          "lat": 37.760917,
+          "lon": -122.494882
+        },
+        {
+          "lat": 37.760867,
+          "lon": -122.496016
+        },
+        {
+          "lat": 37.760817,
+          "lon": -122.497151
+        },
+        {
+          "lat": 37.760767,
+          "lon": -122.498286
+        },
+        {
+          "lat": 37.760717,
+          "lon": -122.49942
+        },
+        {
+          "lat": 37.760666,
+          "lon": -122.500555
+        },
+        {
+          "lat": 37.760617,
+          "lon": -122.501689
+        },
+        {
+          "lat": 37.760567,
+          "lon": -122.502824
+        },
+        {
+          "lat": 37.760516,
+          "lon": -122.503959
+        },
+        {
+          "lat": 37.760466,
+          "lon": -122.505093
+        },
+        {
+          "lat": 37.760361,
+          "lon": -122.506046
+        }
+      ],
+      "speed": 10,
+      "vehicle": "streetcar",
+      "name": "N Judah train",
+      "distance": 50
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/N_Judah"
+    ]
+  },
+  {
+    "id": "follow-alcatraz-ferry",
+    "kind": "follow",
+    "title": "Alcatraz Ferry",
+    "blurb": "Escort the ferry from Pier 33 across the bay to the island.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.8105,
+      "lon": -122.4048,
+      "alt": 20
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.8105,
+          "lon": -122.4048
+        },
+        {
+          "lat": 37.8135,
+          "lon": -122.4065
+        },
+        {
+          "lat": 37.82,
+          "lon": -122.415
+        },
+        {
+          "lat": 37.8262,
+          "lon": -122.4192
+        }
+      ],
+      "speed": 9,
+      "vehicle": "ferry",
+      "name": "Alcatraz ferry",
+      "distance": 70
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alcatraz_Island"
+    ]
+  },
+  {
+    "id": "follow-ferry-to-the-gate",
+    "kind": "follow",
+    "title": "Ferry to the Gate",
+    "blurb": "Run alongside a ferry from the Ferry Building out past Alcatraz toward the Golden Gate.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.7972,
+      "lon": -122.3905,
+      "alt": 20
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.7972,
+          "lon": -122.3905
+        },
+        {
+          "lat": 37.804,
+          "lon": -122.395
+        },
+        {
+          "lat": 37.815,
+          "lon": -122.406
+        },
+        {
+          "lat": 37.827,
+          "lon": -122.433
+        },
+        {
+          "lat": 37.83,
+          "lon": -122.443
+        }
+      ],
+      "speed": 13,
+      "vehicle": "ferry",
+      "name": "commuter ferry",
+      "distance": 80
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Bay_Ferry"
+    ]
+  },
+  {
+    "id": "follow-blue-angels-pass",
+    "kind": "follow",
+    "title": "Blue Angels Pass",
+    "blurb": "Fleet Week: hold your position off the wing of a jet making a slow pass along the Marina. You will need boost.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.811,
+      "lon": -122.475,
+      "alt": 120
+    },
+    "xp": 60,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.811,
+          "lon": -122.475
+        },
+        {
+          "lat": 37.808,
+          "lon": -122.456
+        },
+        {
+          "lat": 37.8072,
+          "lon": -122.441
+        },
+        {
+          "lat": 37.8095,
+          "lon": -122.423
+        },
+        {
+          "lat": 37.8115,
+          "lon": -122.41
+        }
+      ],
+      "speed": 50,
+      "vehicle": "jet",
+      "name": "Blue Angels jet",
+      "distance": 95,
+      "alt": 140
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Blue_Angels",
+      "https://en.wikipedia.org/wiki/Fleet_Week"
+    ]
+  },
+  {
+    "id": "follow-telegraph-hill-parrots",
+    "kind": "follow",
+    "title": "Parrots of Telegraph Hill",
+    "blurb": "Fly with the wild flock of cherry-headed conures from Coit Tower down to the waterfront.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.802379,
+      "lon": -122.405152,
+      "alt": 30
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.802379,
+          "lon": -122.405152
+        },
+        {
+          "lat": 37.801838,
+          "lon": -122.402993
+        },
+        {
+          "lat": 37.80284,
+          "lon": -122.401505
+        },
+        {
+          "lat": 37.802,
+          "lon": -122.399
+        },
+        {
+          "lat": 37.806099,
+          "lon": -122.403452
+        }
+      ],
+      "speed": 9,
+      "vehicle": "parrot",
+      "name": "parrot flock",
+      "distance": 35,
+      "alt": 30
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/The_Wild_Parrots_of_Telegraph_Hill",
+      "https://www.openstreetmap.org/way/25751184"
+    ]
+  },
+  {
+    "id": "follow-cityfront-sailboat",
+    "kind": "follow",
+    "title": "Cityfront Sail",
+    "blurb": "Pace a sailboat reaching east along the Cityfront from Crissy Field to Aquatic Park.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.81,
+      "lon": -122.464,
+      "alt": 15
+    },
+    "xp": 40,
+    "tags": [
+      "follow"
+    ],
+    "params": {
+      "route": [
+        {
+          "lat": 37.81,
+          "lon": -122.464
+        },
+        {
+          "lat": 37.8115,
+          "lon": -122.45
+        },
+        {
+          "lat": 37.8112,
+          "lon": -122.438
+        },
+        {
+          "lat": 37.8108,
+          "lon": -122.429
+        }
+      ],
+      "speed": 6,
+      "vehicle": "sailboat",
+      "name": "sailboat",
+      "distance": 45
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marina_District,_San_Francisco"
+    ]
+  }
+]

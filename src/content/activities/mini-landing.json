@@ -1,0 +1,533 @@
+[
+  {
+    "id": "landing-one-embarcadero-center",
+    "kind": "landing",
+    "title": "One Embarcadero Center",
+    "blurb": "Touch down on the roof of the tallest of the four Embarcadero Center towers.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.792686,
+      "lon": -122.397349,
+      "alt": 30
+    },
+    "xp": 40,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.794488,
+        "lon": -122.399622,
+        "name": "One Embarcadero Center"
+      },
+      "medals": [
+        22,
+        32,
+        47
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Embarcadero_Center",
+      "https://www.openstreetmap.org/way/32612608"
+    ]
+  },
+  {
+    "id": "landing-four-embarcadero-center",
+    "kind": "landing",
+    "title": "Four Embarcadero Center",
+    "blurb": "The eastmost tower of the complex, right above the Hyatt atrium.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.793948,
+      "lon": -122.393366,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.795299,
+        "lon": -122.396207,
+        "name": "Four Embarcadero Center"
+      },
+      "medals": [
+        22,
+        32,
+        47
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Embarcadero_Center",
+      "https://www.openstreetmap.org/way/616812910"
+    ]
+  },
+  {
+    "id": "landing-555-california",
+    "kind": "landing",
+    "title": "555 California Rooftop",
+    "blurb": "When it was finished in 1969 this was the tallest building west of the Mississippi. A tight, windy pad.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.793924,
+      "lon": -122.401446,
+      "alt": 40
+    },
+    "xp": 45,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.792122,
+        "lon": -122.403719,
+        "name": "555 California Rooftop"
+      },
+      "maxSpeed": 2.5,
+      "padRadius": 4,
+      "medals": [
+        22,
+        32,
+        47
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/555_California_Street",
+      "https://www.openstreetmap.org/way/288511106"
+    ]
+  },
+  {
+    "id": "landing-bill-graham-auditorium",
+    "kind": "landing",
+    "title": "Bill Graham Auditorium",
+    "blurb": "The big flat roof of the 1915 auditorium on Civic Center Plaza.",
+    "neighborhood": "Civic Center",
+    "at": {
+      "lat": 37.779401,
+      "lon": -122.415035,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.77805,
+        "lon": -122.417308,
+        "name": "Bill Graham Auditorium"
+      },
+      "medals": [
+        16,
+        24,
+        37
+      ],
+      "timeLimit": 74
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bill_Graham_Civic_Auditorium",
+      "https://www.openstreetmap.org/way/25759141"
+    ]
+  },
+  {
+    "id": "landing-moscone-center",
+    "kind": "landing",
+    "title": "Moscone Center",
+    "blurb": "The convention center roof in the middle of SoMa.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.786514,
+      "lon": -122.402584,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.784478,
+        "lon": -122.400493,
+        "name": "Moscone Center"
+      },
+      "medals": [
+        18,
+        27,
+        41
+      ],
+      "timeLimit": 81
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Moscone_Center",
+      "https://www.openstreetmap.org/node/11984289411"
+    ]
+  },
+  {
+    "id": "landing-san-francisco-centre",
+    "kind": "landing",
+    "title": "San Francisco Centre",
+    "blurb": "The mall roof above Powell Street station, a block from the cable car turnaround.",
+    "neighborhood": "Union Square",
+    "at": {
+      "lat": 37.785428,
+      "lon": -122.405992,
+      "alt": 35
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.784023,
+        "lon": -122.407652,
+        "name": "San Francisco Centre"
+      },
+      "medals": [
+        15,
+        23,
+        35
+      ],
+      "timeLimit": 71
+    },
+    "sources": [
+      "https://www.openstreetmap.org/node/5318218140"
+    ]
+  },
+  {
+    "id": "landing-fairmont-nob-hill",
+    "kind": "landing",
+    "title": "Fairmont Nob Hill",
+    "blurb": "The grand hotel on top of Nob Hill, where delegates worked on the United Nations Charter in 1945.",
+    "neighborhood": "Nob Hill",
+    "at": {
+      "lat": 37.790618,
+      "lon": -122.409769,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.79242,
+        "lon": -122.409769,
+        "name": "Fairmont Nob Hill"
+      },
+      "medals": [
+        15,
+        22,
+        34
+      ],
+      "timeLimit": 69
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fairmont_San_Francisco",
+      "https://www.openstreetmap.org/relation/16217497"
+    ]
+  },
+  {
+    "id": "landing-exploratorium-pier-15",
+    "kind": "landing",
+    "title": "Exploratorium Pier",
+    "blurb": "The long pier shed of the science museum, with the Bay Bridge in view.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.799997,
+      "lon": -122.400799,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.800898,
+        "lon": -122.398526,
+        "name": "Exploratorium Pier"
+      },
+      "medals": [
+        16,
+        24,
+        37
+      ],
+      "timeLimit": 74
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Exploratorium",
+      "https://www.openstreetmap.org/node/621529017"
+    ]
+  },
+  {
+    "id": "landing-academy-living-roof",
+    "kind": "landing",
+    "title": "Living Roof",
+    "blurb": "The 2.5 acre green roof of the California Academy of Sciences.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.769824,
+      "lon": -122.463256,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.769779,
+        "lon": -122.466159,
+        "name": "Living Roof"
+      },
+      "padRadius": 6,
+      "medals": [
+        17,
+        25,
+        38
+      ],
+      "timeLimit": 76
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/California_Academy_of_Sciences",
+      "https://www.openstreetmap.org/way/28695389"
+    ]
+  },
+  {
+    "id": "landing-de-young-observation-deck",
+    "kind": "landing",
+    "title": "De Young Tower Top",
+    "blurb": "The top of the twisting Hamon Tower, above the observation floor.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.77087,
+      "lon": -122.46625,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.771498,
+        "lon": -122.469092,
+        "name": "De Young Tower Top"
+      },
+      "maxSpeed": 2.5,
+      "medals": [
+        17,
+        25,
+        38
+      ],
+      "timeLimit": 76
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/De_Young_Museum",
+      "https://www.openstreetmap.org/relation/1652482"
+    ]
+  },
+  {
+    "id": "landing-ferry-building-roof",
+    "kind": "landing",
+    "title": "Ferry Building Roof",
+    "blurb": "The long shed roof behind the clock tower, over the marketplace.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.795549,
+      "lon": -122.396316,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.795324,
+        "lon": -122.39302,
+        "name": "Ferry Building Roof"
+      },
+      "medals": [
+        18,
+        27,
+        40
+      ],
+      "timeLimit": 79
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building",
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/616812910"
+    ]
+  },
+  {
+    "id": "landing-macys-union-square",
+    "kind": "landing",
+    "title": "Macy’s Union Square",
+    "blurb": "The department store roof across from the Dewey Monument.",
+    "neighborhood": "Union Square",
+    "at": {
+      "lat": 37.787014,
+      "lon": -122.409462,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.78696,
+        "lon": -122.407189,
+        "name": "Macy’s Union Square"
+      },
+      "medals": [
+        15,
+        22,
+        33
+      ],
+      "timeLimit": 68
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/32863633"
+    ]
+  },
+  {
+    "id": "landing-main-library",
+    "kind": "landing",
+    "title": "Main Library Roof",
+    "blurb": "The roof of the Main Library across from the Asian Art Museum.",
+    "neighborhood": "Civic Center",
+    "at": {
+      "lat": 37.777837,
+      "lon": -122.414078,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.779188,
+        "lon": -122.415783,
+        "name": "Main Library Roof"
+      },
+      "medals": [
+        16,
+        24,
+        37
+      ],
+      "timeLimit": 74
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/24446086"
+    ]
+  },
+  {
+    "id": "landing-hyatt-regency",
+    "kind": "landing",
+    "title": "Hyatt Regency Rooftop",
+    "blurb": "The stepped hotel at the foot of Market Street, whose atrium holds the record for the largest hotel lobby.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.794247,
+      "lon": -122.393059,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.794247,
+        "lon": -122.3959,
+        "name": "Hyatt Regency Rooftop"
+      },
+      "medals": [
+        17,
+        25,
+        38
+      ],
+      "timeLimit": 76
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hyatt_Regency_San_Francisco",
+      "https://www.openstreetmap.org/way/28319370"
+    ]
+  },
+  {
+    "id": "landing-fort-mason-center",
+    "kind": "landing",
+    "title": "Fort Mason Center",
+    "blurb": "The old Army pier sheds at Fort Mason Center, now galleries, theaters and festival halls.",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80492,
+      "lon": -122.430104,
+      "alt": 20
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.806722,
+        "lon": -122.431809,
+        "name": "Fort Mason Center"
+      },
+      "medals": [
+        17,
+        25,
+        38
+      ],
+      "timeLimit": 76
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fort_Mason",
+      "https://www.openstreetmap.org/way/417405358",
+      "https://www.openstreetmap.org/node/358857198"
+    ]
+  },
+  {
+    "id": "landing-sfmoma-rooftop",
+    "kind": "landing",
+    "title": "SFMOMA Rooftop",
+    "blurb": "The roof of the modern art museum on Third Street.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.787717,
+      "lon": -122.398463,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "landing"
+    ],
+    "params": {
+      "pad": {
+        "lat": 37.785915,
+        "lon": -122.400736,
+        "name": "SFMOMA Rooftop"
+      },
+      "medals": [
+        18,
+        26,
+        39
+      ],
+      "timeLimit": 77
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/San_Francisco_Museum_of_Modern_Art",
+      "https://www.openstreetmap.org/way/41692824"
+    ]
+  }
+]

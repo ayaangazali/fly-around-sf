@@ -1,0 +1,538 @@
+[
+  {
+    "id": "collect-chinatown-fortune-cookies",
+    "kind": "collect",
+    "title": "Fortune Cookie Scramble",
+    "blurb": "Fortune cookies are floating over Chinatown. Grab them all before they crumble.",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.794831,
+      "lon": -122.405427,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fortune cookies",
+      "prop": "fortune-cookie",
+      "count": 12,
+      "radius": 230,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        41,
+        61,
+        91
+      ],
+      "timeLimit": 152
+    },
+    "sources": [
+      "https://www.openstreetmap.org/relation/14547583"
+    ]
+  },
+  {
+    "id": "collect-tea-garden-fortune-cookies",
+    "kind": "collect",
+    "title": "Tea Garden Fortunes",
+    "blurb": "Makoto Hagiwara of the Japanese Tea Garden is reported to have served the first modern fortune cookies in the US.",
+    "neighborhood": "Golden Gate Park",
+    "at": {
+      "lat": 37.770293,
+      "lon": -122.470124,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fortune cookies",
+      "prop": "fortune-cookie",
+      "count": 10,
+      "radius": 160,
+      "alt": [
+        8,
+        30
+      ],
+      "medals": [
+        31,
+        48,
+        72
+      ],
+      "timeLimit": 123
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Japanese_Tea_Garden_(San_Francisco)",
+      "https://en.wikipedia.org/wiki/Fortune_cookie",
+      "https://www.openstreetmap.org/way/30900516"
+    ]
+  },
+  {
+    "id": "collect-twin-peaks-fog",
+    "kind": "collect",
+    "title": "Catch the Fog",
+    "blurb": "Wisps of fog are spilling over the peaks. Collect them before they burn off.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.752415,
+      "lon": -122.447587,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fog wisps",
+      "prop": "fog-wisp",
+      "count": 12,
+      "radius": 360,
+      "alt": [
+        15,
+        80
+      ],
+      "medals": [
+        58,
+        84,
+        123
+      ],
+      "timeLimit": 200
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Climate_of_San_Francisco",
+      "https://www.openstreetmap.org/node/11778655699"
+    ]
+  },
+  {
+    "id": "collect-golden-gate-fog",
+    "kind": "collect",
+    "title": "Fog in the Gate",
+    "blurb": "The marine layer is pouring through the Golden Gate. Scoop up the wisps over the strait.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.8125,
+      "lon": -122.47,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fog wisps",
+      "prop": "fog-wisp",
+      "count": 12,
+      "radius": 520,
+      "alt": [
+        20,
+        110
+      ],
+      "medals": [
+        89,
+        125,
+        182
+      ],
+      "timeLimit": 288
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Golden_Gate",
+      "https://en.wikipedia.org/wiki/Climate_of_San_Francisco"
+    ]
+  },
+  {
+    "id": "collect-wharf-sourdough",
+    "kind": "collect",
+    "title": "Sourdough Scramble",
+    "blurb": "Loaves escaped from the bakery. Round them up over the wharf.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.808522,
+      "lon": -122.414897,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "sourdough loaves",
+      "prop": "sourdough",
+      "count": 10,
+      "radius": 220,
+      "alt": [
+        10,
+        35
+      ],
+      "medals": [
+        44,
+        65,
+        96
+      ],
+      "timeLimit": 159
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Boudin_Bakery",
+      "https://www.openstreetmap.org/way/37312428"
+    ]
+  },
+  {
+    "id": "collect-ferry-plaza-sourdough",
+    "kind": "collect",
+    "title": "Farmers Market Loaves",
+    "blurb": "Market day at the Ferry Building, and the bread is flying.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.795549,
+      "lon": -122.393475,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "sourdough loaves",
+      "prop": "sourdough",
+      "count": 10,
+      "radius": 220,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        39,
+        58,
+        86
+      ],
+      "timeLimit": 144
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/1189071437",
+      "https://www.openstreetmap.org/way/1189071411"
+    ]
+  },
+  {
+    "id": "collect-valencia-coffee-crawl",
+    "kind": "collect",
+    "title": "Valencia Coffee Crawl",
+    "blurb": "Cups are hovering up and down Valencia Street. Catch every one.",
+    "neighborhood": "Mission",
+    "at": {
+      "lat": 37.759,
+      "lon": -122.4214,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "coffee cups",
+      "prop": "coffee",
+      "count": 12,
+      "radius": 420,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        77,
+        109,
+        159
+      ],
+      "timeLimit": 254
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Valencia_Street"
+    ]
+  },
+  {
+    "id": "collect-north-beach-espresso",
+    "kind": "collect",
+    "title": "North Beach Espresso",
+    "blurb": "Caffe Trieste, opened in 1956, was the first espresso coffeehouse on the West Coast. Collect the cups around it.",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.798673,
+      "lon": -122.407296,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "espresso cups",
+      "prop": "coffee",
+      "count": 10,
+      "radius": 260,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        45,
+        66,
+        97
+      ],
+      "timeLimit": 161
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Caffe_Trieste",
+      "https://www.openstreetmap.org/node/331389010",
+      "https://www.openstreetmap.org/node/1274891526"
+    ]
+  },
+  {
+    "id": "collect-south-park-coffee",
+    "kind": "collect",
+    "title": "South Park Startup Fuel",
+    "blurb": "The oval park once called ground zero of the dot-com boom. Grab the coffee.",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78159,
+      "lon": -122.393975,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "coffee cups",
+      "prop": "coffee",
+      "count": 10,
+      "radius": 260,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        42,
+        62,
+        92
+      ],
+      "timeLimit": 153
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/South_Park,_San_Francisco",
+      "https://www.openstreetmap.org/way/24052083"
+    ]
+  },
+  {
+    "id": "collect-panhandle-leaves",
+    "kind": "collect",
+    "title": "Panhandle Leaves",
+    "blurb": "Leaves are blowing down the Panhandle. Catch them before they hit Stanyan.",
+    "neighborhood": "Haight-Ashbury",
+    "at": {
+      "lat": 37.772403,
+      "lon": -122.446959,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "leaves",
+      "prop": "leaf",
+      "count": 12,
+      "radius": 420,
+      "alt": [
+        8,
+        30
+      ],
+      "medals": [
+        71,
+        101,
+        147
+      ],
+      "timeLimit": 236
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16751151"
+    ]
+  },
+  {
+    "id": "collect-presidio-leaves",
+    "kind": "collect",
+    "title": "Presidio Leaves",
+    "blurb": "Autumn leaves swirling around the Main Post and its parade ground.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.801975,
+      "lon": -122.456831,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "leaves",
+      "prop": "leaf",
+      "count": 12,
+      "radius": 400,
+      "alt": [
+        10,
+        35
+      ],
+      "medals": [
+        72,
+        103,
+        150
+      ],
+      "timeLimit": 240
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/32650187"
+    ]
+  },
+  {
+    "id": "collect-stern-grove-leaves",
+    "kind": "collect",
+    "title": "Stern Grove Leaves",
+    "blurb": "Leaves drifting over the eucalyptus grove and its summer concert meadow.",
+    "neighborhood": "Sunset",
+    "at": {
+      "lat": 37.736086,
+      "lon": -122.478604,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "leaves",
+      "prop": "leaf",
+      "count": 10,
+      "radius": 300,
+      "alt": [
+        10,
+        40
+      ],
+      "medals": [
+        42,
+        62,
+        92
+      ],
+      "timeLimit": 153
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sigmund_Stern_Recreation_Grove",
+      "https://www.openstreetmap.org/way/103637554"
+    ]
+  },
+  {
+    "id": "collect-ocean-beach-fog",
+    "kind": "collect",
+    "title": "Ocean Beach Fog Bank",
+    "blurb": "The fog bank is rolling in off the Pacific. Collect it in a hurry.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.76,
+      "lon": -122.511,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fog wisps",
+      "prop": "fog-wisp",
+      "count": 14,
+      "radius": 520,
+      "alt": [
+        10,
+        60
+      ],
+      "medals": [
+        89,
+        126,
+        183
+      ],
+      "timeLimit": 290
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco"
+    ]
+  },
+  {
+    "id": "collect-lands-end-fog",
+    "kind": "collect",
+    "title": "Lands End Fog",
+    "blurb": "Fog drifting over the cliffs and the Mile Rock lighthouse.",
+    "neighborhood": "Lands End",
+    "at": {
+      "lat": 37.77976,
+      "lon": -122.511604,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fog wisps",
+      "prop": "fog-wisp",
+      "count": 12,
+      "radius": 380,
+      "alt": [
+        15,
+        70
+      ],
+      "medals": [
+        68,
+        96,
+        141
+      ],
+      "timeLimit": 227
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/250216260"
+    ]
+  },
+  {
+    "id": "collect-bernal-fog",
+    "kind": "collect",
+    "title": "Bernal Fog",
+    "blurb": "Fog is curling around the summit of Bernal Hill.",
+    "neighborhood": "Bernal Heights",
+    "at": {
+      "lat": 37.74344,
+      "lon": -122.413471,
+      "alt": 25
+    },
+    "xp": 30,
+    "tags": [
+      "collect"
+    ],
+    "params": {
+      "item": "fog wisps",
+      "prop": "fog-wisp",
+      "count": 10,
+      "radius": 260,
+      "alt": [
+        10,
+        50
+      ],
+      "medals": [
+        42,
+        62,
+        93
+      ],
+      "timeLimit": 155
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/16752188"
+    ]
+  }
+]

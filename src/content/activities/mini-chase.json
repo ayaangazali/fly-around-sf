@@ -1,0 +1,326 @@
+[
+  {
+    "id": "chase-pier-39-seagull",
+    "kind": "chase",
+    "title": "Seagull Snatch",
+    "blurb": "A western gull stole a tourist’s fries at Pier 39. Get them back.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.808809,
+      "lon": -122.410088,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "seagull",
+      "name": "seagull",
+      "speed": 24,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Western_gull",
+      "https://en.wikipedia.org/wiki/Pier_39",
+      "https://www.openstreetmap.org/way/28518695"
+    ]
+  },
+  {
+    "id": "chase-crissy-pelican",
+    "kind": "chase",
+    "title": "Pelican Patrol",
+    "blurb": "A brown pelican is cruising low over Crissy Field. Tag it.",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.806398,
+      "lon": -122.466607,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "pelican",
+      "name": "brown pelican",
+      "speed": 20,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brown_pelican"
+    ]
+  },
+  {
+    "id": "chase-fidi-peregrine",
+    "kind": "chase",
+    "title": "Peregrine Pursuit",
+    "blurb": "Peregrine falcons have nested on the PG&E building at 77 Beale since 1987. The fastest bird alive will not make this easy.",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79178,
+      "lon": -122.395756,
+      "alt": 30
+    },
+    "xp": 50,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "falcon",
+      "name": "peregrine falcon",
+      "speed": 36,
+      "radius": 380,
+      "medals": [
+        25,
+        45,
+        75
+      ],
+      "timeLimit": 120
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pacific_Gas_%26_Electric_Building",
+      "https://en.wikipedia.org/wiki/Peregrine_falcon",
+      "https://www.openstreetmap.org/way/260291405"
+    ]
+  },
+  {
+    "id": "chase-ocean-beach-gull",
+    "kind": "chase",
+    "title": "Ocean Beach Gull",
+    "blurb": "A gull is riding the onshore wind along the surf line.",
+    "neighborhood": "Outer Sunset",
+    "at": {
+      "lat": 37.762,
+      "lon": -122.511,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "seagull",
+      "name": "gull",
+      "speed": 26,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ocean_Beach,_San_Francisco",
+      "https://en.wikipedia.org/wiki/Western_gull"
+    ]
+  },
+  {
+    "id": "chase-twin-peaks-raven",
+    "kind": "chase",
+    "title": "Raven on the Ridge",
+    "blurb": "A common raven is playing in the wind over the summit.",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.7518,
+      "lon": -122.4473,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "raven",
+      "name": "raven",
+      "speed": 27,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Common_raven",
+      "https://www.openstreetmap.org/node/11778655699"
+    ]
+  },
+  {
+    "id": "chase-telegraph-hill-parrot",
+    "kind": "chase",
+    "title": "Runaway Conure",
+    "blurb": "One cherry-headed conure has strayed from the flock. Catch up before it vanishes into the trees.",
+    "neighborhood": "Telegraph Hill",
+    "at": {
+      "lat": 37.802697,
+      "lon": -122.405813,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "parrot",
+      "name": "conure",
+      "speed": 22,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/The_Wild_Parrots_of_Telegraph_Hill",
+      "https://www.openstreetmap.org/way/28824850",
+      "https://www.openstreetmap.org/node/4045442977"
+    ]
+  },
+  {
+    "id": "chase-wharf-seagull",
+    "kind": "chase",
+    "title": "Crab Stand Gull",
+    "blurb": "A gull grabbed a crab claw at the wharf stands.",
+    "neighborhood": "Fisherman’s Wharf",
+    "at": {
+      "lat": 37.8091,
+      "lon": -122.4147,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "seagull",
+      "name": "gull",
+      "speed": 25,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/37312428"
+    ]
+  },
+  {
+    "id": "chase-alcatraz-pelican",
+    "kind": "chase",
+    "title": "Alcatraz Pelican",
+    "blurb": "A brown pelican is circling the island. Run it down over open water.",
+    "neighborhood": "Alcatraz",
+    "at": {
+      "lat": 37.826721,
+      "lon": -122.422759,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "pelican",
+      "name": "pelican",
+      "speed": 22,
+      "radius": 420,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brown_pelican",
+      "https://en.wikipedia.org/wiki/Alcatraz_Island",
+      "https://www.openstreetmap.org/relation/20197830"
+    ]
+  },
+  {
+    "id": "chase-lands-end-raven",
+    "kind": "chase",
+    "title": "Cliffside Raven",
+    "blurb": "A raven is riding the updraft along the cliffs.",
+    "neighborhood": "Lands End",
+    "at": {
+      "lat": 37.7804,
+      "lon": -122.5114,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "raven",
+      "name": "raven",
+      "speed": 26,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/250216260"
+    ]
+  },
+  {
+    "id": "chase-ferry-building-gull",
+    "kind": "chase",
+    "title": "Ferry Plaza Gull",
+    "blurb": "A gull is circling the farmers market looking for a target.",
+    "neighborhood": "Embarcadero",
+    "at": {
+      "lat": 37.796,
+      "lon": -122.3922,
+      "alt": 30
+    },
+    "xp": 30,
+    "tags": [
+      "chase",
+      "wildlife"
+    ],
+    "params": {
+      "animal": "seagull",
+      "name": "gull",
+      "speed": 24,
+      "medals": [
+        15,
+        30,
+        55
+      ],
+      "timeLimit": 90
+    },
+    "sources": [
+      "https://www.openstreetmap.org/way/558731934",
+      "https://www.openstreetmap.org/way/1189071437",
+      "https://www.openstreetmap.org/way/1189071411"
+    ]
+  }
+]
