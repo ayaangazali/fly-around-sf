@@ -58,12 +58,27 @@ test.describe('live data', () => {
       const g = window.__fly.game;
       const before = { ...g.flight.pos };
       window.__fly.step(4);
-      return { fog: g.sky.fogDensity, wind: g.env.wind!, drift: g.flight.pos.x - before.x };
+      return { fog: g.sky.weatherFog, override: g.sky.fogDensity, wind: g.env.wind!, drift: g.flight.pos.x - before.x };
     });
     await page.waitForTimeout(300);
     const far = await page.evaluate(() => window.__fly.game.sky.fog.far);
     expect(far).toBeLessThan(3000);
+    const mixed = await page.evaluate(async () => {
+      const g = window.__fly.game;
+      const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      g.sky.fogDensity = 40;
+      window.__fly.step(1);
+      await frame();
+      const thick = { far: g.sky.fog.far, weather: g.sky.weatherFog };
+      g.sky.fogDensity = 1;
+      window.__fly.step(1);
+      await frame();
+      return { thick, far: g.sky.fog.far };
+    });
+    expect(mixed.thick).toEqual({ far: 8500 / 40, weather: 3 });
+    expect(mixed.far).toBeCloseTo(8500 / 3, 0);
     expect(r.fog).toBe(3);
+    expect(r.override).toBe(1);
     expect(r.wind.x).toBeGreaterThan(0.5);
     expect(r.drift).toBeGreaterThan(1);
     await page.evaluate(() => window.__fly.game.panels.open('live'));

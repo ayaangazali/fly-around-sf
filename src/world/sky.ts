@@ -16,6 +16,7 @@ export class SkySystem {
   night = 0;
   sunDir = new THREE.Vector3();
   fogDensity = 1;
+  weatherFog = 1;
 
   constructor(scene: THREE.Scene, shadowSize: number) {
     this.sky.scale.setScalar(20000);
@@ -50,8 +51,9 @@ export class SkySystem {
     const elev = altitude * (180 / Math.PI);
     const dusk = Math.max(0, 1 - Math.abs(elev - 2) / 12);
     this.fog.color.copy(DAY_FOG).lerp(DUSK_FOG, dusk * 0.8).lerp(NIGHT_FOG, this.night);
-    this.fog.near = 700 / this.fogDensity;
-    this.fog.far = 8500 / this.fogDensity;
+    const fog = Math.max(this.fogDensity, this.weatherFog);
+    this.fog.near = 700 / fog;
+    this.fog.far = 8500 / fog;
     const lightDir = altitude > 0 ? this.sunDir : this.sunDir.clone().setY(Math.max(0.2, -this.sunDir.y));
     this.sun.position.copy(focus).addScaledVector(lightDir, 1000);
     this.sun.target.position.copy(focus);

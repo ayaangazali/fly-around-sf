@@ -19,7 +19,7 @@ export function liveGame(at: string, test = false): Game & { toasts: string[] } 
     toasts,
     opts: { test, base: './' },
     env: { groundAt: () => 0, collide: () => false },
-    sky: { fogDensity: 1, night: 0 },
+    sky: { fogDensity: 1, weatherFog: 1, night: 0 },
     chase: { shake: 0 },
     scene: new THREE.Scene(),
     simTime: 0,

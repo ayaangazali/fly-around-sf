@@ -93,7 +93,8 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 
 - `game.waypoint` (`{x,y,z,label} | null`): the HUD guides the player to it. Any panel can set it ("Go there").
 - `game.env.wind` (`{x,z}`, m/s): live weather writes it, flight reads it.
-- `game.sky.fogDensity` (1 = normal, 3 = thick Karl): live weather writes it.
+- `game.sky.weatherFog` (1 = normal, 3 = thick Karl): only live weather writes it, every frame.
+- `game.sky.fogDensity` (default 1): an override for game modes (hide and seek). Save it before writing and restore it after; live weather never touches it. The sky draws `max(fogDensity, weatherFog)`, so neither writer clobbers the other.
 - `game.timeScale`, `game.clockOffset`: time-of-day controls.
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.

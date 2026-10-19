@@ -92,7 +92,7 @@ describe('live weather', () => {
     await tick();
     system.update!(1 / 30, game);
     expect(system.state(game).feeds.get('weather')?.status).toBe('live');
-    expect(game.sky.fogDensity).toBe(3);
+    expect(game.sky.weatherFog).toBe(3);
     expect(game.env.wind!.x).toBeGreaterThan(0.5);
     expect(game.save.data.cards).toEqual([]);
     game.flight.vel.x = 10;
@@ -112,7 +112,7 @@ describe('live weather', () => {
     expect(fetch).not.toHaveBeenCalled();
     expect(system.state(game).feeds.get('weather')?.status).toBe('fallback');
     expect(system.state(game).fog).toBeGreaterThan(2.4);
-    expect(game.sky.fogDensity).toBe(1);
+    expect(game.sky.weatherFog).toBe(1);
     expect(game.env.wind).toBeUndefined();
   });
 });

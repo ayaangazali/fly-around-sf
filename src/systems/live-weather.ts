@@ -25,7 +25,7 @@ export const system: GameSystem & { state: typeof liveState } = {
     s.wind = windVector(sample, agl, game.simTime);
     if (!s.online) return;
     game.env.wind = s.wind;
-    game.sky.fogDensity = s.fog;
+    game.sky.weatherFog = s.fog;
     if (s.fog > 2.4 && game.flight.speed > 3) grantCard(game, 'karl-the-fog', 'Karl the Fog');
   },
 };
