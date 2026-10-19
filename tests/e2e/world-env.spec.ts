@@ -276,6 +276,25 @@ test.describe('world environment', () => {
       return { vis: e.visibility(), karl: window.__fly.game.sky.karl };
     });
     const b = stats(await pixels(page), 0.35, 0.9);
+    await look(page, { ...view, yaw: -0.93, fog: 3 });
+    const towerPixels = await page.evaluate(() => {
+      const g = window.__fly.game;
+      const towers = g.scene.getObjectByName('commit-towers')!;
+      const gl = g.renderer.getContext();
+      const grab = (visible: boolean) => {
+        towers.visible = visible;
+        g.renderer.render(g.scene, g.camera);
+        const px = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+        gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, px);
+        return px;
+      };
+      const off = grab(false);
+      const on = grab(true);
+      let changed = 0;
+      for (let i = 0; i < on.length; i += 4) if (Math.abs(on[i] - off[i]) + Math.abs(on[i + 1] - off[i + 1]) + Math.abs(on[i + 2] - off[i + 2]) > 30) changed++;
+      return changed;
+    });
+    expect(towerPixels).toBe(0);
     expect(thick.karl.coverage).toBeGreaterThan(clear.karl.coverage);
     expect(thick.vis).toBeLessThan(clear.vis);
     expect(thick.vis).toBeLessThan(500);

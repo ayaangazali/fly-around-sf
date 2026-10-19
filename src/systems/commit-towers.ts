@@ -89,8 +89,14 @@ function label(t: Tower): THREE.Sprite {
   return s;
 }
 
+const FOG_FADE = `#include <fog_fragment>
+      #ifdef USE_FOG
+      gl_FragColor.a *= (1.0 - fogFactor) * (1.0 - karlK);
+      #endif`;
+
 const towerShader = {
   vertex: `
+    #include <fog_pars_vertex>
     varying vec2 vUv;
     varying float vY;
     varying float vH;
@@ -101,11 +107,13 @@ const towerShader = {
       vY = position.y;
       vH = length(instanceMatrix[1].xyz);
       vColor = instanceColor;
-      vec4 mv = viewMatrix * modelMatrix * instanceMatrix * vec4(position, 1.0);
-      vDist = -mv.z;
-      gl_Position = projectionMatrix * mv;
+      vec4 mvPosition = viewMatrix * modelMatrix * instanceMatrix * vec4(position, 1.0);
+      vDist = -mvPosition.z;
+      gl_Position = projectionMatrix * mvPosition;
+      #include <fog_vertex>
     }`,
   fragment: `
+    #include <fog_pars_fragment>
     uniform float uTime;
     uniform float uNight;
     varying vec2 vUv;
@@ -125,11 +133,13 @@ const towerShader = {
       float a = body + edge * mix(0.5, 0.85, uNight) + rung * 0.35 + floors * 0.15 + cap * 0.3;
       a *= (1.0 - smoothstep(4500.0, 9000.0, vDist)) * smoothstep(15.0, 90.0, vDist);
       gl_FragColor = vec4(vColor * (0.8 + 0.8 * edge + 0.6 * rung + 0.5 * cap), min(a, 1.0));
+      ${FOG_FADE}
     }`,
 };
 
 const fireflyShader = {
   vertex: `
+    #include <fog_pars_vertex>
     uniform float uTime;
     uniform float uScale;
     attribute vec4 aSeed;
@@ -146,13 +156,19 @@ const fireflyShader = {
       vColor = aColor;
       gl_PointSize = clamp(uScale * 2.6 / -mv.z, 3.0, 30.0);
       gl_Position = projectionMatrix * mv;
+      #ifdef USE_FOG
+      vFogDepth = -mv.z;
+      vFogWorld = (modelMatrix * vec4(p, 1.0)).xyz;
+      #endif
     }`,
   fragment: `
+    #include <fog_pars_fragment>
     varying float vA;
     varying vec3 vColor;
     void main() {
       float d = length(gl_PointCoord - 0.5);
       gl_FragColor = vec4(vColor * 1.4, smoothstep(0.5, 0.05, d) * vA);
+      ${FOG_FADE}
     }`,
 };
 
@@ -163,13 +179,13 @@ export class CommitTowers {
   readonly fireflies: THREE.Points;
   readonly labels: THREE.Sprite[] = [];
   private ndc = new THREE.Vector3();
-  private uniforms = { uTime: { value: 0 }, uNight: cityUniforms.uNight, uScale: { value: 400 } };
+  private uniforms = { ...THREE.UniformsUtils.clone(THREE.UniformsLib.fog), uTime: { value: 0 }, uNight: cityUniforms.uNight, uScale: { value: 400 } };
 
   constructor(private game: Game) {
     this.root.name = 'commit-towers';
     this.towers = layoutTowers(snapshot.towers, loadCards(), (lat, lon) => game.world.toLocal(lat, lon));
     const geo = new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
-    const mat = new THREE.ShaderMaterial({ uniforms: this.uniforms, vertexShader: towerShader.vertex, fragmentShader: towerShader.fragment, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+    const mat = new THREE.ShaderMaterial({ uniforms: this.uniforms, vertexShader: towerShader.vertex, fragmentShader: towerShader.fragment, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, fog: true });
     this.mesh = new THREE.InstancedMesh(geo, mat, this.towers.length);
     this.mesh.name = 'commit-tower-mesh';
     const m = new THREE.Matrix4();
@@ -203,7 +219,7 @@ export class CommitTowers {
     pts.setAttribute('aSeed', new THREE.Float32BufferAttribute(seeds, 4));
     pts.setAttribute('aTop', new THREE.Float32BufferAttribute(tops, 1));
     pts.setAttribute('aColor', new THREE.Float32BufferAttribute(colors, 3));
-    this.fireflies = new THREE.Points(pts, new THREE.ShaderMaterial({ uniforms: this.uniforms, vertexShader: fireflyShader.vertex, fragmentShader: fireflyShader.fragment, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    this.fireflies = new THREE.Points(pts, new THREE.ShaderMaterial({ uniforms: this.uniforms, vertexShader: fireflyShader.vertex, fragmentShader: fireflyShader.fragment, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: true }));
     this.fireflies.name = 'commit-fireflies';
     this.fireflies.frustumCulled = false;
     const lines = new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(tether, 3));
