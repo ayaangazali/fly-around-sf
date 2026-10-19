@@ -1,0 +1,43 @@
+import type { CardDef } from '../../src/content/types';
+
+export const FIXTURE_CARDS: CardDef[] = [
+  {
+    id: 'golden-gate-bridge',
+    name: 'Golden Gate Bridge',
+    category: 'landmark',
+    rarity: 'legendary',
+    neighborhood: 'Presidio',
+    at: { lat: 37.8199, lon: -122.4783 },
+    year: 1937,
+    blurb: 'The International Orange suspension bridge across the Golden Gate strait.',
+    lore: 'The Golden Gate Bridge opened in 1937 after four years of construction. Its color is officially called International Orange, chosen so the bridge stands out in fog. Chief engineer Joseph Strauss led the project.',
+    facts: ['The main span is 4,200 feet long.'],
+    sources: ['https://en.wikipedia.org/wiki/Golden_Gate_Bridge'],
+  },
+  {
+    id: 'coit-tower',
+    name: 'Coit Tower',
+    category: 'landmark',
+    rarity: 'rare',
+    neighborhood: 'Telegraph Hill',
+    at: { lat: 37.8024, lon: -122.4058 },
+    year: 1933,
+    blurb: 'The white fluted tower on top of Telegraph Hill.',
+    lore: 'Coit Tower was completed in 1933 with money left to the city by Lillie Hitchcock Coit. Its lobby is covered in Depression-era murals painted in 1934.',
+    facts: ['The tower is 210 feet tall.'],
+    sources: ['https://en.wikipedia.org/wiki/Coit_Tower'],
+  },
+  {
+    id: 'transamerica-pyramid',
+    name: 'Transamerica Pyramid',
+    category: 'landmark',
+    rarity: 'rare',
+    neighborhood: 'Financial District',
+    at: { lat: 37.7952, lon: -122.4028 },
+    year: 1972,
+    blurb: 'The spire that defines the skyline.',
+    lore: 'The Transamerica Pyramid was completed in 1972 and was the tallest building in San Francisco until 2017. It rises 853 feet.',
+    facts: ['Architect William Pereira designed it.'],
+    sources: ['https://en.wikipedia.org/wiki/Transamerica_Pyramid'],
+  },
+];

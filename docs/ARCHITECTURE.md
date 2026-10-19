@@ -104,6 +104,7 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 - `game.timeScale`, `game.clockOffset`: time-of-day controls for the shared clock, `game.clock()`. `game.date()` is what the sky shows: the shared clock, unless `settings.timeMode` is not `'real'`, in which case the env system holds it at that mode's sun angle on the shared clock's day through `game.timePin` (env-owned, never write it). The player's timeMode wins over `clockOffset` and `timeScale`; it never changes them.
 - `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
 - `game.toast(text, kind)`, `game.bus.on/emit`.
+- `dex:show` event (`{ id }`, declared in `src/ui/panels/ask.ts`): emitted right after something opens the `dex` panel to point at one card. The Dex should scroll to and highlight it.
 
 ### Multiplayer (`game.net`)
 

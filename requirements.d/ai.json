@@ -1,0 +1,5 @@
+[
+  { "id": "R-AI-ASK", "owner": "ai", "text": "Ask the City answers typed questions offline from handwritten card lore: keyword and proximity scoring, quotes the best card, links to the Dex and the map, and handles zero cards." },
+  { "id": "R-AI-WHAT", "owner": "ai", "text": "\"What is that?\" names the nearest known place ahead of the camera, or says which way the closest one is." },
+  { "id": "R-AI-WORKER", "owner": "ai", "text": "The Cloudflare Worker enforces a CORS allowlist, per-IP rate limit, request size limit and max_tokens cap, never exposes the API key, and returns clear error JSON." }
+]
