@@ -13,7 +13,7 @@ pnpm ledger              # requirement ledger from the two test reports
 node scripts/shots.mjs <dir>   # screenshots of 4 viewpoints (needs `pnpm preview` running)
 ```
 
-URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
+URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
 
 ## World
 
@@ -22,6 +22,10 @@ URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim), `?time=
 - Local coordinates: meters, `x` east, `z` south (north is `-z`), `y` up. `src/core/geo.ts` converts.
 - City meshes are built in a worker (`src/world/city-worker.ts`) in 500 m chunks; the shader adds windows and lights them at night.
 - Known data gap: heights are from 2010, so towers built later (Salesforce Tower, 181 Fremont, Park Tower...) are missing or wrong. `R-SKYLINE` tracks the fix.
+
+## Live data
+
+`src/live/` holds the feeds (Open-Meteo weather, USGS quakes, OpenSky planes, NOAA tides) and `public/data/transit.json`, baked from SFMTA, Golden Gate Ferry and SF Bay Ferry GTFS by `node scripts/build-transit.mjs`. Every feed is cached in localStorage with a TTL and falls back to a model offline (climate weather, simulated SFO/OAK traffic, NOAA harmonic tides). The Live SF panel shows each feed's status. Events: `live:status`, `live:quake`, `live:close-call`.
 
 ## Extension points (add files, never edit a shared list)
 
