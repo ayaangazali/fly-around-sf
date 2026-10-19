@@ -51,9 +51,9 @@ export function liveState(game: Game): LiveState {
   return s;
 }
 
-export function addFeed<T>(game: Game, spec: FeedSpec<T>): Feed<T> {
+export function addFeed<T>(game: Game, spec: FeedSpec<T>, online = true): Feed<T> {
   const s = liveState(game);
-  const feed = new Feed(spec, liveStorage(), s.online);
+  const feed = new Feed(spec, liveStorage(), s.online && online);
   s.feeds.set(spec.id, feed as Feed<unknown>);
   return feed;
 }

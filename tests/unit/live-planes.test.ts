@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
-import { alongPath, extrapolate, flowPath, FLOWS, parseOpenSky, planeSpec, simulate } from '../../src/live/planes';
+import { alongPath, extrapolate, flowPath, FLOWS, openSkyProxy, parseOpenSky, planeSpec, simulate } from '../../src/live/planes';
 import { M_PER_DEG_LAT, M_PER_DEG_LON } from '../../src/core/geo';
 import { system, currentPlanes } from '../../src/systems/live-planes';
 import { liveState } from '../../src/live/state';
@@ -17,7 +17,6 @@ describe('live planes', () => {
     expect(t.time).toBe(1792402340_000);
     expect(t.planes).toHaveLength(1);
     expect(t.planes[0]).toMatchObject({ id: 'a7f50e', label: 'UAL2416', alt: 2400.3, track: 358.08, speed: 153.9, landing: true });
-    expect(planeSpec.url(new Date())).toContain('lamin=37.45');
     expect(() => parseOpenSky({ states: [] })).toThrow();
     expect(parseOpenSky({ time: 1, states: null }).planes).toEqual([]);
     const anon = parseOpenSky({ time: 1, states: [['abc123', '  ', 'US', 1, 1, -122.4, 37.7, 1000, false, 100, 90, 0, null, null]] });
@@ -76,14 +75,23 @@ describe('live planes', () => {
     expect(night).toBeGreaterThan(0);
   });
 
+  it('[R-LIVE-PLANES] OpenSky is only requested through an https proxy given with ?opensky', () => {
+    expect(openSkyProxy('')).toBeNull();
+    expect(openSkyProxy('?opensky=http://proxy.example')).toBeNull();
+    expect(openSkyProxy('?opensky=https://proxy.example/os//')).toBe('https://proxy.example/os');
+    expect(planeSpec.url(new Date())).toMatch(/^https:\/\/opensky-network\.org\/api\/states\/all\?lamin=37\.45/);
+  });
+
   it('[R-LIVE-PLANES] the planes system renders simulated traffic and warns of a close call once', async () => {
-    vi.stubGlobal('fetch', vi.fn(() => Promise.reject(new TypeError('Failed to fetch'))));
+    const fetch = vi.fn(() => Promise.reject(new TypeError('Failed to fetch')));
+    vi.stubGlobal('fetch', fetch);
     const game = liveGame('2026-10-19T19:30:00Z');
     await system.init!(game);
     await tick();
     system.update!(1 / 30, game);
     const s = liveState(game);
     expect(s.feeds.get('planes')?.status).toBe('fallback');
+    expect(fetch).not.toHaveBeenCalled();
     expect(s.planes.length).toBeGreaterThan(3);
     const group = game.scene.getObjectByName('live-planes') as THREE.Group;
     expect(group.children.filter((c) => c.visible).length).toBe(Math.min(24, s.planes.length));
@@ -98,16 +106,19 @@ describe('live planes', () => {
     expect(game.toasts).toHaveLength(2);
   });
 
-  it('[R-LIVE-PLANES] uses live OpenSky traffic when the feed works and the clock is real', async () => {
+  it('[R-LIVE-PLANES] uses live OpenSky traffic through the proxy when the feed works and the clock is real', async () => {
     const t = fixture('opensky-sf.json') as { time: number };
     const now = Date.now();
-    vi.stubGlobal('fetch', vi.fn(() => respond({ ...t, time: Math.floor(now / 1000) })));
+    const fetch = vi.fn((_url: string) => respond({ ...t, time: Math.floor(now / 1000) }));
+    vi.stubGlobal('fetch', fetch);
+    vi.stubGlobal('location', { search: '?opensky=https://proxy.example' });
     const game = liveGame(new Date(now).toISOString());
     await system.init!(game);
     await tick();
     await tick();
     const planes = currentPlanes(game, now);
     expect(planes.map((p) => p.label)).toEqual(['UAL2416']);
+    expect(fetch.mock.calls[0][0]).toMatch(/^https:\/\/proxy\.example\/api\/states\/all\?lamin=/);
     expect(currentPlanes(game, now - 3600_000).every((p) => /^(sfo|oak)-/.test(p.id))).toBe(true);
   });
 });

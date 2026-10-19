@@ -13,7 +13,7 @@ pnpm ledger              # requirement ledger from the two test reports
 node scripts/shots.mjs <dir>   # screenshots of 4 viewpoints (needs `pnpm preview` running)
 ```
 
-URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
+URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?opensky=https://proxy` (fetch live planes through a CORS proxy for `opensky-network.org`; OpenSky only allows its own origin, so without it planes are simulated and nothing is requested), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
 
 ## World
 

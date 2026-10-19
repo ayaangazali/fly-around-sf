@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import type { Game, GameSystem } from '../game';
 import { toLocal } from '../core/geo';
 import { addFeed, due, getFeed, grantCard, liveState, refresh } from '../live/state';
-import { extrapolate, planeSpec, simulate, type Plane } from '../live/planes';
+import { extrapolate, openSkyProxy, planeSpec, simulate, type Plane } from '../live/planes';
 import { airliner, fin, TAILS } from '../live/models';
 import { sfTime } from '../live/sf-time';
 
@@ -60,7 +60,7 @@ export const system: GameSystem = {
   id: 'live-planes',
   order: 23,
   init(game) {
-    void refresh(game, addFeed(game, planeSpec));
+    void refresh(game, addFeed(game, planeSpec, openSkyProxy() !== null));
     views.set(game, { list: build(game), warned: new Set() });
   },
   update(dt, game) {

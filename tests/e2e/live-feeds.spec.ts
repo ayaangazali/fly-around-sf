@@ -39,7 +39,7 @@ test.describe('live data', () => {
     expect(s.tides).toBeGreaterThan(5);
     expect(blocked.some((u) => u.includes('open-meteo'))).toBe(true);
     expect(blocked.some((u) => u.includes('earthquake.usgs.gov'))).toBe(true);
-    expect(blocked.some((u) => u.includes('opensky-network'))).toBe(true);
+    expect(blocked.some((u) => u.includes('opensky-network'))).toBe(false);
     expect(blocked.some((u) => u.includes('tidesandcurrents.noaa.gov'))).toBe(true);
     await page.evaluate(() => window.__fly.game.panels.open('live'));
     for (const id of ['weather', 'quakes', 'planes', 'tides']) await expect(page.locator(`.live-chip[data-feed="${id}"]`)).toHaveAttribute('data-status', 'fallback');

@@ -23,10 +23,15 @@ export interface Traffic {
 
 export const BBOX = { lamin: 37.45, lomin: -122.65, lamax: 37.95, lomax: -122.05 };
 
+export function openSkyProxy(search = typeof location === 'undefined' ? '' : location.search): string | null {
+  const base = new URLSearchParams(search).get('opensky');
+  return base && base.startsWith('https://') ? base.replace(/\/+$/, '') : null;
+}
+
 export const planeSpec: FeedSpec<Traffic> = {
   id: 'planes',
   label: 'Planes',
-  url: () => `https://opensky-network.org/api/states/all?lamin=${BBOX.lamin}&lomin=${BBOX.lomin}&lamax=${BBOX.lamax}&lomax=${BBOX.lomax}`,
+  url: () => `${openSkyProxy() ?? 'https://opensky-network.org'}/api/states/all?lamin=${BBOX.lamin}&lomin=${BBOX.lomin}&lamax=${BBOX.lamax}&lomax=${BBOX.lomax}`,
   parse: parseOpenSky,
   ttl: 60_000,
   maxAge: 3 * 60_000,
