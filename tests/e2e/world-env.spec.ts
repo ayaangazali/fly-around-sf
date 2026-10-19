@@ -300,6 +300,7 @@ test.describe('world environment', () => {
   });
 
   test('[R-ENV-PERF] every quality tier stays under its draw call and triangle budget in the worst views', async ({ page }) => {
+    test.skip(LITE, 'the budgets are measured on the full city');
     test.setTimeout(900_000);
     const budget = { low: { calls: 280, tris: 3.0e6 }, medium: { calls: 590, tris: 6.6e6 }, high: { calls: 710, tris: 10.6e6 } };
     const views: View[] = [

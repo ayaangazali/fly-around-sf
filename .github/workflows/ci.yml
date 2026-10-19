@@ -55,6 +55,7 @@ jobs:
           - { name: lite-5, shard: 5/6, radius: '3000' }
           - { name: lite-6, shard: 6/6, radius: '3000' }
           - { name: full-city, shard: 1/1, radius: '', files: 'tests/e2e/boot.spec.ts tests/e2e/activities.spec.ts --project=desktop' }
+          - { name: full-perf, shard: 1/1, radius: '', files: 'tests/e2e/perf.spec.ts tests/e2e/world-env.spec.ts --grep PERF --project=desktop' }
     env:
       E2E_CITY_RADIUS: ${{ matrix.radius }}
       E2E_JSON: reports/playwright-${{ matrix.name }}.json
