@@ -19,7 +19,7 @@ const near = (dn: number, de = 0) => ({ lat: here.lat + dn / 111000, lon: here.l
 function game(): Game {
   const g = fakeGame();
   Object.assign(g.world, { collide: () => false });
-  Object.assign(g, { date: () => new Date('2026-10-19T19:30:00Z'), teleport: (p: { x: number; y: number; z: number }) => void (g.flight.pos = { ...p }) });
+  Object.assign(g, { env: {}, date: () => new Date('2026-10-19T19:30:00Z'), teleport: (p: { x: number; y: number; z: number }) => void (g.flight.pos = { ...p }) });
   return g;
 }
 
@@ -168,7 +168,7 @@ describe('landing', () => {
     g.activities.start(landingDef.id);
     const pad = g.world.point(landingDef.params!.pad as { lat: number; lon: number }, 0);
     g.flight.pos = { x: pad.x, y: pad.y + 10, z: pad.z };
-    g.flight.speed = 9;
+    g.flight.vel = { x: 0, y: -9, z: 0 };
     g.activities.update(DT);
     g.flight.pos.y = pad.y + 1.3;
     g.activities.update(DT);
@@ -181,9 +181,11 @@ describe('landing', () => {
     const inst = landing.start(landingDef, g) as MinigameInstance;
     const pad = g.world.point(landingDef.params!.pad as { lat: number; lon: number }, 0);
     g.flight.pos = { x: pad.x + 12, y: pad.y + 8, z: pad.z };
-    g.flight.speed = 6;
+    g.flight.vel = { x: 6, y: 0, z: 0 };
     inst.update(DT);
     expect(inst.hud()).toContain('slow down');
+    g.env.wind = { x: 6, z: 0 };
+    expect(inst.hud()).not.toContain('slow down');
     expect(inst.props()[0].on).toBe(true);
     expect(landing.validate({ ...landingDef, params: { ...landingDef.params, maxSpeed: 40, padRadius: 50 } })).toHaveLength(2);
   });

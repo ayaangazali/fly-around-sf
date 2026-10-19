@@ -1,4 +1,5 @@
 import type { ActivityKind, GeoPoint } from '../types';
+import type { Game } from '../../game';
 import { FLIGHT } from '../../player/flight';
 import { clock, isGeo, medalFor, meters, prop, report, validateTimed, type Medals, type MinigameInstance } from '../minigame';
 
@@ -11,6 +12,12 @@ interface LandingParams {
 }
 
 const TOUCH = FLIGHT.radius + 0.6;
+
+export function airspeed(game: Game): number {
+  const v = game.flight.vel;
+  const w = game.env.wind ?? { x: 0, z: 0 };
+  return Math.hypot(v.x - w.x, v.y, v.z - w.z);
+}
 
 export const kind: ActivityKind = {
   kind: 'landing',
@@ -34,7 +41,7 @@ export const kind: ActivityKind = {
     const marker = { x, y: pad.y + 3, z };
     const pads = [prop('pad', pad, 0, radius)];
     let t = 0;
-    let last = game.flight.speed;
+    let last = airspeed(game);
     return {
       update(dt) {
         t += dt;
@@ -49,7 +56,7 @@ export const kind: ActivityKind = {
           report(game, def, { medal: medalFor(p.medals, t), time: t, score: `touchdown at ${last.toFixed(1)} m/s` });
           return 'done';
         }
-        last = f.speed;
+        last = airspeed(game);
         if (t > p.timeLimit) {
           report(game, def, { medal: 0, time: t, fail: 'Out of time before touchdown' });
           return 'failed';
@@ -60,8 +67,8 @@ export const kind: ActivityKind = {
       hud: () => {
         const f = game.flight;
         const h = Math.hypot(f.pos.x - pad.x, f.pos.z - pad.z);
-        const fast = f.speed > max && h < 40;
-        return `🛬 ${meters(h)} · ${f.speed.toFixed(1)} of ${max} m/s${fast ? ', slow down' : ''} · ${clock(t, p.timeLimit)}`;
+        const v = airspeed(game);
+        return `🛬 ${meters(h)} · ${v.toFixed(1)} of ${max} m/s${v > max && h < 40 ? ', slow down' : ''} · ${clock(t, p.timeLimit)}`;
       },
       targets: () => [marker],
       elapsed: () => t,
