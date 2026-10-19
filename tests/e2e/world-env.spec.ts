@@ -172,7 +172,7 @@ test.describe('world environment', () => {
     expect(sky.mean).toBeLessThan(60);
   });
 
-  test('[R-ENV-TIME] timeMode drives the sky clock', async ({ page }) => {
+  test('[R-ENV-TIME] timeMode drives the sky clock without touching the shared clock controls', async ({ page }) => {
     await boot(page);
     const at = (mode: string) =>
       page.evaluate((mode) => {
@@ -180,8 +180,12 @@ test.describe('world environment', () => {
         g.save.data.settings.timeMode = mode;
         window.__fly.step(0.1);
         g.render(0);
-        return { night: g.sky.night, elev: g.sky.elevation, offset: g.clockOffset };
+        return { night: g.sky.night, elev: g.sky.elevation, offset: g.clockOffset, scale: g.timeScale, lag: g.date().getTime() - g.clock().getTime() };
       }, mode);
+    await page.evaluate(() => {
+      window.__fly.game.clockOffset = 3 * 86400000;
+      window.__fly.game.timeScale = 60;
+    });
     const night = await at('night');
     expect(night.night).toBe(1);
     expect(night.elev).toBeLessThan(-18);
@@ -191,17 +195,28 @@ test.describe('world environment', () => {
     const golden = await at('golden');
     expect(golden.elev).toBeGreaterThan(4.5);
     expect(golden.elev).toBeLessThan(6.5);
-    const real = await at('real');
-    expect(real.offset).toBe(0);
+    for (const r of [night, noon, golden]) {
+      expect(r.offset).toBe(3 * 86400000);
+      expect(r.scale).toBe(60);
+      expect(Math.abs(r.lag)).toBeLessThan(86400000);
+    }
     const held = await page.evaluate(() => {
       const g = window.__fly.game;
-      g.save.data.settings.timeMode = 'golden';
-      window.__fly.step(0.1);
       const a = g.date().getTime();
       window.__fly.step(5);
       return g.date().getTime() - a;
     });
-    expect(Math.abs(held)).toBeLessThan(1000);
+    expect(held).toBe(0);
+    const real = await at('real');
+    expect(real.offset).toBe(3 * 86400000);
+    expect(real.lag).toBe(0);
+    const flowing = await page.evaluate(() => {
+      const g = window.__fly.game;
+      const a = g.date().getTime();
+      window.__fly.step(5);
+      return g.date().getTime() - a;
+    });
+    expect(flowing).toBeGreaterThan(5 * 60 * 1000 * 0.95);
   });
 
   test('[R-ENV-FOG] thick Karl at Ocean Beach cuts visibility and washes out the view', async ({ page }) => {

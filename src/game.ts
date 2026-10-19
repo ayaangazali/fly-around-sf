@@ -82,6 +82,7 @@ export class Game {
   simTime = 0;
   clockOffset = 0;
   timeScale = 1;
+  timePin: number | null = null;
   autoSim: boolean;
   running = false;
   loaded = false;
@@ -118,9 +119,13 @@ export class Game {
     this.resize();
   }
 
-  date(): Date {
+  clock(): Date {
     const base = this.opts.time ? this.opts.time.getTime() : Date.now();
     return new Date(base + this.clockOffset + (this.opts.time ? this.simTime * 1000 * this.timeScale : 0));
+  }
+
+  date(): Date {
+    return this.timePin === null ? this.clock() : new Date(this.timePin);
   }
 
   async load(onProgress: (frac: number, label: string) => void): Promise<void> {

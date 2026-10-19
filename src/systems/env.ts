@@ -95,8 +95,7 @@ class Env {
   readonly time = { value: 0 };
   readonly nightRef = { value: 0 };
   readonly water: WaterUniforms;
-  private mode: TimeMode = 'real';
-  private pinned: { key: string; target: Date } | null = null;
+  private pinned: { key: string; at: number | null } | null = null;
 
   constructor(readonly game: Game) {
     this.tier = TIERS[game.opts.quality];
@@ -221,18 +220,10 @@ class Env {
   applyTime(): void {
     const g = this.game;
     const mode = (g.save.data.settings.timeMode as TimeMode) ?? 'real';
-    const base = g.date().getTime() - g.clockOffset;
-    if (mode === 'real') {
-      if (this.mode !== 'real') g.clockOffset = 0;
-      this.mode = mode;
-      this.pinned = null;
-      return;
-    }
-    const ref = new Date(base);
-    const key = `${mode}:${Math.floor((base + (ORIGIN.lon / 15) * 3600000) / DAY)}`;
-    if (this.pinned?.key !== key) this.pinned = { key, target: modeTarget(mode, ref)! };
-    this.mode = mode;
-    g.clockOffset = this.pinned.target.getTime() - base;
+    const clock = g.clock();
+    const key = `${mode}:${Math.floor((clock.getTime() + (ORIGIN.lon / 15) * 3600000) / DAY)}`;
+    if (this.pinned?.key !== key) this.pinned = { key, at: modeTarget(mode, clock)?.getTime() ?? null };
+    g.timePin = this.pinned.at;
   }
 
   frame(): void {
