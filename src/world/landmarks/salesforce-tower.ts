@@ -9,6 +9,8 @@ export const source: LandmarkSource = {
   url: 'https://www.openstreetmap.org/way/431972186',
 };
 
+export const TOP = 328;
+
 export const FACTS = {
   height: 326,
   roof: 296,
@@ -78,7 +80,7 @@ export const landmark: Landmark = {
     for (let i = 0; i < 14; i++) {
       const y = (FACTS.height * i) / 14;
       const w = y < FACTS.roof ? width(y + FACTS.height / 28) : width(FACTS.roof) * 0.82;
-      site.solidBox(0, y, 0, w * 0.96, FACTS.height / 14, w * 0.96);
+      site.solidPrism(roundedRect(w, w, corner(y + FACTS.height / 28), 3), y, FACTS.height / 14);
     }
     site.finish();
   },
