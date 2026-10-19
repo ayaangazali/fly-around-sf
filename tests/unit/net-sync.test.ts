@@ -18,7 +18,7 @@ function snoop(room: string): { saves: SaveData[]; post: (d: unknown) => void; c
 }
 
 describe('device sync', () => {
-  it('[R-SYNC-DEVICES] merging unions completions and cards, keeps max XP and min best times', () => {
+  it('[R-SYNC-DEVICES] merging unions completions and cards, adds the XP of new completions and keeps min best times', () => {
     const local = save({
       completed: { a: 300, b: 50 },
       cards: ['x'],
@@ -49,6 +49,12 @@ describe('device sync', () => {
     expect(r.save.stats).toEqual({ distance: 99, flightTime: 500, crashes: 9, sessions: 3 });
     expect(mergeSaves(r.save, incoming).added).toBe(0);
     expect(mergeSaves(local, { v: 2 } as unknown as SaveData).save.completed).toEqual(local.completed);
+    const phone = save({ completed: { p1: 1, p2: 2 }, xp: 300 });
+    const ipad = save({ completed: { i1: 1, i2: 2, i3: 3 }, xp: 450 });
+    const merged = mergeSaves(ipad, phone, () => 150).save;
+    expect(merged.xp).toBe(750);
+    expect(mergeSaves(merged, phone, () => 150).save.xp).toBe(750);
+    expect(mergeSaves(phone, ipad, () => 150).save.xp).toBe(750);
   });
 
   it('[R-SYNC-DEVICES] an incoming save keeps only real content and sane numbers', () => {

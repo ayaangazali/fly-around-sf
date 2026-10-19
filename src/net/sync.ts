@@ -10,7 +10,7 @@ export interface MergeResult {
   cards: number;
 }
 
-export function mergeSaves(local: SaveData, incoming: SaveData): MergeResult {
+export function mergeSaves(local: SaveData, incoming: SaveData, xpOf: (id: string) => number = () => 0): MergeResult {
   const a = normalize(local);
   const b = normalize(incoming);
   const completed = { ...a.completed };
@@ -19,6 +19,7 @@ export function mergeSaves(local: SaveData, incoming: SaveData): MergeResult {
     if (!(id in completed)) {
       completed[id] = at;
       added++;
+      a.xp += xpOf(id);
     } else if (at < completed[id]) completed[id] = at;
   }
   const best = { ...a.best };
@@ -184,7 +185,7 @@ export class DeviceSync {
           } catch {
             return;
           }
-          const r = mergeSaves(this.game.save.data, incoming);
+          const r = mergeSaves(this.game.save.data, incoming, (id) => this.game.activities.defs.get(id)?.xp ?? 10);
           this.game.save.replace(r.save);
           this.result = { added: r.added, cards: r.cards };
           this.t?.send({ t: 'ack', added: r.added }, from);
