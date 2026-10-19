@@ -76,6 +76,7 @@ export class Game {
   world!: World;
   flight: FlightState;
   env: FlightEnv;
+  waypoint: (Vec3 & { label: string }) | null = null;
   simTime = 0;
   clockOffset = 0;
   timeScale = 1;

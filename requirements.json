@@ -2,7 +2,7 @@
   "gates": {
     "coverage_lines_pct": 85,
     "coverage_branches_pct": 75,
-    "min_non_discovery_activities": 150,
+    "min_startable_activities": 150,
     "min_activity_kinds": 12,
     "max_initial_js_gzip_kb": 450
   },
@@ -30,7 +30,7 @@
     { "id": "R-A11Y", "owner": "ui", "text": "Menus have no serious or critical axe accessibility violations and are keyboard navigable." },
     { "id": "R-PWA", "owner": "ui", "text": "Installable PWA: valid manifest, 192/512 icons, service worker registers." },
     { "id": "R-ACT-ALL", "owner": "all", "text": "Every activity in the game can be completed by the automated solver." },
-    { "id": "R-CONTENT-150", "owner": "all", "text": "At least 150 non-discovery activities across at least 12 kinds." },
+    { "id": "R-CONTENT-150", "owner": "all", "text": "At least 150 startable (non-passive) activities across at least 12 kinds." },
     { "id": "R-CARDS", "owner": "content", "text": "Every card referenced exists; every card has real lore, a category and a source." },
     { "id": "R-QUEST", "owner": "quests", "text": "The main quest completes chapter by chapter with clues revealed in order." },
     { "id": "R-DAILY", "owner": "quests", "text": "The daily clue is deterministic per calendar date and solvable." },

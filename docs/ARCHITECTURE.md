@@ -64,3 +64,48 @@ interface ActivityKind {
 - No real private residences, no real private people. Archetype NPCs only.
 - Every external feed (weather, transit, planes, quakes) must work offline with a fallback; tests block the network.
 - No new runtime dependency without a reason that a few lines of code cannot cover.
+
+## Shared contracts
+
+### Settings keys (`game.save.data.settings`)
+
+Every team reads and writes these exact keys; the settings panel (UI team) edits them, then calls `game.save.persist()`.
+
+| Key | Type | Default | Used by |
+|---|---|---|---|
+| `quality` | `'auto' \| 'low' \| 'medium' \| 'high'` | `'auto'` | renderer (applied on reload) |
+| `units` | `'metric' \| 'imperial'` | `'metric'` | HUD |
+| `volMaster`, `volMusic`, `volSfx`, `volVoice` | number 0..1 | 0.8, 0.5, 0.8, 1 | audio, voice chat |
+| `muted` | boolean | false | audio |
+| `reducedMotion` | boolean | OS setting | camera, UI |
+| `turnSpeed` | number 0.5..1.5 | 1 | flight input |
+| `timeMode` | `'real' \| 'golden' \| 'noon' \| 'night'` | `'real'` | sky |
+| `playerName` | string, max 20 | random "Pilot-1234" | multiplayer |
+| `droneColor` | hex string | `'#f2f2ee'` | drone model, multiplayer |
+| `showFps` | boolean | false | HUD |
+| `aiProxyUrl` | string | `''` | Ask the City (live AI only when set) |
+
+### Game fields other teams may read or set
+
+- `game.waypoint` (`{x,y,z,label} | null`): the HUD guides the player to it. Any panel can set it ("Go there").
+- `game.env.wind` (`{x,z}`, m/s): live weather writes it, flight reads it.
+- `game.sky.fogDensity` (1 = normal, 3 = thick Karl): live weather writes it.
+- `game.timeScale`, `game.clockOffset`: time-of-day controls.
+- `game.activities.start(id)`, `.position(def)`, `.locked(def)`, `.nearby`, `.active`.
+- `game.toast(text, kind)`, `game.bus.on/emit`.
+
+### Adding events
+
+Extend the event map with declaration merging in your own file, never by editing `bus.ts`:
+
+```ts
+declare module '../core/bus' {
+  interface GameEvents {
+    'net:join': { id: string; name: string };
+  }
+}
+```
+
+### Styling
+
+Use the CSS variables in `src/ui/styles.css` (`--glass`, `--ink`, `--accent`, `--radius`, `--mono`...). Put team CSS in its own file next to the module and import it from that module (`import './map.css'`). Phone layouts must not overflow horizontally; touch targets are at least 40px.

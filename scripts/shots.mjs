@@ -3,7 +3,7 @@ const out = process.argv[2];
 const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 page.on('pageerror', (e) => console.log('pageerror', e.message));
-await page.goto('http://127.0.0.1:4173/?test&quality=medium');
+await page.goto(`http://127.0.0.1:${process.env.E2E_PORT ?? 4173}/?test&quality=${process.env.QUALITY ?? 'medium'}`);
 await page.waitForFunction(() => window.__fly?.ready, undefined, { timeout: 120000 });
 const views = [
   ['spawn', null],

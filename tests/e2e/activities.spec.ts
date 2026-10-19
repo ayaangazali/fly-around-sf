@@ -17,11 +17,11 @@ test('[R-ACT-ALL] every activity in the game can be completed by the solver', as
   expect(result.total).toBeGreaterThan(0);
 });
 
-test('[R-CONTENT-150] at least 150 non-discovery activities across at least 12 kinds', async ({ page }) => {
+test('[R-CONTENT-150] at least 150 startable (non-passive) activities across at least 12 kinds', async ({ page }) => {
   await boot(page);
   const stats = await page.evaluate(() => {
     const list = window.__fly.activities();
-    const active = list.filter((a) => a.kind !== 'discover');
+    const active = list.filter((a) => !a.passive);
     return { active: active.length, kinds: new Set(list.map((a) => a.kind)).size };
   });
   expect(stats.active).toBeGreaterThanOrEqual(150);
