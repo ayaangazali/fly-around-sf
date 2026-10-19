@@ -199,6 +199,25 @@ describe('quest kind mechanics', () => {
     expect(inst.elapsed?.()).toBeCloseTo(0.4);
   });
 
+  it('[R-QUEST] a chapter left halfway resumes at the objective the player reached, and starts over once finished', () => {
+    const p = params();
+    const { game, def, inst } = run(p);
+    const said: string[] = [];
+    game.bus.on('quest:say', (s) => said.push(...s.lines.map((l) => l.text)));
+    game.flight.pos = { ...objectivePoints(p.objectives[0], game)[0] };
+    inst.update(0.1);
+    expect(inst.hud()).toContain('2/3');
+    const resumed = quest.start(def, game) as QuestInstance;
+    expect(resumed.hud()).toContain('2/3');
+    expect(said).not.toContain(p.intro[0]);
+    for (const o of p.objectives.slice(1)) {
+      game.flight.pos = { ...objectivePoints(o, game)[0] };
+      resumed.update(0.1);
+    }
+    expect(resumed.update(0.1)).toBe('done');
+    expect((quest.start(def, game) as QuestInstance).hud()).toContain('1/3');
+  });
+
   it('[R-QUEST] riddle objectives unlock hints after 60 and 120 seconds', () => {
     const riddle = { type: 'riddle' as const, text: 'where am I', at: { lat: 37.781, lon: -122.42 }, hints: ['first hint', 'second hint'] };
     const { game, inst } = run(params({ objectives: [riddle, goto(37.782), goto(37.783)] }));

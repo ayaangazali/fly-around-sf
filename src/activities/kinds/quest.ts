@@ -67,7 +67,9 @@ export const kind: ActivityKind = {
   start(def, game) {
     const p = def.params as unknown as QuestParams;
     const title = `Chapter ${p.chapter} · ${def.title}`;
-    let index = 0;
+    const key = `quest:${def.id}`;
+    const saved = game.save.data.flags[key];
+    let index = typeof saved === 'number' && saved < p.objectives.length ? saved : 0;
     let points: Vec3[] = [];
     let left: Vec3[] = [];
     let t = 0;
@@ -96,12 +98,14 @@ export const kind: ActivityKind = {
       say(game, def.id, NORTON, o.say ?? []);
       index++;
       if (index < p.objectives.length) {
+        game.save.data.flags[key] = index;
         game.bus.emit('toast', { text: `✓ ${o.text}`, kind: 'info' });
         begin();
-      }
+      } else delete game.save.data.flags[key];
+      game.save.persist();
     };
 
-    say(game, def.id, NORTON, p.intro);
+    if (!index) say(game, def.id, NORTON, p.intro);
     begin();
 
     const inst: QuestInstance = {
