@@ -16,14 +16,16 @@
 .net-hud { position: absolute; inset: 0; pointer-events: none; }
 .net-stack { position: absolute; top: max(12px, env(safe-area-inset-top)); left: 12px; display: grid; gap: 8px; justify-items: start; width: min(300px, calc(100vw - 24px)); }
 .net-row { display: flex; gap: 6px; flex-wrap: wrap; }
-.net-chip, .net-voice { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-family: var(--mono); font-size: 13px; font-weight: 650; letter-spacing: 0.04em; }
+.touch .net-stack { top: calc(var(--top) + 226px); }
+.net-chip, .net-voice, .net-pin { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-family: var(--mono); font-size: 13px; font-weight: 650; letter-spacing: 0.04em; }
 .net-chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--warn); box-shadow: 0 0 10px currentColor; }
 .net-chip[data-status='online']::before { background: var(--good); }
 .net-chip[data-status='connecting']::before { animation: net-blink 1s ease-in-out infinite; }
 .net-chip[data-status='unreachable']::before { background: #ff6b6b; }
 .net-invite { pointer-events: auto; display: flex; gap: 8px; }
 .net-invite .fr-btn.ghost { background: var(--glass-strong); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-.net-chip[hidden], .net-voice[hidden], .net-banner[hidden], .net-match[hidden], .net-invite[hidden], .net-count[hidden], .net-feed[hidden], .net-chat[hidden] { display: none; }
+.net-chip[hidden], .net-voice[hidden], .net-pin[hidden], .net-banner[hidden], .net-match[hidden], .net-invite[hidden], .net-count[hidden], .net-feed[hidden], .net-chat[hidden] { display: none; }
+.net-pin { touch-action: manipulation; }
 .net-voice { touch-action: none; user-select: none; -webkit-user-select: none; }
 .net-voice.live { border-color: var(--good); background: rgba(40, 92, 64, 0.72); box-shadow: 0 0 18px rgba(125, 224, 166, 0.35); }
 .net-banner { padding: 10px 12px; border-radius: 12px; background: var(--glass-strong); border: 1px solid rgba(255, 107, 107, 0.5); font-size: 13px; line-height: 1.4; }
@@ -57,9 +59,17 @@
 @keyframes net-beat { 0% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.6; } 30% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.85; } }
 @keyframes net-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
+@media (max-width: 1024px) {
+  .touch .net-stack { top: calc(var(--top) + 372px); }
+}
 @media (max-width: 640px) {
   .net-stack { width: min(260px, calc(100vw - 24px)); }
+  .touch .net-stack { top: calc(var(--top) + 196px); }
+  .touch:has(.onboard) .net-stack { top: calc(var(--top) + 352px); }
   .net-match li { font-size: 12px; }
   .net-feed { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 118px); }
   .net-chat { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 66px); }
+}
+@media (max-height: 500px) {
+  .touch .net-stack { top: calc(var(--top) + 100px); left: 120px; }
 }

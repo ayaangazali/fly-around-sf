@@ -1,5 +1,6 @@
 import type { Game } from '../game';
 import { el } from '../ui/panel-host';
+import { isTouchDevice } from '../ui/touch';
 import { LIMITS } from './protocol';
 import { READY } from './modes';
 import type { ChatLine, Net } from './session';
@@ -16,12 +17,13 @@ export class NetHud {
   private input: HTMLInputElement;
   private counter: HTMLElement;
   private voice: HTMLButtonElement;
+  private pin: HTMLButtonElement;
   private card: HTMLElement;
   private invite: HTMLElement;
   private count: HTMLElement;
   private cache = new Map<HTMLElement, string>();
   touchTalk = false;
-  private coarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
+  private touch = isTouchDevice();
 
   constructor(
     private game: Game,
@@ -71,8 +73,12 @@ export class NetHud {
     this.voice.addEventListener('pointerdown', hold(true));
     for (const ev of ['pointerup', 'pointercancel', 'pointerleave']) this.voice.addEventListener(ev, hold(false));
     this.voice.addEventListener('contextmenu', (e) => e.preventDefault());
+    this.pin = el('button', 'net-pin', '📍 Ping');
+    this.pin.hidden = true;
+    this.pin.setAttribute('aria-label', 'Ping where you look');
+    this.pin.addEventListener('click', () => game.input.press('ping'));
     const row = el('div', 'net-row');
-    row.append(this.chip, this.voice);
+    row.append(this.chip, this.pin, this.voice);
     const stack = el('div', 'net-stack');
     stack.append(row, this.banner, this.card, this.invite);
     this.root.append(stack, this.count, this.feed, this.form);
@@ -145,6 +151,7 @@ export class NetHud {
     const net = this.net;
     const inRoom = !!net.room;
     this.chip.hidden = !inRoom;
+    this.pin.hidden = !inRoom || !this.touch;
     if (inRoom) {
       const n = net.visiblePeers().length;
       this.chip.dataset.status = net.status;
@@ -163,7 +170,7 @@ export class NetHud {
     this.voice.hidden = !v.on;
     if (v.on) {
       this.voice.classList.toggle('live', v.transmitting);
-      this.set(this.voice, v.mode === 'open' ? '🎙 Open mic' : v.transmitting ? '🎙 Talking' : this.coarse ? '🎙 Hold to talk' : '🎙 Hold T to talk');
+      this.set(this.voice, v.mode === 'open' ? '🎙 Open mic' : v.transmitting ? '🎙 Talking' : this.touch ? '🎙 Hold to talk' : '🎙 Hold T to talk');
     }
 
     const m = net.match;
