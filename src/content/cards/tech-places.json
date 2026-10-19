@@ -38,7 +38,9 @@
     "lore": "Jimmy Wales set up the Wikimedia Foundation in St. Petersburg, Florida on June 20, 2003 to run Wikipedia. It moved to San Francisco by early 2008 for the talent and the partners nearby. In October 2024 it moved about 300 meters from One Montgomery Tower to a small administrative office at One Sansome Street, with 86% less space, since most staff work remotely.",
     "facts": [
       "In October 2006 the foundation had five paid employees. By 2025 it had about 650 staff and contractors.",
-      "One Sansome is its fourth San Francisco headquarters."
+      "One Sansome is its fourth San Francisco headquarters.",
+      "Its first San Francisco office, in 2008, was at 39 Stillman Street.",
+      "The foundation took Bitcoin donations from July 2014 until a community vote ended crypto gifts in May 2022."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Wikimedia_Foundation",
@@ -60,12 +62,15 @@
     "lore": "Autodesk opened its Pier 9 workshop in September 2013, with CEO Carl Bass and Mayor Ed Lee cutting the ribbon. The space was built as a maker and research shop full of CNC machines, laser cutters and robots. It is now the Autodesk Technology Center San Francisco, a hub for startups and researchers exploring the future of manufacturing.",
     "facts": [
       "The workshop opened at about 27,000 square feet.",
-      "Autodesk runs only a handful of these centers: Birmingham, Toronto, Boston and San Francisco."
+      "Autodesk runs only a handful of these centers: Birmingham, Toronto, Boston and San Francisco.",
+      "Artists in its residency published their projects on Instructables, the how-to site Autodesk bought in 2011.",
+      "It shares the pier with the San Francisco Bar Pilots, who guide big ships in and out of the bay."
     ],
     "sources": [
       "https://geoweeknews.com/news/future-of-manufacturing-opens-in-san-francisco",
       "https://technologycenterstours.autodesk.com/san-francisco",
-      "https://www.constructiondive.com/news/a-walk-through-autodesks-pier-9-digifab-lab-in-san-francisco/440271/"
+      "https://www.constructiondive.com/news/a-walk-through-autodesks-pier-9-digifab-lab-in-san-francisco/440271/",
+      "https://en.wikipedia.org/wiki/Instructables"
     ]
   },
   {
@@ -83,7 +88,9 @@
     "lore": "Noisebridge was organized in 2007 by volunteer hackers inspired by Metalab in Vienna and c-base in Berlin. It spent years in a third-floor space at 2169 Mission Street, then moved in 2020 to a warehouse at 272 Capp Street, directly behind the old space. Anyone can visit to learn, teach and build.",
     "facts": [
       "In 2010 its near-space program sent weather balloons to nearly 70,000 feet.",
-      "Noisebridge co-hosted the first Aaron Swartz Day hackathon with the Internet Archive in 2013."
+      "Noisebridge co-hosted the first Aaron Swartz Day hackathon with the Internet Archive in 2013.",
+      "Its spaces have held a mycology lab, a biotech lab, an optics lab and a darkroom.",
+      "The San Francisco Bay Guardian named it Best Open Source Playground in 2010."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Noisebridge",
@@ -106,7 +113,9 @@
     "lore": "SHACK15 opened in 2020 on the upper floor of the Ferry Building, a 51,000 square foot club and coworking space with arched windows over the bay. Membership costs around $2,000 a year and needs a referral from a current member. It hosts hackathons, AI film screenings and talks.",
     "facts": [
       "It launched a venture fund for AI and deep tech in 2024.",
-      "It is a main venue for the TEDAI conference."
+      "It is a main venue for the TEDAI conference.",
+      "Founder Jørn Lyseggen also started Meltwater, the media monitoring company.",
+      "A quiet room called The Sanctuary hosts meditation sessions and sound baths."
     ],
     "sources": [
       "https://sfstandard.com/2024/06/27/sfs-hottest-club-might-be-this-co-working-space-with-a-venture-capital-arm/"
@@ -127,7 +136,9 @@
     "lore": "In 2025 three German entrepreneurs bought 995 Market Street, a 16-story building that had been a WeWork and the headquarters of the Burning Man Project. They turned it into Frontier Tower, a membership vertical village where each floor has its own theme and lead, from AI and robotics to biotech, neurotech and arts.",
     "facts": [
       "Floors are themed around AI, crypto, biotech, longevity, robotics, neurotech, flourishing and arts and music.",
-      "Hack Club has hosted a teen hackathon here."
+      "Hack Club has hosted a teen hackathon here.",
+      "The founders paid $11 million in 2025, far below the building's $62 million assessment in 2016.",
+      "In its first months the robotics floor kept a Boston Dynamics Spot and a Unitree G1 humanoid for members to borrow."
     ],
     "sources": [
       "https://sfstandard.com/2025/05/18/first-look-frontier-tower-san-francisco-vertical-village/",
@@ -149,11 +160,14 @@
     "lore": "Josette Melchor founded Gray Area as a gallery in SoMa in 2006, and it became a nonprofit by 2008. In 2014 it moved into the historic Grand Theater at 2665 Mission Street and turned it into a performance space and incubator. It teaches creative coding and runs the Gray Area Festival.",
     "facts": [
       "The Gray Area Festival, started in 2015, was the first international media arts festival in San Francisco.",
-      "Its Creative Code Intensive ends with a public showcase of interactive work."
+      "Its Creative Code Intensive ends with a public showcase of interactive work.",
+      "The Grand opened as a movie theater on March 23, 1940, and later became a dollar store.",
+      "In 2023 Gray Area relit the GRAND neon sign for the first time in more than 30 years."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Gray_Area_Foundation_for_the_Arts",
-      "https://www.calle24sf.org/event-details/creative-code-showcase-spring-2025"
+      "https://www.calle24sf.org/event-details/creative-code-showcase-spring-2025",
+      "https://en.wikipedia.org/wiki/Grand_Theater,_San_Francisco"
     ]
   },
   {
@@ -171,7 +185,8 @@
     "lore": "Moscone Center is named for Mayor George Moscone and opened in 1981. Its West hall was added in 2003. On January 9, 2007, at Macworld in Moscone West, Steve Jobs introduced the iPhone as an iPod, a phone and an internet communicator in one device. Apple held WWDC at Moscone from 2003 to 2016, and Dreamforce has filled it since 2005.",
     "facts": [
       "TechCrunch moved Disrupt SF to Moscone West in 2018 and ran its hackathon there.",
-      "The first iPhone cost $499 for 4GB and $599 for 8GB."
+      "The first iPhone cost $499 for 4GB and $599 for 8GB.",
+      "Gensler designed Moscone West, which cost $158 million, a million more than Moscone North."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Moscone_Center",
@@ -218,7 +233,8 @@
     "lore": "George Gordon laid out South Park in 1855 as an exclusive oval of 58 homes around a private garden, modeled on a London square, with the city's first paved streets. The rich moved to Nob Hill and the 1906 earthquake wrecked the houses, but the oval survived. In the late 1990s its cheap lofts made it ground zero of the dot-com boom, and later Odeo, Twitter and Wired all worked around the park.",
     "facts": [
       "A windmill in the middle once pumped water for the houses.",
-      "Lightspeed's San Francisco office is at 2 South Park."
+      "Lightspeed's San Francisco office is at 2 South Park.",
+      "From the late 1800s into the early 1900s it was the heart of one of the city's largest Japanese American communities."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/South_Park,_San_Francisco",
@@ -240,7 +256,8 @@
     "lore": "Mission Bay was a marsh and lagoon, filled with debris including rubble from the 1906 earthquake and later used as a Southern Pacific rail yard. UCSF's first building there, Genentech Hall, opened in January 2003 and grew into a research campus. Biotech companies clustered around it, and today Chase Center, Uber and OpenAI are its neighbors.",
     "facts": [
       "Genentech Hall is a 434,000 square foot, five-story research building.",
-      "About 56 biotech companies were clustered in Mission Bay by 2010."
+      "About 56 biotech companies were clustered in Mission Bay by 2010.",
+      "UCSF's 289-bed hospital for children, women and cancer patients opened here in February 2015."
     ],
     "sources": [
       "https://www.tradelineinc.com/news/2003-2/ucsf-mission-bay-genentech-hall-now-open",
@@ -263,7 +280,8 @@
     "lore": "Jennifer Pahlka founded Code for America in 2009 to bring modern technology to government. Its fellowship placed coders inside city halls, and its volunteer Brigades grew to 60 chapters. At its former headquarters at 155 9th Street, Code for San Francisco met every Wednesday night for civic hack nights.",
     "facts": [
       "The first fellowship picked 20 fellows from 360 applicants.",
-      "Its GetCalFresh service cut food aid applications from 45 minutes to under 10."
+      "Its GetCalFresh service cut food aid applications from 45 minutes to under 10.",
+      "Its Adopt a Hydrant app let Boston neighbors claim fire hydrants to dig out after snowstorms."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Code_for_America",

@@ -75,7 +75,8 @@
     "lore": "Peter Thiel, Ken Howery and Luke Nosek founded Founders Fund in 2005. It was the first institutional investor in SpaceX and Palantir and an early backer of Facebook. The firm works out of One Letterman Drive in the Presidio, on the same campus as Lucasfilm.",
     "facts": [
       "Its manifesto once carried the line: We wanted flying cars, instead we got 140 characters.",
-      "In 2018 the firm reportedly returned $4.60 per dollar invested."
+      "In 2018 the firm reportedly returned $4.60 per dollar invested.",
+      "Its first fund was $50 million, and Peter Thiel put in $38 million of it."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Founders_Fund",
@@ -92,10 +93,12 @@
     "at": { "lat": 37.78544, "lon": -122.39802 },
     "year": 2000,
     "blurb": "A Cambridge venture firm with a 20th floor perch on Hawthorne Street.",
-    "lore": "Joel Cutler and David Fialkow founded General Catalyst in Massachusetts in 2000. It backed Airbnb, Stripe, Anthropic and Samsara, and its San Francisco office is on the 20th floor of 75 Hawthorne Street.",
+    "lore": "Joel Cutler and David Fialkow founded General Catalyst in Massachusetts in 2000. It backed Airbnb, Stripe, Anthropic and Samsara, and its San Francisco office is on the 20th floor of 75 Hawthorne Street. Under CEO Hemant Taneja it grew into a giant, announcing $8 billion in new funds in October 2024, its largest raise yet.",
     "facts": [
       "General Catalyst bought Summa Health, an Ohio hospital network, for $485 million.",
-      "The firm is still headquartered in Cambridge, Massachusetts."
+      "The firm is still headquartered in Cambridge, Massachusetts.",
+      "PitchBook ranked it the most active VC investor from 2020 to October 2023.",
+      "After Silicon Valley Bank failed in March 2023, it organized a statement backing the bank signed by more than 110 VC firms."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/General_Catalyst",
@@ -115,7 +118,9 @@
     "lore": "Bill Elfers and Dan Gregory founded Greylock in Cambridge, Massachusetts in 1965, one of the oldest venture firms still investing. It moved its headquarters to Silicon Valley in 2009 and backed Facebook, Zynga and Flickr. Its San Francisco office is Suite 2600 at 140 New Montgomery, the old Pacific Telephone building.",
     "facts": [
       "LinkedIn co-founder Reid Hoffman is a Greylock partner.",
-      "Benchmark also lists 140 New Montgomery as its headquarters, and Yelp used to work here too."
+      "Benchmark also lists 140 New Montgomery as its headquarters, and Yelp used to work here too.",
+      "Its first $10 million came from six families.",
+      "It did not open a Silicon Valley office until 1999, 34 years after its founding."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Greylock_Partners",
@@ -154,7 +159,8 @@
     "lore": "Barry Eggers, Christopher Schaepe, Ravi Mhatre and Peter Nieh, who had studied at Stanford together, founded Lightspeed in 2000. It led early rounds in Nest and MuleSoft, and in 2012 became Snapchat's first venture investor. Its San Francisco office is at 2 South Park.",
     "facts": [
       "Lightspeed was Snap's fourth-largest shareholder at its 2017 IPO.",
-      "Google bought Lightspeed-backed Nest for $3.2 billion."
+      "Google bought Lightspeed-backed Nest for $3.2 billion.",
+      "Lightspeed was the seed investor in Paris AI lab Mistral AI."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Lightspeed_Venture_Partners",
@@ -170,9 +176,11 @@
     "at": { "lat": 37.78014, "lon": -122.40611 },
     "year": 2011,
     "blurb": "A seed fund started by a Reddit co-founder and two YC alumni.",
-    "lore": "Alexis Ohanian, Harj Taggar and Garry Tan founded Initialized Capital in 2011 to write early checks into software startups. Its San Francisco office is listed at 464 Tehama Street in SoMa.",
+    "lore": "Alexis Ohanian, Harj Taggar and Garry Tan founded Initialized Capital in 2011 to write early checks into software startups. Tan left Y Combinator in 2015 to run it full time, then went back in 2022 to become YC's CEO. Its San Francisco office is listed at 464 Tehama Street in SoMa.",
     "facts": [
-      "Co-founder Alexis Ohanian also co-founded Reddit in Y Combinator's first batch."
+      "Co-founder Alexis Ohanian also co-founded Reddit in Y Combinator's first batch.",
+      "Its first fund was $7 million. Its sixth, in 2021, was $700 million.",
+      "Its seed bet on Coinbase was a $200,000 wire to founder Brian Armstrong."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Initialized_Capital",
@@ -189,9 +197,11 @@
     "at": { "lat": 37.78441, "lon": -122.40495 },
     "year": 2010,
     "blurb": "Formerly 500 Startups, an accelerator that backed thousands of companies.",
-    "lore": "Dave McClure and Christine Tsai founded 500 Startups in 2010 and renamed it 500 Global in 2021. It invested in more than 2,400 companies by 2021. Its San Francisco space took the entire sixth floor of 814 Mission Street.",
+    "lore": "Dave McClure and Christine Tsai founded 500 Startups in 2010 and renamed it 500 Global in 2021. Its first class of twelve startups moved into a Mountain View office in February 2011, and by October a class had 34. It invested in more than 2,400 companies by 2021. Its San Francisco space took the entire sixth floor of 814 Mission Street.",
     "facts": [
-      "The firm runs VC Unlocked, a course that teaches people how to be investors."
+      "The firm runs VC Unlocked, a course that teaches people how to be investors.",
+      "Its portfolio includes Canva, Udemy, Credit Karma and Twilio.",
+      "Google bought portfolio company Wildfire for $350 million, and Stratasys paid $403 million for MakerBot."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/500_Global",
@@ -209,11 +219,15 @@
     "blurb": "Raised the biggest debut fund of its day, now on Maiden Lane.",
     "lore": "Redpoint was founded in 1999 by investors behind Juniper Networks and Netflix and raised a $600 million first fund, the largest first-time fund for a new firm at the time. It backed Snowflake, Twilio and Stripe. Its San Francisco office is listed at 27 Maiden Lane off Union Square.",
     "facts": [
-      "Redpoint counts more than 130 IPOs and acquisitions among its companies."
+      "Redpoint counts more than 130 IPOs and acquisitions among its companies.",
+      "It was codenamed Project T-Rex until September 1999, then named itself after a climbing term for leading a hard route without falling.",
+      "Co-founder Tim Haley joined Netflix's board in June 1998, back when Netflix mailed DVDs."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Redpoint_Ventures",
-      "https://www.privateequityinternational.com/institution-profiles/redpoint-ventures.html"
+      "https://www.privateequityinternational.com/institution-profiles/redpoint-ventures.html",
+      "https://web.archive.org/web/20060328055940/http://www.roeder-johnson.com/RJDocs/RPNewName.html",
+      "https://www.sec.gov/Archives/edgar/data/1065280/000106528013000017/a2012proxy.htm"
     ]
   },
   {
@@ -225,15 +239,17 @@
     "at": { "lat": 37.77978, "lon": -122.39134 },
     "year": 1996,
     "blurb": "A Geneva venture firm that opened a San Francisco office in 2011.",
-    "lore": "Neil Rimer, David Rimer and Giuseppe Zocco founded Index Ventures in Geneva in 1996. It opened a San Francisco office in 2011 and is listed at 139 Townsend Street, a block from Andreessen Horowitz.",
+    "lore": "Neil Rimer, David Rimer and Giuseppe Zocco founded Index Ventures in Geneva in 1996. Its roots go back further, to Index Securities, a Swiss bond-trading firm Neil's father Gerald Rimer started in 1976. It opened a San Francisco office in 2011 and is listed at 139 Townsend Street, a block from Andreessen Horowitz.",
     "facts": [
       "In 2016 Index spun its life sciences business out as Medicxi.",
-      "Index raised $3.1 billion across new funds in 2021."
+      "Index raised $3.1 billion across new funds in 2021.",
+      "Index backed Wiz from its 2020 seed round, and Google later agreed to buy Wiz for $32 billion."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Index_Ventures",
       "https://craft.co/index-ventures",
-      "https://techcrunch.com/?p=448766"
+      "https://techcrunch.com/?p=448766",
+      "https://www.gunder.com/en/news-insights/client-news/gunderson-dettmer-representing-principal-investor-index-ventures-in-wiz-acquisition-by-google"
     ]
   }
 ]

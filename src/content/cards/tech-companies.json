@@ -299,11 +299,14 @@
     "lore": "Notion Labs was started in San Francisco in 2013 by a team that included Ivan Zhao and Simon Last. Money was tight early on, and Notion 1.0 did not ship until August 2016, when tech enthusiasts picked it up fast. The company is based at 2300 Harrison Street in the Mission.",
     "facts": [
       "In May 2020 Notion removed the 1,000-block cap on free accounts.",
-      "Notion raised a seed round of about $2 million before shipping 1.0."
+      "Notion raised a seed round of about $2 million before shipping 1.0.",
+      "Nearly broke, Zhao and Last moved to Kyoto, less than half as expensive as San Francisco, and rebuilt the app from scratch.",
+      "When Notion 2.0 launched in March 2018 the company had fewer than 10 employees."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Notion_(productivity_software)",
-      "https://craft.co/notion-labs"
+      "https://craft.co/notion-labs",
+      "https://sequoiacap.com/article/notion-spotlight"
     ]
   },
   {
@@ -401,7 +404,8 @@
     "lore": "Apoorva Mehta had started many companies before Instacart, which he founded in 2012 with Max Mullen and Brandon Leonardo. He missed Y Combinator's deadline, so he used the app to deliver a six-pack from 21st Amendment Brewery to a YC partner, got a meeting, and joined the Summer 2012 batch. The company's headquarters is 50 Beale Street.",
     "facts": [
       "Its legal name is Maplebear: maple for Canada, bear for the California flag.",
-      "YC helped Instacart raise $2.3 million after the batch."
+      "YC helped Instacart raise $2.3 million after the batch.",
+      "Fidji Simo ran Instacart from 2021 until 2025, when she left for a top job at OpenAI."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Instacart"
@@ -419,7 +423,8 @@
     "lore": "Stanford students Tony Xu, Andy Fang, Stanley Tang and Evan Moore launched PaloAltoDelivery.com in January 2013 and incorporated as DoorDash that June. Y Combinator put in $120,000 for 7% that summer. DoorDash leases the eighth floor of the South Tower at 303 Second Street, a few floors above Reddit.",
     "facts": [
       "In 2021 DoorDash bought Chowbotics, a salad-making robot company.",
-      "Evan Moore is sometimes called the forgotten fourth co-founder."
+      "Evan Moore is sometimes called the forgotten fourth co-founder.",
+      "In 2019 DoorDash bought Caviar, the delivery app for upscale restaurants, from Square for $410 million."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/DoorDash",
@@ -438,11 +443,13 @@
     "lore": "Former PayPal employees Jeremy Stoppelman and Russel Simmons started Yelp in October 2004 at MRL Ventures, with $1 million from Max Levchin. Stoppelman had the flu and struggled to find a doctor recommendation online. The first version was an email referral network, but users loved writing reviews. Yelp spent years in the old PacBell Building at 140 New Montgomery before moving to 350 Mission Street in 2021.",
     "facts": [
       "In 2009 Google reportedly offered about $500 million for Yelp, then Yahoo offered $1 billion. Neither deal happened.",
-      "Yelp bought Eat24 for $134 million and sold it to Grubhub two years later for $287.5 million."
+      "Yelp bought Eat24 for $134 million and sold it to Grubhub two years later for $287.5 million.",
+      "A 2011 Harvard Business School study of Seattle restaurants found one extra Yelp star lifted revenue by 5 to 9 percent."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Yelp",
-      "https://www.nbcbayarea.com/news/local/yelp-moves-into-new-historical-digs/2072708/"
+      "https://www.nbcbayarea.com/news/local/yelp-moves-into-new-historical-digs/2072708/",
+      "https://www.harvardmagazine.com/2011/10/hbs-study-finds-positive-yelp-reviews-lead-to-increased-business"
     ]
   },
   {
@@ -539,11 +546,15 @@
     "lore": "Kyle Vogt and Dan Kan founded Cruise in 2013 and went through Y Combinator. General Motors bought it in 2016, and in 2019 it signed leases at 301, 333 and 345 Brannan Street. After an October 2023 crash, California suspended its driverless permits. GM stopped funding robotaxis in December 2024 and folded Cruise into GM in 2025.",
     "facts": [
       "Cruise reported its cars asked for remote help about every 4 to 5 miles in dense city driving.",
-      "Federal regulators fined Cruise $1.5 million in 2024 over crash reporting."
+      "Federal regulators fined Cruise $1.5 million in 2024 over crash reporting.",
+      "Co-founder Kyle Vogt left MIT to help build Justin.tv, which became Twitch, and competed on BattleBots.",
+      "In July 2023 activists stalled Cruise and Waymo cars by setting traffic cones on their hoods."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)",
-      "https://sfstandard.com/2024/04/22/cruise-soma-building-sublease"
+      "https://sfstandard.com/2024/04/22/cruise-soma-building-sublease",
+      "https://en.wikipedia.org/wiki/Kyle_Vogt",
+      "https://techcrunch.com/2023/07/06/robotaxi-haters-in-san-francisco-are-disabling-waymo-cruise-traffic-cones/"
     ]
   },
   {
@@ -576,14 +587,17 @@
     "at": { "lat": 37.79231, "lon": -122.39331 },
     "year": 2008,
     "blurb": "Phone calls as an API. Developers fell in love.",
-    "lore": "Jeff Lawson, Evan Cooke and John Wolthuis founded Twilio in 2008. Its first product, Twilio Voice, launched on November 20, 2008 as an API to make and receive phone calls hosted in the cloud. The company is headquartered at 101 Spear Street.",
+    "lore": "Jeff Lawson, Evan Cooke and John Wolthuis founded Twilio in 2008. Its first product, Twilio Voice, launched on November 20, 2008 as an API to make and receive phone calls hosted in the cloud. Developers did the selling: the group texting app GroupMe was built on Twilio at a 2010 TechCrunch Disrupt hackathon. The company is headquartered at 101 Spear Street.",
     "facts": [
       "Twilio's stock rose 92% on its first trading day in 2016.",
-      "Twilio bought email service SendGrid in a deal announced at $2 billion."
+      "Twilio bought email service SendGrid in a deal announced at $2 billion.",
+      "Lawson stepped down as CEO in January 2024, and that April he bought The Onion.",
+      "Twilio bought customer data company Segment for $3.2 billion in 2020."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Twilio",
-      "https://finance.yahoo.com/quote/TWLO/profile"
+      "https://finance.yahoo.com/quote/TWLO/profile",
+      "https://techcrunch.com/2024/04/26/area-man-twilio-co-founder-jeff-lawson-buys-the-onion"
     ]
   },
   {
@@ -598,7 +612,9 @@
     "lore": "Former NASA scientists Chris Boshuizen, Will Marshall and Robbie Schingler founded the company as Cosmogia in December 2010. Its Dove satellites are tiny CubeSats that image the planet from about 400 km up. Planet is headquartered at 645 Harrison Street.",
     "facts": [
       "Each Dove weighs about 4 kg and measures 10 by 10 by 30 cm.",
-      "A Dove is roughly 1,000 times lighter than other commercial imaging satellites."
+      "A Dove is roughly 1,000 times lighter than other commercial imaging satellites.",
+      "In 2014 Planet lost 26 Doves at once when an Antares rocket exploded seconds after liftoff.",
+      "In 2017 Google sold Planet its SkySat satellites and took a stake in the company as part of the deal."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Planet_Labs",
@@ -617,7 +633,9 @@
     "lore": "Joshua Reeves, Tomer London and Edward Kim founded ZenPayroll in 2011, went through Y Combinator's Winter 2012 batch and renamed the company Gusto in 2015. Its headquarters at 525 20th Street is one of the arched brick Pier 70 buildings that once made steel and iron parts for ships, right across the street from Y Combinator.",
     "facts": [
       "Gusto shares its brick shipyard buildings with satellite maker Astranis.",
-      "Gusto passed $1 billion in annual revenue by early 2026."
+      "Gusto passed $1 billion in annual revenue by early 2026.",
+      "ZenPayroll launched on December 11, 2012, and at first only worked in California.",
+      "Box CEO Aaron Levie was one of its early investors."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Gusto_(company)",
@@ -637,7 +655,9 @@
     "lore": "John Gedmark and Ryan McLinko founded Astranis in October 2015 and went through Y Combinator in Winter 2016. It builds small geostationary communications satellites inside a brick Pier 70 shipyard building that once belonged to Union Iron Works and later Bethlehem Steel, across 20th Street from Y Combinator. The yard built battleships and submarines in both World Wars.",
     "facts": [
       "Its first test satellite, launched in 2018, weighed under 3 kg.",
-      "The Arcturus satellite tested at up to 8.5 Gbit/s, above its 7.5 Gbit/s design spec."
+      "The Arcturus satellite tested at up to 8.5 Gbit/s, above its 7.5 Gbit/s design spec.",
+      "Arcturus was built to add internet capacity for Alaska.",
+      "On December 29, 2024 four Astranis satellites rode one Falcon 9 straight to geostationary orbit."
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Astranis",

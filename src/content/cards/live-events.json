@@ -48,7 +48,7 @@
     "neighborhood": "Nob Hill",
     "year": 1873,
     "blurb": "You flew right up to a running cable car.",
-    "lore": "The cars have no motors. A grip under the floor clamps onto a steel cable that runs under the street, pulled by the winding machinery in the Washington-Mason powerhouse, which is also the Cable Car Museum.",
+    "lore": "The cars have no motors. A grip under the floor clamps onto a steel cable that runs under the street, pulled by the winding machinery in the Washington-Mason powerhouse, which is also the Cable Car Museum. In 1947, with buses cheaper to run, Mayor Roger Lapham wanted every line gone, so Friedel Klussmann founded the Citizens' Committee to Save the Cable Cars.",
     "facts": [
       "Andrew Smith Hallidie tested the first cable car at 4 a.m. on August 2, 1873, on Clay Street.",
       "Three lines run today: Powell-Hyde, Powell-Mason and California Street.",
@@ -56,7 +56,7 @@
     ],
     "sources": [
       "https://www.sfmta.com/getting-around/muni/cable-cars/cable-car-history",
-      "http://www.cablecarmuseum.org/"
+      "https://www.cablecarmuseum.org/"
     ]
   },
   {
@@ -71,7 +71,7 @@
     },
     "year": 1898,
     "blurb": "You flew alongside a ferry crossing the bay.",
-    "lore": "Ferries to Sausalito, Larkspur, Tiburon, Oakland, Alameda, Vallejo and Richmond still run from the Ferry Building, a reminder that before the bridges the bay was crossed by boat.",
+    "lore": "Ferries to Sausalito, Larkspur, Tiburon, Oakland, Alameda, Vallejo and Richmond still run from the Ferry Building, a reminder that before the bridges the bay was crossed by boat. Back then it was the second busiest transit terminal in the world, behind only London's Charing Cross Station.",
     "facts": [
       "The Ferry Building opened on July 13, 1898.",
       "Its steel frame came through both the 1906 and 1989 earthquakes with little damage.",
@@ -90,7 +90,7 @@
     "rarity": "rare",
     "neighborhood": "Everywhere",
     "blurb": "You flew through real San Francisco fog, driven by the live weather.",
-    "lore": "San Franciscans call the summer fog Karl. It forms when moist ocean air crosses cold water that has welled up from the deep along the coast, then pours through the Golden Gate, the only full break in the Coast Range.",
+    "lore": "San Franciscans call the summer fog Karl. It forms when moist ocean air crosses cold water that has welled up from the deep along the coast, then pours through the Golden Gate, the only full break in the Coast Range. When the Central Valley bakes, its rising air sucks Karl inland through the Gate, at peak an estimated million tons of water an hour.",
     "facts": [
       "Summer winds push surface water offshore and draw colder water up from below, and air crossing that cold water condenses into fog.",
       "Upwelled water can run 10 to 15 degrees colder than the sun-warmed surface.",
