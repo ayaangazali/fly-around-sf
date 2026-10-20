@@ -29,7 +29,7 @@
 .map-pin::after { background: #fff; }
 .map-wp[hidden], .map-pin[hidden] { display: none; }
 .map-scale { position: absolute; left: 12px; bottom: 12px; height: 18px; border: 2px solid rgba(255, 255, 255, 0.8); border-top: 0; font: 600 11px var(--mono); color: #fff; text-align: center; line-height: 12px; text-shadow: 0 1px 2px #000; pointer-events: none; }
-.map-tools { position: absolute; right: 10px; top: 10px; display: grid; gap: 6px; }
+.map-tools { position: absolute; right: 10px; top: 10px; display: grid; gap: 6px; z-index: 3; }
 .map-tool { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--glass-strong); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 18px; font-weight: 700; }
 .map-tool:hover { background: rgba(40, 50, 62, 0.95); }
 .map-card { position: absolute; left: 12px; top: 12px; width: min(340px, calc(100% - 80px)); padding: 14px 16px; border-radius: 16px; background: var(--glass-strong); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45); animation: card-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.1); cursor: default; z-index: 4; }

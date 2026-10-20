@@ -1,4 +1,28 @@
+import type { Page } from '@playwright/test';
 import { test, expect, boot } from './fixtures';
+
+async function trail(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const g = window.__fly.game;
+    if (!g.activities.list().some((d) => d.kind === 'trail')) {
+      const spots: [number, number, string][] = [
+        [37.7955, -122.3937, 'Ferry Building'],
+        [37.76082, -122.38604, 'Y Combinator'],
+        [37.8024, -122.4058, 'Coit Tower'],
+        [37.7694, -122.4862, 'Golden Gate Park'],
+      ];
+      g.activities.register(
+        [{ kind: 'trail', label: 'Founder Trail', icon: '★', validate: () => [], start: () => ({ update: () => 'running', progress: () => 0, hud: () => '' }), solve: () => [] }],
+        spots.map(([lat, lon, title], i) => ({ id: `trail-e2e-${i + 1}`, kind: 'trail', title, blurb: 'A stop.', neighborhood: 'SF', at: { lat, lon }, params: { order: i + 1 } })),
+      );
+    }
+    return g.activities
+      .list()
+      .filter((d) => d.kind === 'trail')
+      .sort((a, b) => Number(a.params?.order) - Number(b.params?.order))
+      .map((d) => d.id);
+  });
+}
 
 test.describe('map and waypoints', () => {
   test('[R-MAP] the map draws the city, the player and every mappable activity, and sets a waypoint', async ({ page }) => {
@@ -91,22 +115,15 @@ test.describe('map and waypoints', () => {
     await expect(wp.locator('.wp-label')).toBeHidden();
   });
 
-  test('[R-MAP] a marker sitting under the map tools can still be tapped @touch', async ({ page }) => {
+  test('[R-MAP] the map tools stay above markers, so Zoom out over a stop zooms out @touch', async ({ page }) => {
     await boot(page);
-    const id = await page.evaluate(() => {
-      const g = window.__fly.game;
-      const d = (a: { id: string }) => {
-        const q = g.activities.position(g.activities.defs.get(a.id)!);
-        return Math.hypot(q.x - g.flight.pos.x, q.z - g.flight.pos.z);
-      };
-      return window.__fly.activities().filter((a) => a.kind !== 'achievement' && !a.hidden).sort((a, b) => d(a) - d(b))[0].id;
-    });
+    const [id] = await trail(page);
     await page.evaluate(() => window.__fly.game.panels.open('map'));
-    const wrap = (await page.locator('.map-wrap').boundingBox())!;
-    const center = page.getByRole('button', { name: 'Center on my drone' });
-    const tool = (await center.boundingBox())!;
-    for (let i = 0; i < 6; i++) await page.getByRole('button', { name: 'Zoom in' }).click();
+    for (let i = 0; i < 14; i++) await page.getByRole('button', { name: 'Zoom in' }).click();
     await expect(page.locator('.map-scale')).toHaveText(/^(10|20) m$/);
+    const wrap = (await page.locator('.map-wrap').boundingBox())!;
+    const zoomOut = page.getByRole('button', { name: 'Zoom out' });
+    const tool = (await zoomOut.boundingBox())!;
     const scale = 3;
     await page.evaluate(
       ({ id, dx, dz }) => {
@@ -116,7 +133,7 @@ test.describe('map and waypoints', () => {
       },
       { id, dx: (tool.x + tool.width / 2 - wrap.x - wrap.width / 2) / scale, dz: (tool.y + tool.height / 2 - wrap.y - wrap.height / 2) / scale },
     );
-    await center.click();
+    await page.getByRole('button', { name: 'Center on my drone' }).click();
     const marker = page.locator(`.map-marker[data-activity="${id}"]`);
     await expect
       .poll(async () => {
@@ -124,8 +141,12 @@ test.describe('map and waypoints', () => {
         return m ? Math.hypot(m.x + m.width / 2 - tool.x - tool.width / 2, m.y + m.height / 2 - tool.y - tool.height / 2) : Infinity;
       })
       .toBeLessThan(tool.width / 2);
-    await marker.click();
-    await expect(page.locator('.map-card')).toHaveAttribute('data-activity', id);
+    const top = await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.closest('button')?.getAttribute('aria-label'), { x: tool.x + tool.width / 2, y: tool.y + tool.height / 2 });
+    expect(top).toBe('Zoom out');
+    const before = await page.locator('.map-scale').textContent();
+    await zoomOut.click();
+    await expect(page.locator('.map-scale')).not.toHaveText(before!);
+    await expect(page.locator('.map-card')).toBeHidden();
   });
 
   test('[R-MAP] panning a zoomed-in map only blits cached tiles', async ({ page }) => {
