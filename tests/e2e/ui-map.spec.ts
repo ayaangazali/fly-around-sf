@@ -31,12 +31,11 @@ test.describe('map and waypoints', () => {
     await page.getByRole('button', { name: 'Center on my drone' }).click();
 
     const kind = await page.locator('.chip[data-kind]').first().getAttribute('data-kind');
+    const shown = () => page.locator('.map-marker').evaluateAll((n, k) => n.filter((b) => b.checkVisibility() && window.__fly.game.activities.defs.get((b as HTMLElement).dataset.activity!)!.kind === k).length, kind);
+    await expect.poll(shown).toBeGreaterThan(0);
     await page.locator(`.chip[data-kind="${kind}"]`).click();
     await expect(page.locator(`.chip[data-kind="${kind}"]`)).toHaveAttribute('aria-pressed', 'false');
-    for (const m of await page.locator('.map-marker').all()) {
-      const k = await m.evaluate((b) => window.__fly.game.activities.defs.get((b as HTMLElement).dataset.activity!)!.kind);
-      if (k === kind) await expect(m).toBeHidden();
-    }
+    await expect.poll(shown).toBe(0);
     await page.locator(`.chip[data-kind="${kind}"]`).click();
 
     const marker = page.locator('.map-marker:visible').first();
