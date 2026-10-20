@@ -33,6 +33,7 @@ export class NetView {
   private ringKey = '';
   private aura: THREE.Mesh;
   private v = new THREE.Vector3();
+  private boxes: { x: number; top: number; w: number; h: number }[] = [];
   private beamGeo = new THREE.CylinderGeometry(0.9, 0.9, 420, 10, 1, true);
   private ringGeo = new THREE.RingGeometry(5, 7.5, 40);
   private raceGeo = new THREE.TorusGeometry(12, 0.7, 10, 48);
@@ -219,17 +220,25 @@ export class NetView {
     }
     const off = behind || Math.abs(x) > 1 || Math.abs(y) > 1;
     node.hidden = false;
+    const nw = node.offsetWidth;
+    const nh = node.offsetHeight;
     let px = ((x + 1) / 2) * w;
     let py = ((1 - y) / 2) * h;
     if (off) {
       const m = Math.max(Math.abs(x), Math.abs(y)) || 1;
       px = ((x / m + 1) / 2) * w;
       py = ((1 - y / m) / 2) * h;
-      const hw = node.offsetWidth / 2 + EDGE;
+      const hw = nw / 2 + EDGE;
       px = Math.min(w - hw, Math.max(hw, px));
-      py = Math.min(h - BOTTOM_EDGE, Math.max(node.offsetHeight + EDGE + 48, py));
+      py = Math.min(h - BOTTOM_EDGE, Math.max(nh + EDGE + 48, py));
       node.style.setProperty('--dir', `${Math.atan2(-y, x).toFixed(3)}rad`);
     }
+    const base = off ? py - nh / 2 : py - nh - 12;
+    let top = base;
+    let hit: (typeof this.boxes)[number] | undefined;
+    while ((hit = this.boxes.find((b) => Math.abs(b.x - px) < (b.w + nw) / 2 && top < b.top + b.h && b.top < top + nh))) top = hit.top - nh - 2;
+    this.boxes.push({ x: px, top, w: nw, h: nh });
+    py += top - base;
     node.classList.toggle('edge', off);
     node.style.transform = `translate(${px.toFixed(1)}px, ${py.toFixed(1)}px) translate(-50%, ${off ? '-50%' : 'calc(-100% - 12px)'})`;
     node.style.setProperty('--fade', String(Math.max(0.35, 1 - Math.max(0, d - 800) / 2200)));
@@ -242,6 +251,7 @@ export class NetView {
     if (this.layer.hidden || (!this.remotes.size && !this.pings.size)) return;
     const me = this.game.flight.pos;
     const m = this.net.match;
+    this.boxes = [];
     const imperial = this.game.save.data.settings.units === 'imperial';
     for (const [id, r] of this.remotes) {
       const p = this.net.peers.get(id);

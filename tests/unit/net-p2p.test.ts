@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import type { Transport, TransportHandlers } from '../../src/net/transport';
-import { JOIN_GRACE_MS, Net, UNREACHABLE_MS } from '../../src/net/session';
+import { JOIN_GRACE_MS, Net, SPREAD, UNREACHABLE_MS } from '../../src/net/session';
+import { DRONE_COLORS } from '../../src/ui/settings-model';
 import { Voice } from '../../src/net/voice';
 import { CODE_ALPHABET, CODE_LENGTH, makeCode, parse } from '../../src/net/protocol';
 import { FakeCtx, netGame } from './net-helpers';
@@ -293,6 +294,36 @@ describe('net session over the P2P transport', () => {
       h.message({ t: 'hi', name, color: '#f2f2ee' }, id);
     }
     expect(net.visiblePeers().map((p) => p.name)).toEqual(['Ana', '\u0420\u0456lot-1878 (cyri)', '\u{1d40f}ilot\u20101878 (bold)', 'PiIot 1878 (caps)', '\u0391n\u03b1 (grek)', 'Paula']);
+    net.leave();
+  });
+
+  it('[R-V2-NET-SPAWN] pilots stacked on one spot spread apart once, only the larger id moves, and new pilots get a random swatch color', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    const game = await netGame();
+    delete game.save.data.settings.droneColor;
+    const net = new Net(game, 'p2p');
+    expect(game.save.data.settings.droneColor).toBe(DRONE_COLORS.at(-1));
+    expect(await net.join('SPAWN'.padEnd(16, 'X'))).toBe(true);
+    const h = fake.h!;
+    const here = () => ({ ...game.flight.pos });
+    const at = (p: { x: number; y: number; z: number }) => [p.x, p.y, p.z];
+    const start = here();
+    h.join('zz');
+    h.message({ t: 'hi', name: 'Zed', color: '#ff7eb6' }, 'zz');
+    h.message({ t: 'st', p: at(start), v: [0, 0, 0], y: 0, m: 0 }, 'zz');
+    expect(here()).toEqual(start);
+    h.join('aa');
+    h.message({ t: 'hi', name: 'Abe', color: '#5ec8ff' }, 'aa');
+    h.message({ t: 'st', p: at(start), v: [0, 0, 0], y: 0, m: 0 }, 'aa');
+    expect(Math.hypot(here().x - start.x, here().z - start.z)).toBeCloseTo(SPREAD, 5);
+    expect(here().y).toBe(start.y);
+    const moved = here();
+    h.message({ t: 'st', p: at(moved), v: [0, 0, 0], y: 0, m: 0 }, 'aa');
+    h.join('ab');
+    h.message({ t: 'hi', name: 'Bea', color: '#7de0a6' }, 'ab');
+    game.flight.vel = { x: 30, y: 0, z: 0 };
+    h.message({ t: 'st', p: at(moved), v: [0, 0, 0], y: 0, m: 0 }, 'ab');
+    expect(here()).toEqual(moved);
     net.leave();
   });
 });

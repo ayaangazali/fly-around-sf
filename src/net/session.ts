@@ -1,12 +1,12 @@
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
 import { cleanColor, cleanText, encode, wireVec, LIMITS, makeCode, normalizeCode, parse, RateLimiter, skeleton, DEFAULT_COLOR, UID, type Mic, type ModeId, type Msg } from './protocol';
-import { approach, approachAngle, predict, voiceVolume } from './math';
+import { approach, approachAngle, distance, predict, voiceVolume } from './math';
 import { openTransport, randomId, type Transport, type TransportKind } from './transport';
 import { Voice, type VoiceResult } from './voice';
 import { Match, MODES, type MatchEnv } from './modes';
 import { DeviceSync } from './sync';
-import { randomPilotName } from '../ui/settings-model';
+import { DRONE_COLORS, randomPilotName } from '../ui/settings-model';
 
 export type NetStatus = 'off' | 'connecting' | 'online' | 'unreachable';
 
@@ -58,6 +58,7 @@ export const SEND_HZ = 12;
 export const PING_SECONDS = 10;
 export const UNREACHABLE_MS = 9000;
 export const JOIN_GRACE_MS = 30_000;
+export const SPREAD = 12;
 const CHAT_KEEP = 60;
 
 export class Net {
@@ -93,6 +94,7 @@ export class Net {
     const s = game.save.data.settings;
     if (typeof s.playerName !== 'string' || !cleanText(s.playerName, LIMITS.name)) s.playerName = randomPilotName();
     if (typeof s.netId !== 'string' || !UID.test(s.netId)) s.netId = randomId();
+    if (typeof s.droneColor !== 'string') s.droneColor = DRONE_COLORS[Math.floor(Math.random() * DRONE_COLORS.length)];
     game.save.persist();
     game.save.onChange(() => {
       if (this.transport && this.hiKey() !== this.lastHi) this.sayHi();
@@ -340,6 +342,7 @@ export class Net {
         if (!p.sample) {
           p.pos = { ...m.p };
           p.yaw = m.yaw;
+          this.spread(p);
         }
         p.sample = { p: m.p, v: m.v, yaw: m.yaw, at: performance.now() };
         return;
@@ -355,6 +358,13 @@ export class Net {
       default:
         this.match?.onMessage(m, p.id);
     }
+  }
+
+  private spread(p: RemotePeer): void {
+    const f = this.game.flight;
+    if (!p.known || this.selfId < p.id || distance(f.pos, p.pos) > SPREAD / 2 || Math.hypot(f.vel.x, f.vel.y, f.vel.z) > 1) return;
+    const a = ([...this.selfId].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7) * Math.PI) / 180;
+    f.pos = { x: f.pos.x + Math.cos(a) * SPREAD, y: f.pos.y, z: f.pos.z + Math.sin(a) * SPREAD };
   }
 
   private greet(p: RemotePeer): void {

@@ -83,6 +83,29 @@ test('[R-NET-SAFE] a hostile peer cannot inject markup, spoof matches or flood t
   expect(await page.evaluate(() => (window as unknown as { __owned?: number }).__owned)).toBeUndefined();
 });
 
+test('[R-V2-NET-SPAWN] friends hovering on one spot get name tags that do not stack', async ({ page }) => {
+  await boot(page, 'net=local&room=STACKSTACKSTACKS');
+  const boxes = await page.evaluate(async () => {
+    const fly = window.__fly;
+    const f = fly.game.flight;
+    const ch = new BroadcastChannel('fly-around-sf:room-STACKSTACKSTACKS');
+    const send = (from: string, d: unknown) => ch.postMessage(JSON.stringify({ k: 'msg', from, d }));
+    const ahead = [f.pos.x - Math.sin(f.yaw) * 60, f.pos.y, f.pos.z - Math.cos(f.yaw) * 60];
+    for (const id of ['twin-a', 'twin-b', 'twin-c']) {
+      ch.postMessage(JSON.stringify({ k: 'hello', from: id }));
+      send(id, { t: 'hi', name: `Twin ${id.slice(-1)}`, color: '#ff7eb6' });
+      send(id, { t: 'st', p: ahead, v: [0, 0, 0], y: 0, m: 0 });
+    }
+    await new Promise((r) => setTimeout(r, 300));
+    fly.step(0.5);
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    ch.close();
+    return [...document.querySelectorAll<HTMLElement>('.net-tag')].filter((t) => !t.hidden).map((t) => t.getBoundingClientRect().toJSON() as DOMRect);
+  });
+  expect(boxes).toHaveLength(3);
+  for (const [i, a] of boxes.entries()) for (const b of boxes.slice(i + 1)) expect(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top).toBe(true);
+});
+
 test.describe('touch @touch', () => {
   test('[R-NET-TOUCH] friends panel, room chip, ping and hold-to-talk fit a touch screen @touch', async ({ page }) => {
     await boot(page, 'net=local&room=TAP22TAP22TAP22T');
