@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { PanelHost, el, type Panel } from '../../src/ui/panel-host';
 import { segmented, slider, toggle, row } from '../../src/ui/controls';
 import { Bus } from '../../src/core/bus';
+import { Input } from '../../src/core/input';
 import type { Game } from '../../src/game';
 
 function host() {
@@ -46,6 +47,30 @@ describe('accessible sheets and controls', () => {
     key(last, 'Escape');
     expect(h.openId).toBeNull();
     expect(document.activeElement).toBe(opener);
+  });
+
+  it('[R-A11Y] Enter and Space reach the focused control instead of chatting or climbing', () => {
+    const { h, ui } = host();
+    const input = new Input(window);
+    const press = (target: HTMLElement, code: string) => {
+      const e = new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true });
+      target.dispatchEvent(e);
+      return e;
+    };
+    const hud = el('button', 'hud-prompt');
+    ui.append(hud);
+    press(hud, 'Enter');
+    expect(input.consume('chat')).toBe(false);
+    expect(press(hud, 'Space').defaultPrevented).toBe(true);
+    expect(input.flight().lift).toBe(1);
+    window.dispatchEvent(new Event('blur'));
+    h.open('demo');
+    const inside = h.sheet.querySelector('.a') as HTMLElement;
+    expect(press(inside, 'Space').defaultPrevented).toBe(false);
+    expect(press(inside, 'ArrowDown').defaultPrevented).toBe(false);
+    expect(input.flight()).toMatchObject({ forward: 0, lift: 0 });
+    press(document.body, 'Enter');
+    expect(input.consume('chat')).toBe(true);
   });
 
   it('[R-A11Y] segmented controls are radio groups driven by arrow keys', () => {

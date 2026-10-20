@@ -1,4 +1,4 @@
-.photo-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 20px; display: grid; place-items: center; pointer-events: auto; transition: background 0.15s, box-shadow 0.2s; }
+.photo-btn { position: absolute; right: max(12px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 20px; display: grid; place-items: center; pointer-events: auto; transition: background 0.15s, box-shadow 0.2s; }
 .photo-btn:hover { background: var(--glass-strong); }
 .vf-open .photo-btn, .vf-open .hud-stats, .vf-open .hud-prompt { visibility: hidden; }
 
@@ -71,7 +71,7 @@
 .results-note[hidden] { display: none; }
 .results-actions { display: flex; gap: 8px; }
 .results-actions button { min-height: 40px; padding: 8px 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); font-weight: 650; }
-.results-actions .results-retry { background: var(--accent); border-color: transparent; color: #fff; }
+.results-actions .results-retry { background: var(--accent); border-color: transparent; color: #1d1a14; }
 .results-actions kbd { background: rgba(0, 0, 0, 0.2); }
 .results-busy .results-actions kbd { display: none; }
 

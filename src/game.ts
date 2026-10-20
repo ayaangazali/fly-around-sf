@@ -251,8 +251,9 @@ export class Game {
     if (!this.loaded) return;
     this.simTime += dt;
     this.handleActions();
-    const input = this.panels.openId ? { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false } : this.input.flight();
-    const res = stepFlight(this.flight, input, dt, this.env);
+    const open = !!this.panels.openId;
+    const input = open ? { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false } : this.input.flight();
+    const res = stepFlight(this.flight, input, dt, open ? { ...this.env, wind: undefined } : this.env);
     this.throttle = Math.abs(input.forward) + Math.abs(input.lift) + Math.abs(input.strafe);
     const st = this.save.data.stats;
     st.flightTime += dt;

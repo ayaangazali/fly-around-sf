@@ -21,6 +21,7 @@ test.describe('title screen', () => {
     await page.getByRole('radio', { name: 'Drone color #7de0a6' }).click();
     await expect(page.getByRole('radio', { name: 'Drone color #7de0a6' })).toHaveAttribute('aria-checked', 'true');
     await expect(page.locator('.title-btn[data-action="continue"]')).toHaveCount(0);
+    await expect(page.locator('.title-credit')).toContainText('OpenStreetMap contributors');
     const axe = await new AxeBuilder({ page }).include('#loading').analyze();
     expect(axe.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => v.id)).toEqual([]);
     await page.locator('.title-btn[data-action="start"]').click();
@@ -53,6 +54,24 @@ test.describe('title screen', () => {
     await expect(page.getByRole('textbox', { name: 'Pilot name' })).toBeFocused();
     await page.locator('.title-btn[data-action="start"]').click();
     await onStep(page, 'forward');
+  });
+
+  test('[R-HOLD] nothing happens behind the title: the HUD is out of reach and the first card waits for Start', async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.route(/^https?:\/\/(?!127\.0\.0\.1)/, (r) => r.abort());
+    await page.goto('./?cityRadius=1500&quality=low');
+    await expect(page.locator('.title-menu')).toBeVisible({ timeout: 180_000 });
+    await page.waitForTimeout(1500);
+    expect(await page.evaluate(() => JSON.parse(localStorage.getItem('fly-around-sf:save') ?? '{}').cards)).toEqual([]);
+    await expect(page.locator('.reveal')).toHaveCount(0);
+    for (let i = 0; i < 8; i++) {
+      await page.keyboard.press('Tab');
+      expect(await page.evaluate(() => !!document.activeElement?.closest('#ui'))).toBe(false);
+    }
+    await page.locator('.title-btn[data-action="start"]').focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.reveal')).toBeVisible();
+    await expect(page.locator('.toast', { hasText: 'to chat' })).toHaveCount(0);
   });
 
   test('[R-TITLE] a share link with a room offers Join friends first', async ({ page }) => {
@@ -103,6 +122,36 @@ test.describe('onboarding', () => {
     await page.locator('.title-btn.primary').click();
     await page.waitForTimeout(500);
     await expect(page.locator('.onboard')).toHaveCount(0);
+  });
+
+  test('[R-ONBOARD] at spawn the tutorial, the activity prompt and the drone never cover each other @touch', async ({ page }) => {
+    await boot(page, 'title');
+    await page.locator('.title-btn[data-action="start"]').click();
+    await onStep(page, 'forward');
+    const layout = () =>
+      page.evaluate(async () => {
+        window.__fly.step(0.1);
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+        const g = window.__fly.game;
+        const box = (s: string) => {
+          const e = document.querySelector(s);
+          const r = e?.getBoundingClientRect();
+          return r && r.width > 0 ? { l: r.left, t: r.top, r: r.right, b: r.bottom } : null;
+        };
+        const Vec = g.camera.position.constructor as new (x: number, y: number, z: number) => { project(c: unknown): { x: number; y: number } };
+        const v = new Vec(g.flight.pos.x, g.flight.pos.y, g.flight.pos.z).project(g.camera);
+        return { card: box('.onboard'), prompt: box('.hud-prompt'), drone: { x: ((v.x + 1) / 2) * innerWidth, y: ((1 - v.y) / 2) * innerHeight }, W: innerWidth };
+      });
+    type Box = { l: number; t: number; r: number; b: number } | null;
+    const meet = (a: Box, b: Box) => !!a && !!b && a.l < b.r && b.l < a.r && a.t < b.b && b.t < a.b;
+    const first = await layout();
+    expect(first.card).not.toBeNull();
+    expect(meet(first.card, first.prompt)).toBe(false);
+    await page.getByRole('button', { name: 'Skip tutorial' }).click();
+    const { prompt, drone, W } = await layout();
+    expect(prompt).not.toBeNull();
+    expect(prompt!.r - prompt!.l).toBeGreaterThanOrEqual(Math.min(300, W - 90));
+    expect(meet(prompt, { l: drone.x - 20, t: drone.y - 20, r: drone.x + 20, b: drone.y + 20 })).toBe(false);
   });
 
   test('[R-ONBOARD] the tutorial can be skipped and replayed from settings', async ({ page }) => {

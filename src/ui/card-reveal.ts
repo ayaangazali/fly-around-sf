@@ -3,6 +3,7 @@ import { el } from './panel-host';
 import { cardFace, RARITY_LABEL } from './card-view';
 import { allCards, openCard } from './panels/dex';
 import { settingsOf } from './settings-model';
+import { isTouchDevice } from './touch';
 import type { CardDef } from '../content/types';
 
 export function installCardReveal(game: Game): void {
@@ -34,6 +35,7 @@ export function installCardReveal(game: Game): void {
     stage.append(flip);
     const caption = el('div', 'reveal-caption');
     caption.append(el('small', '', `New ${RARITY_LABEL[card.rarity].toLowerCase()} card`), el('strong', '', card.name), el('span', '', card.blurb));
+    if (game.save.data.cards[0] === card.id) caption.append(el('p', 'reveal-tip', `Your first card. Discover places and finish activities to fill your Collection (${isTouchDevice() ? 'tap 🃏' : 'press K'}).`));
     const actions = el('div', 'reveal-actions');
     const view = el('button', 'btn primary', 'View card');
     const keep = el('button', 'btn', 'Keep flying');

@@ -14,7 +14,12 @@ Fly a tiny drone around a 3D San Francisco built from all 172,368 real buildings
 | Space / Shift | up / down |
 | R (hold) | boost |
 | F | start the activity you are next to |
+| C | next activity, when several are here |
+| M / J / K | map / things to do / card collection |
+| L | quest log: The Lost Commit |
+| / | ask the city |
 | V | camera view |
+| H | all controls |
 | Esc | menu |
 
 Gamepads and touch screens work too.
@@ -27,6 +32,9 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Every hard requirement in [req
 
 - Buildings: [DataSF Building Footprints](https://data.sf.gov/d/ynuv-fyni) (City and County of San Francisco).
 - Terrain and bathymetry: [Terrain Tiles on AWS](https://registry.opendata.aws/terrain-tiles/) (Mapzen, USGS, NOAA and others).
+- Streets, parks and street trees: [DataSF](https://datasf.org/opendata/).
+- Land cover: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL.
+- Stars: Yale Bright Star Catalog.
 
 ## Planning notes
 

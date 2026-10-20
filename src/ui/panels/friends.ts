@@ -123,7 +123,8 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
     err.textContent = c ? '' : 'Room codes are 4 to 8 letters and numbers.';
     if (c) await net.join(c);
   });
-  offline.append(intro, start, el('p', 'fr-or', 'or join a friend'), joinRow, err);
+  const down = el('p', 'fr-error');
+  offline.append(down, intro, start, el('p', 'fr-or', 'or join a friend'), joinRow, err);
 
   const online = el('div', 'fr-online');
   const codeBig = el('div', 'fr-roomcode');
@@ -164,6 +165,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
     const inRoom = !!net.room;
     offline.hidden = inRoom;
     online.hidden = !inRoom;
+    down.textContent = !inRoom && net.status === 'unreachable' ? 'Multiplayer could not start. Single player keeps working.' : '';
     if (!inRoom) return;
     codeBig.textContent = net.room as string;
     link.value = net.shareUrl() ?? '';

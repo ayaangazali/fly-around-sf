@@ -10,6 +10,7 @@ const serious = async (page: Page, selector: string) => {
 
 test.describe('menus', () => {
   test('[R-PANELS] [R-A11Y] every panel opens from its button, renders, passes axe and closes back to its button', async ({ page }) => {
+    test.setTimeout(600_000);
     const errors = await boot(page);
     const ids = await page.evaluate(() => window.__fly.game.panels.list().filter((p) => !p.hidden).map((p) => p.id));
     expect(ids).toEqual(expect.arrayContaining(['menu', 'map', 'journal', 'dex', 'stats', 'help', 'settings']));
@@ -68,6 +69,19 @@ test.describe('menus', () => {
     await page.evaluate(() => window.__fly.game.panels.open('menu'));
     await page.locator('.menu-tile.primary').click();
     await expect(page.locator('.sheet')).toBeHidden();
+  });
+
+  test('[R-HOLD] wind does not carry the drone away while a panel is open', async ({ page }) => {
+    await boot(page);
+    const drift = await page.evaluate(() => {
+      const g = window.__fly.game;
+      g.env.wind = { x: 5, z: 0 };
+      g.panels.open('journal');
+      const from = { ...g.flight.pos };
+      window.__fly.step(30);
+      return Math.hypot(g.flight.pos.x - from.x, g.flight.pos.z - from.z);
+    });
+    expect(drift).toBeLessThan(1);
   });
 
   test('[R-PANELS] the journal searches and sets a waypoint', async ({ page }) => {

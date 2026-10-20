@@ -40,8 +40,8 @@
 .title-btn small { font-size: 12px; color: var(--ink-dim); }
 .title-btn:hover { background: rgba(255, 255, 255, 0.11); }
 .title-btn:active { transform: scale(0.98); }
-.title-btn.primary { background: linear-gradient(135deg, #ff6a3d, #ff8a4c); border-color: transparent; box-shadow: 0 12px 30px rgba(255, 106, 61, 0.38); }
-.title-btn.primary small { color: rgba(255, 255, 255, 0.85); }
+.title-btn.primary { background: linear-gradient(135deg, #ff6a3d, #ff8a4c); border-color: transparent; color: #1d1a14; box-shadow: 0 12px 30px rgba(255, 106, 61, 0.38); }
+.title-btn.primary small { color: rgba(29, 26, 20, 0.85); }
 .title-btn.primary:hover { background: linear-gradient(135deg, #ff7a52, #ff9a62); }
 .title-setup { display: grid; gap: 12px; text-align: left; }
 .title-setup[hidden] { display: none; }
@@ -50,6 +50,7 @@
 .title-name { width: 100%; min-height: 46px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.07); color: var(--ink); font: 600 17px var(--font); }
 .title-edit { justify-self: center; min-height: 40px; border: 0; background: none; color: var(--ink-dim); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .title-install { justify-self: center; min-height: 40px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line); background: transparent; font-size: 13px; }
+.title-credit a { color: inherit; }
 .title-credit { position: absolute; left: 0; right: 0; bottom: max(10px, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: 11px; color: rgba(246, 243, 236, 0.5); z-index: 1; }
 @media (max-height: 640px) { .title-card { margin-top: 12px; padding: 18px; } .title-tag { margin-bottom: 12px; } }
 @media (max-height: 500px) {

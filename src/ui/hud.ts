@@ -56,8 +56,9 @@ export class Hud {
     const t = el('div', `toast toast-${kind}`, text);
     this.toasts.append(t);
     while (this.toasts.children.length > 4) this.toasts.firstElementChild?.remove();
-    setTimeout(() => t.classList.add('out'), 2600);
-    setTimeout(() => t.remove(), 3200);
+    const life = kind === 'warn' ? 6000 : 2600;
+    setTimeout(() => t.classList.add('out'), life);
+    setTimeout(() => t.remove(), life + 600);
   }
 
   update(): void {
@@ -88,7 +89,7 @@ export class Hud {
     const many = g.activities.nearbyList.length;
     this.next.hidden = this.prompt.hidden || many < 2;
     if (near && !a) {
-      const more = many > 1 ? `<span class="hud-prompt-more">${g.activities.nearbyList.indexOf(near) + 1} of ${many} here · <kbd>C</kbd> next</span>` : '';
+      const more = many > 1 ? `<span class="hud-prompt-more">${g.activities.nearbyList.indexOf(near) + 1} of ${many} here<span class="hud-prompt-key"> · <kbd>C</kbd> next</span></span>` : '';
       this.prompt.innerHTML = `<kbd>F</kbd> ${escapeHtml(near.title)}<small>${escapeHtml(near.blurb)}</small>${more}`;
     }
   }
