@@ -4,6 +4,7 @@ import { KEYMAP } from '../../core/input';
 import { pilotLevel } from '../stats-model';
 import { settingsOf } from '../settings-model';
 import { nearestOpen } from '../nearby';
+import { START_RADIUS } from '../../activities/runner';
 import { formatDistance } from '../map-view';
 import { setWaypoint } from '../waypoint';
 
@@ -53,7 +54,7 @@ export const panel: Panel = {
       b.addEventListener('click', () => game.panels.open(p.id));
       grid.append(b);
     }
-    const near = nearestOpen(game, 3);
+    const near = nearestOpen(game, 3, Infinity, START_RADIUS);
     root.append(head, grid);
     if (near.length) {
       const next = el('section', 'menu-next');

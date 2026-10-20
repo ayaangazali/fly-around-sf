@@ -3,20 +3,21 @@ import type { ActivityDef } from '../activities/types';
 import { el } from './panel-host';
 import { kindColor } from './map-style';
 import { bearingDeg, headingDeg, relativeDeg } from './map-view';
+import { START_RADIUS } from '../activities/runner';
 
 export interface Nearby {
   def: ActivityDef;
   dist: number;
 }
 
-export function nearestOpen(game: Game, max: number, range = Infinity): Nearby[] {
+export function nearestOpen(game: Game, max: number, range = Infinity, min = 0): Nearby[] {
   const p = game.flight.pos;
   const out: Nearby[] = [];
   for (const def of game.activities.list()) {
     if (def.hidden || game.activities.kindOf(def).passive || game.save.isDone(def.id) || game.activities.locked(def)) continue;
     const q = game.activities.position(def);
     const dist = Math.hypot(q.x - p.x, q.z - p.z);
-    if (dist <= range) out.push({ def, dist });
+    if (dist >= min && dist <= range) out.push({ def, dist });
   }
   return out.sort((a, b) => a.dist - b.dist).slice(0, max);
 }
@@ -37,7 +38,7 @@ export function installCompassPips(game: Game): { update(): void } {
   return {
     update() {
       if (!game.loaded) return;
-      if (frame++ % 20 === 0) list = nearestOpen(game, PIPS, RANGE);
+      if (frame++ % 20 === 0) list = nearestOpen(game, PIPS, RANGE, START_RADIUS);
       const p = game.flight.pos;
       const heading = headingDeg(game.flight.yaw);
       const half = compass.clientWidth / 2 - 10;

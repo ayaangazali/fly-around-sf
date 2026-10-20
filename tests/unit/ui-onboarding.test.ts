@@ -106,6 +106,7 @@ describe('nearby', () => {
     expect(nearestOpen(g, 5).map((n) => n.def.id)).toEqual(['rings-a', 'rings-b', 'rings-c']);
     expect(nearestOpen(g, 1).map((n) => n.def.id)).toEqual(['rings-a']);
     expect(nearestOpen(g, 5, 2000).map((n) => n.def.id)).toEqual(['rings-a', 'rings-b']);
+    expect(nearestOpen(g, 5, 2000, 45).map((n) => n.def.id)).toEqual(['rings-b']);
     expect(nearestOpen(g, 5)[1].dist).toBeCloseTo(1112, -1);
   });
 });

@@ -3,7 +3,7 @@ import type { Vec3 } from '../player/flight';
 import type { ActivityDef, ActivityInstance, ActivityKind } from './types';
 import { pilotLevel } from '../ui/stats-model';
 
-const START_RADIUS = 45;
+export const START_RADIUS = 45;
 export const MAX_NEARBY = 8;
 
 export class ActivityRunner {
