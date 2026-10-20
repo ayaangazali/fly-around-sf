@@ -280,7 +280,7 @@ export class Game {
     this.drone.root.rotation.y = this.flight.yaw;
     animateDrone(this.drone, performance.now() / 1000, this.throttle, this.flight.pitch, this.flight.roll);
     this.drone.root.visible = this.chase.mode !== 'fpv';
-    if (this.world) this.chase.update(this.flight, dt, (x, z) => this.world.groundAt(x, z), !!this.save.data.settings.reducedMotion);
+    if (this.world) this.chase.update(this.flight, dt, this.env, !!this.save.data.settings.reducedMotion);
     this.renderer.render(this.scene, this.camera);
     this.hud.update();
   }
