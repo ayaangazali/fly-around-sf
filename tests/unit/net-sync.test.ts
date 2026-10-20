@@ -209,4 +209,19 @@ describe('device sync', () => {
     half.close();
     s.stop();
   });
+
+  it('[R-V2-NET-SYNC-TIMER] sending again right after a finished sync keeps the new offer open for the next device', async () => {
+    const ga = await netGame();
+    const a = new DeviceSync(ga, 'local');
+    const b = new DeviceSync(await netGame(), 'local');
+    await b.receive(await a.offer());
+    await until(() => a.phase === 'sent' && b.phase === 'merged');
+    const next = await a.offer();
+    await new Promise((r) => setTimeout(r, 1700));
+    expect(a).toMatchObject({ phase: 'waiting', code: next });
+    const c = new DeviceSync(await netGame(), 'local');
+    await c.receive(next);
+    await until(() => c.phase === 'merged' && a.phase === 'sent');
+    for (const s of [a, b, c]) s.stop();
+  });
 });

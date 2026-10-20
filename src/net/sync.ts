@@ -152,7 +152,7 @@ export class DeviceSync {
           this.result = { added: m.added, cards: 0 };
           this.set('sent');
           this.game.toast('Progress delivered to your other device', 'reward');
-          setTimeout(() => this.close(), 1500);
+          this.closeSoon();
         },
       }, 1024);
     } catch {
@@ -190,7 +190,7 @@ export class DeviceSync {
           this.t?.send({ t: 'ack', added: r.added }, from);
           this.set('merged');
           this.game.toast(`Progress merged: ${r.added} new ${r.added === 1 ? 'activity' : 'activities'}, ${r.cards} new ${r.cards === 1 ? 'card' : 'cards'}`, 'reward');
-          setTimeout(() => this.close(), 1500);
+          this.closeSoon();
         },
       }, LIMITS.save + 1024);
     } catch {
@@ -199,6 +199,11 @@ export class DeviceSync {
     }
     this.timer = setTimeout(() => this.stop(), EXPIRE_MS);
     return true;
+  }
+
+  private closeSoon(): void {
+    const t = this.t;
+    setTimeout(() => this.t === t && this.close(), 1500);
   }
 
   private close(): void {
