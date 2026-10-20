@@ -4,6 +4,7 @@ import { toLocal } from '../core/geo';
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
 import { cityUniforms } from './city';
+import { buildingInfo } from './city-mesh';
 import type { Exclusion } from './city-data';
 
 export interface LandmarkSource {
@@ -160,6 +161,7 @@ export class Site {
   private readonly s: number;
   private parts = new Map<THREE.Material, THREE.BufferGeometry[]>();
   private solids: Solid[] = [];
+  private wins = 0;
   private m = new THREE.Matrix4();
   private q = new THREE.Quaternion();
   private e = new THREE.Euler();
@@ -254,7 +256,13 @@ export class Site {
 
   windows(color: string, g: THREE.BufferGeometry, x = 0, y = 0, z = 0, ry = 0): this {
     const geo = g.index ? g.toNonIndexed() : g;
-    tint(geo, new THREE.Color(color));
+    const c = new THREE.Color(color);
+    tint(geo, c);
+    geo.computeBoundingBox();
+    let seed = this.wins++;
+    for (const ch of this.id) seed = (Math.imul(seed, 31) + ch.charCodeAt(0)) | 0;
+    const info = buildingInfo(seed, Math.max(35, geo.boundingBox!.max.y + y), this.y, c.b > c.r);
+    geo.setAttribute('aInfo', new THREE.BufferAttribute(new Float32Array(geo.getAttribute('position').count).fill(info), 1));
     return this.add(this.game.cityRenderer.material, geo, x, y, z, ry);
   }
 

@@ -1,6 +1,8 @@
 import { Color, ShapeUtils, Vector2 } from 'three';
+import { toLocal } from '../core/geo';
 
-export const CHUNK = 500;
+export const CHUNK = 1000;
+export const LOD_SIZES = [0, 5, 7, 9, 12, 16, 24, 40];
 const SKIRT = 3;
 
 export interface CityArrays {
@@ -23,15 +25,29 @@ export interface ChunkGeometry {
   color: Uint8Array;
   info: Uint16Array;
   index: Uint16Array | Uint32Array;
+  lod: number[];
   buildings: number;
 }
 
-const linear = (hex: string) => new Color(hex).toArray().map((c) => Math.round(c * 255));
-const LOW_PALETTE = [
-  '#f1eadb', '#e9dcc0', '#d7c8a8', '#efd08a', '#e8b48a', '#d9826b', '#c98f9e', '#b8a2c8', '#8fb2d4',
-  '#b9cfe0', '#6f8fb3', '#9cc2ae', '#a7b98c', '#5e8a7a', '#c4694c', '#9a5a48', '#8c8f96',
-].map(linear);
-const TALL_PALETTE = ['#8fa9c0', '#b4c0cb', '#6d859b', '#cfc4b0', '#9a9da3', '#5f7384'].map(linear);
+const linear = (hexes: string[]) => hexes.map((hex) => new Color(hex).toArray().map((c) => Math.round(c * 255)) as [number, number, number]);
+
+export const PALETTES = {
+  victorian: linear([
+    '#f2ede2', '#efe6d2', '#ece0c4', '#f4ecd8', '#e9dcc0', '#eedc9f', '#e4cf8f', '#e7c46f', '#dccbaa', '#e8e4da',
+    '#d6dcd4', '#c9d6dc', '#9fb8c9', '#a6bccb', '#b9cf9a', '#a9bd9f', '#e9cdbf', '#e3a990', '#c7b3d6', '#cdbfa8',
+    '#bfa98a', '#93aeaa', '#7fa3b8', '#8e5b52', '#5e7c6c', '#d98f6a', '#a7c4b5', '#efe0b6',
+  ]),
+  stucco: linear(['#f1ece3', '#ebe3d3', '#e8dcc6', '#f2d6a2', '#efd9c4', '#e9c1c0', '#d9e2d6', '#c9dbe6', '#e6e1c1', '#d4e3c3', '#f0e4d8', '#c8d4c2', '#e2c6a8', '#d7d0c4', '#f3efe6']),
+  masonry: linear(['#d9c8a6', '#cfb790', '#bba585', '#e2d7c0', '#a65a43', '#8f4d3b', '#b8735a', '#c7bfb0', '#9e9382', '#d4cbb8', '#b39c7c', '#c99a7a']),
+  glass: linear(['#8fb3c4', '#7fa8ad', '#9dbccb', '#6f90a6', '#a5c0bd', '#b6c2ca', '#94a9b6', '#7f9fb5']),
+  tower: linear(['#e0d6c2', '#cdbd9f', '#ebe5d8', '#9a6c5e', '#b9ab92', '#c9c3b6', '#d8cfbc', '#e6dccb']),
+  industrial: linear(['#c9c1b1', '#b5ad9f', '#a8b0b4', '#8f9ca4', '#a5654d', '#c4b391', '#d8d2c6', '#98a090']),
+};
+
+const CORE_A = toLocal(37.7935, -122.3965);
+const CORE_B = toLocal(37.7765, -122.417);
+const MISSION_BAY = toLocal(37.7705, -122.3915);
+const WEST_X = toLocal(37.77, -122.462).x;
 
 function hash(n: number): number {
   let h = n | 0;
@@ -40,18 +56,58 @@ function hash(n: number): number {
   return (h ^ (h >>> 16)) >>> 0;
 }
 
-export function buildingColor(b: number, height: number): [number, number, number] {
-  const pal = height > 35 ? TALL_PALETTE : LOW_PALETTE;
-  return pal[hash(b) % pal.length] as [number, number, number];
+export function coreness(x: number, z: number): number {
+  const ex = CORE_B.x - CORE_A.x;
+  const ez = CORE_B.z - CORE_A.z;
+  const t = Math.max(0, Math.min(1, ((x - CORE_A.x) * ex + (z - CORE_A.z) * ez) / (ex * ex + ez * ez)));
+  const d = Math.min(Math.hypot(x - CORE_A.x - ex * t, z - CORE_A.z - ez * t), Math.hypot(x - MISSION_BAY.x, z - MISSION_BAY.z) + 300);
+  return d < 700 ? 1 : d > 1300 ? 0 : (1300 - d) / 600;
 }
 
-export function buildingInfo(b: number, height: number, ground: number): number {
+export interface Style {
+  color: [number, number, number];
+  glass: boolean;
+}
+
+export function buildingStyle(b: number, height: number, area: number, x: number, z: number): Style {
+  const r = hash(b * 7 + 3);
+  const pick = (p: [number, number, number][]) => p[r % p.length];
+  const core = coreness(x, z) > (r >>> 20) / 4096;
+  if (height >= 40) {
+    const glass = (r >>> 8) % 100 < (core ? 50 : 15);
+    return { color: pick(glass ? PALETTES.glass : PALETTES.tower), glass };
+  }
+  if (core && height >= 10) {
+    const glass = (r >>> 8) % 100 < 18;
+    return { color: pick(glass ? PALETTES.glass : PALETTES.masonry), glass };
+  }
+  if (height < 16 && area > 1400) return { color: pick(PALETTES.industrial), glass: false };
+  if (height >= 16) return { color: pick(PALETTES.masonry), glass: false };
+  return { color: pick(x < WEST_X ? PALETTES.stucco : PALETTES.victorian), glass: false };
+}
+
+export function buildingColor(b: number, height: number, area = 150, x = 0, z = 0): [number, number, number] {
+  return buildingStyle(b, height, area, x, z).color;
+}
+
+export function buildingInfo(b: number, height: number, ground: number, glass = false): number {
   const cls = height < 12 ? 0 : height < 35 ? 1 : height < 90 ? 2 : 3;
-  return Math.min(1023, Math.max(0, Math.round(ground * 2))) | (cls << 10) | ((hash(b * 31 + 7) & 15) << 12);
+  return Math.min(511, Math.max(0, Math.round(ground))) | (cls << 9) | ((glass ? 1 : 0) << 11) | ((hash(b * 31 + 7) & 15) << 12);
 }
 
 export function chunkKey(x: number, z: number): string {
   return `${Math.floor(x / CHUNK)},${Math.floor(z / CHUNK)}`;
+}
+
+export function footprintArea(d: CityArrays, b: number): number {
+  const s = d.start[b];
+  const n = d.len[b];
+  let a = 0;
+  for (let k = 0; k < n; k++) {
+    const j = s + ((k + 1) % n);
+    a += d.xs[s + k] * d.zs[j] - d.xs[j] * d.zs[s + k];
+  }
+  return Math.abs(a) / 2;
 }
 
 export function buildChunks(d: CityArrays): ChunkGeometry[] {
@@ -69,22 +125,31 @@ export function buildChunks(d: CityArrays): ChunkGeometry[] {
 }
 
 export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeometry {
+  const area = new Map<number, number>();
+  const size = new Map<number, number>();
+  for (const b of list) {
+    area.set(b, footprintArea(d, b));
+    size.set(b, Math.max(d.height[b], Math.sqrt(area.get(b)!)));
+  }
+  const order = [...list].sort((a, b) => size.get(b)! - size.get(a)!);
   let verts = 0;
-  for (const b of list) verts += d.len[b] * 2;
+  for (const b of order) verts += d.len[b] * 2;
   const position = new Float32Array(verts * 3);
   const color = new Uint8Array(verts * 3);
   const info = new Uint16Array(verts);
   const index: number[] = [];
+  const lod = LOD_SIZES.map(() => 0);
   let v = 0;
   let sx = 0;
   let sz = 0;
-  for (const b of list) {
+  for (const b of order) {
     const n = d.len[b];
     const s = d.start[b];
     const base = d.ground[b] - SKIRT;
     const top = d.ground[b] + d.height[b];
-    const [r, g, bl] = buildingColor(b, d.height[b]);
-    info.fill(buildingInfo(b, d.height[b], d.ground[b]), v, v + n * 2);
+    const style = buildingStyle(b, d.height[b], area.get(b)!, d.cx[b], d.cz[b]);
+    const [r, g, bl] = style.color;
+    info.fill(buildingInfo(b, d.height[b], d.ground[b], style.glass), v, v + n * 2);
     const contour: Vector2[] = [];
     for (let k = 0; k < n; k++) {
       const x = d.xs[s + k];
@@ -100,7 +165,7 @@ export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeo
       const b0 = v + ((k + 1) % n);
       const a1 = a0 + n;
       const b1 = b0 + n;
-      index.push(a0, b1, b0, a0, a1, b1);
+      index.push(b0, a0, b1, a0, a1, b1);
     }
     for (const [i, j, k] of ShapeUtils.triangulateShape(contour, [])) {
       const ax = contour[i].x, az = contour[i].y;
@@ -110,9 +175,10 @@ export function buildChunk(d: CityArrays, key: string, list: number[]): ChunkGeo
       if (ny >= 0) index.push(v + n + i, v + n + j, v + n + k);
       else index.push(v + n + i, v + n + k, v + n + j);
     }
+    for (let l = 0; l < LOD_SIZES.length; l++) if (size.get(b)! >= LOD_SIZES[l]) lod[l] = index.length;
     sx += d.cx[b];
     sz += d.cz[b];
     v += n * 2;
   }
-  return { key, cx: sx / list.length, cz: sz / list.length, position, color, info, index: v < 65536 ? Uint16Array.from(index) : Uint32Array.from(index), buildings: list.length };
+  return { key, cx: sx / list.length, cz: sz / list.length, position, color, info, lod, index: v < 65536 ? Uint16Array.from(index) : Uint32Array.from(index), buildings: list.length };
 }

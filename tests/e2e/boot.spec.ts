@@ -9,7 +9,7 @@ test.describe('boot and flight', () => {
     });
     expect(info.done).toBe(true);
     expect(info.buildings).toBeGreaterThan(170000);
-    expect(info.chunks).toBeGreaterThan(LITE ? 10 : 200);
+    expect(info.chunks).toBeGreaterThan(LITE ? 10 : 120);
     expect(info.errors).toEqual([]);
     await page.waitForTimeout(1500);
     const shot = await page.screenshot();

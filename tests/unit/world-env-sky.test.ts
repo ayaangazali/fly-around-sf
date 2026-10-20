@@ -193,14 +193,15 @@ describe('city shader', () => {
     expect(shader.uniforms.uNight).toBe(night);
   });
 
-  it('[R-ENV-CITY] packs ground height, size class and a seed into one attribute', () => {
-    const decode = (v: number) => ({ ground: (v % 1024) / 2, cls: Math.floor(v / 1024) % 4, seed: Math.floor(v / 4096) });
-    expect(decode(buildingInfo(5, 8, 123.4))).toMatchObject({ ground: 123.5, cls: 0 });
+  it('[R-ENV-CITY] packs ground height, size class, glass and a seed into one attribute', () => {
+    const decode = (v: number) => ({ ground: v % 512, cls: Math.floor(v / 512) % 4, glass: Math.floor(v / 2048) % 2, seed: Math.floor(v / 4096) });
+    expect(decode(buildingInfo(5, 8, 123.4))).toMatchObject({ ground: 123, cls: 0, glass: 0 });
+    expect(decode(buildingInfo(5, 8, 123.4, true)).glass).toBe(1);
     expect(decode(buildingInfo(5, 20, 0)).cls).toBe(1);
     expect(decode(buildingInfo(5, 60, 0)).cls).toBe(2);
     expect(decode(buildingInfo(5, 200, -4)).cls).toBe(3);
     expect(decode(buildingInfo(5, 200, -4)).ground).toBe(0);
-    expect(decode(buildingInfo(5, 200, 900)).ground).toBe(511.5);
+    expect(decode(buildingInfo(5, 200, 900)).ground).toBe(511);
     const seeds = new Set(Array.from({ length: 64 }, (_, b) => decode(buildingInfo(b, 10, 0)).seed));
     expect(seeds.size).toBeGreaterThan(8);
   });

@@ -309,6 +309,22 @@ describe('modern skyline', () => {
 });
 
 describe('landmark kit', () => {
+  it('[R-V2-NIGHT-KIT] kit tower windows carry the city window attribute as tall offices', () => {
+    const game = landmarkGame();
+    const site = new Site(game, 'probe-tower', { lat: 37.79, lon: -122.4 }, 0, 0);
+    site.windows('#8fa3b8', new THREE.BoxGeometry(30, 200, 30), 0, 0, 0).windows('#d8cfbc', new THREE.BoxGeometry(20, 12, 20), 60, 0, 0);
+    const mesh = site.finish().children.find((c) => (c as THREE.Mesh).material === game.cityRenderer.material) as THREE.Mesh;
+    const info = mesh.geometry.getAttribute('aInfo');
+    expect(info).toBeDefined();
+    const decoded = new Set(Array.from(info.array as Float32Array, (v) => `${Math.floor(v / 512) % 4},${Math.floor(v / 2048) % 2},${Math.floor(v / 4096)}`));
+    expect(decoded.size).toBe(2);
+    const [glass, stone] = [...decoded].map((d) => d.split(',').map(Number));
+    expect(glass[0]).toBeGreaterThanOrEqual(2);
+    expect(glass[1]).toBe(1);
+    expect(stone[0]).toBeGreaterThanOrEqual(2);
+    expect(stone[1]).toBe(0);
+  });
+
   it('[R-LANDMARKS] catenary hangs with the requested sag and symmetric ends', () => {
     const f = catenary(1280, 143);
     expect(f(0)).toBeCloseTo(0, 6);

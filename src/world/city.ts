@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import type { CityData } from './city-data';
-import type { ChunkGeometry } from './city-mesh';
+import { LOD_SIZES, type ChunkGeometry } from './city-mesh';
 import { createCityMaterial } from './city-shader';
 
 export const cityUniforms = { uNight: { value: 0 } };
+const LOD_PIXELS = 2;
 
 export class CityRenderer {
   readonly group = new THREE.Group();
@@ -54,6 +55,15 @@ export class CityRenderer {
     geo.setIndex(new THREE.BufferAttribute(c.index, 1));
     geo.computeBoundingSphere();
     const mesh = new THREE.Mesh(geo, this.material);
+    const sphere = geo.boundingSphere!;
+    mesh.onBeforeRender = (renderer, _scene, camera) => {
+      const cam = camera as THREE.PerspectiveCamera;
+      const d = Math.max(0, cam.position.distanceTo(sphere.center) - sphere.radius);
+      const min = (d * 2 * Math.tan((cam.fov * Math.PI) / 360) * LOD_PIXELS) / renderer.domElement.height;
+      let l = 0;
+      while (l + 1 < LOD_SIZES.length && LOD_SIZES[l + 1] <= min) l++;
+      geo.setDrawRange(0, c.lod[l]);
+    };
     mesh.name = `chunk:${c.key}`;
     mesh.castShadow = true;
     mesh.receiveShadow = true;
