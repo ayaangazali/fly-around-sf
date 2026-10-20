@@ -107,6 +107,14 @@ describe('device sync', () => {
     expect(mergeSaves(clean, local).save.flags).toMatchObject({ 'daily:last': '2026-10-18', 'daily:streak': 4, 'medal:a': 3 });
   });
 
+  it('[R-SYNC-DEVICES] a story chapter in progress moves with its objective, merged by the furthest device', () => {
+    const known = { activities: new Map([['q', 'quest'], ['a', 'rings']]), cards: new Set<string>() };
+    const clean = cleanSave(save({ flags: { 'quest:q': 3, 'quest:a': 2, 'quest:ghost': 2, 'quest:q2': 9 } }), known);
+    expect(clean.flags).toEqual({ 'quest:q': 3 });
+    expect(cleanSave(save({ flags: { 'quest:q': 6 } }), known).flags).toEqual({});
+    expect(mergeSaves(save({ flags: { 'quest:q': 1 } }), clean).save.flags).toEqual({ 'quest:q': 3 });
+  });
+
   it('[R-SYNC-DEVICES] a code moves progress from one device to another, which merges it', async () => {
     const ga = await netGame();
     const gb = await netGame();

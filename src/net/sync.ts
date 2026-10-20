@@ -73,9 +73,11 @@ export function cleanSave(raw: SaveData, known: Known): SaveData {
         ? !!kind && positive(v, 3)
         : head === 'points'
           ? !!kind && positive(v, kind === 'photo' ? 3 : 100)
-          : k === 'daily:last'
-            ? typeof v === 'string' && DATE.test(v)
-            : head === 'daily' && DATE.test(id) && typeof v === 'string' && v.length <= MAX_SHARE;
+          : head === 'quest'
+            ? kind === 'quest' && positive(v, 5)
+            : k === 'daily:last'
+              ? typeof v === 'string' && DATE.test(v)
+              : head === 'daily' && DATE.test(id) && typeof v === 'string' && v.length <= MAX_SHARE;
     if (ok) flags[k] = typeof v === 'number' ? Math.floor(v) : v;
   }
   return {
