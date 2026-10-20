@@ -46,7 +46,7 @@
 .title-setup { display: grid; gap: 12px; text-align: left; }
 .title-setup[hidden] { display: none; }
 .title-field { display: grid; gap: 6px; }
-.title-field > span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); }
+.title-field > span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246, 243, 236, 0.85); }
 .title-name { width: 100%; min-height: 46px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.07); color: var(--ink); font: 600 17px var(--font); }
 .title-edit { justify-self: center; min-height: 40px; border: 0; background: none; color: var(--ink-dim); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .title-install { justify-self: center; min-height: 40px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line); background: transparent; font-size: 13px; }
@@ -63,3 +63,4 @@
   .title-credit { display: none; }
   .title-drone { z-index: 0; top: 40%; }
 }
+.title-warn { margin: 0; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255, 176, 87, 0.5); background: rgba(255, 176, 87, 0.12); color: var(--ink); font-size: 13px; text-align: left; }

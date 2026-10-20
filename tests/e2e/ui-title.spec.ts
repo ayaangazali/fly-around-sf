@@ -74,14 +74,19 @@ test.describe('title screen', () => {
     await expect(page.locator('.toast', { hasText: 'to chat' })).toHaveCount(0);
   });
 
-  test('[R-TITLE] a share link with a room offers Join friends first', async ({ page }) => {
-    await boot(page, 'title&room=FOGCITY');
+  test('[R-TITLE] a share link with a room offers Join friends first, and a broken one says so', async ({ page }) => {
+    await boot(page, 'title&room=fgc-ty2');
     const join = page.locator('.title-btn[data-action="join"]');
     await expect(join).toContainText('Join friends');
-    await expect(join).toContainText('FOGCITY');
+    await expect(join).toContainText('Room FGCTY2');
     await expect(join).toHaveClass(/primary/);
     await join.click();
     await expect(page.locator('#loading')).toHaveCount(0);
+    await boot(page, 'title&room=MEET-AT-PIER-39-B0AT');
+    await expect(page.locator('.title-btn[data-action="join"]')).toHaveCount(0);
+    await expect(page.locator('.title-warn')).toHaveText(/This room link is not valid/);
+    await expect(page.locator('.title-btn.primary')).toHaveAttribute('data-action', 'start');
+    await expect(page.locator('.title-card')).not.toContainText('MEET-AT-PIER');
   });
 });
 

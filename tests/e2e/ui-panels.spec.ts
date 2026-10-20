@@ -57,6 +57,11 @@ test.describe('menus', () => {
     expect([...seen].some((t) => t.startsWith('INPUT'))).toBe(true);
     const outline = await page.evaluate(() => getComputedStyle(document.activeElement as HTMLElement).outlineStyle);
     expect(outline).not.toBe('none');
+    await page.evaluate(() => window.__fly.game.panels.open('ask'));
+    for (let i = 0; i < 30; i++) {
+      await page.keyboard.press('Tab');
+      expect(await page.evaluate(() => !!document.activeElement?.closest('.sheet'))).toBe(true);
+    }
   });
 
   test('[R-PANELS] hotkeys toggle panels and the menu tiles open every other panel', async ({ page }) => {

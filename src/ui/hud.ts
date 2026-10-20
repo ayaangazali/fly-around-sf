@@ -34,7 +34,6 @@ export class Hud {
     }
     this.compass.append(strip, el('b'));
     this.status = el('div', 'hud-status');
-    this.status.setAttribute('aria-live', 'polite');
     this.prompt = el('button', 'hud-prompt');
     this.prompt.hidden = true;
     this.prompt.addEventListener('click', () => game.interact());

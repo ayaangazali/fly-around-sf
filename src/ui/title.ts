@@ -6,6 +6,7 @@ import { DRONE_COLORS, cleanName, randomPilotName, setSetting, settingsOf } from
 import { pilotLevel } from './stats-model';
 import { installButton, watchInstall } from './pwa';
 import { emptySave } from '../core/save';
+import { normalizeCode } from '../net/protocol';
 
 export interface Title {
   progress(frac: number, label: string): void;
@@ -156,9 +157,10 @@ export function mountTitle(root: HTMLElement, room: string | null): Title {
         return b;
       };
       const lvl = pilotLevel(data.xp);
-      if (room) btn('primary', 'Join friends', `Room ${room.slice(0, 24)}`, start).dataset.action = 'join';
+      const code = room === null ? null : normalizeCode(room);
+      if (code) btn('primary', 'Join friends', `Room ${code}`, start).dataset.action = 'join';
       if (returning) {
-        btn(room ? '' : 'primary', 'Continue', `${s.playerName} · Level ${lvl.level} · ${Object.keys(data.completed).length} done`, start).dataset.action = 'continue';
+        btn(code ? '' : 'primary', 'Continue', `${s.playerName} · Level ${lvl.level} · ${Object.keys(data.completed).length} done`, start).dataset.action = 'continue';
         const fresh = btn('', 'New pilot', 'Start over on this device', () => {
           if (fresh.dataset.confirm !== '1') {
             fresh.dataset.confirm = '1';
@@ -186,9 +188,10 @@ export function mountTitle(root: HTMLElement, room: string | null): Title {
         });
         menu.append(buttons, edit, setup);
       } else {
-        if (!room) btn('primary', 'Start flying', 'Takes about a minute to learn', start).dataset.action = 'start';
+        if (!code) btn('primary', 'Start flying', 'Takes about a minute to learn', start).dataset.action = 'start';
         menu.append(setup, buttons);
       }
+      if (room !== null && !code) menu.prepend(el('p', 'title-warn', 'This room link is not valid. Fly solo, or join from Friends with the right code.'));
       const install = installButton('title-install');
       menu.append(install);
       menu.hidden = false;

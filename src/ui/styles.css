@@ -39,8 +39,8 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
 .hud { position: absolute; inset: 0; pointer-events: none; }
 .hud-stats { position: absolute; left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: stretch; }
 .hud-stat, .hud-battery { background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; font-family: var(--mono); font-size: 20px; font-weight: 600; min-width: 92px; }
-.hud-stat span { display: block; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }
-.hud-stat small { font-size: 11px; margin-left: 3px; color: var(--ink-dim); }
+.hud-stat span { display: block; font-size: 10px; letter-spacing: 0.14em; color: rgba(246, 243, 236, 0.85); }
+.hud-stat small { font-size: 11px; margin-left: 3px; color: rgba(246, 243, 236, 0.85); }
 .hud-battery { min-width: 70px; padding: 8px; display: flex; align-items: end; }
 .hud-battery i { display: block; height: 10px; border-radius: 4px; background: var(--good); transition: width 0.3s; }
 .hud-battery.low i { background: var(--warn); }

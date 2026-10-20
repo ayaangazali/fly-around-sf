@@ -39,5 +39,5 @@ export function beginFlight(game: Game): void {
   game.autoSim = !game.opts.test;
   if (!game.save.data.flags[FLAG]) startOnboarding(game);
   else game.toast(`Welcome back, ${game.save.data.settings.playerName}`, 'info');
-  if (game.opts.room) void game.net.join(game.opts.room);
+  if (game.opts.room) void game.net.join(game.opts.room).then((ok) => ok || game.toast('Could not join that room. You are flying solo; open Friends to try again', 'warn'));
 }

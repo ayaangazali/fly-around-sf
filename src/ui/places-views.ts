@@ -32,6 +32,7 @@ export function showTrivia(game: Game, def: ActivityDef, p: TriviaParams, limit:
   const root = el('section', 'trivia');
   root.setAttribute('role', 'dialog');
   root.setAttribute('aria-labelledby', 'trivia-q');
+  root.tabIndex = -1;
   root.dataset.activity = def.id;
   const timer = el('div', 'trivia-timer');
   const bar = el('i');
@@ -71,6 +72,7 @@ export function showTrivia(game: Game, def: ActivityDef, p: TriviaParams, limit:
   };
   window.addEventListener('keydown', onKey);
   game.ui.append(root);
+  root.focus({ preventScroll: true });
   let answered = false;
   return {
     tick(frac) {

@@ -9,6 +9,7 @@
 .dex-search { width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); color: var(--ink); font: inherit; }
 .dex-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; margin-bottom: 8px; }
 .dex-tabs::-webkit-scrollbar { display: none; }
+@media (min-width: 641px) { .dex-tabs { flex-wrap: wrap; overflow: visible; } }
 .dex-tab { flex: none; display: inline-flex; gap: 8px; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 99px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); font-size: 13px; font-weight: 600; color: var(--ink-dim); }
 .dex-tab small { font: 500 11px var(--mono); color: var(--ink-dim); }
 .dex-tab[aria-selected="true"] { background: var(--ink); color: #11161d; border-color: transparent; }

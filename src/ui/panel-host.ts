@@ -113,10 +113,10 @@ export class PanelHost {
   }
 }
 
-const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE = 'button:not([disabled]), summary, [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
 function trapTab(root: HTMLElement, e: KeyboardEvent): void {
-  const items = [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.offsetParent !== null || n === document.activeElement);
+  const items = [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.checkVisibility() || n === document.activeElement);
   if (!items.length) return;
   const first = items[0];
   const last = items[items.length - 1];

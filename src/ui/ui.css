@@ -222,7 +222,7 @@ canvas#view { transition: filter 0.25s ease; }
 .panel-open canvas#view { filter: brightness(0.55) saturate(0.85); }
 .hud > * { transition: opacity 0.2s ease; }
 .panel-open .hud > :not(.toasts):not(.ach-host) { opacity: 0; pointer-events: none; }
-.vf-open .touch-ui, .panel-open .photo-btn { opacity: 0; visibility: hidden; }
+.vf-open .touch-buttons, .panel-open .photo-btn, .vf-open .onboard, .vf-open .wp, .vf-open .minimap, .vf-open .hud-prompt-row { visibility: hidden; }
 @media (min-width: 641px), (max-height: 500px) { .panel-open .menubar { visibility: hidden; } }
 
 @media (max-width: 640px) {
@@ -233,7 +233,10 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .photo-btn { top: calc(var(--top) + 196px); transform: none; }
   .touch .onboard { top: calc(var(--top) + 196px); left: 12px; right: 112px; width: auto; transform: none; }
   .touch .onboard.pop { animation-name: onboard-pop-phone; }
-  .touch .toasts { top: calc(var(--top) + 292px); }
+  .touch .toasts { top: calc(var(--top) + 360px); }
+  .touch .toast:nth-last-child(n+2), .touch .hud-prompt small { display: none; }
+  .touch .vf-open .toasts { top: calc(var(--top) + 100px); }
+  .touch .vf-open .vf-bar { bottom: calc(var(--bottom) + 140px); }
   .reveal { left: 12px; right: 12px; top: calc(var(--top) + 196px); transform: none; width: auto; grid-template-columns: 84px 1fr; align-items: center; justify-items: stretch; padding: 12px; }
   .reveal-stage { width: 84px; }
   .reveal-back span { font-size: 24px; }
@@ -245,6 +248,7 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .ach:not(:last-child) { display: none; }
 }
 @keyframes onboard-pop-phone { from { opacity: 0; transform: translateY(10px) scale(0.97); } }
+.touch .hud-status { white-space: normal; text-overflow: clip; border-radius: 16px; }
 .sheet-body:focus-visible { outline-offset: -2px; }
 @media (max-width: 640px) { .menubar-btn { width: 42px; height: 42px; } }
 
@@ -257,12 +261,16 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .menubar { max-width: calc(100vw - min(300px, 34vw) - max(12px, env(safe-area-inset-left)) - max(12px, env(safe-area-inset-right)) - 12px); }
   .touch .hud-stats { top: calc(var(--top) + 44px); }
   .touch .minimap { top: calc(var(--top) + 100px); width: 96px; height: 96px; }
-  .touch .onboard { top: calc(var(--top) + 52px); }
+  .touch .onboard { top: calc(var(--top) + 52px); width: min(360px, calc(100vw - 500px)); padding: 10px 14px 8px; }
+  .touch .onboard-title { font-size: 17px; }
+  .touch .onboard-hint { margin: 2px 0 6px; font-size: 13px; }
   .touch .ach-host { top: calc(var(--top) + 44px); bottom: auto; }
   .touch .ach:not(:last-child) { display: none; }
   .touch .ach { width: min(320px, 40vw); }
   .reveal .tcard-info b { font-size: 12px; }
-  .touch .toasts { top: calc(var(--top) + 8px); }
+  .touch .toast:nth-last-child(n+2), .touch .hud-prompt small { display: none; }
+  .touch .hud-prompt-row { bottom: calc(var(--bottom) + 8px); left: calc(max(20px, env(safe-area-inset-left)) + 144px); right: calc(max(20px, env(safe-area-inset-right)) + 390px); }
+  .touch .toasts { top: calc(var(--top) + 4px); left: calc(max(12px, env(safe-area-inset-left)) + min(300px, 34vw) + 12px); right: calc(max(12px, env(safe-area-inset-right)) + 250px); transform: none; }
   .reveal { left: auto; right: max(12px, env(safe-area-inset-right)); top: calc(var(--top) + 54px); transform: none; width: min(300px, 36vw); grid-template-columns: 64px 1fr; align-items: center; justify-items: stretch; gap: 10px; padding: 10px; }
   .reveal-stage { width: 64px; }
   .reveal-back span { font-size: 18px; }
@@ -275,6 +283,6 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .qd, .touch .qt { bottom: calc(var(--bottom) + 150px); }
 }
 .hud-battery { flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 8px 12px; }
-.hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }
+.hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: rgba(246, 243, 236, 0.85); }
 .compass-pip { --c: var(--accent-2); position: absolute; bottom: 3px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--c); box-shadow: 0 0 6px var(--c); pointer-events: none; }
 .compass-pip[hidden] { display: none; }

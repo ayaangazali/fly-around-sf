@@ -101,4 +101,5 @@
   .tour { top: auto; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 76px); left: 16px; right: 16px; width: auto; transform: none; padding: 12px 14px 14px; animation: none; }
   .tour-name { font-size: 17px; }
   .tour-line { font-size: 13px; }
+  .touch .tour { top: calc(max(12px, env(safe-area-inset-top)) + 196px); bottom: auto; }
 }

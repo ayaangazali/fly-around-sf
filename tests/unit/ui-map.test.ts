@@ -101,8 +101,8 @@ describe('waypoint', () => {
   it('[R-WAYPOINT] a player waypoint wins over the active activity target', () => {
     const g = fakeGame();
     expect(guideTarget(g)).toBeNull();
-    (g.activities as unknown as { active: unknown }).active = { inst: { targets: () => [{ x: 1, y: 2, z: 3 }] } };
-    expect(guideTarget(g)).toEqual({ x: 1, y: 2, z: 3, label: 'Next' });
+    (g.activities as unknown as { active: unknown }).active = { def: { title: 'Marina Warmup' }, inst: { targets: () => [{ x: 1, y: 2, z: 3 }] } };
+    expect(guideTarget(g)).toEqual({ x: 1, y: 2, z: 3, label: 'Marina Warmup' });
     g.waypoint = { x: 9, y: 9, z: 9, label: 'Coit Tower' };
     expect(guideTarget(g)?.label).toBe('Coit Tower');
   });
