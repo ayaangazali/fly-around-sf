@@ -13,7 +13,7 @@ export function installCardReveal(game: Game): void {
   const next = () => {
     showing = false;
     document.documentElement.classList.remove('revealing');
-    if (game.panels.openId) return;
+    if (game.panels.openId || game.activities.active || game.ui.querySelector('.qd:not([hidden])')) return;
     let card: CardDef | undefined;
     while (!card && queue.length) {
       const id = queue.shift();
@@ -64,7 +64,8 @@ export function installCardReveal(game: Game): void {
     setTimeout(close, queue.length ? 3000 : 6500);
   };
   game.bus.on('panel:open', () => dismiss?.());
-  game.bus.on('panel:close', () => !showing && queue.length && next());
+  game.bus.on('activity:start', () => dismiss?.());
+  game.hud.widgets.push({ update: () => !showing && queue.length && next() });
   game.bus.on('card:unlock', ({ id }) => {
     queue.push(id);
     if (!showing) next();

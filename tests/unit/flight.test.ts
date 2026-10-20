@@ -93,6 +93,25 @@ describe('flight', () => {
     expect(c.battery).toBe(0);
   });
 
+  it('[R-FLIGHT] a drone resting on the ground or a roof recharges, one in the air or on the move does not', () => {
+    const roof: FlightEnv = { groundAt: () => 0, collide: (p, r) => (p.y - r < 30 ? ((p.y = 30 + r), true) : false) };
+    const ground = createFlight(0, 10 + FLIGHT.radius, 0);
+    const onRoof = createFlight(0, 30 + FLIGHT.radius, 0);
+    const air = createFlight(0, 100, 0);
+    const rolling = createFlight(0, 10 + FLIGHT.radius, 0);
+    for (const s of [ground, onRoof, air, rolling]) s.battery = 0.1;
+    run(ground, { lift: -1 }, 4);
+    run(onRoof, {}, 4, { ...roof, wind: { x: 5, z: 0 } });
+    run(air, {}, 4);
+    run(rolling, { forward: 1 }, 4);
+    expect(ground.battery).toBeCloseTo(0.1 + 4 * FLIGHT.recharge, 1);
+    expect(onRoof.battery).toBeCloseTo(0.1 + 4 * FLIGHT.recharge, 1);
+    expect(air.battery).toBeLessThan(0.1);
+    expect(rolling.battery).toBeLessThan(0.1);
+    run(ground, {}, 30);
+    expect(ground.battery).toBe(1);
+  });
+
   it('[R-FLIGHT] wind pushes a hovering drone', () => {
     const s = createFlight(0, 100, 0);
     run(s, {}, 3, { ...flat, wind: { x: 4, z: 0 } });

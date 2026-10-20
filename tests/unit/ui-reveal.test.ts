@@ -17,7 +17,7 @@ describe('card reveal', () => {
     const ui = document.createElement('div');
     document.body.replaceChildren(ui);
     const panels = { openId: null as string | null };
-    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels } as unknown as Game;
+    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels, activities: { active: null }, hud: { widgets: [] } } as unknown as Game;
     installCardReveal(game);
     game.bus.emit('card:unlock', { id: 'no-such-card' });
     expect(ui.querySelector('.reveal')).toBeNull();
@@ -41,9 +41,36 @@ describe('card reveal', () => {
     game.bus.emit('card:unlock', { id: 'fort-point' });
     expect(ui.querySelector('.reveal')).toBeNull();
     panels.openId = null;
-    game.bus.emit('panel:close', { id: 'map' });
+    game.hud.widgets[0].update();
     expect((ui.querySelector('.reveal') as HTMLElement).dataset.card).toBe('fort-point');
     game.bus.emit('panel:open', { id: 'dex' });
+    vi.advanceTimersByTime(400);
+    expect(ui.querySelector('.reveal')).toBeNull();
+    vi.useRealTimers();
+  });
+
+  it('[R-CARD-REVEAL] a reveal waits until no activity runs and the Emperor stops talking, and starting an activity puts it away', async () => {
+    vi.useFakeTimers();
+    const { installCardReveal } = await import('../../src/ui/card-reveal');
+    const ui = document.createElement('div');
+    const dialogue = document.createElement('section');
+    dialogue.className = 'qd';
+    ui.append(dialogue);
+    document.body.replaceChildren(ui);
+    const activities = { active: {} as object | null };
+    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels: { openId: null }, activities, hud: { widgets: [] } } as unknown as Game;
+    installCardReveal(game);
+    const tick = () => game.hud.widgets[0].update();
+    game.bus.emit('card:unlock', { id: 'fort-point' });
+    expect(ui.querySelector('.reveal')).toBeNull();
+    activities.active = null;
+    tick();
+    expect(ui.querySelector('.reveal')).toBeNull();
+    dialogue.hidden = true;
+    tick();
+    expect((ui.querySelector('.reveal') as HTMLElement).dataset.card).toBe('fort-point');
+    activities.active = {};
+    game.bus.emit('activity:start', { id: 'trivia-coit-tower' });
     vi.advanceTimersByTime(400);
     expect(ui.querySelector('.reveal')).toBeNull();
     vi.useRealTimers();

@@ -3,6 +3,7 @@ import type { Game } from '../../game';
 import type { Vec3 } from '../../player/flight';
 import { toLocal } from '../../core/geo';
 import { NORTON, clock, geoErrors, say, touched, type QuestInstance, type Trend } from '../quest-common';
+import { spot } from '../minigame';
 
 export interface Token extends GeoPoint {
   name?: string;
@@ -21,7 +22,7 @@ const TREND_EVERY = 0.75;
 const TREND_DELTA = 3;
 
 export function tokenPoints(def: ActivityDef, game: Game): Vec3[] {
-  return (def.params as unknown as ScavengerParams).tokens.map((t) => game.world.point(t, 4));
+  return (def.params as unknown as ScavengerParams).tokens.map((t) => spot(game, t, 4));
 }
 
 export function heatOf(distance: number): number {

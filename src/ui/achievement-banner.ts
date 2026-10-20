@@ -9,7 +9,7 @@ export function installAchievementBanner(game: Game): void {
   game.bus.on('activity:complete', ({ id }) => {
     const def = game.activities.defs.get(id);
     if (!def || def.kind !== 'achievement') return;
-    game.hud.muted.add(`${game.activities.kindOf(def).icon} ${def.title}`);
+    game.hud.muted.add(`${game.activities.kindOf(def).icon} ${def.title} +${def.xp ?? 10} XP`);
     const b = el('div', 'ach');
     b.dataset.activity = id;
     const medal = el('div', 'ach-medal', achievementIcon(def, game));

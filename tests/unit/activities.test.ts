@@ -71,6 +71,18 @@ describe('activity runner', async () => {
     expect(game.save.data.xp).toBe(5);
   });
 
+  it('[R-RUNNER] a first completion toasts the XP it grants, and reaching a new pilot level says so', () => {
+    const game = fakeGame();
+    game.activities.register(kinds, defs);
+    const toasts: string[] = [];
+    game.bus.on('toast', (t) => toasts.push(t.text));
+    game.save.data.xp = 48;
+    game.flight.pos = { ...game.activities.position(defs[0]) };
+    game.activities.update(1 / 30);
+    game.activities.update(1 / 30);
+    expect(toasts).toEqual([`${game.activities.kindOf(defs[0]).icon} Spot +5 XP`, '⭐ Level 2 pilot']);
+  });
+
   it('[R-RUNNER] locked activities cannot start; unlocked ones run to completion and record best time', () => {
     const game = fakeGame();
     game.activities.register(kinds, defs);
