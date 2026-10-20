@@ -129,7 +129,7 @@
     "id": "scavenger-fishermans-wharf",
     "kind": "scavenger",
     "title": "Wharf Notes",
-    "blurb": "Six notes along the wharf, from the sea lions to the cartoon museum.",
+    "blurb": "Six notes along the wharf, from the sea lions to the old ships of Hyde Street Pier.",
     "neighborhood": "Fisherman's Wharf",
     "at": {
       "lat": 37.80833,
@@ -171,16 +171,16 @@
           "name": "Jefferson and Leavenworth"
         },
         {
-          "lat": 37.80638,
-          "lon": -122.42179,
-          "name": "Cartoon Art Museum"
+          "lat": 37.80953,
+          "lon": -122.42191,
+          "name": "Hyde Street Pier"
         }
       ],
       "sources": [
         "https://www.openstreetmap.org/node/368166365",
         "https://www.openstreetmap.org/node/4149743879",
         "https://www.openstreetmap.org/node/434874627",
-        "https://www.openstreetmap.org/node/5038430321",
+        "https://www.openstreetmap.org/way/456528981",
         "https://www.openstreetmap.org/way/28518695",
         "https://www.openstreetmap.org/way/288396169",
         "https://www.openstreetmap.org/way/37312428",
