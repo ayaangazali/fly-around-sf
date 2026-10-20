@@ -1,6 +1,7 @@
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
 import type { ActivityDef, ActivityInstance, ActivityKind } from './types';
+import { pilotLevel } from '../ui/stats-model';
 
 const START_RADIUS = 45;
 export const MAX_NEARBY = 8;
@@ -127,10 +128,14 @@ export class ActivityRunner {
 
   private finish(def: ActivityDef, time: number | undefined): void {
     const save = this.game.save;
-    const first = save.complete(def.id, def.xp ?? 10);
+    const xp = def.xp ?? 10;
+    const level = pilotLevel(save.data.xp).level;
+    const first = save.complete(def.id, xp);
     if (time !== undefined && !this.kindOf(def).passive) save.recordBest(def.id, Math.round(time * 100) / 100);
     if (def.card && save.addCard(def.card)) this.game.bus.emit('card:unlock', { id: def.card });
     this.game.bus.emit('activity:complete', { id: def.id, time });
-    this.game.bus.emit('toast', { text: first ? `${this.kindOf(def).icon} ${def.title}` : `${def.title} again: ${time?.toFixed(1)}s`, kind: 'reward' });
+    this.game.bus.emit('toast', { text: first ? `${this.kindOf(def).icon} ${def.title} +${xp} XP` : `${def.title} again: ${time?.toFixed(1)}s`, kind: 'reward' });
+    const now = pilotLevel(save.data.xp).level;
+    if (now > level) this.game.bus.emit('toast', { text: `⭐ Level ${now} pilot`, kind: 'reward' });
   }
 }
