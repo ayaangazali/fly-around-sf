@@ -28,6 +28,7 @@ test.describe('collection, achievements and HUD effects', () => {
     await page.locator(`.tcard[data-card="${ids[0]}"]`).click();
     await expect(page.locator('.dex-lore')).toBeVisible();
     await expect(page.locator('.dex-sources a').first()).toHaveAttribute('href', /^https:\/\//);
+    await page.locator('.dex-actions .btn').scrollIntoViewIfNeeded();
     const r = await new AxeBuilder({ page }).include('.sheet').analyze();
     expect(r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => v.id)).toEqual([]);
     const tab = page.locator('.dex-tab').nth(1);
