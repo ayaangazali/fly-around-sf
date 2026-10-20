@@ -229,7 +229,9 @@ const MOVING = new Set(['follow', 'chase']);
 function beaconDefs(game: Game): { def: ActivityDef; done: boolean; d: number }[] {
   const p = game.flight.pos;
   const out: { def: ActivityDef; done: boolean; d: number }[] = [];
-  for (const def of game.activities.list()) {
+  const side = game.save.data.settings.sideActivities === true;
+  for (const def of game.activities.defs.values()) {
+    if (!side && def.kind !== 'trail') continue;
     const kind = game.activities.kinds.get(def.kind);
     if (!kind || kind.passive || game.activities.locked(def)) continue;
     const done = game.save.isDone(def.id);
