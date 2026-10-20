@@ -75,6 +75,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
       g.input.held.add('KeyW');
       window.__fly.step(1.5);
       g.input.held.clear();
+      window.__fly.step(4);
     });
     const moved = await a.evaluate(() => window.__fly.state().pos);
     expect(Math.hypot(moved.x - target.x, moved.z - target.z)).toBeGreaterThan(15);

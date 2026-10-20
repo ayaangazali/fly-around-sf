@@ -10,7 +10,7 @@ import { kind as photo, viewfinder } from '../../src/activities/kinds/photo';
 import { bestMedal, bestOf, clock, formatTime, isMedals, keepBest, lift, medalFor, meters, rng, saveMedal, spot, validateTimed, type MinigameInstance, type MinigameResult } from '../../src/activities/minigame';
 import type { ActivityDef, ActivityKind, SolverStep } from '../../src/activities/types';
 import type { Game } from '../../src/game';
-import { stepFlight, type FlightInput } from '../../src/player/flight';
+import { FLIGHT, stepFlight, type FlightInput } from '../../src/player/flight';
 
 const DT = 1 / 30;
 const base = { neighborhood: 'Test', blurb: 'a test minigame' };
@@ -320,23 +320,28 @@ describe('chase', () => {
   });
 
   it('[R-MINIGAMES] a full-boost lunge overshoots the bird, steady pursuit wears it down', () => {
-    const run = (seed: string, boostBeyond: number) => {
+    const run = (seed: string, lunge: boolean) => {
       const def = { ...chaseDef, id: `chase-${seed}` };
       const g = game();
       const inst = chase.start(def, g) as MinigameInstance;
       g.flight.pos = { ...g.world.point(def.at, 30) };
       let t = 0;
+      let prev = { ...inst.targets!()[0] };
       const status = pilot(g, inst, (now) => {
-        t = now;
         const b = inst.targets!()[0];
-        return chaseInput(g, b, Math.hypot(b.x - g.flight.pos.x, b.z - g.flight.pos.z) > boostBeyond);
+        const flee = Math.hypot(b.x - prev.x, b.z - prev.z) / Math.max(now - t, 1 / 60);
+        prev = { ...b };
+        t = now;
+        const steer = chaseInput(g, b, lunge);
+        if (lunge) return steer;
+        const d = Math.hypot(b.x - g.flight.pos.x, b.z - g.flight.pos.z);
+        return { ...steer, forward: Math.min(1, (flee + d * 0.5) / FLIGHT.cruise) };
       }, 60);
       return { status, t };
     };
     const seeds = [...'abcdefghij'];
-    const steady = seeds.map((s) => run(s, 25));
-    expect(steady.every((r) => r.status === 'done' && r.t > 6)).toBe(true);
-    expect(seeds.filter((s) => run(s, 0).status === 'done').length).toBeLessThanOrEqual(5);
+    expect(seeds.map((s) => run(s, false)).every((r) => r.status === 'done' && r.t > 6)).toBe(true);
+    expect(seeds.filter((s) => run(s, true).status === 'done').length).toBeLessThanOrEqual(5);
   });
 });
 

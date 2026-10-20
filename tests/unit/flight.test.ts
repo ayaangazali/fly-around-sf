@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createFlight, stepFlight, FLIGHT, forwardVector, type FlightInput, type FlightEnv } from '../../src/player/flight';
+import { createFlight, stepFlight, FLIGHT, MACH, forwardVector, type FlightInput, type FlightEnv } from '../../src/player/flight';
 
 const idle: FlightInput = { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false };
 const flat: FlightEnv = { groundAt: () => 10, collide: () => false };
@@ -28,11 +28,50 @@ describe('flight', () => {
 
   it('[R-FLIGHT] boost is faster than cruise, diagonals are not faster than straight', () => {
     const a = createFlight(0, 100, 0);
-    run(a, { forward: 1, boost: true }, 4);
+    run(a, { forward: 1, boost: true }, 1.5);
     expect(a.speed).toBeGreaterThan(FLIGHT.cruise * 1.8);
     const b = createFlight(0, 100, 0);
     run(b, { forward: 1, strafe: 1 }, 4);
     expect(b.speed).toBeLessThan(FLIGHT.cruise * 1.01);
+  });
+
+  it('[R-V2-SPEED] cruise passes 60 m/s, boost 150 m/s, and holding boost goes supersonic within 5 s', () => {
+    const time = (input: Partial<FlightInput>, speed: number) => {
+      const s = createFlight(0, 100, 0);
+      for (let t = 0; t < 10; t += 1 / 60) {
+        stepFlight(s, { ...idle, ...input }, 1 / 60, flat);
+        if (s.speed >= speed) return t;
+      }
+      return Infinity;
+    };
+    expect(time({ forward: 1 }, 60)).toBeLessThan(2);
+    expect(time({ forward: 1, boost: true }, 150)).toBeLessThan(FLIGHT.superAfter);
+    expect(time({ forward: 1, boost: true }, MACH)).toBeLessThan(5);
+    expect(time({ boost: true }, 1)).toBe(Infinity);
+    const s = createFlight(0, 100, 0);
+    run(s, { forward: 1, boost: true }, 5);
+    run(s, { forward: 1 }, 4);
+    expect(s.speed).toBeLessThan(FLIGHT.cruise * 1.01);
+    run(s, { forward: 1, boost: true }, FLIGHT.superAfter * 0.9);
+    expect(s.speed).toBeLessThan(MACH);
+  });
+
+  it('[R-V2-SPEED] supersonic flight cannot tunnel through a thin wall', () => {
+    const slab: FlightEnv = {
+      groundAt: () => 0,
+      collide: (p, r) => {
+        if (p.z > -50.5 - r && p.z < -49.5 + r) {
+          p.z = p.z > -50 ? -49.5 + r : -50.5 - r;
+          return true;
+        }
+        return false;
+      },
+    };
+    const s = createFlight(0, 50, -32, 0);
+    s.vel.z = -FLIGHT.supersonic;
+    s.boostHeld = FLIGHT.superAfter;
+    run(s, { forward: 1, boost: true }, 1, slab);
+    expect(s.pos.z).toBeGreaterThan(-50);
   });
 
   it('[R-FLIGHT] turning right lowers yaw, strafing right moves +x when facing north', () => {

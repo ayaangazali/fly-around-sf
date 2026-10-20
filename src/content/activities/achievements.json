@@ -839,7 +839,7 @@
     "id": "achievement-afterburner",
     "kind": "achievement",
     "title": "Afterburner",
-    "blurb": "Hit 200 km/h on boost.",
+    "blurb": "Hit 500 km/h on boost.",
     "neighborhood": "Citywide",
     "at": {
       "lat": 37.77919,
@@ -852,7 +852,7 @@
     "xp": 20,
     "params": {
       "metric": "speed",
-      "gte": 55.6
+      "gte": 138.9
     }
   },
   {

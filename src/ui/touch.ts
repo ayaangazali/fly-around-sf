@@ -107,7 +107,7 @@ export function installTouch(game: Game): { update(): void } {
   };
   hold('tbtn-up', '▲', 'Climb', (on) => (held.up = on ? 1 : 0));
   hold('tbtn-down', '▼', 'Descend', (on) => (held.down = on ? 1 : 0));
-  hold('tbtn-boost', 'BOOST', 'Boost', (on) => (axes.boost = on));
+  hold('tbtn-boost', 'BOOST', 'Boost, keep holding for supersonic', (on) => (axes.boost = on));
   const act = el('button', 'tbtn tbtn-act', 'F');
   act.setAttribute('aria-label', 'Interact');
   act.addEventListener('click', () => game.interact());

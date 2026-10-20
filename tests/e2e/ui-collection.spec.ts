@@ -108,7 +108,7 @@ test.describe('collection, achievements and HUD effects', () => {
     await page.evaluate(() => window.__fly.game.bus.emit('player:splash', {}));
     await expect(page.locator('.fx-splash')).toHaveClass(/on/);
     await expect(page.locator('.fx-speed')).toHaveCSS('opacity', '0');
-    await page.evaluate(() => (window.__fly.game.flight.vel = { x: 60, y: 0, z: 0 }));
+    await page.evaluate(() => (window.__fly.game.flight.vel = { x: 160, y: 0, z: 0 }));
     await expect.poll(async () => Number(await page.locator('.fx-speed').evaluate((n) => getComputedStyle(n).opacity))).toBeGreaterThan(0.5);
     await expect(page.locator('.hud-fps')).toBeHidden();
     await page.evaluate(() => (window.__fly.game.save.data.settings.showFps = true));
