@@ -254,6 +254,7 @@ export class Game {
   step(dt: number): void {
     if (!this.loaded) return;
     this.simTime += dt;
+    this.input.poll();
     this.handleActions();
     const open = !!this.panels.openId;
     const input = open ? { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false } : this.input.flight();

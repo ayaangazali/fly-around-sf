@@ -29,6 +29,8 @@ const GAMEPAD_ACTIONS: [number, Action][] = [
   [4, 'ping'],
 ];
 
+const NO_PAD = { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false };
+
 export interface TouchAxes {
   forward: number;
   turn: number;
@@ -41,6 +43,7 @@ export class Input {
   readonly held = new Set<string>();
   private pressed = new Set<Action>();
   private padPrev = new Set<number>();
+  private pad = NO_PAD;
   touch: TouchAxes = { forward: 0, turn: 0, lift: 0, strafe: 0, boost: false };
   enabled = true;
 
@@ -76,7 +79,7 @@ export class Input {
 
   flight(): FlightInput {
     if (!this.enabled) return { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false };
-    const pad = this.gamepad();
+    const pad = this.pad;
     const t = this.touch;
     return {
       forward: clampSum(this.key('KeyW', 'ArrowUp') - this.key('KeyS', 'ArrowDown'), pad.forward, t.forward),
@@ -87,17 +90,19 @@ export class Input {
     };
   }
 
-  private gamepad(): { forward: number; strafe: number; lift: number; yaw: number; boost: boolean } {
-    const none = { forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false };
+  poll(): void {
     const pads = typeof navigator !== 'undefined' && navigator.getGamepads ? navigator.getGamepads() : [];
     const p = Array.from(pads).find((g) => g && g.connected);
-    if (!p) return none;
+    if (!p) {
+      this.pad = NO_PAD;
+      return;
+    }
     const dz = (v: number) => (Math.abs(v) < 0.15 ? 0 : v);
     const now = new Set<number>();
     p.buttons.forEach((b, i) => b.pressed && now.add(i));
     for (const [i, action] of GAMEPAD_ACTIONS) if (now.has(i) && !this.padPrev.has(i)) this.pressed.add(action);
     this.padPrev = now;
-    return {
+    this.pad = {
       forward: -dz(p.axes[1] ?? 0),
       strafe: dz(p.axes[0] ?? 0),
       yaw: dz(p.axes[2] ?? 0),

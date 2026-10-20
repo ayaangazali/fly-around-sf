@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Input } from '../../src/core/input';
 
 const key = (target: EventTarget, type: 'keydown' | 'keyup', code: string, from?: object) => {
@@ -9,6 +9,8 @@ const key = (target: EventTarget, type: 'keydown' | 'keyup', code: string, from?
 };
 
 describe('input', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
   it('[R-INPUT] maps WASD, arrows, space/shift, Q/E and R to flight axes', () => {
     const t = new EventTarget();
     const input = new Input(t as unknown as Window);
@@ -54,5 +56,30 @@ describe('input', () => {
     expect(input.flight().lift).toBeCloseTo(0.3);
     input.enabled = false;
     expect(input.flight().forward).toBe(0);
+  });
+
+  it('[R-INPUT] a polled gamepad fires each button action once per press and flies on its sticks and triggers', () => {
+    const input = new Input(new EventTarget() as unknown as Window);
+    const buttons = Array.from({ length: 17 }, () => ({ pressed: false, value: 0 }));
+    const pad = { connected: true, axes: [0.5, -1, 0.1, 0], buttons };
+    vi.stubGlobal('navigator', { getGamepads: () => [null, pad] });
+    buttons[3].pressed = true;
+    buttons[9].pressed = true;
+    buttons[1].pressed = true;
+    buttons[7].value = 1;
+    input.poll();
+    expect(input.consume('map')).toBe(true);
+    expect(input.consume('menu')).toBe(true);
+    input.poll();
+    expect(input.consume('map')).toBe(false);
+    expect(input.flight()).toEqual({ forward: 1, strafe: 0.5, lift: 1, yaw: 0, boost: true });
+    buttons[3].pressed = false;
+    input.poll();
+    buttons[3].pressed = true;
+    input.poll();
+    expect(input.consume('map')).toBe(true);
+    vi.stubGlobal('navigator', { getGamepads: () => [] });
+    input.poll();
+    expect(input.flight()).toEqual({ forward: 0, strafe: 0, lift: 0, yaw: 0, boost: false });
   });
 });
