@@ -23,6 +23,7 @@ interface PingView {
 
 const TAG_RANGE = 3000;
 const EDGE = 28;
+const RIGHT_EDGE = 76;
 const BOTTOM_EDGE = 110;
 
 export class NetView {
@@ -231,7 +232,7 @@ export class NetView {
       px = ((x / m + 1) / 2) * w;
       py = ((1 - y / m) / 2) * h;
       const hw = node.offsetWidth / 2 + EDGE;
-      px = Math.min(w - hw, Math.max(hw, px));
+      px = Math.min(w - node.offsetWidth / 2 - RIGHT_EDGE, Math.max(hw, px));
       py = Math.min(h - BOTTOM_EDGE, Math.max(node.offsetHeight + EDGE + 48, py));
       node.style.setProperty('--dir', `${Math.atan2(-y, x).toFixed(3)}rad`);
     }
