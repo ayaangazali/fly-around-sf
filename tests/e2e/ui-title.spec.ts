@@ -248,7 +248,16 @@ test.describe('onboarding', () => {
         };
         const Vec = g.camera.position.constructor as new (x: number, y: number, z: number) => { project(c: unknown): { x: number; y: number } };
         const v = new Vec(g.flight.pos.x, g.flight.pos.y, g.flight.pos.z).project(g.camera);
-        return { card: box('.onboard'), prompt: box('.hud-prompt'), drone: { x: ((v.x + 1) / 2) * innerWidth, y: ((1 - v.y) / 2) * innerHeight }, W: innerWidth };
+        const p = document.querySelector<HTMLElement>('.hud-prompt');
+        let natural = 0;
+        if (p) {
+          const css = p.style.cssText;
+          p.style.position = 'absolute';
+          p.style.width = 'max-content';
+          natural = p.getBoundingClientRect().width;
+          p.style.cssText = css;
+        }
+        return { card: box('.onboard'), prompt: box('.hud-prompt'), natural, drone: { x: ((v.x + 1) / 2) * innerWidth, y: ((1 - v.y) / 2) * innerHeight } };
       });
     type Box = { l: number; t: number; r: number; b: number } | null;
     const meet = (a: Box, b: Box) => !!a && !!b && a.l < b.r && b.l < a.r && a.t < b.b && b.t < a.b;
@@ -256,9 +265,10 @@ test.describe('onboarding', () => {
     expect(first.card).not.toBeNull();
     expect(meet(first.card, first.prompt)).toBe(false);
     await page.getByRole('button', { name: 'Skip tutorial' }).click();
-    const { prompt, drone, W } = await layout();
+    const { prompt, natural, drone } = await layout();
     expect(prompt).not.toBeNull();
-    expect(prompt!.r - prompt!.l).toBeGreaterThanOrEqual(Math.min(300, W - 90));
+    expect(natural).toBeGreaterThan(100);
+    expect(prompt!.r - prompt!.l).toBeGreaterThanOrEqual(natural - 1);
     expect(meet(prompt, { l: drone.x - 20, t: drone.y - 20, r: drone.x + 20, b: drone.y + 20 })).toBe(false);
   });
 
