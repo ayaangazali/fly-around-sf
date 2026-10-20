@@ -24,6 +24,7 @@ async function step(pages: Page[], seconds: number, chunk = 0.5): Promise<void> 
 
 const selfId = (p: Page) => p.evaluate(() => window.__fly.game.net.selfId);
 const COUNTDOWN = 10;
+const HEAD_START = 5;
 
 async function joinFrom(p: Page): Promise<void> {
   await expect.poll(() => p.evaluate(() => !!window.__fly.game.net.match?.invited)).toBe(true);
@@ -255,7 +256,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     expect(await a.evaluate((id) => window.__fly.game.net.startMatch('tag', { role: id, duration: 20 }), aId)).toBe(true);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.match?.role)).toBe(aId);
     await joinFrom(b);
-    await step([a, b], COUNTDOWN + 0.5);
+    await step([a, b], COUNTDOWN + HEAD_START + 0.5);
     const pos = await a.evaluate(() => window.__fly.state().pos);
     await b.evaluate((p) => {
       window.__fly.teleport({ x: p.x + 3, y: p.y, z: p.z + 3 });

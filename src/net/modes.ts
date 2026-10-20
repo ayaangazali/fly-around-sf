@@ -8,6 +8,8 @@ export const COUNTDOWN = 10;
 export const READY = 3;
 export const TAG_RADIUS = 8;
 export const TAG_COOLDOWN = 3;
+export const HEAD_START = 5;
+export const NO_TAG_BACK = 10;
 export const FIND_RADIUS = 15;
 export const HIDE_TIME = 20;
 export const FORMATION_RADIUS = 30;
@@ -72,6 +74,7 @@ export class Match {
   readonly scores = new Map<string, Score>();
   readonly joined: Set<string>;
   private lastTag = -Infinity;
+  private taggedBy = '';
   private anchor: { p: Vec3; yaw: number } | null = null;
   private race: { inst: ActivityInstance | null; total: number; def: string } | null = null;
   private fogBefore: number | null = null;
@@ -222,8 +225,8 @@ export class Match {
       }
     } else if (mode === 'tag') {
       if (self !== this.role) me.s += dt;
-      else if (this.t - this.lastTag >= TAG_COOLDOWN) {
-        const near = this.nearest(this.players().filter((id) => id !== self), TAG_RADIUS);
+      else if (this.tagWait() <= 0) {
+        const near = this.nearest(this.players().filter((id) => id !== self && !this.tagBack(id)), TAG_RADIUS);
         if (near) this.claim(near);
       }
     } else if (mode === 'hide') {
@@ -243,6 +246,14 @@ export class Match {
         if (lead && distance(lead, this.env.game.flight.pos) <= FORMATION_RADIUS) me.s += dt;
       }
     }
+  }
+
+  private tagWait(): number {
+    return Math.max(COUNTDOWN + HEAD_START, this.lastTag + TAG_COOLDOWN) - this.t;
+  }
+
+  private tagBack(id: string): boolean {
+    return id === this.taggedBy && this.t - this.lastTag < NO_TAG_BACK;
   }
 
   private nearest(ids: string[], radius: number): string | null {
@@ -270,6 +281,7 @@ export class Match {
     if (this.phase === 'done' || n !== this.tags + 1 || from !== this.role || !this.spec.roster.includes(to) || to === from) return false;
     if (this.spec.mode === 'tag') {
       this.role = to;
+      this.taggedBy = from;
       this.lastTag = this.t;
       this.tags = n;
       this.env.game.toast(to === this.self ? `${this.env.name(from)} tagged you. You are IT!` : `${this.env.name(from)} tagged ${this.env.name(to)}`, to === this.self ? 'warn' : 'info');
@@ -388,8 +400,11 @@ export class Match {
     switch (this.spec.mode) {
       case 'race':
         return this.me().d ? 'Finished. Waiting for the others' : (this.race?.inst?.hud() ?? 'Fly through the rings');
-      case 'tag':
-        return self === role ? (this.t - this.lastTag < TAG_COOLDOWN ? 'You are IT. No tag-backs for a moment' : 'You are IT. Fly into someone!') : `${this.env.name(role)} is IT, ${away(role)} away`;
+      case 'tag': {
+        if (self !== role) return this.tagWait() > 0 ? `Run! ${this.env.name(role)} can tag in ${Math.ceil(this.tagWait())} s` : `${this.env.name(role)} is IT, ${away(role)} away`;
+        if (this.tagWait() > 0) return `You are IT. Tag in ${Math.ceil(this.tagWait())} s`;
+        return this.tagBack(this.taggedBy) ? `You are IT. No tag-backs on ${this.env.name(this.taggedBy)} for ${Math.ceil(this.lastTag + NO_TAG_BACK - this.t)} s` : 'You are IT. Fly into someone!';
+      }
       case 'hide':
         if (self === role) return this.seeking ? `Hunt them down: ${this.tags} found` : `Eyes closed. Hunting starts in ${Math.ceil(COUNTDOWN + HIDE_TIME - this.t)} s`;
         if (this.me().d) return 'Found. Watch the others';

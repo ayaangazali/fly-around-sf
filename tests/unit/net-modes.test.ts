@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Match, ordinal, COUNTDOWN, READY, HIDE_TIME, BLIND_FOG, SEEKER_FOG, TAG_COOLDOWN, RESULTS_SECONDS, MODES, type MatchEnv, type StartSpec } from '../../src/net/modes';
+import { Match, ordinal, COUNTDOWN, READY, HIDE_TIME, BLIND_FOG, SEEKER_FOG, TAG_COOLDOWN, HEAD_START, NO_TAG_BACK, RESULTS_SECONDS, MODES, type MatchEnv, type StartSpec } from '../../src/net/modes';
 import type { Msg, ModeId } from '../../src/net/protocol';
 import type { Vec3 } from '../../src/player/flight';
 import { netGame } from './net-helpers';
@@ -94,18 +94,18 @@ describe('multiplayer modes', () => {
 
   it('[R-NET-MODES] tag: IT tags on contact, no tag-backs, and free time is scored', async () => {
     const { m, game, sent, pos, run } = await setup('tag', 'me');
-    run(COUNTDOWN + 0.1);
+    run(COUNTDOWN + HEAD_START + 0.1);
     expect(m.hint()).toContain('You are IT');
     pos.set('p2', { ...game.flight.pos, x: game.flight.pos.x + 5 });
     run(0.1);
     expect(m.role).toBe('p2');
     expect(sent.find((x) => x.t === 'tag')).toEqual({ t: 'tag', id: 'm1', to: 'p2', n: 1 });
-    expect(m.hint()).toContain('Ben is IT');
+    expect(m.hint()).toContain('Ben can tag in');
     run(1);
     m.onMessage({ t: 'tag', id: 'm1', to: 'me', n: 2 }, 'p2');
     expect(m.role).toBe('me');
     expect(game.toasts.at(-1)).toContain('You are IT');
-    expect(m.hint()).toContain('No tag-backs');
+    expect(m.hint()).toContain('Tag in');
     run(TAG_COOLDOWN / 2);
     expect(m.role).toBe('me');
     m.onMessage({ t: 'tag', id: 'm1', to: 'me', n: 3 }, 'p2');
@@ -119,6 +119,27 @@ describe('multiplayer modes', () => {
     m.onMessage({ t: 'score', id: 'm1', s: 40, x: 0, d: false }, 'p2');
     expect(m.standings()[0]).toMatchObject({ id: 'p2', label: '40 s free' });
     expect(m.standings()[1].label).toContain('IT');
+  });
+
+  it('[R-V2-NET-TAG] tag: runners get a head start at go and the new IT cannot tag straight back', async () => {
+    const { m, game, pos, run } = await setup('tag', 'me');
+    pos.set('p2', { ...game.flight.pos, x: game.flight.pos.x + 3 });
+    run(COUNTDOWN + 0.1);
+    expect(m.phase).toBe('live');
+    expect(m.hint()).toBe(`You are IT. Tag in ${HEAD_START} s`);
+    run(HEAD_START - 0.3);
+    expect(m.role).toBe('me');
+    run(0.4);
+    expect(m.role).toBe('p2');
+    m.onMessage({ t: 'tag', id: 'm1', to: 'me', n: 2 }, 'p2');
+    run(TAG_COOLDOWN + 0.5);
+    expect(m.role).toBe('me');
+    expect(m.hint()).toMatch(/^You are IT\. No tag-backs on Ben for \d+ s$/);
+    run(NO_TAG_BACK - TAG_COOLDOWN - 0.7);
+    expect(m.role).toBe('me');
+    run(0.4);
+    expect(m.role).toBe('p2');
+    expect(m.tags).toBe(3);
   });
 
   it('[R-NET-MODES] tag: if IT leaves, the role passes deterministically', async () => {
