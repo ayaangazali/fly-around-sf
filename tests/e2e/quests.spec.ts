@@ -137,7 +137,8 @@ test.describe('quests', () => {
 
   test('[R-QUESTLOG] the quest log shows the story so far, the current objective and sets a waypoint', async ({ page }) => {
     await boot(page);
-    await page.locator('.menubar-btn[data-panel="quests"]').click();
+    await page.locator('.menubar-btn[data-panel="menu"]').click();
+    await page.locator('.menu-tile[data-panel="quests"]').click();
     await expect(page.locator('.sheet[data-panel="quests"] .ql-hero h3')).toHaveText('The Lost Commit');
     await expect(page.locator('.ql-chapter.current strong')).toHaveText('Initial Commit');
     await page.locator('.ql-chapter.current .ql-btn').click();
@@ -247,7 +248,8 @@ test('[R-QUESTLOG] the quest log and dialogue fit on touch screens @touch', asyn
   });
   await expect(page.locator('.qd')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
-  await page.locator('.menubar-btn[data-panel="quests"]').click();
+  await page.locator('.menubar-btn[data-panel="menu"]').click();
+  await page.locator('.menu-tile[data-panel="quests"]').click();
   await expect(page.locator('.sheet[data-panel="quests"]')).toBeVisible();
   await expect(page.locator('.qd')).toBeHidden();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);

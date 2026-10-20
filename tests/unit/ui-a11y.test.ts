@@ -13,7 +13,7 @@ function host() {
   const h = new PanelHost(game);
   (game as unknown as { panels: PanelHost }).panels = h;
   const panel: Panel = {
-    id: 'demo',
+    id: 'menu',
     title: 'Demo',
     icon: '*',
     render(root) {
@@ -32,7 +32,7 @@ describe('accessible sheets and controls', () => {
     const opener = h.bar.querySelector('button') as HTMLButtonElement;
     expect(opener.getAttribute('aria-label')).toBe('Demo');
     opener.focus();
-    h.open('demo');
+    h.open('menu');
     expect(h.sheet.getAttribute('role')).toBe('dialog');
     expect(h.sheet.getAttribute('aria-modal')).toBe('true');
     expect(document.getElementById(h.sheet.getAttribute('aria-labelledby')!)?.textContent).toContain('Demo');
@@ -64,7 +64,7 @@ describe('accessible sheets and controls', () => {
     expect(press(hud, 'Space').defaultPrevented).toBe(true);
     expect(input.flight().lift).toBe(1);
     window.dispatchEvent(new Event('blur'));
-    h.open('demo');
+    h.open('menu');
     const inside = h.sheet.querySelector('.a') as HTMLElement;
     expect(press(inside, 'Space').defaultPrevented).toBe(false);
     expect(press(inside, 'ArrowDown').defaultPrevented).toBe(false);

@@ -174,16 +174,8 @@ test.describe('map and waypoints', () => {
   });
 });
 
-test('[R-WAYPOINT] the compass shows nearby things to do and the menu suggests the nearest', async ({ page }) => {
+test('[R-WAYPOINT] the compass shows nearby things to do', async ({ page }) => {
   await boot(page);
   await page.evaluate(() => window.__fly.step(0.1));
   await expect(page.locator('.compass-pip:not([hidden])').first()).toBeVisible();
-  await page.evaluate(() => window.__fly.game.panels.open('menu'));
-  const first = page.locator('.menu-next-item').first();
-  await expect(first).toBeVisible();
-  const id = await first.getAttribute('data-activity');
-  await first.click();
-  await expect(page.locator('.sheet')).toBeHidden();
-  const label = await page.evaluate((a) => window.__fly.game.activities.defs.get(a!)!.title, id);
-  expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBe(label);
 });

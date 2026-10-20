@@ -9,15 +9,23 @@ const serious = async (page: Page, selector: string) => {
 };
 
 test.describe('menus', () => {
-  test('[R-PANELS] [R-A11Y] every panel opens from its button, renders, passes axe and closes back to its button', async ({ page }) => {
+  test('[R-PANELS] [R-A11Y] [R-V2-MENUBAR] the menubar holds Menu, Map, Collection, Friends and Settings; every other panel opens from the Menu, and each passes axe and closes back to the bar', async ({ page }) => {
     test.setTimeout(600_000);
     const errors = await boot(page);
+    const bar = ['menu', 'map', 'dex', 'friends', 'settings'];
+    expect(await page.locator('.menubar-btn').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.panel))).toEqual(bar);
     const ids = await page.evaluate(() => window.__fly.game.panels.list().filter((p) => !p.hidden).map((p) => p.id));
     expect(ids).toEqual(expect.arrayContaining(['menu', 'map', 'journal', 'dex', 'stats', 'help', 'settings']));
     for (const id of ids) {
-      const button = page.locator(`.menubar-btn[data-panel="${id}"]`);
+      const onBar = bar.includes(id);
+      const button = page.locator(`.menubar-btn[data-panel="${onBar ? id : 'menu'}"]`);
       await button.focus();
       await page.keyboard.press('Enter');
+      if (!onBar) {
+        const tile = page.locator(`.menu-tile[data-panel="${id}"]`);
+        await tile.focus();
+        await page.keyboard.press('Enter');
+      }
       const sheet = page.locator(`.sheet[data-panel="${id}"]`);
       await expect(sheet).toBeVisible();
       await expect(sheet.locator('.sheet-body')).not.toBeEmpty();

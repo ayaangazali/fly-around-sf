@@ -100,14 +100,11 @@ test.describe('audio', () => {
     await page.waitForTimeout(700);
     expect((await busGains(page)).master).toBeLessThan(0.001);
     expect(await page.evaluate(() => window.__audio().graph!.ctx.state)).toBe('suspended');
-    await page.evaluate(() => window.__fly.step(0.1));
-    expect(await page.locator('.menubar-btn[data-panel="sound"]').getAttribute('aria-label')).toBe('Sound (muted)');
 
     await page.reload();
     await page.waitForFunction(() => window.__fly?.ready === true, undefined, { timeout: 120_000 });
     await page.evaluate(() => window.__fly.step(0.1));
     expect(await page.evaluate(() => window.__fly.game.save.data.settings.muted)).toBe(true);
-    await expect(page.locator('.menubar-btn[data-panel="sound"]')).toHaveText('🔇');
     await page.mouse.click(640, 520);
     await page.waitForTimeout(700);
     expect(await page.evaluate(() => window.__audio().graph!.ctx.state)).toBe('suspended');
@@ -117,8 +114,7 @@ test.describe('audio', () => {
     await page.waitForFunction(() => window.__audio().graph!.ctx.state === 'running');
     await page.waitForTimeout(500);
     expect((await busGains(page)).master).toBeCloseTo(0.64, 2);
-    await page.evaluate(() => window.__fly.step(0.1));
-    await expect(page.locator('.menubar-btn[data-panel="sound"]')).toHaveText('🔊');
+    expect(await page.evaluate(() => window.__fly.game.save.data.settings.muted)).toBe(false);
   });
 
   test('[R-AUDIO-DRONE] boosting raises the motor pitch, the whine and the wind', async ({ page }) => {
@@ -324,7 +320,8 @@ test.describe('audio', () => {
 
   test('[R-AUDIO-PANEL] the Sound panel mixes, mutes, lists every spot and sets a waypoint', async ({ page }) => {
     await start(page);
-    await page.locator('.menubar-btn[data-panel="sound"]').click();
+    await page.locator('.menubar-btn[data-panel="menu"]').click();
+    await page.locator('.menu-tile[data-panel="sound"]').click();
     await expect(page.locator('.sheet[data-panel="sound"]')).toBeVisible();
     await expect(page.locator('.snd-spot')).toHaveCount(9);
     await expect(page.locator('.snd-slider input')).toHaveCount(4);
@@ -352,7 +349,8 @@ test.describe('audio', () => {
     expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBe('Pier 39 sea lions');
 
     await page.setViewportSize({ width: 390, height: 800 });
-    await page.locator('.menubar-btn[data-panel="sound"]').click();
+    await page.locator('.menubar-btn[data-panel="menu"]').click();
+    await page.locator('.menu-tile[data-panel="sound"]').click();
     const overflow = await page.evaluate(() => {
       const body = document.querySelector('.sheet-body')!;
       return body.scrollWidth - body.clientWidth;

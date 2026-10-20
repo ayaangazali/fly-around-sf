@@ -11,6 +11,8 @@ export interface Panel {
   render(root: HTMLElement, game: Game): void | (() => void);
 }
 
+const BAR = ['menu', 'map', 'dex', 'friends', 'settings'];
+
 export class PanelHost {
   private panels = new Map<string, Panel>();
   readonly bar: HTMLElement;
@@ -39,8 +41,9 @@ export class PanelHost {
   register(panels: Panel[]): void {
     for (const p of panels) this.panels.set(p.id, p);
     this.bar.replaceChildren();
-    for (const p of this.list()) {
-      if (p.hidden) continue;
+    for (const id of BAR) {
+      const p = this.panels.get(id);
+      if (!p) continue;
       const b = el('button', 'menubar-btn');
       b.dataset.panel = p.id;
       b.title = p.title;
