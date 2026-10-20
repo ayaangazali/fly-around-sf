@@ -307,4 +307,36 @@ test.describe('founder trail map', () => {
     await expect(page.locator('.sheet')).toBeHidden();
     expect(await page.evaluate(() => (window as unknown as { warps: unknown[] }).warps)).toEqual([await target(ids[0]), await target(last)]);
   });
+
+  test('[R-V2-MAP-MINIMAP] the minimap points a line and arrow at the current objective', async ({ page }) => {
+    await boot(page);
+    const [id] = await trail(page);
+    const angle = (dx: number, dz: number) =>
+      page.evaluate(
+        async ({ id, dx, dz }) => {
+          const g = window.__fly.game;
+          const q = g.activities.position(g.activities.defs.get(id)!);
+          window.__fly.teleport({ x: q.x - dx, y: g.flight.pos.y, z: q.z - dz }, 0);
+          await new Promise((f) => setTimeout(f, 400));
+          const c = document.querySelector('.minimap canvas') as HTMLCanvasElement;
+          const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
+          let sx = 0;
+          let sy = 0;
+          let n = 0;
+          for (let i = 0; i < d.length; i += 4) {
+            if (Math.abs(d[i] - 255) < 25 && Math.abs(d[i + 1] - 209) < 14 && Math.abs(d[i + 2] - 102) < 20) {
+              sx += ((i / 4) % c.width) - c.width / 2;
+              sy += Math.floor(i / 4 / c.width) - c.height / 2;
+              n++;
+            }
+          }
+          return n > 20 ? (Math.atan2(sy, sx) * 180) / Math.PI : null;
+        },
+        { id, dx, dz },
+      );
+    const off = (a: number | null, want: number) => (a === null ? Infinity : Math.abs(((a - want + 540) % 360) - 180));
+    expect(off(await angle(3000, 0), 0)).toBeLessThan(12);
+    expect(off(await angle(0, 3000), 90)).toBeLessThan(12);
+    expect(off(await angle(-250, -250), -135)).toBeLessThan(12);
+  });
 });

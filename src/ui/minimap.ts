@@ -4,7 +4,7 @@ import { baseMap } from './map-base';
 import { headingDeg } from './map-view';
 import { settingsOf } from './settings-model';
 import { guideTarget } from './waypoint';
-import { kindColor, mappable } from './map-style';
+import { currentObjective, kindColor, mappable, TRAIL_COLOR } from './map-style';
 
 const SIZE = 148;
 const RANGE = 700;
@@ -57,7 +57,7 @@ export function installMinimap(game: Game): { update(): void } {
         ctx.fill();
       };
       for (const d of game.activities.list()) {
-        if (!mappable(game, d) || game.save.isDone(d.id) || game.activities.locked(d)) continue;
+        if (d.kind === 'trail' || !mappable(game, d) || game.save.isDone(d.id) || game.activities.locked(d)) continue;
         const q = game.activities.position(d);
         if (Math.abs(q.x - p.x) > r || Math.abs(q.z - p.z) > r) continue;
         dot(q.x, q.z, 'rgba(0,0,0,0.55)', 4.5 * dpr);
@@ -70,6 +70,41 @@ export function installMinimap(game: Game): { update(): void } {
         const k = Math.min(1, (RANGE * 0.92) / Math.max(1, Math.hypot(dx, dz)));
         dot(p.x + dx * k, p.z + dz * k, '#ffffff', 6 * dpr);
         dot(p.x + dx * k, p.z + dz * k, '#ff6a3d', 4.5 * dpr);
+      }
+      const goal = currentObjective(game);
+      if (goal) {
+        const q = game.activities.position(goal);
+        const dx = q.x - p.x;
+        const dz = q.z - p.z;
+        const dist = Math.max(1, Math.hypot(dx, dz));
+        const ux = dx / dist;
+        const uz = dz / dist;
+        const px = (n: number) => (n * dpr) / scale;
+        const end = Math.min(dist, RANGE - px(14));
+        ctx.lineCap = 'round';
+        ctx.setLineDash([px(5), px(5)]);
+        ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+        ctx.lineWidth = px(5);
+        ctx.beginPath();
+        ctx.moveTo(ux * px(12), uz * px(12));
+        ctx.lineTo(ux * end, uz * end);
+        ctx.stroke();
+        ctx.strokeStyle = TRAIL_COLOR;
+        ctx.lineWidth = px(2.5);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.beginPath();
+        if (dist > end) {
+          ctx.moveTo(ux * (end + px(11)), uz * (end + px(11)));
+          ctx.lineTo(ux * end - uz * px(8), uz * end + ux * px(8));
+          ctx.lineTo(ux * end + uz * px(8), uz * end - ux * px(8));
+          ctx.closePath();
+        } else ctx.arc(dx, dz, px(6.5), 0, Math.PI * 2);
+        ctx.fillStyle = TRAIL_COLOR;
+        ctx.strokeStyle = '#10151c';
+        ctx.lineWidth = px(2);
+        ctx.fill();
+        ctx.stroke();
       }
       ctx.restore();
       ctx.translate(R, R);

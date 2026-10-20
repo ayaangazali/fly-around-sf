@@ -1,5 +1,6 @@
 [
   { "id": "R-V2-MAP-OPEN", "owner": "map", "text": "On the full city the map opens and paints within a second, even right after load, framed on the player and every Founder Trail stop, and building the city map never freezes the game." },
   { "id": "R-V2-MAP-TRAIL", "owner": "map", "text": "The map numbers every Founder Trail stop and highlights the current objective; side activities appear on the map, minimap and compass only when Show side activities is on." },
-  { "id": "R-V2-MAP-WARP", "owner": "map", "text": "The map's objective bar and every trail stop card have a Warp button that emits the warp event with the stop's local position and name." }
+  { "id": "R-V2-MAP-WARP", "owner": "map", "text": "The map's objective bar and every trail stop card have a Warp button that emits the warp event with the stop's local position and name." },
+  { "id": "R-V2-MAP-MINIMAP", "owner": "map", "text": "The minimap points a line and an edge arrow at the current objective." }
 ]
