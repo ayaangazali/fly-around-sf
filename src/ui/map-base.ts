@@ -117,12 +117,16 @@ function drawBuildings(ctx: CanvasRenderingContext2D, city: CityData, v: MapView
   groups.forEach((list, i) => {
     ctx.fillStyle = BUCKETS[i][1];
     ctx.beginPath();
-    for (const b of list) {
+    list.forEach((b, m) => {
       const s = city.start[b];
       ctx.moveTo(city.xs[s] * k + ox, city.zs[s] * k + oy);
       for (let n = 1; n < city.len[b]; n++) ctx.lineTo(city.xs[s + n] * k + ox, city.zs[s + n] * k + oy);
       ctx.closePath();
-    }
+      if (m % 200 === 199) {
+        ctx.fill();
+        ctx.beginPath();
+      }
+    });
     ctx.fill();
   });
 }
