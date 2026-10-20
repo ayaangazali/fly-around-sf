@@ -19,7 +19,7 @@ export function guideTarget(game: Game): (Vec3 & { label: string }) | null {
   if (game.waypoint) return game.waypoint;
   const a = game.activities.active;
   const next = a?.inst.targets?.()[0];
-  return next ? { ...next, label: a!.def.title } : null;
+  return next ? { ...next, label: 'Next' } : null;
 }
 
 export function installWaypoint(game: Game): { update(): void } {
@@ -88,7 +88,7 @@ export function installWaypoint(game: Game): { update(): void } {
         const half = Math.max(18, label.offsetWidth / 2) + 6;
         foot = { left: half, right: half, top: 20, bottom: label.offsetTop + label.offsetHeight + 6 };
       }
-      const e = edgePoint(dx, dy, W / 2 - Math.max(90, foot.left + 12), H / 2 - 70);
+      const e = edgePoint(dx, dy, W / 2 - 90, H / 2 - 70);
       const at = avoidBoxes(W / 2 + e.x, H / 2 + e.y, boxes, foot, W, H);
       marker.style.transform = `translate(${at.x}px, ${at.y}px)`;
       arrow.style.transform = `rotate(${e.angle}rad)`;

@@ -1,6 +1,7 @@
 import type { Game } from '../game';
 import type { ActivityDef } from '../activities/types';
-import { FLIGHT } from '../player/flight';
+import { nearestOpen } from './nearby';
+import { chapters } from '../activities/kinds/quest';
 
 export interface OnboardStep {
   id: string;
@@ -11,57 +12,38 @@ export interface OnboardStep {
 
 export const STEPS: OnboardStep[] = [
   { id: 'forward', title: 'Fly forward', keys: 'Hold <kbd>W</kbd> or <kbd>↑</kbd>', touch: 'Push the left stick up' },
-  { id: 'turn', title: 'Turn', keys: '<kbd>A</kbd> and <kbd>D</kbd> turn the drone', touch: 'Push the left stick left or right' },
-  { id: 'climb', title: 'Climb and descend', keys: 'Hold <kbd>Space</kbd> to climb and <kbd>Shift</kbd> to descend, in any order', touch: 'Hold ▲ to climb and ▼ to descend, in any order' },
-  { id: 'boost', title: 'Boost to supersonic', keys: 'Hold <kbd>W</kbd> and <kbd>R</kbd>. Keep holding to break the sound barrier', touch: 'Push the left stick up and hold BOOST. Keep holding to break the sound barrier' },
-  { id: 'objective', title: 'Follow the objective', keys: 'Fly toward the orange marker', touch: 'Fly toward the orange marker' },
+  { id: 'turn', title: 'Turn around', keys: '<kbd>A</kbd> and <kbd>D</kbd> turn the drone', touch: 'Push the left stick sideways' },
+  { id: 'climb', title: 'Climb, then drop', keys: '<kbd>Space</kbd> climbs, <kbd>Shift</kbd> descends', touch: 'Right stick up and down, or ▲ ▼' },
+  { id: 'boost', title: 'Boost', keys: 'Hold <kbd>R</kbd> while flying forward', touch: 'Hold BOOST while moving' },
+  { id: 'journal', title: 'Open your journal', keys: 'Press <kbd>J</kbd> to see everything to do', touch: 'Tap 📋 in the top bar' },
+  { id: 'activity', title: 'Start your first activity', keys: 'Follow the orange marker, then press <kbd>F</kbd>', touch: 'Follow the orange marker, then tap F' },
 ];
 
 export const FLAG = 'onboarded';
 
-const CLIMB = 6;
-const DROP = 4;
-const CLOSER = 100;
-const ARRIVED = 60;
-
-export function trailTarget(game: Game): ActivityDef | null {
-  const order = (d: ActivityDef) => Number(d.params?.order);
-  return (
-    game.activities
-      .list()
-      .filter((d) => d.kind === 'trail' && !game.save.isDone(d.id))
-      .sort((a, b) => order(a) - order(b))[0] ?? null
-  );
+export function firstActivity(game: Game): ActivityDef | null {
+  return chapters(game.activities.list()).find((c) => !game.save.isDone(c.id)) ?? nearestOpen(game, 1)[0]?.def ?? null;
 }
 
 export class OnboardingTracker {
   step = 0;
-  up = 0;
-  down = 0;
   private ref = { x: 0, y: 0, z: 0 };
   private yaw = 0;
   private turned = 0;
-  private lastY = 0;
-  private start = Infinity;
+  private peak = -Infinity;
+  private flags = new Set<string>();
+  private offs: (() => void)[] = [];
 
   constructor(private game: Game) {
     this.mark();
+    this.offs.push(
+      game.bus.on('panel:open', ({ id }) => id === 'journal' && this.flags.add('journal')),
+      game.bus.on('activity:start', () => this.flags.add('activity')),
+    );
   }
 
   get done(): boolean {
     return this.step >= STEPS.length;
-  }
-
-  get id(): string {
-    return STEPS[this.step]?.id ?? 'done';
-  }
-
-  private distance(): number {
-    const t = trailTarget(this.game);
-    if (!t) return 0;
-    const p = this.game.activities.position(t);
-    const f = this.game.flight.pos;
-    return Math.hypot(p.x - f.x, p.z - f.z);
   }
 
   private mark(): void {
@@ -69,49 +51,42 @@ export class OnboardingTracker {
     this.ref = { ...f.pos };
     this.yaw = f.yaw;
     this.turned = 0;
-    this.lastY = f.pos.y;
-    this.up = 0;
-    this.down = 0;
-    this.start = this.id === 'objective' ? this.distance() : Infinity;
+    this.peak = f.pos.y;
+    this.flags.delete('journal');
+    this.flags.delete('activity');
   }
 
   private met(): boolean {
     const f = this.game.flight;
-    switch (this.id) {
+    switch (STEPS[this.step].id) {
       case 'forward':
         return Math.hypot(f.pos.x - this.ref.x, f.pos.z - this.ref.z) > 25;
       case 'turn':
         this.turned += Math.abs(f.yaw - this.yaw);
         this.yaw = f.yaw;
         return this.turned > 1.2;
-      case 'climb': {
-        const dy = f.pos.y - this.lastY;
-        this.lastY = f.pos.y;
-        if (dy > 0) this.up += dy;
-        else this.down -= dy;
-        return this.up >= CLIMB && this.down >= DROP;
-      }
+      case 'climb':
+        this.peak = Math.max(this.peak, f.pos.y);
+        return this.peak - this.ref.y > 8 && this.peak - f.pos.y > 4;
       case 'boost':
-        return Math.hypot(f.vel.x, f.vel.z) > FLIGHT.boost * 0.8;
-      default: {
-        const d = this.distance();
-        return d < ARRIVED || this.start - d > CLOSER;
-      }
+        return Math.hypot(f.vel.x, f.vel.z) > 40;
+      case 'journal':
+        return this.flags.has('journal');
+      default:
+        return this.flags.has('activity');
     }
-  }
-
-  get climbed(): boolean {
-    return this.up >= CLIMB;
-  }
-
-  get descended(): boolean {
-    return this.down >= DROP;
   }
 
   update(): boolean {
     if (this.done || !this.met()) return false;
     this.step++;
-    if (!this.done) this.mark();
+    if (this.done) this.dispose();
+    else this.mark();
     return true;
+  }
+
+  dispose(): void {
+    for (const off of this.offs) off();
+    this.offs = [];
   }
 }

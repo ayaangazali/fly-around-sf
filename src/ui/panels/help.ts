@@ -10,7 +10,7 @@ const KEYBOARD: [string[], string][] = [
   [['Q', 'E'], 'Slide sideways'],
   [['Space'], 'Climb'],
   [['Shift'], 'Descend'],
-  [['R'], 'Hold to boost, keep holding to go supersonic'],
+  [['R'], 'Hold to boost'],
   [['F'], 'Start the activity you are next to'],
   [['C'], 'Next activity, when several are here'],
   [['V'], 'Change camera'],
@@ -44,9 +44,9 @@ const TOUCH: [string, string][] = [
   ['Left stick', 'Up flies forward, sideways turns'],
   ['Right stick', 'Up climbs, sideways slides'],
   ['▲ ▼', 'Climb and descend'],
-  ['BOOST', 'Hold to go fast, keep holding to go supersonic'],
+  ['BOOST', 'Hold to go fast'],
   ['F', 'Start the activity you are next to'],
-  ['Top bar', 'Menu, map, collection, friends and settings'],
+  ['Top bar', 'Map, journal, collection and more'],
 ];
 
 const table = (rows: [string, string][]) => {
@@ -97,7 +97,7 @@ export const panel: Panel = {
       tabs.append(b);
     }
     show(isTouchDevice() ? 'touch' : 'keyboard');
-    const tip = el('p', 'help-tip', 'Tip: follow the orange marker to your next stop, or open the map and warp there.');
+    const tip = el('p', 'help-tip', 'Tip: hover near anything glowing and press F. Discoveries unlock just by flying close.');
     root.append(tabs, view, tip);
   },
 };

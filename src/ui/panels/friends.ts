@@ -7,8 +7,9 @@ import { fmt } from '../../net/view';
 import type { VoiceResult } from '../../net/voice';
 import type { SyncPhase } from '../../net/sync';
 import { isTouchDevice } from '../touch';
-import { DRONE_COLORS } from '../settings-model';
 import './friends.css';
+
+const SWATCHES = ['#f2f2ee', '#ff6a3d', '#ffc15e', '#7de0a6', '#5ec8ff', '#9b8cff', '#ff7eb6', '#ff4d5e'];
 
 const VOICE_ERRORS: Record<Exclude<VoiceResult, 'on'>, string> = {
   denied: 'Microphone blocked. Allow it from the icon in the address bar, then try again.',
@@ -80,7 +81,7 @@ function renderYou(game: Game): HTMLElement {
   const paint = () => {
     for (const b of swatches.children as HTMLCollectionOf<HTMLElement>) b.setAttribute('aria-pressed', String(b.dataset.color === game.net.color));
   };
-  for (const c of DRONE_COLORS) {
+  for (const c of SWATCHES) {
     const b = button('', 'fr-swatch', () => {
       s.droneColor = c;
       game.save.persist();
@@ -396,9 +397,7 @@ function renderSync(game: Game): { box: HTMLElement; draw: () => void } {
   body.append(intro, send, codeBox, el('p', 'fr-or', 'or receive here'), form, status, cancel);
   const draw = () => {
     const offering = sync.phase === 'waiting' || sync.phase === 'sending' || sync.phase === 'sent';
-    const reveal = offering && codeBox.hidden;
     codeBox.hidden = !offering;
-    if (reveal) codeBox.scrollIntoView?.({ block: 'center' });
     big.textContent = offering && sync.code ? `${sync.code.slice(0, 4)} ${sync.code.slice(4)}` : '';
     status.dataset.status = sync.phase;
     status.textContent = sync.phase === 'merged' && sync.result ? `Merged: ${plural(sync.result.added, 'new activity', 'new activities')} and ${plural(sync.result.cards, 'new card', 'new cards')}.` : SYNC_TEXT[sync.phase];

@@ -11,8 +11,6 @@ export interface Panel {
   render(root: HTMLElement, game: Game): void | (() => void);
 }
 
-const BAR = ['menu', 'map', 'dex', 'friends', 'settings'];
-
 export class PanelHost {
   private panels = new Map<string, Panel>();
   readonly bar: HTMLElement;
@@ -41,9 +39,8 @@ export class PanelHost {
   register(panels: Panel[]): void {
     for (const p of panels) this.panels.set(p.id, p);
     this.bar.replaceChildren();
-    for (const id of BAR) {
-      const p = this.panels.get(id);
-      if (!p) continue;
+    for (const p of this.list()) {
+      if (p.hidden) continue;
       const b = el('button', 'menubar-btn');
       b.dataset.panel = p.id;
       b.title = p.title;
@@ -113,10 +110,10 @@ export class PanelHost {
   }
 }
 
-const FOCUSABLE = 'button:not([disabled]), summary, [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
 function trapTab(root: HTMLElement, e: KeyboardEvent): void {
-  const items = [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.checkVisibility() || n === document.activeElement);
+  const items = [...root.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.offsetParent !== null || n === document.activeElement);
   if (!items.length) return;
   const first = items[0];
   const last = items[items.length - 1];

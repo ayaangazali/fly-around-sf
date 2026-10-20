@@ -63,6 +63,7 @@ export class GameAudio {
   private progress = { id: '', value: 0 };
   private nearbyId: string | null = null;
   private battery = 1;
+  private iconDirty = true;
 
   constructor(private game: Game) {
     this.engine = new AudioEngine(game.save);
@@ -74,6 +75,7 @@ export class GameAudio {
       this.toggleMute();
     });
     document.addEventListener('visibilitychange', () => this.engine.setHidden(document.hidden));
+    game.save.onChange(() => (this.iconDirty = true));
     this.listen();
   }
 
@@ -117,6 +119,7 @@ export class GameAudio {
   }
 
   update(dt: number): void {
+    if (this.iconDirty) this.syncIcon();
     const g = this.graph;
     const nowMs = this.game.date().getTime();
     const crossed = crossedHour(this.lastClock, nowMs);
@@ -213,6 +216,15 @@ export class GameAudio {
     bus.on('toast', ({ kind }) => {
       if (this.graph && this.graph.ctx.currentTime - this.lastSfx > 0.3) this.pendingToast = kind ?? 'info';
     });
+  }
+
+  private syncIcon(): void {
+    const btn = this.game.panels?.bar.querySelector('[data-panel="sound"]');
+    if (!btn) return;
+    const muted = this.engine.muted;
+    btn.textContent = muted ? '🔇' : '🔊';
+    btn.setAttribute('aria-label', muted ? 'Sound (muted)' : 'Sound');
+    this.iconDirty = false;
   }
 }
 
