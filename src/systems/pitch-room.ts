@@ -13,7 +13,7 @@ function activePitch(game: Game): { id: string; inst: PitchInstance } | null {
 }
 
 function buildPad(): { root: THREE.Group; ring: THREE.Mesh; beam: THREE.Mesh } {
-  const glow = (opacity: number) => new THREE.MeshBasicMaterial({ color: '#ff6a3d', transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide });
+  const glow = (opacity: number) => new THREE.MeshBasicMaterial({ color: '#ff6a3d', transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide, forceSinglePass: true });
   const root = new THREE.Group();
   root.name = 'pitch-pad';
   const disc = new THREE.Mesh(new THREE.CircleGeometry(PITCH.padRadius, 40), glow(0.12));

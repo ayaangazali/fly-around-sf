@@ -54,9 +54,9 @@ class MarkerLayer {
     if (style === 'beacon') {
       const pillar = new THREE.Mesh(
         new THREE.CylinderGeometry(2.2, 2.2, 360, 20, 1, true).translate(0, 180, 0),
-        new THREE.MeshBasicMaterial({ color: '#d9771f', alphaMap: this.fade, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false }),
+        new THREE.MeshBasicMaterial({ color: '#d9771f', alphaMap: this.fade, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, forceSinglePass: true, fog: false }),
       );
-      const ring = new THREE.Mesh(new THREE.RingGeometry(9, 11, 48).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#ffd98a', transparent: true, opacity: 0.8, depthWrite: false, side: THREE.DoubleSide, fog: false }));
+      const ring = new THREE.Mesh(new THREE.RingGeometry(9, 11, 48).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: '#ffd98a', transparent: true, opacity: 0.8, depthWrite: false, side: THREE.DoubleSide, forceSinglePass: true, fog: false }));
       ring.name = 'ring';
       o.add(pillar, ring, this.glow('#ffc15e', 26));
     } else if (style === 'token') {

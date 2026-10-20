@@ -41,7 +41,7 @@ export function createDroneModel(color = '#f2f2ee', accent = '#ff6a3d'): DroneMo
     leds[sz < 0 ? 1 : 0].push(new THREE.SphereGeometry(0.06, 8, 6).translate(sx * 0.9, 0.02, sz * 0.9));
   }
   body.add(new THREE.Mesh(mergeGeometries(dark), darkMat));
-  body.add(new THREE.Mesh(mergeGeometries(discs), new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.12, depthWrite: false, side: THREE.DoubleSide })));
+  body.add(new THREE.Mesh(mergeGeometries(discs), new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.12, depthWrite: false, side: THREE.DoubleSide, forceSinglePass: true })));
   const lights = leds.map((g, i) => new THREE.Mesh(mergeGeometries(g), new THREE.MeshBasicMaterial({ color: i ? '#7dffb0' : '#ff4d4d' })));
   body.add(...lights);
   root.traverse((o) => {
