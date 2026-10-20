@@ -1850,7 +1850,7 @@
     "id": "discover-cliff-house",
     "kind": "discover",
     "title": "Cliff House",
-    "blurb": "A restaurant perched on the cliffs at the end of the continent since 1863.",
+    "blurb": "A restaurant on the cliffs at the end of the continent from 1863 until it closed in 2020.",
     "neighborhood": "Outer Richmond",
     "at": {
       "lat": 37.77856,
@@ -2039,7 +2039,7 @@
     "id": "discover-presidio",
     "kind": "discover",
     "title": "The Presidio",
-    "blurb": "A former Army post of 219 years, now a forested national park at the foot of the bridge.",
+    "blurb": "A former Army post of 218 years, now a forested national park at the foot of the bridge.",
     "neighborhood": "Presidio",
     "at": {
       "lat": 37.79806,

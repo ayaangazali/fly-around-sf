@@ -276,7 +276,7 @@
       "lon": -122.41373
     },
     "year": 2009,
-    "blurb": "Civic hacking for government, with weekly hack nights on 9th Street.",
+    "blurb": "Civic hacking for government, whose old 9th Street office hosted weekly hack nights.",
     "lore": "Jennifer Pahlka founded Code for America in 2009 to bring modern technology to government. Its fellowship placed coders inside city halls, and its volunteer Brigades grew to 60 chapters. At its former headquarters at 155 9th Street, Code for San Francisco met every Wednesday night for civic hack nights.",
     "facts": [
       "The first fellowship picked 20 fellows from 360 applicants.",
@@ -285,7 +285,8 @@
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Code_for_America",
-      "https://localwiki.org/sf/Code_for_America"
+      "https://localwiki.org/sf/Code_for_America",
+      "https://codeforamerica.org/news/reflections-on-the-brigade-networks-next-chapter/"
     ]
   }
 ]

@@ -6,8 +6,8 @@
     "blurb": "Stay with a Powell-Hyde cable car as it drops down Hyde Street to the turntable at Aquatic Park. The cable moves at 9.5 mph.",
     "neighborhood": "Russian Hill",
     "at": {
-      "lat": 37.801995,
-      "lon": -122.41963,
+      "lat": 37.802529,
+      "lon": -122.419738,
       "alt": 15
     },
     "xp": 40,
@@ -16,10 +16,6 @@
     ],
     "params": {
       "route": [
-        {
-          "lat": 37.801995,
-          "lon": -122.41963
-        },
         {
           "lat": 37.802529,
           "lon": -122.419738

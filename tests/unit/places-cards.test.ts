@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { BOUNDS } from '../../src/core/geo';
 import type { CardDef } from '../../src/content/types';
 import type { ActivityDef } from '../../src/activities/types';
+import { ART } from '../../src/ui/card-art';
 import { ROOT, loadDefs, walk } from './helpers';
 
 const CATEGORIES = ['landmark', 'company', 'food', 'wildlife', 'park', 'history', 'culture', 'hidden', 'event', 'tech', 'transit'];
@@ -52,6 +53,10 @@ describe('cards', () => {
       }
       expect(DASHES.test([c.name, c.blurb, c.lore, ...c.facts].join(' ')), where).toBe(false);
     }
+  });
+
+  it('[R-CARDS] every landmark and wildlife card names art drawn for its subject', () => {
+    for (const c of cards.filter((x) => x.art !== undefined || x.category === 'landmark' || x.category === 'wildlife')) expect(Object.keys(ART), `${c.file}:${c.id}`).toContain(c.art);
   });
 
   it('[R-CARDS] card ids are unique across all card files', () => {

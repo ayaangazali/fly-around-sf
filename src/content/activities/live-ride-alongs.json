@@ -621,8 +621,8 @@
     "blurb": "Fly with the Golden Gate Ferry to Sausalito as it leaves the Ferry Building and runs up the waterfront.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.79583,
-      "lon": -122.39232,
+      "lat": 37.79658,
+      "lon": -122.39192,
       "alt": 20
     },
     "xp": 60,
@@ -634,14 +634,6 @@
     ],
     "params": {
       "path": [
-        [
-          37.79583,
-          -122.39232
-        ],
-        [
-          37.79602,
-          -122.39204
-        ],
         [
           37.79658,
           -122.39192
@@ -894,8 +886,8 @@
     "blurb": "Fly with the Golden Gate Ferry to Tiburon as it pulls out of the Ferry Building.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.79583,
-      "lon": -122.39232,
+      "lat": 37.79602,
+      "lon": -122.39204,
       "alt": 20
     },
     "xp": 60,
@@ -907,10 +899,6 @@
     ],
     "params": {
       "path": [
-        [
-          37.79583,
-          -122.39232
-        ],
         [
           37.79602,
           -122.39204

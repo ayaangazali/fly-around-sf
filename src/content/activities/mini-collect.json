@@ -6,8 +6,8 @@
     "blurb": "Fortune cookies are floating over Chinatown. Grab them all before they crumble.",
     "neighborhood": "Chinatown",
     "at": {
-      "lat": 37.794831,
-      "lon": -122.405427,
+      "lat": 37.795034,
+      "lon": -122.405279,
       "alt": 25
     },
     "xp": 30,
@@ -78,8 +78,8 @@
     "blurb": "Wisps of fog are spilling over the peaks. Collect them before they burn off.",
     "neighborhood": "Twin Peaks",
     "at": {
-      "lat": 37.752415,
-      "lon": -122.447587,
+      "lat": 37.752581,
+      "lon": -122.447378,
       "alt": 25
     },
     "xp": 30,
@@ -186,8 +186,8 @@
     "blurb": "Market day at the Ferry Building, and the bread is flying.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.79495,
-      "lon": -122.393475,
+      "lat": 37.795116,
+      "lon": -122.393266,
       "alt": 25
     },
     "xp": 30,

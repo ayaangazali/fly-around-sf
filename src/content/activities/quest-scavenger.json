@@ -6,7 +6,7 @@
     "blurb": "Six notes scattered from the Beat cafes of North Beach to the top of Coit Tower.",
     "neighborhood": "North Beach",
     "at": {
-      "lat": 37.7988,
+      "lat": 37.799034,
       "lon": -122.4073,
       "alt": 25
     },
@@ -195,7 +195,7 @@
     "blurb": "Six notes around the museums and gardens of eastern Golden Gate Park.",
     "neighborhood": "Golden Gate Park",
     "at": {
-      "lat": 37.77246,
+      "lat": 37.772226,
       "lon": -122.46023,
       "alt": 25
     },
@@ -313,8 +313,8 @@
     "blurb": "Six notes across the old Army post, from the parade ground to the forest.",
     "neighborhood": "Presidio",
     "at": {
-      "lat": 37.80197,
-      "lon": -122.45683,
+      "lat": 37.801744,
+      "lon": -122.456754,
       "alt": 25
     },
     "xp": 50,
@@ -555,7 +555,7 @@
     "neighborhood": "Castro",
     "at": {
       "lat": 37.76228,
-      "lon": -122.43561,
+      "lon": -122.435315,
       "alt": 25
     },
     "xp": 50,
@@ -674,7 +674,7 @@
     "neighborhood": "Lands End",
     "at": {
       "lat": 37.77976,
-      "lon": -122.5116,
+      "lon": -122.511305,
       "alt": 25
     },
     "xp": 50,
@@ -735,8 +735,8 @@
     "blurb": "Six notes between the towers, the plazas and the piers.",
     "neighborhood": "Financial District",
     "at": {
-      "lat": 37.7949,
-      "lon": -122.39495,
+      "lat": 37.794734,
+      "lon": -122.395159,
       "alt": 25
     },
     "xp": 50,

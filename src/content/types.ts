@@ -10,6 +10,7 @@ export interface CardDef {
   neighborhood: string;
   at?: GeoPoint;
   year?: number;
+  art?: string;
   blurb: string;
   lore: string;
   facts: string[];

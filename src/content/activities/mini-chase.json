@@ -6,8 +6,8 @@
     "blurb": "A western gull stole a tourist’s fries at Pier 39. Get them back.",
     "neighborhood": "Fisherman’s Wharf",
     "at": {
-      "lat": 37.808809,
-      "lon": -122.410088,
+      "lat": 37.808692,
+      "lon": -122.409832,
       "alt": 30
     },
     "xp": 30,
@@ -297,8 +297,8 @@
     "blurb": "A gull is circling the farmers market looking for a target.",
     "neighborhood": "Embarcadero",
     "at": {
-      "lat": 37.796,
-      "lon": -122.3922,
+      "lat": 37.796166,
+      "lon": -122.392409,
       "alt": 30
     },
     "xp": 30,
