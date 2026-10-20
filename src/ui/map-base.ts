@@ -47,27 +47,23 @@ function begin(game: Game): Build {
   const lx = -0.5;
   const ly = 0.7;
   const lz = -0.5;
+  const paint = (o: number, lo: number[], hi: number[], k: number, light: number) => {
+    for (let n = 0; n < 3; n++) img.data[o + n] = (lo[n] + (hi[n] - lo[n]) * k) * light;
+    img.data[o + 3] = 255;
+  };
   for (let j = 0; j < t.h; j++) {
     for (let i = 0; i < t.w; i++) {
       const y = e(i, j);
       const o = (j * t.w + i) * 4;
-      let rgb: number[];
       if (y < 0) {
-        const k = Math.min(1, -y / 40);
-        rgb = WATER_SHALLOW.map((c, n) => c + (WATER_DEEP[n] - c) * k);
+        paint(o, WATER_SHALLOW, WATER_DEEP, Math.min(1, -y / 40), 1);
       } else {
         const nx = (e(i - 1, j) - e(i + 1, j)) / (2 * t.cell);
         const nz = (e(i, j - 1) - e(i, j + 1)) / (2 * t.cell);
         const len = Math.hypot(nx * 3, 1, nz * 3);
         const lit = Math.max(0, (nx * 3 * lx + ly + nz * 3 * lz) / len / Math.hypot(lx, ly, lz));
-        const k = Math.min(1, y / 250);
-        const light = 0.62 + lit * 0.55;
-        rgb = LAND_LO.map((c, n) => (c + (LAND_HI[n] - c) * k) * light);
+        paint(o, LAND_LO, LAND_HI, Math.min(1, y / 250), 0.62 + lit * 0.55);
       }
-      img.data[o] = rgb[0];
-      img.data[o + 1] = rgb[1];
-      img.data[o + 2] = rgb[2];
-      img.data[o + 3] = 255;
     }
   }
   sctx.putImageData(img, 0, 0);

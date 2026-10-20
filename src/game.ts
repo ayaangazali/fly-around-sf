@@ -50,12 +50,12 @@ export function parseOptions(search: string, base = './'): GameOptions {
   const spawn = q.get('spawn')?.split(',').map(Number);
   const t = Date.parse(q.get('time') ?? '');
   const quality = q.get('quality');
-  const touch = typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) < 820;
+  const touch = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
   return {
     test: q.has('test'),
     time: Math.abs(t - Date.now()) < CENTURY_MS ? new Date(t) : q.has('test') ? new Date('2026-10-19T19:30:00Z') : null,
     spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) && inBounds(spawn[0], spawn[1]) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
-    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') ? 'low' : touch ? 'medium' : 'high',
+    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') || touch ? 'low' : 'high',
     room: q.get('room'),
     cityRadius: Number(q.get('cityRadius')) || 0,
     base,
@@ -153,6 +153,7 @@ export class Game {
       }
       return out.buffer;
     };
+    const content = Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()));
     onProgress(0, 'Downloading terrain');
     const terrain = Terrain.parse(await fetchBin('terrain.bin', 0, 0.15));
     const cityBuf = await fetchBin('city.bin', 0.15, 0.6);
@@ -177,7 +178,7 @@ export class Game {
     for (const l of landmarks) l.build(this);
 
     const kinds = Object.values(import.meta.glob<ActivityKind>('./activities/kinds/*.ts', { eager: true, import: 'kind' }));
-    const defs = (await Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()))).flat();
+    const defs = (await content).flat();
     const errors = this.activities.register(kinds, defs);
     if (errors.length) console.warn(`content errors:\n${errors.join('\n')}`);
 
@@ -209,6 +210,7 @@ export class Game {
     this.save.data.stats.sessions++;
     this.save.persist();
     await cityDone;
+    await this.renderer.compileAsync(this.scene, this.camera);
     onProgress(1, 'Ready');
     this.loaded = true;
   }

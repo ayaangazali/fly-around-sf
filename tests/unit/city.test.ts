@@ -132,4 +132,9 @@ describe('terrain', () => {
     expect(t.buildMesh(2).geometry.getAttribute('position').count).toBe(4);
     expect(() => Terrain.parse(new ArrayBuffer(20))).toThrow(/magic/);
   });
+
+  it('[R-ENV-PERF] leaves out seabed quads that the opaque water hides', () => {
+    const t = new Terrain(3, 2, 10, 0, 0, Int16Array.from([-10, -10, 20, -10, -10, -2]));
+    expect(t.buildMesh(1).geometry.getIndex()!.count).toBe(6);
+  });
 });

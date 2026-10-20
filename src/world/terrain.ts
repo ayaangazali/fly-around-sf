@@ -83,14 +83,19 @@ export class Terrain {
         const b = a + 1;
         const d = a + cols;
         const e = d + 1;
-        idx.set([a, d, b, b, d, e], o);
-        o += 6;
+        if (Math.max(pos[a * 3 + 1], pos[b * 3 + 1], pos[d * 3 + 1], pos[e * 3 + 1]) < -0.5) continue;
+        idx[o++] = a;
+        idx[o++] = d;
+        idx[o++] = b;
+        idx[o++] = b;
+        idx[o++] = d;
+        idx[o++] = e;
       }
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    geo.setIndex(new THREE.BufferAttribute(idx, 1));
+    geo.setIndex(new THREE.BufferAttribute(idx.slice(0, o), 1));
     geo.computeVertexNormals();
     geo.computeBoundingSphere();
     const mesh = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ vertexColors: true }));
