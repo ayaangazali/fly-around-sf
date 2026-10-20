@@ -20,6 +20,11 @@ export const landmarkUniforms = { uTime: { value: 0 } };
 const NIGHT_GLSL = `#include <emissivemap_fragment>
   totalEmissiveRadiance *= uNight;`;
 
+const FOG_GLOW_GLSL = `#include <fog_fragment>
+#ifdef USE_FOG
+  gl_FragColor.rgb += totalEmissiveRadiance * (1.0 - fogFactor) * (pow(1.0 - karlK, 0.2) - 1.0 + karlK);
+#endif`;
+
 const mats = new Map<string, THREE.Material>();
 
 function cached<M extends THREE.Material>(key: string, make: () => M): M {
@@ -77,7 +82,8 @@ function withNight(m: THREE.MeshLambertMaterial, key: string, extra = ''): THREE
       .replace('#include <project_vertex>', '#include <project_vertex>\nvLmPos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
     s.fragmentShader = s.fragmentShader
       .replace('#include <common>', '#include <common>\nuniform float uNight;\nuniform float uTime;\nvarying vec3 vLmPos;')
-      .replace('#include <emissivemap_fragment>', NIGHT_GLSL + extra);
+      .replace('#include <emissivemap_fragment>', NIGHT_GLSL + extra)
+      .replace('#include <fog_fragment>', FOG_GLOW_GLSL);
   };
   return m;
 }

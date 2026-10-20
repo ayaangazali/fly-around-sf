@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 
 export const CITY_VERTEX: [string, string][] = [
-  ['#include <common>', '#include <common>\nattribute float aInfo;\nvarying vec3 vWorldPos;\nvarying vec3 vInfo;'],
+  ['#include <common>', '#include <common>\nattribute float aInfo;\nvarying vec3 vWorldPos;\nvarying vec3 vInfo;\nflat varying vec2 vAnchor;'],
   [
     '#include <project_vertex>',
     `#include <project_vertex>
     vWorldPos = (modelMatrix * vec4(transformed, 1.0)).xyz;
+    vAnchor = vWorldPos.xz;
     vInfo = vec3(mod(aInfo, 1024.0) * 0.5, mod(floor(aInfo / 1024.0), 4.0), floor(aInfo / 4096.0));`,
   ],
 ];
@@ -16,8 +17,10 @@ export const CITY_FRAGMENT: [string, string][] = [
     `#include <common>
     varying vec3 vWorldPos;
     varying vec3 vInfo;
+    flat varying vec2 vAnchor;
     uniform float uNight;
-    float cHash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }`,
+    float cHash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+    float cBand(float x, float a, float b, float w) { return smoothstep(a - w * 0.5, a + w * 0.5, x) - smoothstep(b - w * 0.5, b + w * 0.5, x); }`,
   ],
   [
     '#include <color_fragment>',
@@ -28,7 +31,7 @@ export const CITY_FRAGMENT: [string, string][] = [
     float cls = vInfo.y;
     float rel = vWorldPos.y - vInfo.x;
     vec2 tg = normalize(vec2(-fn.z, fn.x) + 1e-5);
-    float wu = dot(vWorldPos.xz, tg);
+    float wu = dot(vWorldPos.xz - vAnchor, tg);
     float floorH = cls < 0.5 ? mix(3.0, 3.5, s) : cls < 1.5 ? mix(3.2, 3.8, s) : mix(3.6, 4.3, s);
     float bayW = cls > 1.5 ? mix(1.5, 3.0, fract(s * 7.3)) : mix(2.4, 3.4, fract(s * 5.1));
     float shop = (cls > 0.5 || s > 0.55) ? 1.0 : 0.0;
@@ -38,9 +41,10 @@ export const CITY_FRAGMENT: [string, string][] = [
     float h0 = cls > 2.5 ? mix(0.08, 0.2, s) : cls > 1.5 ? 0.22 : 0.3;
     float h1 = cls > 2.5 ? 0.94 : 0.82;
     float ww = cls > 2.5 ? mix(0.03, 0.1, s) : mix(0.14, 0.24, fract(s * 3.1));
-    float pat = step(h0, fy) * step(fy, h1) * step(ww, fu) * step(fu, 1.0 - ww);
+    vec2 fw = max(vec2(fwidth(rel / floorH), fwidth(wu / bayW)), 1e-4);
+    float pat = cBand(fy, h0, h1, fw.x) * cBand(fu, ww, 1.0 - ww, fw.y);
     float avgWin = (h1 - h0) * (1.0 - 2.0 * ww);
-    float aa = max(fwidth(rel / floorH), fwidth(wu / bayW));
+    float aa = max(fw.x, fw.y);
     float wfade = smoothstep(0.22, 0.55, aa);
     float wall = (1.0 - roof) * step(base + 0.6, rel);
     float win = mix(pat, avgWin, wfade) * wall;
@@ -62,7 +66,7 @@ export const CITY_FRAGMENT: [string, string][] = [
     vec3 awning = mix(vec3(0.55, 0.18, 0.14), vec3(0.16, 0.3, 0.26), step(0.5, fract(s * 13.1)));
     col = mix(col, mix(awning, vec3(0.2), step(0.75, fract(s * 5.7))), sign * 0.8);
     float rs = fract(s * 9.1);
-    vec3 roofCol = rs < 0.35 ? vec3(0.56, 0.55, 0.53) : rs < 0.65 ? vec3(0.84, 0.84, 0.82) : rs < 0.85 ? vec3(0.36, 0.36, 0.37) : diffuseColor.rgb * 0.8;
+    vec3 roofCol = rs < 0.35 ? vec3(0.3, 0.27, 0.24) : rs < 0.6 ? vec3(0.56, 0.53, 0.48) : rs < 0.87 || cls > 0.5 ? vec3(0.14, 0.13, 0.12) : vec3(0.42, 0.16, 0.08);
     vec2 cell = floor(vWorldPos.xz / 7.0);
     vec2 cf = fract(vWorldPos.xz / 7.0);
     float unit = step(0.72, cHash(cell + vInfo.z)) * step(0.2, cf.x) * step(cf.x, 0.75) * step(0.25, cf.y) * step(cf.y, 0.8) * step(0.5, cls);

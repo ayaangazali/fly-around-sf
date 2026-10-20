@@ -100,7 +100,7 @@ export class Terrain {
   }
 }
 
-const SAND = new THREE.Color('#d9c9a3');
+const SHORE = new THREE.Color('#857f72');
 const LOW = new THREE.Color('#a7b98a');
 const MID = new THREE.Color('#7f9a64');
 const HIGH = new THREE.Color('#9c9a72');
@@ -108,7 +108,7 @@ const SEABED = new THREE.Color('#40626e');
 
 export function terrainColor(y: number, out: THREE.Color): THREE.Color {
   if (y < -1) return out.copy(SEABED);
-  if (y < 3) return out.copy(SAND);
+  if (y < 3) return out.copy(SHORE);
   if (y < 60) return out.copy(LOW).lerp(MID, (y - 3) / 57);
   return out.copy(MID).lerp(HIGH, Math.min(1, (y - 60) / 200));
 }

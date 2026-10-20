@@ -59,7 +59,7 @@ export const landmark: Landmark = {
   id: 'golden-gate-bridge',
   build(game: Game) {
     const site = new Site(game, 'golden-gate-bridge', source, yawBetween(SOUTH_TOWER, NORTH_TOWER), 0);
-    const orange = glow('#b4441f', '#cf4a2c', 0.5);
+    const orange = glow('#b4441f', '#cf4a2c', 1);
     const steel = paint('#b23d24');
     const concrete = paint('#a7a39a', true);
     const asphalt = paint('#3d3f44');
