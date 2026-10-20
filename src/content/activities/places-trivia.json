@@ -2308,10 +2308,10 @@
     "kind": "trivia",
     "title": "The Old Mint Trivia",
     "blurb": "The Granite Lady that survived 1906 while guarding a third of the nation's gold.",
-    "neighborhood": "Hayes Valley",
+    "neighborhood": "South of Market",
     "at": {
-      "lat": 37.77013,
-      "lon": -122.4274,
+      "lat": 37.78252,
+      "lon": -122.40727,
       "alt": 25
     },
     "xp": 20,
