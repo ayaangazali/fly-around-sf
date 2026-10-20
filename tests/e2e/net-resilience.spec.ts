@@ -110,41 +110,51 @@ test.describe('touch @touch', () => {
 
 test('[R-NET-SAFE] peers that recolor or leave free their drone models on the GPU', async ({ page }) => {
   await boot(page, 'net=local&room=LEAKS');
-  const geometries = await page.evaluate(async () => {
+  const freed = await page.evaluate(async () => {
     const fly = window.__fly;
     const g = fly.game;
     const ch = new BroadcastChannel('fly-around-sf:room-LEAKS');
     const send = (from: string, d: unknown) => ch.postMessage(JSON.stringify({ k: 'msg', from, d }));
-    const settle = async () => {
-      await new Promise((r) => setTimeout(r, 100));
-      fly.step(0.2);
-      for (let i = 0; i < 2; i++) await new Promise((r) => requestAnimationFrame(r));
+    const model = (id: string) => g.scene.getObjectByName(`peer-${id}`);
+    const until = async (ok: () => boolean) => {
+      while (!ok()) {
+        await new Promise((r) => setTimeout(r, 20));
+        fly.step(0.05);
+      }
     };
-    fly.teleport({ ...g.flight.pos }, 0);
-    await settle();
-    const count = () => g.renderer.info.memory.geometries;
-    const before = count();
+    type Res = { addEventListener(type: 'dispose', fn: () => void): void };
+    const live = new Set<Res>();
+    let tracked = 0;
+    const track = (id: string) =>
+      model(id)?.traverse((o) => {
+        const { geometry, material } = o as unknown as { geometry?: Res; material?: Res };
+        for (const r of [geometry, material]) {
+          if (!r || live.has(r)) continue;
+          live.add(r);
+          tracked++;
+          r.addEventListener('dispose', () => live.delete(r));
+        }
+      });
     const p = g.flight.pos;
     const ids = ['a', 'b', 'c'];
-    for (const id of ids) ch.postMessage(JSON.stringify({ k: 'hello', from: id }));
-    await settle();
     for (const [i, id] of ids.entries()) {
+      ch.postMessage(JSON.stringify({ k: 'hello', from: id }));
       send(id, { t: 'hi', name: id, color: '#ff0000' });
       send(id, { t: 'st', p: [p.x + (i - 1) * 4, p.y + 1, p.z - 20], v: [0, 0, 0], y: 0, m: 0 });
     }
-    await settle();
-    const joined = count();
+    await until(() => ids.every((id) => model(id)));
+    ids.forEach(track);
     for (const color of ['#00ff00', '#0000ff', '#ffff00']) {
+      const old = model('a');
       send('a', { t: 'hi', name: 'a', color });
-      await settle();
+      await until(() => !!model('a') && model('a') !== old);
+      track('a');
     }
-    const recolored = count();
     for (const id of ids) ch.postMessage(JSON.stringify({ k: 'bye', from: id }));
-    await settle();
+    await until(() => ids.every((id) => !model(id)));
     ch.close();
-    return { before, joined, recolored, after: count() };
+    return { tracked, live: live.size };
   });
-  expect(geometries.joined).toBeGreaterThan(geometries.before);
-  expect(geometries.recolored).toBe(geometries.joined);
-  expect(geometries.after).toBe(geometries.before);
+  expect(freed.tracked).toBeGreaterThan(0);
+  expect(freed.live).toBe(0);
 });
