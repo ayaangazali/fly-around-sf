@@ -8,7 +8,7 @@ export function installAchievementBanner(game: Game): void {
   game.hud.root.append(host);
   game.bus.on('activity:complete', ({ id }) => {
     const def = game.activities.defs.get(id);
-    if (!def || def.kind !== 'achievement') return;
+    if (!def || def.kind !== 'achievement' || !game.activities.shown(def)) return;
     game.hud.muted.add(`${game.activities.kindOf(def).icon} ${def.title} +${def.xp ?? 10} XP`);
     const b = el('div', 'ach');
     b.dataset.activity = id;

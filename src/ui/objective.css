@@ -1,0 +1,40 @@
+.objective { --trail: #ffd166; position: absolute; left: 16px; top: var(--top); width: min(340px, calc(50vw - 250px)); min-width: 250px; display: grid; gap: 4px; padding: 10px 14px 12px; border-radius: 16px; background: var(--glass-strong); border: 1px solid rgba(255, 209, 102, 0.35); border-left: 3px solid var(--trail); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); color: var(--ink); font: inherit; text-align: left; pointer-events: auto; cursor: pointer; }
+.objective[hidden] { display: none; }
+.objective:hover { border-color: rgba(255, 209, 102, 0.6); border-left-color: var(--trail); }
+.objective.bump { animation: objective-bump 0.5s ease; }
+@keyframes objective-bump { 0% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.6); } 100% { box-shadow: 0 0 0 14px rgba(255, 209, 102, 0); } }
+.objective-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--trail); }
+.objective-dist { font: 600 13px var(--mono); letter-spacing: 0; color: var(--ink); white-space: nowrap; }
+.objective-main { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.objective-name { min-width: 0; font-size: 18px; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.objective-arrow { position: relative; flex: none; width: 20px; height: 20px; transition: transform 0.15s linear; }
+.objective-arrow::before { content: ''; position: absolute; inset: 0; background: var(--trail); clip-path: polygon(50% 0, 100% 92%, 50% 70%, 0 92%); filter: drop-shadow(0 0 4px rgba(255, 209, 102, 0.7)); }
+.objective.complete .objective-arrow { display: none; }
+.objective-clue { font-size: 13px; line-height: 1.4; color: var(--ink-dim); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.objective-bar { display: block; height: 3px; margin-top: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+.objective-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--trail), var(--accent)); transition: width 0.5s var(--ease-out); }
+.hud:has(.objective:not([hidden])) :is(.qt, .ach-host, .hud-fps) { top: calc(var(--top) + 150px); }
+
+.reveal-next { margin: 8px 0 0; font-size: 13px; line-height: 1.4; color: var(--ink); text-align: left; }
+.reveal-next b { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd166; }
+
+.finale { position: fixed; inset: 0; z-index: 7; display: grid; place-items: center; padding: 16px; pointer-events: none; }
+.finale-burst { position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -450px 0 0 -450px; background: repeating-conic-gradient(from 0deg, rgba(255, 209, 102, 0.22) 0deg 5deg, transparent 5deg 15deg); mask-image: radial-gradient(circle, #000 8%, transparent 62%); -webkit-mask-image: radial-gradient(circle, #000 8%, transparent 62%); animation: finale-spin 24s linear infinite; }
+@keyframes finale-spin { to { transform: rotate(360deg); } }
+.finale-box { position: relative; width: min(440px, 100%); display: grid; justify-items: center; gap: 8px; padding: 24px 22px 20px; border-radius: 22px; text-align: center; background: var(--glass-strong); border: 1px solid rgba(255, 209, 102, 0.5); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); pointer-events: auto; animation: finale-in 0.5s var(--ease-spring); }
+@keyframes finale-in { from { opacity: 0; transform: scale(0.9); } }
+.finale-box small { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #ffd166; }
+.finale-box h2 { margin: 0; font-size: 28px; letter-spacing: -0.02em; }
+.finale-box p { margin: 0; color: var(--ink-dim); font-size: 15px; line-height: 1.45; }
+.finale-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+.reduce-motion .finale-burst, .reduce-motion .finale-box, .reduce-motion .objective.bump { animation: none; }
+
+@media (max-width: 1024px) {
+  .objective { top: calc(var(--top) + 100px); width: min(320px, calc(100vw - 32px)); }
+  .hud:has(.objective:not([hidden])) .hud-status { top: calc(var(--top) + 200px); }
+}
+@media (max-width: 640px) {
+  .objective { left: 12px; right: 112px; width: auto; min-width: 0; padding: 8px 12px 10px; }
+  .objective-clue { display: none; }
+  .objective-name { font-size: 16px; }
+}

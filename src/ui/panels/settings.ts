@@ -99,6 +99,7 @@ export const panel: Panel = {
         row('Pilot name', name, 'Shown to friends in multiplayer'),
         row('Drone color', colors),
       ),
+      section('Game', row('Show side activities', toggle(s.sideActivities, (v) => set('sideActivities', v)), 'Mini games, story chapters and discovery cards all over the city. The Founder Trail always shows.')),
       section(
         'Graphics',
         row('Quality', segmented<QualitySetting>([['auto', 'Auto'], ['low', 'Low'], ['medium', 'Medium'], ['high', 'High']], s.quality, (v) => {

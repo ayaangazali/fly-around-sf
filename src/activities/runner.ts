@@ -14,6 +14,8 @@ export class ActivityRunner {
   nearby: ActivityDef | null = null;
   nearbyList: ActivityDef[] = [];
   private pickedId: string | null = null;
+  private lead: string | null = null;
+  private trailCards = new Set<string>();
 
   constructor(private game: Game) {}
 
@@ -26,6 +28,7 @@ export class ActivityRunner {
       if (!kind) errors.push(`${d.id}: unknown kind ${d.kind}`);
       else errors.push(...kind.validate(d).map((e) => `${d.id}: ${e}`));
       this.defs.set(d.id, d);
+      if (d.kind === 'trail' && d.card) this.trailCards.add(d.card);
     }
     return errors;
   }
@@ -40,6 +43,10 @@ export class ActivityRunner {
     return k;
   }
 
+  shown(def: ActivityDef): boolean {
+    return def.kind === 'trail' || this.game.save.data.settings.sideActivities === true;
+  }
+
   locked(def: ActivityDef): boolean {
     return (def.requires ?? []).some((r) => !this.game.save.isDone(r));
   }
@@ -48,10 +55,7 @@ export class ActivityRunner {
 
   position(def: ActivityDef): Vec3 {
     let p = this.positions.get(def.id);
-    if (!p) {
-      const { x, z } = this.game.world.toLocal(def.at.lat, def.at.lon);
-      this.positions.set(def.id, (p = { x, y: this.game.world.groundAt(x, z) + (def.at.alt ?? 30), z }));
-    }
+    if (!p) this.positions.set(def.id, (p = this.kinds.get(def.kind)?.position?.(def, this.game) ?? this.game.world.point(def.at)));
     return p;
   }
 
@@ -87,7 +91,8 @@ export class ActivityRunner {
   update(dt: number): void {
     const save = this.game.save;
     const p = this.game.flight.pos;
-    const near: { def: ActivityDef; d: number; done: boolean }[] = [];
+    const w = this.game.waypoint;
+    const near: { def: ActivityDef; d: number; done: boolean; led: boolean }[] = [];
     for (const def of this.defs.values()) {
       const kind = this.kinds.get(def.kind);
       if (!kind) continue;
@@ -101,16 +106,19 @@ export class ActivityRunner {
         }
         continue;
       }
-      if (this.active || this.locked(def)) continue;
+      if (this.active || !this.shown(def) || this.locked(def)) continue;
       const pos = this.position(def);
       const d = Math.hypot(pos.x - p.x, pos.z - p.z);
-      if (d < START_RADIUS && Math.abs(pos.y - p.y) < 120) near.push({ def, d, done: save.isDone(def.id) });
+      if (d < START_RADIUS && Math.abs(pos.y - p.y) < 120) near.push({ def, d, done: save.isDone(def.id), led: !!w && Math.hypot(pos.x - w.x, pos.z - w.z) < 1 });
     }
-    near.sort((a, b) => Number(a.done) - Number(b.done) || a.d - b.d);
+    near.sort((a, b) => Number(b.led) - Number(a.led) || Number(a.done) - Number(b.done) || a.d - b.d);
     this.nearbyList = near.slice(0, MAX_NEARBY).map((n) => n.def);
+    const lead = near[0]?.led ? near[0].def.id : null;
+    if (lead && lead !== this.lead) this.pickedId = lead;
+    this.lead = lead;
     this.nearby = this.nearbyList.find((d) => d.id === this.pickedId) ?? this.nearbyList[0] ?? null;
     this.pickedId = this.nearby?.id ?? null;
-    if (this.active) {
+    if (this.active && !this.game.panels.openId) {
       this.active.t += dt;
       const status = this.active.inst.update(dt);
       if (status === 'done') {
@@ -130,10 +138,12 @@ export class ActivityRunner {
     const save = this.game.save;
     const xp = def.xp ?? 10;
     const level = pilotLevel(save.data.xp).level;
+    const loud = this.shown(def);
     const first = save.complete(def.id, xp);
     if (time !== undefined && !this.kindOf(def).passive) save.recordBest(def.id, Math.round(time * 100) / 100);
-    if (def.card && save.addCard(def.card)) this.game.bus.emit('card:unlock', { id: def.card });
+    if (def.card && (def.kind === 'trail' || !this.trailCards.has(def.card)) && save.addCard(def.card) && loud) this.game.bus.emit('card:unlock', { id: def.card });
     this.game.bus.emit('activity:complete', { id: def.id, time });
+    if (!loud) return;
     this.game.bus.emit('toast', { text: first ? `${this.kindOf(def).icon} ${def.title} +${xp} XP` : `${def.title} again: ${time?.toFixed(1)}s`, kind: 'reward' });
     const now = pilotLevel(save.data.xp).level;
     if (now > level) this.game.bus.emit('toast', { text: `⭐ Level ${now} pilot`, kind: 'reward' });

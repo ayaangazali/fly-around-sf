@@ -63,8 +63,14 @@ describe('activity runner', async () => {
     { ...base, id: 'run', kind: 'rings', title: 'Run', at: { lat: 37.78, lon: -122.42 }, requires: ['spot'], params: { rings: [{ lat: 37.781, lon: -122.42 }, { lat: 37.782, lon: -122.42 }], timeLimit: 30 } },
   ];
 
-  it('[R-RUNNER] passive discoveries complete by proximity and grant xp and cards once', () => {
+  const sideOn = () => {
     const game = fakeGame();
+    game.save.data.settings.sideActivities = true;
+    return game;
+  };
+
+  it('[R-RUNNER] passive discoveries complete by proximity and grant xp and cards once', () => {
+    const game = sideOn();
     game.activities.register(kinds, defs);
     const events: string[] = [];
     game.bus.on('activity:complete', (e) => events.push(e.id));
@@ -79,7 +85,7 @@ describe('activity runner', async () => {
   });
 
   it('[R-RUNNER] a first completion toasts the XP it grants, and reaching a new pilot level says so', () => {
-    const game = fakeGame();
+    const game = sideOn();
     game.activities.register(kinds, defs);
     const toasts: string[] = [];
     game.bus.on('toast', (t) => toasts.push(t.text));
@@ -91,7 +97,7 @@ describe('activity runner', async () => {
   });
 
   it('[R-RUNNER] locked activities cannot start; unlocked ones run to completion and record best time', () => {
-    const game = fakeGame();
+    const game = sideOn();
     game.activities.register(kinds, defs);
     expect(game.activities.start('run')).toBe(false);
     expect(game.activities.start('spot')).toBe(false);
@@ -126,5 +132,59 @@ describe('activity runner', async () => {
     const errors = game.activities.register(kinds, [defs[0], defs[0], { ...defs[0], id: 'zz', kind: 'nope' }]);
     expect(errors.some((e) => e.includes('duplicate'))).toBe(true);
     expect(errors.some((e) => e.includes('unknown kind'))).toBe(true);
+  });
+
+  it('[R-V2-SIDE-QUIET] by default side discoveries add their card silently and side activities offer no F prompt, until the setting is on', () => {
+    const game = fakeGame();
+    game.activities.register(kinds, defs);
+    const events: string[] = [];
+    game.bus.on('activity:complete', (e) => events.push(e.id));
+    game.bus.on('card:unlock', (e) => events.push(`card ${e.id}`));
+    game.bus.on('toast', (t) => events.push(`toast ${t.text}`));
+    game.save.data.xp = 48;
+    game.flight.pos = { ...game.activities.position(defs[0]) };
+    game.activities.update(1 / 30);
+    game.activities.update(1 / 30);
+    expect(events).toEqual(['spot']);
+    expect(game.save.data.cards).toEqual(['card-spot']);
+    expect(game.save.data.xp).toBe(53);
+    game.flight.pos = { ...game.activities.position(defs[1]) };
+    game.activities.update(1 / 30);
+    expect(game.activities.nearby).toBeNull();
+    game.save.data.settings.sideActivities = true;
+    game.activities.update(1 / 30);
+    expect(game.activities.nearby?.id).toBe('run');
+  });
+
+  it('[R-V2-PAUSE] an active activity stands still while a panel is open', () => {
+    const game = sideOn();
+    game.activities.register(kinds, defs);
+    game.save.complete('spot');
+    const fails: string[] = [];
+    game.bus.on('activity:fail', (e) => fails.push(e.id));
+    game.activities.start('run');
+    game.panels.openId = 'settings';
+    for (let i = 0; i < 40; i++) game.activities.update(1);
+    expect(fails).toEqual([]);
+    expect(game.activities.active?.t).toBe(0);
+    game.panels.openId = null;
+    for (let i = 0; i < 40; i++) game.activities.update(1);
+    expect(fails).toEqual(['run']);
+  });
+
+  it('[R-START-SPOTS] when a waypoint leads to an activity, F picks that one over a closer one, and C still cycles', () => {
+    const game = sideOn();
+    const near = (id: string, lat: number): ActivityDef => ({ ...defs[1], id, requires: [], at: { lat, lon: -122.42 } });
+    game.activities.register(kinds, [near('close', 37.78), near('led', 37.7803)]);
+    game.flight.pos = { ...game.activities.position(game.activities.defs.get('close')!) };
+    game.activities.update(1 / 30);
+    expect(game.activities.nearby?.id).toBe('close');
+    const led = game.activities.position(game.activities.defs.get('led')!);
+    game.waypoint = { ...led, label: 'Led' };
+    game.activities.update(1 / 30);
+    expect(game.activities.nearby?.id).toBe('led');
+    game.activities.cycleNearby();
+    game.activities.update(1 / 30);
+    expect(game.activities.nearby?.id).toBe('close');
   });
 });

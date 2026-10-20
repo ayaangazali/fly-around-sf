@@ -10,6 +10,7 @@ import { installTouch } from './touch';
 import { installCardReveal } from './card-reveal';
 import { installAchievementBanner } from './achievement-banner';
 import { onboardingWidget, startOnboarding } from './onboarding';
+import { installObjective } from './objective';
 import { FLAG } from './onboarding-steps';
 import type { GameOptions } from '../game';
 
@@ -26,6 +27,7 @@ export function installUi(game: Game): void {
   applySettings(game);
   game.hud.widgets.push(installWaypoint(game), installEffects(game), installMinimap(game), installCompassPips(game), installTouch(game), onboardingWidget);
   void prepareBaseMap(game);
+  game.hud.widgets.push(installObjective(game));
   installCardReveal(game);
   installAchievementBanner(game);
   game.bus.on('panel:open', () => document.documentElement.classList.add('panel-open'));

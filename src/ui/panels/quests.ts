@@ -8,6 +8,7 @@ import { decreeNumber, sfDate, shiftDate } from '../../activities/kinds/daily';
 import { nortonSvg } from '../norton';
 import { copyShare } from '../quest-dialogue';
 import { pointTo } from '../../activities/quest-common';
+import { setSetting, settingsOf } from '../settings-model';
 
 type Tab = 'story' | 'daily' | 'riddles' | 'hunts';
 const TABS: [Tab, string][] = [
@@ -60,6 +61,8 @@ function story(root: HTMLElement, game: Game): void {
     const isDone = game.save.isDone(d.id);
     const locked = game.activities.locked(d);
     const running = active?.def.id === d.id;
+    const saved = game.save.data.flags[`quest:${d.id}`];
+    const paused = !running && !isDone && typeof saved === 'number' ? saved : 0;
     const li = el('li', 'ql-chapter');
     li.dataset.activity = d.id;
     li.classList.toggle('done', isDone);
@@ -69,7 +72,7 @@ function story(root: HTMLElement, game: Game): void {
     head.append(
       el('span', 'ql-num', String(p.chapter)),
       el('strong', '', locked ? 'A chapter not yet written' : d.title),
-      el('span', 'ql-chip', isDone ? 'Restored ✓' : running ? 'In progress' : locked ? '🔒 Locked' : 'Ready'),
+      el('span', 'ql-chip', isDone ? 'Restored ✓' : running ? 'In progress' : locked ? '🔒 Locked' : paused ? `Paused ${paused}/${p.objectives.length}` : 'Ready'),
     );
     li.append(head);
     if (!locked) li.append(el('p', 'ql-meta', `${d.neighborhood} · ${distanceText(game, d)} · ${d.xp ?? 0} XP`));
@@ -96,9 +99,14 @@ function story(root: HTMLElement, game: Game): void {
       li.append(row);
     } else if (d === current && !locked) {
       li.append(el('p', 'ql-blurb', d.blurb));
+      if (paused) {
+        const steps = el('ul', 'ql-objectives');
+        for (const o of p.objectives.slice(0, paused)) steps.append(el('li', 'done', `✓ ${o.text}`));
+        li.append(steps);
+      }
       const row = el('div', 'ql-row');
-      row.append(waypointButton(game, `Chapter ${p.chapter}: ${d.title}`, () => game.activities.position(d)));
-      row.append(el('span', 'ql-tip', 'Fly to the beacon and press F to begin.'));
+      row.append(waypointButton(game, `Chapter ${p.chapter}: ${d.title}`, () => game.activities.position(d), paused ? 'Resume' : 'Set waypoint'));
+      row.append(el('span', 'ql-tip', paused ? 'Fly to the beacon and press F to pick up where you left off.' : 'Fly to the beacon and press F to begin.'));
       li.append(row);
     }
     if (isDone) {
@@ -225,6 +233,17 @@ export const panel: Panel = {
       else catalog(body, game, 'scavenger', 'hunts finished');
     };
     bar.append(...buttons);
+    if (!settingsOf(game).sideActivities) {
+      const side = el('div', 'ql-row ql-side');
+      const on = el('button', 'ql-btn primary', 'Show side activities');
+      on.addEventListener('click', () => {
+        setSetting(game, 'sideActivities', true);
+        game.panels.close();
+        game.toast('Side activities are on. Look for beacons around the city', 'info');
+      });
+      side.append(el('span', 'ql-tip', 'The story, riddles and hunts are side activities. Turn them on to see their beacons and start them with F.'), on);
+      root.append(side);
+    }
     root.append(bar, body);
     select(tab);
   },

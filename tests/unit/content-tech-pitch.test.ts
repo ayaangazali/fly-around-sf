@@ -179,6 +179,7 @@ describe('pitch kind', () => {
 
   it('[R-TECH-PITCH] runner shows the pitch prompt nearby and completes it through the solver', async () => {
     const game = fakeGame();
+    game.save.data.settings.sideActivities = true;
     game.activities.register(await loadKinds(), [def()]);
     game.flight.pos = { ...game.activities.position(def()) };
     tick(game, 0.1);

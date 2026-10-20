@@ -153,7 +153,7 @@ export class Game {
       }
       return out.buffer;
     };
-    const content = Promise.all(Object.values(import.meta.glob<ActivityDef[]>('./content/activities/**/*.json', { import: 'default' })).map((f) => f()));
+    const content = Promise.all(Object.values(import.meta.glob<ActivityDef[]>(['./content/activities/**/*.json', './content/trail.json'], { import: 'default' })).map((f) => f()));
     onProgress(0, 'Downloading terrain');
     const terrain = Terrain.parse(await fetchBin('terrain.bin', 0, 0.15));
     const cityBuf = await fetchBin('city.bin', 0.15, 0.6);

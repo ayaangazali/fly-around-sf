@@ -1,0 +1,461 @@
+[
+  {
+    "id": "trail-founders-inc",
+    "kind": "trail",
+    "title": "Founders, Inc.",
+    "blurb": "Fort Mason Center Landmark Building C, 2 Marina Blvd, San Francisco, CA 94123",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80676,
+      "lon": -122.4315
+    },
+    "card": "founders-inc",
+    "xp": 50,
+    "params": {
+      "order": 1,
+      "land": "roof",
+      "clue": "Your first stop is right beside you: land on the long cream warehouse with the red roof at the foot of Fort Mason, where a founder campus builds the next big startups.",
+      "fact": "Founders, Inc. builds startups inside the old Army port at Fort Mason, which shipped more than 1.65 million soldiers and 23 million tons of cargo to the Pacific.",
+      "radius": 25,
+      "sources": [
+        "https://f.inc/",
+        "https://luma.com/open-campus-6",
+        "https://www.nps.gov/places/000/9-san-francisco-port-of-embarkation.htm",
+        "https://www.openstreetmap.org/way/398609305"
+      ]
+    }
+  },
+  {
+    "id": "trail-in-n-out-fishermans-wharf",
+    "kind": "trail",
+    "title": "In-N-Out Burger, Fisherman's Wharf",
+    "blurb": "333 Jefferson St, San Francisco, CA 94133",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80784,
+      "lon": -122.41852
+    },
+    "card": "in-n-out-fishermans-wharf",
+    "xp": 50,
+    "params": {
+      "order": 2,
+      "land": "ground",
+      "clue": "Every founder needs fuel. Fly east along the waterfront to Fisherman's Wharf and land outside the only burger stand of a famous California chain inside the city, on Jefferson Street.",
+      "fact": "It is the only In-N-Out in San Francisco, open since September 20, 2001, and it has no drive-thru.",
+      "radius": 35,
+      "sources": [
+        "https://locations.in-n-out.com/154",
+        "https://locations.in-n-out.com/api/finder/search?latitude=37.7749&longitude=-122.4194&maxDistance=12&maxResults=20",
+        "https://localwiki.org/sf/In-N-Out_Burger",
+        "https://www.openstreetmap.org/node/434874627"
+      ]
+    }
+  },
+  {
+    "id": "trail-coit-tower",
+    "kind": "trail",
+    "title": "Coit Tower",
+    "blurb": "1 Telegraph Hill Blvd, San Francisco, CA 94133",
+    "neighborhood": "North Beach",
+    "at": {
+      "lat": 37.80237,
+      "lon": -122.40584
+    },
+    "card": "coit-tower",
+    "xp": 50,
+    "params": {
+      "order": 3,
+      "land": "roof",
+      "clue": "Fed and ready? Look east-southeast to the slim fluted column crowning Telegraph Hill and land on its very top.",
+      "fact": "Despite the popular story, Coit Tower was not designed to look like a fire hose nozzle; the resemblance is a coincidence.",
+      "radius": 15,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Coit_Tower",
+        "https://www.openstreetmap.org/way/28824850"
+      ]
+    }
+  },
+  {
+    "id": "trail-corgi",
+    "kind": "trail",
+    "title": "Corgi",
+    "blurb": "222 Sutter St (cafe and office entrance at 9 Claude Ln), San Francisco, CA 94108",
+    "neighborhood": "Financial District",
+    "at": {
+      "lat": 37.79012,
+      "lon": -122.40457
+    },
+    "card": "corgi",
+    "xp": 50,
+    "params": {
+      "order": 4,
+      "land": "roof",
+      "clue": "From the hilltop, fly south into the Financial District and find the YC startup whose cafe never closes, under its office on tiny Claude Lane just off Sutter Street.",
+      "fact": "Founded in 2024, Corgi was valued at $2.6 billion by June 2026, and the cafe under its office never closes.",
+      "radius": 22,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Corgi_(insurance_company)",
+        "https://sf.gazetteer.co/come-for-the-all-night-coffee-stay-for-the-ai-insurance",
+        "https://www.sgh.com/project/222-sutter-street/",
+        "https://www.skydb.net/building/639117302/sloane-building/",
+        "https://www.openstreetmap.org/way/260280326"
+      ]
+    }
+  },
+  {
+    "id": "trail-ferry-building",
+    "kind": "trail",
+    "title": "Ferry Building",
+    "blurb": "1 Ferry Building, San Francisco, CA 94111",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.79544,
+      "lon": -122.3936
+    },
+    "card": "ferry-building",
+    "xp": 50,
+    "params": {
+      "order": 5,
+      "land": "roof",
+      "clue": "Coffee in hand, fly northeast to the foot of Market Street, where a clock tower has greeted ferry riders since 1898.",
+      "fact": "Until the bridges opened in the 1930s, it was the second busiest transit terminal in the world after London's Charing Cross.",
+      "radius": 30,
+      "sources": [
+        "https://en.wikipedia.org/wiki/San_Francisco_Ferry_Building",
+        "https://www.loc.gov/item/ca0641",
+        "https://www.openstreetmap.org/way/558731934"
+      ]
+    }
+  },
+  {
+    "id": "trail-transamerica-pyramid",
+    "kind": "trail",
+    "title": "Transamerica Pyramid",
+    "blurb": "600 Montgomery St, San Francisco, CA 94111",
+    "neighborhood": "Chinatown",
+    "at": {
+      "lat": 37.79517,
+      "lon": -122.40265,
+      "alt": 215
+    },
+    "card": "transamerica-pyramid",
+    "xp": 50,
+    "params": {
+      "order": 6,
+      "land": "ring",
+      "clue": "Turn due west and find the white pointed tower that has defined the skyline since 1972; thread the ring around its spire.",
+      "fact": "A grove of redwoods brought from the Santa Cruz Mountains grows at its foot, with a bronze jumping frog honoring Mark Twain.",
+      "radius": 20,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Transamerica_Pyramid",
+        "https://www.openstreetmap.org/way/24222973"
+      ]
+    }
+  },
+  {
+    "id": "trail-salesforce-tower",
+    "kind": "trail",
+    "title": "Salesforce Tower",
+    "blurb": "415 Mission St, San Francisco, CA 94105",
+    "neighborhood": "Financial District/South Beach",
+    "at": {
+      "lat": 37.78978,
+      "lon": -122.39695
+    },
+    "card": "salesforce-tower",
+    "xp": 50,
+    "params": {
+      "order": 7,
+      "land": "roof",
+      "clue": "The pyramid was the city's tallest building until 2017. Fly southeast to the tower that took the title and land on its crown.",
+      "fact": "Its top floors hold Day for Night, an artwork by Jim Campbell made of 11,000 LED lights that glows over the city at night.",
+      "radius": 25,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Salesforce_Tower",
+        "https://www.openstreetmap.org/way/431972186"
+      ]
+    }
+  },
+  {
+    "id": "trail-a16z",
+    "kind": "trail",
+    "title": "Andreessen Horowitz (a16z)",
+    "blurb": "180 Townsend St, San Francisco, CA 94107",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.7794,
+      "lon": -122.39266
+    },
+    "card": "a16z",
+    "xp": 50,
+    "params": {
+      "order": 8,
+      "land": "roof",
+      "clue": "From the top of the city, glide south-southeast toward the ballpark: on Townsend Street a three-story brick building houses the venture firm whose nickname hides a number between two letters.",
+      "fact": "The nickname a16z counts the 16 letters between the a of Andreessen and the z of Horowitz.",
+      "radius": 22,
+      "sources": [
+        "https://a16z.com/offices/",
+        "https://therealdeal.com/san-francisco/2022/05/06/sobrato-buys-into-soma-with-record-setting-office-deal-for-sf/",
+        "https://en.wikipedia.org/wiki/Andreessen_Horowitz",
+        "https://www.openstreetmap.org/way/129176903"
+      ]
+    }
+  },
+  {
+    "id": "trail-anthropic",
+    "kind": "trail",
+    "title": "Anthropic",
+    "blurb": "500 Howard St, San Francisco, CA 94105",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.78846,
+      "lon": -122.39675
+    },
+    "card": "anthropic",
+    "xp": 50,
+    "params": {
+      "order": 9,
+      "land": "roof",
+      "clue": "Term sheet in hand, fly back north to First and Howard, where the makers of Claude work in the glass building that used to be Slack's headquarters.",
+      "fact": "In 2026 Anthropic leased all 25 stories of 300 Howard Street, one of the largest office commitments in San Francisco history.",
+      "radius": 30,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Foundry_Square",
+        "https://www.connectcre.com/stories/ai-company-anthropic-subleases-former-slack-headquarters-building/",
+        "https://divcowest.com/?p=2926",
+        "https://www.openstreetmap.org/way/113505811"
+      ]
+    }
+  },
+  {
+    "id": "trail-oracle-park",
+    "kind": "trail",
+    "title": "Oracle Park",
+    "blurb": "24 Willie Mays Plaza, San Francisco, CA 94107",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77867,
+      "lon": -122.3898
+    },
+    "card": "oracle-park",
+    "xp": 50,
+    "params": {
+      "order": 10,
+      "land": "ground",
+      "clue": "Time for a ball game: fly southeast to the red brick ballpark on the bay where home runs splash into the water, and land on the field.",
+      "fact": "The right field wall is 24 feet high in honor of Willie Mays, who wore number 24.",
+      "radius": 60,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Oracle_Park",
+        "https://sabr.org/bioproj/park/oracle-park-san-francisco/",
+        "https://www.openstreetmap.org/relation/7325085"
+      ]
+    }
+  },
+  {
+    "id": "trail-openai",
+    "kind": "trail",
+    "title": "OpenAI",
+    "blurb": "1455 3rd St, San Francisco, CA 94158",
+    "neighborhood": "Mission Bay",
+    "at": {
+      "lat": 37.77,
+      "lon": -122.38874
+    },
+    "card": "openai",
+    "xp": 50,
+    "params": {
+      "order": 11,
+      "land": "roof",
+      "clue": "Cross the channel south into Mission Bay and find the glass tower Uber built, now home to the makers of ChatGPT.",
+      "fact": "By March 2026 OpenAI's San Francisco offices passed one million square feet, all of it in Mission Bay.",
+      "radius": 30,
+      "sources": [
+        "https://therealdeal.com/san-francisco/2026/03/16/openai-inks-another-mission-bay-lease",
+        "https://sfstandard.com/2023/10/27/openai-uber-headquarters-mission-bay/",
+        "https://www.worldconstructionnetwork.com/projects/uber-headquarters-san-francisco/",
+        "https://www.openstreetmap.org/way/1047709621"
+      ]
+    }
+  },
+  {
+    "id": "trail-y-combinator",
+    "kind": "trail",
+    "title": "Y Combinator",
+    "blurb": "560 20th St (Pier 70), San Francisco, CA 94107",
+    "neighborhood": "Dogpatch",
+    "at": {
+      "lat": 37.76084,
+      "lon": -122.38598
+    },
+    "card": "y-combinator",
+    "xp": 50,
+    "params": {
+      "order": 12,
+      "land": "roof",
+      "clue": "Keep flying south along Third Street to the old shipyard at Pier 70, where the accelerator behind Airbnb, Dropbox and Stripe meets in a red brick 1896 office on 20th Street.",
+      "fact": "YC's main building was the office of the Union Iron Works shipyard, built in 1896 of brick and concrete and strong enough to survive the 1906 earthquake and fire.",
+      "radius": 25,
+      "sources": [
+        "https://www.potreroview.net/?p=9707",
+        "https://fortune.com/2024/01/12/garry-tan-founders-y-combinator-headquarters/",
+        "https://spur.org/publications/urbanist-article/2009-03-01/urban-field-notes-seven-many-wonders-pier-70s-shipyard",
+        "https://www.openstreetmap.org/way/257338714",
+        "https://www.openstreetmap.org/way/257338685"
+      ]
+    }
+  },
+  {
+    "id": "trail-airbnb",
+    "kind": "trail",
+    "title": "Airbnb",
+    "blurb": "888 Brannan St, San Francisco, CA 94103",
+    "neighborhood": "SoMa",
+    "at": {
+      "lat": 37.77208,
+      "lon": -122.40542
+    },
+    "card": "airbnb",
+    "xp": 50,
+    "params": {
+      "order": 13,
+      "land": "roof",
+      "clue": "One of that accelerator's most famous alumni began by renting out air mattresses. Fly northwest to its headquarters, an old battery factory beside the freeway on Brannan Street.",
+      "fact": "In 2008 the founders kept the company alive by raising $30,000 selling breakfast cereal named after the two presidential candidates.",
+      "radius": 40,
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/0001559720/000119312526175062/d936646ddef14a.htm",
+        "https://www.sfexaminer.com/news/airbnb-unveils-new-san-francisco-headquarters-at-888-brannan-street/article_d4e028d6-b013-5f2b-8a88-c5b0daac5e05.html",
+        "https://en.wikipedia.org/wiki/Airbnb",
+        "https://www.openstreetmap.org/way/224938559"
+      ]
+    }
+  },
+  {
+    "id": "trail-city-hall",
+    "kind": "trail",
+    "title": "San Francisco City Hall",
+    "blurb": "1 Dr. Carlton B. Goodlett Pl, San Francisco, CA 94102",
+    "neighborhood": "Tenderloin",
+    "at": {
+      "lat": 37.7793,
+      "lon": -122.41927
+    },
+    "card": "city-hall",
+    "xp": 50,
+    "params": {
+      "order": 14,
+      "land": "roof",
+      "clue": "Keep heading northwest to the Civic Center and land beside the gold-trimmed dome that rises higher than the US Capitol's.",
+      "fact": "Joe DiMaggio and Marilyn Monroe were married here in January 1954.",
+      "radius": 35,
+      "sources": [
+        "https://en.wikipedia.org/wiki/San_Francisco_City_Hall",
+        "https://sfist.com/2015/03/04/it_was_1999_when_san.php",
+        "https://www.openstreetmap.org/relation/7261820"
+      ]
+    }
+  },
+  {
+    "id": "trail-twin-peaks",
+    "kind": "trail",
+    "title": "Twin Peaks",
+    "blurb": "Christmas Tree Point, Twin Peaks Blvd, San Francisco, CA 94114",
+    "neighborhood": "Twin Peaks",
+    "at": {
+      "lat": 37.75493,
+      "lon": -122.44664
+    },
+    "card": "twin-peaks",
+    "xp": 50,
+    "params": {
+      "order": 15,
+      "land": "ground",
+      "clue": "Climb southwest to the two grassy summits in the middle of the city and land at the lookout with a view of nearly every stop you have visited.",
+      "fact": "The summits are one of the few remaining homes of the endangered Mission blue butterfly.",
+      "radius": 40,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Twin_Peaks_(San_Francisco)",
+        "https://www.openstreetmap.org/node/599157316"
+      ]
+    }
+  },
+  {
+    "id": "trail-painted-ladies",
+    "kind": "trail",
+    "title": "Painted Ladies",
+    "blurb": "Steiner St between Hayes St and Grove St, facing Alamo Square, San Francisco, CA 94117",
+    "neighborhood": "Hayes Valley",
+    "at": {
+      "lat": 37.77618,
+      "lon": -122.43296,
+      "alt": 13
+    },
+    "card": "painted-ladies",
+    "xp": 50,
+    "params": {
+      "order": 16,
+      "land": "ring",
+      "clue": "Fly north-northeast down to Alamo Square, where a row of Victorian houses poses in front of the skyline, just like on TV, and thread the ring in front of them.",
+      "fact": "The row has appeared in an estimated 70 movies, TV shows and ads, including the opening credits of Full House.",
+      "radius": 9,
+      "heading": -15,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Painted_ladies",
+        "https://en.wikipedia.org/wiki/Alamo_Square,_San_Francisco"
+      ]
+    }
+  },
+  {
+    "id": "trail-palace-of-fine-arts",
+    "kind": "trail",
+    "title": "Palace of Fine Arts",
+    "blurb": "3601 Lyon St, San Francisco, CA 94123",
+    "neighborhood": "Marina",
+    "at": {
+      "lat": 37.80292,
+      "lon": -122.4484
+    },
+    "card": "palace-of-fine-arts",
+    "xp": 50,
+    "params": {
+      "order": 17,
+      "land": "roof",
+      "clue": "Head north-northwest to the Marina and find the Roman-looking rotunda beside a lagoon, built for the 1915 world's fair, and land on its dome.",
+      "fact": "From 1934 to 1942 its exhibit hall held eighteen lighted tennis courts.",
+      "radius": 25,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Palace_of_Fine_Arts",
+        "https://www.hmdb.org/m.asp?m=131097",
+        "https://www.openstreetmap.org/way/288371295"
+      ]
+    }
+  },
+  {
+    "id": "trail-golden-gate-bridge",
+    "kind": "trail",
+    "title": "Golden Gate Bridge",
+    "blurb": "Golden Gate Bridge, US-101, San Francisco, CA 94129",
+    "neighborhood": "Presidio",
+    "at": {
+      "lat": 37.81976,
+      "lon": -122.47856,
+      "alt": 35
+    },
+    "card": "golden-gate-bridge",
+    "xp": 50,
+    "params": {
+      "order": 18,
+      "land": "ring",
+      "clue": "For the grand finale, fly northwest to the orange suspension bridge across the strait and fly through the ring hanging under its deck at mid-span.",
+      "fact": "When it opened in 1937 it had the longest suspension span in the world, a record it held until 1964.",
+      "radius": 25,
+      "heading": 85,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+        "https://www.openstreetmap.org/relation/451971"
+      ]
+    }
+  }
+]

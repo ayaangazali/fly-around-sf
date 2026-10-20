@@ -5,6 +5,7 @@ import { SaveStore } from '../../src/core/save';
 import { memoryStorage } from './helpers';
 import type { Game } from '../../src/game';
 import type { CardDef } from '../../src/content/types';
+import type { ActivityDef } from '../../src/activities/types';
 
 const CARDS: CardDef[] = ['fort-point', 'lombard-street'].map((id, i) => ({ id, name: id, category: 'landmark', rarity: i ? 'rare' : 'legendary', neighborhood: 'Presidio', blurb: `Blurb ${id}`, lore: 'l', facts: [], sources: [] }));
 const opened: string[] = [];
@@ -17,7 +18,8 @@ describe('card reveal', () => {
     const ui = document.createElement('div');
     document.body.replaceChildren(ui);
     const panels = { openId: null as string | null };
-    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels, activities: { active: null }, hud: { widgets: [] } } as unknown as Game;
+    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels, activities: { active: null, defs: new Map() }, hud: { widgets: [] } } as unknown as Game;
+    game.save.data.settings.sideActivities = true;
     installCardReveal(game);
     game.bus.emit('card:unlock', { id: 'no-such-card' });
     expect(ui.querySelector('.reveal')).toBeNull();
@@ -57,8 +59,9 @@ describe('card reveal', () => {
     dialogue.className = 'qd';
     ui.append(dialogue);
     document.body.replaceChildren(ui);
-    const activities = { active: {} as object | null };
+    const activities = { active: {} as object | null, defs: new Map() };
     const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels: { openId: null }, activities, hud: { widgets: [] } } as unknown as Game;
+    game.save.data.settings.sideActivities = true;
     installCardReveal(game);
     const tick = () => game.hud.widgets[0].update();
     game.bus.emit('card:unlock', { id: 'fort-point' });
@@ -73,6 +76,35 @@ describe('card reveal', () => {
     game.bus.emit('activity:start', { id: 'trivia-coit-tower' });
     vi.advanceTimersByTime(400);
     expect(ui.querySelector('.reveal')).toBeNull();
+    vi.useRealTimers();
+  });
+
+  it('[R-V2-TRAIL-REVEAL] only Founder Trail stops pop a card by default, with the stop fact and the next clue, even when the card was already owned', async () => {
+    vi.useFakeTimers();
+    const { installCardReveal } = await import('../../src/ui/card-reveal');
+    const ui = document.createElement('div');
+    document.body.replaceChildren(ui);
+    const stop = (order: number, card: string): ActivityDef => ({ id: `trail-${card}`, kind: 'trail', title: `Stop ${card}`, blurb: 'b', neighborhood: 'Presidio', at: { lat: 0, lon: 0 }, card, params: { order, land: 'roof', clue: `Clue for ${card} that is long enough`, fact: `Fact about ${card} that is long enough`, radius: 20, sources: ['https://example.com'] } });
+    const defs = new Map([stop(1, 'fort-point'), stop(2, 'lombard-street')].map((d) => [d.id, d]));
+    const game = { ui, bus: new Bus(), save: new SaveStore(memoryStorage()), panels: { openId: null }, activities: { active: null, defs, list: () => [...defs.values()] }, hud: { widgets: [] } } as unknown as Game;
+    installCardReveal(game);
+    game.bus.emit('card:unlock', { id: 'lombard-street' });
+    expect(ui.querySelector('.reveal')).toBeNull();
+    game.save.data.cards.push('fort-point');
+    game.save.complete('trail-fort-point');
+    game.bus.emit('activity:complete', { id: 'trail-fort-point', time: 1 });
+    const first = ui.querySelector('.reveal') as HTMLElement;
+    expect(first.dataset.card).toBe('fort-point');
+    expect(first.textContent).toContain('Founder Trail · stop 1 of 2');
+    expect(first.textContent).toContain('Fact about fort-point');
+    expect(first.querySelector('.reveal-next')?.textContent).toBe('Next: Stop lombard-streetClue for lombard-street that is long enough');
+    vi.advanceTimersByTime(11000);
+    expect(ui.querySelector('.reveal')).not.toBeNull();
+    vi.advanceTimersByTime(1500);
+    expect(ui.querySelector('.reveal')).toBeNull();
+    game.save.complete('trail-lombard-street');
+    game.bus.emit('activity:complete', { id: 'trail-lombard-street', time: 1 });
+    expect(ui.querySelector('.reveal-next')?.textContent).toContain('Trail complete');
     vi.useRealTimers();
   });
 });

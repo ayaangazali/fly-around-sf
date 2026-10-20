@@ -22,6 +22,7 @@ export interface Settings {
   showFps: boolean;
   aiProxyUrl: string;
   minimap: boolean;
+  sideActivities: boolean;
 }
 
 export type SettingKey = keyof Settings;
@@ -46,6 +47,7 @@ export const DEFAULTS: Omit<Settings, 'playerName' | 'reducedMotion'> = {
   showFps: false,
   aiProxyUrl: '',
   minimap: true,
+  sideActivities: false,
 };
 
 export const DRONE_COLORS = ['#f2f2ee', '#ff6a3d', '#ffc15e', '#7de0a6', '#5fb4ff', '#b48cff', '#ff7eb6', '#2b2f36'];
@@ -84,6 +86,7 @@ export function readSettings(save: SaveData, osReducedMotion = false): Settings 
     showFps: bool(s.showFps, DEFAULTS.showFps),
     aiProxyUrl: typeof s.aiProxyUrl === 'string' && /^https:\/\/\S+$/.test(s.aiProxyUrl) ? s.aiProxyUrl : '',
     minimap: bool(s.minimap, DEFAULTS.minimap),
+    sideActivities: bool(s.sideActivities, DEFAULTS.sideActivities),
   };
 }
 

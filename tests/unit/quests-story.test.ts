@@ -15,6 +15,7 @@ const cards = walk(join(ROOT, 'src/content/cards'), '.json').flatMap((f) => JSON
 
 async function setup(): Promise<Game> {
   const game = fakeGame();
+  game.save.data.settings.sideActivities = true;
   game.activities.register(await loadKinds(), defs);
   return game;
 }

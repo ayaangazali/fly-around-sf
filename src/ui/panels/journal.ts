@@ -22,7 +22,7 @@ export const panel: Panel = {
     };
     const all = game.activities
       .list()
-      .filter((d) => d.kind !== 'achievement' && (!d.hidden || game.save.isDone(d.id)))
+      .filter((d) => d.kind !== 'achievement' && game.activities.shown(d) && (!d.hidden || game.save.isDone(d.id)))
       .sort((a, b) => Number(game.save.isDone(a.id)) - Number(game.save.isDone(b.id)) || dist(a) - dist(b));
     const draw = () => {
       const q = filter.value.trim().toLowerCase();

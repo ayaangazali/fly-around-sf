@@ -23,7 +23,7 @@ export function walk(dir: string, ext: string): string[] {
 }
 
 export function loadDefs(): ActivityDef[] {
-  return walk(join(ROOT, 'src/content/activities'), '.json').flatMap((f) => JSON.parse(readFileSync(f, 'utf8')) as ActivityDef[]);
+  return [...walk(join(ROOT, 'src/content/activities'), '.json'), join(ROOT, 'src/content/trail.json')].flatMap((f) => JSON.parse(readFileSync(f, 'utf8')) as ActivityDef[]);
 }
 
 export async function loadKinds(): Promise<ActivityKind[]> {
