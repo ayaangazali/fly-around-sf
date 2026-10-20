@@ -317,8 +317,8 @@
     "neighborhood": "SoMa",
     "at": { "lat": 37.78229, "lon": -122.39117 },
     "year": 2008,
-    "blurb": "Home of the world's code, with an Oval Office in the lobby.",
-    "lore": "Tom Preston-Werner, Chris Wanstrath, P. J. Hyett and Scott Chacon started GitHub in early 2008 and launched it that April. In 2013 it opened a three-story headquarters in a former dried-fruit warehouse at 88 Colin P. Kelly Jr. Street. Its reception room is an exact replica of the White House Oval Office, next to themed rooms like a Situation Room.",
+    "blurb": "Home of the world's code, whose 2013 headquarters opened with an Oval Office replica.",
+    "lore": "Tom Preston-Werner, Chris Wanstrath, P. J. Hyett and Scott Chacon started GitHub in early 2008 and launched it that April. In 2013 it opened a three-story headquarters in a former dried-fruit warehouse at 88 Colin P. Kelly Jr. Street. Its reception room was built as an exact replica of the White House Oval Office, next to themed rooms like a Situation Room. In 2023 GitHub said it would give up its offices because most staff worked remotely, yet the building is still its listed address and builder groups kept hosting hack nights there through 2025.",
     "facts": [
       "Microsoft bought GitHub for $7.5 billion in 2018.",
       "In 2020 GitHub stored 21 TB of open source code on film in an Arctic mine in Svalbard.",
@@ -327,7 +327,10 @@
     "sources": [
       "https://en.wikipedia.org/wiki/GitHub",
       "https://fm-arch.com/architonic-features-github/",
-      "https://www.sfgov.org/mayoredlee/event/mayor-lee-cut-ribbon-open-new-github-headquarters-make-new-announcement-kick-october"
+      "https://www.sfgov.org/mayoredlee/event/mayor-lee-cut-ribbon-open-new-github-headquarters-make-new-announcement-kick-october",
+      "https://sfstandard.com/2023/02/10/san-francisco-silicon-vally-tech-layoffs-closes-sf-office",
+      "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+      "https://luma.com/hacknight-at-github-12-16-25"
     ]
   },
   {

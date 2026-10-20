@@ -81,8 +81,8 @@
   {
     "id": "hack-github",
     "kind": "hack",
-    "title": "Hack Night at GitHub HQ",
-    "blurb": "Builder groups host evening hack nights under the Oval Office replica. Push six commits.",
+    "title": "Hack Night at GitHub",
+    "blurb": "Builder groups host evening hack nights in GitHub's SoMa building. Push six commits.",
     "neighborhood": "SoMa",
     "at": {
       "lat": 37.78229,
@@ -92,11 +92,11 @@
     "requires": ["discover-github"],
     "tags": ["tech", "hack"],
     "params": {
-      "venue": "GitHub HQ",
+      "venue": "GitHub",
       "timeLimit": 60,
       "spread": 50
     },
-    "sources": ["https://luma.com/hacknight-at-github-11-13-25", "https://github.blog/news-insights/the-library/hacktoberfest-launch-party-at-github-hq/"]
+    "sources": ["https://luma.com/hacknight-at-github-11-13-25", "https://luma.com/hacknight-at-github-12-16-25"]
   },
   {
     "id": "hack-internet-archive",
