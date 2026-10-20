@@ -37,7 +37,7 @@ interface Layer {
   w: number;
 }
 
-const layers = new WeakMap<Game, { byModel: Map<ModelId, Layer>; glass: THREE.MeshLambertMaterial }>();
+const layers = new WeakMap<Game, { byModel: Map<ModelId, Layer>; glass: THREE.MeshLambertMaterial; sec: number }>();
 const dummy = new THREE.Object3D();
 dummy.rotation.order = 'YXZ';
 const tint = new THREE.Color();
@@ -90,7 +90,7 @@ function build(game: Game, data: ReturnType<typeof parseTransit>) {
     layer.paint.setColorAt(0, tint.set('#ffffff'));
     byModel.set(id, layer);
   }
-  layers.set(game, { byModel, glass });
+  layers.set(game, { byModel, glass, sec: NaN });
 }
 
 export const system: GameSystem = {
@@ -113,9 +113,19 @@ export const system: GameSystem = {
     const L = layers.get(game);
     const data = s.transit.data;
     if (!L || !data || !game.world) return;
+    const me = game.flight.pos;
+    L.glass.emissiveIntensity = (game.sky?.night ?? 0) * 1.1;
+    if (s.online) {
+      for (const v of s.transit.vehicles) {
+        const spot = v.mode === 'cable' || v.mode === 'ferry' ? SPOT[v.mode] : null;
+        if (spot && Math.hypot(v.x - me.x, v.y - me.y, v.z - me.z) < spot.r) grantCard(game, spot.id, spot.name);
+      }
+    }
+    const sec = Math.floor(game.date().getTime() / 1000);
+    if (sec === L.sec) return;
+    L.sec = sec;
     const t = sfTime(game.date());
     for (const layer of L.byModel.values()) layer.n = layer.w = 0;
-    const me = game.flight.pos;
     const ground = (x: number, z: number) => game.world.surfaceAt(x, z);
     const placed: TransitVehicle[] = [];
     for (const route of data.routes) {
@@ -134,8 +144,6 @@ export const system: GameSystem = {
         layer.glass.setMatrixAt(i, dummy.matrix);
         if (layer.wake && v.moving) layer.wake.setMatrixAt(layer.w++, dummy.matrix);
         layer.paint.setColorAt(i, tint.set(paintFor(route, v.key)));
-        const spot = route.mode === 'cable' || route.mode === 'ferry' ? SPOT[route.mode] : null;
-        if (spot && s.online && Math.hypot(p.x - me.x, p.y - me.y, p.z - me.z) < spot.r) grantCard(game, spot.id, spot.name);
       }
     }
     s.transit.vehicles = placed;
@@ -152,6 +160,5 @@ export const system: GameSystem = {
         layer.wake.computeBoundingSphere();
       }
     }
-    L.glass.emissiveIntensity = (game.sky?.night ?? 0) * 1.1;
   },
 };
