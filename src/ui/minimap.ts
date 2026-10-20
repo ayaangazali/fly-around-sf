@@ -1,6 +1,6 @@
 import type { Game } from '../game';
 import { el } from './panel-host';
-import { prepareBaseMap, type BaseMap } from './map-base';
+import { baseMap } from './map-base';
 import { headingDeg } from './map-view';
 import { settingsOf } from './settings-model';
 import { guideTarget } from './waypoint';
@@ -21,28 +21,17 @@ export function installMinimap(game: Game): { update(): void } {
   wrap.addEventListener('click', () => game.panels.open('map'));
   game.hud.root.append(wrap);
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-  let base: BaseMap | null = null;
-  let pending = false;
   let lastDraw = 0;
 
   return {
     update() {
       const on = settingsOf(game).minimap && game.loaded;
-      if (!on) {
-        wrap.hidden = true;
-        return;
-      }
-      if (!base) {
-        if (!pending) {
-          pending = true;
-          void prepareBaseMap(game).then((m) => (base = m));
-        }
-        return;
-      }
-      wrap.hidden = false;
+      wrap.hidden = !on;
+      if (!on) return;
       const now = performance.now();
       if (now - lastDraw < 33) return;
       lastDraw = now;
+      const base = baseMap(game);
       const p = game.flight.pos;
       const h = (headingDeg(game.flight.yaw) * Math.PI) / 180;
       const R = (SIZE * dpr) / 2;

@@ -31,7 +31,7 @@ interface Build {
 }
 
 let build: Build | null = null;
-const CHUNK = 4000;
+const CHUNK = 400;
 
 function begin(game: Game): Build {
   if (build) return build;
@@ -80,19 +80,17 @@ function begin(game: Game): Build {
 
 function advance(game: Game, b: Build, deadline: number): boolean {
   const city = game.world.city;
-  while (b.next < city.count) {
+  while (b.next < city.count && performance.now() < deadline) {
     const end = Math.min(city.count, b.next + CHUNK);
     drawBuildings(b.ctx, city, b.view, Array.from({ length: end - b.next }, (_, i) => b.next + i));
     b.next = end;
-    if (performance.now() > deadline) return b.next >= city.count;
   }
-  return true;
+  return b.next >= city.count;
 }
 
 export function baseMap(game: Game): BaseMap {
-  const b = begin(game);
-  advance(game, b, Infinity);
-  return b.map;
+  void prepareBaseMap(game);
+  return begin(game).map;
 }
 
 let ready: Promise<BaseMap> | null = null;
@@ -101,7 +99,7 @@ export function prepareBaseMap(game: Game): Promise<BaseMap> {
   return (ready ??= new Promise((resolve) => {
     const tick = () => {
       const b = begin(game);
-      if (advance(game, b, performance.now() + 8)) resolve(b.map);
+      if (advance(game, b, performance.now() + 6)) resolve(b.map);
       else setTimeout(tick, 16);
     };
     setTimeout(tick, 16);
@@ -141,15 +139,16 @@ function renderTile(city: CityData, scale: number, i: number, j: number): HTMLCa
 }
 
 export function drawMap(ctx: CanvasRenderingContext2D, game: Game, v: MapView, dpr: number): boolean {
-  const base = baseMap(game);
-  const { extent, mpp, canvas } = base;
+  const b = begin(game);
+  const built = advance(game, b, performance.now() + 8);
+  const { extent, mpp, canvas } = b.map;
   ctx.fillStyle = `rgb(${WATER_DEEP.join(',')})`;
   ctx.fillRect(0, 0, v.w, v.h);
   const tl = toScreen(v, extent.minX, extent.minZ);
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
   ctx.drawImage(canvas, tl.sx, tl.sy, canvas.width * mpp * v.scale, canvas.height * mpp * v.scale);
-  if (v.scale * mpp <= 1.6) return true;
+  if (v.scale * mpp <= 1.6) return built;
   const level = Math.round(Math.log2(v.scale * dpr));
   const scale = 2 ** level;
   const size = TILE / scale;

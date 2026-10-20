@@ -187,3 +187,23 @@ test('[R-WAYPOINT] the compass shows nearby things to do and the menu suggests t
   const label = await page.evaluate((a) => window.__fly.game.activities.defs.get(a!)!.title, id);
   expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBe(label);
 });
+
+test.describe('founder trail map', () => {
+  test('[R-V2-MAP-OPEN] on the full city the map opens and paints on its first frame, right after load', async ({ page }) => {
+    await page.goto('./?test');
+    await page.waitForFunction(() => window.__fly?.ready === true, undefined, { timeout: 150_000 });
+    const r = await page.evaluate(async () => {
+      const t0 = performance.now();
+      window.__fly.game.panels.open('map');
+      const open = performance.now() - t0;
+      for (let i = 0; i < 2; i++) await new Promise((f) => requestAnimationFrame(f));
+      const c = document.querySelector('.map-canvas') as HTMLCanvasElement;
+      const d = c.getContext('2d')!.getImageData(0, 0, c.width, c.height).data;
+      const colors = new Set<number>();
+      for (let i = 0; i < d.length; i += 4 * 97) colors.add((d[i] >> 4) * 256 + (d[i + 1] >> 4) * 16 + (d[i + 2] >> 4));
+      return { open, colors: colors.size };
+    });
+    expect(r.open).toBeLessThan(250);
+    expect(r.colors).toBeGreaterThan(12);
+  });
+});

@@ -1,0 +1,3 @@
+[
+  { "id": "R-V2-MAP-OPEN", "owner": "map", "text": "On the full city the map opens and paints within a second, even right after load, framed on the player and every Founder Trail stop, and building the city map never freezes the game." }
+]
