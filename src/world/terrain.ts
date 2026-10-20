@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { toLocal } from '../core/geo';
+
+const WATERFRONT = [toLocal(37.812, -122.4185), toLocal(37.735, -122.374)];
 
 export class Terrain {
   constructor(
@@ -16,7 +19,20 @@ export class Terrain {
     if (magic !== 'SFT1') throw new Error(`terrain.bin: bad magic ${magic}`);
     const w = dv.getUint16(4, true);
     const h = dv.getUint16(6, true);
-    return new Terrain(w, h, dv.getFloat32(8, true), dv.getFloat32(12, true), dv.getFloat32(16, true), new Int16Array(buf, 20, w * h));
+    const t = new Terrain(w, h, dv.getFloat32(8, true), dv.getFloat32(12, true), dv.getFloat32(16, true), new Int16Array(buf, 20, w * h));
+    t.seawall();
+    return t;
+  }
+
+  private seawall(): void {
+    const [a, b] = WATERFRONT;
+    for (let j = Math.max(0, Math.floor((a.z - this.minZ) / this.cell)); j <= Math.min(this.h - 1, (b.z - this.minZ) / this.cell); j++) {
+      for (let i = Math.max(0, Math.floor((a.x - this.minX) / this.cell)); i <= Math.min(this.w - 1, (b.x - this.minX) / this.cell); i++) {
+        const k = j * this.w + i;
+        if (this.grid[k] >= 0 && this.grid[k] < 18) this.grid[k] = 18;
+        else if (this.grid[k] < 0 && this.grid[k] > -400) this.grid[k] = -400;
+      }
+    }
   }
 
   private at(i: number, j: number): number {

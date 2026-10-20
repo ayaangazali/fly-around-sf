@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import type { Terrain } from './terrain';
+import { Cover, type Area } from './env-data';
+import { inside } from './landmark-kit';
 
 export interface WaterUniforms {
   uTime: { value: number };
@@ -67,7 +69,7 @@ vec3 waterNormal(vec2 p, float t, float detail, float dist) {
   vec2 g = vec2(0.0);
   g += vec2(0.55, 0.3) * cos(dot(p, vec2(0.021, 0.013)) + t * 0.9) * 0.35;
   g += vec2(-0.2, 0.6) * cos(dot(p, vec2(-0.011, 0.034)) + t * 1.2) * 0.25;
-  g += wGrad(p * 0.045 + vec2(t * 0.05, t * 0.03)) * 0.22;
+  g += wGrad(p * 0.045 + vec2(t * 0.05, t * 0.03)) * 0.22 * (1.0 - smoothstep(1500.0, 5000.0, dist));
   float near = 1.0 - smoothstep(150.0, 900.0, dist);
   g += wGrad(p * 0.16 - vec2(t * 0.11, -t * 0.07)) * 0.12 * near * detail;
   g += wGrad(p * 0.55 + vec2(t * 0.23, t * 0.17)) * 0.06 * (1.0 - smoothstep(40.0, 260.0, dist)) * detail;
@@ -75,9 +77,10 @@ vec3 waterNormal(vec2 p, float t, float detail, float dist) {
 }
 `;
 
-export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: Terrain): THREE.MeshLambertMaterial {
+export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: Terrain, lake = false): THREE.MeshLambertMaterial {
   const mat = new THREE.MeshLambertMaterial({ color: '#ffffff' });
-  const box = new THREE.Vector4(t.minX, t.minZ, t.w * t.cell, t.h * t.cell);
+  if (lake) mat.defines = { LAKE: '' };
+  const box = new THREE.Vector4(t.minX - t.cell / 2, t.minZ - t.cell / 2, t.w * t.cell, t.h * t.cell);
   mat.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, u, { uDepth: { value: depth }, uBox: { value: box } });
     shader.vertexShader = shader.vertexShader
@@ -102,6 +105,10 @@ export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: T
         vec4 wt = texture2D(uDepth, clamp(wuv, 0.0, 1.0));
         float depthM = mix(60.0, wt.r * 64.0, inBox);
         float cityGlow = wt.g * inBox;
+        #ifdef LAKE
+        depthM = 2.5;
+        cityGlow = 0.0;
+        #endif
         float wDist = length(vWater - cameraPosition);
         vec3 wN = waterNormal(vWater.xz, uTime, uDetail, wDist);
         vec3 shallow = vec3(0.3, 0.52, 0.52);
@@ -127,4 +134,33 @@ export function createWaterMaterial(u: WaterUniforms, depth: THREE.Texture, t: T
       );
   };
   return mat;
+}
+
+export function lakeMesh(areas: Area[], height: (x: number, z: number) => number, mat: THREE.Material): THREE.Mesh {
+  const pos: number[] = [];
+  for (const area of areas) {
+    if (area.cls !== Cover.Lake) continue;
+    const [outer, ...holes] = area.rings.map((r) => Array.from(r.xs, (x, i) => new THREE.Vector2(x, r.zs[i])));
+    const box = new THREE.Box2().setFromPoints(outer);
+    const ring = outer.map((p) => ({ x: p.x, z: p.y }));
+    const samples: number[] = [];
+    for (let x = box.min.x; x <= box.max.x; x += 8) for (let z = box.min.y; z <= box.max.y; z += 8) if (inside(ring, x, z)) samples.push(height(x, z));
+    for (const p of outer) samples.push(height(p.x, p.y));
+    samples.sort((a, b) => a - b);
+    const level = samples[Math.floor(samples.length * 0.8)] + 0.3;
+    const all = [outer, ...holes].flat();
+    for (const tri of THREE.ShapeUtils.triangulateShape(outer, holes)) {
+      const [a, b, c] = tri.map((i) => all[i]);
+      const up = (b.y - a.y) * (c.x - a.x) - (b.x - a.x) * (c.y - a.y) >= 0;
+      for (const p of up ? [a, b, c] : [a, c, b]) pos.push(p.x, level, p.y);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute('normal', new THREE.Float32BufferAttribute(Array.from({ length: pos.length }, (_, i) => (i % 3 === 1 ? 1 : 0)), 3));
+  geo.computeBoundingSphere();
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.name = 'lakes';
+  mesh.receiveShadow = true;
+  return mesh;
 }

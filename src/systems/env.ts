@@ -6,7 +6,8 @@ import { parseGreen, parseStars, parseStreets, parseTrees, type Polyline } from 
 import { Landcover, patchGround } from '../world/landcover';
 import { buildRoads, createRoadMaterial, resample, roadMesh, ROAD } from '../world/streets';
 import { buildTreeTiles, createTreeMaterial, plantTrees, setTreeLod, type Density, type TreeTile } from '../world/trees';
-import { createWaterMaterial, waterTexture, type WaterUniforms } from '../world/water';
+import { createWaterMaterial, lakeMesh, waterTexture, type WaterUniforms } from '../world/water';
+import { createBackdrop } from '../world/backdrop';
 import { envUniforms, KARL_GLSL, patchFogChunks, solarHour, visibility } from '../world/karl';
 
 export type TimeMode = 'real' | 'golden' | 'noon' | 'night';
@@ -125,14 +126,17 @@ class Env {
     const t = g.world.terrain;
     const cell = this.tier.cell;
     const span = { w: Math.ceil((t.w * t.cell) / cell), h: Math.ceil((t.h * t.cell) / cell) };
-    this.cover = Landcover.rasterize(parseGreen(green), { ...span, cell, minX: t.minX, minZ: t.minZ });
+    const areas = parseGreen(green);
+    this.cover = Landcover.rasterize(areas, { ...span, cell, minX: t.minX, minZ: t.minZ });
     const terrain = g.world.root.getObjectByName('terrain') as THREE.Mesh<THREE.BufferGeometry, THREE.MeshLambertMaterial> | undefined;
     if (terrain) patchGround(terrain.material, this.cover.texture(), this.cover, this.nightRef);
     const water = g.world.root.getObjectByName('water') as THREE.Mesh | undefined;
-    if (water) water.material = createWaterMaterial(this.water, waterTexture(t), t);
+    const depth = waterTexture(t);
+    if (water) water.material = createWaterMaterial(this.water, depth, t);
 
     const stride = ({ low: 3, medium: 2, high: 1 } as const)[g.opts.quality];
     const height = (x: number, z: number) => t.meshHeightAt(x, z, stride);
+    this.group.add(lakeMesh(areas, height, createWaterMaterial(this.water, depth, t, true)), createBackdrop(t, this.nightRef));
     const lines = parseStreets(streets);
     const built = buildRoads(lines, height, { step: this.tier.roadStep, tile: 2000, piece: 400 });
     const roadMat = createRoadMaterial(this.nightRef);
