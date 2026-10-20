@@ -3188,15 +3188,15 @@
       "transit"
     ],
     "params": {
-      "question": "Which two historic vessels are at Pier 45?",
+      "question": "Which World War II vessel is moored at Pier 45?",
       "options": [
-        "A Gold Rush ferry and a tugboat",
-        "Two clipper ships",
-        "A battleship and a yacht",
-        "A WWII submarine and a Liberty ship"
+        "A Liberty ship",
+        "A battleship",
+        "An aircraft carrier",
+        "A submarine"
       ],
       "answer": 3,
-      "explain": "USS Pampanito and SS Jeremiah O'Brien are both museums."
+      "explain": "USS Pampanito is moored at Pier 45. The Liberty ship SS Jeremiah O'Brien moved a short hop east to Pier 35 after a 2020 fire."
     }
   }
 ]

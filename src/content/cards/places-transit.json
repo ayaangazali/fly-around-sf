@@ -203,12 +203,13 @@
     "at": { "lat": 37.81, "lon": -122.41639, "alt": 25 },
     "year": 1944,
     "blurb": "A WWII submarine and a D-Day Liberty ship, tied up at Fisherman's Wharf.",
-    "lore": "Two warriors share Pier 45. The submarine USS Pampanito made six war patrols in the Pacific, sank Japanese ships and in 1944 rescued 73 Allied prisoners of war adrift after their transport was torpedoed. Nearby floats the SS Jeremiah O'Brien, a Liberty ship that crossed the English Channel 11 times supporting D-Day. In 1994 an all-volunteer crew sailed her back to Normandy for the 50th anniversary. Both are museums you can climb aboard.",
+    "lore": "The submarine USS Pampanito is moored at Pier 45. She made six war patrols in the Pacific, sank Japanese ships and in 1944 rescued 73 Allied prisoners of war adrift after their transport was torpedoed. Her old neighbor, the SS Jeremiah O'Brien, a Liberty ship that crossed the English Channel 11 times supporting D-Day, moved a short hop east to Pier 35 after a 2020 fire and stayed on a long-term lease in 2023. In 1994 an all-volunteer crew sailed her back to Normandy for the 50th anniversary. Both are museums you can climb aboard.",
     "facts": [
       "USS Pampanito made six war patrols in World War II.",
       "Pampanito rescued 73 Allied POWs in September 1944.",
       "The Jeremiah O'Brien made 11 Channel crossings supporting D-Day.",
-      "The O'Brien returned to Normandy in 1994 for the 50th anniversary."
+      "The O'Brien returned to Normandy in 1994 for the 50th anniversary.",
+      "The O'Brien has been berthed at Pier 35 since a 2020 fire at Pier 45."
     ],
     "sources": ["https://en.wikipedia.org/wiki/USS_Pampanito", "https://en.wikipedia.org/wiki/SS_Jeremiah_O%27Brien", "https://www.nps.gov/places/ss-jeremiah-o-brien.htm"]
   }

@@ -429,7 +429,7 @@
         },
         {
           "type": "goto",
-          "text": "Salute the old Liberty ship tied up at Pier 45.",
+          "text": "Salute the old Liberty ship tied up at Pier 35.",
           "at": { "lat": 37.80876, "lon": -122.40686, "alt": 20 },
           "say": [
             "The SS Jeremiah O'Brien sailed with the D-Day armada off Normandy on June 6, 1944. Of the 2,710 Liberty ships built, she is one of only a handful still afloat. Salute properly. She has earned it."
