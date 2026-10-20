@@ -15,7 +15,7 @@ import type { GameOptions } from '../game';
 
 export function savedQuality(opts: GameOptions, search: string, saved: unknown): void {
   const q = saved as QualitySetting;
-  if (!opts.test && !new URLSearchParams(search).has('quality') && (q === 'low' || q === 'medium' || q === 'high')) opts.quality = q;
+  if (!opts.test && !new URLSearchParams(search).has('quality') && (q === 'low' || q === 'medium' || q === 'high')) Object.assign(opts, { quality: q, auto: false });
 }
 
 export function installUi(game: Game): void {

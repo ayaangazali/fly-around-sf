@@ -1,4 +1,5 @@
 [
   { "id": "R-PERF-AUTO", "owner": "perf", "text": "Auto quality starts phones and tablets (coarse primary pointer) on the low tier and everything else on high." },
-  { "id": "R-PERF-SHADERS", "owner": "perf", "text": "Every shader in the loaded scene compiles behind the loading screen, so flying to new views by day and night links no new programs." }
+  { "id": "R-PERF-SHADERS", "owner": "perf", "text": "Every shader in the loaded scene compiles behind the loading screen, so flying to new views by day and night links no new programs." },
+  { "id": "R-V2-PERF-GOVERNOR", "owner": "perf", "text": "Auto quality measures frame time and steps pixel ratio, shadows and view distance down one rung when the 2 s median frame is over 28 ms and back up when it is under 18 ms, holding a rung it fell from for 30 s (doubling on repeats), never climbing above the starting tier and linking no new shaders; a chosen Low, Medium or High tier stays fixed." }
 ]

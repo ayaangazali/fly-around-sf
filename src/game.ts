@@ -15,6 +15,7 @@ import { ActivityRunner } from './activities/runner';
 import type { ActivityDef, ActivityKind } from './activities/types';
 import { Hud } from './ui/hud';
 import { PanelHost, type Panel } from './ui/panel-host';
+import { Governor, RUNGS, type Rung } from './core/governor';
 
 export type Quality = 'low' | 'medium' | 'high';
 
@@ -23,6 +24,7 @@ export interface GameOptions {
   time: Date | null;
   spawn: { lat: number; lon: number; yaw: number } | null;
   quality: Quality;
+  auto: boolean;
   room: string | null;
   cityRadius: number;
   base: string;
@@ -40,9 +42,9 @@ export const SPAWN = { lat: 37.8066, lon: -122.4318, yaw: 1.22, alt: 24 };
 const CENTURY_MS = 100 * 365.25 * 86_400_000;
 
 const QUALITY = {
-  low: { pixelRatio: 1, shadow: 0, stride: 3, far: 6000 },
-  medium: { pixelRatio: 1.5, shadow: 1024, stride: 2, far: 10000 },
-  high: { pixelRatio: 2, shadow: 2048, stride: 1, far: 14000 },
+  low: { rung: 2, shadow: 0, stride: 3 },
+  medium: { rung: 1, shadow: 1024, stride: 2 },
+  high: { rung: 0, shadow: 2048, stride: 1 },
 } as const;
 
 export function parseOptions(search: string, base = './'): GameOptions {
@@ -55,7 +57,8 @@ export function parseOptions(search: string, base = './'): GameOptions {
     test: q.has('test'),
     time: Math.abs(t - Date.now()) < CENTURY_MS ? new Date(t) : q.has('test') ? new Date('2026-10-19T19:30:00Z') : null,
     spawn: spawn && spawn.length >= 2 && spawn.every(Number.isFinite) && inBounds(spawn[0], spawn[1]) ? { lat: spawn[0], lon: spawn[1], yaw: spawn[2] ?? 0 } : null,
-    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : q.has('test') || touch ? 'low' : 'high',
+    quality: quality === 'low' || quality === 'medium' || quality === 'high' ? quality : (q.has('test') && quality !== 'auto') || touch ? 'low' : 'high',
+    auto: quality === 'auto' || (!quality && !q.has('test')),
     room: q.get('room'),
     cityRadius: Number(q.get('cityRadius')) || 0,
     base,
@@ -76,6 +79,7 @@ export class Game {
   readonly drone: DroneModel;
   readonly chase: ChaseCamera;
   readonly systems: GameSystem[] = [];
+  readonly governor: Governor | null;
   sky!: SkySystem;
   world!: World;
   flight: FlightState;
@@ -98,13 +102,14 @@ export class Game {
     readonly opts: GameOptions,
   ) {
     const q = QUALITY[opts.quality];
+    this.governor = opts.auto ? new Governor(q.rung, q.rung) : null;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: opts.quality !== 'low', powerPreference: 'high-performance', preserveDrawingBuffer: opts.test });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, q.pixelRatio));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 0.9;
     this.renderer.shadowMap.enabled = q.shadow > 0;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
-    this.camera = new THREE.PerspectiveCamera(60, 1, 0.5, q.far);
+    this.camera = new THREE.PerspectiveCamera(60, 1, 0.5, RUNGS[q.rung].far);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, RUNGS[q.rung].pixelRatio));
     this.input = new Input(window);
     this.autoSim = !opts.test;
     const s = opts.spawn ?? SPAWN;
@@ -219,6 +224,17 @@ export class Game {
     this.loaded = true;
   }
 
+  applyRung(r: Rung): void {
+    const ratio = Math.min(window.devicePixelRatio || 1, r.pixelRatio);
+    this.renderer.setPixelRatio(ratio);
+    this.renderer.shadowMap.enabled = r.shadow && QUALITY[this.opts.quality].shadow > 0;
+    this.camera.far = r.far;
+    this.camera.updateProjectionMatrix();
+    this.sky.viewFar = r.far;
+    this.sky.sun.shadow.intensity = r.shadow ? 1 : 0;
+    this.sky.stars.material.uniforms.uPx.value = ratio;
+  }
+
   teleport(p: Vec3, yaw?: number): void {
     this.flight.pos = { ...p };
     this.flight.vel = { x: 0, y: 0, z: 0 };
@@ -296,6 +312,7 @@ export class Game {
     const frame = (now: number) => {
       if (!this.running) return;
       requestAnimationFrame(frame);
+      if (this.governor?.sample(now - this.last, now)) this.applyRung(RUNGS[this.governor.rung]);
       const dt = Math.min(0.1, (now - this.last) / 1000);
       this.last = now;
       if (this.autoSim) {

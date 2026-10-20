@@ -5,6 +5,11 @@ import { test, expect, boot, LITE } from './fixtures';
 const dist = (file: string) => new URL(`../../dist/${file}`, import.meta.url);
 const gates = JSON.parse(readFileSync(new URL('../../requirements.json', import.meta.url), 'utf8')).gates as { max_initial_js_gzip_kb: number };
 
+function stubDraws(): void {
+  const gl = WebGL2RenderingContext.prototype as unknown as Record<string, unknown>;
+  for (const k of ['drawArrays', 'drawElements', 'drawArraysInstanced', 'drawElementsInstanced', 'drawRangeElements']) gl[k] = () => undefined;
+}
+
 test.describe('performance', () => {
   test('[R-PERF] the entry chunk and its static imports stay under the initial JS gzip budget', () => {
     const manifest = JSON.parse(readFileSync(dist('.vite/manifest.json'), 'utf8')) as Record<string, { file: string; isEntry?: boolean; imports?: string[] }>;
@@ -51,4 +56,34 @@ test.describe('performance', () => {
     });
     expect(added).toBe(0);
   });
+
+  test('[R-V2-PERF-GOVERNOR] slow frames make auto quality drop shadows, view distance and pixel ratio without linking new shaders', async ({ page }) => {
+    await page.addInitScript(stubDraws);
+    await boot(page, 'quality=auto');
+    const r = await page.evaluate(async () => {
+      const g = window.__fly.game;
+      const read = () => ({ rung: g.governor!.rung, ratio: g.renderer.getPixelRatio(), shadows: g.renderer.shadowMap.enabled, intensity: g.sky.sun.shadow.intensity, far: g.camera.far, fog: g.sky.fog.far, programs: g.renderer.info.programs!.length });
+      const before = read();
+      let slow = true;
+      const spin = () => {
+        if (!slow) return;
+        requestAnimationFrame(spin);
+        const end = performance.now() + 45;
+        while (performance.now() < end);
+      };
+      requestAnimationFrame(spin);
+      const t0 = performance.now();
+      while (g.governor!.rung < 3 && performance.now() - t0 < 20_000) await new Promise((done) => setTimeout(done, 200));
+      slow = false;
+      for (let i = 0; i < 3; i++) await new Promise((done) => requestAnimationFrame(done));
+      return { before, after: read() };
+    });
+    expect(r.before).toMatchObject({ rung: 0, shadows: true, intensity: 1, far: 14000 });
+    expect(r.after).toMatchObject({ rung: 3, shadows: false, intensity: 0, far: 4000 });
+    expect(r.after.ratio).toBeLessThan(r.before.ratio);
+    expect(r.after.fog).toBeLessThan(4000);
+    expect(r.after.programs).toBe(r.before.programs);
+  });
+
 });
+
