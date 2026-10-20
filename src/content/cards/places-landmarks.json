@@ -165,10 +165,10 @@
     "facts": [
       "Alcatraz became a federal penitentiary in 1934.",
       "The prison closed on March 21, 1963.",
-      "The island has the oldest operating lighthouse on the West Coast.",
+      "The island was the site of the West Coast's first lighthouse, lit in 1854.",
       "The island covers about 22 acres and hosts a seabird colony."
     ],
-    "sources": ["https://en.wikipedia.org/wiki/Alcatraz_Island", "https://www.nps.gov/alca/index.htm"]
+    "sources": ["https://en.wikipedia.org/wiki/Alcatraz_Island", "https://www.nps.gov/alca/index.htm", "https://en.wikipedia.org/wiki/Alcatraz_Island_Lighthouse"]
   },
   {
     "id": "painted-ladies",
