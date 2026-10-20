@@ -158,6 +158,10 @@ class Env {
     for (const tile of this.trees) treeGroup.add(...tile.meshes);
 
     this.group.add(roadGroup, treeGroup, this.lamps);
+    this.group.traverse((o) => {
+      o.updateMatrix();
+      o.matrixAutoUpdate = false;
+    });
     g.world.root.add(this.group);
     g.sky.sky.onBeforeRender = () => this.frame();
     this.applyTime();

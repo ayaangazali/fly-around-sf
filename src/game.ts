@@ -211,6 +211,10 @@ export class Game {
     this.save.persist();
     await cityDone;
     await this.renderer.compileAsync(this.scene, this.camera);
+    for (const o of [this.scene, this.world.root, this.cityRenderer.group]) {
+      o.updateMatrix();
+      o.matrixAutoUpdate = false;
+    }
     onProgress(1, 'Ready');
     this.loaded = true;
   }
