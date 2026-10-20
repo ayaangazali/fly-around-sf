@@ -107,7 +107,8 @@ export function patchGround(mat: THREE.MeshLambertMaterial, tex: THREE.Texture, 
         float far = smoothstep(600.0, 2500.0, length(vGround - cameraPosition));
         gn = mix(gn, 0.5, far);
         float land = smoothstep(0.3, 1.5, vGround.y);
-        vec3 urban = mix(vec3(0.55, 0.535, 0.5), vec3(0.62, 0.6, 0.56), gn);
+        float yard = step(0.64, fract(sin(dot(floor(vGround.xz / 9.0), vec2(39.3, 11.7))) * 24634.63));
+        vec3 urban = mix(mix(vec3(0.3, 0.29, 0.27), vec3(0.35, 0.34, 0.31), gn), mix(vec3(0.17, 0.21, 0.11), vec3(0.24, 0.23, 0.18), gn), mix(yard, 0.36, far));
         vec3 base = mix(diffuseColor.rgb, urban, land * 0.85);
         vec3 grass = mix(vec3(0.44, 0.6, 0.3), vec3(0.52, 0.66, 0.34), gn);
         vec3 wood = mix(vec3(0.22, 0.36, 0.2), vec3(0.28, 0.42, 0.24), gn);
