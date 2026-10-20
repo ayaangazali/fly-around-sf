@@ -1,6 +1,7 @@
 import type { Game } from '../game';
 import type { ActivityDef } from '../activities/types';
 import { nearestOpen } from './nearby';
+import { chapters } from '../activities/kinds/quest';
 
 export interface OnboardStep {
   id: string;
@@ -21,7 +22,7 @@ export const STEPS: OnboardStep[] = [
 export const FLAG = 'onboarded';
 
 export function firstActivity(game: Game): ActivityDef | null {
-  return nearestOpen(game, 1)[0]?.def ?? null;
+  return chapters(game.activities.list()).find((c) => !game.save.isDone(c.id)) ?? nearestOpen(game, 1)[0]?.def ?? null;
 }
 
 export class OnboardingTracker {

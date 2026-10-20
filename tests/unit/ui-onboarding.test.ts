@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { fakeGame } from './helpers';
+import { fakeGame, loadDefs, loadKinds } from './helpers';
+import { SPAWN } from '../../src/game';
 import { OnboardingTracker, STEPS, firstActivity } from '../../src/ui/onboarding-steps';
 import { kind as rings } from '../../src/activities/kinds/rings';
 import { kind as discover } from '../../src/activities/kinds/discover';
@@ -83,6 +84,15 @@ describe('onboarding', () => {
     expect(firstActivity(g)?.id).toBe('rings-locked');
     g.save.complete('rings-locked');
     expect(firstActivity(g)).toBeNull();
+  });
+
+  it('[R-ONBOARD] the tutorial sends a new pilot to the next story chapter, not whatever is nearest', async () => {
+    const g = fakeGame();
+    g.activities.register(await loadKinds(), loadDefs());
+    g.flight.pos = { ...g.world.point(SPAWN) };
+    expect(firstActivity(g)?.id).toBe('quest-initial-commit');
+    g.save.complete('quest-initial-commit');
+    expect(firstActivity(g)?.id).toBe('quest-git-blame');
   });
 });
 
