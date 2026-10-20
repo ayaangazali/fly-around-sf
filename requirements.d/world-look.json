@@ -1,0 +1,7 @@
+[
+  { "id": "R-V2-COLOR", "owner": "world-look", "text": "Buildings take their color from neighborhood, height and footprint: cream and pastel Victorians and Edwardians in the residential grid, lighter stucco in the Sunset and Richmond, warm stone and brick mid-rises, warehouses in industrial tones, and blue-green glass beside light stone towers downtown, each with a darker roof and per-building variation." },
+  { "id": "R-V2-LOD", "owner": "world-look", "text": "Every city chunk orders its buildings largest first, and a chunk far from the camera draws only the buildings big enough to cover about two pixels, so wide views cost fewer triangles while near buildings are all drawn." },
+  { "id": "R-V2-NIGHT-KIT", "owner": "world-look", "text": "Landmark towers built with the kit (Salesforce Tower, Transamerica Pyramid, the skyline towers) carry the city window attribute as tall office buildings, so their windows light at night like the rest of the skyline." },
+  { "id": "R-V2-EDGES", "owner": "world-look", "text": "Beyond the data bounds a fogged, non-collidable backdrop shows Marin with Mount Tamalpais, Angel Island, Tiburon, the East Bay hills and San Bruno Mountain, and the Bay Bridge skyway continues from the self-anchored span to its Oakland landfall." },
+  { "id": "R-V2-SHORE", "owner": "world-look", "text": "Lakes such as Stow Lake and the Palace of Fine Arts lagoon render as water at their shore level, and the downtown waterfront piers stand as flat decks with vertical seawalls instead of sloping into the bay." }
+]

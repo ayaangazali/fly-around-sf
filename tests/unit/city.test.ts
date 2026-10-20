@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { CityData, NO_GROUND } from '../../src/world/city-data';
-import { buildChunks, buildChunk, buildingColor, chunkKey } from '../../src/world/city-mesh';
+import * as THREE from 'three';
+import { buildChunks, buildChunk, buildingColor, buildingStyle, chunkKey, PALETTES } from '../../src/world/city-mesh';
+import { CityRenderer } from '../../src/world/city';
 import { Terrain } from '../../src/world/terrain';
 import { toLocal } from '../../src/core/geo';
 import { ROOT } from './helpers';
@@ -93,6 +95,48 @@ describe('city data', () => {
     expect(buildingColor(0, 50)).not.toEqual(buildingColor(0, 5));
   });
 
+  it('[R-V2-COLOR] colors buildings by neighborhood, height and footprint', () => {
+    const at = (lat: number, lon: number, h: number, area: number) => {
+      const p = toLocal(lat, lon);
+      return Array.from({ length: 300 }, (_, b) => buildingStyle(b, h, area, p.x, p.z));
+    };
+    const has = (palette: number[][], c: number[]) => palette.some((p) => p.join() === c.join());
+    const lum = (c: number[]) => (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255;
+    const homes = at(37.7765, -122.4345, 9, 150);
+    expect(homes.every((s) => !s.glass && has(PALETTES.victorian, s.color))).toBe(true);
+    expect(new Set(homes.map((s) => s.color.join())).size).toBeGreaterThan(20);
+    expect(lum(homes.map((s) => s.color).sort((a, b) => lum(a) - lum(b))[150])).toBeGreaterThan(0.5);
+    expect(homes.filter((s) => Math.max(...s.color) - Math.min(...s.color) > 90).length).toBeGreaterThan(30);
+    expect(at(37.755, -122.49, 9, 150).every((s) => has(PALETTES.stucco, s.color))).toBe(true);
+    expect(at(37.7765, -122.4345, 22, 400).every((s) => has(PALETTES.masonry, s.color))).toBe(true);
+    expect(at(37.7765, -122.4345, 8, 3000).every((s) => has(PALETTES.industrial, s.color))).toBe(true);
+    const towers = at(37.7905, -122.3995, 150, 2000);
+    const glass = towers.filter((s) => s.glass);
+    expect(glass.length / towers.length).toBeGreaterThan(0.35);
+    expect(glass.every((s) => s.color[2] > s.color[0])).toBe(true);
+    expect(towers.filter((s) => !s.glass).every((s) => has(PALETTES.tower, s.color))).toBe(true);
+    expect(at(37.745, -122.42, 150, 2000).filter((s) => s.glass).length / 300).toBeLessThan(0.25);
+  });
+
+  it('[R-V2-LOD] far chunks draw only their bigger buildings and near chunks draw all of them', () => {
+    const c = new CityData(synthetic([{ h: 4, g: 0, ring: square(0, 0, 4) }, { h: 60, g: 0, ring: square(20, 0, 30) }, { h: 10, g: 0, ring: square(60, 0, 8) }]), () => 0);
+    const ch = buildChunk(c, chunkKey(0, 0), [0, 1, 2]);
+    expect(ch.lod).toEqual([90, 60, 60, 60, 30, 30, 30, 30]);
+    expect(ch.position[0]).toBeGreaterThanOrEqual(20);
+    const r = new CityRenderer();
+    (r as unknown as { add(c: unknown): void }).add(ch);
+    const mesh = r.group.children[0] as THREE.Mesh;
+    const cam = new THREE.PerspectiveCamera(60, 1.6, 1, 30000);
+    const drawn = (z: number) => {
+      cam.position.set(30, 20, z);
+      mesh.onBeforeRender({ domElement: { height: 800 } } as never, mesh.parent as never, cam, mesh.geometry, mesh.material as never, null as never);
+      return mesh.geometry.drawRange.count;
+    };
+    expect(drawn(60)).toBe(90);
+    expect(drawn(3000)).toBe(60);
+    expect(drawn(20000)).toBe(30);
+  });
+
   it('[R-DATA] real city.bin has the whole city with a tall downtown', () => {
     const buf = readFileSync(join(ROOT, 'public/data/city.bin'));
     const terrain = Terrain.parse(readFileSync(join(ROOT, 'public/data/terrain.bin')).buffer.slice(0) as ArrayBuffer);
@@ -131,6 +175,24 @@ describe('terrain', () => {
     expect(mesh.geometry.getIndex()!.count).toBe(24);
     expect(t.buildMesh(2).geometry.getAttribute('position').count).toBe(4);
     expect(() => Terrain.parse(new ArrayBuffer(20))).toThrow(/magic/);
+  });
+
+  it('[R-V2-SHORE] the downtown waterfront gets flat pier decks and vertical seawalls', () => {
+    const grid = (lat: number, lon: number) => {
+      const p = toLocal(lat, lon);
+      const buf = new ArrayBuffer(20 + 4 * 2);
+      const dv = new DataView(buf);
+      new Uint8Array(buf, 0, 4).set([0x53, 0x46, 0x54, 0x31]);
+      dv.setUint16(4, 4, true);
+      dv.setUint16(6, 1, true);
+      dv.setFloat32(8, 10, true);
+      dv.setFloat32(12, p.x, true);
+      dv.setFloat32(16, p.z, true);
+      new Int16Array(buf, 20, 4).set([5, 12, -3, -150]);
+      return Array.from(Terrain.parse(buf).grid);
+    };
+    expect(grid(37.7995, -122.3955)).toEqual([18, 18, -400, -400]);
+    expect(grid(37.76, -122.48)).toEqual([5, 12, -3, -150]);
   });
 
   it('[R-ENV-PERF] leaves out seabed quads that the opaque water hides', () => {

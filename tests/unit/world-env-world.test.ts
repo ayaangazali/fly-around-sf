@@ -5,7 +5,9 @@ import { Road, Cover, TreeKind, type Polyline, type TreeList } from '../../src/w
 import { buildRoads, createRoadMaterial, resample, roadMesh, ROAD } from '../../src/world/streets';
 import { Landcover, patchGround } from '../../src/world/landcover';
 import { buildTreeTiles, createTreeMaterial, hash01, plantTrees, season, setTreeLod, treeColor, treeGeometries } from '../../src/world/trees';
-import { createWaterMaterial, waterTexture, type WaterUniforms } from '../../src/world/water';
+import { createWaterMaterial, lakeMesh, waterTexture, type WaterUniforms } from '../../src/world/water';
+import { backdropHeight, createBackdrop } from '../../src/world/backdrop';
+import { toLocal } from '../../src/core/geo';
 
 function terrain(w: number, h: number, cell: number, f: (i: number, j: number) => number): Terrain {
   const grid = new Int16Array(w * h);
@@ -239,5 +241,53 @@ describe('water', () => {
     expect(s.fragmentShader).toContain('waterNormal');
     expect(s.fragmentShader).toContain('fres');
     expect(s.fragmentShader.indexOf('skyR')).toBeLessThan(s.fragmentShader.lastIndexOf('#include <fog_fragment>'));
+  });
+});
+
+describe('edges and shores', () => {
+  it('[R-V2-SHORE] lakes become flat water at their shore level with islands left open', () => {
+    const ring = (pts: [number, number][]) => ({ xs: Float32Array.from(pts.map((p) => p[0])), zs: Float32Array.from(pts.map((p) => p[1])) });
+    const lake = { cls: Cover.Lake, rings: [ring([[0, 0], [100, 0], [100, 100], [0, 100]]), ring([[40, 40], [60, 40], [60, 60], [40, 60]])] };
+    const park = { cls: Cover.Grass, rings: [ring([[200, 0], [300, 0], [300, 100]])] };
+    const mesh = lakeMesh([lake, park], () => 2, new THREE.MeshBasicMaterial());
+    const p = mesh.geometry.getAttribute('position');
+    let area = 0;
+    for (let i = 0; i < p.count; i += 3) {
+      const a = new THREE.Vector3().fromBufferAttribute(p, i);
+      const b = new THREE.Vector3().fromBufferAttribute(p, i + 1);
+      const c = new THREE.Vector3().fromBufferAttribute(p, i + 2);
+      const n = b.clone().sub(a).cross(c.clone().sub(a));
+      expect(n.y).toBeGreaterThan(0);
+      area += n.y / 2;
+      const m = a.add(b).add(c).divideScalar(3);
+      expect(m.x > 40 && m.x < 60 && m.z > 40 && m.z < 60).toBe(false);
+      expect(m.x).toBeLessThan(100);
+    }
+    expect(area).toBeCloseTo(100 * 100 - 20 * 20, 3);
+    expect(new Set(Array.from({ length: p.count }, (_, i) => p.getY(i)))).toEqual(new Set([Math.fround(2.3)]));
+  });
+
+  it('[R-V2-EDGES] fills the world beyond the data with Marin, Angel Island, the East Bay hills and the Bay Bridge skyway', () => {
+    const h = (lat: number, lon: number) => {
+      const p = toLocal(lat, lon);
+      return backdropHeight(p.x, p.z).h;
+    };
+    expect(h(37.9235, -122.5965)).toBeGreaterThan(600);
+    expect(h(37.861, -122.432)).toBeGreaterThan(150);
+    expect(h(37.885, -122.47)).toBeGreaterThan(100);
+    expect(h(37.88, -122.23)).toBeGreaterThan(400);
+    expect(h(37.688, -122.45)).toBeGreaterThan(300);
+    expect(h(37.82, -122.4)).toBeLessThan(0);
+    expect(h(37.81, -122.477)).toBeLessThan(0);
+    const mesh = createBackdrop(new Terrain(2, 2, 100, -50, -50, Int16Array.from([0, 0, 0, 0])), { value: 0 });
+    expect(mesh.frustumCulled).toBe(false);
+    const p = mesh.geometry.getAttribute('position');
+    const near = (lat: number, lon: number, lo: number, hi: number) => {
+      const t = toLocal(lat, lon);
+      for (let i = 0; i < p.count; i++) if (Math.hypot(p.getX(i) - t.x, p.getZ(i) - t.z) < 80 && p.getY(i) > lo && p.getY(i) < hi) return true;
+      return false;
+    };
+    expect(near(37.8178, -122.3542, 40, 50)).toBe(true);
+    expect(near(37.8228, -122.3155, 3, 15)).toBe(true);
   });
 });
