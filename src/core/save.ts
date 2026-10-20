@@ -16,6 +16,8 @@ export function emptySave(): SaveData {
   return { v: 1, completed: {}, best: {}, cards: [], xp: 0, flags: {}, settings: {}, stats: { distance: 0, flightTime: 0, crashes: 0, sessions: 0 } };
 }
 
+const finite = (rec: unknown): Record<string, number> => Object.fromEntries(Object.entries(rec && typeof rec === 'object' ? rec : {}).filter(([, v]) => Number.isFinite(v)));
+
 export function normalize(raw: unknown): SaveData {
   const base = emptySave();
   if (!raw || typeof raw !== 'object' || (raw as { v?: unknown }).v !== 1) return base;
@@ -24,13 +26,14 @@ export function normalize(raw: unknown): SaveData {
     ...base,
     ...r,
     v: 1,
-    completed: { ...(r.completed ?? {}) },
-    best: { ...(r.best ?? {}) },
+    completed: finite(r.completed),
+    best: finite(r.best),
+    pos: Array.isArray(r.pos) && r.pos.length === 4 && r.pos.every(Number.isFinite) ? r.pos : undefined,
     cards: Array.isArray(r.cards) ? [...new Set(r.cards.filter((c) => typeof c === 'string'))] : [],
     xp: Number.isFinite(r.xp) ? (r.xp as number) : 0,
     flags: { ...(r.flags ?? {}) },
     settings: { ...(r.settings ?? {}) },
-    stats: { ...base.stats, ...(r.stats ?? {}) },
+    stats: { ...base.stats, ...finite(r.stats) },
   };
 }
 
