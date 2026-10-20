@@ -113,6 +113,7 @@ test.describe('touch @touch', () => {
     await expect(page.locator('.fr-roomcode').first()).toHaveText('TAP2 2TAP 22TA P22T');
     await page.locator('[data-action="voice-on"]').click();
     await expect.poll(() => page.evaluate(() => window.__fly.game.net.voice.on)).toBe(true);
+    await page.locator('.sheet').evaluate((s) => Promise.all(s.getAnimations().map((a) => a.finished)));
     const fit = await page.evaluate(() => {
       const sheet = document.querySelector('.sheet-body') as HTMLElement;
       const coarse = matchMedia('(pointer: coarse)').matches;

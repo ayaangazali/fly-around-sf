@@ -119,6 +119,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
       window.__fly.step(1);
     }, pos);
     await expect.poll(() => b.evaluate((id) => window.__fly.game.net.pings.has(id), aId)).toBe(true);
+    await b.bringToFront();
     await b.evaluate(() => window.__fly.step(0.1));
     await expect(b.locator('.net-tag', { hasText: 'Ana' })).toBeVisible();
     await expect(b.locator('.net-tag', { hasText: 'Ana' })).toContainText(/4\.\d km/);

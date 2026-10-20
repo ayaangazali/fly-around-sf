@@ -48,7 +48,7 @@
 }
 .fr-swatch[aria-pressed='true'] { outline: 3px solid var(--accent-2); outline-offset: 2px; }
 
-.fr-roomcode { font-family: var(--mono); font-size: clamp(32px, 7vw, 44px); font-weight: 800; letter-spacing: 0.24em; line-height: 1.1; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: all; }
+.fr-roomcode { font-family: var(--mono); font-size: clamp(22px, 5vw, 30px); font-weight: 800; letter-spacing: 0.14em; max-width: 9.5em; line-height: 1.1; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: all; }
 .fr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 10px; }
 .fr-feedback { font-size: 13px; color: var(--good); }
 .fr-status { position: relative; margin: 12px 0; padding-left: 18px; font-size: 13px; line-height: 1.45; color: var(--ink-dim); }
