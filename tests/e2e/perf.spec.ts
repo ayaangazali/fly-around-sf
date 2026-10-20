@@ -129,5 +129,51 @@ test.describe('performance', () => {
     expect(r.on.filter((k) => k !== 'trail').length).toBeGreaterThan(3);
   });
 
+  test('[R-V2-PERF-SMOOTH] at auto quality with 4x CPU throttling the full city cruises at a median frame of 33 ms or less and 30 s at 343 m/s has no frame over 200 ms', async ({ page }) => {
+    test.skip(LITE, 'the full-perf job flies the whole city');
+    await page.addInitScript(stubDraws);
+    await boot(page, 'quality=auto');
+    await page.evaluate(() => {
+      for (const p of window.__fly.game.renderer.info.programs!) p.getUniforms();
+    });
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    const fly = (speed: number, seconds: number, from: readonly [number, number], yaw: number) =>
+      page.evaluate(
+        ({ speed, seconds, from, yaw }) =>
+          new Promise<number[]>((done) => {
+            const g = window.__fly.game;
+            g.autoSim = true;
+            const p = g.world.point({ lat: from[0], lon: from[1], alt: 0 });
+            const dx = -Math.sin(yaw);
+            const dz = -Math.cos(yaw);
+            const frames: number[] = [];
+            const t0 = performance.now();
+            let last = t0;
+            const tick = (now: number) => {
+              frames.push(now - last);
+              last = now;
+              const d = ((now - t0) / 1000) * speed;
+              const x = p.x + dx * d;
+              const z = p.z + dz * d;
+              g.flight.pos = { x, y: Math.max(g.world.groundAt(x, z) + 120, 160), z };
+              g.flight.vel = { x: dx * speed, y: 0, z: dz * speed };
+              g.flight.yaw = yaw;
+              if (now - t0 < seconds * 1000) requestAnimationFrame(tick);
+              else done(frames.slice(1));
+            };
+            requestAnimationFrame(tick);
+          }),
+        { speed, seconds, from, yaw },
+      );
+    const cruise = await fly(60, 10, [37.7955, -122.3937], Math.PI / 2 - 0.25);
+    const sonic = await fly(343, 30, [37.8, -122.37], Math.PI / 2 + 0.2);
+    const median = [...cruise].sort((a, b) => a - b)[cruise.length >> 1];
+    const worst = Math.max(...sonic);
+    const rung = await page.evaluate(() => window.__fly.game.governor?.rung ?? 'fixed');
+    test.info().annotations.push({ type: 'frames', description: `cruise median ${median.toFixed(1)} ms over ${cruise.length} frames, 343 m/s worst ${worst.toFixed(1)} ms over ${sonic.length} frames, quality rung ${rung}` });
+    expect(median).toBeLessThanOrEqual(33);
+    expect(worst).toBeLessThanOrEqual(200);
+  });
 });
 

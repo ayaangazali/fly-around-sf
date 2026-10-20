@@ -13,7 +13,7 @@ pnpm ledger              # requirement ledger from the two test reports
 node scripts/shots.mjs <dir>   # screenshots of 4 viewpoints (needs `pnpm preview` running)
 ```
 
-URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?opensky=https://proxy` (fetch live planes through a CORS proxy for `opensky-network.org`; OpenSky only allows its own origin, so without it planes are simulated and nothing is requested), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=low|medium|high`, `?room=CODE`.
+URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live feeds offline), `?live` (with `?test`: let live feeds hit the network), `?opensky=https://proxy` (fetch live planes through a CORS proxy for `opensky-network.org`; OpenSky only allows its own origin, so without it planes are simulated and nothing is requested), `?time=2026-10-19T02:00:00Z`, `?spawn=lat,lon,yaw`, `?quality=auto|low|medium|high` (with `?test` the default is a fixed `low`; `auto` turns the governor on), `?room=CODE`.
 
 ## World
 
@@ -27,6 +27,10 @@ URL flags: `?test` (deterministic, exposes `window.__fly`, no auto sim, live fee
 - Draw calls after the merge (2026-10-19, full city, swiftshader): low 264, medium 532, high 628. Landmark `paint()` and `glow()` parts bake into one vertex-colored mesh per landmark, so a new color costs no draw call. `frustumCulled = false` makes an object draw in every view: drive per-frame updates from a system's `update`, not from a culled-off `onBeforeRender`, and give instanced meshes fresh bounds with `computeBoundingSphere()`.
 - Initial JS (`R-PERF`, gate `max_initial_js_gzip_kb`): `tests/e2e/perf.spec.ts` sums the entry chunk and its static imports from `dist/.vite/manifest.json`. Activity content JSON is a lazy glob that `game.load` starts fetching with `terrain.bin`, so it downloads alongside the city data and not after it (the `R-PERF` ready test checks this); keep anything not needed before the first frame out of the entry chunk the same way.
 - Shaders (`R-PERF-SHADERS`): `game.load` compiles every material in the scene before ready. Add meshes in a system's `init`, not after load, or their first appearance in flight stalls on a shader link.
+- Adaptive quality (`R-V2-PERF-GOVERNOR`, `src/core/governor.ts`): at Auto quality `game.governor` takes the median frame over 2 s and moves one rung of `RUNGS` (pixel ratio, shadows, view distance): down above 28 ms, up below 18 ms, never above the tier the game loaded with. A rung it fell from stays locked for 30 s, doubling on repeats. Dropping shadows turns off the shadow pass and sets `sky.sun.shadow.intensity` to 0, so no shader relinks; tree density, terrain stride and antialiasing stay at the loaded tier.
+- Static transforms: the scene, `world.root`, the city group and the env meshes have `matrixAutoUpdate = false`, so three no longer recomputes their world matrices every frame. Never move them; a landmark or system that animates should keep its own group with auto update on.
+- Smoothness (`R-V2-PERF-SMOOTH`): the full-perf CI job flies the full city at Auto quality with 4x CPU throttling and stubbed GPU draws (CI has only a software GPU), 10 s at 60 m/s and 30 s at 343 m/s.
+- Per-frame systems: a system's `update` runs every 1/60 s step, so anything that scans every activity or every vehicle belongs behind a timer or a change check (markers rebuild beacons every 0.5 s and skip side activities by kind first; transit rebuilds only when its one-second schedule clock ticks).
 - Geometry arrays stay in JS memory after upload (about 52 MB on the 3 km city at low, 109 MB at high). three re-uploads from them when the browser restores a lost WebGL context (mobile browsers drop the context of a background tab under memory pressure), so do not free them in `onUpload` unless the city and terrain are rebuilt on `webglcontextrestored`.
 - `src/world/sky.ts` owns the sky palette, stars, moon and fog. `game.sky.karl` is the current Karl the Fog state; `karlDensity(x, y, z, game.sky.karl)` in `src/world/karl.ts` tells gameplay whether a point is inside the fog. `game.sky.cloudCover` (0..1) is settable by live weather.
 - Known data gap: heights are from 2010, so towers built later (Salesforce Tower, 181 Fremont, Park Tower...) are missing or wrong. `R-SKYLINE` tracks the fix.
@@ -88,7 +92,7 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 
 | Key | Type | Default | Used by |
 |---|---|---|---|
-| `quality` | `'auto' \| 'low' \| 'medium' \| 'high'` | `'auto'` | renderer (applied on reload; auto is low on phones and tablets, high elsewhere) |
+| `quality` | `'auto' \| 'low' \| 'medium' \| 'high'` | `'auto'` | renderer (applied on reload; auto starts low on phones and tablets, high elsewhere, then the governor adapts pixel ratio, shadows and view distance) |
 | `units` | `'metric' \| 'imperial'` | `'metric'` | HUD |
 | `volMaster`, `volMusic`, `volSfx`, `volVoice` | number 0..1 | 0.8, 0.5, 0.8, 1 | audio, voice chat |
 | `muted` | boolean | false | audio |
