@@ -15,6 +15,7 @@ test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps wo
       { timeout: 30_000 },
     )
     .toBe('unreachable');
+  await page.evaluate(() => window.__fly.step(0.05));
   await expect(page.locator('.net-banner')).toContainText('Single player keeps working');
   await expect(page.locator('.net-chip')).toContainText('offline');
   await page.evaluate(() => window.__fly.game.panels.open('friends'));
@@ -34,13 +35,19 @@ test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps wo
 test('[R-NET-OFFLINE] if the multiplayer code cannot load, the game says so and keeps flying', async ({ page }) => {
   await page.route(/\/assets\/p2p-[^/]+\.js$/, (r) => r.abort());
   await boot(page, 'room=QXRK8');
+  await page.evaluate(() => {
+    const w = window as unknown as { toasts: string[] };
+    w.toasts = [];
+    window.__fly.game.bus.on('toast', ({ text }) => w.toasts.push(text));
+  });
   await expect
     .poll(async () => {
       await page.evaluate(() => window.__fly.step(0.05));
       return page.evaluate(() => window.__fly.game.net.status);
     })
     .toBe('unreachable');
-  await expect(page.locator('.toast', { hasText: 'Multiplayer could not start' })).toBeVisible();
+  await page.evaluate(() => window.__fly.step(0.05));
+  expect(await page.evaluate(() => (window as unknown as { toasts: string[] }).toasts)).toContain('Multiplayer could not start. Single player keeps working.');
   expect(await page.evaluate(() => window.__fly.game.net.room)).toBeNull();
   await page.evaluate(() => window.__fly.step(1));
   expect(await page.evaluate(() => window.__fly.errors)).toEqual([]);
