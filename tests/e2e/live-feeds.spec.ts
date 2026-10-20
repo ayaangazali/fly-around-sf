@@ -159,7 +159,7 @@ test.describe('live data', () => {
     expect((await page.screenshot()).length).toBeGreaterThan(30_000);
   });
 
-  test('[R-LIVE-PANEL] the Live SF panel opens from the menubar and points the pilot at a cable car', async ({ page }) => {
+  test('[R-LIVE-PANEL] the Live SF panel opens from the menubar, refreshes without dropping the focused button and points the pilot at a cable car', async ({ page }) => {
     await offline(page);
     const errors = await boot(page, 'live&spawn=37.8005,-122.4185,3.14');
     await expect.poll(() => page.evaluate(liveState).then((s) => s.transit), { timeout: 30_000 }).toBe('schedule');
@@ -173,14 +173,16 @@ test.describe('live data', () => {
     await expect(sheet.locator('.live-transit')).toContainText(/Powell-(Hyde|Mason) toward .+ (in \d+ min|arriving now|at )/);
     await expect(sheet.locator('.live-tides')).toContainText(/(High|Low) tide/);
     await expect(sheet.locator('.live-tide-curve polyline')).toHaveCount(1);
-    await page.waitForTimeout(2300);
-    await sheet.getByRole('button', { name: 'Find a cable car' }).click();
+    const find = sheet.getByRole('button', { name: 'Find a cable car' });
+    await find.focus();
+    const button = await find.elementHandle();
+    await page.evaluate(() => (window.__fly.game.save.data.settings.units = 'imperial'));
+    await expect(sheet.locator('.live-weather')).toContainText(/°F/);
+    expect(await button!.evaluate((b) => b.isConnected && b === document.activeElement)).toBe(true);
+    await find.click();
     await expect(sheet).toBeHidden();
     const wp = await page.evaluate(() => window.__fly.game.waypoint);
     expect(wp?.label).toMatch(/Powell|California/);
-    await page.evaluate(() => (window.__fly.game.save.data.settings.units = 'imperial'));
-    await page.evaluate(() => window.__fly.game.panels.open('live'));
-    await expect(sheet.locator('.live-weather')).toContainText(/°F/);
     expect(errors.filter((e) => !netNoise(e))).toEqual([]);
   });
 

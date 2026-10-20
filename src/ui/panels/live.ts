@@ -243,6 +243,22 @@ function render(root: HTMLElement, game: Game): void {
   root.append(grid);
 }
 
+function patch(old: Element, next: Element): void {
+  const kids = [...next.childNodes];
+  if (old.childNodes.length !== kids.length) return old.replaceChildren(...kids);
+  [...old.childNodes].forEach((o, i) => {
+    const n = kids[i];
+    if (o.nodeName !== n.nodeName) return o.replaceWith(n);
+    if (!(o instanceof Element) || !(n instanceof Element)) {
+      if (o.nodeValue !== n.nodeValue) o.nodeValue = n.nodeValue;
+      return;
+    }
+    for (const a of [...o.attributes]) if (!n.hasAttribute(a.name)) o.removeAttribute(a.name);
+    for (const a of [...n.attributes]) if (o.getAttribute(a.name) !== a.value) o.setAttribute(a.name, a.value);
+    patch(o, n);
+  });
+}
+
 export const panel: Panel = {
   id: 'live',
   title: 'Live SF',
@@ -251,9 +267,9 @@ export const panel: Panel = {
   render(root, game) {
     render(root, game);
     const timer = setInterval(() => {
-      const focused = root.contains(document.activeElement) ? document.activeElement?.textContent : null;
-      render(root, game);
-      if (focused) [...root.querySelectorAll('button')].find((b) => b.textContent === focused)?.focus();
+      const next = el('div');
+      render(next, game);
+      patch(root, next);
     }, 2000);
     return () => clearInterval(timer);
   },
