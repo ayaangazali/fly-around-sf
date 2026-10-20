@@ -1,6 +1,7 @@
 import type { ActivityKind, SolverStep } from '../types';
 import { PROP_EMOJI, clock, dist3, medalFor, meters, prop, report, rng, spot, validateTimed, type Medals, type MinigameInstance, type PropType } from '../minigame';
 import { chaseTarget } from './follow';
+import { forwardVector } from '../../player/flight';
 
 interface ChaseParams {
   animal: PropType;
@@ -18,6 +19,7 @@ const TIRED = 0.55;
 const TIRE_TIME = 40;
 const LOOK = 0.8;
 const BODY = 3;
+const AHEAD = 70;
 
 export const kind: ActivityKind = {
   kind: 'chase',
@@ -42,7 +44,10 @@ export const kind: ActivityKind = {
     const rand = rng(def.id);
     const home = spot(game, def.at, 40);
     const phase = rand() * 10;
-    const bird = prop(p.animal, { x: home.x + (rand() - 0.5) * 80, y: home.y + 10, z: home.z - 50 - rand() * 40 });
+    const near = Math.hypot(game.flight.pos.x - home.x, game.flight.pos.z - home.z) < arena;
+    const me = near ? game.flight.pos : home;
+    const f = forwardVector(game.flight.yaw);
+    const bird = prop(p.animal, { x: me.x + f.x * AHEAD, y: home.y + 10, z: me.z + f.z * AHEAD });
     const props = [bird];
     const vel = { x: 0, y: 0, z: 0 };
     const goal = { x: home.x, z: home.z };

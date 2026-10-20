@@ -10,7 +10,7 @@ import { kind as photo, viewfinder } from '../../src/activities/kinds/photo';
 import { bestMedal, bestOf, clock, formatTime, isMedals, keepBest, lift, medalFor, meters, rng, saveMedal, spot, validateTimed, type MinigameInstance, type MinigameResult } from '../../src/activities/minigame';
 import type { ActivityDef, ActivityKind, SolverStep } from '../../src/activities/types';
 import type { Game } from '../../src/game';
-import { stepFlight, type FlightInput } from '../../src/player/flight';
+import { forwardVector, stepFlight, type FlightInput } from '../../src/player/flight';
 
 const DT = 1 / 30;
 const base = { neighborhood: 'Test', blurb: 'a test minigame' };
@@ -317,6 +317,21 @@ describe('chase', () => {
       expect(bird.y).toBeGreaterThanOrEqual(8);
       expect(Math.hypot(bird.x - home.x, bird.z - home.z)).toBeLessThan(320 * 1.5);
     }
+  });
+
+  it('[R-MINIGAMES] the bird starts the same distance straight ahead of the pilot, whichever way they arrive', () => {
+    const starts = [0, Math.PI / 2, Math.PI, -2].map((yaw) => {
+      const g = game();
+      const home = g.world.point(chaseDef.at, 40);
+      g.flight.pos = { x: home.x + 30 * Math.sin(yaw), y: home.y, z: home.z - 20 };
+      g.flight.yaw = yaw;
+      const me = { ...g.flight.pos };
+      const bird = (chase.start(chaseDef, g) as MinigameInstance).targets!()[0];
+      const f = forwardVector(yaw);
+      return { ahead: Math.round((bird.x - me.x) * f.x + (bird.z - me.z) * f.z), aside: Math.round(Math.abs((bird.x - me.x) * f.z - (bird.z - me.z) * f.x)) };
+    });
+    expect(new Set(starts.map((s) => JSON.stringify(s))).size).toBe(1);
+    expect(starts[0]).toEqual({ ahead: 70, aside: 0 });
   });
 
   it('[R-MINIGAMES] a full-boost lunge overshoots the bird, steady pursuit wears it down', () => {
