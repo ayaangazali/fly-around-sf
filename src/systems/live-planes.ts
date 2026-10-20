@@ -11,6 +11,7 @@ const CLOSE = 90;
 
 interface View {
   root: THREE.Group;
+  nav: THREE.Group;
   tail: THREE.Mesh<THREE.BufferGeometry, THREE.MeshLambertMaterial>;
   beacon: THREE.Points;
   strobe: THREE.Points;
@@ -19,11 +20,19 @@ interface View {
 
 const views = new WeakMap<Game, { list: View[]; warned: Set<string> }>();
 
+const DOT = (() => {
+  const n = 16;
+  const data = new Uint8Array(n * n * 4).fill(255);
+  for (let i = 0; i < n * n; i++) data[i * 4 + 3] = Math.round(255 * Math.max(0, 1 - Math.hypot((i % n) - 7.5, Math.floor(i / n) - 7.5) / 8) ** 1.5);
+  const t = new THREE.DataTexture(data, n, n);
+  t.needsUpdate = true;
+  return t;
+})();
+
 function points(pos: number[], color: string, size: number): THREE.Points {
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  const p = new THREE.Points(g, new THREE.PointsMaterial({ color, size, sizeAttenuation: false, fog: false, depthWrite: false, transparent: true }));
-  return p;
+  return new THREE.Points(g, new THREE.PointsMaterial({ color, size: size * 1.6, map: DOT, sizeAttenuation: false, depthWrite: false, transparent: true }));
 }
 
 function build(game: Game): View[] {
@@ -39,13 +48,15 @@ function build(game: Game): View[] {
     root.visible = false;
     const tail = new THREE.Mesh(finGeo, new THREE.MeshLambertMaterial());
     root.add(new THREE.Mesh(body, mat), tail);
-    root.add(points([-18.6, -0.6, 3.8], '#ff3b30', 5), points([18.6, -0.6, 3.8], '#34c759', 5), points([0, 8.6, 19.6], '#ffffff', 4));
+    const nav = new THREE.Group();
+    nav.add(points([-18.6, -0.6, 3.8], '#ff3b30', 5), points([18.6, -0.6, 3.8], '#34c759', 5), points([0, 8.6, 19.6], '#ffffff', 4));
     const beacon = points([0, 2.1, 2, 0, -2.1, 2], '#ff2a1a', 6);
     const strobe = points([-18.7, -0.6, 4.2, 18.7, -0.6, 4.2], '#ffffff', 7);
     const landing = points([-2.2, -1.2, -3.6, 2.2, -1.2, -3.6], '#fff6dc', 7);
-    root.add(beacon, strobe, landing);
+    nav.add(beacon, strobe, landing);
+    root.add(nav);
     group.add(root);
-    return { root, tail, beacon, strobe, landing };
+    return { root, nav, tail, beacon, strobe, landing };
   });
 }
 
@@ -87,6 +98,7 @@ export const system: GameSystem = {
       view.root.rotation.set(Math.atan2(p.climb, Math.max(1, p.speed)), (-p.track * Math.PI) / 180, -p.bank);
       view.root.scale.setScalar(scale);
       view.tail.material.color.set(TAILS[p.livery % TAILS.length]);
+      view.nav.visible = game.sky.night > 0.3 || d < 3000;
       view.beacon.visible = blink % 1.2 < 0.12;
       view.strobe.visible = blink % 1.4 < 0.06 || (blink % 1.4 > 0.16 && blink % 1.4 < 0.22);
       view.landing.visible = p.landing;

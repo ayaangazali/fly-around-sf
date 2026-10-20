@@ -56,7 +56,7 @@ export function layoutTowers(stats: TowerStat[], cards: CardDef[], toLocal: (lat
   return towers;
 }
 
-const LABEL_RANGE = 1800;
+const LABEL_RANGE = 1100;
 export const FLOAT = 28;
 
 const compact = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${(n / 1e3).toFixed(1)}k` : String(n));
@@ -83,7 +83,8 @@ function label(t: Tower): THREE.Sprite {
   const map = new THREE.CanvasTexture(c);
   map.colorSpace = THREE.SRGBColorSpace;
   map.anisotropy = 4;
-  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false }));
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, depthTest: false }));
+  s.renderOrder = 5;
   s.scale.set(64, 20, 1);
   s.name = `tower-label-${t.card}`;
   return s;
@@ -249,7 +250,7 @@ export class CommitTowers {
     for (const { l, d } of near) {
       l.scale.set(120, 37.5, 1).multiplyScalar(Math.min(1.8, Math.max(0.12, d / 650)));
       const p = this.ndc.copy(l.position).project(cam);
-      if (p.z > 1 || Math.abs(p.x) > 1.2 || Math.abs(p.y) > 1.2) continue;
+      if (p.z > 1 || Math.abs(p.x) > 0.9 || Math.abs(p.y) > 0.9) continue;
       const x = ((p.x + 1) / 2) * width;
       const y = ((1 - p.y) / 2) * height;
       const w = (l.scale.x * this.uniforms.uScale.value) / d / 2;
