@@ -85,43 +85,146 @@ test.describe('title screen', () => {
   });
 });
 
+const ensureTrail = (page: Page) =>
+  page.evaluate(() => {
+    const g = window.__fly.game;
+    if (g.activities.list().some((d) => d.kind === 'trail')) return;
+    const kind = { kind: 'trail', label: 'Trail', icon: '⭐', validate: () => [], start: () => ({ update: () => 'running' as const, progress: () => 0, hud: () => '' }), solve: () => [] };
+    const stop = (order: number, lat: number, lon: number) => ({ id: `trail-test-${order}`, kind: 'trail', title: `Test stop ${order}`, blurb: 'b', neighborhood: 'n', at: { lat, lon }, params: { order } });
+    g.activities.register([kind], [stop(2, 37.7955, -122.3937), stop(1, 37.8075, -122.4175)]);
+  });
+
+const firstStop = (page: Page) =>
+  page.evaluate(() => {
+    const g = window.__fly.game;
+    const d = g.activities
+      .list()
+      .filter((a) => a.kind === 'trail' && !g.save.isDone(a.id))
+      .sort((a, b) => Number(a.params?.order) - Number(b.params?.order))[0];
+    const p = g.activities.position(d);
+    return { title: d.title, x: p.x, z: p.z };
+  });
+
+const offTarget = (page: Page) =>
+  page.evaluate(() => {
+    const g = window.__fly.game;
+    const w = g.waypoint!;
+    const f = g.flight;
+    const rel = Math.atan2(w.x - f.pos.x, -(w.z - f.pos.z)) + f.yaw;
+    return Math.atan2(Math.sin(rel), Math.cos(rel));
+  });
+
 test.describe('onboarding', () => {
   test('[R-ONBOARD] the tutorial advances as the pilot flies, then never shows again', async ({ page }) => {
     await boot(page, 'title');
+    await ensureTrail(page);
     await page.locator('.title-btn[data-action="start"]').click();
     await onStep(page, 'forward');
+    await expect(page.locator('.onboard-count')).toHaveText('Step 1 of 5');
     await expect(page.locator('.onboard-hint kbd').first()).toHaveText('W');
     await hold(page, ['KeyW'], 2);
     await onStep(page, 'turn');
     await hold(page, ['KeyD'], 1);
     await onStep(page, 'climb');
+    await hold(page, ['ShiftLeft'], 1.5);
+    await expect(page.locator('.onboard-parts span.ok')).toHaveText('Descend');
     await hold(page, ['Space'], 1.5);
-    await hold(page, ['ShiftLeft'], 1);
     await onStep(page, 'boost');
-    await hold(page, ['KeyW', 'KeyR'], 2.5);
-    await onStep(page, 'journal');
-    await page.keyboard.press('KeyJ');
-    await step(page, 1 / 30);
-    await expect(page.locator('.sheet[data-panel="journal"]')).toBeVisible();
-    await page.keyboard.press('Escape');
-    await onStep(page, 'activity');
-    const target = await page.evaluate(() => window.__fly.game.waypoint);
-    expect(target?.label).toBeTruthy();
-    await page.evaluate(() => {
+    await hold(page, ['KeyW', 'KeyR'], 3);
+    await onStep(page, 'objective');
+    const stop = await firstStop(page);
+    expect(await page.evaluate(() => window.__fly.game.waypoint)).toMatchObject({ label: stop.title, x: stop.x, z: stop.z });
+    await page.evaluate(({ x, z }) => {
       const g = window.__fly.game;
-      const d = g.activities.list().find((a) => a.title === g.waypoint!.label)!;
-      window.__fly.teleport(g.activities.position(d));
+      const f = g.flight.pos;
+      const d = Math.hypot(x - f.x, z - f.z);
+      window.__fly.teleport({ x: f.x + ((x - f.x) / d) * 150, y: f.y, z: f.z + ((z - f.z) / d) * 150 });
       window.__fly.step(1 / 30);
-    });
-    await page.keyboard.press('KeyF');
-    await step(page, 1 / 30);
+    }, stop);
     await onStep(page, 'done');
+    await expect(page.locator('.onboard-title')).toHaveText(`First stop: ${stop.title}`);
     expect(await page.evaluate(() => window.__fly.game.save.data.flags.onboarded)).toBe(true);
     await page.reload();
     await page.waitForFunction(() => window.__fly?.ready === true, undefined, { timeout: 120_000 });
     await page.locator('.title-btn.primary').click();
     await page.waitForTimeout(500);
     await expect(page.locator('.onboard')).toHaveCount(0);
+  });
+
+  test('[R-V2-ONBOARD] on the free-running game, real key presses finish all five steps, descending first, and the tutorial ends pointing at trail stop 1', async ({ page }) => {
+    test.setTimeout(300_000);
+    await boot(page, 'title');
+    await ensureTrail(page);
+    await page.locator('.title-btn[data-action="start"]').click();
+    await page.evaluate(() => (window.__fly.game.autoSim = true));
+    const until = async (keys: string[], id: string) => {
+      for (const k of keys) await page.keyboard.down(k);
+      await expect(page.locator(`.onboard[data-step="${id}"]`)).toBeVisible({ timeout: 60_000 });
+      for (const k of keys) await page.keyboard.up(k);
+    };
+    await expect(page.locator('.onboard-count')).toHaveText('Step 1 of 5');
+    await until(['KeyW'], 'turn');
+    await until(['KeyD'], 'climb');
+    await page.keyboard.down('ShiftLeft');
+    await expect(page.locator('.onboard-parts span').nth(1)).toHaveClass(/ok/, { timeout: 60_000 });
+    await page.keyboard.up('ShiftLeft');
+    await until(['Space'], 'boost');
+    await until(['KeyW', 'KeyR'], 'objective');
+    const stop = await firstStop(page);
+    for (let i = 0; i < 80; i++) {
+      const rel = await offTarget(page);
+      if (Math.abs(rel) < 0.25) break;
+      const key = rel > 0 ? 'KeyD' : 'KeyA';
+      await page.keyboard.down(key);
+      await page.waitForTimeout(120);
+      await page.keyboard.up(key);
+    }
+    await until(['KeyW'], 'done');
+    await expect(page.locator('.onboard-title')).toHaveText(`First stop: ${stop.title}`);
+    expect(await page.evaluate(() => window.__fly.game.waypoint)).toMatchObject({ label: stop.title, x: stop.x, z: stop.z });
+    await expect(page.locator('.wp-label')).toBeVisible();
+    expect(await page.evaluate(() => window.__fly.game.save.data.flags.onboarded)).toBe(true);
+  });
+
+  test('[R-V2-ONBOARD] on a phone, real touches on the sticks and buttons finish all five steps @touch', async ({ page }) => {
+    test.setTimeout(300_000);
+    await boot(page, 'title');
+    test.skip(!(await page.evaluate(() => document.documentElement.classList.contains('touch'))), 'touch devices only');
+    await ensureTrail(page);
+    await page.locator('.title-btn[data-action="start"]').click();
+    await page.evaluate(() => (window.__fly.game.autoSim = true));
+    const cdp = await page.context().newCDPSession(page);
+    const center = async (sel: string) => {
+      const b = (await page.locator(sel).boundingBox())!;
+      return { x: b.x + b.width / 2, y: b.y + b.height / 2 };
+    };
+    const touch = async (type: 'touchStart' | 'touchMove' | 'touchEnd', points: { x: number; y: number }[]) =>
+      cdp.send('Input.dispatchTouchEvent', { type, touchPoints: points.map((p, id) => ({ x: Math.round(p.x), y: Math.round(p.y), id })) });
+    const press = async (points: { x: number; y: number }[], to: { x: number; y: number }[], done: () => Promise<void>) => {
+      await touch('touchStart', points);
+      await touch('touchMove', to);
+      await done();
+      await touch('touchEnd', []);
+    };
+    const stick = await center('.stick-left');
+    const step = (id: string) => () => expect(page.locator(`.onboard[data-step="${id}"]`)).toBeVisible({ timeout: 60_000 });
+    await press([stick], [{ x: stick.x, y: stick.y - 60 }], step('turn'));
+    await press([stick], [{ x: stick.x + 60, y: stick.y }], step('climb'));
+    const down = await center('.tbtn-down');
+    await press([down], [down], () => expect(page.locator('.onboard-parts span').nth(1)).toHaveClass(/ok/, { timeout: 60_000 }));
+    const up = await center('.tbtn-up');
+    await press([up], [up], step('boost'));
+    const boost = await center('.tbtn-boost');
+    await press([stick, boost], [{ x: stick.x, y: stick.y - 60 }, boost], step('objective'));
+    const stop = await firstStop(page);
+    for (let i = 0; i < 80; i++) {
+      const rel = await offTarget(page);
+      if (Math.abs(rel) < 0.25) break;
+      await press([stick], [{ x: stick.x + Math.sign(rel) * 60, y: stick.y }], () => page.waitForTimeout(120));
+    }
+    await press([stick], [{ x: stick.x, y: stick.y - 60 }], step('done'));
+    await expect(page.locator('.onboard-title')).toHaveText(`First stop: ${stop.title}`);
+    expect(await page.evaluate(() => window.__fly.game.waypoint?.label)).toBe(stop.title);
   });
 
   test('[R-ONBOARD] at spawn the tutorial, the activity prompt and the drone never cover each other @touch', async ({ page }) => {

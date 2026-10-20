@@ -132,7 +132,12 @@ canvas#view.shake { animation: shake 0.35s ease-out; }
 .onboard-dots { display: flex; gap: 5px; }
 .onboard-dots i { flex: 1; height: 4px; border-radius: 99px; background: rgba(255, 255, 255, 0.12); transition: background 0.3s; }
 .onboard-dots i.on { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
-.hud:has(.onboard:not([data-step="activity"])) .hud-prompt-row, .hud:has(.hud-prompt:not([hidden])) .onboard[data-step="activity"] { display: none; }
+.onboard[hidden], .onboard-parts[hidden] { display: none; }
+.hud:has(.onboard:not([hidden])) :is(.hud-prompt small, .hud-prompt-more) { display: none; }
+.onboard-parts { display: flex; gap: 6px; margin: -2px 0 10px; }
+.onboard-parts span { padding: 3px 10px; border-radius: 99px; border: 1px solid var(--line); font-size: 12px; font-weight: 600; color: var(--ink); }
+.onboard-parts span.ok { border-color: var(--good); color: var(--good); }
+.onboard-parts span.ok::after { content: ' ✓'; }
 
 .touch-ui { position: absolute; inset: 0; pointer-events: none; transition: opacity 0.2s; }
 .touch-ui.away { opacity: 0; visibility: hidden; }

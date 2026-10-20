@@ -1,98 +1,115 @@
 import { describe, expect, it } from 'vitest';
-import { fakeGame, loadDefs, loadKinds } from './helpers';
-import { SPAWN } from '../../src/game';
-import { OnboardingTracker, STEPS, firstActivity } from '../../src/ui/onboarding-steps';
+import { fakeGame } from './helpers';
+import { OnboardingTracker, STEPS, trailTarget } from '../../src/ui/onboarding-steps';
+import { FLIGHT } from '../../src/player/flight';
 import { kind as rings } from '../../src/activities/kinds/rings';
-import { kind as discover } from '../../src/activities/kinds/discover';
+import type { ActivityKind } from '../../src/activities/types';
+import type { Game } from '../../src/game';
+
+const trail: ActivityKind = { kind: 'trail', label: 'Trail', icon: '⭐', validate: () => [], start: () => ({ update: () => 'running', progress: () => 0, hud: () => '' }), solve: () => [] };
+const stop = (id: string, order: number, lat: number) => ({ id, kind: 'trail', title: `Stop ${order}`, blurb: 'b', neighborhood: 'n', at: { lat, lon: -122.42 }, params: { order } });
+
+function toStep(g: Game, t: OnboardingTracker, id: string): void {
+  const f = g.flight;
+  for (let i = 0; i < 10 && STEPS[t.step]?.id !== id; i++) {
+    const s = STEPS[t.step].id;
+    if (s === 'forward') f.pos.x += 30;
+    if (s === 'turn') f.yaw += 1.3;
+    if (s === 'climb') {
+      f.pos.y += 7;
+      t.update();
+      f.pos.y -= 5;
+    }
+    if (s === 'boost') f.vel = { x: FLIGHT.boost, y: 0, z: 0 };
+    t.update();
+  }
+  f.vel = { x: 0, y: 0, z: 0 };
+  expect(STEPS[t.step].id).toBe(id);
+}
 
 describe('onboarding', () => {
-  it('[R-ONBOARD] every step advances only when the player does the thing', () => {
-    const g = fakeGame();
-    const t = new OnboardingTracker(g);
-    const f = g.flight;
-    expect(STEPS.map((s) => s.id)).toEqual(['forward', 'turn', 'climb', 'boost', 'journal', 'activity']);
+  it('[R-V2-ONBOARD] the tutorial is five steps: fly, turn, climb and descend, boost, follow the objective', () => {
+    expect(STEPS.map((s) => s.id)).toEqual(['forward', 'turn', 'climb', 'boost', 'objective']);
     for (const s of STEPS) {
       expect(s.keys.length).toBeGreaterThan(5);
       expect(s.touch.length).toBeGreaterThan(5);
       expect(`${s.title}${s.keys}${s.touch}`).not.toMatch(/—/);
     }
+  });
+
+  it('[R-ONBOARD] every step advances only when the player does the thing', () => {
+    const g = fakeGame();
+    const t = new OnboardingTracker(g);
+    const f = g.flight;
     expect(t.update()).toBe(false);
     f.pos.x += 10;
     expect(t.update()).toBe(false);
     f.pos.x += 20;
     expect(t.update()).toBe(true);
-    expect(t.step).toBe(1);
     f.yaw += 0.6;
     expect(t.update()).toBe(false);
     f.yaw -= 0.7;
     expect(t.update()).toBe(true);
-    f.pos.y += 10;
+    f.pos.y += 3;
     expect(t.update()).toBe(false);
-    f.pos.y -= 5;
+    f.pos.y -= 3;
+    expect(t.update()).toBe(false);
+    f.pos.y += 4;
+    expect(t.update()).toBe(false);
+    f.pos.y -= 1;
     expect(t.update()).toBe(true);
-    f.vel = { x: 30, y: 0, z: 0 };
+    f.vel = { x: FLIGHT.cruise, y: 0, z: 0 };
     expect(t.update()).toBe(false);
-    f.vel = { x: 45, y: 0, z: 0 };
+    f.vel = { x: FLIGHT.boost, y: 0, z: 0 };
     expect(t.update()).toBe(true);
-    g.bus.emit('panel:open', { id: 'map' });
-    expect(t.update()).toBe(false);
-    g.bus.emit('panel:open', { id: 'journal' });
-    expect(t.update()).toBe(true);
-    expect(t.update()).toBe(false);
-    g.bus.emit('activity:start', { id: 'rings-x' });
     expect(t.update()).toBe(true);
     expect(t.done).toBe(true);
     expect(t.update()).toBe(false);
   });
 
-  it('[R-ONBOARD] journal opened before its step does not count', () => {
+  it('[R-V2-ONBOARD] climbing and descending count in either order, so descending first never strands the pilot', () => {
     const g = fakeGame();
     const t = new OnboardingTracker(g);
-    g.bus.emit('panel:open', { id: 'journal' });
-    g.flight.pos.x += 40;
-    t.update();
-    g.flight.yaw += 2;
-    t.update();
-    g.flight.pos.y += 10;
-    t.update();
-    g.flight.pos.y -= 5;
-    t.update();
-    g.flight.vel.x = 50;
-    t.update();
-    expect(t.step).toBe(4);
+    toStep(g, t, 'climb');
+    const f = g.flight;
+    f.pos.y -= 20;
     expect(t.update()).toBe(false);
+    expect(t.descended).toBe(true);
+    expect(t.climbed).toBe(false);
+    f.pos.y += 7;
+    expect(t.update()).toBe(true);
+    expect(STEPS[t.step].id).toBe('boost');
   });
 
-  it('[R-ONBOARD] the first activity is the nearest open, unlocked, startable one', () => {
+  it('[R-V2-ONBOARD] the last step points at the first open Founder Trail stop by order and completes on approach', () => {
     const g = fakeGame();
-    const base = { blurb: 'b', neighborhood: 'n' };
-    g.activities.register(
-      [rings, discover],
-      [
-        { ...base, id: 'discover-near', kind: 'discover', title: 'Near discovery', at: { lat: 37.7749, lon: -122.4194 }, params: { radius: 50 } },
-        { ...base, id: 'rings-far', kind: 'rings', title: 'Far', at: { lat: 37.8, lon: -122.45 }, params: { rings: [{ lat: 37.8, lon: -122.45 }, { lat: 37.801, lon: -122.45 }] } },
-        { ...base, id: 'rings-near', kind: 'rings', title: 'Near', at: { lat: 37.776, lon: -122.42 }, params: { rings: [{ lat: 37.776, lon: -122.42 }, { lat: 37.777, lon: -122.42 }] } },
-        { ...base, id: 'rings-locked', kind: 'rings', title: 'Locked', requires: ['rings-far'], at: { lat: 37.7749, lon: -122.4194 }, params: { rings: [{ lat: 37.77, lon: -122.42 }, { lat: 37.771, lon: -122.42 }] } },
-      ],
-    );
-    const p = g.world.point({ lat: 37.7749, lon: -122.4194 });
-    g.flight.pos = { ...p };
-    expect(firstActivity(g)?.id).toBe('rings-near');
-    g.save.complete('rings-near');
-    expect(firstActivity(g)?.id).toBe('rings-far');
-    g.save.complete('rings-far');
-    expect(firstActivity(g)?.id).toBe('rings-locked');
-    g.save.complete('rings-locked');
-    expect(firstActivity(g)).toBeNull();
+    g.activities.register([trail, rings], [stop('trail-b', 2, 37.79), stop('trail-a', 1, 37.8), stop('trail-c', 3, 37.78)]);
+    expect(trailTarget(g)?.id).toBe('trail-a');
+    g.save.complete('trail-a');
+    expect(trailTarget(g)?.id).toBe('trail-b');
+    const t = new OnboardingTracker(g);
+    toStep(g, t, 'objective');
+    const target = g.activities.position(trailTarget(g)!);
+    const f = g.flight;
+    const toward = (m: number) => {
+      const d = Math.hypot(target.x - f.pos.x, target.z - f.pos.z);
+      f.pos.x += ((target.x - f.pos.x) / d) * m;
+      f.pos.z += ((target.z - f.pos.z) / d) * m;
+    };
+    toward(60);
+    expect(t.update()).toBe(false);
+    toward(60);
+    expect(t.update()).toBe(true);
+    expect(t.done).toBe(true);
   });
 
-  it('[R-ONBOARD] the tutorial sends a new pilot to the next story chapter, not whatever is nearest', async () => {
+  it('[R-V2-ONBOARD] with no trail stop to follow the last step does not block the tutorial', () => {
     const g = fakeGame();
-    g.activities.register(await loadKinds(), loadDefs());
-    g.flight.pos = { ...g.world.point(SPAWN) };
-    expect(firstActivity(g)?.id).toBe('quest-initial-commit');
-    g.save.complete('quest-initial-commit');
-    expect(firstActivity(g)?.id).toBe('quest-git-blame');
+    const t = new OnboardingTracker(g);
+    toStep(g, t, 'objective');
+    expect(trailTarget(g)).toBeNull();
+    expect(t.update()).toBe(true);
+    expect(t.done).toBe(true);
   });
 });
 
