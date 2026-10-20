@@ -36,4 +36,5 @@ export function installUi(game: Game): void {
 export function beginFlight(game: Game): void {
   if (!game.save.data.flags[FLAG]) startOnboarding(game);
   else game.toast(`Welcome back, ${game.save.data.settings.playerName}`, 'info');
+  if (game.opts.room) void game.net.join(game.opts.room);
 }

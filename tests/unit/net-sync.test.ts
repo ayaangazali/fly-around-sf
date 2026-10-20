@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { decodeSave, emptySave, type SaveData } from '../../src/core/save';
+import { decodeSave, emptySave, encodeSave, type SaveData } from '../../src/core/save';
 import { cleanSave, knownContent, mergeSaves, DeviceSync } from '../../src/net/sync';
 import { netGame, until } from './net-helpers';
 
@@ -18,7 +18,7 @@ function snoop(room: string): { saves: SaveData[]; post: (d: unknown) => void; c
 }
 
 describe('device sync', () => {
-  it('[R-SYNC-DEVICES] merging unions completions and cards, keeps max XP and min best times', () => {
+  it('[R-SYNC-DEVICES] merging unions completions and cards, adds the XP of new completions and keeps min best times', () => {
     const local = save({
       completed: { a: 300, b: 50 },
       cards: ['x'],
@@ -49,10 +49,16 @@ describe('device sync', () => {
     expect(r.save.stats).toEqual({ distance: 99, flightTime: 500, crashes: 9, sessions: 3 });
     expect(mergeSaves(r.save, incoming).added).toBe(0);
     expect(mergeSaves(local, { v: 2 } as unknown as SaveData).save.completed).toEqual(local.completed);
+    const phone = save({ completed: { p1: 1, p2: 2 }, xp: 300 });
+    const ipad = save({ completed: { i1: 1, i2: 2, i3: 3 }, xp: 450 });
+    const merged = mergeSaves(ipad, phone, () => 150).save;
+    expect(merged.xp).toBe(750);
+    expect(mergeSaves(merged, phone, () => 150).save.xp).toBe(750);
+    expect(mergeSaves(phone, ipad, () => 150).save.xp).toBe(750);
   });
 
   it('[R-SYNC-DEVICES] an incoming save keeps only real content and sane numbers', () => {
-    const known = { activities: new Set(['a', 'b', 'c']), cards: new Set(['x']) };
+    const known = { activities: new Map([['a', 'rings'], ['b', 'rings'], ['c', 'rings']]), cards: new Set(['x']) };
     const raw = {
       ...emptySave(),
       completed: { a: 100, b: -5, c: 'soon', ghost: 7 },
@@ -74,6 +80,33 @@ describe('device sync', () => {
     });
   });
 
+  it('[R-SYNC-DEVICES] medals, points bests and the daily streak move too, merged by best and by latest day', () => {
+    const known = { activities: new Map([['a', 'rings'], ['p', 'photo'], ['f', 'follow']]), cards: new Set<string>() };
+    const raw = save({
+      flags: {
+        'medal:a': 3,
+        'medal:ghost': 3,
+        'medal:p': 7,
+        'points:p': 2,
+        'points:f': 80,
+        'points:a': 500,
+        'daily:2026-10-18': 'share line',
+        'daily:2026-10-19': 'x'.repeat(301),
+        'daily:soon': 'x',
+        'daily:last': '2026-10-18',
+        'daily:streak': 4,
+        'daily:count': 6,
+        'quest:a': 2,
+      },
+    });
+    const clean = cleanSave(raw, known);
+    const moved = { 'medal:a': 3, 'points:p': 2, 'points:f': 80, 'daily:2026-10-18': 'share line', 'daily:last': '2026-10-18', 'daily:streak': 4, 'daily:count': 6 };
+    expect(clean.flags).toEqual(moved);
+    const local = save({ flags: { 'medal:a': 1, 'points:f': 90, 'daily:last': '2026-10-10', 'daily:streak': 9, 'daily:count': 2, mpWins: 1 } });
+    expect(mergeSaves(local, clean).save.flags).toEqual({ ...moved, 'points:f': 90, mpWins: 1 });
+    expect(mergeSaves(clean, local).save.flags).toMatchObject({ 'daily:last': '2026-10-18', 'daily:streak': 4, 'medal:a': 3 });
+  });
+
   it('[R-SYNC-DEVICES] a code moves progress from one device to another, which merges it', async () => {
     const ga = await netGame();
     const gb = await netGame();
@@ -88,7 +121,7 @@ describe('device sync', () => {
     const code = await a.offer();
     expect(code).toMatch(/^[A-Z2-9]{8}$/);
     expect(a.phase).toBe('waiting');
-    const wire = snoop(`sync-${code.slice(0, 4)}`);
+    const wire = snoop(`sync-${code}`);
     expect(await b.receive(`${code.slice(0, 4)}-${code.slice(4)}`.toLowerCase())).toBe(true);
     await until(() => b.phase === 'merged' && a.phase === 'sent');
     expect(wire.saves).toHaveLength(1);
@@ -127,7 +160,7 @@ describe('device sync', () => {
     g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
     const s = new DeviceSync(g, 'local');
     await s.receive('ABCDEFGH');
-    const ch = new BroadcastChannel('fly-around-sf:sync-ABCD');
+    const ch = new BroadcastChannel('fly-around-sf:sync-ABCDEFGH');
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'bm90LWpzb24' } }));
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'eyJ2IjoyfQ' } }));
     await new Promise((r) => setTimeout(r, 80));
@@ -142,7 +175,7 @@ describe('device sync', () => {
     const g = await netGame();
     const s = new DeviceSync(g, 'local');
     const code = await s.offer();
-    const wire = snoop(`sync-${code.slice(0, 4)}`);
+    const wire = snoop(`sync-${code}`);
     const wrong = code.slice(4) === 'AAAA' ? 'BBBB' : 'AAAA';
     wire.post({ t: 'ack', added: 5 });
     wire.post({ t: 'claim', key: wrong });
@@ -156,6 +189,24 @@ describe('device sync', () => {
     expect(wire.saves).toEqual([]);
     expect(s.phase).toBe('refused');
     wire.close();
+    s.stop();
+  });
+
+  it('[R-SYNC-DEVICES] a peer that knows only the first half of the code hears no secret and cannot inject a save', async () => {
+    const g = await netGame();
+    g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
+    const s = new DeviceSync(g, 'local');
+    await s.receive('QRSTWXYZ');
+    const half = new BroadcastChannel('fly-around-sf:sync-QRST');
+    const heard: unknown[] = [];
+    half.onmessage = (e) => heard.push(JSON.parse(e.data as string).d);
+    half.postMessage(JSON.stringify({ k: 'hello', from: 'evil' }));
+    half.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: encodeSave(save({ completed: { 'discover-coit-tower': 1 }, xp: 9_999_999 })) } }));
+    await new Promise((r) => setTimeout(r, 80));
+    expect(heard.filter(Boolean)).toEqual([]);
+    expect(s.phase).toBe('receiving');
+    expect(g.save.data.xp).toBe(7);
+    half.close();
     s.stop();
   });
 });

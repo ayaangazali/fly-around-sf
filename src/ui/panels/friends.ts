@@ -6,6 +6,7 @@ import { COUNTDOWN, MODES, READY } from '../../net/modes';
 import { fmt } from '../../net/view';
 import type { VoiceResult } from '../../net/voice';
 import type { SyncPhase } from '../../net/sync';
+import { isTouchDevice } from '../touch';
 import './friends.css';
 
 const SWATCHES = ['#f2f2ee', '#ff6a3d', '#ffc15e', '#7de0a6', '#5ec8ff', '#9b8cff', '#ff7eb6', '#ff4d5e'];
@@ -152,7 +153,8 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
   link.addEventListener('focus', () => link.select());
   const peers = el('ul', 'fr-peers');
   const keys = el('p', 'fr-keys');
-  for (const [k, v] of [['Enter', 'chat'], ['G', 'ping where you look'], ['T', 'hold to talk']]) keys.append(el('kbd', '', k), el('span', '', v));
+  if (isTouchDevice()) keys.textContent = 'Tap 📍 Ping to mark where you look and hold 🎙 to talk. Chat below.';
+  else for (const [k, v] of [['Enter', 'chat'], ['G', 'ping where you look'], ['T', 'hold to talk']]) keys.append(el('kbd', '', k), el('span', '', v));
   online.append(codeBig, actions, link, status, peers, keys);
   const metas = new Map<string, HTMLElement>();
   let lastKey: string | null = null;
@@ -183,7 +185,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
       lastKey = key;
       metas.clear();
       peers.replaceChildren();
-      if (!rows.length) peers.append(el('li', 'fr-empty', 'Nobody else is here yet. Share the link: whoever opens it lands in this room.'));
+      if (!rows.length) peers.append(el('li', 'fr-empty', 'Looking for your friends. Share the link: whoever opens it lands in this room. Finding each other can take a minute.'));
       for (const p of rows) {
         const li = el('li', 'fr-peer');
         li.dataset.peer = p.id;
@@ -237,7 +239,7 @@ function renderVoice(game: Game, area: HTMLElement): () => void {
   const seg = el('div', 'fr-seg');
   seg.setAttribute('role', 'group');
   seg.setAttribute('aria-label', 'Microphone mode');
-  const ptt = button('Push to talk (hold T)', '', () => net.voice.setMode('ptt'));
+  const ptt = button(isTouchDevice() ? 'Push to talk' : 'Push to talk (hold T)', '', () => net.voice.setMode('ptt'));
   const open = button('Open mic', '', () => net.voice.setMode('open'));
   seg.append(ptt, open);
   const s = game.save.data.settings;
@@ -357,7 +359,7 @@ function renderChat(game: Game, area: HTMLElement): () => void {
     if (shown === last && log.childElementCount) return;
     shown = last;
     log.replaceChildren();
-    if (!net.chat.length) log.append(el('li', 'fr-empty', 'No messages yet. Press Enter while flying to chat.'));
+    if (!net.chat.length) log.append(el('li', 'fr-empty', isTouchDevice() ? 'No messages yet. Type below to chat.' : 'No messages yet. Press Enter while flying to chat.'));
     for (const line of net.chat.slice(-30)) {
       const li = el('li', line.self ? 'self' : '');
       const who = el('b', '', line.name);

@@ -404,7 +404,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     for (const p of [a, b]) await p.evaluate(() => window.__fly.game.panels.close());
   });
 
-  test('[R-SHARE] the share link carries the room code and opening it joins that room', async () => {
+  test('[R-SHARE] the share link carries the room code and opening it joins that room once the friend presses Join friends', async () => {
     await a.evaluate(() => window.__fly.game.net.leave());
     await a.bringToFront();
     await a.evaluate(() => window.__fly.game.panels.open('friends'));
@@ -417,11 +417,24 @@ test.describe.serial('multiplayer over the local test channel', () => {
     const url = new URL(link);
     expect(url.searchParams.get('room')).toBe(code);
     expect(await a.locator('.fr-link').inputValue()).toBe(link);
-    await boot(b, url.search.slice(1));
-    await setName(b, 'Ben', '#ff7eb6');
+    await boot(b, `${url.search.slice(1)}&title`);
+    await expect(b.locator('.title-btn[data-action="join"]')).toContainText(code);
+    await b.waitForTimeout(1500);
+    expect(await b.evaluate(() => window.__fly.game.net.room)).toBeNull();
+    expect(await a.evaluate(() => window.__fly.game.net.peers.size)).toBe(0);
+    await a.evaluate(() => {
+      const w = window as unknown as { toasts: string[] };
+      w.toasts = [];
+      window.__fly.game.bus.on('toast', ({ text }) => w.toasts.push(text));
+    });
+    const edit = b.locator('.title-edit');
+    if (await edit.isVisible()) await edit.click();
+    await b.locator('.title-name').fill('Ben');
+    await b.locator('.title-btn[data-action="join"]').click();
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.room)).toBe(code);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.visiblePeers().map((p) => p.name))).toEqual(['Ana']);
-    await expect.poll(() => a.evaluate(() => window.__fly.game.net.visiblePeers().length)).toBe(1);
+    await expect.poll(() => a.evaluate(() => window.__fly.game.net.visiblePeers().map((p) => p.name))).toEqual(['Ben']);
+    expect(await a.evaluate(() => (window as unknown as { toasts: string[] }).toasts.filter((t) => t.endsWith('joined the room')))).toEqual(['Ben joined the room']);
     await expect(a.locator('.fr-peer')).toHaveCount(1);
   });
 

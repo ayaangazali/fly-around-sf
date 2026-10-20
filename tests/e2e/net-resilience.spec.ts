@@ -15,6 +15,7 @@ test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps wo
       { timeout: 30_000 },
     )
     .toBe('unreachable');
+  await page.evaluate(() => window.__fly.step(0.05));
   await expect(page.locator('.net-banner')).toContainText('Single player keeps working');
   await expect(page.locator('.net-chip')).toContainText('offline');
   await page.evaluate(() => window.__fly.game.panels.open('friends'));
@@ -34,13 +35,19 @@ test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps wo
 test('[R-NET-OFFLINE] if the multiplayer code cannot load, the game says so and keeps flying', async ({ page }) => {
   await page.route(/\/assets\/p2p-[^/]+\.js$/, (r) => r.abort());
   await boot(page, 'room=QXRK8');
+  await page.evaluate(() => {
+    const w = window as unknown as { toasts: string[] };
+    w.toasts = [];
+    window.__fly.game.bus.on('toast', ({ text }) => w.toasts.push(text));
+  });
   await expect
     .poll(async () => {
       await page.evaluate(() => window.__fly.step(0.05));
       return page.evaluate(() => window.__fly.game.net.status);
     })
     .toBe('unreachable');
-  await expect(page.locator('.toast', { hasText: 'Multiplayer could not start' })).toBeVisible();
+  await page.evaluate(() => window.__fly.step(0.05));
+  expect(await page.evaluate(() => (window as unknown as { toasts: string[] }).toasts)).toContain('Multiplayer could not start. Single player keeps working.');
   expect(await page.evaluate(() => window.__fly.game.net.room)).toBeNull();
   await page.evaluate(() => window.__fly.step(1));
   expect(await page.evaluate(() => window.__fly.errors)).toEqual([]);
@@ -75,7 +82,7 @@ test('[R-NET-SAFE] a hostile peer cannot inject markup, spoof matches or flood t
 });
 
 test.describe('touch @touch', () => {
-  test('[R-NET-TOUCH] friends panel and hold-to-talk fit a touch screen @touch', async ({ page }) => {
+  test('[R-NET-TOUCH] friends panel, room chip, ping and hold-to-talk fit a touch screen @touch', async ({ page }) => {
     await boot(page, 'net=local&room=TAP22');
     await page.evaluate(() => window.__fly.game.panels.open('friends'));
     await expect(page.locator('.fr-roomcode').first()).toHaveText('TAP22');
@@ -103,6 +110,27 @@ test.describe('touch @touch', () => {
     await talk.dispatchEvent('pointerup');
     await page.evaluate(() => window.__fly.step(0.05));
     expect(await page.evaluate(() => window.__fly.game.net.voice.transmitting)).toBe(false);
+    if (await page.evaluate(() => matchMedia('(pointer: coarse)').matches)) {
+      const clashes = await page.evaluate(() => {
+        const box = (e: Element | null) => {
+          const r = e?.getBoundingClientRect();
+          return r && r.width && r.height ? r : null;
+        };
+        const hud = ['.menubar', '.hud-compass', '.hud-stats', '.minimap', '.photo-btn', '.hud-status'];
+        return ['.net-chip', '.net-pin', '.net-voice'].flatMap((m) => {
+          const a = box(document.querySelector(m));
+          if (!a) return [`${m} hidden`];
+          return hud.filter((o) => {
+            const b = box(document.querySelector(o));
+            return b && a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+          }).map((o) => `${m} on ${o}`);
+        });
+      });
+      expect(clashes).toEqual([]);
+      await page.locator('.net-pin').tap();
+      await page.evaluate(() => window.__fly.step(0.05));
+      expect(await page.evaluate(() => window.__fly.game.net.pings.has(window.__fly.game.net.selfId))).toBe(true);
+    }
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
   });

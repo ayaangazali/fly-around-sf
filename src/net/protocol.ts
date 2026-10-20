@@ -57,7 +57,9 @@ export function normalizeCode(raw: unknown): string | null {
 export function cleanText(raw: unknown, max: number): string {
   if (typeof raw !== 'string') return '';
   const flat = raw
+    .normalize('NFC')
     .replace(/[\u0000-\u001f\u007f-\u009f\u200b-\u200f\u2028-\u202e\u2066-\u2069\ufeff]/g, ' ')
+    .replace(/(\p{M}{2})\p{M}+/gu, '$1')
     .replace(/\s+/g, ' ')
     .trim();
   return Array.from(flat).slice(0, max).join('').trim();
