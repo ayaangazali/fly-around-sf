@@ -119,6 +119,7 @@ Every team reads and writes these exact keys; the settings panel (UI team) edits
 - To ping from anywhere (the map, a panel): `game.bus.emit('net:ping-request', { x, z })`. Everyone in the room sees it.
 - Events: `net:status`, `net:join`, `net:leave`, `net:chat`, `net:ping`, `net:match` (see `src/net/session.ts`).
 - Save flags written by party modes: `flags.mpPlayed`, `flags.mpWins`.
+- Device-only settings owned by net: `settings.netId` (16 hex characters, generated once, sent in every `hi`) and `settings.netBlocked` (space-separated `netId`s this player blocked). Blocks match on `netId`, so they survive either side reloading.
 
 ### Adding events
 

@@ -24,7 +24,7 @@ export type ModeId = (typeof MODE_IDS)[number];
 export type Mic = 0 | 1 | 2;
 
 export type Msg =
-  | { t: 'hi'; name: string; color: string }
+  | { t: 'hi'; name: string; color: string; uid?: string }
   | { t: 'st'; p: Vec3; v: Vec3; yaw: number; mic: Mic }
   | { t: 'chat'; text: string }
   | { t: 'ping'; p: Vec3 }
@@ -38,6 +38,8 @@ export type Msg =
   | { t: 'ack'; added: number };
 
 export type MsgType = Msg['t'];
+
+export const UID = /^[0-9a-f]{16}$/;
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 const num = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
@@ -99,7 +101,8 @@ export function parse(raw: unknown): Msg | null {
   switch (r.t) {
     case 'hi': {
       const name = cleanText(r.name, LIMITS.name);
-      return name ? { t: 'hi', name, color: cleanColor(r.color) } : null;
+      if (!name) return null;
+      return typeof r.uid === 'string' && UID.test(r.uid) ? { t: 'hi', name, color: cleanColor(r.color), uid: r.uid } : { t: 'hi', name, color: cleanColor(r.color) };
     }
     case 'st': {
       const p = vec(r.p);

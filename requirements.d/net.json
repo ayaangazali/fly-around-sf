@@ -3,5 +3,6 @@
   { "id": "R-NET-OFFLINE", "owner": "net", "text": "When matchmaking relays are unreachable the game says so clearly and single player keeps working." },
   { "id": "R-NET-TOUCH", "owner": "net", "text": "The friends panel and multiplayer HUD fit tablets and phones without overflow, with a hold-to-talk button for touch." },
   { "id": "R-V2-NET-CODES", "owner": "net", "text": "Room and device sync codes carry 80 random bits from the crypto source and shorter codes are refused, so a room cannot be found by reversing its public relay topic." },
-  { "id": "R-V2-NET-SILENT", "owner": "net", "text": "A peer that never announces itself gets only our hello: no position, chat, ping, match message or microphone until its first valid hi, when it appears in the roster." }
+  { "id": "R-V2-NET-SILENT", "owner": "net", "text": "A peer that never announces itself gets only our hello: no position, chat, ping, match message or microphone until its first valid hi, when it appears in the roster." },
+  { "id": "R-V2-NET-BLOCK", "owner": "net", "text": "A blocked player stays blocked when either side reloads: blocks are kept on the device and matched by a stable per-install id the peer sends in its hi, before any greeting, microphone or position goes to them." }
 ]

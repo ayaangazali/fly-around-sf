@@ -1,6 +1,6 @@
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
-import { cleanColor, cleanText, encode, wireVec, LIMITS, makeCode, normalizeCode, parse, RateLimiter, DEFAULT_COLOR, type Mic, type ModeId, type Msg } from './protocol';
+import { cleanColor, cleanText, encode, wireVec, LIMITS, makeCode, normalizeCode, parse, RateLimiter, DEFAULT_COLOR, UID, type Mic, type ModeId, type Msg } from './protocol';
 import { approach, approachAngle, predict, voiceVolume } from './math';
 import { openTransport, randomId, type Transport, type TransportKind } from './transport';
 import { Voice, type VoiceResult } from './voice';
@@ -14,6 +14,7 @@ export interface RemotePeer {
   id: string;
   name: string;
   color: string;
+  uid: string;
   known: boolean;
   pos: Vec3;
   yaw: number;
@@ -89,10 +90,9 @@ export class Net {
     this.voice = voice;
     this.sync = new DeviceSync(game, kind);
     const s = game.save.data.settings;
-    if (typeof s.playerName !== 'string' || !cleanText(s.playerName, LIMITS.name)) {
-      s.playerName = randomPilotName();
-      game.save.persist();
-    }
+    if (typeof s.playerName !== 'string' || !cleanText(s.playerName, LIMITS.name)) s.playerName = randomPilotName();
+    if (typeof s.netId !== 'string' || !UID.test(s.netId)) s.netId = randomId();
+    game.save.persist();
     game.save.onChange(() => {
       if (this.transport && this.hiKey() !== this.lastHi) this.sayHi();
     });
@@ -109,6 +109,11 @@ export class Net {
 
   get color(): string {
     return cleanColor(this.game.save.data.settings.droneColor ?? DEFAULT_COLOR);
+  }
+
+  private blockList(): string[] {
+    const v = this.game.save.data.settings.netBlocked;
+    return typeof v === 'string' ? v.split(' ').filter((u) => UID.test(u)) : [];
   }
 
   subscribe(fn: () => void): () => void {
@@ -242,7 +247,7 @@ export class Net {
 
   private sayHi(to?: string): void {
     this.lastHi = this.hiKey();
-    const hi = { t: 'hi', name: this.name, color: this.color };
+    const hi = { t: 'hi', name: this.name, color: this.color, uid: this.game.save.data.settings.netId };
     if (to) this.transport?.send(hi, to);
     else this.send(hi);
   }
@@ -275,7 +280,7 @@ export class Net {
   private peerJoin(id: string): void {
     if (this.peers.has(id)) return;
     const f = this.game.flight;
-    const p: RemotePeer = { id, name: 'Pilot', color: DEFAULT_COLOR, known: false, muted: false, blocked: false, ...this.past.get(id), pos: { ...f.pos }, yaw: 0, vel: { x: 0, y: 0, z: 0 }, mic: 0, sample: null };
+    const p: RemotePeer = { id, name: 'Pilot', color: DEFAULT_COLOR, uid: '', known: false, muted: false, blocked: false, ...this.past.get(id), pos: { ...f.pos }, yaw: 0, vel: { x: 0, y: 0, z: 0 }, mic: 0, sample: null };
     this.peers.set(id, p);
     if (!p.blocked) {
       this.sayHi(id);
@@ -318,7 +323,12 @@ export class Net {
         p.known = true;
         p.name = taken ? `${m.name} (${p.id.slice(0, 4)})` : m.name;
         p.color = m.color;
-        if (first) this.greet(p);
+        if (m.uid) p.uid = m.uid;
+        if (this.blockList().includes(p.uid)) {
+          p.blocked = true;
+          this.voice.drop(p.id);
+        }
+        if (first && !p.blocked) this.greet(p);
         this.changed();
         return;
       }
@@ -392,13 +402,19 @@ export class Net {
     const p = this.peers.get(id);
     if (!p) return;
     p.blocked = blocked;
+    if (p.uid) {
+      const list = this.blockList().filter((u) => u !== p.uid);
+      if (blocked) list.push(p.uid);
+      this.game.save.data.settings.netBlocked = list.slice(-100).join(' ');
+      this.game.save.persist();
+    }
     const stream = this.streams.get(id);
     const mic = this.voice.mic;
     if (blocked) {
       this.voice.drop(id);
       this.pings.delete(id);
       if (mic) this.transport?.removeStream(mic, id);
-      this.game.toast(`${p.name} is blocked for this session`, 'info');
+      this.game.toast(`${p.name} is blocked on this device until you unblock them`, 'info');
     } else {
       if (stream) this.voice.attach(id, stream);
       if (mic && p.known) this.transport?.addStream(mic, id);

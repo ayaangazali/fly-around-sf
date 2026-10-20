@@ -2,8 +2,10 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import type { Transport, TransportHandlers } from '../../src/net/transport';
 import { JOIN_GRACE_MS, Net, UNREACHABLE_MS } from '../../src/net/session';
 import { Voice } from '../../src/net/voice';
-import { CODE_ALPHABET, CODE_LENGTH, makeCode } from '../../src/net/protocol';
+import { CODE_ALPHABET, CODE_LENGTH, makeCode, parse } from '../../src/net/protocol';
 import { FakeCtx, netGame } from './net-helpers';
+import { memoryStorage } from './helpers';
+import { SaveStore } from '../../src/core/save';
 
 const fake = vi.hoisted(() => ({
   h: null as TransportHandlers | null,
@@ -227,5 +229,48 @@ describe('net session over the P2P transport', () => {
     await new Promise((r) => setTimeout(r, 250));
     expect(to('lurker')).toContain('st');
     net.leave();
+  });
+
+  it('[R-V2-NET-BLOCK] a blocked player stays blocked when they reload their tab and after we reload ours', async () => {
+    const storage = memoryStorage();
+    const game = await netGame();
+    Object.assign(game, { save: new SaveStore(storage) });
+    const net = new Net(game, 'p2p', micVoice());
+    expect(await net.join('BLKRL'.padEnd(16, 'X'))).toBe(true);
+    expect(await net.enableVoice()).toBe('on');
+    const troll = { t: 'hi', name: 'Troll', color: '#ff0000', uid: '0123456789abcdef' };
+    expect(parse(troll)).toEqual(troll);
+    expect(parse({ ...troll, uid: '<b>0123456789ab</b>' })).toEqual({ t: 'hi', name: 'Troll', color: '#ff0000' });
+    fake.h!.join('tab1');
+    fake.h!.message(troll, 'tab1');
+    expect(net.visiblePeers().map((p) => p.name)).toEqual(['Troll']);
+    net.setBlocked('tab1', true);
+    fake.h!.leave('tab1');
+    fake.sent = [];
+    fake.streams = [];
+    game.toasts.length = 0;
+    fake.h!.join('tab2');
+    fake.h!.message(troll, 'tab2');
+    fake.h!.message({ t: 'chat', text: 'B after reload' }, 'tab2');
+    await new Promise((r) => setTimeout(r, 200));
+    expect(net.peers.get('tab2')?.blocked).toBe(true);
+    expect(net.visiblePeers()).toEqual([]);
+    expect(net.chat).toEqual([]);
+    expect(fake.streams).toEqual([]);
+    expect(fake.sent.filter(([, to]) => to === 'tab2').map(([m]) => (m as { t: string }).t)).toEqual(['hi']);
+    expect(game.toasts.filter((t) => t.includes('joined'))).toEqual([]);
+    net.leave();
+    const reloaded = await netGame();
+    Object.assign(reloaded, { save: new SaveStore(storage) });
+    const again = new Net(reloaded, 'p2p');
+    expect(await again.join('BLKRL'.padEnd(16, 'X'))).toBe(true);
+    fake.h!.join('tab3');
+    fake.h!.message({ ...troll, name: 'Not Troll' }, 'tab3');
+    expect(again.peers.get('tab3')).toMatchObject({ known: true, blocked: true });
+    expect(again.visiblePeers()).toEqual([]);
+    again.setBlocked('tab3', false);
+    expect(again.visiblePeers().map((p) => p.name)).toEqual(['Not Troll']);
+    expect(new SaveStore(storage).data.settings.netBlocked).toBe('');
+    again.leave();
   });
 });
