@@ -422,6 +422,11 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await b.waitForTimeout(1500);
     expect(await b.evaluate(() => window.__fly.game.net.room)).toBeNull();
     expect(await a.evaluate(() => window.__fly.game.net.peers.size)).toBe(0);
+    await a.evaluate(() => {
+      const w = window as unknown as { toasts: string[] };
+      w.toasts = [];
+      window.__fly.game.bus.on('toast', ({ text }) => w.toasts.push(text));
+    });
     const edit = b.locator('.title-edit');
     if (await edit.isVisible()) await edit.click();
     await b.locator('.title-name').fill('Ben');
@@ -429,7 +434,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.room)).toBe(code);
     await expect.poll(() => b.evaluate(() => window.__fly.game.net.visiblePeers().map((p) => p.name))).toEqual(['Ana']);
     await expect.poll(() => a.evaluate(() => window.__fly.game.net.visiblePeers().map((p) => p.name))).toEqual(['Ben']);
-    await expect(a.locator('.toast', { hasText: 'Ben joined the room' })).toBeAttached();
+    expect(await a.evaluate(() => (window as unknown as { toasts: string[] }).toasts.filter((t) => t.endsWith('joined the room')))).toEqual(['Ben joined the room']);
     await expect(a.locator('.fr-peer')).toHaveCount(1);
   });
 
