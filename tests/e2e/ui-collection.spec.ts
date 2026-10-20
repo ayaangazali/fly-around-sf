@@ -53,6 +53,39 @@ test.describe('collection, achievements and HUD effects', () => {
     await expect(page.locator('.reveal')).toHaveCount(0);
   });
 
+  test('[R-V2-REVEAL] a card reveal while flying leaves the drone, the HUD and the touch controls in view @touch', async ({ page }) => {
+    await boot(page);
+    const card = await page.evaluate(() => window.__fly.game.activities.list().find((d) => d.card)?.card ?? null);
+    test.skip(!card, 'this build has no card content');
+    await page.keyboard.down('KeyW');
+    await page.evaluate((id) => {
+      window.__fly.step(1);
+      window.__fly.game.bus.emit('card:unlock', { id: id! });
+      window.__fly.step(0.5);
+    }, card);
+    await expect(page.locator('.reveal')).toBeVisible();
+    await page.waitForTimeout(1500);
+    const r = await page.evaluate(() => {
+      const g = window.__fly.game;
+      const Vec = g.camera.position.constructor as new (x: number, y: number, z: number) => { project(c: unknown): { x: number; y: number } };
+      const v = new Vec(g.flight.pos.x, g.flight.pos.y, g.flight.pos.z).project(g.camera);
+      const x = ((v.x + 1) / 2) * innerWidth;
+      const y = ((1 - v.y) / 2) * innerHeight;
+      const box = (e: Element) => e.getBoundingClientRect();
+      const reveal = box(document.querySelector('.reveal')!);
+      const hits = (b: DOMRect, l: number, t: number, rr: number, bb: number) => b.left < rr && l < b.right && b.top < bb && t < b.bottom;
+      const controls = [...document.querySelectorAll('.stick, .hud-stats')].map((e) => ({ cls: e.className, visible: getComputedStyle(e).visibility === 'visible' && getComputedStyle(e).opacity === '1', covered: hits(box(e), reveal.left, reveal.top, reveal.right, reveal.bottom) }));
+      return { drone: hits(reveal, x - 40, y - 40, x + 40, y + 40), inView: reveal.left >= 0 && reveal.right <= innerWidth && reveal.top >= 0 && reveal.bottom <= innerHeight, filter: getComputedStyle(document.querySelector('canvas#view')!).filter, controls };
+    });
+    await page.keyboard.up('KeyW');
+    expect(r.drone).toBe(false);
+    expect(r.inView).toBe(true);
+    expect(r.filter).toBe('none');
+    for (const c of r.controls) expect(c, c.cls).toMatchObject({ visible: true, covered: false });
+    await page.locator('.reveal').getByRole('button', { name: 'Keep flying' }).click();
+    await expect(page.locator('.reveal')).toHaveCount(0);
+  });
+
   test('[R-ACHIEVEMENTS] an achievement unlocks once, shows a banner and appears in the pilot log', async ({ page }) => {
     await boot(page);
     const count = await page.evaluate(() => window.__fly.activities().filter((a) => a.kind === 'achievement').length);

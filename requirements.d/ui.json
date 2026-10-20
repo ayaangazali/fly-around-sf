@@ -6,5 +6,6 @@
   { "id": "R-HUD-FX", "owner": "ui", "text": "Crash and splash flashes, speed lines and the FPS counter respond to flight and settings." },
   { "id": "R-HOLD", "owner": "ui", "text": "Nothing happens behind the title or an open panel: the sim waits for Start, the HUD cannot be reached under the title, and wind does not carry the drone away while a panel is open." },
   { "id": "R-V2-ONBOARD", "owner": "ui", "text": "The tutorial has at most five steps (fly, turn, climb and descend in either order, boost, follow the objective), each completes from real key presses or touches on the free-running game, and it ends with a waypoint on the first open Founder Trail stop." },
-  { "id": "R-V2-MENUBAR", "owner": "ui", "text": "The menubar shows only Menu, Map, Collection, Friends and Settings; every other panel opens from the Menu sheet." }
+  { "id": "R-V2-MENUBAR", "owner": "ui", "text": "The menubar shows only Menu, Map, Collection, Friends and Settings; every other panel opens from the Menu sheet." },
+  { "id": "R-V2-REVEAL", "owner": "ui", "text": "A card reveal never dims the view or hides the HUD, and never covers the drone or the touch controls." }
 ]
