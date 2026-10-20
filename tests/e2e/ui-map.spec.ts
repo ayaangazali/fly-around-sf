@@ -24,10 +24,18 @@ async function trail(page: Page): Promise<string[]> {
   });
 }
 
+const frames = (page: Page, n: number) =>
+  page.evaluate(async (n) => {
+    for (let i = 0; i < n; i++) await new Promise((f) => requestAnimationFrame(f));
+  }, n);
+
 test.describe('map and waypoints', () => {
   test('[R-MAP] the map draws the city, the player and every mappable activity, and sets a waypoint', async ({ page }) => {
     const errors = await boot(page);
-    const expected = await page.evaluate(() => window.__fly.activities().filter((a) => a.kind !== 'achievement' && !a.hidden).map((a) => a.id).sort());
+    const expected = await page.evaluate(() => {
+      window.__fly.game.save.data.settings.sideActivities = true;
+      return window.__fly.activities().filter((a) => a.kind === 'trail' || (a.kind !== 'achievement' && !a.hidden)).map((a) => a.id).sort();
+    });
     await page.keyboard.press('KeyM');
     await page.evaluate(() => window.__fly.step(1 / 30));
     const wrap = page.locator('.map-wrap');
@@ -195,9 +203,15 @@ test.describe('map and waypoints', () => {
   });
 });
 
-test('[R-WAYPOINT] the compass shows nearby things to do and the menu suggests the nearest', async ({ page }) => {
+test('[R-WAYPOINT] [R-V2-MAP-TRAIL] the compass shows nearby things to do only with side activities on, and the menu suggests the nearest', async ({ page }) => {
   await boot(page);
   await page.evaluate(() => window.__fly.step(0.1));
+  await frames(page, 45);
+  await expect(page.locator('.compass-pip:not([hidden])')).toHaveCount(0);
+  await page.evaluate(() => {
+    window.__fly.game.save.data.settings.sideActivities = true;
+    window.__fly.step(0.1);
+  });
   await expect(page.locator('.compass-pip:not([hidden])').first()).toBeVisible();
   await page.evaluate(() => window.__fly.game.panels.open('menu'));
   const first = page.locator('.menu-next-item').first();
@@ -226,5 +240,71 @@ test.describe('founder trail map', () => {
     });
     expect(r.open).toBeLessThan(250);
     expect(r.colors).toBeGreaterThan(12);
+  });
+
+  test('[R-V2-MAP-TRAIL] the map numbers every trail stop, highlights the objective, frames them all, and adds side activities only when switched on', async ({ page }) => {
+    await boot(page);
+    const ids = await trail(page);
+    await page.evaluate((first) => window.__fly.game.save.complete(first), ids[0]);
+    await page.keyboard.press('KeyM');
+    await page.evaluate(() => window.__fly.step(1 / 30));
+    await expect(page.locator('.map-wrap')).toBeVisible();
+    const markers = page.locator('.map-marker');
+    expect(await markers.evaluateAll((n) => n.map((b) => (b as HTMLElement).dataset.activity!).sort())).toEqual([...ids].sort());
+    expect(await markers.evaluateAll((n, all) => all.map((id) => n.find((b) => (b as HTMLElement).dataset.activity === id)!.textContent), ids)).toEqual(ids.map((_, i) => String(i + 1)));
+    await expect(page.locator('.map-marker.goal')).toHaveCount(1);
+    await expect(page.locator('.map-marker.goal')).toHaveAttribute('data-activity', ids[1]);
+    await expect(page.locator(`.map-marker[data-activity="${ids[0]}"]`)).toHaveClass(/done/);
+    const title = await page.evaluate((id) => window.__fly.game.activities.defs.get(id)!.title, ids[1]);
+    await expect(page.locator('.map-goal')).toContainText(title);
+    await expect(page.locator('.map-goal')).toContainText(`Stop 2 of ${ids.length}`);
+    await expect(page.locator('.map-me')).toBeVisible();
+    const inside = () =>
+      markers.evaluateAll((n) => {
+        const w = document.querySelector('.map-wrap')!.getBoundingClientRect();
+        return n.filter((b) => {
+          const r = b.getBoundingClientRect();
+          return b.checkVisibility() && r.left >= w.left && r.right <= w.right && r.top >= w.top && r.bottom <= w.bottom;
+        }).length;
+      });
+    await expect.poll(inside).toBe(ids.length);
+    await page.keyboard.press('Escape');
+    const side = await page.evaluate(() => {
+      const g = window.__fly.game;
+      g.save.data.settings.sideActivities = true;
+      g.panels.open('map');
+      return g.activities.list().filter((d) => d.kind !== 'trail' && d.kind !== 'achievement' && (!d.hidden || g.save.isDone(d.id))).length;
+    });
+    expect(side).toBeGreaterThan(0);
+    await expect(markers).toHaveCount(ids.length + side);
+  });
+
+  test('[R-V2-MAP-WARP] Warp on the objective bar and on any trail stop card emits warp with the stop position and name', async ({ page }) => {
+    await boot(page);
+    const ids = await trail(page);
+    const target = (id: string) =>
+      page.evaluate((id) => {
+        const g = window.__fly.game;
+        const d = g.activities.defs.get(id)!;
+        const q = g.activities.position(d);
+        return { x: q.x, z: q.z, label: d.title };
+      }, id);
+    await page.evaluate(() => {
+      const w = window as unknown as { warps: unknown[] };
+      w.warps = [];
+      window.__fly.game.bus.on('warp', (e) => w.warps.push(e));
+      window.__fly.game.panels.open('map');
+    });
+    await page.locator('.map-goal').getByRole('button', { name: /^Warp to / }).click();
+    await expect(page.locator('.sheet')).toBeHidden();
+    const last = ids[ids.length - 1];
+    await page.evaluate(() => window.__fly.game.panels.open('map'));
+    await page.locator(`.map-marker[data-activity="${last}"]`).dispatchEvent('click');
+    const card = page.locator('.map-card');
+    await expect(card).toHaveAttribute('data-activity', last);
+    await expect(card.getByRole('button', { name: /^Warp to / })).toBeFocused();
+    await card.getByRole('button', { name: /^Warp to / }).click();
+    await expect(page.locator('.sheet')).toBeHidden();
+    expect(await page.evaluate(() => (window as unknown as { warps: unknown[] }).warps)).toEqual([await target(ids[0]), await target(last)]);
   });
 });

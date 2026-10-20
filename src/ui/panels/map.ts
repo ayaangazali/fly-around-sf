@@ -2,15 +2,32 @@ import './map.css';
 import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { ActivityDef } from '../../activities/types';
+import type { Game } from '../../game';
 import { drawMap, baseMap } from '../map-base';
-import { clampView, formatDistance, MAX_SCALE, headingDeg, panBy, toScreen, toWorld, zoomAt, type MapView } from '../map-view';
-import { kindColor, mappable } from '../map-style';
+import { clampView, fitView, formatDistance, MAX_SCALE, headingDeg, panBy, toScreen, toWorld, zoomAt, type MapView } from '../map-view';
+import { currentObjective, kindColor, mappable, sideActivitiesOn, TRAIL_COLOR, trailOrder, trailStops } from '../map-style';
 import { setWaypoint } from '../waypoint';
 import { setSetting, settingsOf } from '../settings-model';
 
+declare module '../../core/bus' {
+  interface GameEvents {
+    'warp': { x: number; z: number; label: string };
+  }
+}
+
 const hiddenKinds = new Set<string>();
 let showDone = true;
-let saved: Pick<MapView, 'cx' | 'cz' | 'scale'> | null = null;
+
+function warpButton(game: Game, d: ActivityDef): HTMLButtonElement {
+  const b = el('button', 'btn primary map-warp', 'Warp');
+  b.setAttribute('aria-label', `Warp to ${d.title}`);
+  b.addEventListener('click', () => {
+    const q = game.activities.position(d);
+    game.panels.close();
+    game.bus.emit('warp', { x: q.x, z: q.z, label: d.title });
+  });
+  return b;
+}
 
 export const panel: Panel = {
   id: 'map',
@@ -21,14 +38,26 @@ export const panel: Panel = {
   render(root, game) {
     root.classList.add('map-body');
     const defs = game.activities.list().filter((d) => mappable(game, d));
+    const trail = trailStops(game);
+    const goal = currentObjective(game);
+    const goalAt = goal && game.activities.position(goal);
     const imperial = settingsOf(game).units === 'imperial';
     const base = baseMap(game);
     const p = game.flight.pos;
+    const away = (q: { x: number; z: number }) => formatDistance(Math.hypot(q.x - game.flight.pos.x, q.z - game.flight.pos.z), imperial);
+    const trailDone = trail.filter((d) => game.save.isDone(d.id)).length;
+
+    const bar = el('div', 'map-goal');
+    if (goal && goalAt) {
+      const text = el('div', 'map-goal-text');
+      text.append(el('small', '', `Objective · Stop ${trailOrder(goal)} of ${trail.length}`), el('strong', '', goal.title));
+      bar.append(el('span', 'map-goal-n', String(trailOrder(goal))), text, el('span', 'map-goal-dist', away(goalAt)), warpButton(game, goal));
+    } else if (trail.length) bar.append(el('strong', '', `Founder Trail complete: ${trail.length} of ${trail.length} stops`));
 
     const filters = el('div', 'map-filters');
     filters.setAttribute('role', 'group');
     filters.setAttribute('aria-label', 'Filter activities by kind');
-    const kinds = [...new Set(defs.map((d) => d.kind))].sort();
+    const kinds = sideActivitiesOn(game) ? [...new Set(defs.map((d) => d.kind))].filter((k) => k !== 'trail').sort() : [];
     const chip = (label: string, pressed: boolean, color: string, onToggle: (on: boolean) => void) => {
       const b = el('button', 'chip');
       b.style.setProperty('--c', color);
@@ -83,28 +112,44 @@ export const panel: Panel = {
     card.setAttribute('aria-live', 'polite');
     wrap.append(canvas, layer, wpPin, pin, me, scaleBar, tools, card);
     const summary = el('p', 'map-summary');
-    const doneCount = defs.filter((d) => game.save.isDone(d.id)).length;
-    summary.textContent = `${doneCount} of ${defs.length} places done. Tap a marker for details and to set a waypoint.`;
+    const side = defs.filter((d) => d.kind !== 'trail');
+    const sideDone = side.filter((d) => game.save.isDone(d.id)).length;
+    summary.textContent = [
+      trail.length ? `Founder Trail: ${trailDone} of ${trail.length} stops done.` : '',
+      side.length ? `${sideDone} of ${side.length} side activities done.` : '',
+      trail.length ? 'Tap a numbered stop to warp there.' : 'Tap a marker for details and to set a waypoint.',
+    ]
+      .filter(Boolean)
+      .join(' ');
+    if (bar.childElementCount) root.append(bar);
     root.append(filters, wrap, summary);
 
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    let view: MapView = { cx: saved?.cx ?? p.x, cz: saved?.cz ?? p.z, scale: saved?.scale ?? 0.3, w: 1, h: 1 };
+    let view: MapView = { cx: p.x, cz: p.z, scale: 0.3, w: 1, h: 1 };
+    let first = true;
     let frame = 0;
     const markers = new Map<string, HTMLButtonElement>();
     const spots = defs.map((d) => game.activities.position(d));
     const fan = new Map(defs.map((d, i) => [d.id, spots.slice(0, i).filter((q) => Math.hypot(q.x - spots[i].x, q.z - spots[i].z) < 30 / MAX_SCALE).length]));
     for (const d of defs) {
-      const kind = game.activities.kindOf(d);
       const b = el('button', 'map-marker');
       b.dataset.activity = d.id;
       b.style.setProperty('--c', kindColor(d.kind));
-      b.append(el('span', '', kind.icon));
       const done = game.save.isDone(d.id);
-      const locked = game.activities.locked(d);
       b.classList.toggle('done', done);
-      b.classList.toggle('locked', locked);
-      b.setAttribute('aria-label', `${d.title}, ${kind.label}, ${done ? 'done' : locked ? 'locked' : 'not done yet'}`);
+      if (d.kind === 'trail') {
+        b.classList.add('trail');
+        b.classList.toggle('goal', d === goal);
+        b.append(el('span', '', String(trailOrder(d))));
+        b.setAttribute('aria-label', `Stop ${trailOrder(d)}: ${d.title}, ${done ? 'done' : d === goal ? 'current objective' : 'later stop'}`);
+      } else {
+        const kind = game.activities.kindOf(d);
+        const locked = game.activities.locked(d);
+        b.append(el('span', '', kind.icon));
+        b.classList.toggle('locked', locked);
+        b.setAttribute('aria-label', `${d.title}, ${kind.label}, ${done ? 'done' : locked ? 'locked' : 'not done yet'}`);
+      }
       b.addEventListener('click', (e) => {
         e.stopPropagation();
         select(d);
@@ -117,6 +162,19 @@ export const panel: Panel = {
       frame = 0;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (!drawMap(ctx, game, view, dpr)) redraw();
+      if (goalAt) {
+        const a = toScreen(view, game.flight.pos.x, game.flight.pos.z);
+        const g = toScreen(view, goalAt.x, goalAt.z);
+        ctx.lineCap = 'round';
+        ctx.setLineDash([8, 7]);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = TRAIL_COLOR;
+        ctx.beginPath();
+        ctx.moveTo(a.sx, a.sy);
+        ctx.lineTo(g.sx, g.sy);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
       const pos = (x: number, z: number) => {
         const s = toScreen(view, x, z);
         return `translate(${s.sx.toFixed(1)}px, ${s.sy.toFixed(1)}px)`;
@@ -125,7 +183,7 @@ export const panel: Panel = {
         const b = markers.get(d.id) as HTMLButtonElement;
         const q = game.activities.position(d);
         const s = toScreen(view, q.x, q.z);
-        const show = !hiddenKinds.has(d.kind) && (showDone || !game.save.isDone(d.id)) && s.sx > -20 && s.sy > -20 && s.sx < view.w + 20 && s.sy < view.h + 20;
+        const show = (d.kind === 'trail' || !hiddenKinds.has(d.kind)) && (showDone || !game.save.isDone(d.id)) && s.sx > -20 && s.sy > -20 && s.sx < view.w + 20 && s.sy < view.h + 20;
         b.hidden = !show;
         const n = fan.get(d.id)!;
         const a = (n * Math.PI) / 3;
@@ -144,7 +202,6 @@ export const panel: Panel = {
     };
     const update = (next: MapView) => {
       view = next;
-      saved = { cx: view.cx, cz: view.cz, scale: view.scale };
       redraw();
     };
 
@@ -154,7 +211,7 @@ export const panel: Panel = {
     tool('⤢', 'Show the whole city', () => update(clampView({ ...view, cx: (base.extent.minX + base.extent.maxX) / 2, cz: (base.extent.minZ + base.extent.maxZ) / 2, scale: Math.min(view.w / (base.extent.maxX - base.extent.minX), view.h / (base.extent.maxZ - base.extent.minZ)) }, base.extent)));
 
     let pinAt: { x: number; z: number } | null = null;
-    const showCard = (title: string, meta: string, body: HTMLElement[], target: { x: number; y: number; z: number } | null, id?: string) => {
+    const showCard = (title: string, meta: string, body: HTMLElement[], target: { x: number; y: number; z: number } | null, id?: string, stop?: ActivityDef) => {
       card.hidden = false;
       card.replaceChildren();
       if (id) card.dataset.activity = id;
@@ -162,8 +219,9 @@ export const panel: Panel = {
       const h = el('h3', '', title);
       const m = el('p', 'map-card-meta', meta);
       const actions = el('div', 'map-card-actions');
+      if (stop) actions.append(warpButton(game, stop));
       if (target) {
-        const go = el('button', 'btn primary', 'Set waypoint');
+        const go = el('button', stop ? 'btn' : 'btn primary', 'Set waypoint');
         go.addEventListener('click', () => {
           setWaypoint(game, target, title);
           game.panels.close();
@@ -184,10 +242,14 @@ export const panel: Panel = {
     const select = (d: ActivityDef) => {
       pinAt = null;
       pin.hidden = true;
-      const kind = game.activities.kindOf(d);
       const q = game.activities.position(d);
-      const dist = formatDistance(Math.hypot(q.x - game.flight.pos.x, q.z - game.flight.pos.z), imperial);
+      const dist = away(q);
       const done = game.save.isDone(d.id);
+      if (d.kind === 'trail') {
+        const status = el('p', `map-card-status ${done ? 'done' : 'ready'}`, done ? 'Done' : d === goal ? 'Your current objective' : 'A later stop on the Founder Trail');
+        return showCard(d.title, `Stop ${trailOrder(d)} of ${trail.length} · ${d.neighborhood} · ${dist}`, [el('p', 'map-card-blurb', d.blurb), status], q, d.id, d);
+      }
+      const kind = game.activities.kindOf(d);
       const locked = game.activities.locked(d);
       const status = el('p', `map-card-status ${done ? 'done' : locked ? 'locked' : 'ready'}`);
       if (done) status.textContent = `Done${game.save.data.best[d.id] ? `. Best ${game.save.data.best[d.id].toFixed(1)}s` : ''}`;
@@ -240,7 +302,7 @@ export const panel: Panel = {
         const g = game.world.toGeo(w.x, w.z);
         const y = game.world.groundAt(w.x, w.z) + 30;
         redraw();
-        showCard('Dropped pin', `${g.lat.toFixed(4)}, ${g.lon.toFixed(4)} · ${formatDistance(Math.hypot(w.x - game.flight.pos.x, w.z - game.flight.pos.z), imperial)} away`, [], { x: w.x, y, z: w.z });
+        showCard('Dropped pin', `${g.lat.toFixed(4)}, ${g.lon.toFixed(4)} · ${away(w)} away`, [], { x: w.x, y, z: w.z });
       }
     };
     wrap.addEventListener('pointerup', up);
@@ -271,7 +333,8 @@ export const panel: Panel = {
         canvas.width = Math.round(w * dpr);
         canvas.height = Math.round(h * dpr);
       }
-      update(clampView({ ...view, w, h }, base.extent));
+      update(first && trail.length ? fitView([p, ...trail.map((d) => game.activities.position(d))], w, h, base.extent) : clampView({ ...view, w, h }, base.extent));
+      first = false;
     };
     const ro = new ResizeObserver(fit);
     ro.observe(wrap);

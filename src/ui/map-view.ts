@@ -46,6 +46,17 @@ export function fitScale(w: number, h: number, e: Extent): number {
   return Math.min(w / (e.maxX - e.minX), h / (e.maxZ - e.minZ));
 }
 
+export const FIT_PAD = 56;
+export const FIT_TOOLS = 52;
+
+export function fitView(points: { x: number; z: number }[], w: number, h: number, e: Extent): MapView {
+  const xs = points.map((p) => p.x);
+  const zs = points.map((p) => p.z);
+  const [x0, x1, z0, z1] = [Math.min(...xs), Math.max(...xs), Math.min(...zs), Math.max(...zs)];
+  const scale = Math.min(Math.max(1, w - 2 * FIT_PAD - FIT_TOOLS) / Math.max(1200, x1 - x0), Math.max(1, h - 2 * FIT_PAD) / Math.max(1200, z1 - z0));
+  return clampView({ cx: (x0 + x1) / 2 + FIT_TOOLS / 2 / scale, cz: (z0 + z1) / 2, scale, w, h }, e);
+}
+
 export function bearingDeg(fromX: number, fromZ: number, toX: number, toZ: number): number {
   return ((Math.atan2(toX - fromX, -(toZ - fromZ)) * 180) / Math.PI + 360) % 360;
 }

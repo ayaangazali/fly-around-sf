@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { fakeGame } from './helpers';
-import { avoidBoxes, bearingDeg, clampView, edgePoint, fitScale, formatDistance, headingDeg, panBy, relativeDeg, toScreen, toWorld, zoomAt, MAX_SCALE, MIN_SCALE, type MapView } from '../../src/ui/map-view';
-import { kindColor, mappable } from '../../src/ui/map-style';
+import { avoidBoxes, bearingDeg, clampView, edgePoint, fitScale, fitView, FIT_PAD, FIT_TOOLS, formatDistance, headingDeg, panBy, relativeDeg, toScreen, toWorld, zoomAt, MAX_SCALE, MIN_SCALE, type MapView } from '../../src/ui/map-view';
+import { currentObjective, kindColor, mappable, trailStops, TRAIL_COLOR } from '../../src/ui/map-style';
 import { guideTarget } from '../../src/ui/waypoint';
 import { forwardVector } from '../../src/player/flight';
 
@@ -65,12 +65,55 @@ describe('map math', () => {
     expect(kindColor('rings')).toBe(kindColor('rings'));
     expect(kindColor('rings')).toMatch(/^#[0-9a-f]{6}$/);
     const g = fakeGame();
+    g.save.data.settings.sideActivities = true;
     const base = { title: 't', blurb: 'b', neighborhood: 'n', at: { lat: 37.77, lon: -122.42 } };
     expect(mappable(g, { ...base, id: 'rings-a', kind: 'rings' })).toBe(true);
     expect(mappable(g, { ...base, id: 'achievement-a', kind: 'achievement' })).toBe(false);
     expect(mappable(g, { ...base, id: 'discover-a', kind: 'discover', hidden: true })).toBe(false);
     g.save.complete('discover-a');
     expect(mappable(g, { ...base, id: 'discover-a', kind: 'discover', hidden: true })).toBe(true);
+  });
+});
+
+describe('founder trail on the map', () => {
+  const stop = (order: number) => ({ id: `trail-${order}`, kind: 'trail', title: `Stop ${order}`, blurb: 'b', neighborhood: 'n', at: { lat: 37.77 + order / 100, lon: -122.42 }, params: { order } });
+  const side = { id: 'rings-a', kind: 'rings', title: 'r', blurb: 'b', neighborhood: 'n', at: { lat: 37.77, lon: -122.42 } };
+
+  it('[R-V2-MAP-TRAIL] only trail stops are mapped until side activities are switched on, and the objective is the first stop not done', () => {
+    const g = fakeGame();
+    g.activities.register([], [stop(3), side, stop(1), stop(2)]);
+    const mapped = () => g.activities.list().filter((d) => mappable(g, d)).map((d) => d.id).sort();
+    expect(trailStops(g).map((d) => d.id)).toEqual(['trail-1', 'trail-2', 'trail-3']);
+    expect(mapped()).toEqual(['trail-1', 'trail-2', 'trail-3']);
+    expect(currentObjective(g)?.id).toBe('trail-1');
+    g.save.complete('trail-1');
+    expect(currentObjective(g)?.id).toBe('trail-2');
+    expect(mapped()).toEqual(['trail-1', 'trail-2', 'trail-3']);
+    g.save.data.settings.sideActivities = true;
+    expect(mapped()).toEqual(['rings-a', 'trail-1', 'trail-2', 'trail-3']);
+    g.save.complete('trail-3');
+    g.save.complete('trail-2');
+    expect(currentObjective(g)).toBeNull();
+    expect(kindColor('trail')).toBe(TRAIL_COLOR);
+  });
+
+  it('[R-V2-MAP-OPEN] the map opens framed on the player and every trail stop', () => {
+    const pts = [
+      { x: -3000, z: 2000 },
+      { x: 4000, z: -1500 },
+      { x: 500, z: 500 },
+    ];
+    const v = fitView(pts, 1100, 600, E);
+    const s = pts.map((q) => toScreen(v, q.x, q.z));
+    for (const q of s) {
+      expect(q.sx).toBeGreaterThanOrEqual(FIT_PAD - 1e-6);
+      expect(q.sx).toBeLessThanOrEqual(1100 - FIT_PAD - FIT_TOOLS + 1e-6);
+      expect(q.sy).toBeGreaterThanOrEqual(FIT_PAD - 1e-6);
+      expect(q.sy).toBeLessThanOrEqual(600 - FIT_PAD + 1e-6);
+    }
+    expect(Math.min(...s.map((q) => q.sx))).toBeCloseTo(FIT_PAD);
+    expect(Math.max(...s.map((q) => q.sx))).toBeCloseTo(1100 - FIT_PAD - FIT_TOOLS);
+    expect(fitView([{ x: 0, z: 0 }, { x: 10, z: 10 }], 1100, 600, E).scale).toBeCloseTo((600 - 2 * FIT_PAD) / 1200);
   });
 });
 

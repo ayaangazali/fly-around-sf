@@ -1,7 +1,7 @@
 import type { Game } from '../game';
 import type { ActivityDef } from '../activities/types';
 import { el } from './panel-host';
-import { kindColor } from './map-style';
+import { kindColor, sideActivitiesOn } from './map-style';
 import { bearingDeg, headingDeg, relativeDeg } from './map-view';
 import { START_RADIUS } from '../activities/runner';
 
@@ -38,7 +38,7 @@ export function installCompassPips(game: Game): { update(): void } {
   return {
     update() {
       if (!game.loaded) return;
-      if (frame++ % 20 === 0) list = nearestOpen(game, PIPS, RANGE, START_RADIUS);
+      if (frame++ % 20 === 0) list = sideActivitiesOn(game) ? nearestOpen(game, PIPS, RANGE, START_RADIUS) : [];
       const p = game.flight.pos;
       const heading = headingDeg(game.flight.yaw);
       const half = compass.clientWidth / 2 - 10;
