@@ -85,5 +85,49 @@ test.describe('performance', () => {
     expect(r.after.programs).toBe(r.before.programs);
   });
 
+  test('[R-V2-PERF-SIDE] with side activities off only Founder Trail beacons show and the beacon scan skips side activities', async ({ page }) => {
+    await boot(page);
+    const r = await page.evaluate(() => {
+      const f = window.__fly;
+      const g = f.game;
+      f.reset();
+      const beams = g.scene.getObjectByName('beacon-beams') as unknown as { geometry: { instanceCount: number; getAttribute(n: string): { array: ArrayLike<number> } } };
+      const defs = [...g.activities.defs.values()];
+      const at = defs.map((d) => [d, g.activities.position(d)] as const);
+      const kinds = () => {
+        const a = beams.geometry.getAttribute('aOffset').array;
+        return Array.from({ length: beams.geometry.instanceCount }, (_, i) => at.find(([, p]) => Math.abs(p.x - a[i * 3]) < 0.5 && Math.abs(p.z - a[i * 3 + 2]) < 0.5)?.[0].kind ?? '?');
+      };
+      const markers = g.systems.find((s) => s.id === 'markers')!;
+      const update = markers.update!.bind(markers);
+      let inside = false;
+      let touched = 0;
+      markers.update = (dt, game) => {
+        inside = true;
+        update(dt, game);
+        inside = false;
+      };
+      const acts = g.activities as unknown as Record<'locked' | 'position', (d: { kind: string }) => unknown>;
+      for (const k of ['locked', 'position'] as const) {
+        const fn = acts[k].bind(g.activities);
+        acts[k] = (d) => {
+          if (inside && d.kind !== 'trail') touched++;
+          return fn(d);
+        };
+      }
+      f.teleport(g.activities.position(g.activities.defs.get('rings-aquatic-park-arc')!));
+      f.step(0.6);
+      const off = kinds();
+      const skipped = touched;
+      g.save.data.settings.sideActivities = true;
+      f.step(0.6);
+      return { off, on: kinds(), skipped, touched };
+    });
+    expect(r.skipped).toBe(0);
+    expect(r.touched).toBeGreaterThan(0);
+    expect(r.off.filter((k) => k !== 'trail')).toEqual([]);
+    expect(r.on.filter((k) => k !== 'trail').length).toBeGreaterThan(3);
+  });
+
 });
 

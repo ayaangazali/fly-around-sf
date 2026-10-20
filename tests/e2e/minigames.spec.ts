@@ -163,6 +163,7 @@ test.describe('minigames', () => {
       const f = window.__fly;
       const g = f.game;
       f.reset();
+      g.save.data.settings.sideActivities = true;
       const count = (n: string) => (g.scene.getObjectByName(n) as unknown as { geometry: { instanceCount: number } }).geometry.instanceCount;
       const def = g.activities.defs.get('rings-aquatic-park-arc')!;
       f.teleport(g.activities.position(def));
