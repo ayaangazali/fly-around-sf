@@ -273,4 +273,26 @@ describe('net session over the P2P transport', () => {
     expect(new SaveStore(storage).data.settings.netBlocked).toBe('');
     again.leave();
   });
+
+  it('[R-V2-NET-NAMES] a lookalike of your name or a friend name gets the id suffix just like an exact copy', async () => {
+    const game = await netGame();
+    game.save.data.settings.playerName = 'Pilot-1878';
+    const net = new Net(game, 'p2p');
+    expect(await net.join('NAMES'.padEnd(16, 'X'))).toBe(true);
+    const h = fake.h!;
+    const names: [string, string][] = [
+      ['ana1', 'Ana'],
+      ['cyri', '\u0420\u0456lot-1878'],
+      ['bold', '\u{1d40f}ilot\u20101878'],
+      ['caps', 'PiIot 1878'],
+      ['grek', '\u0391n\u03b1'],
+      ['paul', 'Paula'],
+    ];
+    for (const [id, name] of names) {
+      h.join(id);
+      h.message({ t: 'hi', name, color: '#f2f2ee' }, id);
+    }
+    expect(net.visiblePeers().map((p) => p.name)).toEqual(['Ana', '\u0420\u0456lot-1878 (cyri)', '\u{1d40f}ilot\u20101878 (bold)', 'PiIot 1878 (caps)', '\u0391n\u03b1 (grek)', 'Paula']);
+    net.leave();
+  });
 });

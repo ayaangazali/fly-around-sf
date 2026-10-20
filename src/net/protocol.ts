@@ -70,6 +70,24 @@ export function cleanText(raw: unknown, max: number): string {
   return Array.from(flat).slice(0, max).join('').trim();
 }
 
+const LOOKALIKE: Record<string, string> = {
+  А: 'A', В: 'B', Е: 'E', З: '3', К: 'K', М: 'M', Н: 'H', О: 'O', Р: 'P', С: 'C', Т: 'T', У: 'Y', Х: 'X', Ѕ: 'S', І: 'I', Ј: 'J', Ԛ: 'Q', Ԝ: 'W', Ӏ: 'I', Һ: 'H', Ү: 'Y',
+  а: 'a', в: 'b', г: 'r', е: 'e', к: 'k', м: 'm', н: 'h', о: 'o', п: 'n', р: 'p', с: 'c', т: 't', у: 'y', х: 'x', ь: 'b', ѕ: 's', і: 'i', ј: 'j', ԁ: 'd', ԛ: 'q', ԝ: 'w', һ: 'h', ӏ: 'l', ү: 'y',
+  Α: 'A', Β: 'B', Ε: 'E', Ζ: 'Z', Η: 'H', Ι: 'I', Κ: 'K', Μ: 'M', Ν: 'N', Ο: 'O', Ρ: 'P', Τ: 'T', Υ: 'Y', Χ: 'X',
+  α: 'a', γ: 'y', ε: 'e', ι: 'i', κ: 'k', ν: 'v', ο: 'o', ρ: 'p', τ: 't', υ: 'u', χ: 'x', ω: 'w', ı: 'i', ɡ: 'g',
+};
+
+export function skeleton(name: string): string {
+  return Array.from(name.normalize('NFKD').replace(/\p{M}/gu, ''), (c) => LOOKALIKE[c] ?? c)
+    .join('')
+    .toLowerCase()
+    .replace(/[il1|!]/g, 'l')
+    .replace(/0/g, 'o')
+    .replace(/rn/g, 'm')
+    .replace(/vv/g, 'w')
+    .replace(/[^\p{L}\p{N}]/gu, '');
+}
+
 export function cleanColor(raw: unknown): string {
   return typeof raw === 'string' && /^#[0-9a-f]{6}$/i.test(raw) ? raw.toLowerCase() : DEFAULT_COLOR;
 }

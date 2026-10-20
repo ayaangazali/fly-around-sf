@@ -1,6 +1,6 @@
 import type { Game } from '../game';
 import type { Vec3 } from '../player/flight';
-import { cleanColor, cleanText, encode, wireVec, LIMITS, makeCode, normalizeCode, parse, RateLimiter, DEFAULT_COLOR, UID, type Mic, type ModeId, type Msg } from './protocol';
+import { cleanColor, cleanText, encode, wireVec, LIMITS, makeCode, normalizeCode, parse, RateLimiter, skeleton, DEFAULT_COLOR, UID, type Mic, type ModeId, type Msg } from './protocol';
 import { approach, approachAngle, predict, voiceVolume } from './math';
 import { openTransport, randomId, type Transport, type TransportKind } from './transport';
 import { Voice, type VoiceResult } from './voice';
@@ -319,7 +319,8 @@ export class Net {
     switch (m.t) {
       case 'hi': {
         const first = !p.known;
-        const taken = m.name === this.name || [...this.peers.values()].some((o) => o !== p && o.known && o.name === m.name);
+        const look = skeleton(m.name);
+        const taken = look === skeleton(this.name) || [...this.peers.values()].some((o) => o !== p && o.known && skeleton(o.name) === look);
         p.known = true;
         p.name = taken ? `${m.name} (${p.id.slice(0, 4)})` : m.name;
         p.color = m.color;
