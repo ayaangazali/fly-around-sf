@@ -119,6 +119,8 @@ describe('net session over the P2P transport', () => {
     expect(await net.enableVoice()).toBe('on');
     expect(fake.streams).toHaveLength(1);
     h.join('p2');
+    expect(fake.streams.at(-1)?.[1]).toBe('p1');
+    h.message({ t: 'hi', name: 'Pax', color: '#5ec8ff' }, 'p2');
     expect(fake.streams.at(-1)?.[1]).toBe('p2');
     net.disableVoice();
     h.leave('p1');
@@ -195,6 +197,35 @@ describe('net session over the P2P transport', () => {
     expect(fake.rooms.at(-1)).toBe(`sync-${sync}`);
     expect(await net.sync.receive(sync.slice(0, 8))).toBe(false);
     net.sync.stop();
+    net.leave();
+  });
+
+  it('[R-V2-NET-SILENT] a peer that never says hi gets only our hello: no position, chat, ping, match or microphone until it announces itself', async () => {
+    const game = await netGame();
+    const net = new Net(game, 'p2p', micVoice());
+    expect(await net.join('SHHHH'.padEnd(16, 'X'))).toBe(true);
+    expect(await net.enableVoice()).toBe('on');
+    const h = fake.h!;
+    h.join('pal');
+    h.message({ t: 'hi', name: 'Pal', color: '#3fa9f5' }, 'pal');
+    fake.sent = [];
+    h.join('lurker');
+    net.sendChat('meet at the Ferry Building');
+    net.ping({ x: 1, y: 2, z: 3 });
+    expect(net.startMatch('tag')).toBe(true);
+    await new Promise((r) => setTimeout(r, 250));
+    const to = (id: string) => fake.sent.filter(([, t]) => t === id).map(([m]) => (m as { t: string }).t);
+    expect(to('pal')).toEqual(expect.arrayContaining(['st', 'chat', 'ping', 'start']));
+    expect(to('lurker')).toEqual(['hi']);
+    expect(fake.sent.every(([, t]) => t !== undefined)).toBe(true);
+    expect(fake.streams.map(([, t]) => t)).toEqual(['pal']);
+    expect(net.visiblePeers().map((p) => p.id)).toEqual(['pal']);
+    h.message({ t: 'hi', name: 'Lurker', color: '#ff0000' }, 'lurker');
+    expect(fake.streams.map(([, t]) => t)).toEqual(['pal', 'lurker']);
+    expect(game.toasts).toContain('Lurker joined the room');
+    fake.sent = [];
+    await new Promise((r) => setTimeout(r, 250));
+    expect(to('lurker')).toContain('st');
     net.leave();
   });
 });

@@ -248,7 +248,7 @@ export class Net {
   }
 
   private send(msg: unknown): void {
-    for (const p of this.peers.values()) if (!p.blocked) this.transport?.send(msg, p.id);
+    for (const p of this.peers.values()) if (p.known && !p.blocked) this.transport?.send(msg, p.id);
   }
 
   private mic(): Mic {
@@ -278,9 +278,8 @@ export class Net {
     const p: RemotePeer = { id, name: 'Pilot', color: DEFAULT_COLOR, known: false, muted: false, blocked: false, ...this.past.get(id), pos: { ...f.pos }, yaw: 0, vel: { x: 0, y: 0, z: 0 }, mic: 0, sample: null };
     this.peers.set(id, p);
     if (!p.blocked) {
-      if (p.known) this.greet(p);
       this.sayHi(id);
-      if (this.voice.mic) this.transport?.addStream(this.voice.mic, id);
+      if (p.known) this.greet(p);
     }
     this.checkRelays();
     this.changed();
@@ -347,6 +346,7 @@ export class Net {
   }
 
   private greet(p: RemotePeer): void {
+    if (this.voice.mic) this.transport?.addStream(this.voice.mic, p.id);
     this.game.toast(`${p.name} joined the room`, 'reward');
     this.game.bus.emit('net:join', { id: p.id, name: p.name });
   }
@@ -401,7 +401,7 @@ export class Net {
       this.game.toast(`${p.name} is blocked for this session`, 'info');
     } else {
       if (stream) this.voice.attach(id, stream);
-      if (mic) this.transport?.addStream(mic, id);
+      if (mic && p.known) this.transport?.addStream(mic, id);
       this.sayHi(id);
     }
     this.changed();
@@ -410,7 +410,7 @@ export class Net {
   async enableVoice(): Promise<VoiceResult> {
     const r = await this.voice.enable();
     const mic = this.voice.mic;
-    if (r === 'on' && mic) for (const p of this.peers.values()) if (!p.blocked) this.transport?.addStream(mic, p.id);
+    if (r === 'on' && mic) for (const p of this.peers.values()) if (p.known && !p.blocked) this.transport?.addStream(mic, p.id);
     this.changed();
     return r;
   }
