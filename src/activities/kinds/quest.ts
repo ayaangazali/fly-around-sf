@@ -1,6 +1,7 @@
 import type { ActivityDef, ActivityKind, GeoPoint, SolverStep } from '../types';
 import type { Game } from '../../game';
 import type { Vec3 } from '../../player/flight';
+import { spot } from '../minigame';
 import { HINT_TIMES, NORTON, clock, geoErrors, guide, hintErrors, hintsUnlocked, reached, say, textErrors, touched, type Marker, type QuestInstance } from '../quest-common';
 
 export type ObjectiveType = 'goto' | 'find' | 'read' | 'riddle' | 'collect';
@@ -26,10 +27,11 @@ export interface QuestParams {
 const TYPES: ObjectiveType[] = ['goto', 'find', 'read', 'riddle', 'collect'];
 const RADIUS: Record<ObjectiveType, number> = { goto: 60, read: 45, find: 12, riddle: 120, collect: 12 };
 const REVEAL = 160;
+const ladder = (o: Objective) => (o.type === 'riddle' ? HINT_TIMES.length : o.type === 'find' ? 1 : 0);
 
 export function objectivePoints(o: Objective, game: Game): Vec3[] {
   const low = o.type === 'find' || o.type === 'collect';
-  return (o.type === 'collect' ? (o.pieces ?? []) : o.at ? [o.at] : []).map((g) => game.world.point(g, low ? 5 : 20));
+  return (o.type === 'collect' ? (o.pieces ?? []) : o.at ? [o.at] : []).map((g) => spot(game, g, low ? 5 : 20));
 }
 
 function objectiveErrors(o: Objective, i: number): string[] {
@@ -115,13 +117,12 @@ export const kind: ActivityKind = {
         if (index >= p.objectives.length) return 'done';
         const o = current();
         const pos = game.flight.pos;
-        if (o.type === 'riddle') {
-          const n = hintsUnlocked(since);
-          if (n > hints) {
-            hints = n;
-            game.bus.emit('toast', { text: '💡 Hint unlocked', kind: 'info' });
-            announce();
-          }
+        const n = Math.min(ladder(o), hintsUnlocked(since));
+        if (n > hints) {
+          hints = n;
+          game.bus.emit('toast', { text: o.type === 'find' ? '💡 Hint: Norton marked the spot on your compass' : '💡 Hint unlocked', kind: 'info' });
+          if (o.type === 'find') guide(game, points[0], o.text);
+          announce();
         }
         if (o.type === 'collect') {
           const before = left.length;
@@ -140,7 +141,7 @@ export const kind: ActivityKind = {
       hud() {
         const o = current();
         if (!o) return title;
-        const extra = o.type === 'collect' ? ` · shards ${points.length - left.length}/${points.length}` : o.type === 'riddle' && hints < HINT_TIMES.length ? ` · hint in ${clock(HINT_TIMES[hints] - since)}` : '';
+        const extra = o.type === 'collect' ? ` · shards ${points.length - left.length}/${points.length}` : hints < ladder(o) ? ` · hint in ${clock(HINT_TIMES[hints] - since)}` : '';
         return `${title}  ${index + 1}/${p.objectives.length}${extra}`;
       },
       markers() {
@@ -151,7 +152,7 @@ export const kind: ActivityKind = {
         if (o.type === 'find') {
           const pos = game.flight.pos;
           const q = points[0];
-          return Math.hypot(pos.x - q.x, pos.z - q.z) < REVEAL ? [{ p: q, style: 'shard' }] : [];
+          return hints || Math.hypot(pos.x - q.x, pos.z - q.z) < REVEAL ? [{ p: q, style: 'shard' }] : [];
         }
         return [];
       },

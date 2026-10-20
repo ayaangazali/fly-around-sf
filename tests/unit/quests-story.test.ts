@@ -199,6 +199,35 @@ describe('quest kind mechanics', () => {
     expect(inst.elapsed?.()).toBeCloseTo(0.4);
   });
 
+  it('[R-QUEST] a far find clue gets a hint after a minute: Norton marks the spot on the compass and the shard shows from afar', () => {
+    const find = { type: 'find' as const, text: 'find the shard', at: { lat: 37.781, lon: -122.42 } };
+    const { game, inst } = run(params({ objectives: [find, goto(37.782), goto(37.783)] }));
+    const toasts: string[] = [];
+    game.bus.on('toast', (t) => toasts.push(t.text));
+    const shard = objectivePoints(find, game)[0];
+    game.flight.pos = { ...shard, z: shard.z + 2000 };
+    inst.update(59);
+    expect(game.waypoint).toBeNull();
+    expect(inst.markers()).toEqual([]);
+    expect(inst.hud()).toContain('hint in 0:01');
+    inst.update(1.5);
+    expect(game.waypoint).toMatchObject({ x: shard.x, z: shard.z, label: 'find the shard' });
+    expect(inst.markers()).toEqual([{ p: shard, style: 'shard' }]);
+    expect(toasts).toEqual(['💡 Hint: Norton marked the spot on your compass']);
+    expect(inst.hud()).not.toContain('hint in');
+  });
+
+  it('[R-QUEST] an objective point inside a landmark floats above its roof', () => {
+    const game = fakeGame();
+    const roof = 70;
+    game.world.collide = (p) => p.y < roof;
+    for (const o of [{ type: 'find' as const, text: 'find the shard', at: { lat: 37.781, lon: -122.42, alt: 8 } }, goto(37.782)]) {
+      const [q] = objectivePoints(o, game);
+      expect(q.y, o.type).toBeGreaterThan(roof);
+      expect(game.world.collide(q, 0.05)).toBe(false);
+    }
+  });
+
   it('[R-QUEST] a chapter left halfway resumes at the objective the player reached, and starts over once finished', () => {
     const p = params();
     const { game, def, inst } = run(p);
