@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { Net } from '../../src/net/session';
 import { COUNTDOWN, READY } from '../../src/net/modes';
 import { LocalTransport, openTransport } from '../../src/net/transport';
@@ -22,6 +22,7 @@ async function pair(room = 'RYM2') {
 }
 
 afterEach(() => {
+  vi.useRealTimers();
   for (const n of open.splice(0)) n.leave();
 });
 
@@ -192,5 +193,22 @@ describe('net session over the local transport', () => {
     const t2 = await openTransport('local', 'JUNK2', { message: () => undefined, join: () => undefined, leave: () => undefined });
     expect(t2.kind).toBe('local');
     t2.leave();
+  });
+
+  it('[R-NET-SYNC] the local transport keeps a peer through a long stall of its own tab and drops one that stays silent', async () => {
+    vi.useFakeTimers({ toFake: ['setInterval', 'Date'] });
+    const joins: string[] = [];
+    const leaves: string[] = [];
+    const t = new LocalTransport('STALL', { message: () => undefined, join: (id) => joins.push(id), leave: (id) => leaves.push(id) }, 64);
+    const ch = new BroadcastChannel('fly-around-sf:STALL');
+    ch.postMessage(JSON.stringify({ k: 'hello', from: 'zz' }));
+    await until(() => joins.length === 1);
+    vi.setSystemTime(Date.now() + 60_000);
+    vi.advanceTimersByTime(1000);
+    expect(leaves).toEqual([]);
+    vi.advanceTimersByTime(60_000);
+    expect(leaves).toEqual(['zz']);
+    ch.close();
+    t.leave();
   });
 });

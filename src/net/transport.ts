@@ -19,7 +19,7 @@ export interface Transport {
 }
 
 const BEAT_MS = 1000;
-const EXPIRE_MS = 5000;
+const EXPIRE_BEATS = 30;
 
 export function randomId(): string {
   const a = new Uint8Array(8);
@@ -32,6 +32,7 @@ export class LocalTransport implements Transport {
   readonly kind = 'local';
   private ch: BroadcastChannel;
   private seen = new Map<string, number>();
+  private beats = 0;
   private timer: ReturnType<typeof setInterval>;
 
   constructor(
@@ -44,8 +45,8 @@ export class LocalTransport implements Transport {
     this.post({ k: 'hello' });
     this.timer = setInterval(() => {
       this.post({ k: 'beat' });
-      const now = Date.now();
-      for (const [id, at] of this.seen) if (now - at > EXPIRE_MS) this.drop(id);
+      this.beats++;
+      for (const [id, at] of this.seen) if (this.beats - at > EXPIRE_BEATS) this.drop(id);
     }, BEAT_MS);
   }
 
@@ -70,7 +71,7 @@ export class LocalTransport implements Transport {
     if (env.to !== undefined && env.to !== this.selfId) return;
     if (env.k === 'bye') return this.drop(from);
     const fresh = !this.seen.has(from);
-    this.seen.set(from, Date.now());
+    this.seen.set(from, this.beats);
     if (fresh) {
       if (env.k === 'hello') this.post({ k: 'beat', to: from });
       this.h.join(from);
