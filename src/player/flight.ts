@@ -73,8 +73,8 @@ export function stepFlight(s: FlightState, input: FlightInput, dt: number, env: 
   const power = s.battery > 0.05 ? 1 : FLIGHT.lowBatterySpeed;
   const top = (input.boost ? FLIGHT.boost : FLIGHT.cruise) * power;
   const wind = env.wind ?? { x: 0, z: 0 };
-  const tx = (f.x * fwd + rx * str) * norm * top + wind.x;
-  const tz = (f.z * fwd + rz * str) * norm * top + wind.z;
+  const tx = (f.x * fwd + rx * str) * norm * top + wind.x * mag;
+  const tz = (f.z * fwd + rz * str) * norm * top + wind.z * mag;
   const ty = clamp(input.lift, -1, 1) * FLIGHT.climb * power;
   const k = 1 - Math.exp(-FLIGHT.response * dt);
   const kv = 1 - Math.exp(-FLIGHT.verticalResponse * dt);

@@ -112,9 +112,16 @@ describe('flight', () => {
     expect(ground.battery).toBe(1);
   });
 
-  it('[R-FLIGHT] wind pushes a hovering drone', () => {
+  it('[R-V2-HOLD] a drone with no input holds still in any wind, and wind only drifts a moving drone', () => {
+    const windy: FlightEnv = { ...flat, wind: { x: 7, z: -4 } };
     const s = createFlight(0, 100, 0);
-    run(s, {}, 3, { ...flat, wind: { x: 4, z: 0 } });
+    run(s, {}, 15, windy);
+    expect(Math.hypot(s.pos.x, s.pos.y - 100, s.pos.z)).toBeLessThan(0.01);
+    run(s, { forward: 1 }, 2, windy);
     expect(s.pos.x).toBeGreaterThan(5);
+    run(s, {}, 5, windy);
+    const still = { ...s.pos };
+    run(s, {}, 15, windy);
+    expect(Math.hypot(s.pos.x - still.x, s.pos.z - still.z)).toBeLessThan(0.01);
   });
 });
