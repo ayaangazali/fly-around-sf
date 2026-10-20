@@ -1,7 +1,7 @@
 import type { Panel } from '../panel-host';
 import { el } from '../panel-host';
 import type { Game } from '../../game';
-import { cleanText, LIMITS, MODE_IDS, normalizeCode, type ModeId } from '../../net/protocol';
+import { cleanText, CODE_LENGTH, formatCode, LIMITS, MODE_IDS, normalizeCode, type ModeId } from '../../net/protocol';
 import { COUNTDOWN, MODES, READY } from '../../net/modes';
 import { fmt } from '../../net/view';
 import type { VoiceResult } from '../../net/voice';
@@ -25,7 +25,7 @@ const SYNC_TEXT: Record<SyncPhase, string> = {
   sent: 'Delivered. Your other device merged it.',
   receiving: 'Looking for your other device...',
   merged: '',
-  'bad-code': 'That code does not look right. Codes are 8 letters and numbers.',
+  'bad-code': `That code does not look right. Codes are ${CODE_LENGTH} letters and numbers.`,
   failed: 'Could not reach the other device. Check both are online and try again.',
   refused: 'Someone entered the wrong code several times, so nothing was sent. Start again for a fresh code.',
 };
@@ -52,7 +52,7 @@ function card(title: string, cls = ''): { box: HTMLElement; body: HTMLElement } 
 function codeInput(placeholder: string, label: string): HTMLInputElement {
   const i = el('input', 'fr-code-input');
   i.placeholder = placeholder;
-  i.maxLength = 9;
+  i.maxLength = CODE_LENGTH + 6;
   i.autocomplete = 'off';
   i.spellcheck = false;
   i.setAttribute('autocapitalize', 'characters');
@@ -120,7 +120,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
   joinRow.addEventListener('submit', async (e) => {
     e.preventDefault();
     const c = normalizeCode(code.value);
-    err.textContent = c ? '' : 'Room codes are 4 to 8 letters and numbers.';
+    err.textContent = c ? '' : `Room codes are ${CODE_LENGTH} letters and numbers.`;
     if (c) await net.join(c);
   });
   const down = el('p', 'fr-error');
@@ -167,7 +167,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
     online.hidden = !inRoom;
     down.textContent = !inRoom && net.status === 'unreachable' ? 'Multiplayer could not start. Single player keeps working.' : '';
     if (!inRoom) return;
-    codeBig.textContent = net.room as string;
+    codeBig.textContent = formatCode(net.room as string);
     link.value = net.shareUrl() ?? '';
     status.dataset.status = net.status;
     const relays = net.transport?.relays() ?? 0;
@@ -398,7 +398,7 @@ function renderSync(game: Game): { box: HTMLElement; draw: () => void } {
   const draw = () => {
     const offering = sync.phase === 'waiting' || sync.phase === 'sending' || sync.phase === 'sent';
     codeBox.hidden = !offering;
-    big.textContent = offering && sync.code ? `${sync.code.slice(0, 4)} ${sync.code.slice(4)}` : '';
+    big.textContent = offering && sync.code ? formatCode(sync.code) : '';
     status.dataset.status = sync.phase;
     status.textContent = sync.phase === 'merged' && sync.result ? `Merged: ${plural(sync.result.added, 'new activity', 'new activities')} and ${plural(sync.result.cards, 'new card', 'new cards')}.` : SYNC_TEXT[sync.phase];
     cancel.hidden = sync.phase === 'idle';

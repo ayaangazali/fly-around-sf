@@ -132,7 +132,7 @@ export class Net {
   }
 
   async create(): Promise<string> {
-    const code = makeCode(5);
+    const code = makeCode();
     await this.join(code);
     return code;
   }

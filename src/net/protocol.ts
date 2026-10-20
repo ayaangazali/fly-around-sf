@@ -1,6 +1,7 @@
 import type { Vec3 } from '../player/flight';
 
 export const CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+export const CODE_LENGTH = 16;
 
 export const LIMITS = {
   name: 20,
@@ -42,16 +43,18 @@ const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v
 const num = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
 const str = (v: unknown, max: number): v is string => typeof v === 'string' && v.length > 0 && v.length <= max;
 
-export function makeCode(len = 5, rand = Math.random): string {
-  let s = '';
-  for (let i = 0; i < len; i++) s += CODE_ALPHABET[Math.floor(rand() * CODE_ALPHABET.length) % CODE_ALPHABET.length];
-  return s;
+export function makeCode(): string {
+  return Array.from(crypto.getRandomValues(new Uint8Array(CODE_LENGTH)), (b) => CODE_ALPHABET[b % CODE_ALPHABET.length]).join('');
 }
 
 export function normalizeCode(raw: unknown): string | null {
   if (typeof raw !== 'string') return null;
   const s = raw.toUpperCase().replace(/[\s-]/g, '');
-  return s.length >= 4 && s.length <= 8 && [...s].every((c) => CODE_ALPHABET.includes(c)) ? s : null;
+  return s.length === CODE_LENGTH && [...s].every((c) => CODE_ALPHABET.includes(c)) ? s : null;
+}
+
+export function formatCode(code: string): string {
+  return code.replace(/(.{4})(?=.)/g, '$1 ');
 }
 
 export function cleanText(raw: unknown, max: number): string {

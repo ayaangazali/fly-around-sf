@@ -1,7 +1,7 @@
 import { decodeSave, emptySave, encodeSave, normalize, type SaveData } from '../core/save';
 import type { Game } from '../game';
 import { loadCards } from '../content/types';
-import { LIMITS, makeCode, normalizeCode, parse } from './protocol';
+import { CODE_LENGTH, LIMITS, makeCode, normalizeCode, parse } from './protocol';
 import { openTransport, type Transport, type TransportKind } from './transport';
 
 export interface MergeResult {
@@ -91,11 +91,10 @@ export function cleanSave(raw: SaveData, known: Known): SaveData {
 
 export type SyncPhase = 'idle' | 'waiting' | 'sending' | 'sent' | 'receiving' | 'merged' | 'bad-code' | 'failed' | 'refused';
 
-export const SYNC_CODE = 8;
 const EXPIRE_MS = 10 * 60 * 1000;
 const STRIKES = 3;
 const room = (code: string) => `sync-${code}`;
-const secret = (code: string) => code.slice(SYNC_CODE / 2);
+const secret = (code: string) => code.slice(CODE_LENGTH / 2);
 
 export class DeviceSync {
   phase: SyncPhase = 'idle';
@@ -122,7 +121,7 @@ export class DeviceSync {
 
   async offer(): Promise<string> {
     this.stop();
-    const code = makeCode(SYNC_CODE);
+    const code = makeCode();
     this.code = code;
     this.set('waiting');
     const payload = encodeSave({ ...this.game.save.data, settings: {} });
@@ -166,7 +165,7 @@ export class DeviceSync {
   async receive(raw: string): Promise<boolean> {
     const code = normalizeCode(raw);
     this.stop();
-    if (!code || code.length !== SYNC_CODE) {
+    if (!code) {
       this.set('bad-code');
       return false;
     }

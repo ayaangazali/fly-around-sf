@@ -119,10 +119,10 @@ describe('device sync', () => {
     const phases: string[] = [];
     b.subscribe(() => phases.push(b.phase));
     const code = await a.offer();
-    expect(code).toMatch(/^[A-Z2-9]{8}$/);
+    expect(code).toMatch(/^[A-Z2-9]{16}$/);
     expect(a.phase).toBe('waiting');
     const wire = snoop(`sync-${code}`);
-    expect(await b.receive(`${code.slice(0, 4)}-${code.slice(4)}`.toLowerCase())).toBe(true);
+    expect(await b.receive(`${code.slice(0, 8)}-${code.slice(8)}`.toLowerCase())).toBe(true);
     await until(() => b.phase === 'merged' && a.phase === 'sent');
     expect(wire.saves).toHaveLength(1);
     expect(wire.saves[0].settings).toEqual({});
@@ -159,8 +159,8 @@ describe('device sync', () => {
     const g = await netGame();
     g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
     const s = new DeviceSync(g, 'local');
-    await s.receive('ABCDEFGH');
-    const ch = new BroadcastChannel('fly-around-sf:sync-ABCDEFGH');
+    await s.receive('ABCDEFGHJKLMNPQR');
+    const ch = new BroadcastChannel('fly-around-sf:sync-ABCDEFGHJKLMNPQR');
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'bm90LWpzb24' } }));
     ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d: { t: 'save', code: 'eyJ2IjoyfQ' } }));
     await new Promise((r) => setTimeout(r, 80));
@@ -176,7 +176,7 @@ describe('device sync', () => {
     const s = new DeviceSync(g, 'local');
     const code = await s.offer();
     const wire = snoop(`sync-${code}`);
-    const wrong = code.slice(4) === 'AAAA' ? 'BBBB' : 'AAAA';
+    const wrong = code.slice(8) === 'AAAAAAAA' ? 'BBBBBBBB' : 'AAAAAAAA';
     wire.post({ t: 'ack', added: 5 });
     wire.post({ t: 'claim', key: wrong });
     wire.post({ t: 'claim', key: wrong });
@@ -184,7 +184,7 @@ describe('device sync', () => {
     expect(s.phase).toBe('waiting');
     wire.post({ t: 'claim', key: wrong });
     await until(() => s.phase === 'refused');
-    wire.post({ t: 'claim', key: code.slice(4) });
+    wire.post({ t: 'claim', key: code.slice(8) });
     await new Promise((r) => setTimeout(r, 60));
     expect(wire.saves).toEqual([]);
     expect(s.phase).toBe('refused');
@@ -196,8 +196,8 @@ describe('device sync', () => {
     const g = await netGame();
     g.save.replace(save({ completed: { keep: 1 }, xp: 7 }));
     const s = new DeviceSync(g, 'local');
-    await s.receive('QRSTWXYZ');
-    const half = new BroadcastChannel('fly-around-sf:sync-QRST');
+    await s.receive('QRSTWXYZQRSTWXYZ');
+    const half = new BroadcastChannel('fly-around-sf:sync-QRSTWXYZ');
     const heard: unknown[] = [];
     half.onmessage = (e) => heard.push(JSON.parse(e.data as string).d);
     half.postMessage(JSON.stringify({ k: 'hello', from: 'evil' }));

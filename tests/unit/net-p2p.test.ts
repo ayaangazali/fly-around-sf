@@ -2,6 +2,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import type { Transport, TransportHandlers } from '../../src/net/transport';
 import { JOIN_GRACE_MS, Net, UNREACHABLE_MS } from '../../src/net/session';
 import { Voice } from '../../src/net/voice';
+import { CODE_ALPHABET, CODE_LENGTH, makeCode } from '../../src/net/protocol';
 import { FakeCtx, netGame } from './net-helpers';
 
 const fake = vi.hoisted(() => ({
@@ -11,11 +12,13 @@ const fake = vi.hoisted(() => ({
   streams: [] as [unknown, string | undefined][],
   removed: [] as [unknown, string | undefined][],
   sent: [] as [unknown, string | undefined][],
+  rooms: [] as string[],
 }));
 
 vi.mock('../../src/net/p2p', () => ({
-  openP2P: (_room: string, h: TransportHandlers): Transport => {
+  openP2P: (room: string, h: TransportHandlers): Transport => {
     if (fake.fail) throw new Error('chunk failed to load');
+    fake.rooms.push(room);
     fake.h = h;
     return {
       selfId: 'me',
@@ -31,6 +34,8 @@ vi.mock('../../src/net/p2p', () => ({
 
 afterEach(() => {
   vi.useRealTimers();
+  vi.restoreAllMocks();
+  fake.rooms = [];
   fake.h = null;
   fake.relays = 0;
   fake.fail = false;
@@ -56,7 +61,7 @@ describe('net session over the P2P transport', () => {
     const statuses: string[] = [];
     game.bus.on('net:status', ({ status }) => statuses.push(status));
     const net = new Net(game, 'p2p');
-    expect(await net.join('QXRK7')).toBe(true);
+    expect(await net.join('QXRK7'.padEnd(16, 'X'))).toBe(true);
     expect(net.status).toBe('connecting');
     vi.advanceTimersByTime(UNREACHABLE_MS + 1500);
     expect(net.status).toBe('unreachable');
@@ -78,7 +83,7 @@ describe('net session over the P2P transport', () => {
     fake.fail = true;
     const game = await netGame();
     const net = new Net(game, 'p2p');
-    expect(await net.join('QXRK8')).toBe(false);
+    expect(await net.join('QXRK8'.padEnd(16, 'X'))).toBe(false);
     expect(net.room).toBeNull();
     expect(net.status).toBe('unreachable');
     expect(game.toasts).toEqual([]);
@@ -92,7 +97,7 @@ describe('net session over the P2P transport', () => {
     const game = await netGame();
     const voice = micVoice();
     const net = new Net(game, 'p2p', voice);
-    await net.join('VQCE2');
+    await net.join('VQCE2'.padEnd(16, 'X'));
     const h = fake.h!;
     h.join('p1');
     const stream = { id: 's1' } as unknown as MediaStream;
@@ -127,7 +132,7 @@ describe('net session over the P2P transport', () => {
     game.save.data.settings.playerName = 'Me';
     const voice = micVoice();
     const net = new Net(game, 'p2p', voice);
-    expect(await net.join('BLKAB')).toBe(true);
+    expect(await net.join('BLKAB'.padEnd(16, 'X'))).toBe(true);
     const h = fake.h!;
     for (const [id, name] of [['pal', 'Alex'], ['troll', 'Alex'], ['copy', 'Me']]) {
       h.join(id);
@@ -161,7 +166,7 @@ describe('net session over the P2P transport', () => {
   it('[R-NET-PING] a friend whose link drops and comes back keeps their name, so a ping sent before their next hello still lands', async () => {
     const game = await netGame();
     const net = new Net(game, 'p2p');
-    expect(await net.join('PNG22')).toBe(true);
+    expect(await net.join('PNG22'.padEnd(16, 'X'))).toBe(true);
     const h = fake.h!;
     h.join('p1');
     h.message({ t: 'hi', name: 'Ana', color: '#5ec8ff' }, 'p1');
@@ -170,6 +175,26 @@ describe('net session over the P2P transport', () => {
     h.message({ t: 'ping', p: [10, 2, -30] }, 'p1');
     expect(net.pings.get('p1')).toMatchObject({ name: 'Ana', p: { x: 10, y: 2, z: -30 } });
     expect(game.toasts).toEqual(['Ana joined the room', 'Ana left', 'Ana joined the room']);
+    net.leave();
+  });
+
+  it('[R-V2-NET-CODES] room and sync codes carry 80 random bits from the crypto source, short codes are refused and the relay room is the whole code', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+    expect(CODE_ALPHABET.length ** CODE_LENGTH).toBeGreaterThanOrEqual(2 ** 80);
+    expect(new Set(Array.from({ length: 50 }, () => makeCode())).size).toBe(50);
+    const game = await netGame();
+    const net = new Net(game, 'p2p');
+    expect(await net.join('QXRK7')).toBe(false);
+    expect(await net.join('QXRK7QXRK7QXRK7')).toBe(false);
+    expect(fake.rooms).toEqual([]);
+    const code = await net.create();
+    expect(code).toMatch(new RegExp(`^[${CODE_ALPHABET}]{${CODE_LENGTH}}$`));
+    expect(fake.rooms).toEqual([`room-${code}`]);
+    const sync = await net.sync.offer();
+    expect(sync).toMatch(new RegExp(`^[${CODE_ALPHABET}]{${CODE_LENGTH}}$`));
+    expect(fake.rooms.at(-1)).toBe(`sync-${sync}`);
+    expect(await net.sync.receive(sync.slice(0, 8))).toBe(false);
+    net.sync.stop();
     net.leave();
   });
 });

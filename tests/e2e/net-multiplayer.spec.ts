@@ -1,7 +1,7 @@
 import type { BrowserContext, Page } from '@playwright/test';
 import { test, expect, boot } from './fixtures';
 
-const ROOM = 'TEST7';
+const ROOM = 'TEST7TEST7TEST7T';
 
 async function setName(page: Page, name: string, color: string): Promise<void> {
   await page.evaluate(
@@ -95,7 +95,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     });
     expect(drone?.visible).toBe(true);
     expect(Math.hypot(drone!.x - moved.x, drone!.z - moved.z)).toBeLessThan(3);
-    await expect(b.locator('.net-chip')).toContainText(`${ROOM} · 1 friend`);
+    await expect(b.locator('.net-chip')).toContainText(`${ROOM.slice(0, 4)} · 1 friend`);
   });
 
   test('[R-NET-SYNC] remote drones wear floating name tags', async () => {
@@ -385,7 +385,7 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await a.evaluate(() => window.__fly.game.panels.open('friends'));
     await a.locator('[data-action="sync-send"]').click();
     const code = (await a.locator('.fr-sync .fr-roomcode').textContent())!.trim();
-    expect(code).toMatch(/^[A-Z2-9]{4} [A-Z2-9]{4}$/);
+    expect(code).toMatch(/^[A-Z2-9]{4}( [A-Z2-9]{4}){3}$/);
     await b.bringToFront();
     await b.evaluate(() => window.__fly.game.panels.open('friends'));
     await b.locator('.fr-sync .fr-code-input').fill(code.toLowerCase());
@@ -409,8 +409,8 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await a.bringToFront();
     await a.evaluate(() => window.__fly.game.panels.open('friends'));
     await a.locator('.fr-offline button', { hasText: 'Start a room' }).click();
-    await expect(a.locator('.fr-online .fr-roomcode')).toHaveText(/^[A-Z2-9]{5}$/);
-    const code = (await a.locator('.fr-online .fr-roomcode').textContent())!;
+    await expect(a.locator('.fr-online .fr-roomcode')).toHaveText(/^[A-Z2-9]{4}( [A-Z2-9]{4}){3}$/);
+    const code = (await a.locator('.fr-online .fr-roomcode').textContent())!.replace(/ /g, '');
     await a.locator('[data-action="copy"]').click();
     await expect(a.locator('.fr-feedback')).toHaveText('Link copied');
     const link = await a.evaluate(() => navigator.clipboard.readText());

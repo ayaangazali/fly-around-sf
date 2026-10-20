@@ -156,8 +156,9 @@ export class NetHud {
       const n = net.visiblePeers().length;
       this.chip.dataset.status = net.status;
       const state = net.status === 'online' ? (n ? `${n} ${n === 1 ? 'friend' : 'friends'}` : 'finding friends') : net.status === 'connecting' ? 'connecting' : 'offline';
-      this.set(this.chip, `${net.room} · ${state}`);
-      this.chip.setAttribute('aria-label', `Room ${net.room}, ${state}. Open friends`);
+      const room = (net.room as string).slice(0, 4);
+      this.set(this.chip, `${room} · ${state}`);
+      this.chip.setAttribute('aria-label', `Room ${room}, ${state}. Open friends`);
     }
     this.banner.hidden = !(inRoom && net.status === 'unreachable');
     if (!this.banner.hidden) this.set(this.banner, 'Cannot reach the matchmaking relays. Still retrying. Single player keeps working.');

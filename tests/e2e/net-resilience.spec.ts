@@ -3,9 +3,9 @@ import { test, expect, boot } from './fixtures';
 test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps working', async ({ page }) => {
   test.setTimeout(180_000);
   await page.routeWebSocket(/.*/, (ws) => ws.close({ code: 1011, reason: 'offline' }));
-  const errors = await boot(page, 'room=QXRK7');
+  const errors = await boot(page, 'room=QXRK7QXRK7QXRK7Q');
   await page.evaluate(() => window.__fly.step(0.05));
-  await expect(page.locator('.net-chip')).toContainText('QXRK7');
+  await expect(page.locator('.net-chip')).toContainText('QXRK ·');
   await expect
     .poll(
       async () => {
@@ -34,7 +34,7 @@ test('[R-NET-OFFLINE] unreachable relays are reported and single player keeps wo
 
 test('[R-NET-OFFLINE] if the multiplayer code cannot load, the game says so and keeps flying', async ({ page }) => {
   await page.route(/\/assets\/p2p-[^/]+\.js$/, (r) => r.abort());
-  await boot(page, 'room=QXRK8');
+  await boot(page, 'room=QXRK8QXRK8QXRK8Q');
   await page.evaluate(() => {
     const w = window as unknown as { toasts: string[] };
     w.toasts = [];
@@ -56,10 +56,10 @@ test('[R-NET-OFFLINE] if the multiplayer code cannot load, the game says so and 
 });
 
 test('[R-NET-SAFE] a hostile peer cannot inject markup, spoof matches or flood the room', async ({ page }) => {
-  await boot(page, 'net=local&room=SAFE2');
+  await boot(page, 'net=local&room=SAFE2SAFE2SAFE2S');
   const result = await page.evaluate(async () => {
     const net = window.__fly.game.net;
-    const ch = new BroadcastChannel('fly-around-sf:room-SAFE2');
+    const ch = new BroadcastChannel('fly-around-sf:room-SAFE2SAFE2SAFE2S');
     const post = (d: unknown) => ch.postMessage(JSON.stringify({ k: 'msg', from: 'evil', d }));
     ch.postMessage(JSON.stringify({ k: 'hello', from: 'evil' }));
     post({ t: 'hi', name: '<img src=x onerror="window.__owned=1">', color: 'url(javascript:alert(1))' });
@@ -85,9 +85,9 @@ test('[R-NET-SAFE] a hostile peer cannot inject markup, spoof matches or flood t
 
 test.describe('touch @touch', () => {
   test('[R-NET-TOUCH] friends panel, room chip, ping and hold-to-talk fit a touch screen @touch', async ({ page }) => {
-    await boot(page, 'net=local&room=TAP22');
+    await boot(page, 'net=local&room=TAP22TAP22TAP22T');
     await page.evaluate(() => window.__fly.game.panels.open('friends'));
-    await expect(page.locator('.fr-roomcode').first()).toHaveText('TAP22');
+    await expect(page.locator('.fr-roomcode').first()).toHaveText('TAP2 2TAP 22TA P22T');
     await page.locator('[data-action="voice-on"]').click();
     await expect.poll(() => page.evaluate(() => window.__fly.game.net.voice.on)).toBe(true);
     const fit = await page.evaluate(() => {
@@ -139,11 +139,11 @@ test.describe('touch @touch', () => {
 });
 
 test('[R-NET-SAFE] peers that recolor or leave free their drone models on the GPU', async ({ page }) => {
-  await boot(page, 'net=local&room=LEAKS');
+  await boot(page, 'net=local&room=LEAKSLEAKSLEAKSL');
   const freed = await page.evaluate(async () => {
     const fly = window.__fly;
     const g = fly.game;
-    const ch = new BroadcastChannel('fly-around-sf:room-LEAKS');
+    const ch = new BroadcastChannel('fly-around-sf:room-LEAKSLEAKSLEAKSL');
     const send = (from: string, d: unknown) => ch.postMessage(JSON.stringify({ k: 'msg', from, d }));
     const model = (id: string) => g.scene.getObjectByName(`peer-${id}`);
     const until = async (ok: () => boolean) => {

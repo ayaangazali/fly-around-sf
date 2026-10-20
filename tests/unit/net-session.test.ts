@@ -6,7 +6,8 @@ import { netGame, until } from './net-helpers';
 
 const open: Net[] = [];
 
-async function pair(room = 'RYM2') {
+async function pair(short = 'RYM2') {
+  const room = short.padEnd(16, 'X');
   const ga = await netGame();
   const gb = await netGame();
   ga.save.data.settings.playerName = 'Ana';
@@ -125,7 +126,7 @@ describe('net session over the local transport', () => {
       expect(n.shareUrl()).toBeNull();
       expect(await n.join('bad')).toBe(false);
       const code = await n.create();
-      expect(code).toMatch(/^[A-Z2-9]{5}$/);
+      expect(code).toMatch(/^[A-Z2-9]{16}$/);
       expect(n.shareUrl()).toBe(`https://example.github.io/fly-around-sf/?room=${code}&net=local`);
       expect(await n.join(code)).toBe(true);
     } finally {

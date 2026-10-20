@@ -1,17 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { cleanColor, cleanText, CODE_ALPHABET, encode, LIMITS, makeCode, normalizeCode, parse, RateLimiter, wrapAngle } from '../../src/net/protocol';
+import { cleanColor, cleanText, CODE_ALPHABET, encode, formatCode, LIMITS, makeCode, normalizeCode, parse, RateLimiter, wrapAngle } from '../../src/net/protocol';
 
 describe('net protocol', () => {
   it('[R-SHARE] room codes use an unambiguous alphabet and normalize user input', () => {
-    let i = 0;
-    const seq = [0, 0.5, 0.999];
-    const code = makeCode(6, () => seq[i++ % seq.length]);
-    expect(code).toHaveLength(6);
+    const code = makeCode();
     expect([...code].every((c) => CODE_ALPHABET.includes(c))).toBe(true);
-    expect(normalizeCode(' k7qd-5 ')).toBe('K7QD5');
+    expect(normalizeCode(' k7qd-5mnp-qrst-uvwx ')).toBe('K7QD5MNPQRSTUVWX');
+    expect(formatCode('K7QD5MNPQRSTUVWX')).toBe('K7QD 5MNP QRST UVWX');
     expect(normalizeCode('abc')).toBeNull();
-    expect(normalizeCode('O0I1L')).toBeNull();
-    expect(normalizeCode('ABCDEFGHJ')).toBeNull();
+    expect(normalizeCode('O0I1LO0I1LO0I1LO')).toBeNull();
+    expect(normalizeCode('ABCDEFGHJKLMNPQRS')).toBeNull();
     expect(normalizeCode(42)).toBeNull();
     expect(normalizeCode(makeCode())).not.toBeNull();
   });
