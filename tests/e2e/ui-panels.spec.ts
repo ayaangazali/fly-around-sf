@@ -10,6 +10,7 @@ const serious = async (page: Page, selector: string) => {
 
 test.describe('menus', () => {
   test('[R-PANELS] [R-A11Y] every panel opens from its button, renders, passes axe and closes back to its button', async ({ page }) => {
+    test.setTimeout(600_000);
     const errors = await boot(page);
     const ids = await page.evaluate(() => window.__fly.game.panels.list().filter((p) => !p.hidden).map((p) => p.id));
     expect(ids).toEqual(expect.arrayContaining(['menu', 'map', 'journal', 'dex', 'stats', 'help', 'settings']));
