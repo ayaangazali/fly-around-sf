@@ -79,9 +79,6 @@
 @keyframes fx-flash { 0% { opacity: var(--strength, 1); } 100% { opacity: 0; } }
 .fx-speed { opacity: 0; transition: opacity 0.3s; background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 3deg, rgba(255, 255, 255, 0.07) 3.5deg 4deg); mask-image: radial-gradient(ellipse at center, transparent 42%, #000 85%); -webkit-mask-image: radial-gradient(ellipse at center, transparent 42%, #000 85%); animation: fx-spin 0.9s linear infinite; }
 @keyframes fx-spin { to { transform: rotate(4deg); } }
-.fx-low { background: radial-gradient(ellipse at center, transparent 60%, rgba(255, 176, 87, 0.35) 100%); }
-.fx-low.on { animation: fx-pulse 1.6s ease-in-out infinite; }
-@keyframes fx-pulse { 50% { opacity: 1; } }
 canvas#view.shake { animation: shake 0.35s ease-out; }
 @keyframes shake { 20% { transform: translate(-5px, 3px); } 40% { transform: translate(4px, -3px); } 60% { transform: translate(-3px, 2px); } 80% { transform: translate(2px, -1px); } }
 
@@ -150,7 +147,7 @@ canvas#view.shake { animation: shake 0.35s ease-out; }
 .tbtn-act.ready { opacity: 1; background: var(--accent-2); color: #11161d; border-color: transparent; box-shadow: 0 0 20px rgba(255, 193, 94, 0.6); }
 
 .touch .hud-stats { left: max(12px, env(safe-area-inset-left)); bottom: auto; top: calc(var(--top) + 52px); }
-.touch .hud-stat, .touch .hud-battery { font-size: 15px; min-width: 64px; padding: 5px 8px; }
+.touch .hud-stat { font-size: 15px; min-width: 64px; padding: 5px 8px; }
 .touch .minimap { right: auto; left: max(12px, env(safe-area-inset-left)); bottom: auto; top: calc(var(--top) + 110px); width: 104px; height: 104px; }
 .touch .hud-prompt-row { bottom: 42%; }
 .touch .hud-prompt-key { display: none; }
@@ -221,7 +218,7 @@ canvas#view { transition: filter 0.25s ease; }
 
 @media (max-width: 640px) {
   .touch .hud-stats { top: calc(var(--top) + 100px); flex-direction: row; gap: 4px; }
-  .touch .hud-stat, .touch .hud-battery { font-size: 14px; min-width: 58px; padding: 4px 7px; }
+  .touch .hud-stat { font-size: 14px; min-width: 58px; padding: 4px 7px; }
   .touch .minimap { left: auto; right: 12px; top: calc(var(--top) + 100px); width: 88px; height: 88px; }
   .touch .hud-status { top: calc(var(--top) + 152px); left: 12px; transform: none; max-width: calc(100vw - 124px); }
   .touch .photo-btn { top: calc(var(--top) + 196px); transform: none; }
@@ -256,8 +253,6 @@ canvas#view { transition: filter 0.25s ease; }
   .touch .touch-buttons { bottom: calc(var(--bottom) + 8px); right: calc(max(20px, env(safe-area-inset-right)) + 150px); }
   .touch .qd, .touch .qt { bottom: calc(var(--bottom) + 150px); }
 }
-.hud-battery { flex-direction: column; align-items: stretch; justify-content: space-between; gap: 6px; padding: 8px 12px; }
-.hud-battery::before { content: 'BAT'; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }
 .compass-pip { --c: var(--accent-2); position: absolute; bottom: 3px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--c); box-shadow: 0 0 6px var(--c); pointer-events: none; }
 .compass-pip[hidden] { display: none; }
 .menu-next { margin-top: 18px; display: grid; gap: 6px; }

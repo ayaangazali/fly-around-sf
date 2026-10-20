@@ -7,11 +7,10 @@ export function installEffects(game: Game): { update(): void } {
   const crash = el('div', 'fx fx-crash');
   const splash = el('div', 'fx fx-splash');
   const speed = el('div', 'fx fx-speed');
-  const low = el('div', 'fx fx-low');
   const fps = el('div', 'hud-fps');
   fps.hidden = true;
   fps.setAttribute('aria-hidden', 'true');
-  game.hud.root.prepend(crash, splash, speed, low);
+  game.hud.root.prepend(crash, splash, speed);
   game.hud.root.append(fps);
 
   const replay = (node: HTMLElement, strength: number) => {
@@ -40,7 +39,6 @@ export function installEffects(game: Game): { update(): void } {
       const hs = Math.hypot(f.vel.x, f.vel.z);
       const k = Math.max(0, Math.min(1, (hs - FLIGHT.cruise * 0.9) / (FLIGHT.boost - FLIGHT.cruise)));
       speed.style.opacity = s.reducedMotion ? '0' : (k * 0.9).toFixed(2);
-      low.classList.toggle('on', f.battery < 0.15);
       fps.hidden = !s.showFps;
       frames++;
       const now = performance.now();

@@ -80,38 +80,6 @@ describe('flight', () => {
     expect(run(gentle, { forward: 0.1 }, 3, wall).impact).toBe(0);
   });
 
-  it('[R-FLIGHT] drains battery faster with boost and slows down when empty', () => {
-    const a = createFlight(0, 100, 0);
-    const b = createFlight(0, 100, 0);
-    run(a, { forward: 1 }, 10);
-    run(b, { forward: 1, boost: true }, 10);
-    expect(b.battery).toBeLessThan(a.battery);
-    const c = createFlight(0, 100, 0);
-    c.battery = 0;
-    run(c, { forward: 1 }, 4);
-    expect(c.speed).toBeLessThan(FLIGHT.cruise * FLIGHT.lowBatterySpeed + 0.5);
-    expect(c.battery).toBe(0);
-  });
-
-  it('[R-FLIGHT] a drone resting on the ground or a roof recharges, one in the air or on the move does not', () => {
-    const roof: FlightEnv = { groundAt: () => 0, collide: (p, r) => (p.y - r < 30 ? ((p.y = 30 + r), true) : false) };
-    const ground = createFlight(0, 10 + FLIGHT.radius, 0);
-    const onRoof = createFlight(0, 30 + FLIGHT.radius, 0);
-    const air = createFlight(0, 100, 0);
-    const rolling = createFlight(0, 10 + FLIGHT.radius, 0);
-    for (const s of [ground, onRoof, air, rolling]) s.battery = 0.1;
-    run(ground, { lift: -1 }, 4);
-    run(onRoof, {}, 4, { ...roof, wind: { x: 5, z: 0 } });
-    run(air, {}, 4);
-    run(rolling, { forward: 1 }, 4);
-    expect(ground.battery).toBeCloseTo(0.1 + 4 * FLIGHT.recharge, 1);
-    expect(onRoof.battery).toBeCloseTo(0.1 + 4 * FLIGHT.recharge, 1);
-    expect(air.battery).toBeLessThan(0.1);
-    expect(rolling.battery).toBeLessThan(0.1);
-    run(ground, {}, 30);
-    expect(ground.battery).toBe(1);
-  });
-
   it('[R-V2-HOLD] a drone with no input holds still in any wind, and wind only drifts a moving drone', () => {
     const windy: FlightEnv = { ...flat, wind: { x: 7, z: -4 } };
     const s = createFlight(0, 100, 0);

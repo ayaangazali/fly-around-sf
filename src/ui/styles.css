@@ -38,12 +38,9 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
 
 .hud { position: absolute; inset: 0; pointer-events: none; }
 .hud-stats { position: absolute; left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; gap: 8px; align-items: stretch; }
-.hud-stat, .hud-battery { background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; font-family: var(--mono); font-size: 20px; font-weight: 600; min-width: 92px; }
+.hud-stat { background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; font-family: var(--mono); font-size: 20px; font-weight: 600; min-width: 92px; }
 .hud-stat span { display: block; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-dim); }
 .hud-stat small { font-size: 11px; margin-left: 3px; color: var(--ink-dim); }
-.hud-battery { min-width: 70px; padding: 8px; display: flex; align-items: end; }
-.hud-battery i { display: block; height: 10px; border-radius: 4px; background: var(--good); transition: width 0.3s; }
-.hud-battery.low i { background: var(--warn); }
 .hud-compass { position: absolute; top: max(12px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: min(420px, 60vw); height: 34px; overflow: hidden; background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 99px; mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); }
 .hud-compass-strip { position: absolute; left: 50%; top: 0; height: 100%; display: flex; margin-left: -14px; }
 .hud-compass-strip span { width: 28px; text-align: center; line-height: 34px; font-family: var(--mono); font-size: 11px; color: var(--ink-dim); flex: none; }
@@ -99,7 +96,7 @@ kbd { font-family: var(--mono); font-size: 0.8em; padding: 2px 7px; border-radiu
 .journal-item.locked strong::after { content: ' 🔒'; }
 
 @media (max-width: 640px) {
-  .hud-stat, .hud-battery { font-size: 16px; min-width: 72px; padding: 6px 9px; }
+  .hud-stat { font-size: 16px; min-width: 72px; padding: 6px 9px; }
   .menubar { max-width: 60vw; }
   .menubar-btn { width: 38px; height: 38px; }
   .sheet { top: auto; bottom: 0; left: 0; right: 0; transform: none; width: 100%; max-height: 88vh; border-radius: 22px 22px 0 0; animation: none; }

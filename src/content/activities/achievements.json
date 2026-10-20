@@ -936,26 +936,6 @@
     }
   },
   {
-    "id": "achievement-running-on-fumes",
-    "kind": "achievement",
-    "title": "Running on Fumes",
-    "blurb": "Fly until the battery drops under 5 percent.",
-    "neighborhood": "Citywide",
-    "at": {
-      "lat": 37.77919,
-      "lon": -122.41914
-    },
-    "hidden": true,
-    "tags": [
-      "achievement"
-    ],
-    "xp": 15,
-    "params": {
-      "metric": "drain",
-      "gte": 0.95
-    }
-  },
-  {
     "id": "achievement-cartographer",
     "kind": "achievement",
     "title": "Cartographer",

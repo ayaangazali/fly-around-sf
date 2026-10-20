@@ -18,7 +18,6 @@ export interface FlightState {
   yaw: number;
   pitch: number;
   roll: number;
-  battery: number;
   speed: number;
 }
 
@@ -26,7 +25,6 @@ export interface FlightEnv {
   groundAt(x: number, z: number): number;
   collide(p: Vec3, r: number): boolean;
   wind?: { x: number; z: number };
-  batteryDrain?: number;
   turnRate?: number;
 }
 
@@ -47,12 +45,10 @@ export const FLIGHT = {
   ceiling: 900,
   waterLevel: 0,
   crashSpeed: 14,
-  lowBatterySpeed: 0.55,
-  recharge: 1 / 20,
 };
 
 export function createFlight(x: number, y: number, z: number, yaw = 0): FlightState {
-  return { pos: { x, y, z }, vel: { x: 0, y: 0, z: 0 }, yaw, pitch: 0, roll: 0, battery: 1, speed: 0 };
+  return { pos: { x, y, z }, vel: { x: 0, y: 0, z: 0 }, yaw, pitch: 0, roll: 0, speed: 0 };
 }
 
 export function forwardVector(yaw: number): { x: number; z: number } {
@@ -70,12 +66,11 @@ export function stepFlight(s: FlightState, input: FlightInput, dt: number, env: 
   const str = clamp(input.strafe, -1, 1);
   const mag = Math.min(1, Math.hypot(fwd, str));
   const norm = mag > 0 ? mag / Math.hypot(fwd, str) : 0;
-  const power = s.battery > 0.05 ? 1 : FLIGHT.lowBatterySpeed;
-  const top = (input.boost ? FLIGHT.boost : FLIGHT.cruise) * power;
+  const top = input.boost ? FLIGHT.boost : FLIGHT.cruise;
   const wind = env.wind ?? { x: 0, z: 0 };
   const tx = (f.x * fwd + rx * str) * norm * top + wind.x * mag;
   const tz = (f.z * fwd + rz * str) * norm * top + wind.z * mag;
-  const ty = clamp(input.lift, -1, 1) * FLIGHT.climb * power;
+  const ty = clamp(input.lift, -1, 1) * FLIGHT.climb;
   const k = 1 - Math.exp(-FLIGHT.response * dt);
   const kv = 1 - Math.exp(-FLIGHT.verticalResponse * dt);
   const ax = (tx - s.vel.x) * k;
@@ -130,8 +125,5 @@ export function stepFlight(s: FlightState, input: FlightInput, dt: number, env: 
   const localRight = s.vel.x * rx + s.vel.z * rz;
   s.pitch += (clamp(-localFwd / FLIGHT.boost, -1, 1) * 0.45 - s.pitch) * Math.min(1, dt * 6);
   s.roll += (clamp(-localRight / FLIGHT.cruise, -1, 1) * 0.5 - s.roll) * Math.min(1, dt * 6);
-  const drain = env.batteryDrain ?? 1 / 1800;
-  const landed = mag === 0 && (s.pos.y <= floor + 0.3 || env.collide({ ...s.pos, y: s.pos.y - 0.3 }, FLIGHT.radius));
-  s.battery = clamp(landed ? s.battery + FLIGHT.recharge * dt : s.battery - drain * dt * (input.boost ? 2.5 : mag > 0 ? 1 : 0.3), 0, 1);
   return { impact: impact >= FLIGHT.crashSpeed ? impact : 0, splashed, grounded };
 }

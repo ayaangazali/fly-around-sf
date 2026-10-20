@@ -6,7 +6,6 @@ export class Hud {
   private stats: HTMLElement;
   private speed: HTMLElement;
   private alt: HTMLElement;
-  private battery: HTMLElement;
   private compass: HTMLElement;
   private status: HTMLElement;
   private prompt: HTMLElement;
@@ -21,9 +20,7 @@ export class Hud {
     this.stats = el('div', 'hud-stats');
     this.speed = el('div', 'hud-stat');
     this.alt = el('div', 'hud-stat');
-    this.battery = el('div', 'hud-battery');
-    this.battery.append(el('i'));
-    this.stats.append(this.speed, this.alt, this.battery);
+    this.stats.append(this.speed, this.alt);
     this.compass = el('div', 'hud-compass');
     const strip = el('div', 'hud-compass-strip');
     for (let d = -360; d <= 720; d += 15) {
@@ -73,15 +70,11 @@ export class Hud {
     const heading = ((((-f.yaw * 180) / Math.PI) % 360) + 360) % 360;
     const a = g.activities.active;
     const near = g.activities.nearby;
-    const key = `${speed}|${alt}|${agl.toFixed(0)}|${f.battery.toFixed(2)}|${heading.toFixed(0)}|${a ? a.inst.hud() : ''}|${near?.id ?? ''}|${g.activities.nearbyList.length}`;
+    const key = `${speed}|${alt}|${agl.toFixed(0)}|${heading.toFixed(0)}|${a ? a.inst.hud() : ''}|${near?.id ?? ''}|${g.activities.nearbyList.length}`;
     if (key === this.last) return;
     this.last = key;
     this.speed.innerHTML = `<span>SPD</span>${speed}`;
     this.alt.innerHTML = `<span>ALT</span>${alt}`;
-    const bar = this.battery.firstElementChild as HTMLElement;
-    bar.style.width = `${(f.battery * 100).toFixed(0)}%`;
-    this.battery.classList.toggle('low', f.battery < 0.2);
-    this.battery.title = `Battery ${(f.battery * 100).toFixed(0)}%`;
     (this.compass.firstElementChild as HTMLElement).style.transform = `translateX(${-(heading + 360) * (28 / 15)}px)`;
     this.status.textContent = a ? a.inst.hud() : '';
     this.status.hidden = !a;

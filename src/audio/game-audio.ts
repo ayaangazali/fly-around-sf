@@ -22,7 +22,6 @@ export type SfxName =
   | 'reward'
   | 'warn'
   | 'shutter'
-  | 'battery'
   | 'nearby';
 
 declare module '../core/bus' {
@@ -62,7 +61,6 @@ export class GameAudio {
   private accel = 0;
   private progress = { id: '', value: 0 };
   private nearbyId: string | null = null;
-  private battery = 1;
   private iconDirty = true;
 
   constructor(private game: Game) {
@@ -176,8 +174,6 @@ export class GameAudio {
     const near = game.activities.nearby?.id ?? null;
     if (near && near !== this.nearbyId) this.play('nearby');
     this.nearbyId = near;
-    if ((this.battery > 0.2 && f.battery <= 0.2) || (this.battery > 0.1 && f.battery <= 0.1)) this.play('battery');
-    this.battery = f.battery;
     if (this.pendingToast && now - this.lastSfx > 0.3) this.play(this.pendingToast);
     this.pendingToast = null;
   }
@@ -388,10 +384,6 @@ function sfx(kit: Kit, out: AudioNode, t: number, name: SfxName, amount: number)
     case 'shutter':
       burst(kit, out, t, 'highpass', 3000, 5000, 0.03, 0.35);
       burst(kit, out, t + 0.08, 'highpass', 2500, 4000, 0.05, 0.25);
-      break;
-    case 'battery':
-      tone(kit, out, t, note(81), 0.1, 0.1, 'square');
-      tone(kit, out, t + 0.18, note(81), 0.1, 0.1, 'square');
       break;
     case 'nearby':
       tone(kit, out, t, note(76), 0.3, 0.06);

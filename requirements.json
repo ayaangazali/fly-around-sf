@@ -10,7 +10,7 @@
     { "id": "R-GEO", "owner": "foundation", "text": "Lat/lon projection round-trips and matches great-circle distance within 0.3%." },
     { "id": "R-SUN", "owner": "foundation", "text": "Sun position matches SF solar noon, sunrise and night; drives day/night." },
     { "id": "R-SAVE", "owner": "foundation", "text": "Progress persists, survives broken storage, and round-trips through a share code." },
-    { "id": "R-FLIGHT", "owner": "foundation", "text": "Drone flight: cruise/boost speeds, turning, ground/water/ceiling limits, wall bounce, battery, wind." },
+    { "id": "R-FLIGHT", "owner": "foundation", "text": "Drone flight: cruise/boost speeds, turning, ground/water/ceiling limits, wall bounce, wind." },
     { "id": "R-CITY", "owner": "foundation", "text": "Building footprints parse, collide (walls and roofs), honor exclusions, and mesh with correct facing." },
     { "id": "R-DATA", "owner": "foundation", "text": "Shipped city and terrain data cover the whole city with real heights and hills." },
     { "id": "R-INPUT", "owner": "foundation", "text": "Keyboard, gamepad and touch merge into flight axes; actions fire once; typing never flies the drone." },

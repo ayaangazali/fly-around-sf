@@ -7,7 +7,7 @@ import { forwardVector } from '../../player/flight';
 
 const STATS = ['distance', 'flightTime', 'crashes', 'sessions'] as const;
 const COUNTERS = ['xp', 'cards', 'completed', 'neighborhoods', 'bests'] as const;
-const MOMENTS = ['altitude', 'speed', 'skim', 'night', 'golden', 'drain'] as const;
+const MOMENTS = ['altitude', 'speed', 'skim', 'night', 'golden'] as const;
 const EVENTS = ['splash', 'panel'] as const;
 export const METRICS = [...STATS, ...COUNTERS, ...MOMENTS, ...EVENTS] as const;
 export type Metric = (typeof METRICS)[number];
@@ -61,8 +61,6 @@ export function metricValue(p: AchievementParams, game: Game): number {
       const a = sunAltitude(game);
       return a > 0 && a < 6 * DEG ? 1 : 0;
     }
-    case 'drain':
-      return 1 - f.battery;
     case 'splash':
     case 'panel':
       return 0;
@@ -174,14 +172,6 @@ export const kind: ActivityKind = {
         return [clockShift((a) => a < -8 * DEG)];
       case 'golden':
         return [clockShift((a) => a > 1 * DEG && a < 5 * DEG)];
-      case 'drain':
-        return [
-          momentarily((g) => {
-            const b = g.flight.battery;
-            g.flight.battery = Math.min(b, 1 - p.gte - 0.01);
-            return () => (g.flight.battery = b);
-          }),
-        ];
       case 'splash':
         return [{ call: (g) => g.teleport(water(15)(g), 0) }, { fly: { lift: -1 }, seconds: 2.5 }];
       case 'panel':

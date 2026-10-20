@@ -59,7 +59,6 @@ const METRIC_ICON: Record<string, string> = {
   splash: '💦',
   night: '🌙',
   golden: '🌅',
-  drain: '🔋',
   panel: '🧭',
 };
 
