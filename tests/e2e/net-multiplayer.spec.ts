@@ -115,12 +115,18 @@ test.describe.serial('multiplayer over the local test channel', () => {
     const pos = await a.evaluate(() => window.__fly.state().pos);
     await a.evaluate((p) => window.__fly.game.net.ping(p), pos);
     await b.evaluate((p) => {
-      window.__fly.teleport({ x: p.x + 4000, y: p.y, z: p.z }, Math.PI / 2);
+      window.__fly.teleport({ x: p.x + 4000, y: p.y, z: p.z }, -Math.PI / 2);
       window.__fly.step(1);
     }, pos);
     await expect.poll(() => b.evaluate((id) => window.__fly.game.net.pings.has(id), aId)).toBe(true);
     await b.bringToFront();
-    await b.evaluate(() => window.__fly.step(0.1));
+    const camera = await b.evaluate(async (p) => {
+      window.__fly.step(0.1);
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const c = window.__fly.game.camera.position;
+      return Math.hypot(c.x - p.x, c.z - p.z);
+    }, pos);
+    expect(camera).toBeGreaterThan(3500);
     await expect(b.locator('.net-tag', { hasText: 'Ana' })).toBeVisible();
     await expect(b.locator('.net-tag', { hasText: 'Ana' })).toContainText(/4\.\d km/);
     await expect(b.locator('.net-ping', { hasText: 'Ana' })).toBeVisible();
