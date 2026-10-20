@@ -212,4 +212,22 @@ describe('net session over the local transport', () => {
     ch.close();
     t.leave();
   });
+
+  it('[R-V2-NET-FAR] Fly to follows a friend as they move and lets go once something else sets the waypoint', async () => {
+    const { a, ga, gb } = await pair('FLW');
+    a.follow(a.visiblePeers()[0].id);
+    expect(ga.waypoint).toMatchObject({ label: 'Ben' });
+    gb.flight.pos = { x: -1658, y: 80, z: -2339 };
+    await until(() => a.visiblePeers()[0].sample?.p.x === -1658);
+    a.update(1 / 60);
+    expect(ga.waypoint).toMatchObject({ x: -1658, y: 80, z: -2339, label: 'Ben' });
+    const coit = { x: 1, y: 2, z: 3, label: 'Coit Tower' };
+    ga.waypoint = coit;
+    gb.flight.pos = { x: 500, y: 80, z: 500 };
+    await until(() => a.visiblePeers()[0].sample?.p.x === 500);
+    a.update(1 / 60);
+    expect(ga.waypoint).toEqual({ x: 1, y: 2, z: 3, label: 'Coit Tower' });
+    a.follow('nobody');
+    expect(ga.waypoint).toBe(coit);
+  });
 });

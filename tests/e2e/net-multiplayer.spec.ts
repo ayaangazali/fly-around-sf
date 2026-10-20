@@ -109,6 +109,22 @@ test.describe.serial('multiplayer over the local test channel', () => {
     await expect(tag).toContainText(' m');
   });
 
+  test('[R-V2-NET-FAR] a friend and their ping 4 km away keep their tags with the distance', async () => {
+    const aId = await selfId(a);
+    const pos = await a.evaluate(() => window.__fly.state().pos);
+    await a.evaluate((p) => window.__fly.game.net.ping(p), pos);
+    await b.evaluate((p) => {
+      window.__fly.teleport({ x: p.x + 4000, y: p.y, z: p.z }, Math.PI / 2);
+      window.__fly.step(1);
+    }, pos);
+    await expect.poll(() => b.evaluate((id) => window.__fly.game.net.pings.has(id), aId)).toBe(true);
+    await b.evaluate(() => window.__fly.step(0.1));
+    await expect(b.locator('.net-tag', { hasText: 'Ana' })).toBeVisible();
+    await expect(b.locator('.net-tag', { hasText: 'Ana' })).toContainText(/4\.\d km/);
+    await expect(b.locator('.net-ping', { hasText: 'Ana' })).toBeVisible();
+    await expect(b.locator('.net-ping', { hasText: 'Ana' })).toContainText(/4\.\d km/);
+  });
+
   test('[R-NET-PING] a ping from one player appears for the other with a marker', async () => {
     await a.bringToFront();
     await a.keyboard.press('KeyG');

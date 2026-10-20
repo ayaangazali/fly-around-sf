@@ -21,7 +21,6 @@ interface PingView {
   at: Vec3;
 }
 
-const TAG_RANGE = 3000;
 const EDGE = 28;
 const BOTTOM_EDGE = 110;
 
@@ -205,7 +204,7 @@ export class NetView {
     this.aura.scale.setScalar(1 + Math.sin(t * 6) * 0.08);
   }
 
-  private place(node: HTMLElement, p: Vec3, lift: number, label: string, pinEdge: boolean): void {
+  private place(node: HTMLElement, p: Vec3, lift: number, label: string): void {
     const cam = this.game.camera;
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -219,10 +218,6 @@ export class NetView {
       y = -y;
     }
     const off = behind || Math.abs(x) > 1 || Math.abs(y) > 1;
-    if (d > TAG_RANGE || (off && !pinEdge)) {
-      node.hidden = true;
-      return;
-    }
     node.hidden = false;
     let px = ((x + 1) / 2) * w;
     let py = ((1 - y) / 2) * h;
@@ -260,12 +255,12 @@ export class NetView {
       const role = m?.phase === 'live' && m.role === id ? (m.spec.mode === 'tag' ? 'IT · ' : m.spec.mode === 'hide' ? 'SEEKER · ' : m.spec.mode === 'formation' ? 'LEADER · ' : '') : '';
       r.tag.classList.toggle('talking', p.mic === 2);
       r.tag.classList.toggle('muted', p.muted);
-      this.place(r.tag, p.pos, 1.6, `${role}${fmt(dist, imperial)}${p.mic === 2 ? ' · talking' : ''}`, true);
+      this.place(r.tag, p.pos, 1.6, `${role}${fmt(dist, imperial)}${p.mic === 2 ? ' · talking' : ''}`);
     }
     for (const [id, v] of this.pings) {
       const mark = this.net.pings.get(id);
       if (!mark) continue;
-      this.place(v.label, mark.p, 10, fmt(Math.hypot(mark.p.x - me.x, mark.p.y - me.y, mark.p.z - me.z), imperial), true);
+      this.place(v.label, mark.p, 10, fmt(Math.hypot(mark.p.x - me.x, mark.p.y - me.y, mark.p.z - me.z), imperial));
     }
   }
 }

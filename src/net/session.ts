@@ -81,6 +81,7 @@ export class Net {
   private listeners = new Set<() => void>();
   private streams = new Map<string, MediaStream>();
   private notice = '';
+  private following: { id: string; wp: Vec3 & { label: string } } | null = null;
 
   constructor(
     readonly game: Game,
@@ -393,6 +394,13 @@ export class Net {
     this.addPing({ id: this.selfId, name: this.name, color: this.color, p: { x, y, z }, t: 0 });
   }
 
+  follow(id: string): void {
+    const p = this.peers.get(id);
+    if (!p) return;
+    this.following = { id, wp: { ...p.pos, label: p.name } };
+    this.game.waypoint = this.following.wp;
+  }
+
   setMuted(id: string, muted: boolean): void {
     const p = this.peers.get(id);
     if (p) p.muted = muted;
@@ -529,6 +537,10 @@ export class Net {
       p.yaw = approachAngle(p.yaw, p.sample.yaw, dt);
     }
     for (const [id, mark] of this.pings) if ((mark.t += dt) > PING_SECONDS) this.pings.delete(id);
+    const f = this.following;
+    const target = f && this.peers.get(f.id);
+    if (f && target && this.game.waypoint === f.wp) Object.assign(f.wp, { x: target.pos.x, y: target.pos.y, z: target.pos.z });
+    else this.following = null;
     const m = this.match;
     if (m) {
       const was = m.phase;

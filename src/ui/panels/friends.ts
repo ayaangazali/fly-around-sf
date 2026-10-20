@@ -199,7 +199,7 @@ function renderRoom(game: Game, area: HTMLElement): () => void {
         metas.set(p.id, meta);
         who.append(el('b', '', p.name), meta);
         const go = button('Fly to', 'small', () => {
-          game.waypoint = { ...p.pos, label: p.name };
+          net.follow(p.id);
           game.panels.close();
         });
         go.disabled = p.blocked;

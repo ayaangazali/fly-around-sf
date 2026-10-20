@@ -6,5 +6,6 @@
   { "id": "R-V2-NET-SILENT", "owner": "net", "text": "A peer that never announces itself gets only our hello: no position, chat, ping, match message or microphone until its first valid hi, when it appears in the roster." },
   { "id": "R-V2-NET-BLOCK", "owner": "net", "text": "A blocked player stays blocked when either side reloads: blocks are kept on the device and matched by a stable per-install id the peer sends in its hi, before any greeting, microphone or position goes to them." },
   { "id": "R-V2-NET-NAMES", "owner": "net", "text": "Pilot names that only look alike (Cyrillic or Greek letters, math or fullwidth forms, I for l, other dashes) count as taken, so the newcomer is shown with an id suffix like an exact copy." },
-  { "id": "R-V2-NET-SYNC-TIMER", "owner": "net", "text": "The delayed close after a finished device sync only closes that sync, so a new offer made right after it stays reachable." }
+  { "id": "R-V2-NET-SYNC-TIMER", "owner": "net", "text": "The delayed close after a finished device sync only closes that sync, so a new offer made right after it stays reachable." },
+  { "id": "R-V2-NET-FAR", "owner": "net", "text": "Friends and their pings keep a tag with the distance at any range (pinned to the screen edge when off screen), and Fly to tracks the friend's live position until another waypoint replaces it." }
 ]
