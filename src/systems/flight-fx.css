@@ -1,0 +1,20 @@
+.ffx-warp { position: absolute; inset: 0; pointer-events: none; opacity: 0; display: grid; place-items: center; overflow: hidden; }
+.ffx-warp::before { content: ''; position: absolute; inset: -40%; background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 2.2deg, rgba(210, 232, 255, 0.85) 2.5deg 2.8deg, transparent 3.1deg 5deg); mask-image: radial-gradient(circle at center, transparent 8%, #000 42%); -webkit-mask-image: radial-gradient(circle at center, transparent 8%, #000 42%); }
+.ffx-warp::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, #fff 0%, rgba(190, 220, 255, 0.85) 30%, transparent 70%); opacity: 0; }
+.ffx-warp.on { animation: ffx-warp 1.4s ease-in-out forwards; }
+.ffx-warp.on::before { animation: ffx-rush 1.4s ease-in forwards; }
+.ffx-warp.on::after { animation: ffx-flash 1.4s ease-out forwards; }
+.ffx-warp-label { position: relative; z-index: 1; margin-top: 30vh; padding: 6px 14px; border-radius: 99px; background: var(--glass-strong); font: 600 13px var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+@keyframes ffx-warp { 0% { opacity: 0; } 15% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ffx-rush { 0% { transform: scale(0.6) rotate(0deg); } 36% { transform: scale(1.5) rotate(3deg); } 100% { transform: scale(3) rotate(6deg); } }
+@keyframes ffx-flash { 0%, 28% { opacity: 0; } 36% { opacity: 1; } 70%, 100% { opacity: 0; } }
+.reduce-motion .ffx-warp.on::before { animation: none; }
+
+.ffx-boom { position: absolute; left: 50%; top: 50%; width: 40vmin; height: 40vmin; margin: -20vmin 0 0 -20vmin; border-radius: 50%; border: 6px solid rgba(255, 255, 255, 0.85); box-shadow: 0 0 40px rgba(255, 255, 255, 0.6); pointer-events: none; opacity: 0; }
+.ffx-boom.on { animation: ffx-boom 0.7s ease-out; }
+@keyframes ffx-boom { 0% { opacity: 1; transform: scale(0.2); } 100% { opacity: 0; transform: scale(3); } }
+.reduce-motion .ffx-boom.on { animation-name: ffx-fade; }
+@keyframes ffx-fade { 0% { opacity: 0.6; } 100% { opacity: 0; } }
+
+.ffx-mach { position: absolute; left: 50%; top: 60%; transform: translateX(-50%); padding: 5px 12px; border-radius: 99px; background: var(--glass); border: 1px solid var(--line); font: 600 12px var(--mono); letter-spacing: 0.14em; color: var(--ink); white-space: nowrap; pointer-events: none; }
+.ffx-mach.super { font-size: 16px; color: #11161d; background: #e8f3ff; border-color: transparent; box-shadow: 0 0 24px rgba(200, 228, 255, 0.8); }

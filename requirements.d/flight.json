@@ -1,5 +1,6 @@
 [
   { "id": "R-V2-HOLD", "owner": "flight", "text": "With live wind blowing and no input, the drone holds still: under 1 m of drift in 15 s." },
   { "id": "R-V2-SPEED", "owner": "flight", "text": "Cruise passes 60 m/s, boost 150 m/s, and holding boost goes supersonic (343 m/s) within 5 s, with wider FOV, a Mach readout, a vapor cone and a sonic boom; fast flight cannot tunnel through walls." },
+  { "id": "R-V2-WARP", "owner": "flight", "text": "A warp event plays a light-speed effect and lands the drone safely above the target within 3 s." },
   { "id": "R-V2-CAMERA", "owner": "flight", "text": "The chase camera keeps line of sight to the drone: near buildings it pulls in instead of entering them or jumping onto a roof." }
 ]
