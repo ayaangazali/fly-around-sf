@@ -34,9 +34,7 @@ export class QuestDialogue {
   private queue: Line[] = [];
   private line: Line | null = null;
   private shown = 0;
-  private hold = 0;
   private last = 0;
-  private hover = false;
   private raf = 0;
   private total = 0;
 
@@ -64,8 +62,6 @@ export class QuestDialogue {
     this.root.append(this.portrait, body);
     this.share.addEventListener('click', (e) => e.stopPropagation());
     this.root.addEventListener('click', () => this.advance());
-    this.root.addEventListener('pointerenter', () => (this.hover = true));
-    this.root.addEventListener('pointerleave', () => (this.hover = false));
     game.ui.append(this.root);
     game.bus.on('quest:say', ({ lines }) => this.push(lines));
     game.bus.on('interact', () => {
@@ -123,7 +119,6 @@ export class QuestDialogue {
     this.who.textContent = l.who;
     this.full.textContent = l.text;
     this.shown = reducedMotion(this.game) ? l.text.length : 0;
-    this.hold = l.share ? 30 : Math.min(12, Math.max(3.5, 1.5 + l.text.length / 20));
     this.share.replaceChildren();
     this.share.hidden = !l.share;
     if (l.share) {
@@ -147,18 +142,16 @@ export class QuestDialogue {
     const frame = (now: number) => {
       this.tick(Math.min(0.5, (now - this.last) / 1000));
       this.last = now;
-      if (this.line) this.raf = requestAnimationFrame(frame);
+      if (this.line && this.shown < this.line.text.length) this.raf = requestAnimationFrame(frame);
     };
     this.raf = requestAnimationFrame(frame);
   }
 
   private tick(dt: number): void {
     const l = this.line;
-    if (!l || this.root.classList.contains('paused')) return;
-    if (this.shown < l.text.length) {
-      this.shown = Math.min(l.text.length, this.shown + CHARS_PER_SECOND * dt);
-      this.paint();
-    } else if (!this.hover && (this.hold -= dt) <= 0) this.show();
+    if (!l || this.root.classList.contains('paused') || this.shown >= l.text.length) return;
+    this.shown = Math.min(l.text.length, this.shown + CHARS_PER_SECOND * dt);
+    this.paint();
   }
 
   private paint(): void {
